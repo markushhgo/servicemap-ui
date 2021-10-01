@@ -1,0 +1,387 @@
+{
+    "count": 602,
+    "next": "http://127.0.0.1:8000/v2/week_data/?page=3",
+    "previous": "http://127.0.0.1:8000/v2/week_data/",
+    "results": [
+        {
+            "id": 637,
+            "location": 28,
+            "week_info": {
+                "id": 2478,
+                "location": 28,
+                "week_number": 3,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 0,
+            "value_pp": 0,
+            "value_pt": 0,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 638,
+            "location": 22,
+            "week_info": {
+                "id": 2479,
+                "location": 22,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 2961,
+            "value_pp": 3280,
+            "value_pt": 6241,
+            "value_jk": 4662,
+            "value_jp": 4438,
+            "value_jt": 9100
+        },
+        {
+            "id": 639,
+            "location": 23,
+            "week_info": {
+                "id": 2480,
+                "location": 23,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 4129,
+            "value_pp": 4035,
+            "value_pt": 8164,
+            "value_jk": 14273,
+            "value_jp": 13347,
+            "value_jt": 27620
+        },
+        {
+            "id": 640,
+            "location": 24,
+            "week_info": {
+                "id": 2481,
+                "location": 24,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 13455,
+            "value_ap": 15655,
+            "value_at": 29110,
+            "value_pk": 2923,
+            "value_pp": 900,
+            "value_pt": 3823,
+            "value_jk": 18496,
+            "value_jp": 13166,
+            "value_jt": 31662
+        },
+        {
+            "id": 641,
+            "location": 25,
+            "week_info": {
+                "id": 2482,
+                "location": 25,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 6339,
+            "value_pp": 4953,
+            "value_pt": 11292,
+            "value_jk": 15611,
+            "value_jp": 13177,
+            "value_jt": 28788
+        },
+        {
+            "id": 642,
+            "location": 26,
+            "week_info": {
+                "id": 2483,
+                "location": 26,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 617,
+            "value_pp": 572,
+            "value_pt": 1189,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 643,
+            "location": 27,
+            "week_info": {
+                "id": 2484,
+                "location": 27,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 0,
+            "value_pp": 0,
+            "value_pt": 0,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 644,
+            "location": 28,
+            "week_info": {
+                "id": 2485,
+                "location": 28,
+                "week_number": 4,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 0,
+            "value_pp": 0,
+            "value_pt": 0,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 645,
+            "location": 22,
+            "week_info": {
+                "id": 2486,
+                "location": 22,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 2710,
+            "value_pp": 2883,
+            "value_pt": 5593,
+            "value_jk": 3948,
+            "value_jp": 3675,
+            "value_jt": 7623
+        },
+        {
+            "id": 646,
+            "location": 23,
+            "week_info": {
+                "id": 2487,
+                "location": 23,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 3679,
+            "value_pp": 3601,
+            "value_pt": 7280,
+            "value_jk": 12313,
+            "value_jp": 11109,
+            "value_jt": 23422
+        },
+        {
+            "id": 647,
+            "location": 24,
+            "week_info": {
+                "id": 2488,
+                "location": 24,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 14043,
+            "value_ap": 17596,
+            "value_at": 31639,
+            "value_pk": 2726,
+            "value_pp": 742,
+            "value_pt": 3468,
+            "value_jk": 19040,
+            "value_jp": 12977,
+            "value_jt": 32017
+        },
+        {
+            "id": 648,
+            "location": 25,
+            "week_info": {
+                "id": 2489,
+                "location": 25,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 4635,
+            "value_pp": 4447,
+            "value_pt": 9082,
+            "value_jk": 16756,
+            "value_jp": 12714,
+            "value_jt": 29470
+        },
+        {
+            "id": 649,
+            "location": 26,
+            "week_info": {
+                "id": 2490,
+                "location": 26,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 478,
+            "value_pp": 428,
+            "value_pt": 906,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 650,
+            "location": 27,
+            "week_info": {
+                "id": 2491,
+                "location": 27,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 0,
+            "value_pp": 0,
+            "value_pt": 0,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 651,
+            "location": 28,
+            "week_info": {
+                "id": 2492,
+                "location": 28,
+                "week_number": 5,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 0,
+            "value_pp": 0,
+            "value_pt": 0,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        },
+        {
+            "id": 652,
+            "location": 22,
+            "week_info": {
+                "id": 2493,
+                "location": 22,
+                "week_number": 6,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 2530,
+            "value_pp": 2617,
+            "value_pt": 5147,
+            "value_jk": 4616,
+            "value_jp": 4192,
+            "value_jt": 8808
+        },
+        {
+            "id": 653,
+            "location": 23,
+            "week_info": {
+                "id": 2494,
+                "location": 23,
+                "week_number": 6,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 2973,
+            "value_pp": 2728,
+            "value_pt": 5701,
+            "value_jk": 13615,
+            "value_jp": 12597,
+            "value_jt": 26212
+        },
+        {
+            "id": 654,
+            "location": 24,
+            "week_info": {
+                "id": 2495,
+                "location": 24,
+                "week_number": 6,
+                "year": 2020
+            },
+            "value_ak": 13576,
+            "value_ap": 15762,
+            "value_at": 29338,
+            "value_pk": 2544,
+            "value_pp": 668,
+            "value_pt": 3212,
+            "value_jk": 19512,
+            "value_jp": 13563,
+            "value_jt": 33075
+        },
+        {
+            "id": 655,
+            "location": 25,
+            "week_info": {
+                "id": 2496,
+                "location": 25,
+                "week_number": 6,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 4671,
+            "value_pp": 3761,
+            "value_pt": 8432,
+            "value_jk": 14800,
+            "value_jp": 12866,
+            "value_jt": 27666
+        },
+        {
+            "id": 656,
+            "location": 26,
+            "week_info": {
+                "id": 2497,
+                "location": 26,
+                "week_number": 6,
+                "year": 2020
+            },
+            "value_ak": 0,
+            "value_ap": 0,
+            "value_at": 0,
+            "value_pk": 442,
+            "value_pp": 411,
+            "value_pt": 853,
+            "value_jk": 0,
+            "value_jp": 0,
+            "value_jt": 0
+        }
+    ]
+}
