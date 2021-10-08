@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { ReactSVG } from 'react-svg';
 import LineChart from '../LineChart';
-import iconWalking from '../../../assets/images/icon-icon_walking.svg';
-import iconCycling from '../../../assets/images/icon-icon_cycling.svg';
-import iconCar from '../../../assets/images/icon-icon_car.svg';
+import iconWalk from '../../../assets/icons/icon-icon_walking.svg';
+import iconBicycle from '../../../assets/icons/icon-icon_bicycle.svg';
+import iconCar from '../../../assets/icons/icon-icon_car.svg';
 
 const EcoCounterContent = ({
   classes,
@@ -13,6 +14,7 @@ const EcoCounterContent = ({
   ecoCounterDay,
   ecoCounterWeek,
   ecoCounterMonth,
+  intl,
 }) => {
   const [channel1Counts, setChannel1Counts] = useState([]);
   const [channel2Counts, setChannel2Counts] = useState([]);
@@ -22,54 +24,85 @@ const EcoCounterContent = ({
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
   const [activeType, setActiveType] = useState(0);
+  const [isPedestriansOnly, setIsPedestriansOnly] = useState(true);
+  // const [errorMsg, setErrorMsg] = useState('');
 
+  // steps that determine which data is shown on the chart
   const buttonSteps = [
     {
       step: {
         type: 'hour',
-        text: 'Tunneittain',
+        text: intl.formatMessage({ id: 'ecocounter.hour' }),
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.hour' }),
       },
     },
     {
       step: {
         type: 'day',
-        text: 'Päivittäin',
+        text: intl.formatMessage({ id: 'ecocounter.day' }),
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.day' }),
       },
     },
     {
       step: {
         type: 'week',
-        text: 'Viikoittain',
+        text: intl.formatMessage({ id: 'ecocounter.week' }),
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.week' }),
       },
     },
     {
       step: {
         type: 'month',
-        text: 'Kuukausittain',
+        text: intl.formatMessage({ id: 'ecocounter.month' }),
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.month' }),
       },
     },
   ];
 
+  // User types that include cars
   const userTypes = [
     {
       type: {
         user: 'walking',
-        text: 'Kävely',
-        icon: iconWalking,
+        text: intl.formatMessage({ id: 'ecocounter.walk' }),
+        icon: iconWalk,
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.walk' }),
       },
     },
     {
       type: {
-        user: 'cycling',
-        text: 'Pyörä',
-        icon: iconCycling,
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.bicycle' }),
       },
     },
     {
       type: {
         user: 'driving',
-        text: 'Auto',
+        text: intl.formatMessage({ id: 'ecocounter.car' }),
         icon: iconCar,
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.car' }),
+      },
+    },
+  ];
+
+  // User types that doesn't include cars, because some stations do not include counts for cars
+  const pedestrianTypes = [
+    {
+      type: {
+        user: 'walking',
+        text: intl.formatMessage({ id: 'ecocounter.walk' }),
+        icon: iconWalk2,
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.walk' }),
+      },
+    },
+    {
+      type: {
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
+        ariaLabel: intl.formatMessage({ id: 'ecocounter.bicycle' }),
       },
     },
   ];
@@ -101,6 +134,9 @@ const EcoCounterContent = ({
     '23:00',
   ];
 
+  // const yesterday = moment().add(-1, 'days');
+
+  // Format dates for the chart
   const formatDates = dateValue => moment(dateValue).format('DD.MM');
 
   const formatWeeks = weekValue => `Viikko ${weekValue}`;
@@ -136,17 +172,21 @@ const EcoCounterContent = ({
     }
   };
 
+  // Empties chart data so that old data won't persist on the chart
   const resetChannelData = () => {
     setChannelTotals([]);
     setEcoCounterLabels([]);
   };
 
+  // Channel data is set inside this function to avoid duplicate code
   const setAllChannelCounts = (newValue1, newValue2, newValue3) => {
     setChannel1Counts(channel1Counts => [...channel1Counts, newValue1]);
     setChannel2Counts(channel2Counts => [...channel2Counts, newValue2]);
     setChannelTotals(channelTotals => [...channelTotals, newValue3]);
   };
 
+  // Sets channel data into React state, so it can be displayed on the chart
+  // States for user type(s) and step(s) are used to filter shown data
   const setChannelData = () => {
     resetChannelData();
     if (currentTime === 'hour') {
@@ -156,7 +196,7 @@ const EcoCounterContent = ({
           setChannel1Counts(el3.values_jk);
           setChannel2Counts(el3.values_jp);
           setChannelTotals(el3.values_jt);
-        } else if (el3.location === stationId && currentType === 'cycling') {
+        } else if (el3.location === stationId && currentType === 'bicycle') {
           setChannel1Counts(el3.values_pk);
           setChannel2Counts(el3.values_pp);
           setChannelTotals(el3.values_pt);
@@ -173,7 +213,7 @@ const EcoCounterContent = ({
           setChannel2Counts(channel2Counts => [...channel2Counts, el.values_jp]);
           setChannelTotals(channelTotals => [...channelTotals, el.values_jt]);
           setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatDates(el.date)]);
-        } else if (el.location === stationId && currentType === 'cycling') {
+        } else if (el.location === stationId && currentType === 'bicycle') {
           setChannel1Counts(channel1Counts => [...channel1Counts, el.values_pk]);
           setChannel2Counts(channel2Counts => [...channel2Counts, el.values_pp]);
           setChannelTotals(channelTotals => [...channelTotals, el.values_pt]);
@@ -193,7 +233,7 @@ const EcoCounterContent = ({
             ...ecoCounterLabels,
             formatWeeks(el2.week_info.week_number),
           ]);
-        } else if (el2.location === stationId && currentType === 'cycling') {
+        } else if (el2.location === stationId && currentType === 'bicycle') {
           setAllChannelCounts(el2.value_pk, el2.value_pp, el2.value_pt);
           setEcoCounterLabels(ecoCounterLabels => [
             ...ecoCounterLabels,
@@ -215,7 +255,7 @@ const EcoCounterContent = ({
             ...ecoCounterLabels,
             formatMonths(el2.month_info.month_number),
           ]);
-        } else if (el2.location === stationId && currentType === 'cycling') {
+        } else if (el2.location === stationId && currentType === 'bicycle') {
           setAllChannelCounts(el2.value_pk, el2.value_pp, el2.value_pt);
           setEcoCounterLabels(ecoCounterLabels => [
             ...ecoCounterLabels,
@@ -232,14 +272,15 @@ const EcoCounterContent = ({
     }
   };
 
+  // Sets current user type and active button index
   const setWalkingState = (index) => {
     setActiveType(index);
     setCurrentType('walking');
   };
 
-  const setCyclingState = (index) => {
+  const setBicycleState = (index) => {
     setActiveType(index);
-    setCurrentType('cycling');
+    setCurrentType('bicycle');
   };
 
   const setDrivingState = (index) => {
@@ -249,10 +290,11 @@ const EcoCounterContent = ({
 
   const setUserTypes = (type, index) => {
     if (type === 'walking') setWalkingState(index);
-    else if (type === 'cycling') setCyclingState(index);
+    else if (type === 'bicycle') setBicycleState(index);
     else if (type === 'driving') setDrivingState(index);
   };
 
+  // Sets current step and active button index
   const setStepHour = (i) => {
     setActiveStep(i);
     setCurrentTime('hour');
@@ -280,6 +322,7 @@ const EcoCounterContent = ({
     else if (title === 'month') setStepMonth(index);
   };
 
+  // useEffect is used to fill the chart with default data (default step is 'hourly')
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
     ecoCounterHour.forEach((el3) => {
@@ -287,7 +330,7 @@ const EcoCounterContent = ({
         setChannel1Counts(el3.values_jk);
         setChannel2Counts(el3.values_jp);
         setChannelTotals(el3.values_jt);
-      } else if (el3.location === stationId && currentType === 'cycling') {
+      } else if (el3.location === stationId && currentType === 'bicycle') {
         setChannel1Counts(el3.values_pk);
         setChannel2Counts(el3.values_pp);
         setChannelTotals(el3.values_pt);
@@ -299,50 +342,91 @@ const EcoCounterContent = ({
     });
   }, []);
 
+  // When current user type or step changes, calls function to update the chart data
   useEffect(() => {
     setChannelData();
   }, [currentType, currentTime]);
 
+  // Only one station includes data about cars
+  // Sets isPedestriansOnly state to false for that one station only
+  useEffect(() => {
+    if (stationId === 24) {
+      setIsPedestriansOnly(false);
+    }
+  }, [stationId]);
+
   return (
     <div className={classes.ecocounterContent}>
       <div className={classes.ecocounterUserTypes}>
-        {userTypes.map((userType, i) => (
-          <div key={userType.type.user}>
-            <button
-              type="button"
-              className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-              onClick={() => setUserTypes(userType.type.user, i)}
-            >
-              <img src={userType.type.icon} width="30px" height="30px" alt="user type" />
-            </button>
-            <p className={classes.usertypeText}>{userType.type.text}</p>
-          </div>
-        ))}
+        {!isPedestriansOnly
+          ? userTypes.map((userType, i) => (
+            <div key={userType.type.user} className={classes.buttonAndTextContainer}>
+              <button
+                type="button"
+                aria-label={userType.type.ariaLabel}
+                className={
+                    i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`
+                  }
+                onClick={() => setUserTypes(userType.type.user, i)}
+              >
+                {/* <img src={userType.type.icon} width="30px" height="30px" alt="user type" /> */}
+                <div>
+                  <ReactSVG
+                    className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
+                    src={userType.type.icon}
+                  />
+                </div>
+              </button>
+              <p className={classes.userTypeText}>{userType.type.text}</p>
+            </div>
+          ))
+          : pedestrianTypes.map((userType, i) => (
+            <div key={userType.type.user} className={classes.buttonAndTextContainer}>
+              <button
+                type="button"
+                aria-label={userType.type.ariaLabel}
+                className={
+                    i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`
+                  }
+                onClick={() => setUserTypes(userType.type.user, i)}
+              >
+                {/* <img src={userType.type.icon} width="30px" height="30px" alt="user type" /> */}
+                <div>
+                  <ReactSVG
+                    className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
+                    src={userType.type.icon}
+                  />
+                </div>
+              </button>
+              <p className={classes.userTypeText}>{userType.type.text}</p>
+            </div>
+          ))}
       </div>
       <div className={classes.ecocounterChart}>
         <LineChart
           labels={ecoCounterLabels}
-          labelChannel1="Keskustaan"
-          labelChannel2="Keskustasta"
-          labelChannelTotal="Yhteensä"
+          labelChannel1={intl.formatMessage({ id: 'ecocounter.chart.labelTo' })}
+          labelChannel2={intl.formatMessage({ id: 'ecocounter.chart.labelFrom' })}
+          labelChannelTotal={intl.formatMessage({ id: 'ecocounter.chart.labelTotal' })}
           channelTotalsData={channelTotals}
           channel1Data={channel1Counts}
           channel2Data={channel2Counts}
         />
       </div>
       <div className={classes.ecocounterSteps}>
-        <div>
+        <>
           {buttonSteps.map((timing, i) => (
             <button
               key={timing.step.type}
               type="button"
+              aria-label={timing.step.ariaLabel}
               className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
               onClick={() => handleClick(timing.step.type, i, stationId)}
             >
               {timing.step.text}
             </button>
           ))}
-        </div>
+        </>
       </div>
     </div>
   );
@@ -355,6 +439,7 @@ EcoCounterContent.propTypes = {
   ecoCounterDay: PropTypes.arrayOf(PropTypes.any),
   ecoCounterWeek: PropTypes.arrayOf(PropTypes.any),
   ecoCounterMonth: PropTypes.arrayOf(PropTypes.any),
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 EcoCounterContent.defaultProps = {

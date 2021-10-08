@@ -52,9 +52,9 @@ const LineChart = ({
         fill: false,
         label: labelChannelTotal,
         lineTension: 0.2,
-        borderColor: '#dc3545',
+        borderColor: 'rgba(7, 44,115, 255)',
         borderWidth: 3,
-        backgroundColor: '#dc3545',
+        backgroundColor: 'rgba(7, 44,115, 255)',
         data: channelTotalsData,
         pointRadius: 4,
         pointBackgroundColor: '#fff',
@@ -84,6 +84,8 @@ const LineChart = ({
     },
   };
 
+  const chartAriaLabel = 'This chart shows statistics about traffic on this location.';
+
   useEffect(() => {
     ecoCounterChart();
   }, [channelTotalsData]);
@@ -93,7 +95,7 @@ const LineChart = ({
   }, [channel1Data, channel2Data]);
 
   return (
-    <div className="chart-container">
+    <div className="chart-container" role="img" aria-label={chartAriaLabel}>
       <Line ref={chartRef} data={data} width={496} height={247} options={options} />
     </div>
   );

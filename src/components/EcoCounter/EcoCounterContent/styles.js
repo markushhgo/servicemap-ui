@@ -4,16 +4,14 @@ const styles = {
     border: '1px solid gray',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginRight: '0.75rem',
     padding: '0.3rem',
   },
   buttonActive: {
-    backgroundColor: 'rgba(54, 54, 56, 255)',
+    backgroundColor: 'rgba(7, 44, 115, 255)',
     color: '#fff',
     border: '1px solid gray',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginRight: '0.75rem',
     padding: '0.3rem',
   },
   ecocounterUserTypes: {
@@ -21,14 +19,29 @@ const styles = {
     justifyContent: 'flex-end',
     marginBottom: '0.3rem',
   },
-  usertypeText: {
-    margin: '0.3rem 0',
+  buttonAndTextContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginRight: '0.7rem',
+    alignItems: 'center',
+  },
+  userTypeText: {
     fontWeight: 'bold',
+    paddingTop: '0.3rem',
+  },
+  iconActive: {
+    fill: '#fff',
+    width: '30px',
+    height: '30px',
+  },
+  icon: {
+    width: '30px',
+    height: '30px',
   },
   ecocounterSteps: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     padding: '1rem 0',
   },

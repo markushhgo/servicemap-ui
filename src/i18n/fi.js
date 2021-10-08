@@ -564,6 +564,18 @@ const translations = {
   'info.statement': 'Saavutettavuusseloste',
 
   'alert.close': 'Sulje ilmoitus',
+
+  // Ecocounter
+  'ecocounter.hour': 'Tunneittain',
+  'ecocounter.day': 'Päivittäin',
+  'ecocounter.week': 'Viikkoittain',
+  'ecocounter.month': 'Kuukausittain',
+  'ecocounter.walk': 'Kävely',
+  'ecocounter.bicycle': 'Pyörä',
+  'ecocounter.car': 'Auto',
+  'ecocounter.chart.labelTo': 'Keskustaan',
+  'ecocounter.chart.labelFrom': 'Keskustasta',
+  'ecocounter.chart.labelTotal': 'Yhteensä',
 };
 
 let overridingExternalTranslations;
