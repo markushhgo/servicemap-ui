@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ReactSVG } from 'react-svg';
 import LineChart from '../LineChart';
-import iconWalk from '../../../assets/icons/icon-icon_walking.svg';
-import iconBicycle from '../../../assets/icons/icon-icon_bicycle.svg';
-import iconCar from '../../../assets/icons/icon-icon_car.svg';
+import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walking.svg';
+import iconBicycle from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const EcoCounterContent = ({
   classes,
@@ -93,7 +93,7 @@ const EcoCounterContent = ({
       type: {
         user: 'walking',
         text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk2,
+        icon: iconWalk,
         ariaLabel: intl.formatMessage({ id: 'ecocounter.walk' }),
       },
     },

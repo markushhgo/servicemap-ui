@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import EcoCounterContent from '../EcoCounterContent';
 // import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
+import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 import ecoCounterDailyFile from '../../../assets/files/ecocounter_days.json';
 import ecoCounterHourlyFile from '../../../assets/files/ecocounter_hours.json';
 import ecoCounterWeeklyFile from '../../../assets/files/ecocounter_week.json';
@@ -23,6 +24,12 @@ const EcoCounterMarkers = ({ classes }) => {
   // const [errorMsg, setErrorMsg] = useState('');
 
   const { Marker, Popup } = global.rL;
+  const { icon } = global.L;
+
+  const ecoCounterIcon = icon({
+    iconUrl: markerIcon,
+    iconSize: [45, 45],
+  });
 
   useEffect(() => {
     // fetchEcoCounterStations(setEcoCounterStations, setErrorMsg);
@@ -59,7 +66,7 @@ const EcoCounterMarkers = ({ classes }) => {
       <div>
         <div>
           {ecoCounterStations.map(item => (
-            <Marker key={item.id} position={[item.lat, item.lon]}>
+            <Marker key={item.id} icon={ecoCounterIcon} position={[item.lat, item.lon]}>
               <div className={classes.popupWrapper}>
                 <Popup className="ecocounter-popup">
                   <div className={classes.popupInner}>

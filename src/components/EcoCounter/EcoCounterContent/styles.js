@@ -31,12 +31,13 @@ const styles = {
   },
   iconActive: {
     fill: '#fff',
-    width: '30px',
-    height: '30px',
+    width: '35px',
+    height: '35px',
   },
   icon: {
-    width: '30px',
-    height: '30px',
+    fill: '#000',
+    width: '35px',
+    height: '35px',
   },
   ecocounterSteps: {
     display: 'flex',
