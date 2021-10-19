@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ReactSVG } from 'react-svg';
 import LineChart from '../LineChart';
-import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walking.svg';
+import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
