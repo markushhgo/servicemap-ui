@@ -5,7 +5,6 @@ import { Typography, Paper, TextField } from '@material-ui/core';
 import URI from 'urijs';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
-import { isTurku } from 'servicemap-ui-turku/scripts/currentLocation';
 import * as smurl from './utils/url';
 import isClient, { uppercaseFirst } from '../../utils';
 import { getEmbedURL, getLanguage } from './utils/utils';
@@ -453,7 +452,7 @@ const EmbedderView = ({
 
   const renderMapOptionsControl = () => {
     let controls = [];
-    if (isTurku) {
+    if (window.nodeEnvSettings.THEME_PKG) {
       controls = [
         {
           key: 'units',
