@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import {
-  Typography, Paper, TextField,
-} from '@material-ui/core';
+import { Typography, Paper, TextField } from '@material-ui/core';
 import URI from 'urijs';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
@@ -20,11 +18,7 @@ import SettingsUtility from '../../utils/settings';
 import useLocaleText from '../../utils/useLocaleText';
 import { useUserLocale } from '../../utils/user';
 
-
-const hideCitiesIn = [
-  paths.unit.regex,
-  paths.address.regex,
-];
+const hideCitiesIn = [paths.unit.regex, paths.address.regex];
 
 const hideServicesIn = [
   paths.search.regex,
@@ -40,11 +34,7 @@ let timeout;
 const timeoutDelay = 1000;
 
 const EmbedderView = ({
-  citySettings,
-  classes,
-  intl,
-  mapType,
-  navigator,
+  citySettings, classes, intl, mapType, navigator,
 }) => {
   // Verify url
   const data = isClient() ? smurl.verify(window.location.href) : {};
@@ -61,9 +51,7 @@ const EmbedderView = ({
   }
 
   const cityOption = (search?.city !== '' && search?.city?.split(',')) || citySettings;
-  const citiesToReduce = cityOption.length > 0
-    ? cityOption
-    : embedderConfig.CITIES.filter(v => v);
+  const citiesToReduce = cityOption.length > 0 ? cityOption : embedderConfig.CITIES.filter(v => v);
 
   // Defaults
   const initialRatio = ratio || 52;
@@ -87,7 +75,9 @@ const EmbedderView = ({
   const [map, setMap] = useState(defaultMap);
   const [city, setCity] = useState(defaultCities);
   const [service, setService] = useState(defaultService);
-  const [customWidth, setCustomWidth] = useState(embedderConfig.DEFAULT_CUSTOM_WIDTH || 100);
+  const [customWidth, setCustomWidth] = useState(
+    embedderConfig.DEFAULT_CUSTOM_WIDTH || 100,
+  );
   const [widthMode, setWidthMode] = useState('auto');
   const [fixedHeight, setFixedHeight] = useState(defaultFixedHeight);
   const [ratioHeight, setRatioHeight] = useState(initialRatio);
@@ -99,7 +89,13 @@ const EmbedderView = ({
 
   const renderWrapperStyle = () => `position: relative; width:100%; padding-bottom:${ratioHeight}%;`;
   const embedUrl = getEmbedURL(url, {
-    language, map, city, service, defaultLanguage, transit, showUnits,
+    language,
+    map,
+    city,
+    service,
+    defaultLanguage,
+    transit,
+    showUnits,
   });
 
   const getTitleText = () => {
@@ -167,21 +163,28 @@ const EmbedderView = ({
     }
     let height;
     let html;
-    if (heightMode === 'fixed') { height = fixedHeight; }
+    if (heightMode === 'fixed') {
+      height = fixedHeight;
+    }
     if (heightMode === 'ratio') {
       if (widthMode === 'auto') {
         html = `<div style="${renderWrapperStyle()}">
           <iframe title="${iframeTitle}" style="position: absolute; top: 0; left: 0; border: none; width: 100%; height: 100%;"
           src="${embedUrl}"></iframe></div>`;
       } else {
-        height = parseInt(parseInt(customWidth, 10) * (parseInt(ratioHeight, 10) / 100.0), 10);
+        height = parseInt(
+          parseInt(customWidth, 10) * (parseInt(ratioHeight, 10) / 100.0),
+          10,
+        );
       }
     }
 
     if (height) {
-      const width = widthMode !== 'custom' ? (
-        iframeConfig.style && iframeConfig.style.width && iframeConfig.style.width
-      ) : customWidth;
+      const width = widthMode !== 'custom'
+        ? iframeConfig.style
+            && iframeConfig.style.width
+            && iframeConfig.style.width
+        : customWidth;
       const widthUnit = width !== '100%' ? 'px' : '';
       html = `<iframe title="${iframeTitle}" style="border: none; width: ${width}${widthUnit}; height: ${height}px;"
                   src="${embedUrl}"></iframe>`;
@@ -220,9 +223,7 @@ const EmbedderView = ({
 
     return (
       <Paper className={classes.formContainerPaper}>
-        {
-          /* Embed address */
-        }
+        {/* Embed address */}
         <Typography
           align="left"
           className={classes.marginBottom}
@@ -237,11 +238,11 @@ const EmbedderView = ({
           value={embedUrl}
           margin="normal"
           variant="outlined"
-          inputProps={{ 'aria-label': intl.formatMessage({ id: 'embedder.url.title' }) }}
+          inputProps={{
+            'aria-label': intl.formatMessage({ id: 'embedder.url.title' }),
+          }}
         />
-        {
-          /* Embed HTML code */
-        }
+        {/* Embed HTML code */}
         <Typography
           align="left"
           className={classes.marginBottom}
@@ -250,9 +251,7 @@ const EmbedderView = ({
         >
           <FormattedMessage id="embedder.code.title" />
         </Typography>
-        <pre className={classes.pre}>
-          { htmlText }
-        </pre>
+        <pre className={classes.pre}>{htmlText}</pre>
       </Paper>
     );
   };
@@ -264,14 +263,18 @@ const EmbedderView = ({
     const description = locale => intl.formatMessage({ id: `embedder.language.description.${locale}` });
     const languageControls = generateLabel => Object.keys(embedderConfig.LANGUAGES).map(lang => ({
       value: lang,
-      label: `${uppercaseFirst(embedderConfig.LANGUAGES[userLocale][lang])}. ${generateLabel(lang)}`,
+      label: `${uppercaseFirst(
+        embedderConfig.LANGUAGES[userLocale][lang],
+      )}. ${generateLabel(lang)}`,
     }));
 
     return (
       <EmbedController
         titleID="embedder.language.title"
         titleComponent="h2"
-        radioAriaLabel={intl.formatMessage({ id: 'embedder.language.aria.label' })}
+        radioAriaLabel={intl.formatMessage({
+          id: 'embedder.language.aria.label',
+        })}
         radioName="language"
         radioValue={language}
         radioControls={languageControls(description)}
@@ -350,7 +353,9 @@ const EmbedderView = ({
       <EmbedController
         titleID="embedder.service.title"
         titleComponent="h2"
-        radioAriaLabel={intl.formatMessage({ id: 'embedder.service.aria.label' })}
+        radioAriaLabel={intl.formatMessage({
+          id: 'embedder.service.aria.label',
+        })}
         radioName="service"
         radioValue={service}
         radioControls={serviceControls(getLabel)}
@@ -422,7 +427,9 @@ const EmbedderView = ({
       <EmbedController
         titleID="embedder.height.title"
         titleComponent="h2"
-        radioAriaLabel={intl.formatMessage({ id: 'embedder.height.aria.label' })}
+        radioAriaLabel={intl.formatMessage({
+          id: 'embedder.height.aria.label',
+        })}
         radioName="height"
         radioValue={heightMode}
         radioControls={controls}
@@ -444,22 +451,35 @@ const EmbedderView = ({
   };
 
   const renderMapOptionsControl = () => {
-    const controls = [
-      {
-        key: 'transit',
-        value: transit,
-        onChange: v => setTransit(v),
-        icon: null,
-        labelId: 'embedder.options.label.transit',
-      },
-      {
-        key: 'units',
-        value: showUnits,
-        onChange: v => setShowUnits(v),
-        icon: null,
-        labelId: 'embedder.options.label.units',
-      },
-    ];
+    let controls = [];
+    if (window.nodeEnvSettings.THEME_PKG) {
+      controls = [
+        {
+          key: 'units',
+          value: showUnits,
+          onChange: v => setShowUnits(v),
+          icon: null,
+          labelId: 'embedder.options.label.units',
+        },
+      ];
+    } else {
+      controls = [
+        {
+          key: 'transit',
+          value: transit,
+          onChange: v => setTransit(v),
+          icon: null,
+          labelId: 'embedder.options.label.transit',
+        },
+        {
+          key: 'units',
+          value: showUnits,
+          onChange: v => setShowUnits(v),
+          icon: null,
+          labelId: 'embedder.options.label.units',
+        },
+      ];
+    }
 
     return (
       <EmbedController
@@ -474,7 +494,9 @@ const EmbedderView = ({
   const renderHeadInfo = () => (
     <Helmet>
       <title>
-        {`${intl.formatMessage({ id: 'embedder.title' })} | ${intl.formatMessage({ id: 'app.title' })}`}
+        {`${intl.formatMessage({
+          id: 'embedder.title',
+        })} | ${intl.formatMessage({ id: 'app.title' })}`}
       </title>
     </Helmet>
   );
@@ -485,16 +507,15 @@ const EmbedderView = ({
 
   return (
     <div ref={dialogRef}>
-      {
-        renderHeadInfo()
-      }
+      {renderHeadInfo()}
       <div className={classes.appBar} />
       <div className={classes.container}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          position: 'relative',
-        }}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            position: 'relative',
+          }}
         >
           <CloseButton
             aria-label={intl.formatMessage({ id: 'embedder.close' })}
@@ -515,24 +536,12 @@ const EmbedderView = ({
         </div>
         <div className={classes.formContainer}>
           <form>
-            {
-              renderLanguageControl()
-            }
-            {
-              renderServiceControl()
-            }
-            {
-              renderMapTypeControl()
-            }
-            {
-              renderCityControl()
-            }
-            {
-              renderWidthControl()
-            }
-            {
-              renderHeightControl()
-            }
+            {renderLanguageControl()}
+            {renderServiceControl()}
+            {renderMapTypeControl()}
+            {renderCityControl()}
+            {renderWidthControl()}
+            {renderHeightControl()}
             <IFramePreview
               classes={classes}
               customWidth={customWidth}
@@ -545,13 +554,9 @@ const EmbedderView = ({
               widthMode={widthMode}
             />
 
-            {
-              renderMapOptionsControl()
-            }
+            {renderMapOptionsControl()}
           </form>
-          {
-            renderEmbedHTML()
-          }
+          {renderEmbedHTML()}
           <SMButton
             aria-label={intl.formatMessage({ id: 'embedder.close' })}
             className={classes.button}
@@ -561,7 +566,6 @@ const EmbedderView = ({
             messageID="embedder.close"
           />
         </div>
-
       </div>
     </div>
   );
@@ -597,6 +601,5 @@ EmbedderView.defaultProps = {
   navigator: null,
   mapType: null,
 };
-
 
 export default EmbedderView;
