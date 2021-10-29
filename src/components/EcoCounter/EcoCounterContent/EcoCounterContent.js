@@ -44,28 +44,24 @@ const EcoCounterContent = ({
       step: {
         type: 'hour',
         text: intl.formatMessage({ id: 'ecocounter.hour' }),
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.hour' }),
       },
     },
     {
       step: {
         type: 'day',
         text: intl.formatMessage({ id: 'ecocounter.day' }),
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.day' }),
       },
     },
     {
       step: {
         type: 'week',
         text: intl.formatMessage({ id: 'ecocounter.week' }),
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.week' }),
       },
     },
     {
       step: {
         type: 'month',
         text: intl.formatMessage({ id: 'ecocounter.month' }),
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.month' }),
       },
     },
   ];
@@ -77,7 +73,6 @@ const EcoCounterContent = ({
         user: 'walking',
         text: intl.formatMessage({ id: 'ecocounter.walk' }),
         icon: iconWalk,
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.walk' }),
       },
     },
     {
@@ -85,7 +80,6 @@ const EcoCounterContent = ({
         user: 'bicycle',
         text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
         icon: iconBicycle,
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.bicycle' }),
       },
     },
     {
@@ -93,7 +87,6 @@ const EcoCounterContent = ({
         user: 'driving',
         text: intl.formatMessage({ id: 'ecocounter.car' }),
         icon: iconCar,
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.car' }),
       },
     },
   ];
@@ -105,7 +98,6 @@ const EcoCounterContent = ({
         user: 'walking',
         text: intl.formatMessage({ id: 'ecocounter.walk' }),
         icon: iconWalk,
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.walk' }),
       },
     },
     {
@@ -113,7 +105,6 @@ const EcoCounterContent = ({
         user: 'bicycle',
         text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
         icon: iconBicycle,
-        ariaLabel: intl.formatMessage({ id: 'ecocounter.bicycle' }),
       },
     },
   ];
@@ -132,6 +123,7 @@ const EcoCounterContent = ({
   }, [intl.locale]);
 
   // momentjs
+  // Initial values that are used to fetch data
   const currentDate = moment();
   const yesterDay = moment().add(-1, 'days');
   const yesterDayFormat = yesterDay.clone().format('YYYY-MM-DD');
@@ -142,21 +134,31 @@ const EcoCounterContent = ({
   const initialMonth = yesterDay.clone().month() + 1;
   const initialYear = yesterDay.clone().year();
 
-  // values that change based on datepicker value
+  // Values that change based on the datepicker value
   const selectedDateFormat = selectedDate.clone().format('YYYY-MM-DD');
   const selectedDateStart = selectedDate.clone().startOf('week').format('YYYY-MM-DD');
   const selectedDateEnd = selectedDate.clone().endOf('week').format('YYYY-MM-DD');
-  const selectedWeekStart = selectedDate.clone().startOf('month').week();
+  let selectedWeekStart = selectedDate.clone().startOf('month').week();
   const selectedWeekEnd = selectedDate.clone().endOf('month').week();
   let selectedMonth = currentDate.clone().month() + 1;
   const selectedYear = selectedDate.clone().year();
 
+  // This will show full year if available
   const checkYear = () => {
     if (selectedDate.clone().year() < 2021) {
       selectedMonth = 12;
     }
   };
 
+  // API returns empty data if start_week_number parameter is higher number than end_week_number.
+  // This will set it to 1 so that weekly graph in January won't be empty.
+  const checkWeekNumber = () => {
+    if (selectedWeekStart === 53) {
+      selectedWeekStart = 1;
+    }
+  };
+
+  // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
     setSelectedDate(currentDate);
   }, [stationId]);
@@ -164,6 +166,10 @@ const EcoCounterContent = ({
   useEffect(() => {
     checkYear();
   }, [selectedDate]);
+
+  useEffect(() => {
+    checkWeekNumber();
+  }, [selectedWeekStart]);
 
   const labelsHour = [
     '1:00',
@@ -198,7 +204,9 @@ const EcoCounterContent = ({
     return `${fields[2]}.${fields[1]}`;
   };
 
-  const formatWeeks = weekValue => `Viikko ${weekValue}`;
+  // Format weeks and display first day of each week in data
+  const formatWeeks = weekValue => moment().day('Monday').year(selectedYear).week(weekValue)
+    .format('DD.MM');
 
   const formatMonths = (monthValue) => {
     switch (monthValue) {
@@ -409,6 +417,7 @@ const EcoCounterContent = ({
     setCurrentTime('month');
   };
 
+  // Set active step
   const handleClick = (title, index) => {
     if (title === 'hour') {
       setStepHour(index);
@@ -440,7 +449,7 @@ const EcoCounterContent = ({
     fetchInitialMonthDatas(initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
   }, [stationId, setEcoCounterMonth]);
 
-  // Update data when selected date is changed in datepicker.
+  // Fetch updated data when selected date is changed in datepicker.
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
     fetchInitialHourData(selectedDateFormat, stationId, setEcoCounterHour);
@@ -492,7 +501,7 @@ const EcoCounterContent = ({
   }, [currentType, currentTime]);
 
   // Only one station includes data about cars
-  // Sets isPedestriansOnly state to false for that one station only
+  // Sets noCars state to false for that one station only
   useEffect(() => {
     if (stationId === 38) {
       setNoCars(false);
@@ -573,7 +582,6 @@ const EcoCounterContent = ({
               >
                 <button
                   type="button"
-                  aria-label={userType.type.ariaLabel}
                   className={
                     i === activeType
                       ? `${classes.buttonActive}`
@@ -617,7 +625,6 @@ const EcoCounterContent = ({
               <button
                 key={timing.step.type}
                 type="button"
-                aria-label={timing.step.ariaLabel}
                 className={
                 i === activeStep
                   ? `${classes.buttonActive}`

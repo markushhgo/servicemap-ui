@@ -84,8 +84,6 @@ const LineChart = ({
     },
   };
 
-  const chartAriaLabel = 'This chart shows statistics about traffic on this location.';
-
   useEffect(() => {
     ecoCounterChart();
   }, [channelTotalsData]);
@@ -95,8 +93,8 @@ const LineChart = ({
   }, [channel1Data, channel2Data]);
 
   return (
-    <div className="chart-container" role="img" aria-label={chartAriaLabel}>
-      <Line ref={chartRef} data={data} width={496} height={247} options={options} />
+    <div className="chart-container">
+      <Line ref={chartRef} data={data} width={496} height={248} options={options} />
     </div>
   );
 };
