@@ -557,7 +557,6 @@ const EcoCounterContent = ({
               >
                 <button
                   type="button"
-                  aria-label={userType.type.ariaLabel}
                   className={
                     i === activeType
                       ? `${classes.buttonActive}`
@@ -576,7 +575,9 @@ const EcoCounterContent = ({
                     />
                   </div>
                 </button>
-                <p className={classes.userTypeText}>{userType.type.text}</p>
+                <div className={classes.textContainer}>
+                  <p className={classes.userTypeText}>{userType.type.text}</p>
+                </div>
               </div>
             )) : pedestrianTypes.map((userType, i) => (
               <div

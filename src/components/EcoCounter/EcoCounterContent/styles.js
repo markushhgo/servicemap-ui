@@ -75,9 +75,13 @@ const styles = {
     marginRight: '0.7rem',
     alignItems: 'center',
   },
+  textContainer: {
+    width: '50px',
+  },
   userTypeText: {
     fontWeight: 'bold',
     paddingTop: '0.3rem',
+    paddingRight: '0.6rem',
   },
   iconActive: {
     fill: '#fff',
