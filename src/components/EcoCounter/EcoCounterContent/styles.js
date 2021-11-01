@@ -28,19 +28,6 @@ const styles = {
     marginRight: '0.75rem',
     padding: '0.3rem',
   },
-  popupWrapper: {
-    position: 'absolute',
-    textAlign: 'center',
-    marginBottom: '20px',
-    width: '429px',
-  },
-  popupInner: {
-    borderRadius: '3px',
-    marginBottom: '0.4rem',
-    marginLeft: '0.6rem',
-    lineHeight: 1.2,
-    overflowX: 'hidden',
-  },
   ecoCounterHeader: {
     display: 'flex',
     flexDirection: 'row',

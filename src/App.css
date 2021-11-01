@@ -73,13 +73,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* @media (max-width: 450px) {
-  .ecocounter-popup {
-    width: 329px;
-  }
-
-  .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
-    width: 290px !important;
-  }
-} */
