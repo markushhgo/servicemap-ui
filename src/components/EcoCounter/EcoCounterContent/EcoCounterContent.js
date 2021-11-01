@@ -36,6 +36,8 @@ const EcoCounterContent = ({
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().add(-1, 'days'));
 
+  const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
+
   const intl = useIntl();
 
   // steps that determine which data is shown on the chart
@@ -145,7 +147,7 @@ const EcoCounterContent = ({
 
   // This will show full year if available
   const checkYear = () => {
-    if (selectedDate.clone().year() < 2021) {
+    if (selectedDate.clone().year() < moment().year()) {
       selectedMonth = 12;
     }
   };
@@ -433,41 +435,41 @@ const EcoCounterContent = ({
   // Fetch initial data based on the default date
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
-    fetchInitialHourData(yesterDayFormat, stationId, setEcoCounterHour);
+    fetchInitialHourData(apiUrl, yesterDayFormat, stationId, setEcoCounterHour);
   }, [stationId, setEcoCounterHour]);
 
   useEffect(() => {
-    fetchInitialDayDatas(initialDateStart, initialDateEnd, stationId, setEcoCounterDay);
+    fetchInitialDayDatas(apiUrl, initialDateStart, initialDateEnd, stationId, setEcoCounterDay);
   }, [stationId, setEcoCounterDay]);
 
   useEffect(() => {
     // eslint-disable-next-line max-len
-    fetchInitialWeekDatas(initialYear, initialWeekStart, initialWeekEnd, stationId, setEcoCounterWeek);
+    fetchInitialWeekDatas(apiUrl, initialYear, initialWeekStart, initialWeekEnd, stationId, setEcoCounterWeek);
   }, [stationId, setEcoCounterWeek]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
+    fetchInitialMonthDatas(apiUrl, initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
   }, [stationId, setEcoCounterMonth]);
 
   // Fetch updated data when selected date is changed in datepicker.
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
-    fetchInitialHourData(selectedDateFormat, stationId, setEcoCounterHour);
+    fetchInitialHourData(apiUrl, selectedDateFormat, stationId, setEcoCounterHour);
     setActiveStep(0);
     setCurrentTime('hour');
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialDayDatas(selectedDateStart, selectedDateEnd, stationId, setEcoCounterDay);
+    fetchInitialDayDatas(apiUrl, selectedDateStart, selectedDateEnd, stationId, setEcoCounterDay);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
     // eslint-disable-next-line max-len
-    fetchInitialWeekDatas(selectedYear, selectedWeekStart, selectedWeekEnd, stationId, setEcoCounterWeek);
+    fetchInitialWeekDatas(apiUrl, selectedYear, selectedWeekStart, selectedWeekEnd, stationId, setEcoCounterWeek);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(selectedYear, '1', selectedMonth, stationId, setEcoCounterMonth);
+    fetchInitialMonthDatas(apiUrl, selectedYear, '1', selectedMonth, stationId, setEcoCounterMonth);
   }, [selectedDate, stationId]);
 
   // useEffect is used to fill the chart with default data (default step is 'hourly')
@@ -502,8 +504,9 @@ const EcoCounterContent = ({
 
   // Only one station includes data about cars
   // Sets noCars state to false for that one station only
+  // Initially used id, but it changed few times, so it's not reliable.
   useEffect(() => {
-    if (stationId === 38) {
+    if (stationName === 'Auransilta') {
       setNoCars(false);
     }
   }, [stationId]);
@@ -519,7 +522,7 @@ const EcoCounterContent = ({
               className={classes.buttonTransparent}
               onClick={() => setIsDatePickerOpen(true)}
             >
-              <h3 className={classes.headerSubtitle}>{selectedDate.locale('fi').format('DD.MM.YYYY')}</h3>
+              <h3 className={classes.headerSubtitle}>{selectedDate.format('DD.MM.YYYY')}</h3>
             </button>
           ) : (
             <button
@@ -527,7 +530,7 @@ const EcoCounterContent = ({
               className={classes.buttonTransparent}
               onClick={() => setIsDatePickerOpen(false)}
             >
-              <h3>{selectedDate.locale('fi').format('DD.MM.YYYY')}</h3>
+              <h3>{selectedDate.format('DD.MM.YYYY')}</h3>
             </button>
           )}
         </div>

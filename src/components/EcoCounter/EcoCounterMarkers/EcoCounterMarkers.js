@@ -7,6 +7,8 @@ import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icon
 const EcoCounterMarkers = ({ classes }) => {
   const [ecoCounterStations, setEcoCounterStations] = useState(null);
 
+  const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
+
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
@@ -16,7 +18,7 @@ const EcoCounterMarkers = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchEcoCounterStations(setEcoCounterStations);
+    fetchEcoCounterStations(apiUrl, setEcoCounterStations);
   }, [setEcoCounterStations]);
 
   return (

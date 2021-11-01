@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
-const apiUrl = 'http://localhost:8000/eco-counter';
 
 // Functions to make requests to ecouCounter API
 
-export const fetchEcoCounterStations = async (setStations) => {
+export const fetchEcoCounterStations = async (apiUrl, setStations) => {
   try {
     const response = await fetch(`${apiUrl}/stations/`);
     const jsonData = await response.json();
@@ -13,7 +12,7 @@ export const fetchEcoCounterStations = async (setStations) => {
   }
 };
 
-export const fetchInitialHourData = async (day, stationId, setHourData) => {
+export const fetchInitialHourData = async (apiUrl, day, stationId, setHourData) => {
   try {
     const response = await fetch(
       `${apiUrl}/hour_data/get_hour_data?date=${day}&station_id=${stationId}`,
@@ -26,6 +25,7 @@ export const fetchInitialHourData = async (day, stationId, setHourData) => {
 };
 
 export const fetchInitialDayDatas = async (
+  apiUrl,
   startDate,
   endDate,
   id,
@@ -43,6 +43,7 @@ export const fetchInitialDayDatas = async (
 };
 
 export const fetchInitialWeekDatas = async (
+  apiUrl,
   year,
   startWeek,
   endWeek,
@@ -61,6 +62,7 @@ export const fetchInitialWeekDatas = async (
 };
 
 export const fetchInitialMonthDatas = async (
+  apiUrl,
   yearNumber,
   startMonth,
   endMonth,
