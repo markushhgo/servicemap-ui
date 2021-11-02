@@ -568,7 +568,7 @@ const translations = {
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
   'ecocounter.day': 'Päivittäin',
-  'ecocounter.week': 'Viikkoittain',
+  'ecocounter.week': 'Viikoittain',
   'ecocounter.month': 'Kuukausittain',
   'ecocounter.walk': 'Kävely',
   'ecocounter.bicycle': 'Pyörä',
