@@ -2,6 +2,10 @@ const styles = {
   buttonTransparent: {
     backgroundColor: '#fff',
     border: 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      color: 'rgba(84, 84, 84, 255)',
+    },
   },
   buttonGray: {
     backgroundColor: '#ddd',
