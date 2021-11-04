@@ -31,6 +31,7 @@ import EntranceMarker from './components/EntranceMarker';
 import EventMarkers from './components/EventMarkers';
 import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
+import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 
 if (global.window) {
   require('leaflet');
@@ -428,6 +429,7 @@ const MapView = (props) => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
+          <EcoCounterMarkers />
         </MapContainer>
       </>
     );

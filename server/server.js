@@ -232,6 +232,7 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, hel
         window.nodeEnvSettings.FEEDBACK_IS_PUBLISHED = "${process.env.FEEDBACK_IS_PUBLISHED}";
         window.nodeEnvSettings.USE_PTV_ACCESSIBILITY_API = "${process.env.USE_PTV_ACCESSIBILITY_API}";
         window.nodeEnvSettings.SENTRY_DSN_CLIENT = "${process.env.SENTRY_DSN_CLIENT}";
+        window.nodeEnvSettings.ECOCOUNTER_API = "${process.env.ECOCOUNTER_API}";
         window.nodeEnvSettings.THEME_PKG = "${process.env.THEME_PKG}";
 
         window.appVersion = {};
