@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
+  'home.buttons.mobilityPlatform': 'Liikkumisnäkymä',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -564,6 +565,13 @@ const translations = {
   'info.statement': 'Saavutettavuusseloste',
 
   'alert.close': 'Sulje ilmoitus',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Liikkumisnäkymä',
+  'mobilityPlatform.menu.showChargingStations': 'Näytä sähkölatauspisteet',
+  'mobilityPlatform.menu.hideChargingStations': 'Piilota sähkölatauspisteet',
+  'mobilityPlatform.menu.showGasStations': 'Näytä kaasutankkausasemat',
+  'mobilityPlatform.menu.hideGasStations': 'Piilota kaasutankkausasemat',
 };
 
 let overridingExternalTranslations;

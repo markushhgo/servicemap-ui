@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
+  'home.buttons.mobilityPlatform': 'Mobility Platform',
 
   // Location
   'location.notFound': 'Location not found',
@@ -560,6 +561,13 @@ const translations = {
   'info.statement': 'Accessibility statement',
 
   'alert.close': 'Close the notification',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Mobility platform',
+  'mobilityPlatform.menu.showChargingStations': 'Show charging stations',
+  'mobilityPlatform.menu.hideChargingStations': 'Hide charging stations',
+  'mobilityPlatform.menu.showGasStations': 'Show gas filling stations',
+  'mobilityPlatform.menu.hideGasStations': 'Hide gas filling stations',
 };
 
 let overridingExternalTranslations;

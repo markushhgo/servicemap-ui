@@ -31,6 +31,8 @@ import EntranceMarker from './components/EntranceMarker';
 import EventMarkers from './components/EventMarkers';
 import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
+import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
+import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 
 if (global.window) {
   require('leaflet');
@@ -65,6 +67,8 @@ const MapView = (props) => {
     measuringMode,
     toggleSidebar,
     sidebarHidden,
+    showChargingStations,
+    showGasFillingStations,
   } = props;
 
   // State
@@ -82,7 +86,6 @@ const MapView = (props) => {
 
   // This unassigned selector is used to trigger re-render after events are fetched
   useSelector(state => getSelectedUnitEvents(state));
-
 
   const getMapUnits = () => {
     let mapUnits = [];
@@ -428,6 +431,8 @@ const MapView = (props) => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
+          <ChargerStationMarkers showChargingStations={showChargingStations} />
+          <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
         </MapContainer>
       </>
     );

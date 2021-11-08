@@ -48,6 +48,10 @@
   color: #61dafb;
 }
 
+.charger-stations-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 350px !important;
+}
+
 @keyframes spin-animation {
   from {
     transform: rotate(0deg);

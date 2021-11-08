@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
+  'home.buttons.mobilityPlatform': 'Mobilitetsplattform',
 
   // Location
   'location.notFound': 'Positionen hittades inte',
@@ -561,6 +562,13 @@ const translations = {
   'info.statement': 'Tillgänglighetsredogörelsen',
 
   'alert.close': 'Stäng meddelande',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Liikkumisnäkymä',
+  'mobilityPlatform.menu.showChargingStations': 'Näytä sähkölatauspisteet',
+  'mobilityPlatform.menu.hideChargingStations': 'Piilota sähkölatauspisteet',
+  'mobilityPlatform.menu.showGasStations': 'Näytä kaasutankkausasemat',
+  'mobilityPlatform.menu.hideGasStations': 'Piilota kaasutankkausasemat',
 };
 
 let overridingExternalTranslations;

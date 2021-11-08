@@ -90,6 +90,8 @@ const DefaultLayout = (props) => {
   const [showPrintView, togglePrintView] = useState(false);
   const [sidebarHidden, toggleSidebarHidden] = useState(false);
   const [error, setError] = useState(false);
+  const [showChargingStations, setShowChargingStations] = useState(false);
+  const [showGasFillingStations, setShowGasFillingStations] = useState(false);
 
   const {
     currentPage,
@@ -143,13 +145,13 @@ const DefaultLayout = (props) => {
 
   return (
     <>
-    <ErrorProvider value={{error, setError}}>
-      {
+      <ErrorProvider value={{ error, setError }}>
+        {
         error && <ErrorComponent error={error} />
       }
-      {
-        !error && 
-        (
+        {
+        !error
+        && (
           <ErrorBoundary>
             <div id="topArea" aria-hidden={!!settingsToggled} className={printClass}>
               <h1 id="app-title" tabIndex="-1" className="sr-only app-title" component="h1">
@@ -162,6 +164,10 @@ const DefaultLayout = (props) => {
                 <TopBar
                   settingsOpen={settingsToggled}
                   smallScreen={isSmallScreen}
+                  setShowChargingStations={setShowChargingStations}
+                  showChargingStations={showChargingStations}
+                  setShowGasFillingStations={setShowGasFillingStations}
+                  showGasFillingStations={showGasFillingStations}
                 />
               </PrintProvider>
             </div>
@@ -194,6 +200,8 @@ const DefaultLayout = (props) => {
                   sidebarHidden={sidebarHidden}
                   toggleSidebar={toggleSidebar}
                   isMobile={!!isMobile}
+                  showChargingStations={showChargingStations}
+                  showGasFillingStations={showGasFillingStations}
                 />
               </div>
             </div>
@@ -208,7 +216,7 @@ const DefaultLayout = (props) => {
           </ErrorBoundary>
         )
       }
-    </ErrorProvider>
+      </ErrorProvider>
     </>
   );
 };
