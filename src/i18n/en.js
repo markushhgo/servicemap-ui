@@ -564,10 +564,16 @@ const translations = {
 
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Mobility platform',
-  'mobilityPlatform.menu.showChargingStations': 'Show charging stations',
-  'mobilityPlatform.menu.hideChargingStations': 'Hide charging stations',
-  'mobilityPlatform.menu.showGasStations': 'Show gas filling stations',
-  'mobilityPlatform.menu.hideGasStations': 'Hide gas filling stations',
+  'mobilityPlatform.menu.subtitle': 'Settings',
+  'mobilityPlatform.menu.showChargingStations': 'Charging stations',
+  'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
+  'mobilityPlatform.content.cgsTitle': 'Charging station',
+  'mobilityPlatform.content.address': 'Address',
+  'mobilityPlatform.content.cgsType': 'Charging station type',
+  'mobilityPlatform.content.url': 'More information',
+  'mobilityPlatform.content.gfsTitle': 'Gas filling station',
+  'mobilityPlatform.content.gfsType': 'Gas filling station type',
+  'mobilityPlatform.content.operator': 'Operator',
 };
 
 let overridingExternalTranslations;

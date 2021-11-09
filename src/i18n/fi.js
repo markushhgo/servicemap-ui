@@ -568,10 +568,16 @@ const translations = {
 
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Liikkumisnäkymä',
-  'mobilityPlatform.menu.showChargingStations': 'Näytä sähkölatauspisteet',
-  'mobilityPlatform.menu.hideChargingStations': 'Piilota sähkölatauspisteet',
-  'mobilityPlatform.menu.showGasStations': 'Näytä kaasutankkausasemat',
-  'mobilityPlatform.menu.hideGasStations': 'Piilota kaasutankkausasemat',
+  'mobilityPlatform.menu.subtitle': 'Asetukset',
+  'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
+  'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
+  'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
+  'mobilityPlatform.content.address': 'Osoite',
+  'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
+  'mobilityPlatform.content.url': 'Lisätietoja',
+  'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
+  'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
+  'mobilityPlatform.content.operator': 'Operaattori',
 };
 
 let overridingExternalTranslations;

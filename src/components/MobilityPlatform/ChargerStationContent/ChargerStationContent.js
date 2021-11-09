@@ -11,22 +11,43 @@ const ChargerStationContent = ({
   chargerType,
   contentType,
   stationUrl,
+  intl,
 }) => {
   const gasFillingInfo = (
     <>
-      <Typography variant="subtitle1">Kaasutankkausasema</Typography>
+      <Typography variant="subtitle1">
+        {intl.formatMessage({
+          id: 'mobilityPlatform.content.gfsTitle',
+        })}
+      </Typography>
       <Typography>
-        <strong>Osoite:</strong>
+        <strong>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.address',
+          })}
+          :
+        </strong>
         {' '}
         {stationAddress}
       </Typography>
       <Typography>
-        <strong>Kaasuaseman tyyppi:</strong>
+        <strong>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.gfsType',
+          })}
+          :
+        </strong>
         {' '}
         {gasType}
       </Typography>
       <Typography>
-        <strong>Operaattori:</strong>
+        <strong>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.operator',
+          })}
+          :
+
+        </strong>
         {' '}
         {operatorName}
       </Typography>
@@ -35,19 +56,37 @@ const ChargerStationContent = ({
 
   const chargerStationInfo = (
     <>
-      <Typography variant="subtitle1">Sähkölatausema</Typography>
+      <Typography variant="subtitle1">
+        {intl.formatMessage({
+          id: 'mobilityPlatform.content.cgsTitle',
+        })}
+      </Typography>
       <Typography>
-        <strong>Osoite:</strong>
+        <strong>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.address',
+          })}
+          :
+        </strong>
         {' '}
         {stationAddress}
       </Typography>
       <Typography>
-        <strong>Latausaseman tyyppi:</strong>
+        <strong>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.cgsType',
+          })}
+          :
+        </strong>
         {' '}
         {chargerType}
       </Typography>
       <a href={stationUrl} target="_blank" rel="noopener noreferrer">
-        <Typography>Lisätietoja</Typography>
+        <Typography>
+          {intl.formatMessage({
+            id: 'mobilityPlatform.content.url',
+          })}
+        </Typography>
       </a>
     </>
   );
@@ -73,6 +112,7 @@ ChargerStationContent.propTypes = {
   chargerType: PropTypes.string,
   contentType: PropTypes.string,
   stationUrl: PropTypes.string,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 ChargerStationContent.defaultProps = {

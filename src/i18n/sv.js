@@ -564,11 +564,17 @@ const translations = {
   'alert.close': 'Stäng meddelande',
 
   // Mobility Platform
-  'mobilityPlatform.menu.title': 'Liikkumisnäkymä',
-  'mobilityPlatform.menu.showChargingStations': 'Näytä sähkölatauspisteet',
-  'mobilityPlatform.menu.hideChargingStations': 'Piilota sähkölatauspisteet',
-  'mobilityPlatform.menu.showGasStations': 'Näytä kaasutankkausasemat',
-  'mobilityPlatform.menu.hideGasStations': 'Piilota kaasutankkausasemat',
+  'mobilityPlatform.menu.title': 'Mobilitetsplattform',
+  'mobilityPlatform.menu.subtitle': 'Anpassa',
+  'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
+  'mobilityPlatform.menu.showGasStations': 'Gastationer',
+  'mobilityPlatform.content.cgsTitle': 'Laddplats',
+  'mobilityPlatform.content.address': 'Adress',
+  'mobilityPlatform.content.cgsType': 'Typ av laddplats',
+  'mobilityPlatform.content.url': 'Mer information',
+  'mobilityPlatform.content.gfsTitle': 'Gas station',
+  'mobilityPlatform.content.gfsType': 'Typ av gas station',
+  'mobilityPlatform.content.operator': 'Operatör',
 };
 
 let overridingExternalTranslations;

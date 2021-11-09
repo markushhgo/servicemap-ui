@@ -136,6 +136,12 @@ const styles = theme => ({
   mobileButtonContainer: {
     marginLeft: 'auto',
   },
+  formControl: {
+    padding: '0.8rem',
+  },
+  formGroup: {
+    marginTop: '0.5rem',
+  },
 });
 
 export default styles;

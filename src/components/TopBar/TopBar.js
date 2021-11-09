@@ -8,7 +8,11 @@ import {
   ButtonBase,
   NoSsr,
   Menu,
-  MenuItem,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  FormControlLabel,
+  Switch,
 } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -60,24 +64,20 @@ const TopBar = (props) => {
     setAnchorEl(null);
   };
 
-  const hideAllChargingStations = () => {
-    setAnchorEl(null);
-    setShowChargingStations(false);
-  };
-
   const showAllChargingStations = () => {
-    setAnchorEl(null);
-    setShowChargingStations(true);
-  };
-
-  const hideAllGasFillingStations = () => {
-    setAnchorEl(null);
-    setShowGasFillingStations(false);
+    if (!showChargingStations) {
+      setShowChargingStations(true);
+    } else {
+      setShowChargingStations(false);
+    }
   };
 
   const showAllGasFillingStations = () => {
-    setAnchorEl(null);
-    setShowGasFillingStations(true);
+    if (!showGasFillingStations) {
+      setShowGasFillingStations(true);
+    } else {
+      setShowGasFillingStations(false);
+    }
   };
 
   const renderSettingsButtons = () => {
@@ -340,6 +340,7 @@ const TopBar = (props) => {
                     </Typography>
                     {renderSettingsButtons()}
                   </div>
+                  {/* Mobility platform */}
                   <DesktopComponent>
                     {!smallScreen ? (
                       <div>
@@ -350,7 +351,11 @@ const TopBar = (props) => {
                           aria-expanded={open ? 'true' : undefined}
                           onClick={handleClick}
                         >
-                          {intl.formatMessage({ id: 'mobilityPlatform.menu.title' })}
+                          <Typography variant="subtitle2" className={classes.bold}>
+                            {intl.formatMessage({
+                              id: 'mobilityPlatform.menu.title',
+                            })}
+                          </Typography>
                         </Button>
                         <Menu
                           id="basic-menu"
@@ -361,24 +366,47 @@ const TopBar = (props) => {
                             'aria-labelledby': 'basic-button',
                           }}
                         >
-                          {!showChargingStations ? (
-                            <MenuItem onClick={showAllChargingStations}>
-                              {intl.formatMessage({ id: 'mobilityPlatform.menu.showChargingStations' })}
-                            </MenuItem>
-                          ) : (
-                            <MenuItem onClick={hideAllChargingStations}>
-                              {intl.formatMessage({ id: 'mobilityPlatform.menu.hideChargingStations' })}
-                            </MenuItem>
-                          )}
-                          {!showGasFillingStations ? (
-                            <MenuItem onClick={showAllGasFillingStations}>
-                              {intl.formatMessage({ id: 'mobilityPlatform.menu.showGasStations' })}
-                            </MenuItem>
-                          ) : (
-                            <MenuItem onClick={hideAllGasFillingStations}>
-                              {intl.formatMessage({ id: 'mobilityPlatform.menu.hideGasStations' })}
-                            </MenuItem>
-                          )}
+                          <FormControl variant="standard" className={classes.formControl}>
+                            <FormLabel component="legend">
+                              <Typography variant="subtitle1">
+                                {intl.formatMessage({
+                                  id: 'mobilityPlatform.menu.subtitle',
+                                })}
+                              </Typography>
+                            </FormLabel>
+                            <FormGroup className={classes.formGroup}>
+                              <FormControlLabel
+                                label={(
+                                  <Typography variant="body2">
+                                    {intl.formatMessage({
+                                      id: 'mobilityPlatform.menu.showChargingStations',
+                                    })}
+                                  </Typography>
+)}
+                                control={(
+                                  <Switch
+                                    checked={showChargingStations}
+                                    onChange={showAllChargingStations}
+                                  />
+                                )}
+                              />
+                              <FormControlLabel
+                                label={(
+                                  <Typography variant="body2">
+                                    {intl.formatMessage({
+                                      id: 'mobilityPlatform.menu.showGasStations',
+                                    })}
+                                  </Typography>
+)}
+                                control={(
+                                  <Switch
+                                    checked={showGasFillingStations}
+                                    onChange={showAllGasFillingStations}
+                                  />
+                                )}
+                              />
+                            </FormGroup>
+                          </FormControl>
                         </Menu>
                       </div>
                     ) : null}

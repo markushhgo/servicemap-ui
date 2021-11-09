@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 import ChargerStationContent from './ChargerStationContent';
 import styles from './styles';
 
-export default withStyles(styles)(ChargerStationContent);
+export default withStyles(styles)(injectIntl(ChargerStationContent));
