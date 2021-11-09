@@ -574,6 +574,18 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Gas filling station',
   'mobilityPlatform.content.gfsType': 'Gas filling station type',
   'mobilityPlatform.content.operator': 'Operator',
+
+  // Ecocounter
+  'ecocounter.hour': 'Hourly',
+  'ecocounter.day': 'Daily',
+  'ecocounter.week': 'Weekly',
+  'ecocounter.month': 'Monthly',
+  'ecocounter.walk': 'Walk',
+  'ecocounter.bicycle': 'Bicycle',
+  'ecocounter.car': 'Car',
+  'ecocounter.chart.labelTo': 'To city',
+  'ecocounter.chart.labelFrom': 'From city',
+  'ecocounter.chart.labelTotal': 'Total',
 };
 
 let overridingExternalTranslations;

@@ -52,6 +52,23 @@
   width: 350px !important;
 }
 
+.ecocounter-popup {
+  width: 429px;
+}
+
+.ecocounter-popup > .leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: 2px solid gray;
+}
+
+.ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 390px !important;
+}
+
+/* React Dates */
+@import '~react-dates/lib/css/_datepicker.css';
+
 @keyframes spin-animation {
   from {
     transform: rotate(0deg);

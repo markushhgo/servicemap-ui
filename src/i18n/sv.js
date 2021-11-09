@@ -575,6 +575,18 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Gas station',
   'mobilityPlatform.content.gfsType': 'Typ av gas station',
   'mobilityPlatform.content.operator': 'Operatör',
+
+  // Ecocounter
+  'ecocounter.hour': 'Varje timme',
+  'ecocounter.day': 'Dagligen',
+  'ecocounter.week': 'Varje vecka',
+  'ecocounter.month': 'Månatligen',
+  'ecocounter.walk': 'Gående',
+  'ecocounter.bicycle': 'Cykel',
+  'ecocounter.car': 'Bil',
+  'ecocounter.chart.labelTo': 'Till centrum',
+  'ecocounter.chart.labelFrom': 'Från centrum',
+  'ecocounter.chart.labelTotal': 'Totalt',
 };
 
 let overridingExternalTranslations;

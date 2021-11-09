@@ -33,6 +33,7 @@ import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
 import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
+import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 
 if (global.window) {
   require('leaflet');
@@ -433,6 +434,7 @@ const MapView = (props) => {
           <CoordinateMarker position={getCoordinatesFromUrl()} />
           <ChargerStationMarkers showChargingStations={showChargingStations} />
           <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
+          <EcoCounterMarkers />
         </MapContainer>
       </>
     );

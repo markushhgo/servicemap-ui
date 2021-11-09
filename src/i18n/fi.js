@@ -578,6 +578,18 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
   'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
   'mobilityPlatform.content.operator': 'Operaattori',
+
+  // Ecocounter
+  'ecocounter.hour': 'Tunneittain',
+  'ecocounter.day': 'Päivittäin',
+  'ecocounter.week': 'Viikoittain',
+  'ecocounter.month': 'Kuukausittain',
+  'ecocounter.walk': 'Kävely',
+  'ecocounter.bicycle': 'Pyörä',
+  'ecocounter.car': 'Auto',
+  'ecocounter.chart.labelTo': 'Keskustaan',
+  'ecocounter.chart.labelFrom': 'Keskustasta',
+  'ecocounter.chart.labelTotal': 'Yhteensä',
 };
 
 let overridingExternalTranslations;
