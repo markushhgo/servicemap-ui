@@ -92,6 +92,7 @@ const DefaultLayout = (props) => {
   const [error, setError] = useState(false);
   const [showChargingStations, setShowChargingStations] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
+  const [showEcoCounter, setShowEcoCounter] = useState(false);
 
   const {
     currentPage,
@@ -168,6 +169,8 @@ const DefaultLayout = (props) => {
                   showChargingStations={showChargingStations}
                   setShowGasFillingStations={setShowGasFillingStations}
                   showGasFillingStations={showGasFillingStations}
+                  setShowEcoCounter={setShowEcoCounter}
+                  showEcoCounter={showEcoCounter}
                 />
               </PrintProvider>
             </div>
@@ -202,6 +205,7 @@ const DefaultLayout = (props) => {
                   isMobile={!!isMobile}
                   showChargingStations={showChargingStations}
                   showGasFillingStations={showGasFillingStations}
+                  showEcoCounter={showEcoCounter}
                 />
               </div>
             </div>

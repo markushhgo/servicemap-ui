@@ -4,7 +4,7 @@ import EcoCounterContent from '../EcoCounterContent';
 import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
 import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 
-const EcoCounterMarkers = ({ classes }) => {
+const EcoCounterMarkers = ({ classes, showEcoCounter }) => {
   const [ecoCounterStations, setEcoCounterStations] = useState(null);
 
   const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
@@ -23,30 +23,37 @@ const EcoCounterMarkers = ({ classes }) => {
 
   return (
     <>
-      <div>
+      {showEcoCounter ? (
         <div>
-          {ecoCounterStations && ecoCounterStations.map(item => (
-            <Marker key={item.id} icon={ecoCounterIcon} position={[item.lat, item.lon]}>
-              <div className={classes.popupWrapper}>
-                <Popup className="ecocounter-popup">
-                  <div className={classes.popupInner}>
-                    <EcoCounterContent
-                      stationId={item.id}
-                      stationName={item.name}
-                    />
-                  </div>
-                </Popup>
-              </div>
-            </Marker>
-          ))}
+          <div>
+            {ecoCounterStations && ecoCounterStations.map(item => (
+              <Marker key={item.id} icon={ecoCounterIcon} position={[item.lat, item.lon]}>
+                <div className={classes.popupWrapper}>
+                  <Popup className="ecocounter-popup">
+                    <div className={classes.popupInner}>
+                      <EcoCounterContent
+                        stationId={item.id}
+                        stationName={item.name}
+                      />
+                    </div>
+                  </Popup>
+                </div>
+              </Marker>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };
 
 EcoCounterMarkers.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  showEcoCounter: PropTypes.bool,
+};
+
+EcoCounterMarkers.defaultProps = {
+  showEcoCounter: false,
 };
 
 export default EcoCounterMarkers;

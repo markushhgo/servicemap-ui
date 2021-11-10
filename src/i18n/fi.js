@@ -567,10 +567,11 @@ const translations = {
   'alert.close': 'Sulje ilmoitus',
 
   // Mobility Platform
-  'mobilityPlatform.menu.title': 'Liikkumisnäkymä',
+  'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
+  'mobilityPlatform.menu.showEcoCounter': 'Ruuhkatieto',
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',

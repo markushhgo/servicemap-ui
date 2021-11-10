@@ -563,10 +563,11 @@ const translations = {
   'alert.close': 'Close the notification',
 
   // Mobility Platform
-  'mobilityPlatform.menu.title': 'Mobility platform',
+  'mobilityPlatform.menu.title': 'Mobility',
   'mobilityPlatform.menu.subtitle': 'Settings',
   'mobilityPlatform.menu.showChargingStations': 'Charging stations',
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
+  'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.content.cgsTitle': 'Charging station',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'Charging station type',

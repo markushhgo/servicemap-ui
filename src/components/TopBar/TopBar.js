@@ -7,12 +7,6 @@ import {
   Toolbar,
   ButtonBase,
   NoSsr,
-  Menu,
-  FormGroup,
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  Switch,
 } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -28,6 +22,7 @@ import LocaleUtility from '../../utils/locale';
 import { useNavigationParams } from '../../utils/address';
 import SettingsButton from './SettingsButton';
 import MenuButton from './MenuButton';
+import SettingsView from '../MobilityPlatform/SettingsView';
 
 const TopBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -51,34 +46,9 @@ const TopBar = (props) => {
     setShowChargingStations,
     showGasFillingStations,
     setShowGasFillingStations,
+    showEcoCounter,
+    setShowEcoCounter,
   } = props;
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const showAllChargingStations = () => {
-    if (!showChargingStations) {
-      setShowChargingStations(true);
-    } else {
-      setShowChargingStations(false);
-    }
-  };
-
-  const showAllGasFillingStations = () => {
-    if (!showGasFillingStations) {
-      setShowGasFillingStations(true);
-    } else {
-      setShowGasFillingStations(false);
-    }
-  };
 
   const renderSettingsButtons = () => {
     const settingsCategories = [
@@ -188,12 +158,6 @@ const TopBar = (props) => {
       </>
     );
   };
-
-  /* const renderMobilityPlatform = () => (
-    <Button>
-      <Typography color="#0000" variant="subtitle1">Liikkumisnäkymä</Typography>
-    </Button>
-  ); */
 
   const handleContrastChange = () => {
     changeTheme(theme === 'default' ? 'dark' : 'default');
@@ -343,72 +307,14 @@ const TopBar = (props) => {
                   {/* Mobility platform */}
                   <DesktopComponent>
                     {!smallScreen ? (
-                      <div>
-                        <Button
-                          id="basic-button"
-                          aria-controls="basic-menu"
-                          aria-haspopup="true"
-                          aria-expanded={open ? 'true' : undefined}
-                          onClick={handleClick}
-                        >
-                          <Typography variant="subtitle2" className={classes.bold}>
-                            {intl.formatMessage({
-                              id: 'mobilityPlatform.menu.title',
-                            })}
-                          </Typography>
-                        </Button>
-                        <Menu
-                          id="basic-menu"
-                          anchorEl={anchorEl}
-                          open={open}
-                          onClose={handleClose}
-                          MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                          }}
-                        >
-                          <FormControl variant="standard" className={classes.formControl}>
-                            <FormLabel component="legend">
-                              <Typography variant="subtitle1">
-                                {intl.formatMessage({
-                                  id: 'mobilityPlatform.menu.subtitle',
-                                })}
-                              </Typography>
-                            </FormLabel>
-                            <FormGroup className={classes.formGroup}>
-                              <FormControlLabel
-                                label={(
-                                  <Typography variant="body2">
-                                    {intl.formatMessage({
-                                      id: 'mobilityPlatform.menu.showChargingStations',
-                                    })}
-                                  </Typography>
-)}
-                                control={(
-                                  <Switch
-                                    checked={showChargingStations}
-                                    onChange={showAllChargingStations}
-                                  />
-                                )}
-                              />
-                              <FormControlLabel
-                                label={(
-                                  <Typography variant="body2">
-                                    {intl.formatMessage({
-                                      id: 'mobilityPlatform.menu.showGasStations',
-                                    })}
-                                  </Typography>
-)}
-                                control={(
-                                  <Switch
-                                    checked={showGasFillingStations}
-                                    onChange={showAllGasFillingStations}
-                                  />
-                                )}
-                              />
-                            </FormGroup>
-                          </FormControl>
-                        </Menu>
-                      </div>
+                      <SettingsView
+                        setShowChargingStations={setShowChargingStations}
+                        showChargingStations={showChargingStations}
+                        setShowGasFillingStations={setShowGasFillingStations}
+                        showGasFillingStations={showGasFillingStations}
+                        setShowEcoCounter={setShowEcoCounter}
+                        showEcoCounter={showEcoCounter}
+                      />
                     ) : null}
                   </DesktopComponent>
                 </>
@@ -461,6 +367,8 @@ TopBar.propTypes = {
   setShowChargingStations: PropTypes.func.isRequired,
   showGasFillingStations: PropTypes.bool,
   setShowGasFillingStations: PropTypes.func.isRequired,
+  showEcoCounter: PropTypes.bool,
+  setShowEcoCounter: PropTypes.func.isRequired,
 };
 
 TopBar.defaultProps = {
@@ -468,6 +376,7 @@ TopBar.defaultProps = {
   settingsOpen: null,
   showChargingStations: false,
   showGasFillingStations: false,
+  showEcoCounter: false,
 };
 
 export default TopBar;

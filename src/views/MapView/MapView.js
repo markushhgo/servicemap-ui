@@ -70,6 +70,7 @@ const MapView = (props) => {
     sidebarHidden,
     showChargingStations,
     showGasFillingStations,
+    showEcoCounter,
   } = props;
 
   // State
@@ -434,7 +435,7 @@ const MapView = (props) => {
           <CoordinateMarker position={getCoordinatesFromUrl()} />
           <ChargerStationMarkers showChargingStations={showChargingStations} />
           <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
-          <EcoCounterMarkers />
+          <EcoCounterMarkers showEcoCounter={showEcoCounter} />
         </MapContainer>
       </>
     );
@@ -474,6 +475,9 @@ MapView.propTypes = {
   measuringMode: PropTypes.bool.isRequired,
   toggleSidebar: PropTypes.func,
   sidebarHidden: PropTypes.bool,
+  showChargingStations: PropTypes.bool,
+  showGasFillingStations: PropTypes.bool,
+  showEcoCounter: PropTypes.bool,
 };
 
 MapView.defaultProps = {
@@ -492,4 +496,7 @@ MapView.defaultProps = {
   toggleSidebar: null,
   sidebarHidden: false,
   userLocation: null,
+  showChargingStations: false,
+  showGasFillingStations: false,
+  showEcoCounter: false,
 };

@@ -564,10 +564,11 @@ const translations = {
   'alert.close': 'Stäng meddelande',
 
   // Mobility Platform
-  'mobilityPlatform.menu.title': 'Mobilitetsplattform',
+  'mobilityPlatform.menu.title': 'Mobilitets',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
+  'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av laddplats',
