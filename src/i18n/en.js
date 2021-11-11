@@ -575,6 +575,8 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Gas filling station',
   'mobilityPlatform.content.gfsType': 'Gas filling station type',
   'mobilityPlatform.content.operator': 'Operator',
+  'mobilityPlatform.content.count': 'Amount',
+  'mobilityPlatform.content.power': 'Power',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',

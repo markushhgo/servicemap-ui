@@ -57,6 +57,9 @@ const ChargerStationMarkers = ({ classes, showChargingStations }) => {
                         stationName={item.name}
                         stationAddress={item.address}
                         chargerType={item.extra.charger_type}
+                        chargerCount={item.extra.count}
+                        chargerPower={item.extra.power}
+                        operatorName={item.extra.operator}
                         contentType={item.content_type.type_name}
                         stationUrl={item.extra.url}
                       />

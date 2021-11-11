@@ -579,6 +579,8 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
   'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
   'mobilityPlatform.content.operator': 'Operaattori',
+  'mobilityPlatform.content.count': 'Määrä',
+  'mobilityPlatform.content.power': 'Teho',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

@@ -10,6 +10,8 @@ const ChargerStationContent = ({
   operatorName,
   chargerType,
   contentType,
+  chargerCount,
+  chargerPower,
   stationUrl,
   intl,
 }) => {
@@ -46,7 +48,6 @@ const ChargerStationContent = ({
             id: 'mobilityPlatform.content.operator',
           })}
           :
-
         </strong>
         {' '}
         {operatorName}
@@ -81,6 +82,44 @@ const ChargerStationContent = ({
         {' '}
         {chargerType}
       </Typography>
+      {chargerCount ? (
+        <Typography>
+          <strong>
+            {intl.formatMessage({
+              id: 'mobilityPlatform.content.count',
+            })}
+            :
+          </strong>
+          {' '}
+          {chargerCount}
+        </Typography>
+      ) : null}
+      {chargerPower ? (
+        <Typography>
+          <strong>
+            {intl.formatMessage({
+              id: 'mobilityPlatform.content.power',
+            })}
+            :
+          </strong>
+          {' '}
+          {chargerPower}
+          {' '}
+          kW
+        </Typography>
+      ) : null}
+      {operatorName ? (
+        <Typography>
+          <strong>
+            {intl.formatMessage({
+              id: 'mobilityPlatform.content.operator',
+            })}
+            :
+          </strong>
+          {' '}
+          {operatorName}
+        </Typography>
+      ) : null}
       <a href={stationUrl} target="_blank" rel="noopener noreferrer">
         <Typography>
           {intl.formatMessage({
@@ -110,6 +149,8 @@ ChargerStationContent.propTypes = {
   gasType: PropTypes.string,
   operatorName: PropTypes.string,
   chargerType: PropTypes.string,
+  chargerCount: PropTypes.number,
+  chargerPower: PropTypes.number,
   contentType: PropTypes.string,
   stationUrl: PropTypes.string,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -121,6 +162,8 @@ ChargerStationContent.defaultProps = {
   gasType: '',
   operatorName: '',
   chargerType: '',
+  chargerCount: 0,
+  chargerPower: 0,
   contentType: '',
   stationUrl: '',
 };

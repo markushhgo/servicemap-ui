@@ -576,6 +576,8 @@ const translations = {
   'mobilityPlatform.content.gfsTitle': 'Gas station',
   'mobilityPlatform.content.gfsType': 'Typ av gas station',
   'mobilityPlatform.content.operator': 'Operatör',
+  'mobilityPlatform.content.count': 'Antal',
+  'mobilityPlatform.content.power': 'Effekt',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',
