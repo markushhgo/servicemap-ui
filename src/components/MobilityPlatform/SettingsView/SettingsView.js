@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Typography,
-  Menu,
   FormGroup,
   FormControl,
   FormLabel,
   FormControlLabel,
   Switch,
+  ClickAwayListener,
 } from '@material-ui/core';
+import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 
 const SettingsView = ({
   intl,
@@ -21,15 +22,35 @@ const SettingsView = ({
   showEcoCounter,
   setShowEcoCounter,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  /* const handleClick = () => {
+    // setAnchorEl(event.currentTarget);
+    if (!isOpen) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }; */
+
+  const handleClose = (event) => {
+    if (anchorEl.contains(event.target)) {
+      return;
+    }
+    setIsOpen(false);
+    setAnchorEl(null);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleToggle = () => {
+    if (isOpen) {
+      setIsOpen(false);
+      setAnchorEl(null);
+    } else {
+      setIsOpen(true);
+    }
   };
 
   const showAllChargingStations = () => {
@@ -56,93 +77,86 @@ const SettingsView = ({
     }
   };
 
+  const controlTypes = [
+    {
+      type: 'chargingStations',
+      msgId: 'mobilityPlatform.menu.showChargingStations',
+      checkedValue: showChargingStations,
+      onChangeValue: showAllChargingStations,
+    },
+    {
+      type: 'gasFillingStations',
+      msgId: 'mobilityPlatform.menu.showGasStations',
+      checkedValue: showGasFillingStations,
+      onChangeValue: showAllGasFillingStations,
+    },
+    {
+      type: 'ecoCounterStations',
+      msgId: 'mobilityPlatform.menu.showEcoCounter',
+      checkedValue: showEcoCounter,
+      onChangeValue: showAllEcoCounterStations,
+    },
+  ];
+
+  const arrowIcon = isOpen
+    ? <ArrowDropUp className={classes.iconRight} />
+    : <ArrowDropDown className={classes.iconRight} />;
+
   return (
     <div className={classes.container}>
       <Button
         id="basic-button"
+        className={classes.button}
+        ref={(node) => {
+          setAnchorEl(node);
+        }}
         aria-controls="basic-menu"
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
+        onClick={handleToggle}
       >
         <Typography component="p" variant="subtitle1" className={classes.subtitle}>
           {intl.formatMessage({
             id: 'mobilityPlatform.menu.title',
           })}
         </Typography>
+        {arrowIcon}
       </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'left',
-          horizontal: 'top',
-        }}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <div className={classes.menuPanel}>
-          <FormControl variant="standard" className={classes.formControl}>
-            <FormLabel component="legend">
-              <Typography variant="subtitle1">
-                {intl.formatMessage({
-                  id: 'mobilityPlatform.menu.subtitle',
-                })}
-              </Typography>
-            </FormLabel>
-            <FormGroup className={classes.formGroup}>
-              <FormControlLabel
-                label={(
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.showChargingStations',
-                    })}
-                  </Typography>
+      {isOpen && (
+        <ClickAwayListener onClickAway={handleClose}>
+          <div className={classes.menuPanel}>
+            <FormControl variant="standard" className={classes.formControl}>
+              <FormLabel component="legend">
+                <Typography variant="subtitle1">
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.menu.subtitle',
+                  })}
+                </Typography>
+              </FormLabel>
+              <FormGroup className={classes.formGroup}>
+                {controlTypes.map(item => (
+                  <FormControlLabel
+                    key={item.type}
+                    label={(
+                      <Typography variant="body2">
+                        {intl.formatMessage({
+                          id: item.msgId,
+                        })}
+                      </Typography>
               )}
-                control={(
-                  <Switch
-                    checked={showChargingStations}
-                    onChange={showAllChargingStations}
+                    control={(
+                      <Switch
+                        checked={item.checkedValue}
+                        onChange={item.onChangeValue}
+                      />
+              )}
                   />
-              )}
-              />
-              <FormControlLabel
-                label={(
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.showGasStations',
-                    })}
-                  </Typography>
-              )}
-                control={(
-                  <Switch
-                    checked={showGasFillingStations}
-                    onChange={showAllGasFillingStations}
-                  />
-              )}
-              />
-              <FormControlLabel
-                label={(
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.showEcoCounter',
-                    })}
-                  </Typography>
-              )}
-                control={(
-                  <Switch
-                    checked={showEcoCounter}
-                    onChange={showAllEcoCounterStations}
-                  />
-              )}
-              />
-            </FormGroup>
-          </FormControl>
-        </div>
-      </Menu>
+                ))}
+              </FormGroup>
+            </FormControl>
+          </div>
+        </ClickAwayListener>
+      )}
     </div>
   );
 };

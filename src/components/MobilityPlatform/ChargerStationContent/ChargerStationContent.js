@@ -8,10 +8,8 @@ const ChargerStationContent = ({
   stationAddress,
   gasType,
   operatorName,
-  chargerType,
   contentType,
-  chargerCount,
-  chargerPower,
+  chargers,
   stationUrl,
   intl,
 }) => {
@@ -72,54 +70,58 @@ const ChargerStationContent = ({
         {' '}
         {stationAddress}
       </Typography>
-      <Typography>
-        <strong>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.cgsType',
-          })}
-          :
-        </strong>
-        {' '}
-        {chargerType}
+      <Typography variant="subtitle1">
+        {intl.formatMessage({
+          id: 'mobilityPlatform.content.chargersTitle',
+        })}
+        :
       </Typography>
-      {chargerCount ? (
-        <Typography>
-          <strong>
-            {intl.formatMessage({
-              id: 'mobilityPlatform.content.count',
-            })}
-            :
-          </strong>
-          {' '}
-          {chargerCount}
-        </Typography>
-      ) : null}
-      {chargerPower ? (
-        <Typography>
-          <strong>
-            {intl.formatMessage({
-              id: 'mobilityPlatform.content.power',
-            })}
-            :
-          </strong>
-          {' '}
-          {chargerPower}
-          {' '}
-          kW
-        </Typography>
-      ) : null}
-      {operatorName ? (
-        <Typography>
-          <strong>
-            {intl.formatMessage({
-              id: 'mobilityPlatform.content.operator',
-            })}
-            :
-          </strong>
-          {' '}
-          {operatorName}
-        </Typography>
-      ) : null}
+      {chargers.map(charger => (
+        <div className={classes.contentInner}>
+          <Typography>
+            <strong>
+              {intl.formatMessage({
+                id: 'mobilityPlatform.content.cgsType',
+              })}
+              :
+            </strong>
+            {' '}
+            {charger.type}
+          </Typography>
+          <Typography>
+            <strong>
+              {intl.formatMessage({
+                id: 'mobilityPlatform.content.count',
+              })}
+              :
+            </strong>
+            {' '}
+            {charger.count}
+          </Typography>
+          <Typography>
+            <strong>
+              {intl.formatMessage({
+                id: 'mobilityPlatform.content.power',
+              })}
+              :
+            </strong>
+            {' '}
+            {charger.power}
+            {' '}
+            kW
+          </Typography>
+          <Typography>
+            <strong>
+              {intl.formatMessage({
+                id: 'mobilityPlatform.content.operator',
+              })}
+              :
+            </strong>
+            {' '}
+            {charger.operator}
+          </Typography>
+        </div>
+      ))}
       <a href={stationUrl} target="_blank" rel="noopener noreferrer">
         <Typography>
           {intl.formatMessage({
@@ -148,10 +150,8 @@ ChargerStationContent.propTypes = {
   stationAddress: PropTypes.string,
   gasType: PropTypes.string,
   operatorName: PropTypes.string,
-  chargerType: PropTypes.string,
-  chargerCount: PropTypes.number,
-  chargerPower: PropTypes.number,
   contentType: PropTypes.string,
+  chargers: PropTypes.arrayOf(PropTypes.any),
   stationUrl: PropTypes.string,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
@@ -161,10 +161,8 @@ ChargerStationContent.defaultProps = {
   stationAddress: '',
   gasType: '',
   operatorName: '',
-  chargerType: '',
-  chargerCount: 0,
-  chargerPower: 0,
   contentType: '',
+  chargers: [],
   stationUrl: '',
 };
 

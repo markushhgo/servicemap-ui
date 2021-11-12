@@ -571,7 +571,7 @@ const translations = {
   'mobilityPlatform.menu.subtitle': 'Asetukset',
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
-  'mobilityPlatform.menu.showEcoCounter': 'Ruuhkatieto',
+  'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
@@ -581,6 +581,7 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

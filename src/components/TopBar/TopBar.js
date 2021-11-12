@@ -305,18 +305,16 @@ const TopBar = (props) => {
                     {renderSettingsButtons()}
                   </div>
                   {/* Mobility platform */}
-                  <DesktopComponent>
-                    {!smallScreen ? (
-                      <SettingsView
-                        setShowChargingStations={setShowChargingStations}
-                        showChargingStations={showChargingStations}
-                        setShowGasFillingStations={setShowGasFillingStations}
-                        showGasFillingStations={showGasFillingStations}
-                        setShowEcoCounter={setShowEcoCounter}
-                        showEcoCounter={showEcoCounter}
-                      />
-                    ) : null}
-                  </DesktopComponent>
+                  {!smallScreen ? (
+                    <SettingsView
+                      setShowChargingStations={setShowChargingStations}
+                      showChargingStations={showChargingStations}
+                      setShowGasFillingStations={setShowGasFillingStations}
+                      showGasFillingStations={showGasFillingStations}
+                      setShowEcoCounter={setShowEcoCounter}
+                      showEcoCounter={showEcoCounter}
+                    />
+                  ) : null}
                 </>
               ) : (
                 <>

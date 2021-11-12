@@ -577,6 +577,7 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.content.chargersTitle': 'Chargers',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',

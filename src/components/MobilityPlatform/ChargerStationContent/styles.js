@@ -13,6 +13,10 @@ const styles = {
   textContainer: {
     marginTop: '0.7rem',
   },
+  contentInner: {
+    marginLeft: '0.5rem',
+    marginBottom: '0.6rem',
+  },
 };
 
 export default styles;

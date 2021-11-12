@@ -578,6 +578,7 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',
