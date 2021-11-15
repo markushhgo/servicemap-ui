@@ -17,6 +17,9 @@ const styles = {
     marginLeft: '0.5rem',
     marginBottom: '0.6rem',
   },
+  margin: {
+    margin: '0.3rem 0',
+  },
 };
 
 export default styles;

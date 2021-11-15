@@ -55,7 +55,7 @@ const ChargerStationContent = ({
 
   const chargerStationInfo = (
     <>
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" className={classes.margin}>
         {intl.formatMessage({
           id: 'mobilityPlatform.content.cgsTitle',
         })}
@@ -70,14 +70,14 @@ const ChargerStationContent = ({
         {' '}
         {stationAddress}
       </Typography>
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" className={classes.margin}>
         {intl.formatMessage({
           id: 'mobilityPlatform.content.chargersTitle',
         })}
         :
       </Typography>
-      {chargers.map(charger => (
-        <div className={classes.contentInner}>
+      {chargers.map((charger, index) => (
+        <div key={index} className={classes.contentInner}>
           <Typography>
             <strong>
               {intl.formatMessage({
