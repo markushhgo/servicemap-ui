@@ -4,7 +4,7 @@ import { Typography, Divider } from '@material-ui/core';
 import isClient from '../../utils';
 
 const DescriptionExtraText = ({
-  extra, html, classes, title, titleComponent,
+  extra, html, classes, title, titleComponent, intl,
 }) => {
   // Hide linebreak html elements from screen readers
   const hideBRFromSR = text => text.replaceAll('<br>', '<br aria-hidden="true" />');
@@ -24,23 +24,38 @@ const DescriptionExtraText = ({
           <>
             {extra.charger_type && (
             <Typography className={classes.paragraph} variant="body2">
-              <strong>Tyyppi:</strong>
+              <strong>
+                {intl.formatMessage({
+                  id: 'mobilityPlatform.content.cgsType',
+                })}
+                :
+              </strong>
               {' '}
               {extra.charger_type}
             </Typography>
             )}
             {extra.count && (
               <Typography className={classes.paragraph} variant="body2">
-                <strong>Määrä:</strong>
+                <strong>
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.content.count',
+                  })}
+                  :
+                </strong>
                 {' '}
                 {extra.count}
                 {' '}
-                kappaletta
+                kpl
               </Typography>
             )}
             {extra.power && (
               <Typography className={classes.paragraph} variant="body2">
-                <strong>Teho:</strong>
+                <strong>
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.content.power',
+                  })}
+                  :
+                </strong>
                 {' '}
                 {extra.power}
                 {' '}
@@ -49,13 +64,23 @@ const DescriptionExtraText = ({
             )}
             {extra.lng_cng && (
               <Typography className={classes.paragraph} variant="body2">
-                <strong>Tyyppi:</strong>
+                <strong>
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.content.gfsType',
+                  })}
+                  :
+                </strong>
                 {' '}
                 {extra.lng_cng}
               </Typography>
             )}
             <Typography className={classes.paragraph} variant="body2">
-              <strong>Operaattori:</strong>
+              <strong>
+                {intl.formatMessage({
+                  id: 'mobilityPlatform.content.operator',
+                })}
+                :
+              </strong>
               {' '}
               {extra.operator}
             </Typography>
@@ -74,6 +99,7 @@ DescriptionExtraText.propTypes = {
   html: PropTypes.bool,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   titleComponent: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']).isRequired,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 DescriptionExtraText.defaultProps = {
