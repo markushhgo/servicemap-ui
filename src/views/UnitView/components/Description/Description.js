@@ -31,6 +31,7 @@ const Description = ({ unit, classes }) => {
         {unit.extra && (
           <DescriptionExtraText
             extra={unit.extra}
+            chargers={unit.extra.chargers}
             title={<FormattedMessage id="unit.description" />}
             titleComponent="h4"
           />
