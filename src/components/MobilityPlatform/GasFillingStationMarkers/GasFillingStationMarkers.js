@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import ChargerStationContent from '../ChargerStationContent';
-import { fetchStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchGFSStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import gasFillingIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 
 const GasFillingStationMarkers = ({ classes, showGasFillingStations }) => {
-  const [allStations, setAllStations] = useState(null);
   const [gasFillingStations, setGasFillingStations] = useState(null);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
@@ -19,24 +18,8 @@ const GasFillingStationMarkers = ({ classes, showGasFillingStations }) => {
   });
 
   useEffect(() => {
-    fetchStationsData(apiUrl, setAllStations);
-  }, [setAllStations]);
-
-  const setStationsByType = () => {
-    if (allStations !== null) {
-      const gfsArray = [];
-      allStations.forEach((item) => {
-        if (item.content_type.type_name === 'GFS') {
-          gfsArray.push(item);
-        }
-      });
-      setGasFillingStations(gfsArray);
-    }
-  };
-
-  useEffect(() => {
-    setStationsByType();
-  }, [allStations]);
+    fetchGFSStationsData(apiUrl, setGasFillingStations);
+  }, [setGasFillingStations]);
 
   return (
     <>

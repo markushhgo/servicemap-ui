@@ -13,91 +13,45 @@ const ChargerStationContent = ({
   stationUrl,
   intl,
 }) => {
+  const titleTypo = (messageId, props = {}) => (
+    <Typography variant="subtitle1" {...props}>
+      {intl.formatMessage({
+        id: messageId,
+      })}
+    </Typography>
+  );
+
+  const singleValTypo = (messageId, value) => (
+    <Typography>
+      <strong>
+        {intl.formatMessage({
+          id: messageId,
+        })}
+        :
+      </strong>
+      {' '}
+      {value}
+    </Typography>
+  );
+
   const gasFillingInfo = (
     <>
-      <Typography variant="subtitle1">
-        {intl.formatMessage({
-          id: 'mobilityPlatform.content.gfsTitle',
-        })}
-      </Typography>
-      <Typography>
-        <strong>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.address',
-          })}
-          :
-        </strong>
-        {' '}
-        {stationAddress}
-      </Typography>
-      <Typography>
-        <strong>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.gfsType',
-          })}
-          :
-        </strong>
-        {' '}
-        {gasType}
-      </Typography>
-      <Typography>
-        <strong>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.operator',
-          })}
-          :
-        </strong>
-        {' '}
-        {operatorName}
-      </Typography>
+      {titleTypo('mobilityPlatform.content.gfsTitle')}
+      {singleValTypo('mobilityPlatform.content.address', stationAddress)}
+      {singleValTypo('mobilityPlatform.content.gfsType', gasType)}
+      {singleValTypo('mobilityPlatform.content.operator', operatorName)}
     </>
   );
 
   const chargerStationInfo = (
     <>
-      <Typography variant="subtitle1" className={classes.margin}>
-        {intl.formatMessage({
-          id: 'mobilityPlatform.content.cgsTitle',
-        })}
-      </Typography>
-      <Typography>
-        <strong>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.address',
-          })}
-          :
-        </strong>
-        {' '}
-        {stationAddress}
-      </Typography>
-      <Typography variant="subtitle1" className={classes.margin}>
-        {intl.formatMessage({
-          id: 'mobilityPlatform.content.chargersTitle',
-        })}
-        :
-      </Typography>
-      {chargers.map((charger, index) => (
-        <div key={index} className={classes.contentInner}>
-          <Typography>
-            <strong>
-              {intl.formatMessage({
-                id: 'mobilityPlatform.content.cgsType',
-              })}
-              :
-            </strong>
-            {' '}
-            {charger.type}
-          </Typography>
-          <Typography>
-            <strong>
-              {intl.formatMessage({
-                id: 'mobilityPlatform.content.count',
-              })}
-              :
-            </strong>
-            {' '}
-            {charger.count}
-          </Typography>
+      {titleTypo('mobilityPlatform.content.cgsTitle', { className: classes.margin })}
+      {singleValTypo('mobilityPlatform.content.address', stationAddress)}
+      {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
+      {chargers.map(charger => (
+        <div key={charger.type} className={classes.contentInner}>
+          {singleValTypo('mobilityPlatform.content.cgsType', charger.type)}
+          {singleValTypo('mobilityPlatform.content.count', charger.count)}
           <Typography>
             <strong>
               {intl.formatMessage({
@@ -110,16 +64,7 @@ const ChargerStationContent = ({
             {' '}
             kW
           </Typography>
-          <Typography>
-            <strong>
-              {intl.formatMessage({
-                id: 'mobilityPlatform.content.operator',
-              })}
-              :
-            </strong>
-            {' '}
-            {charger.operator}
-          </Typography>
+          {singleValTypo('mobilityPlatform.content.operator', charger.operator)}
         </div>
       ))}
       <a href={stationUrl} target="_blank" rel="noopener noreferrer">

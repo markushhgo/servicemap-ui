@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import ChargerStationContent from '../ChargerStationContent';
-import { fetchStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchCGSStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 
 const ChargerStationMarkers = ({ classes, showChargingStations }) => {
-  const [allStations, setAllStations] = useState(null);
   const [chargerStations, setChargerStations] = useState(null);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
@@ -19,24 +18,8 @@ const ChargerStationMarkers = ({ classes, showChargingStations }) => {
   });
 
   useEffect(() => {
-    fetchStationsData(apiUrl, setAllStations);
-  }, [setAllStations]);
-
-  const setStationsByType = () => {
-    if (allStations !== null) {
-      const cgsArray = [];
-      allStations.forEach((item) => {
-        if (item.content_type.type_name === 'CGS') {
-          cgsArray.push(item);
-        }
-      });
-      setChargerStations(cgsArray);
-    }
-  };
-
-  useEffect(() => {
-    setStationsByType();
-  }, [allStations]);
+    fetchCGSStationsData(apiUrl, setChargerStations);
+  }, [setChargerStations]);
 
   return (
     <>

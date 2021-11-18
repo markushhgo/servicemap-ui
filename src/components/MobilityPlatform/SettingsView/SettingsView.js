@@ -27,15 +27,6 @@ const SettingsView = ({
 
   const open = Boolean(anchorEl);
 
-  /* const handleClick = () => {
-    // setAnchorEl(event.currentTarget);
-    if (!isOpen) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  }; */
-
   const handleClose = (event) => {
     if (anchorEl.contains(event.target)) {
       return;
