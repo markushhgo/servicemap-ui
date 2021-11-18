@@ -31,6 +31,8 @@ import EntranceMarker from './components/EntranceMarker';
 import EventMarkers from './components/EventMarkers';
 import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
+import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
+import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 
 if (global.window) {
@@ -66,6 +68,9 @@ const MapView = (props) => {
     measuringMode,
     toggleSidebar,
     sidebarHidden,
+    showChargingStations,
+    showGasFillingStations,
+    showEcoCounter,
   } = props;
 
   // State
@@ -83,7 +88,6 @@ const MapView = (props) => {
 
   // This unassigned selector is used to trigger re-render after events are fetched
   useSelector(state => getSelectedUnitEvents(state));
-
 
   const getMapUnits = () => {
     let mapUnits = [];
@@ -429,7 +433,9 @@ const MapView = (props) => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
-          <EcoCounterMarkers />
+          <ChargerStationMarkers showChargingStations={showChargingStations} />
+          <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
+          <EcoCounterMarkers showEcoCounter={showEcoCounter} />
         </MapContainer>
       </>
     );
@@ -469,6 +475,9 @@ MapView.propTypes = {
   measuringMode: PropTypes.bool.isRequired,
   toggleSidebar: PropTypes.func,
   sidebarHidden: PropTypes.bool,
+  showChargingStations: PropTypes.bool,
+  showGasFillingStations: PropTypes.bool,
+  showEcoCounter: PropTypes.bool,
 };
 
 MapView.defaultProps = {
@@ -487,4 +496,7 @@ MapView.defaultProps = {
   toggleSidebar: null,
   sidebarHidden: false,
   userLocation: null,
+  showChargingStations: false,
+  showGasFillingStations: false,
+  showEcoCounter: false,
 };

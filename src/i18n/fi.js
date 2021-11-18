@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
+  'home.buttons.mobilityPlatform': 'Liikkumisnäkymä',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -564,6 +565,23 @@ const translations = {
   'info.statement': 'Saavutettavuusseloste',
 
   'alert.close': 'Sulje ilmoitus',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Liikkuminen',
+  'mobilityPlatform.menu.subtitle': 'Asetukset',
+  'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
+  'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
+  'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
+  'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
+  'mobilityPlatform.content.address': 'Osoite',
+  'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
+  'mobilityPlatform.content.url': 'Lisätietoja',
+  'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
+  'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
+  'mobilityPlatform.content.operator': 'Operaattori',
+  'mobilityPlatform.content.count': 'Määrä',
+  'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

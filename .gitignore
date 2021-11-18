@@ -23,7 +23,6 @@
 .env.production.local
 
 .prettierrc
-
 .eslintrc.json
 .eslintrc
 /dist

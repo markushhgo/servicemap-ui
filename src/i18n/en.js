@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
+  'home.buttons.mobilityPlatform': 'Mobility Platform',
 
   // Location
   'location.notFound': 'Location not found',
@@ -560,6 +561,23 @@ const translations = {
   'info.statement': 'Accessibility statement',
 
   'alert.close': 'Close the notification',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Mobility',
+  'mobilityPlatform.menu.subtitle': 'Settings',
+  'mobilityPlatform.menu.showChargingStations': 'Charging stations',
+  'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
+  'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
+  'mobilityPlatform.content.cgsTitle': 'Charging station',
+  'mobilityPlatform.content.address': 'Address',
+  'mobilityPlatform.content.cgsType': 'Charging station type',
+  'mobilityPlatform.content.url': 'More information',
+  'mobilityPlatform.content.gfsTitle': 'Gas filling station',
+  'mobilityPlatform.content.gfsType': 'Gas filling station type',
+  'mobilityPlatform.content.operator': 'Operator',
+  'mobilityPlatform.content.count': 'Amount',
+  'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.content.chargersTitle': 'Chargers',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',
