@@ -292,6 +292,7 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
+  'home.buttons.mobilityPlatform': 'Mobilitetsplattform',
 
   // Location
   'location.notFound': 'Positionen hittades inte',
@@ -561,6 +562,35 @@ const translations = {
   'info.statement': 'Tillgänglighetsredogörelsen',
 
   'alert.close': 'Stäng meddelande',
+
+  // Mobility Platform
+  'mobilityPlatform.menu.title': 'Mobilitets',
+  'mobilityPlatform.menu.subtitle': 'Anpassa',
+  'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
+  'mobilityPlatform.menu.showGasStations': 'Gastationer',
+  'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
+  'mobilityPlatform.content.cgsTitle': 'Laddplats',
+  'mobilityPlatform.content.address': 'Adress',
+  'mobilityPlatform.content.cgsType': 'Typ av laddplats',
+  'mobilityPlatform.content.url': 'Mer information',
+  'mobilityPlatform.content.gfsTitle': 'Gas station',
+  'mobilityPlatform.content.gfsType': 'Typ av gas station',
+  'mobilityPlatform.content.operator': 'Operatör',
+  'mobilityPlatform.content.count': 'Antal',
+  'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+
+  // Ecocounter
+  'ecocounter.hour': 'Varje timme',
+  'ecocounter.day': 'Dagligen',
+  'ecocounter.week': 'Varje vecka',
+  'ecocounter.month': 'Månatligen',
+  'ecocounter.walk': 'Gående',
+  'ecocounter.bicycle': 'Cykel',
+  'ecocounter.car': 'Bil',
+  'ecocounter.chart.labelTo': 'Till centrum',
+  'ecocounter.chart.labelFrom': 'Från centrum',
+  'ecocounter.chart.labelTotal': 'Totalt',
 };
 
 let overridingExternalTranslations;

@@ -22,7 +22,9 @@
 .env.test.local
 .env.production.local
 
+.prettierrc
 .eslintrc.json
+.eslintrc
 /dist
 
 npm-debug.log*
