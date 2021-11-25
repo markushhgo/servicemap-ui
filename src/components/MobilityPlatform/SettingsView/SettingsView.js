@@ -21,6 +21,8 @@ const SettingsView = ({
   setShowGasFillingStations,
   showEcoCounter,
   setShowEcoCounter,
+  showBicycleNetwork,
+  setShowBicycleNetwork,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -68,6 +70,14 @@ const SettingsView = ({
     }
   };
 
+  const showMainBicycleNetwork = () => {
+    if (!showBicycleNetwork) {
+      setShowBicycleNetwork(true);
+    } else {
+      setShowBicycleNetwork(false);
+    }
+  };
+
   const controlTypes = [
     {
       type: 'chargingStations',
@@ -86,6 +96,12 @@ const SettingsView = ({
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
       onChangeValue: showAllEcoCounterStations,
+    },
+    {
+      type: 'bicycleMainNetwork',
+      msgId: 'mobilityPlatform.menu.showBicycleMain',
+      checkedValue: showBicycleNetwork,
+      onChangeValue: showMainBicycleNetwork,
     },
   ];
 
@@ -161,12 +177,15 @@ SettingsView.propTypes = {
   setShowGasFillingStations: PropTypes.func.isRequired,
   showEcoCounter: PropTypes.bool,
   setShowEcoCounter: PropTypes.func.isRequired,
+  showBicycleNetwork: PropTypes.bool,
+  setShowBicycleNetwork: PropTypes.func.isRequired,
 };
 
 SettingsView.defaultProps = {
   showChargingStations: false,
   showGasFillingStations: false,
   showEcoCounter: false,
+  showBicycleNetwork: false,
 };
 
 export default SettingsView;

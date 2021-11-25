@@ -34,6 +34,7 @@ import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
 import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
+import BicycleMainNetwork from '../../components/MobilityPlatform/BicycleMainNetwork';
 
 if (global.window) {
   require('leaflet');
@@ -71,6 +72,7 @@ const MapView = (props) => {
     showChargingStations,
     showGasFillingStations,
     showEcoCounter,
+    showBicycleNetwork,
   } = props;
 
   // State
@@ -436,6 +438,7 @@ const MapView = (props) => {
           <ChargerStationMarkers showChargingStations={showChargingStations} />
           <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
           <EcoCounterMarkers showEcoCounter={showEcoCounter} />
+          <BicycleMainNetwork showBicycleNetwork={showBicycleNetwork} />
         </MapContainer>
       </>
     );
