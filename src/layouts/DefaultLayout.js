@@ -94,6 +94,8 @@ const DefaultLayout = (props) => {
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleNetwork, setShowBicycleNetwork] = useState(false);
+  const [showBicycleLocal, setShowBicycleLocal] = useState(false);
+  const [showBicycleLanes, setShowBicycleLanes] = useState(false);
 
   const {
     currentPage,
@@ -174,6 +176,10 @@ const DefaultLayout = (props) => {
                   showEcoCounter={showEcoCounter}
                   setShowBicycleNetwork={setShowBicycleNetwork}
                   showBicycleNetwork={showBicycleNetwork}
+                  showBicycleLocal={showBicycleLocal}
+                  setShowBicycleLocal={setShowBicycleLocal}
+                  showBicycleLanes={showBicycleLanes}
+                  setShowBicycleLanes={setShowBicycleLanes}
                 />
               </PrintProvider>
             </div>
@@ -210,6 +216,8 @@ const DefaultLayout = (props) => {
                   showGasFillingStations={showGasFillingStations}
                   showEcoCounter={showEcoCounter}
                   showBicycleNetwork={showBicycleNetwork}
+                  showBicycleLocal={showBicycleLocal}
+                  showBicycleLanes={showBicycleLanes}
                 />
               </div>
             </div>

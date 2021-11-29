@@ -50,6 +50,10 @@ const TopBar = (props) => {
     setShowEcoCounter,
     showBicycleNetwork,
     setShowBicycleNetwork,
+    showBicycleLocal,
+    setShowBicycleLocal,
+    showBicycleLanes,
+    setShowBicycleLanes,
   } = props;
 
   const renderSettingsButtons = () => {
@@ -317,6 +321,10 @@ const TopBar = (props) => {
                       showEcoCounter={showEcoCounter}
                       setShowBicycleNetwork={setShowBicycleNetwork}
                       showBicycleNetwork={showBicycleNetwork}
+                      setShowBicycleLocal={setShowBicycleLocal}
+                      showBicycleLocal={showBicycleLocal}
+                      setShowBicycleLanes={setShowBicycleLanes}
+                      showBicycleLanes={showBicycleLanes}
                     />
                   ) : null}
                 </>
@@ -373,6 +381,10 @@ TopBar.propTypes = {
   setShowEcoCounter: PropTypes.func.isRequired,
   showBicycleNetwork: PropTypes.bool,
   setShowBicycleNetwork: PropTypes.func.isRequired,
+  showBicycleLocal: PropTypes.bool,
+  setShowBicycleLocal: PropTypes.func.isRequired,
+  showBicycleLanes: PropTypes.bool,
+  setShowBicycleLanes: PropTypes.func.isRequired,
 };
 
 TopBar.defaultProps = {
@@ -382,6 +394,8 @@ TopBar.defaultProps = {
   showGasFillingStations: false,
   showEcoCounter: false,
   showBicycleNetwork: false,
+  showBicycleLocal: false,
+  showBicycleLanes: false,
 };
 
 export default TopBar;

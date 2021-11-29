@@ -12,6 +12,9 @@ import {
 } from '@material-ui/core';
 import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 
+// Settings component for mobility data
+// Used to control visibility state of related components.
+
 const SettingsView = ({
   intl,
   classes,
@@ -23,9 +26,14 @@ const SettingsView = ({
   setShowEcoCounter,
   showBicycleNetwork,
   setShowBicycleNetwork,
+  showBicycleLocal,
+  setShowBicycleLocal,
+  showBicycleLanes,
+  setShowBicycleLanes,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -78,6 +86,22 @@ const SettingsView = ({
     }
   };
 
+  const showLocalBicycleNetwork = () => {
+    if (!showBicycleLocal) {
+      setShowBicycleLocal(true);
+    } else {
+      setShowBicycleLocal(false);
+    }
+  };
+
+  const showBicycleQualityLanes = () => {
+    if (!showBicycleLanes) {
+      setShowBicycleLanes(true);
+    } else {
+      setShowBicycleLanes(false);
+    }
+  };
+
   const controlTypes = [
     {
       type: 'chargingStations',
@@ -97,17 +121,42 @@ const SettingsView = ({
       checkedValue: showEcoCounter,
       onChangeValue: showAllEcoCounterStations,
     },
+  ];
+
+  const bicycleControlTypes = [
     {
       type: 'bicycleMainNetwork',
       msgId: 'mobilityPlatform.menu.showBicycleMain',
       checkedValue: showBicycleNetwork,
       onChangeValue: showMainBicycleNetwork,
     },
+    {
+      type: 'bicycleLocalNetwork',
+      msgId: 'mobilityPlatform.menu.showBicycleLocal',
+      checkedValue: showBicycleLocal,
+      onChangeValue: showLocalBicycleNetwork,
+    },
+    {
+      type: 'bicycleQualityLanes',
+      msgId: 'mobilityPlatform.menu.showBicycleLanes',
+      checkedValue: showBicycleLanes,
+      onChangeValue: showBicycleQualityLanes,
+    },
   ];
 
-  const arrowIcon = isOpen
-    ? <ArrowDropUp className={classes.iconRight} />
-    : <ArrowDropDown className={classes.iconRight} />;
+  const bicycleSettingsToggle = () => {
+    if (!openBicycleSettings) {
+      setOpenBicycleSettings(true);
+    } else {
+      setOpenBicycleSettings(false);
+    }
+  };
+
+  const arrowIcon = isOpen ? (
+    <ArrowDropUp className={classes.iconRight} />
+  ) : (
+    <ArrowDropDown className={classes.iconRight} />
+  );
 
   return (
     <div className={classes.container}>
@@ -141,24 +190,51 @@ const SettingsView = ({
                 </Typography>
               </FormLabel>
               <FormGroup className={classes.formGroup}>
-                {controlTypes.map(item => (
+                <>
+                  {controlTypes.map(item => (
+                    <FormControlLabel
+                      key={item.type}
+                      label={(
+                        <Typography variant="body2">
+                          {intl.formatMessage({
+                            id: item.msgId,
+                          })}
+                        </Typography>
+                      )}
+                      control={
+                        <Switch checked={item.checkedValue} onChange={item.onChangeValue} />
+                      }
+                    />
+                  ))}
                   <FormControlLabel
-                    key={item.type}
                     label={(
                       <Typography variant="body2">
                         {intl.formatMessage({
-                          id: item.msgId,
+                          id: 'mobilityPlatform.menu.showBicycle',
                         })}
                       </Typography>
-              )}
-                    control={(
-                      <Switch
-                        checked={item.checkedValue}
-                        onChange={item.onChangeValue}
-                      />
-              )}
+                      )}
+                    control={
+                      <Switch checked={openBicycleSettings} onChange={bicycleSettingsToggle} />
+                      }
                   />
-                ))}
+                  {openBicycleSettings
+                    && bicycleControlTypes.map(item => (
+                      <FormControlLabel
+                        key={item.type}
+                        label={(
+                          <Typography variant="body2">
+                            {intl.formatMessage({
+                              id: item.msgId,
+                            })}
+                          </Typography>
+                        )}
+                        control={
+                          <Switch checked={item.checkedValue} onChange={item.onChangeValue} />
+                        }
+                      />
+                    ))}
+                </>
               </FormGroup>
             </FormControl>
           </div>
@@ -179,6 +255,10 @@ SettingsView.propTypes = {
   setShowEcoCounter: PropTypes.func.isRequired,
   showBicycleNetwork: PropTypes.bool,
   setShowBicycleNetwork: PropTypes.func.isRequired,
+  showBicycleLocal: PropTypes.bool,
+  setShowBicycleLocal: PropTypes.func.isRequired,
+  showBicycleLanes: PropTypes.bool,
+  setShowBicycleLanes: PropTypes.func.isRequired,
 };
 
 SettingsView.defaultProps = {
@@ -186,6 +266,8 @@ SettingsView.defaultProps = {
   showGasFillingStations: false,
   showEcoCounter: false,
   showBicycleNetwork: false,
+  showBicycleLocal: false,
+  showBicycleLanes: false,
 };
 
 export default SettingsView;
