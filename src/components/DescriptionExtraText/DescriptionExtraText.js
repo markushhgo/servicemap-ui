@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Divider } from '@material-ui/core';
 import isClient from '../../utils';
@@ -6,8 +6,15 @@ import isClient from '../../utils';
 const DescriptionExtraText = ({
   extra, chargers, html, classes, title, titleComponent, intl,
 }) => {
+  const [isGasFillingStation, setIsGasFillingStation] = useState(false);
   // Hide linebreak html elements from screen readers
   const hideBRFromSR = text => text.replaceAll('<br>', '<br aria-hidden="true" />');
+
+  useEffect(() => {
+    if (chargers.length === 0) {
+      setIsGasFillingStation(true);
+    }
+  }, [chargers]);
 
   const chargerStationInfo = (
     <>
@@ -68,7 +75,7 @@ const DescriptionExtraText = ({
 
   const gasFillingInfo = (
     <>
-      <Typography>
+      <Typography className={classes.paragraph} variant="body2">
         <strong>
           {intl.formatMessage({
             id: 'mobilityPlatform.content.gfsType',
@@ -78,7 +85,7 @@ const DescriptionExtraText = ({
         {' '}
         {extra.lng_cng}
       </Typography>
-      <Typography>
+      <Typography className={classes.paragraph} variant="body2">
         <strong>
           {intl.formatMessage({
             id: 'mobilityPlatform.content.operator',
@@ -104,7 +111,7 @@ const DescriptionExtraText = ({
         <Divider className={classes.divider} aria-hidden="true" />
         { !html ? (
           <>
-            {chargers !== [] ? chargerStationInfo : gasFillingInfo}
+            {!isGasFillingStation ? chargerStationInfo : gasFillingInfo}
           </>
         ) : (
           <Typography dangerouslySetInnerHTML={{ __html: hideBRFromSR(extra) }} className={classes.paragraph} variant="body2" />

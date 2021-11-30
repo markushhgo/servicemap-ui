@@ -31,7 +31,7 @@ const GasFillingStationMarkers = ({ classes, showGasFillingStations }) => {
               <Marker
                 key={item.id}
                 icon={gasStationIcon}
-                position={[item.geometry_data.y, item.geometry_data.x]}
+                position={[item.geometry_coords.lat, item.geometry_coords.lon]}
               >
                 <div className={classes.popupWrapper}>
                   <Popup className="charger-stations-popup">
