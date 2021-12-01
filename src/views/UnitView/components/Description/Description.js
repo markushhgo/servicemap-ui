@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Typography, Link } from '@material-ui/core';
 import unitSectionFilter from '../../utils/unitSectionFilter';
 import DescriptionText from '../../../../components/DescriptionText';
+import DescriptionExtraText from '../../../../components/DescriptionExtraText';
 import useLocaleText from '../../../../utils/useLocaleText';
 
 const Description = ({ unit, classes }) => {
@@ -21,6 +22,16 @@ const Description = ({ unit, classes }) => {
         {unit.description && (
           <DescriptionText
             description={getLocaleText(unit.description)}
+            title={<FormattedMessage id="unit.description" />}
+            titleComponent="h4"
+            extraField={unit.extra}
+          />
+        )}
+        {/* Extra field */}
+        {unit.extra && (
+          <DescriptionExtraText
+            extra={unit.extra}
+            chargers={unit.extra.chargers}
             title={<FormattedMessage id="unit.description" />}
             titleComponent="h4"
           />
