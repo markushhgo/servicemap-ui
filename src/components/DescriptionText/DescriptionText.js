@@ -4,7 +4,7 @@ import { Typography, Divider } from '@material-ui/core';
 import isClient from '../../utils';
 
 const DescriptionText = ({
-  description, html, classes, title, titleComponent,
+  description, html, classes, title, titleComponent, extraField,
 }) => {
   // Hide linebreak html elements from screen readers
   const hideBRFromSR = text => text.replaceAll('<br>', '<br aria-hidden="true" />');
@@ -14,7 +14,7 @@ const DescriptionText = ({
   // TODO: Figure out a way to have server render description text identical to client
   // NOTE: tried using NoSSR-tag. It fixed mismatch error, however it brokw github actions tests
 
-  if (description && isClient()) {
+  if (description && isClient() && !extraField) {
     return (
       <div className={classes.left}>
         <Typography
@@ -43,10 +43,12 @@ DescriptionText.propTypes = {
   html: PropTypes.bool,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   titleComponent: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']).isRequired,
+  extraField: PropTypes.objectOf(PropTypes.any),
 };
 
 DescriptionText.defaultProps = {
   html: false,
+  extraField: null,
 };
 
 
