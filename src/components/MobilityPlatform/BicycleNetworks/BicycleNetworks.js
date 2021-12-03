@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { PropTypes } from 'prop-types';
+import React, { useEffect, useState, useContext } from 'react';
+import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchBicycleNetworkData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
-const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLanes }) => {
+const BicycleNetworks = () => {
   const [bicycleMain, setBicycleMain] = useState(null);
   const [bicycleLocal, setBicycleLocal] = useState(null);
   const [bicycleLanes, setBicycleLanes] = useState(null);
+
+  const { showBicycleNetwork, showBicycleLocal, showBicycleLanes } = useContext(MobilityPlatformContext);
 
   const { Polyline } = global.rL;
 
@@ -17,7 +19,7 @@ const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLane
 
   const blackOptions = { color: '#000000', dashArray: '15' };
   const blueOptions = { color: 'rgba(0, 167, 225, 255)', dashArray: '10' };
-  const redOptions = { color: 'rgba(7, 44,115, 255)', dashArray: '6' };
+  const colorOptions = { color: 'rgba(7, 44,115, 255)', dashArray: '6' };
 
   useEffect(() => {
     fetchBicycleNetworkData(apiUrl, mainNetwork, setBicycleMain);
@@ -34,13 +36,12 @@ const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLane
   const filterNullGeometry = (inputData) => {
     const filtered = [];
     if (inputData !== null) {
-      inputData.map((item) => {
+      inputData.forEach((item) => {
         if (item !== null) {
           filtered.push(item);
         }
       });
     }
-    console.log(filtered);
     return filtered;
   };
 
@@ -51,14 +52,9 @@ const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLane
           <div>
             <div>
               {bicycleMain
-              && bicycleMain.map(item => (
-                <Polyline
-                  key={item.id}
-                  weight={4}
-                  pathOptions={blackOptions}
-                  positions={[item.geometry_coords]}
-                />
-              ))}
+                && bicycleMain.map(item => (
+                  <Polyline key={item.id} weight={4} pathOptions={blackOptions} positions={[item.geometry_coords]} />
+                ))}
             </div>
           </div>
         ) : null}
@@ -68,14 +64,14 @@ const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLane
           <div>
             <div>
               {bicycleLocal
-              && bicycleLocal.map(item => (
-                <Polyline
-                  key={item.id}
-                  weight={4}
-                  pathOptions={blueOptions}
-                  positions={filterNullGeometry(item.geometry_coords)}
-                />
-              ))}
+                && bicycleLocal.map(item => (
+                  <Polyline
+                    key={item.id}
+                    weight={4}
+                    pathOptions={blueOptions}
+                    positions={filterNullGeometry(item.geometry_coords)}
+                  />
+                ))}
             </div>
           </div>
         ) : null}
@@ -85,32 +81,15 @@ const BicycleNetworks = ({ showBicycleNetwork, showBicycleLocal, showBicycleLane
           <div>
             <div>
               {bicycleLanes
-              && bicycleLanes.map(item => (
-                <Polyline
-                  key={item.id}
-                  weight={4}
-                  pathOptions={redOptions}
-                  positions={[item.geometry_coords]}
-                />
-              ))}
+                && bicycleLanes.map(item => (
+                  <Polyline key={item.id} weight={4} pathOptions={colorOptions} positions={[item.geometry_coords]} />
+                ))}
             </div>
           </div>
         ) : null}
       </div>
     </div>
   );
-};
-
-BicycleNetworks.propTypes = {
-  showBicycleNetwork: PropTypes.bool,
-  showBicycleLocal: PropTypes.bool,
-  showBicycleLanes: PropTypes.bool,
-};
-
-BicycleNetworks.defaultProps = {
-  showBicycleNetwork: false,
-  showBicycleLocal: false,
-  showBicycleLanes: false,
 };
 
 export default BicycleNetworks;

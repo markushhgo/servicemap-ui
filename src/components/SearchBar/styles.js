@@ -1,3 +1,5 @@
+import { RuntimeGlobals } from "webpack";
+
 export default theme => ({
   background: {
     background: theme.palette.background.main,
@@ -127,7 +129,7 @@ export default theme => ({
     margin: theme.spacing(3, 0.5, 1, 0.5),
   },
   headerBackground: {
-    background: theme.palette.background.front,
+    background: 'rgba(7, 44, 115, 255)',
   },
   suggestionSubtitle: {
     display: 'flex',

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
 import { fetchGFSStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import gasFillingIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 
-const GasFillingStationMarkers = ({ classes, showGasFillingStations }) => {
+const GasFillingStationMarkers = ({ classes }) => {
   const [gasFillingStations, setGasFillingStations] = useState(null);
+
+  const { showGasFillingStations } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -57,11 +60,7 @@ const GasFillingStationMarkers = ({ classes, showGasFillingStations }) => {
 
 GasFillingStationMarkers.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  showGasFillingStations: PropTypes.bool,
 };
 
-GasFillingStationMarkers.defaultProps = {
-  showGasFillingStations: false,
-};
 
 export default GasFillingStationMarkers;

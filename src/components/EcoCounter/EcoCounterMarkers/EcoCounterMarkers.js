@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import EcoCounterContent from '../EcoCounterContent';
 import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
 import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 
-const EcoCounterMarkers = ({ classes, showEcoCounter }) => {
+const EcoCounterMarkers = ({ classes }) => {
   const [ecoCounterStations, setEcoCounterStations] = useState(null);
+
+  const { showEcoCounter } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
 
@@ -49,11 +52,6 @@ const EcoCounterMarkers = ({ classes, showEcoCounter }) => {
 
 EcoCounterMarkers.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  showEcoCounter: PropTypes.bool,
-};
-
-EcoCounterMarkers.defaultProps = {
-  showEcoCounter: false,
 };
 
 export default EcoCounterMarkers;

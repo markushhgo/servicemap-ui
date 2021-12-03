@@ -22,7 +22,6 @@ import LocaleUtility from '../../utils/locale';
 import { useNavigationParams } from '../../utils/address';
 import SettingsButton from './SettingsButton';
 import MenuButton from './MenuButton';
-import SettingsView from '../MobilityPlatform/SettingsView';
 
 const TopBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -42,18 +41,6 @@ const TopBar = (props) => {
     navigator,
     currentPage,
     smallScreen,
-    showChargingStations,
-    setShowChargingStations,
-    showGasFillingStations,
-    setShowGasFillingStations,
-    showEcoCounter,
-    setShowEcoCounter,
-    showBicycleNetwork,
-    setShowBicycleNetwork,
-    showBicycleLocal,
-    setShowBicycleLocal,
-    showBicycleLanes,
-    setShowBicycleLanes,
   } = props;
 
   const renderSettingsButtons = () => {
@@ -310,23 +297,6 @@ const TopBar = (props) => {
                     </Typography>
                     {renderSettingsButtons()}
                   </div>
-                  {/* Mobility platform */}
-                  {!smallScreen ? (
-                    <SettingsView
-                      setShowChargingStations={setShowChargingStations}
-                      showChargingStations={showChargingStations}
-                      setShowGasFillingStations={setShowGasFillingStations}
-                      showGasFillingStations={showGasFillingStations}
-                      setShowEcoCounter={setShowEcoCounter}
-                      showEcoCounter={showEcoCounter}
-                      setShowBicycleNetwork={setShowBicycleNetwork}
-                      showBicycleNetwork={showBicycleNetwork}
-                      setShowBicycleLocal={setShowBicycleLocal}
-                      showBicycleLocal={showBicycleLocal}
-                      setShowBicycleLanes={setShowBicycleLanes}
-                      showBicycleLanes={showBicycleLanes}
-                    />
-                  ) : null}
                 </>
               ) : (
                 <>
@@ -373,29 +343,11 @@ TopBar.propTypes = {
   smallScreen: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired,
   toggleSettings: PropTypes.func.isRequired,
-  showChargingStations: PropTypes.bool,
-  setShowChargingStations: PropTypes.func.isRequired,
-  showGasFillingStations: PropTypes.bool,
-  setShowGasFillingStations: PropTypes.func.isRequired,
-  showEcoCounter: PropTypes.bool,
-  setShowEcoCounter: PropTypes.func.isRequired,
-  showBicycleNetwork: PropTypes.bool,
-  setShowBicycleNetwork: PropTypes.func.isRequired,
-  showBicycleLocal: PropTypes.bool,
-  setShowBicycleLocal: PropTypes.func.isRequired,
-  showBicycleLanes: PropTypes.bool,
-  setShowBicycleLanes: PropTypes.func.isRequired,
 };
 
 TopBar.defaultProps = {
   navigator: null,
   settingsOpen: null,
-  showChargingStations: false,
-  showGasFillingStations: false,
-  showEcoCounter: false,
-  showBicycleNetwork: false,
-  showBicycleLocal: false,
-  showBicycleLanes: false,
 };
 
 export default TopBar;

@@ -66,6 +66,28 @@ const overrides = theme => ({
       marginRight: 8,
     },
   },
+  MuiSwitch: {
+    switchBase: {
+      // Controls default (unchecked) color for the thumb
+      color: '#c4c4c4',
+    },
+    colorSecondary: {
+      '&$checked': {
+        // Controls checked color for the thumb
+        color: '#ecaa00',
+      },
+    },
+    track: {
+      // Controls default (unchecked) color for the track
+      opacity: 1,
+      backgroundColor: '#fff',
+      '$checked$checked + &': {
+        // Controls checked color for the track
+        opacity: 0.7,
+        backgroundColor: '#fccc58',
+      },
+    },
+  },
 });
 
 const breakpoints = {

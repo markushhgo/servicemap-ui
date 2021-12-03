@@ -259,6 +259,8 @@ const translations = {
   'general.pageTitles.info': 'Tietoa palvelusta',
   'general.pageTitles.feedback': 'Palautesivu',
   'general.pageTitles.area': 'Aluesivu',
+  'general.pageTitles.mobilitySettings': 'Liikkuminen',
+  'general.pageTitles.mobilitySettings.title': 'Liikkuminen',
   // Readspeaker
   'general.readspeaker.buttonText': 'Kuuntele',
   'general.readspeaker.title': 'Kuuntele ReadSpeaker webReaderilla',
@@ -292,7 +294,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
-  'home.buttons.mobilityPlatform': 'Liikkumisnäkymä',
+  'home.buttons.mobilitySettings': 'Liikkuminen',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -569,9 +571,13 @@ const translations = {
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
+  'mobilityPlatform.menu.title.walk': 'Kävely',
+  'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
+  'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
   'mobilityPlatform.menu.showBicycle': 'Pyöräreitit',
   'mobilityPlatform.menu.showBicycleMain': 'Pääpyöräreitit',
   'mobilityPlatform.menu.showBicycleLocal': 'Paikallispyöräreitit',

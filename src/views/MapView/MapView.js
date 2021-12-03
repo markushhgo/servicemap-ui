@@ -35,6 +35,8 @@ import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStat
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 import BicycleNetworks from '../../components/MobilityPlatform/BicycleNetworks';
+import StreetMaintenanceMarkers from '../../components/MobilityPlatform/StreetMaintenanceMarkers';
+import SnowPlows from '../../components/MobilityPlatform/SnowPlows';
 
 if (global.window) {
   require('leaflet');
@@ -42,7 +44,7 @@ if (global.window) {
   global.rL = require('react-leaflet');
 }
 
-const MapView = props => {
+const MapView = (props) => {
   const {
     addressToRender,
     addressUnits,
@@ -69,12 +71,6 @@ const MapView = props => {
     measuringMode,
     toggleSidebar,
     sidebarHidden,
-    showChargingStations,
-    showGasFillingStations,
-    showEcoCounter,
-    showBicycleNetwork,
-    showBicycleLocal,
-    showBicycleLanes,
   } = props;
 
   // State
@@ -103,9 +99,9 @@ const MapView = props => {
       mapUnits = unitList;
     }
     if (
-      currentPage === 'search' ||
-      currentPage === 'division' ||
-      (currentPage === 'unit' && unitList.length)
+      currentPage === 'search'
+      || currentPage === 'division'
+      || (currentPage === 'unit' && unitList.length)
     ) {
       mapUnits = unitList;
     } else if (currentPage === 'address') {
@@ -113,18 +109,18 @@ const MapView = props => {
         case 'adminDistricts':
           mapUnits = adminDistricts
             ? adminDistricts
-                .filter(d => d.unit)
-                .reduce((unique, o) => {
-                  // Ignore districts without unit
-                  if (!o.unit) {
-                    return unique;
-                  }
-                  // Add only unique units
-                  if (!unique.some(obj => obj.id === o.unit.id)) {
-                    unique.push(o.unit);
-                  }
+              .filter(d => d.unit)
+              .reduce((unique, o) => {
+                // Ignore districts without unit
+                if (!o.unit) {
                   return unique;
-                }, [])
+                }
+                // Add only unique units
+                if (!unique.some(obj => obj.id === o.unit.id)) {
+                  unique.push(o.unit);
+                }
+                return unique;
+              }, [])
             : [];
           break;
         case 'units':
@@ -138,8 +134,8 @@ const MapView = props => {
     } else if (currentPage === 'area' && districtUnits) {
       mapUnits = districtUnits;
     } else if (
-      (currentPage === 'unit' || currentPage === 'fullList' || currentPage === 'event') &&
-      highlightedUnit
+      (currentPage === 'unit' || currentPage === 'fullList' || currentPage === 'event')
+      && highlightedUnit
     ) {
       mapUnits = [highlightedUnit];
     }
@@ -170,8 +166,8 @@ const MapView = props => {
     }
   };
 
-  const navigateToAddress = latLng => {
-    fetchAddress(latLng).then(data => {
+  const navigateToAddress = (latLng) => {
+    fetchAddress(latLng).then((data) => {
       navigator.push('address', getAddressNavigatorParams(data));
     });
   };
@@ -283,9 +279,7 @@ const MapView = props => {
   const renderUnitGeometry = () => {
     if (highlightedDistrict) return null;
     if (currentPage !== 'unit') {
-      return unitData.map(unit =>
-        unit.geometry ? <UnitGeometry key={unit.id} data={unit} /> : null
-      );
+      return unitData.map(unit => (unit.geometry ? <UnitGeometry key={unit.id} data={unit} /> : null));
     }
     if (highlightedUnit) {
       return <UnitGeometry data={highlightedUnit} />;
@@ -333,7 +327,7 @@ const MapView = props => {
           detailZoom={mapObject.options.detailZoom}
           maxBounds={mapObject.options.mapBounds || mapOptions.defaultMaxBounds}
           maxBoundsViscosity={1.0}
-          whenCreated={map => {
+          whenCreated={(map) => {
             setMapElement(map);
             setMapRef(map);
           }}
@@ -427,14 +421,12 @@ const MapView = props => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
-          <ChargerStationMarkers showChargingStations={showChargingStations} />
-          <GasFillingStationMarkers showGasFillingStations={showGasFillingStations} />
-          <EcoCounterMarkers showEcoCounter={showEcoCounter} />
-          <BicycleNetworks
-            showBicycleNetwork={showBicycleNetwork}
-            showBicycleLocal={showBicycleLocal}
-            showBicycleLanes={showBicycleLanes}
-          />
+          <ChargerStationMarkers />
+          <GasFillingStationMarkers />
+          <EcoCounterMarkers />
+          <BicycleNetworks />
+          <StreetMaintenanceMarkers />
+          <SnowPlows />
         </MapContainer>
       </>
     );
@@ -452,7 +444,7 @@ MapView.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       ocd_id: PropTypes.string,
-    })
+    }),
   ),
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   currentPage: PropTypes.string.isRequired,
@@ -476,12 +468,6 @@ MapView.propTypes = {
   measuringMode: PropTypes.bool.isRequired,
   toggleSidebar: PropTypes.func,
   sidebarHidden: PropTypes.bool,
-  showChargingStations: PropTypes.bool,
-  showGasFillingStations: PropTypes.bool,
-  showEcoCounter: PropTypes.bool,
-  showBicycleNetwork: PropTypes.bool,
-  showBicycleLocal: PropTypes.bool,
-  showBicycleLanes: PropTypes.bool,
 };
 
 MapView.defaultProps = {
@@ -500,10 +486,4 @@ MapView.defaultProps = {
   toggleSidebar: null,
   sidebarHidden: false,
   userLocation: null,
-  showChargingStations: false,
-  showGasFillingStations: false,
-  showEcoCounter: false,
-  showBicycleNetwork: false,
-  showBicycleLocal: false,
-  showBicycleLanes: false,
 };

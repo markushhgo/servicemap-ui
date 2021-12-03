@@ -566,9 +566,13 @@ const translations = {
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Mobilitets',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
+  'mobilityPlatform.menu.title.walk': 'Gående',
+  'mobilityPlatform.menu.title.bicycle': 'Cykling',
+  'mobilityPlatform.menu.title.car': 'Bilismen',
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',

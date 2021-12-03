@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Map } from '@material-ui/icons';
 import { SearchBar } from '../../components';
@@ -9,11 +9,14 @@ import config from '../../../config';
 import NewsInfo from '../../components/NewsInfo';
 import { useNavigationParams } from '../../utils/address';
 import useLocaleText from '../../utils/useLocaleText';
+import MobilitySettingsView from '../MobilitySettingsView';
 
 const HomeView = (props) => {
   const {
     classes, toggleSettings, navigator, userLocation,
   } = props;
+
+  const [showMobilitySettings, setShowMobilitySettings] = useState(false);
 
   const getLocaleText = useLocaleText();
   const getAddressNavigatorParams = useNavigationParams();
@@ -41,6 +44,14 @@ const HomeView = (props) => {
       );
     }
 
+    const showHideMobilitySettings = () => {
+      if (showMobilitySettings) {
+        setShowMobilitySettings(false);
+      } else {
+        setShowMobilitySettings(true);
+      }
+    };
+
     return (
       <div className={classes.background}>
         <div className={classes.buttonContainer}>
@@ -55,6 +66,19 @@ const HomeView = (props) => {
             }}
             subtitleID={subtitleID && subtitleID}
           />
+          <>
+            <PaperButton
+              messageID="home.buttons.mobilitySettings"
+              icon={getIcon('help')}
+              link
+              onClick={() => showHideMobilitySettings()}
+            />
+            {showMobilitySettings ? (
+              <div className={classes.contentContainer}>
+                <MobilitySettingsView />
+              </div>
+            ) : null}
+          </>
           <PaperButton
             messageID="home.buttons.services"
             icon={getIcon('serviceList')}
