@@ -101,7 +101,6 @@ const DefaultLayout = (props) => {
   const [showBicycleNetwork, setShowBicycleNetwork] = useState(false);
   const [showBicycleLocal, setShowBicycleLocal] = useState(false);
   const [showBicycleLanes, setShowBicycleLanes] = useState(false);
-  const [showMaintenance, setShowMaintenance] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -181,8 +180,6 @@ const DefaultLayout = (props) => {
                 <div style={styles.sidebarContent} aria-hidden={!!settingsToggled}>
                   <MobilityPlatformProvider
                     value={{
-                      showMaintenance,
-                      setShowMaintenance,
                       showChargingStations,
                       setShowChargingStations,
                       showGasFillingStations,
@@ -207,7 +204,6 @@ const DefaultLayout = (props) => {
               <div aria-hidden tabIndex="-1" style={styles.map}>
                 <MobilityPlatformProvider
                   value={{
-                    showMaintenance,
                     showChargingStations,
                     showGasFillingStations,
                     showEcoCounter,

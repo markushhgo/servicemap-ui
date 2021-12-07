@@ -20,8 +20,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowChargingStations,
     showGasFillingStations,
     setShowGasFillingStations,
-    showMaintenance,
-    setShowMaintenance,
     showEcoCounter,
     setShowEcoCounter,
     showBicycleNetwork,
@@ -56,14 +54,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showAllMaintenanceLocations = () => {
-    if (!showMaintenance) {
-      setShowMaintenance(true);
-    } else {
-      setShowMaintenance(false);
-    }
-  };
-
   const showMainBicycleNetwork = () => {
     if (!showBicycleNetwork) {
       setShowBicycleNetwork(true);
@@ -94,12 +84,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
       onChangeValue: showAllEcoCounterStations,
-    },
-    {
-      type: 'maintenanceLocations',
-      msgId: 'mobilityPlatform.menu.showMaintenanceLocations',
-      checkedValue: showMaintenance,
-      onChangeValue: showAllMaintenanceLocations,
     },
   ];
 
@@ -142,12 +126,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
       onChangeValue: showAllGasFillingStations,
-    },
-    {
-      type: 'maintenanceLocations',
-      msgId: 'mobilityPlatform.menu.showMaintenanceLocations',
-      checkedValue: showMaintenance,
-      onChangeValue: showAllMaintenanceLocations,
     },
   ];
 
@@ -253,7 +231,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     className={classes.formLabel}
                   />
                 ))}
-              <div className={classes.buttonContainer}>
+              <div>
                 <Button
                   onClick={() => carSettingsToggle()}
                   variant="outlined"
