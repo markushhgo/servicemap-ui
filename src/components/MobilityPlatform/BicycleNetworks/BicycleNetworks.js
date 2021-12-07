@@ -17,8 +17,10 @@ const BicycleNetworks = () => {
   const localNetwork = 'local_network';
   const qualityLanes = 'quality_lanes';
 
-  const blackOptions = { color: '#000000', dashArray: '15' };
-  const blueOptions = { color: 'rgba(0, 167, 225, 255)', dashArray: '10' };
+  const blackOptions = { color: '#000000' };
+  const blueOptions = { color: 'rgba(0, 45, 113, 255)' };
+  const whiteDashOptions = { color: '#fff', dashArray: '15' };
+  const whiteSolidOptions = { color: '#fff' };
   const colorOptions = { color: 'rgba(7, 44,115, 255)', dashArray: '6' };
 
   useEffect(() => {
@@ -53,7 +55,13 @@ const BicycleNetworks = () => {
             <div>
               {bicycleMain
                 && bicycleMain.map(item => (
-                  <Polyline key={item.id} weight={4} pathOptions={blackOptions} positions={[item.geometry_coords]} />
+                  <Polyline key={item.id} weight={8} pathOptions={blueOptions} positions={[item.geometry_coords]} />
+                ))}
+            </div>
+            <div>
+              {bicycleMain
+                && bicycleMain.map(item => (
+                  <Polyline key={item.id} weight={4} pathOptions={whiteDashOptions} positions={[item.geometry_coords]} />
                 ))}
             </div>
           </div>
@@ -67,8 +75,19 @@ const BicycleNetworks = () => {
                 && bicycleLocal.map(item => (
                   <Polyline
                     key={item.id}
+                    weight={8}
+                    pathOptions={blackOptions}
+                    positions={filterNullGeometry(item.geometry_coords)}
+                  />
+                ))}
+            </div>
+            <div>
+              {bicycleLocal
+                && bicycleLocal.map(item => (
+                  <Polyline
+                    key={item.id}
                     weight={4}
-                    pathOptions={blueOptions}
+                    pathOptions={whiteSolidOptions}
                     positions={filterNullGeometry(item.geometry_coords)}
                   />
                 ))}

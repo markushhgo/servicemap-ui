@@ -3,19 +3,27 @@ const styles = {
     width: '100%',
     height: '50px',
     textTransform: 'capitalize',
+    justifyContent: 'flex-start',
     borderRadius: '0',
-    borderBottom: '1px solid #000000',
-    textAlign: 'left',
+    border: 'none',
   },
   buttonActive: {
     width: '100%',
     height: '50px',
     textTransform: 'capitalize',
+    justifyContent: 'flex-start',
     borderRadius: '0',
-    borderBottom: '1px solid #000000',
-    textAlign: 'left',
-    background: '#46484b',
+    border: 'none',
+    backgroundColor: '#46484b',
     color: '#fff',
+    '&:hover': {
+      color: '#fff',
+      backgroundColor: '#46484b',
+      border: 'none',
+    },
+  },
+  buttonContainer: {
+    borderBottom: '1px solid #000000',
   },
   formControl: {
     width: '100%',
@@ -31,6 +39,18 @@ const styles = {
   },
   subtitle: {
     textTransform: 'capitalize',
+  },
+  iconActive: {
+    fill: '#fff',
+    width: '40px',
+    height: '40px',
+    marginRight: '0.8rem',
+  },
+  icon: {
+    fill: '#000',
+    width: '40px',
+    height: '40px',
+    marginRight: '0.8rem',
   },
 };
 

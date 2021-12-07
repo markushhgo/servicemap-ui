@@ -66,11 +66,12 @@ const HomeView = (props) => {
             }}
             subtitleID={subtitleID && subtitleID}
           />
+          {/* Mobility platform settings */}
           <>
             <PaperButton
               messageID="home.buttons.mobilitySettings"
-              icon={getIcon('help')}
-              link
+              button
+              icon={getIcon('mobilityPlatform')}
               onClick={() => showHideMobilitySettings()}
             />
             {showMobilitySettings ? (

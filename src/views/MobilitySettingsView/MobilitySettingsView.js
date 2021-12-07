@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
+import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
+import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -177,17 +181,26 @@ const MobilitySettingsView = ({ classes, intl }) => {
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
-              <Button
-                onClick={() => walkSettingsToggle()}
-                variant="outlined"
-                className={openWalkSettings ? classes.buttonActive : classes.button}
-              >
-                <Typography variant="body2">
-                  {intl.formatMessage({
-                    id: 'mobilityPlatform.menu.title.walk',
-                  })}
-                </Typography>
-              </Button>
+              <div className={classes.buttonContainer}>
+                <Button
+                  onClick={() => walkSettingsToggle()}
+                  variant="outlined"
+                  className={openWalkSettings ? classes.buttonActive : classes.button}
+                >
+                  <ReactSVG
+                    className={openWalkSettings
+                      ? `${classes.iconActive}`
+                      : `${classes.icon}`
+                        }
+                    src={iconWalk}
+                  />
+                  <Typography variant="body2">
+                    {intl.formatMessage({
+                      id: 'mobilityPlatform.menu.title.walk',
+                    })}
+                  </Typography>
+                </Button>
+              </div>
               {openWalkSettings
                 && walkingControlTypes.map(item => (
                   <FormControlLabel
@@ -204,17 +217,26 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     className={classes.formLabel}
                   />
                 ))}
-              <Button
-                onClick={() => bicycleSettingsToggle()}
-                variant="outlined"
-                className={openBicycleSettings ? classes.buttonActive : classes.button}
-              >
-                <Typography variant="body2">
-                  {intl.formatMessage({
-                    id: 'mobilityPlatform.menu.title.bicycle',
-                  })}
-                </Typography>
-              </Button>
+              <div className={classes.buttonContainer}>
+                <Button
+                  onClick={() => bicycleSettingsToggle()}
+                  variant="outlined"
+                  className={openBicycleSettings ? classes.buttonActive : classes.button}
+                >
+                  <ReactSVG
+                    className={openBicycleSettings
+                      ? `${classes.iconActive}`
+                      : `${classes.icon}`
+                        }
+                    src={iconBicycle}
+                  />
+                  <Typography variant="body2">
+                    {intl.formatMessage({
+                      id: 'mobilityPlatform.menu.title.bicycle',
+                    })}
+                  </Typography>
+                </Button>
+              </div>
               {openBicycleSettings
                 && bicycleControlTypes.map(item => (
                   <FormControlLabel
@@ -231,17 +253,26 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     className={classes.formLabel}
                   />
                 ))}
-              <Button
-                onClick={() => carSettingsToggle()}
-                variant="outlined"
-                className={openCarSettings ? classes.buttonActive : classes.button}
-              >
-                <Typography variant="body2">
-                  {intl.formatMessage({
-                    id: 'mobilityPlatform.menu.title.car',
-                  })}
-                </Typography>
-              </Button>
+              <div className={classes.buttonContainer}>
+                <Button
+                  onClick={() => carSettingsToggle()}
+                  variant="outlined"
+                  className={openCarSettings ? classes.buttonActive : classes.button}
+                >
+                  <ReactSVG
+                    className={openCarSettings
+                      ? `${classes.iconActive}`
+                      : `${classes.icon}`
+                        }
+                    src={iconCar}
+                  />
+                  <Typography variant="body2">
+                    {intl.formatMessage({
+                      id: 'mobilityPlatform.menu.title.car',
+                    })}
+                  </Typography>
+                </Button>
+              </div>
               {openCarSettings
                 && carControlTypes.map(item => (
                   <FormControlLabel
