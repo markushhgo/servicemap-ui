@@ -36,7 +36,7 @@ const styles = theme => ({
     marginTop: '0',
   },
   formLabel: {
-    padding: '0.4rem 1.5rem',
+    padding: '0.4rem 3.5rem',
     backgroundColor: 'rgba(70,72,75,255)',
     margin: '0',
     color: '#fff',

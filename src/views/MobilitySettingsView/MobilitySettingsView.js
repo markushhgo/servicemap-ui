@@ -7,6 +7,7 @@ import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import TitleBar from '../../components/TitleBar';
+import BicycleNetworkInfo from '../../components/MobilityPlatform/BicycleNetworkInfo';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -278,6 +279,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
+      <BicycleNetworkInfo />
     </div>
   );
 };
