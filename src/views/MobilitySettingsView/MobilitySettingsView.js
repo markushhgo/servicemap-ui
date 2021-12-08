@@ -6,6 +6,7 @@ import {
 import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
+import TitleBar from '../../components/TitleBar';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -155,6 +156,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   return (
     <div>
+      <TitleBar
+        title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
+        titleComponent="h3"
+        backButton
+        className={classes.topBarColor}
+      />
       <div className={classes.container}>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
@@ -231,7 +238,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     className={classes.formLabel}
                   />
                 ))}
-              <div>
+              <div className={classes.buttonContainer}>
                 <Button
                   onClick={() => carSettingsToggle()}
                   variant="outlined"

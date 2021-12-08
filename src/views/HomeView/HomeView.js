@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Map } from '@material-ui/icons';
 import { SearchBar } from '../../components';
@@ -9,14 +9,11 @@ import config from '../../../config';
 import NewsInfo from '../../components/NewsInfo';
 import { useNavigationParams } from '../../utils/address';
 import useLocaleText from '../../utils/useLocaleText';
-import MobilitySettingsView from '../MobilitySettingsView';
 
 const HomeView = (props) => {
   const {
     classes, toggleSettings, navigator, userLocation,
   } = props;
-
-  const [showMobilitySettings, setShowMobilitySettings] = useState(false);
 
   const getLocaleText = useLocaleText();
   const getAddressNavigatorParams = useNavigationParams();
@@ -44,14 +41,6 @@ const HomeView = (props) => {
       );
     }
 
-    const showHideMobilitySettings = () => {
-      if (showMobilitySettings) {
-        setShowMobilitySettings(false);
-      } else {
-        setShowMobilitySettings(true);
-      }
-    };
-
     return (
       <div className={classes.background}>
         <div className={classes.buttonContainer}>
@@ -66,20 +55,13 @@ const HomeView = (props) => {
             }}
             subtitleID={subtitleID && subtitleID}
           />
-          {/* Mobility platform settings */}
-          <>
-            <PaperButton
-              messageID="home.buttons.mobilitySettings"
-              button
-              icon={getIcon('mobilityPlatform')}
-              onClick={() => showHideMobilitySettings()}
-            />
-            {showMobilitySettings ? (
-              <div className={classes.contentContainer}>
-                <MobilitySettingsView />
-              </div>
-            ) : null}
-          </>
+          {/* Turku mobility platform settings */}
+          <PaperButton
+            messageID="home.buttons.mobilitySettings"
+            icon={getIcon('feedback')}
+            link
+            onClick={() => navigator.push('mobilityPlatform')}
+          />
           <PaperButton
             messageID="home.buttons.services"
             icon={getIcon('serviceList')}
@@ -137,78 +119,6 @@ const HomeView = (props) => {
       {
         renderNavigationOptions()
       }
-
-      {/* <Container paper>
-          <Typography
-            className={classes.left}
-            variant="subtitle1"
-            component="h3"
-          >
-            {intl.formatMessage({ id: 'home.message' })}
-          </Typography>
-          <Typography className={classes.left} variant="body2">
-            <b>31.10.2019</b>
-            {' '}
-- Käytettävyystutkimus on tehty ja tulokset analysoitu.
-Olemme tällä hetkellä toteuttamassa käyttäjien huomioita ja meille on
-esimerkiksi tulossa vaihtoehtoisesti valittavaksi mustavalkoinen käyttöliittymä.
-Olemme parantamassa asetusten löydettävyyttä sekä hakutoiminnallisuutta.
-Oli hienoa saada testaukseen monenlaisia käyttäjiä. Kiitos heille kaikille.
-Turusta on tulossa uusi suurikontrastinen karttapohja parantamaan palvelun
-käytettävyyttä heikkonäköisille.
-            {' '}
-            <br />
-            <br />
-            <b>25.9.2019</b>
-            {' '}
-- Palvelukartan käytettävyystutkimus on käynnissä ajalla 23.9- 4.10.2019.
-Odotamme innolla tuloksia. Olemme tehneet syksyn ajan kovasti töitä ja nyt
-sitten katsotaan mitä mieltä porukka on!
-            {' '}
-            <br />
-            <br />
-            <b>5.9.2019</b>
-            {' '}
-- Syyskuuta eletään. Palvelukartan pellin alla on tapahtunut paljon saavutettavuutta edistäviä asioita.
-Nyt hiomme hakutoiminnallisuutta ja kunhan se on testikunnossa, käytettävyystestaajat lähtevät liikkeelle.
-            {' '}
-            <br />
-            <br />
-            <b>22.8.2019</b>
-            {' '}
-- Kesä alkaa lähestyä loppuaan ja työt taas jatkuvat täydellä vauhdilla. Heinäkuun aikana olemme kehittäneet uutta hakua
-sekä korjanneet paljon pieniä ongelmia ja toiminnallisuutta koodin puolella. Nyt jatkamme uuden haun sekä hakukokemuksen
-parantamisen parissa.
-            {' '}
-            <br />
-            <br />
-            <b>28.6.2019</b>
-            {' '}
-- Olemme saaneet kesäkuun aikana lisättyä toimipisteen sivuille lisää tietoa esteettömyydestä,
-tapahtumista, tilavarauksista, ja lukukausitiedoista. Olemme myös lisänneet esteettömyysasetukset,
-joiden avulla pystyy näkemään toimipistekohtaiset esteettömyysongelmat. Uusien ominaisuuksien lisäksi
-kehitämme jatkuvasti saavutettavuutta ja käytettävyyttä.
-            {' '}
-            <br />
-            <br />
-            <b>14.5.2019</b>
-            {' '}
-- Olemme saaneet ensimmäisten viikkojen aikana ensimmäiset palautteet
-            - kiitos niistä! Palautteen perusteella keskitymme seuraavaksi rakentamaan entistäkin
-            paremman toimipisteen sivun, josta löydät kaikki toimipisteen tiedot esteettömyydestä
-            tapahtumiin.
-            {' '}
-            <br />
-            <br />
-            <b>2.5.2019</b>
-            {' '}
-- Olemme tänään julkistaneet Palvelukartan avoimen kehitysversion!
-            Ensimmäisessä versiossa keskitymme erityisesti hakukokemuksen parantamiseen.
-            Lisäämme kehitysversioon uusia ominaisuuksia viikottain
-            ja haluamme palautetta juuri sinulta.
-            <br />
-          </Typography>
-        </Container> */}
     </div>
   );
 };

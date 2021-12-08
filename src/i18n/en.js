@@ -260,6 +260,8 @@ const translations = {
   'general.pageTitles.feedback': 'Feedback page',
   'general.pageTitles.area': 'Area page',
   'general.tools': 'Tools',
+  'general.pageTitles.mobilityPlatform': 'Mobility platform',
+  'general.pageTitles.mobilityPlatform.title': 'Mobility platform',
   // Readspeaker
   'general.readspeaker.buttonText': 'Listen',
   'general.readspeaker.title': 'Listen with ReadSpeaker webReader',

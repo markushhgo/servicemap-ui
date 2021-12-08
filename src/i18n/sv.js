@@ -278,6 +278,8 @@ const translations = {
   'general.search': 'Sök',
   'general.time.short': 'kl.',
   'general.tools': 'Verktyg',
+  'general.pageTitles.mobilityPlatform': 'Rörlighet',
+  'general.pageTitles.mobilityPlatform.title': 'Rörlighet',
   // Readspeaker
   'general.readspeaker.buttonText': 'Lyssna', // TODO: verify
   'general.readspeaker.title': 'Lyssna med ReadSpeaker webReader', // TODO: verify

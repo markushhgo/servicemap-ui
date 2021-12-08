@@ -203,6 +203,9 @@ export const paletteDefault = {
     plain: 'rgb(20, 108, 232)',
     front: 'linear-gradient(340.58deg, rgb(11, 123, 237) 0%, rgb(20, 108, 232) 67.04%, rgb(25, 100, 230) 100%)',
   },
+  backgroundTurku: {
+    main: 'rgba(7, 44, 115, 255)',
+  },
   white: {
     light: '#f2f2f2',
     main: '#FFFFFF',

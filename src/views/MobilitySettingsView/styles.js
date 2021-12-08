@@ -1,7 +1,11 @@
-const styles = {
+const styles = theme => ({
+  topBarColor: {
+    background: theme.palette.backgroundTurku.main,
+  },
   button: {
     width: '100%',
     height: '50px',
+    background: 'rgba(245, 245, 245, 255)',
     textTransform: 'capitalize',
     justifyContent: 'flex-start',
     borderRadius: '0',
@@ -14,11 +18,11 @@ const styles = {
     justifyContent: 'flex-start',
     borderRadius: '0',
     border: 'none',
-    backgroundColor: '#46484b',
+    background: '#46484b',
     color: '#fff',
     '&:hover': {
       color: '#fff',
-      backgroundColor: '#46484b',
+      background: '#46484b',
       border: 'none',
     },
   },
@@ -52,6 +56,6 @@ const styles = {
     height: '40px',
     marginRight: '0.8rem',
   },
-};
+});
 
 export default styles;

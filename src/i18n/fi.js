@@ -259,8 +259,8 @@ const translations = {
   'general.pageTitles.info': 'Tietoa palvelusta',
   'general.pageTitles.feedback': 'Palautesivu',
   'general.pageTitles.area': 'Aluesivu',
-  'general.pageTitles.mobilitySettings': 'Liikkuminen',
-  'general.pageTitles.mobilitySettings.title': 'Liikkuminen',
+  'general.pageTitles.mobilityPlatform': 'Liikkuminen',
+  'general.pageTitles.mobilityPlatform.title': 'Liikkuminen',
   // Readspeaker
   'general.readspeaker.buttonText': 'Kuuntele',
   'general.readspeaker.title': 'Kuuntele ReadSpeaker webReaderilla',
