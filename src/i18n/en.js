@@ -574,7 +574,6 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
-  'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
   'mobilityPlatform.content.cgsTitle': 'Charging station',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'Charging station type',

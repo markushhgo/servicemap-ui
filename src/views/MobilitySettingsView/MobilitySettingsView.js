@@ -7,7 +7,6 @@ import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import TitleBar from '../../components/TitleBar';
-import BicycleNetworkInfo from '../../components/MobilityPlatform/BicycleNetworkInfo';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -24,12 +23,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations,
     showEcoCounter,
     setShowEcoCounter,
-    showBicycleNetwork,
-    setShowBicycleNetwork,
-    showBicycleLocal,
-    setShowBicycleLocal,
-    showBicycleLanes,
-    setShowBicycleLanes,
   } = useContext(MobilityPlatformContext);
 
   const showAllChargingStations = () => {
@@ -56,30 +49,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showMainBicycleNetwork = () => {
-    if (!showBicycleNetwork) {
-      setShowBicycleNetwork(true);
-    } else {
-      setShowBicycleNetwork(false);
-    }
-  };
-
-  const showLocalBicycleNetwork = () => {
-    if (!showBicycleLocal) {
-      setShowBicycleLocal(true);
-    } else {
-      setShowBicycleLocal(false);
-    }
-  };
-
-  const showBicycleQualityLanes = () => {
-    if (!showBicycleLanes) {
-      setShowBicycleLanes(true);
-    } else {
-      setShowBicycleLanes(false);
-    }
-  };
-
   const walkingControlTypes = [
     {
       type: 'ecoCounterStations',
@@ -90,24 +59,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   const bicycleControlTypes = [
-    {
-      type: 'bicycleMainNetwork',
-      msgId: 'mobilityPlatform.menu.showBicycleMain',
-      checkedValue: showBicycleNetwork,
-      onChangeValue: showMainBicycleNetwork,
-    },
-    {
-      type: 'bicycleLocalNetwork',
-      msgId: 'mobilityPlatform.menu.showBicycleLocal',
-      checkedValue: showBicycleLocal,
-      onChangeValue: showLocalBicycleNetwork,
-    },
-    {
-      type: 'bicycleQualityLanes',
-      msgId: 'mobilityPlatform.menu.showBicycleLanes',
-      checkedValue: showBicycleLanes,
-      onChangeValue: showBicycleQualityLanes,
-    },
     {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
@@ -279,7 +230,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
-      <BicycleNetworkInfo />
     </div>
   );
 };

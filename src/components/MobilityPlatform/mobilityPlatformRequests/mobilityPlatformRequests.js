@@ -20,13 +20,3 @@ export const fetchGFSStationsData = async (apiUrl, setStations) => {
     console.log(err.message);
   }
 };
-
-export const fetchBicycleNetworkData = async (apiUrl, networkType, setStations) => {
-  try {
-    const response = await fetch(`${apiUrl}/bicycle_networkparts?page_size=10000&network_name=${networkType}&latlon=true&only_coords=true`);
-    const jsonData = await response.json();
-    setStations(jsonData.results);
-  } catch (err) {
-    console.log(err.message);
-  }
-};
