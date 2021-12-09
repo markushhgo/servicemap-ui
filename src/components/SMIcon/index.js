@@ -24,6 +24,7 @@ import closeIcon from '../../assets/icons/closeIcon.svg';
 import coordinateMarker from '../../assets/icons/CoordinateMarker.svg';
 import coordinateMarkerContrast from '../../assets/icons/CoordinateMarkerContrast.svg';
 import kirkkonummiIcon from '../../assets/icons/kirkkonummiIcon.svg';
+import iconMobilityPlatform from '../../assets/icons/inlineSVGs/iconMobilityPlatform';
 
 /**
  * Senses
@@ -122,6 +123,8 @@ export const getIcon = (key, props) => {
       return feedbackIcon();
     case 'help':
       return helpIcon();
+    case 'mobilityPlatformIcon':
+      return iconMobilityPlatform();
 
     // Social media links
     case 'facebook':

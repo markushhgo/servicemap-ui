@@ -9,7 +9,7 @@ const BicycleNetworkInfo = ({ classes }) => {
   return (
     <div className={classes.container}>
       {showBicycleNetwork && (
-        <div className={classes.mainRouteInfo}>
+        <div className={classes.routeInfo}>
           <Typography variant="body2">
             Pääreitit ovat viitoitettuja ja opastettuja seudullisia reittejä. Turusta lähtee 12 seudullista
             pyöräreittiä. Niitä käytetään ensisijaisesti pidempiin pyörämatkoihin.
@@ -17,7 +17,7 @@ const BicycleNetworkInfo = ({ classes }) => {
         </div>
       )}
       {showBicycleLocal && (
-      <div className={classes.mainRouteInfo}>
+      <div className={classes.routeInfo}>
         <Typography variant="body2">
           Paikallispyöräreitit sisältävät virallisten pyöräteiden lisäksi myös muita pyöräilyyn soveltuvia ajoväyliä,
           kuten viheralueiden hiekkatiet.
@@ -25,7 +25,7 @@ const BicycleNetworkInfo = ({ classes }) => {
       </div>
       )}
       {showBicycleLanes && (
-      <div className={classes.mainRouteInfo}>
+      <div className={classes.routeInfo}>
         <Typography variant="body2">
           Laatuväylät ovat osa Turun pyöräilyn kehittämisohjelmaa. Niitä käytetään nopeampiin ja pidempiin
           pyörämatkoihin.

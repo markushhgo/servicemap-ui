@@ -18,26 +18,17 @@ const HomeView = (props) => {
   const getLocaleText = useLocaleText();
   const getAddressNavigatorParams = useNavigationParams();
 
-
   const renderNavigationOptions = () => {
-    const noUserLocation = !userLocation
-      || !userLocation.coordinates
-      || !userLocation.addressData;
+    const noUserLocation = !userLocation || !userLocation.coordinates || !userLocation.addressData;
 
     const notFoundText = noUserLocation ? 'location.notFound' : null;
-    const subtitleID = userLocation && userLocation.allowed ? notFoundText
-      : 'location.notAllowed';
+    const subtitleID = userLocation && userLocation.allowed ? notFoundText : 'location.notAllowed';
 
     let areaSelection = null;
 
     if (config.showAreaSelection) {
       areaSelection = (
-        <PaperButton
-          messageID="home.buttons.area"
-          icon={<Map />}
-          link
-          onClick={() => navigator.push('area')}
-        />
+        <PaperButton messageID="home.buttons.area" icon={<Map />} link onClick={() => navigator.push('area')} />
       );
     }
 
@@ -58,7 +49,7 @@ const HomeView = (props) => {
           {/* Turku mobility platform settings */}
           <PaperButton
             messageID="home.buttons.mobilitySettings"
-            icon={getIcon('feedback')}
+            icon={getIcon('mobilityPlatformIcon')}
             link
             onClick={() => navigator.push('mobilityPlatform')}
           />
@@ -97,11 +88,13 @@ const HomeView = (props) => {
             icon={<Map />}
             link
             onClick={() => {
-              window.open(getLocaleText({
-                fi: config.oldMapFi,
-                sv: config.oldMapSv,
-                en: config.oldMapEn,
-              }));
+              window.open(
+                getLocaleText({
+                  fi: config.oldMapFi,
+                  sv: config.oldMapSv,
+                  en: config.oldMapEn,
+                }),
+              );
             }}
           />
           <NewsInfo showCount={2} />
@@ -112,17 +105,11 @@ const HomeView = (props) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <SearchBar
-        hideBackButton
-        header
-      />
-      {
-        renderNavigationOptions()
-      }
+      <SearchBar hideBackButton header />
+      {renderNavigationOptions()}
     </div>
   );
 };
-
 
 export default HomeView;
 
