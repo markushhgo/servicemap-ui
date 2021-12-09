@@ -574,7 +574,6 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
-  'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av laddplats',
@@ -584,7 +583,7 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
-  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+  'mobilityPlatform.content.chargersTitle': 'Laddplats',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',
