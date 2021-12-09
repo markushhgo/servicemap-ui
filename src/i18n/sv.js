@@ -574,7 +574,6 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
-  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',

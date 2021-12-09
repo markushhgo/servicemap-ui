@@ -577,7 +577,6 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
-  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
   'mobilityPlatform.menu.showBicycle': 'Pyöräreitit',
   'mobilityPlatform.menu.showBicycleMain': 'Pääpyöräreitit',
   'mobilityPlatform.menu.showBicycleLocal': 'Paikallispyöräreitit',
