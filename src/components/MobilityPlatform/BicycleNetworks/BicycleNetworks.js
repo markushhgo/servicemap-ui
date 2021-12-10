@@ -17,11 +17,12 @@ const BicycleNetworks = () => {
   const localNetwork = 'local_network';
   const qualityLanes = 'quality_lanes';
 
-  const blackOptions = { color: '#000000' };
-  const blueOptions = { color: 'rgba(0, 45, 113, 255)' };
-  const whiteDashOptions = { color: '#fff', dashArray: '15' };
-  const whiteSolidOptions = { color: '#fff' };
-  const colorOptions = { color: 'rgba(7, 44,115, 255)', dashArray: '6' };
+  const blackOptions = { color: '#000000', lineCap: 'square' };
+  const blueOptions = { color: 'rgba(0, 45, 113, 255)', lineCap: 'square' };
+  const lightBlueOptions = { color: 'rgba(0, 167, 225, 255)', lineCap: 'square' };
+  const whiteDashOptions = { color: '#fff', dashArray: '5, 10', lineCap: 'square' };
+  // const whiteSolidOptions = { color: '#fff' };
+  // const colorOptions = { color: 'rgba(7, 44, 115, 255)', dashArray: '6' };
 
   useEffect(() => {
     fetchBicycleNetworkData(apiUrl, mainNetwork, setBicycleMain);
@@ -55,13 +56,23 @@ const BicycleNetworks = () => {
             <div>
               {bicycleMain
                 && bicycleMain.map(item => (
-                  <Polyline key={item.id} weight={8} pathOptions={blueOptions} positions={[item.geometry_coords]} />
+                  <Polyline
+                    key={item.geometry}
+                    weight={8}
+                    pathOptions={blueOptions}
+                    positions={[item.geometry_coords]}
+                  />
                 ))}
             </div>
             <div>
               {bicycleMain
                 && bicycleMain.map(item => (
-                  <Polyline key={item.id} weight={4} pathOptions={whiteDashOptions} positions={[item.geometry_coords]} />
+                  <Polyline
+                    key={item.id}
+                    weight={4}
+                    pathOptions={whiteDashOptions}
+                    positions={[item.geometry_coords]}
+                  />
                 ))}
             </div>
           </div>
@@ -74,9 +85,9 @@ const BicycleNetworks = () => {
               {bicycleLocal
                 && bicycleLocal.map(item => (
                   <Polyline
-                    key={item.id}
+                    key={item.geometry}
                     weight={8}
-                    pathOptions={blackOptions}
+                    pathOptions={lightBlueOptions}
                     positions={filterNullGeometry(item.geometry_coords)}
                   />
                 ))}
@@ -87,7 +98,7 @@ const BicycleNetworks = () => {
                   <Polyline
                     key={item.id}
                     weight={4}
-                    pathOptions={whiteSolidOptions}
+                    pathOptions={whiteDashOptions}
                     positions={filterNullGeometry(item.geometry_coords)}
                   />
                 ))}
@@ -101,7 +112,23 @@ const BicycleNetworks = () => {
             <div>
               {bicycleLanes
                 && bicycleLanes.map(item => (
-                  <Polyline key={item.id} weight={4} pathOptions={colorOptions} positions={[item.geometry_coords]} />
+                  <Polyline
+                    key={item.geometry}
+                    weight={8}
+                    pathOptions={blackOptions}
+                    positions={[item.geometry_coords]}
+                  />
+                ))}
+            </div>
+            <div>
+              {bicycleLanes
+                && bicycleLanes.map(item => (
+                  <Polyline
+                    key={item.id}
+                    weight={4}
+                    pathOptions={whiteDashOptions}
+                    positions={[item.geometry_coords]}
+                  />
                 ))}
             </div>
           </div>
