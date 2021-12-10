@@ -582,6 +582,7 @@ const translations = {
   'mobilityPlatform.menu.showBicycleMain': 'Pääpyöräreitit',
   'mobilityPlatform.menu.showBicycleLocal': 'Paikallispyöräreitit',
   'mobilityPlatform.menu.showBicycleLanes': 'Laatuväylät',
+  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
@@ -592,6 +593,12 @@ const translations = {
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
   'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
+  'mobilityPlatform.content.rentalCars.address': 'Osoite',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Automerkki',
+  'mobilityPlatform.content.rentalCars.carModel': 'Auton malli',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

@@ -575,6 +575,7 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
   'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
+  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.content.cgsTitle': 'Charging station',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'Charging station type',
@@ -585,6 +586,12 @@ const translations = {
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
   'mobilityPlatform.content.chargersTitle': 'Chargers',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.address': 'Address',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.available': 'Car is available',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Car is reserved',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',

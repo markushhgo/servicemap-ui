@@ -101,6 +101,7 @@ const DefaultLayout = (props) => {
   const [showBicycleNetwork, setShowBicycleNetwork] = useState(false);
   const [showBicycleLocal, setShowBicycleLocal] = useState(false);
   const [showBicycleLanes, setShowBicycleLanes] = useState(false);
+  const [showRentalCars, setShowRentalCars] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -192,6 +193,8 @@ const DefaultLayout = (props) => {
                       setShowBicycleLocal,
                       showBicycleLanes,
                       setShowBicycleLanes,
+                      showRentalCars,
+                      setShowRentalCars,
                     }}
                   >
                     <ViewRouter />
@@ -210,6 +213,7 @@ const DefaultLayout = (props) => {
                     showBicycleNetwork,
                     showBicycleLocal,
                     showBicycleLanes,
+                    showRentalCars,
                   }}
                 >
                   <MapView

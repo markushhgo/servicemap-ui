@@ -30,6 +30,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleLocal,
     showBicycleLanes,
     setShowBicycleLanes,
+    showRentalCars,
+    setShowRentalCars,
   } = useContext(MobilityPlatformContext);
 
   const showAllChargingStations = () => {
@@ -77,6 +79,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
       setShowBicycleLanes(true);
     } else {
       setShowBicycleLanes(false);
+    }
+  };
+
+  const showRentalCarLocations = () => {
+    if (!showRentalCars) {
+      setShowRentalCars(true);
+    } else {
+      setShowRentalCars(false);
     }
   };
 
@@ -128,6 +138,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
       onChangeValue: showAllGasFillingStations,
+    },
+    {
+      type: 'rentalCars',
+      msgId: 'mobilityPlatform.menu.showRentalCars',
+      checkedValue: showRentalCars,
+      onChangeValue: showRentalCarLocations,
     },
   ];
 

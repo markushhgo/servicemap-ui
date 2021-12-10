@@ -576,6 +576,7 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
+  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av laddplats',
@@ -585,7 +586,13 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
-  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+  'mobilityPlatform.content.chargersTitle': 'Laddplats',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.address': 'Address',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',
