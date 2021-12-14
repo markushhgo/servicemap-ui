@@ -294,7 +294,7 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
-  'home.buttons.mobilityPlatform': 'Mobilitetsplattform',
+  'home.buttons.mobilityPlatformSettings': 'Mobilitetsplattform',
 
   // Location
   'location.notFound': 'Positionen hittades inte',

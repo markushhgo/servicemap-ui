@@ -48,7 +48,7 @@ const HomeView = (props) => {
           />
           {/* Turku mobility platform settings */}
           <PaperButton
-            messageID="home.buttons.mobilitySettings"
+            messageID="home.buttons.mobilityPlatformSettings"
             icon={getIcon('mobilityPlatformIcon')}
             link
             onClick={() => navigator.push('mobilityPlatform')}

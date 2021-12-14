@@ -294,7 +294,7 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
-  'home.buttons.mobilityPlatform': 'Mobility Platform',
+  'home.buttons.mobilityPlatformSettings': 'Mobility Platform',
 
   // Location
   'location.notFound': 'Location not found',

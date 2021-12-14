@@ -294,7 +294,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
-  'home.buttons.mobilitySettings': 'Liikkuminen',
+  'home.buttons.mobilityPlatformSettings': 'Liikkuminen',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
