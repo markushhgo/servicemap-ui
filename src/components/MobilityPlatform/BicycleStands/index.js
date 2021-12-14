@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import RentalCarContent from './RentalCarContent';
+import BicycleStands from './BicycleStands';
 import styles from './styles';
 
-export default withStyles(styles)(injectIntl(RentalCarContent));
+export default withStyles(styles)(injectIntl(BicycleStands));

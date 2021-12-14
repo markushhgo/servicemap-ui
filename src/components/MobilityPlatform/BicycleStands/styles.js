@@ -1,6 +1,6 @@
 const styles = {
   popupInner: {
-    padding: '0.8rem',
+    margin: '0.8rem',
   },
 };
 
