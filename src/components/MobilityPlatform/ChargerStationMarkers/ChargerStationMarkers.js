@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
 import { fetchCGSStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 
-const ChargerStationMarkers = ({ classes, showChargingStations }) => {
+const ChargerStationMarkers = ({ classes }) => {
   const [chargerStations, setChargerStations] = useState(null);
+
+  const { showChargingStations } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -56,11 +59,6 @@ const ChargerStationMarkers = ({ classes, showChargingStations }) => {
 
 ChargerStationMarkers.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  showChargingStations: PropTypes.bool,
-};
-
-ChargerStationMarkers.defaultProps = {
-  showChargingStations: false,
 };
 
 export default ChargerStationMarkers;

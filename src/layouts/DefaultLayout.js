@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -19,11 +18,18 @@ import { viewTitleID } from '../utils/accessibility';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { ErrorProvider } from '../context/ErrorContext';
 import { ErrorComponent } from '../components';
+import { MobilityPlatformProvider } from '../context/MobilityPlatformContext';
 
 const { smallScreenBreakpoint } = config;
 
 const createContentStyles = (
-  isMobile, isSmallScreen, landscape, fullMobileMap, settingsOpen, currentPage, sidebarHidden,
+  isMobile,
+  isSmallScreen,
+  landscape,
+  fullMobileMap,
+  settingsOpen,
+  currentPage,
+  sidebarHidden,
 ) => {
   let width = 450;
   if (isMobile) {
@@ -61,8 +67,7 @@ const createContentStyles = (
       width,
       margin: 0,
       // eslint-disable-next-line no-nested-ternary
-      overflow: settingsOpen ? 'hidden'
-        : isMobile ? 'visible' : 'auto',
+      overflow: settingsOpen ? 'hidden' : isMobile ? 'visible' : 'auto',
       visibility: fullMobileMap && !settingsOpen ? 'hidden' : null,
       flex: '0 1 auto',
     },
@@ -95,12 +100,7 @@ const DefaultLayout = (props) => {
   const [showEcoCounter, setShowEcoCounter] = useState(false);
 
   const {
-    currentPage,
-    fetchErrors,
-    fetchNews,
-    intl,
-    location,
-    settingsToggled,
+    currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
   } = props;
   const isMobile = useMobileStatus();
   const isSmallScreen = useMediaQuery(`(max-width:${smallScreenBreakpoint}px)`);
@@ -114,7 +114,13 @@ const DefaultLayout = (props) => {
   }, []);
 
   const styles = createContentStyles(
-    isMobile, isSmallScreen, landscape, fullMobileMap, settingsToggled, currentPage, sidebarHidden,
+    isMobile,
+    isSmallScreen,
+    landscape,
+    fullMobileMap,
+    settingsToggled,
+    currentPage,
+    sidebarHidden,
   );
   const srLinks = [
     {
@@ -141,18 +147,13 @@ const DefaultLayout = (props) => {
     window.onbeforeprint = showAlert;
   }, []);
 
-
   const printClass = `ǹo-print${showPrintView ? ' sr-only' : ''}`;
 
   return (
     <>
       <ErrorProvider value={{ error, setError }}>
-        {
-        error && <ErrorComponent error={error} />
-      }
-        {
-        !error
-        && (
+        {error && <ErrorComponent error={error} />}
+        {!error && (
           <ErrorBoundary>
             <div id="topArea" aria-hidden={!!settingsToggled} className={printClass}>
               <h1 id="app-title" tabIndex="-1" className="sr-only app-title" component="h1">
@@ -165,48 +166,46 @@ const DefaultLayout = (props) => {
                 <TopBar
                   settingsOpen={settingsToggled}
                   smallScreen={isSmallScreen}
-                  setShowChargingStations={setShowChargingStations}
-                  showChargingStations={showChargingStations}
-                  setShowGasFillingStations={setShowGasFillingStations}
-                  showGasFillingStations={showGasFillingStations}
-                  setShowEcoCounter={setShowEcoCounter}
-                  showEcoCounter={showEcoCounter}
                 />
               </PrintProvider>
             </div>
-            {
-              showPrintView
-              && (
-                <PrintView togglePrintView={togglePrint} />
-              )
-            }
+            {showPrintView && <PrintView togglePrintView={togglePrint} />}
             <div id="activeRoot" style={styles.activeRoot} className={printClass}>
               <main className="SidebarWrapper" style={styles.sidebar}>
                 <AlertBox />
-                {settingsToggled && (
-                  <Settings
-                    key={settingsToggled}
-                    isMobile={!!isMobile}
-                  />
-                )}
+                {settingsToggled && <Settings key={settingsToggled} isMobile={!!isMobile} />}
                 <div style={styles.sidebarContent} aria-hidden={!!settingsToggled}>
-                  <ViewRouter />
+                  <MobilityPlatformProvider
+                    value={{
+                      showChargingStations,
+                      setShowChargingStations,
+                      showGasFillingStations,
+                      setShowGasFillingStations,
+                      showEcoCounter,
+                      setShowEcoCounter,
+                    }}
+                  >
+                    <ViewRouter />
+                  </MobilityPlatformProvider>
                 </div>
               </main>
-              <Typography variant="srOnly">{intl.formatMessage({ id: 'map.ariaLabel' })}</Typography>
-              <div
-                aria-hidden
-                tabIndex="-1"
-                style={styles.map}
-              >
-                <MapView
-                  sidebarHidden={sidebarHidden}
-                  toggleSidebar={toggleSidebar}
-                  isMobile={!!isMobile}
-                  showChargingStations={showChargingStations}
-                  showGasFillingStations={showGasFillingStations}
-                  showEcoCounter={showEcoCounter}
-                />
+              <Typography variant="srOnly">
+                {intl.formatMessage({ id: 'map.ariaLabel' })}
+              </Typography>
+              <div aria-hidden tabIndex="-1" style={styles.map}>
+                <MobilityPlatformProvider
+                  value={{
+                    showChargingStations,
+                    showGasFillingStations,
+                    showEcoCounter,
+                  }}
+                >
+                  <MapView
+                    sidebarHidden={sidebarHidden}
+                    toggleSidebar={toggleSidebar}
+                    isMobile={!!isMobile}
+                  />
+                </MobilityPlatformProvider>
               </div>
             </div>
 
@@ -218,8 +217,7 @@ const DefaultLayout = (props) => {
               </DesktopComponent>
             </footer>
           </ErrorBoundary>
-        )
-      }
+        )}
       </ErrorProvider>
     </>
   );

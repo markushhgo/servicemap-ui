@@ -33,4 +33,9 @@ export default theme => ({
     marginRight: theme.spacing(2),
     marginTop: 24,
   },
+  contentContainer: {
+    width: '100%',
+    backgroundColor: '#f6f6f6',
+    border: '1px solid #000000',
+  },
 });

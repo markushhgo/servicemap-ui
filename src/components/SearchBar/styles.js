@@ -127,7 +127,7 @@ export default theme => ({
     margin: theme.spacing(3, 0.5, 1, 0.5),
   },
   headerBackground: {
-    background: theme.palette.background.front,
+    background: theme.palette.backgroundTurku.main,
   },
   suggestionSubtitle: {
     display: 'flex',

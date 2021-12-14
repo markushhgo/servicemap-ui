@@ -260,6 +260,8 @@ const translations = {
   'general.pageTitles.feedback': 'Feedback page',
   'general.pageTitles.area': 'Area page',
   'general.tools': 'Tools',
+  'general.pageTitles.mobilityPlatform': 'Mobility platform',
+  'general.pageTitles.mobilityPlatform.title': 'Mobility platform',
   // Readspeaker
   'general.readspeaker.buttonText': 'Listen',
   'general.readspeaker.title': 'Listen with ReadSpeaker webReader',
@@ -292,7 +294,7 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
-  'home.buttons.mobilityPlatform': 'Mobility Platform',
+  'home.buttons.mobilityPlatformSettings': 'Mobility Platform',
 
   // Location
   'location.notFound': 'Location not found',
@@ -565,6 +567,9 @@ const translations = {
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Mobility',
   'mobilityPlatform.menu.subtitle': 'Settings',
+  'mobilityPlatform.menu.title.walk': 'Walking',
+  'mobilityPlatform.menu.title.bicycle': 'Bicycle',
+  'mobilityPlatform.menu.title.car': 'Car',
   'mobilityPlatform.menu.showChargingStations': 'Charging stations',
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',

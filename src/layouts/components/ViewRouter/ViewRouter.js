@@ -15,6 +15,7 @@ import DivisionView from '../../../views/DivisionView';
 import InfoView from '../../../views/InfoView';
 import ExtendedData from '../../../views/UnitView/components/ExtendedData';
 import AreaView from '../../../views/AreaView';
+import MobilitySettingsView from '../../../views/MobilitySettingsView';
 import { ErrorTrigger } from '../../../components';
 
 const TitleWrapper = ({ children, messageId }) => (
@@ -169,6 +170,14 @@ const Area = () => (
   </TitleWrapper>
 );
 
+const MobilityPlatform = () => (
+  <TitleWrapper messageId="general.pageTitles.mobilityPlatform">
+    <PageWrapper headMsgId="general.pageTitles.mobilityPlatform.title" page="mobilityPlatform">
+      <MobilitySettingsView />
+    </PageWrapper>
+  </TitleWrapper>
+);
+
 class ViewRouter extends React.Component {
   constructor(props) {
     super(props);
@@ -203,6 +212,7 @@ class ViewRouter extends React.Component {
           )}
         />
         <Route path="/:lng/info/:page?" component={Info} />
+        <Route path="/:lng/mobility" component={MobilityPlatform} />
         <Route exact path="/:lng/" component={Home} />
         <Route render={props => <ErrorTrigger error="badUrl" />} />
       </Switch>

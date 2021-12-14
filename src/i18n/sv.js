@@ -278,6 +278,8 @@ const translations = {
   'general.search': 'Sök',
   'general.time.short': 'kl.',
   'general.tools': 'Verktyg',
+  'general.pageTitles.mobilityPlatform': 'Rörlighet',
+  'general.pageTitles.mobilityPlatform.title': 'Rörlighet',
   // Readspeaker
   'general.readspeaker.buttonText': 'Lyssna', // TODO: verify
   'general.readspeaker.title': 'Lyssna med ReadSpeaker webReader', // TODO: verify
@@ -292,7 +294,7 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
-  'home.buttons.mobilityPlatform': 'Mobilitetsplattform',
+  'home.buttons.mobilityPlatformSettings': 'Mobilitetsplattform',
 
   // Location
   'location.notFound': 'Positionen hittades inte',
@@ -566,6 +568,9 @@ const translations = {
   // Mobility Platform
   'mobilityPlatform.menu.title': 'Mobilitets',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
+  'mobilityPlatform.menu.title.walk': 'Gående',
+  'mobilityPlatform.menu.title.bicycle': 'Cykling',
+  'mobilityPlatform.menu.title.car': 'Bilismen',
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
@@ -578,7 +583,7 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
-  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+  'mobilityPlatform.content.chargersTitle': 'Laddplats',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',
