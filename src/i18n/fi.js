@@ -568,7 +568,7 @@ const translations = {
 
   'alert.close': 'Sulje ilmoitus',
 
-  // Mobility Platform
+  // Mobility Platform of Turku
   'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
   'mobilityPlatform.menu.title.walk': 'Kävely',
@@ -608,6 +608,10 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carModel': 'Auton malli',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+  'mobilityPlatform.info.ecoCounter': 'Tähän tietoa laskentapisteistä.',
+  'mobilityPlatform.info.bicycleStands': 'Pyöräparkit ovat Turun kaupungin ylläpitämiä. Tähän lisää tietoa.',
+  'mobilityPlatform.info.chargingStations': 'Tähän tietoa sähkölatauspisteistä.',
+  'mobilityPlatform.info.gasFillingStations': 'Tähän tietoa kaasutankkausasemista.',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
