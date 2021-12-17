@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Typography, Link } from '@material-ui/core';
@@ -10,12 +10,21 @@ import useLocaleText from '../../../../utils/useLocaleText';
 const Description = ({ unit, classes }) => {
   const getLocaleText = useLocaleText();
 
+  // Custom state for this, because bicycle stand description value evaluates to false and extra fields won't render
+  const [isBicycleStand, setIsBicycleStand] = useState(false);
+
   const additionalInfo = [
     ...unitSectionFilter(unit.connections, 'OTHER_INFO'),
     ...unitSectionFilter(unit.connections, 'TOPICAL'),
   ];
 
-  if (unit.description || additionalInfo.length) {
+  useEffect(() => {
+    if (unit.services[0].id === 40000) {
+      setIsBicycleStand(true);
+    }
+  }, [unit]);
+
+  if (unit.description || additionalInfo.length || isBicycleStand) {
     return (
       <div>
         {/* Description */}
@@ -32,6 +41,7 @@ const Description = ({ unit, classes }) => {
           <DescriptionExtraText
             extra={unit.extra}
             chargers={unit.extra.chargers}
+            serviceId={unit.services[0].id}
             title={<FormattedMessage id="unit.description" />}
             titleComponent="h4"
           />

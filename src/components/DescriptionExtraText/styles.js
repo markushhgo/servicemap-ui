@@ -10,6 +10,10 @@ export default theme => ({
     margin: theme.spacing(2),
     whiteSpace: 'pre-line',
   },
+  textItem: {
+    marginBottom: theme.spacing(1),
+    whiteSpace: 'pre-line',
+  },
   subtitle: {
     margin: theme.spacing(2),
   },
