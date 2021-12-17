@@ -295,7 +295,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
-  'home.buttons.mobilitySettings': 'Liikkuminen',
+  'home.buttons.mobilityPlatformSettings': 'Liikkuminen',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -597,6 +597,7 @@ const translations = {
   'mobilityPlatform.content.url': 'Lisätietoja',
   'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
   'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',

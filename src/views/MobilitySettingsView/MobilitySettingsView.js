@@ -248,28 +248,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
         </FormControl>
       </div>
       {showEcoCounter ? (
-        <InfoTextBox infoText={intl.formatMessage({
-          id: 'mobilityPlatform.info.ecoCounter',
-        })}
-        />
+        <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" />
       ) : null}
       {showBicycleStands ? (
-        <InfoTextBox infoText={intl.formatMessage({
-          id: 'mobilityPlatform.info.bicycleStands',
-        })}
-        />
+        <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" />
       ) : null}
       {showChargingStations ? (
-        <InfoTextBox infoText={intl.formatMessage({
-          id: 'mobilityPlatform.info.chargingStations',
-        })}
-        />
+        <InfoTextBox infoText="mobilityPlatform.info.chargingStations" />
       ) : null}
       {showGasFillingStations ? (
-        <InfoTextBox infoText={intl.formatMessage({
-          id: 'mobilityPlatform.info.gasFillingStations',
-        })}
-        />
+        <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" />
       ) : null}
     </div>
   );

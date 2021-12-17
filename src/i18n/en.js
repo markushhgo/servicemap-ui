@@ -295,7 +295,7 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
-  'home.buttons.mobilityPlatform': 'Mobility Platform',
+  'home.buttons.mobilityPlatformSettings': 'Mobility Platform',
 
   // Location
   'location.notFound': 'Location not found',
@@ -590,6 +590,7 @@ const translations = {
   'mobilityPlatform.content.url': 'More information',
   'mobilityPlatform.content.gfsTitle': 'Gas filling station',
   'mobilityPlatform.content.gfsType': 'Gas filling station type',
+  'mobilityPlatform.content.chargersTitle': 'Charging stations',
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
