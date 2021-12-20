@@ -7,6 +7,7 @@ import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import TitleBar from '../../components/TitleBar';
+import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -23,6 +24,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations,
     showEcoCounter,
     setShowEcoCounter,
+    showBicycleStands,
+    setShowBicycleStands,
   } = useContext(MobilityPlatformContext);
 
   const showAllChargingStations = () => {
@@ -49,6 +52,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const showBicycleStandLocations = () => {
+    if (!showBicycleStands) {
+      setShowBicycleStands(true);
+    } else {
+      setShowBicycleStands(false);
+    }
+  };
+
   const walkingControlTypes = [
     {
       type: 'ecoCounterStations',
@@ -64,6 +75,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
       onChangeValue: showAllEcoCounterStations,
+    },
+    {
+      type: 'bicycleStands',
+      msgId: 'mobilityPlatform.menu.showBicycleStands',
+      checkedValue: showBicycleStands,
+      onChangeValue: showBicycleStandLocations,
     },
   ];
 
@@ -230,6 +247,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
+      {showEcoCounter ? (
+        <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" />
+      ) : null}
+      {showBicycleStands ? (
+        <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" />
+      ) : null}
+      {showChargingStations ? (
+        <InfoTextBox infoText="mobilityPlatform.info.chargingStations" />
+      ) : null}
+      {showGasFillingStations ? (
+        <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" />
+      ) : null}
     </div>
   );
 };

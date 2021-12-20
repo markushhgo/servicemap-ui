@@ -9,7 +9,11 @@ const styles = theme => ({
     textTransform: 'capitalize',
     justifyContent: 'flex-start',
     borderRadius: '0',
-    border: 'none',
+    borderTop: 'none',
+    borderBottom: '1px solid #000000',
+    '&:hover': {
+      background: 'rgba(230, 230, 230, 255)',
+    },
   },
   buttonActive: {
     width: '100%',
@@ -17,18 +21,20 @@ const styles = theme => ({
     textTransform: 'capitalize',
     justifyContent: 'flex-start',
     borderRadius: '0',
-    border: 'none',
+    borderBottom: '1px solid #6f7276',
+    borderTop: '1px solid #6f7276',
     background: '#46484b',
     color: '#fff',
     '&:hover': {
       color: '#fff',
-      background: '#46484b',
-      border: 'none',
+      background: '#3e3f42',
+      borderBottom: '1px solid #6f7276',
+      borderTop: '1px solid #6f7276',
     },
   },
-  buttonContainer: {
+  /* buttonContainer: {
     borderBottom: '1px solid #000000',
-  },
+  }, */
   formControl: {
     width: '100%',
   },

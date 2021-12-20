@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable quote-props */
 const translations = {
   'app.title': 'Palvelukartta',
@@ -500,6 +501,9 @@ const translations = {
   'services.category.select': 'Kaikki',
   'services.category.open': 'Avaa kategoria',
   'services.tree.level': 'Taso',
+  'services.description.extra.cgsTitle': 'Sähkölatauspisteet',
+  'services.description.extra.gfsTitle': 'Kaasun tankkausasema',
+  'services.description.extra.bisTitle': 'Polkupyöräparkki',
 
   // Settings
   'settings': 'Asetukset',
@@ -568,7 +572,8 @@ const translations = {
 
   'alert.close': 'Sulje ilmoitus',
 
-  // Mobility Platform
+  // Mobility Platform of Turku
+  // Menu
   'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
   'mobilityPlatform.menu.title.walk': 'Kävely',
@@ -577,16 +582,47 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
+  'mobilityPlatform.menu.showBicycle': 'Pyöräreitit',
+  'mobilityPlatform.menu.showBicycleMain': 'Pääpyöräreitit',
+  'mobilityPlatform.menu.showBicycleLocal': 'Paikallispyöräreitit',
+  'mobilityPlatform.menu.showBicycleLanes': 'Laatuväylät',
+  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
+  'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
+
+  // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
   'mobilityPlatform.content.url': 'Lisätietoja',
   'mobilityPlatform.content.gfsTitle': 'Kaasun tankkausasema',
   'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
+  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
-  'mobilityPlatform.content.chargersTitle': 'Latausasemat',
+  'mobilityPlatform.content.bicycleStands.model': 'Malli',
+  'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
+  'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Pyörän voi runkolukita',
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Pyörää ei voi runkolukita',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun kaupungin ylläpitämä.',
+  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
+  'mobilityPlatform.content.rentalCars.address': 'Osoite',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Automerkki',
+  'mobilityPlatform.content.rentalCars.carModel': 'Auton malli',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+
+  // Info text
+  'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
+  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
+  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
+  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne -sivuston tietoihin.',
+  'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
+  'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

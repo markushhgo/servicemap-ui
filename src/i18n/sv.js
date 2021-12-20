@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable quote-props */
 const translations = {
   'app.title': 'Servicekarta',
@@ -497,6 +498,9 @@ const translations = {
   'services.category.select': 'Alla',
   'services.category.open': 'Öppna kategori',
   'services.tree.level': 'Nivå',
+  'services.description.extra.cgsTitle': 'Laddplats',
+  'services.description.extra.gfsTitle': 'Gas station',
+  'services.description.extra.bisTitle': 'Cykelställning',
 
   // Settings
   'settings': 'Inställningar',
@@ -565,7 +569,8 @@ const translations = {
 
   'alert.close': 'Stäng meddelande',
 
-  // Mobility Platform
+  // Mobility Platform of Turku
+  // Menu
   'mobilityPlatform.menu.title': 'Mobilitets',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
   'mobilityPlatform.menu.title.walk': 'Gående',
@@ -574,16 +579,44 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
+  'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
+  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
+  'mobilityPlatform.menu.showBicycleStands': 'Cykelställning',
+
+  // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av laddplats',
   'mobilityPlatform.content.url': 'Mer information',
   'mobilityPlatform.content.gfsTitle': 'Gas station',
   'mobilityPlatform.content.gfsType': 'Typ av gas station',
+  'mobilityPlatform.content.chargersTitle': 'Laddplats',
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
-  'mobilityPlatform.content.chargersTitle': 'Laddplats',
+  'mobilityPlatform.content.bicycleStands.model': 'Model',
+  'mobilityPlatform.content.bicycleStands.covered': 'Cykelställning är täckt',
+  'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställning är inte täckt',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Hull can be locked',
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Hull can not be locked',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun ylläpitämä.',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.address': 'Address',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+
+  // Info text
+  'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',
+  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
+  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet.',
+  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat.',
+  'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
+  'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

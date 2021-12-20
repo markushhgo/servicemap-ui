@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable quote-props */
 const translations = {
   'app.title': 'Service map',
@@ -496,6 +497,9 @@ const translations = {
   'services.category.select': 'All',
   'services.category.open': 'Open category',
   'services.tree.level': 'Level',
+  'services.description.extra.cgsTitle': 'Charging stations',
+  'services.description.extra.gfsTitle': 'Gas filling station',
+  'services.description.extra.bisTitle': 'Bicycle stand',
 
   // Settings
   'settings': 'Settings',
@@ -564,7 +568,8 @@ const translations = {
 
   'alert.close': 'Close the notification',
 
-  // Mobility Platform
+  // Mobility Platform of Turku
+  // Menu
   'mobilityPlatform.menu.title': 'Mobility',
   'mobilityPlatform.menu.subtitle': 'Settings',
   'mobilityPlatform.menu.title.walk': 'Walking',
@@ -573,16 +578,45 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Charging stations',
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
+  'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
+  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
+  'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
+
+  // Content
   'mobilityPlatform.content.cgsTitle': 'Charging station',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'Charging station type',
   'mobilityPlatform.content.url': 'More information',
   'mobilityPlatform.content.gfsTitle': 'Gas filling station',
   'mobilityPlatform.content.gfsType': 'Gas filling station type',
+  'mobilityPlatform.content.chargersTitle': 'Charging stations',
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
-  'mobilityPlatform.content.chargersTitle': 'Chargers',
+  'mobilityPlatform.content.bicycleStands.model': 'Model',
+  'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
+  'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Bicycle hull can be locked',
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Bicycle hull can not be locked',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by City of Turku.',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.address': 'Address',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.available': 'Car is available',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Car is reserved',
+
+  // Info text
+  'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',
+  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
+  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet.',
+  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat.',
+  'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
+  'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
+
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',
