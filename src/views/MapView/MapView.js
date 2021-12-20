@@ -84,15 +84,6 @@ const MapView = (props) => {
   const getAddressNavigatorParams = useNavigationParams();
   const districtUnitsFetch = useSelector(state => state.districts.unitFetch);
 
-  // By default does not display Turku specific content
-  const [isTurkuTheme, setIsTurkuTheme] = useState(false);
-
-  useEffect(() => {
-    if (global.window) {
-      setIsTurkuTheme(window.nodeEnvSettings.THEME_PKG);
-    }
-  }, []);
-
   // This unassigned selector is used to trigger re-render after events are fetched
   useSelector(state => getSelectedUnitEvents(state));
 
@@ -428,14 +419,10 @@ const MapView = (props) => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
-          {isTurkuTheme ? (
-            <>
-              <ChargerStationMarkers />
-              <GasFillingStationMarkers />
-              <EcoCounterMarkers />
-              <BicycleStands />
-            </>
-          ) : null}
+          <ChargerStationMarkers />
+          <GasFillingStationMarkers />
+          <EcoCounterMarkers />
+          <BicycleStands />
         </MapContainer>
       </>
     );

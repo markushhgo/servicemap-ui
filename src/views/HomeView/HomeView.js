@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Map } from '@material-ui/icons';
 import { SearchBar } from '../../components';
@@ -14,14 +14,6 @@ const HomeView = (props) => {
   const {
     classes, toggleSettings, navigator, userLocation,
   } = props;
-
-  const [isTurkuTheme, setIsTurkuTheme] = useState(false);
-
-  useEffect(() => {
-    if (global.window) {
-      setIsTurkuTheme(window.nodeEnvSettings.THEME_PKG);
-    }
-  }, []);
 
   const getLocaleText = useLocaleText();
   const getAddressNavigatorParams = useNavigationParams();
@@ -55,14 +47,12 @@ const HomeView = (props) => {
             subtitleID={subtitleID && subtitleID}
           />
           {/* Turku mobility platform settings */}
-          {isTurkuTheme ? (
-            <PaperButton
-              messageID="home.buttons.mobilityPlatformSettings"
-              icon={getIcon('mobilityPlatformIcon')}
-              link
-              onClick={() => navigator.push('mobilityPlatform')}
-            />
-          ) : null}
+          <PaperButton
+            messageID="home.buttons.mobilityPlatformSettings"
+            icon={getIcon('mobilityPlatformIcon')}
+            link
+            onClick={() => navigator.push('mobilityPlatform')}
+          />
           <PaperButton
             messageID="home.buttons.services"
             icon={getIcon('serviceList')}
