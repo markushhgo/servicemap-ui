@@ -193,6 +193,12 @@ const TopBar = (props) => {
         navigator.push('info');
         break;
 
+      case 'mobilityPlatform':
+        if (currentPage !== 'mobilityPlatform') {
+          navigator.push('mobilityPlatform');
+        }
+        break;
+
       default:
         break;
     }

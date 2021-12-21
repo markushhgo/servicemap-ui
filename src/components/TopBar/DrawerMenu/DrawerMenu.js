@@ -43,6 +43,15 @@ const DrawerMenu = (props) => {
         }
       },
     },
+    { // Mobility platform button
+      name: intl.formatMessage({ id: 'home.buttons.mobilityPlatformSettings' }),
+      // active: currentPage === 'serviceTree' && !settingsOpen,
+      icon: getIcon('mobilityPlatformIcon'),
+      clickEvent: () => {
+        handleNavigation('mobilityPlatform');
+        toggleDrawerMenu();
+      },
+    },
     { // Service list button
       name: intl.formatMessage({ id: 'home.buttons.services' }),
       // active: currentPage === 'serviceTree' && !settingsOpen,
