@@ -26,6 +26,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showMainBicycleRoutes,
+    setShowMainBicycleRoutes,
+    showQualityBicycleRoutes,
+    setShowQualityBicycleRoutes,
   } = useContext(MobilityPlatformContext);
 
   const showAllChargingStations = () => {
@@ -52,11 +56,27 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showBicycleStandLocations = () => {
+  const BicycleStandsToggle = () => {
     if (!showBicycleStands) {
       setShowBicycleStands(true);
     } else {
       setShowBicycleStands(false);
+    }
+  };
+
+  const MainBicycleRoutesToggle = () => {
+    if (!showMainBicycleRoutes) {
+      setShowMainBicycleRoutes(true);
+    } else {
+      setShowMainBicycleRoutes(false);
+    }
+  };
+
+  const QualityBicycleRoutesToggle = () => {
+    if (!showQualityBicycleRoutes) {
+      setShowQualityBicycleRoutes(true);
+    } else {
+      setShowQualityBicycleRoutes(false);
     }
   };
 
@@ -80,7 +100,19 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
-      onChangeValue: showBicycleStandLocations,
+      onChangeValue: BicycleStandsToggle,
+    },
+    {
+      type: 'mainBicycleRoutes',
+      msgId: 'mobilityPlatform.menu.showMainBicycleRoutes',
+      checkedValue: showMainBicycleRoutes,
+      onChangeValue: MainBicycleRoutesToggle,
+    },
+    {
+      type: 'qualityBicycleRoutes',
+      msgId: 'mobilityPlatform.menu.showQualityBicycleRoutes',
+      checkedValue: showQualityBicycleRoutes,
+      onChangeValue: QualityBicycleRoutesToggle,
     },
   ];
 

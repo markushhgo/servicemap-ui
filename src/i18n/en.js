@@ -582,6 +582,9 @@ const translations = {
   'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
+  'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
+  'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
+  'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Charging station',

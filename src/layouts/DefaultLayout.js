@@ -99,6 +99,8 @@ const DefaultLayout = (props) => {
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
+  const [showMainBicycleRoutes, setShowMainBicycleRoutes] = useState(false);
+  const [showQualityBicycleRoutes, setShowQualityBicycleRoutes] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -186,6 +188,10 @@ const DefaultLayout = (props) => {
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
+                      showMainBicycleRoutes,
+                      setShowMainBicycleRoutes,
+                      showQualityBicycleRoutes,
+                      setShowQualityBicycleRoutes,
                     }}
                   >
                     <ViewRouter />
@@ -202,6 +208,8 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
+                    showMainBicycleRoutes,
+                    showQualityBicycleRoutes,
                   }}
                 >
                   <MapView
