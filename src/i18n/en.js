@@ -585,6 +585,7 @@ const translations = {
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
   'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
   'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
+  'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Charging station',
@@ -611,6 +612,11 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carModel': 'Car model',
   'mobilityPlatform.content.rentalCars.available': 'Car is available',
   'mobilityPlatform.content.rentalCars.notAvailable': 'Car is reserved',
+  'mobilityPlatform.content.streetMaintenance': 'Active maintenance',
+  'mobilityPlatform.content.streetMaintenance.title': 'Maintenance work',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snowplowing',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sand spreading',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'De-icing',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',

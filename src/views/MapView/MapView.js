@@ -36,6 +36,7 @@ import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFilli
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
 import BicycleRoutes from '../../components/MobilityPlatform/BicycleRoutes';
+import SnowPlows from '../../components/MobilityPlatform/SnowPlows';
 
 if (global.window) {
   require('leaflet');
@@ -425,6 +426,7 @@ const MapView = (props) => {
           <EcoCounterMarkers />
           <BicycleStands />
           <BicycleRoutes />
+          <SnowPlows />
         </MapContainer>
       </>
     );

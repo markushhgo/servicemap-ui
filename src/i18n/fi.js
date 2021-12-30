@@ -589,6 +589,7 @@ const translations = {
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Pääpyöräreitit',
   'mobilityPlatform.menu.showLocalBicycleRoutes': 'Paikallispyöräreitit',
   'mobilityPlatform.menu.showQualityBicycleRoutes': 'Laatuväylät',
+  'mobilityPlatform.menu.showSnowPlows': 'Talvikunnossapito',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -615,6 +616,11 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carModel': 'Auton malli',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+  'mobilityPlatform.content.streetMaintenance': 'Tekeillä oleva työ',
+  'mobilityPlatform.content.streetMaintenance.title': 'Kunnossapitotyö',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Auraus',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Hiekoitus',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Suolaus',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',

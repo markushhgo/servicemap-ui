@@ -569,6 +569,7 @@ const translations = {
 
   'alert.close': 'Stäng meddelande',
 
+  // TODO update translations
   // Mobility Platform of Turku
   // Menu
   'mobilityPlatform.menu.title': 'Mobilitets',
@@ -586,6 +587,7 @@ const translations = {
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
   'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
   'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
+  'mobilityPlatform.menu.showSnowPlows': 'Talvikunnossapito',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
@@ -606,12 +608,17 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun ylläpitämä.',
-  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.title': 'Hyrbil',
   'mobilityPlatform.content.rentalCars.address': 'Address',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
-  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Biltillverkare',
+  'mobilityPlatform.content.rentalCars.carModel': 'Bilmodell',
+  'mobilityPlatform.content.rentalCars.available': 'Bilen är tillgänglig',
+  'mobilityPlatform.content.rentalCars.notAvailable': 'Bilen är inte tillgänglig',
+  'mobilityPlatform.content.streetMaintenance': 'Aktivt underhåll',
+  'mobilityPlatform.content.streetMaintenance.title': 'Underhållsarbete',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',
