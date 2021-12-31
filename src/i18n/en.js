@@ -617,6 +617,7 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snowplowing',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sand spreading',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'De-icing',
+  'mobilityPlatform.content.streetMaintenance.time': 'Time',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',

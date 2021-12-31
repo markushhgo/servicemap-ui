@@ -621,6 +621,7 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Auraus',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Hiekoitus',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Suolaus',
+  'mobilityPlatform.content.streetMaintenance.time': 'Aika',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',

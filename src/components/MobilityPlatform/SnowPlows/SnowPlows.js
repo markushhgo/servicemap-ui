@@ -44,6 +44,12 @@ const SnowPlows = ({ classes, intl }) => {
     }
   };
 
+  const formatTime = (inputTimeStamp) => {
+    const outputTimeStamp = inputTimeStamp.split(' ');
+    const timeArr = outputTimeStamp[1].split(':');
+    return `${timeArr[0]}:${timeArr[1]}`;
+  };
+
   return (
     <>
       {showSnowPlows ? (
@@ -69,6 +75,14 @@ const SnowPlows = ({ classes, intl }) => {
                           :
                           {' '}
                           {formatEvent(item.last_location.events[0])}
+                        </Typography>
+                        <Typography>
+                          <strong>
+                            {intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.time' })}
+                          </strong>
+                          :
+                          {' '}
+                          {formatTime(item.last_location.timestamp)}
                         </Typography>
                       </div>
                     </Popup>

@@ -587,7 +587,7 @@ const translations = {
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
   'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
   'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
-  'mobilityPlatform.menu.showSnowPlows': 'Talvikunnossapito',
+  'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
@@ -619,6 +619,7 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
+  'mobilityPlatform.content.streetMaintenance.time': 'Tid',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',
