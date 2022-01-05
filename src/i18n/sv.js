@@ -586,6 +586,7 @@ const translations = {
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
   'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
   'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
+  'mobilityPlatform.menu.showTravelBicycleRoutes': 'Matkailureitit',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',

@@ -32,9 +32,36 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  /* buttonContainer: {
+  buttonSmall: {
+    width: '100%',
+    height: '35px',
+    background: 'rgba(245, 245, 245, 255)',
+    textTransform: 'capitalize',
+    justifyContent: 'center',
+    borderRadius: '0',
+    borderTop: 'none',
     borderBottom: '1px solid #000000',
-  }, */
+    '&:hover': {
+      background: 'rgba(230, 230, 230, 255)',
+    },
+  },
+  buttonSmallActive: {
+    width: '100%',
+    height: '35px',
+    textTransform: 'capitalize',
+    justifyContent: 'center',
+    borderRadius: '0',
+    borderBottom: '1px solid #6f7276',
+    borderTop: '1px solid #6f7276',
+    background: '#46484b',
+    color: '#fff',
+    '&:hover': {
+      color: '#fff',
+      background: '#3e3f42',
+      borderBottom: '1px solid #6f7276',
+      borderTop: '1px solid #6f7276',
+    },
+  },
   formControl: {
     width: '100%',
   },
