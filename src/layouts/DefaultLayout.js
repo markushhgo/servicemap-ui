@@ -99,10 +99,8 @@ const DefaultLayout = (props) => {
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
-  const [showMainBicycleRoutes, setShowMainBicycleRoutes] = useState(false);
-  const [showQualityBicycleRoutes, setShowQualityBicycleRoutes] = useState(false);
-  const [showTravelBicycleRoutes, setShowTravelBicycleRoutes] = useState(false);
-  const [activeRoute, setActiveRoute] = useState(null);
+  const [showCultureRoutes, setShowCultureRoutes] = useState(false);
+  const [cultureRouteId, setCultureRouteId] = useState();
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -190,12 +188,10 @@ const DefaultLayout = (props) => {
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
-                      showMainBicycleRoutes,
-                      setShowMainBicycleRoutes,
-                      showQualityBicycleRoutes,
-                      setShowQualityBicycleRoutes,
-                      activeRoute,
-                      setActiveRoute,
+                      showCultureRoutes,
+                      setShowCultureRoutes,
+                      cultureRouteId,
+                      setCultureRouteId,
                     }}
                   >
                     <ViewRouter />
@@ -212,10 +208,8 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
-                    showMainBicycleRoutes,
-                    showQualityBicycleRoutes,
-                    showTravelBicycleRoutes,
-                    activeRoute,
+                    showCultureRoutes,
+                    cultureRouteId,
                   }}
                 >
                   <MapView

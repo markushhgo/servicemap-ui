@@ -583,10 +583,7 @@ const translations = {
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelställning',
-  'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
-  'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
-  'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
-  'mobilityPlatform.menu.showTravelBicycleRoutes': 'Matkailureitit',
+  'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',

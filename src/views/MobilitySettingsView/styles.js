@@ -35,14 +35,14 @@ const styles = theme => ({
   buttonSmall: {
     width: '100%',
     height: '35px',
-    background: 'rgba(245, 245, 245, 255)',
+    background: 'rgba(230, 230, 230, 255)',
     textTransform: 'capitalize',
     justifyContent: 'center',
     borderRadius: '0',
     borderTop: 'none',
     borderBottom: '1px solid #000000',
     '&:hover': {
-      background: 'rgba(230, 230, 230, 255)',
+      background: 'rgba(222, 222, 222, 255)',
     },
   },
   buttonSmallActive: {
@@ -88,6 +88,9 @@ const styles = theme => ({
     width: '40px',
     height: '40px',
     marginRight: '0.8rem',
+  },
+  paragraph: {
+    padding: theme.spacing(2),
   },
 });
 

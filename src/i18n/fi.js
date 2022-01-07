@@ -583,13 +583,9 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
-  'mobilityPlatform.menu.showBicycle': 'Pyöräreitit',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
-  'mobilityPlatform.menu.showMainBicycleRoutes': 'Pääpyöräreitit',
-  'mobilityPlatform.menu.showLocalBicycleRoutes': 'Paikallispyöräreitit',
-  'mobilityPlatform.menu.showQualityBicycleRoutes': 'Laatuväylät',
-  'mobilityPlatform.menu.showTravelBicycleRoutes': 'Matkailureitit',
+  'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',

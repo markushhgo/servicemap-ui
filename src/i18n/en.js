@@ -579,13 +579,9 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
-  'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
-  'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
-  'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
-  'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
-  'mobilityPlatform.menu.showTravelBicycleRoutes': 'Travel routes',
+  'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Charging station',
