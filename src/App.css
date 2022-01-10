@@ -62,10 +62,6 @@
   width: 390px !important;
 }
 
-.culture-route-unit-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
-  width: 500px !important;
-}
-
 @media (min-width: 750px) {
   .charger-stations-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
     width: 350px !important;

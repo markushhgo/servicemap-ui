@@ -34,7 +34,7 @@ const styles = theme => ({
   },
   buttonSmall: {
     width: '100%',
-    height: '35px',
+    height: '40px',
     background: 'rgba(230, 230, 230, 255)',
     textTransform: 'capitalize',
     justifyContent: 'center',
@@ -47,7 +47,7 @@ const styles = theme => ({
   },
   buttonSmallActive: {
     width: '100%',
-    height: '35px',
+    height: '40px',
     textTransform: 'capitalize',
     justifyContent: 'center',
     borderRadius: '0',

@@ -14,7 +14,7 @@ const CultureRoutes = () => {
   const { Polyline } = global.rL;
 
   const blackOptions = { color: '#000000' };
-  // const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
+  const grayOptions = { color: '#e8e8e8' };
 
   useEffect(() => {
     fetchCultureRoutesGeometry(apiUrl, setCultureRoutes);
@@ -30,29 +30,31 @@ const CultureRoutes = () => {
     }
   }, [cultureRoutes, cultureRouteId]);
 
-  useEffect(() => {
-    console.log(cultureRouteId);
-  }, [cultureRouteId]);
-
   return (
     <>
-      {showCultureRoutes
-        && (
+      {showCultureRoutes && (
         <>
           <div>
             {activeCultureRoute && (
-            <Polyline
-              key={activeCultureRoute.id}
-              pathOptions={blackOptions}
-              positions={activeCultureRoute.geometry_coords}
-            />
+              <>
+                <Polyline
+                  pathOptions={blackOptions}
+                  weight={6}
+                  positions={activeCultureRoute.geometry_coords}
+                />
+                <Polyline
+                  pathOptions={grayOptions}
+                  weight={3}
+                  positions={activeCultureRoute.geometry_coords}
+                />
+              </>
             )}
           </div>
           <div>
             <CultureRouteUnits />
           </div>
         </>
-        )}
+      )}
     </>
   );
 };

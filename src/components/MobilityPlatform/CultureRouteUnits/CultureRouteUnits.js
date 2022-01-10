@@ -9,7 +9,7 @@ const CultureRouteUnits = ({ classes }) => {
   const [cultureRouteUnits, setCultureRouteUnits] = useState(null);
   const [activeCultureRouteUnits, setActiveCultureRouteUnits] = useState(null);
 
-  const { showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
+  const { cultureRouteId } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -39,27 +39,20 @@ const CultureRouteUnits = ({ classes }) => {
 
   return (
     <>
-      {showCultureRoutes && (
-        <>
-          <div>
-            {activeCultureRouteUnits
+      <div>
+        {activeCultureRouteUnits
               && activeCultureRouteUnits.map(item => (
                 <Marker key={item.id} icon={customIcon} position={[item.geometry_coords.lat, item.geometry_coords.lon]}>
-                  <Popup className="culture-route-unit-popup" maxHeight={400}>
+                  <Popup>
                     <div className={classes.popupInner}>
                       <div className={classes.subtitle}>
-                        <Typography variant="subtitle1">{item.name}</Typography>
-                      </div>
-                      <div className={classes.paragraph}>
-                        <Typography variant="body2">{item.description_fi}</Typography>
+                        <Typography variant="body2">{item.name}</Typography>
                       </div>
                     </div>
                   </Popup>
                 </Marker>
               ))}
-          </div>
-        </>
-      )}
+      </div>
     </>
   );
 };

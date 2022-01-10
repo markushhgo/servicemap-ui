@@ -80,6 +80,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       setOpenCultureRouteList(false);
     }
     setCultureRouteDesc(null);
+    setShowCultureRoutes(false);
   };
 
   const SetCultureRouteState = (description, itemId) => {
@@ -170,7 +171,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
             id: msgId,
           })}
         </Typography>
-                    )}
+      )}
       control={<Switch checked={checkedValue} onChange={onChangeValue} />}
       className={classes.formLabel}
     />
@@ -193,9 +194,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const descriptionComponent = (
     <div className={classes.paragraph}>
-      <Typography variant="body2">
-        {cultureRouteDesc}
-      </Typography>
+      <Typography variant="body2">{cultureRouteDesc}</Typography>
     </div>
   );
 
@@ -215,9 +214,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
               {openWalkSettings
-                && walkingControlTypes.map(item => (
-                  formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue)
-                ))}
+                && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               {openCultureRouteList
                 && cultureRouteList.map(item => (
                   <Button
@@ -226,25 +223,24 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     className={classes.buttonSmall}
                     onClick={() => SetCultureRouteState(item.description, item.id)}
                   >
-                    <Typography variant="body2">
-                      {item.name}
-                    </Typography>
+                    <Typography variant="body2">{item.name}</Typography>
                   </Button>
                 ))}
               <div className={classes.buttonContainer}>
-                {buttonComponent(bicycleSettingsToggle, openBicycleSettings, iconBicycle, 'mobilityPlatform.menu.title.bicycle')}
+                {buttonComponent(
+                  bicycleSettingsToggle,
+                  openBicycleSettings,
+                  iconBicycle,
+                  'mobilityPlatform.menu.title.bicycle',
+                )}
               </div>
               {openBicycleSettings
-                && bicycleControlTypes.map(item => (
-                  formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue)
-                ))}
+                && bicycleControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
               {openCarSettings
-                && carControlTypes.map(item => (
-                  formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue)
-                ))}
+                && carControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
             </>
           </FormGroup>
         </FormControl>
