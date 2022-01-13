@@ -20,6 +20,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [currentLanguage, setCurrentLanguage] = useState('fi');
 
   const {
     showChargingStations,
@@ -30,7 +32,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
-    showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
   } = useContext(MobilityPlatformContext);
@@ -40,6 +41,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
   }, [setCultureRouteList]);
+
+  // Set current language based on user selection
+  useEffect(() => {
+    if (intl.locale === 'en') {
+      setCurrentLanguage('en');
+    } else if (intl.locale === 'sv') {
+      setCurrentLanguage('sv');
+    } else setCurrentLanguage('fi');
+  }, [intl.locale]);
 
   const showAllChargingStations = () => {
     if (!showChargingStations) {
@@ -83,14 +93,31 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes(false);
   };
 
-  const SetCultureRouteState = (description, itemId) => {
-    setCultureRouteDesc(description);
-    setCultureRouteId(itemId);
-    if (!showCultureRoutes) {
-      setShowCultureRoutes(true);
+  const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
+    if (currentLanguage === 'sv' && descriptionSv !== null) {
+      setCultureRouteDesc(descriptionSv);
+    } else if (currentLanguage === 'en' && descriptionEn !== null) {
+      setCultureRouteDesc(descriptionEn);
     } else {
-      setShowCultureRoutes(false);
+      setCultureRouteDesc(descriptionFi);
     }
+  };
+
+  const SetCultureRouteState = (descriptionSv, descriptionEn, descriptionFi, itemId, index) => {
+    selectRouteDescription(descriptionSv, descriptionEn, descriptionFi);
+    setCultureRouteId(itemId);
+    setActiveIndex(index);
+    setShowCultureRoutes(true);
+  };
+
+  const selectRouteName = (routeNameFi, routeNameEn, routeNameSv) => {
+    if (currentLanguage === 'sv' && routeNameSv !== null) {
+      return routeNameSv;
+    }
+    if (currentLanguage === 'en' && routeNameEn !== null) {
+      return routeNameEn;
+    }
+    return routeNameFi;
   };
 
   const walkingControlTypes = [
@@ -216,14 +243,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               {openCultureRouteList
-                && cultureRouteList.map(item => (
+                && cultureRouteList.map((item, i) => (
                   <Button
                     key={item.id}
                     variant="outlined"
-                    className={classes.buttonSmall}
-                    onClick={() => SetCultureRouteState(item.description, item.id)}
+                    className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+                    onClick={() => SetCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)
+                    }
                   >
-                    <Typography variant="body2">{item.name}</Typography>
+                    <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
                   </Button>
                 ))}
               <div className={classes.buttonContainer}>
