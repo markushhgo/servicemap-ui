@@ -9,7 +9,7 @@ const CultureRouteUnits = ({ classes }) => {
   const [cultureRouteUnits, setCultureRouteUnits] = useState(null);
   const [activeCultureRouteUnits, setActiveCultureRouteUnits] = useState(null);
 
-  const { cultureRouteId } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, cultureRouteId } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -22,8 +22,10 @@ const CultureRouteUnits = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchCultureRoutesUnits(apiUrl, setCultureRouteUnits);
-  }, [setCultureRouteUnits]);
+    if (openMobilityPlatform) {
+      fetchCultureRoutesUnits(apiUrl, setCultureRouteUnits);
+    }
+  }, [openMobilityPlatform, setCultureRouteUnits]);
 
   useEffect(() => {
     if (cultureRouteUnits !== null) {

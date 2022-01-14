@@ -24,6 +24,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [currentLanguage, setCurrentLanguage] = useState('fi');
 
   const {
+    openMobilityPlatform,
+    setOpenMobilityPlatform,
     showChargingStations,
     setShowChargingStations,
     showGasFillingStations,
@@ -39,8 +41,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   useEffect(() => {
-    fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
-  }, [setCultureRouteList]);
+    setOpenMobilityPlatform(true);
+  }, [setOpenMobilityPlatform]);
+
+  useEffect(() => {
+    if (openMobilityPlatform) {
+      fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
+    }
+  }, [openMobilityPlatform, setCultureRouteList]);
 
   // Set current language based on user selection
   useEffect(() => {
@@ -243,7 +251,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               {openCultureRouteList
-                && cultureRouteList.map((item, i) => (
+                && cultureRouteList && cultureRouteList.map((item, i) => (
                   <Button
                     key={item.id}
                     variant="outlined"
@@ -253,7 +261,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   >
                     <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
                   </Button>
-                ))}
+              ))}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
