@@ -31,13 +31,3 @@ export const fetchBicycleStandsData = async (apiUrl, setStations) => {
     console.warn(err.message);
   }
 };
-
-export const fetchBicycleRoutesData = async (apiUrl, networkName, setStations) => {
-  try {
-    const response = await fetch(`${apiUrl}/bicycle_networkparts?page_size=10000&network_name=${networkName}&latlon=true`);
-    const jsonData = await response.json();
-    setStations(jsonData.results);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
