@@ -603,12 +603,6 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun ylläpitämä.',
-  'mobilityPlatform.content.rentalCars.title': 'Rental car',
-  'mobilityPlatform.content.rentalCars.address': 'Address',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
-  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',

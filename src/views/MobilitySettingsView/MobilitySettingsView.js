@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
@@ -18,6 +18,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCarSettings, setOpenCarSettings] = useState(false);
 
   const {
+    setOpenMobilityPlatform,
     showChargingStations,
     setShowChargingStations,
     showGasFillingStations,
@@ -27,6 +28,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     showBicycleStands,
     setShowBicycleStands,
   } = useContext(MobilityPlatformContext);
+
+  useEffect(() => {
+    setOpenMobilityPlatform(true);
+  }, [setOpenMobilityPlatform]);
 
   const showAllChargingStations = () => {
     if (!showChargingStations) {
@@ -52,7 +57,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showBicycleStandLocations = () => {
+  const BicycleStandsToggle = () => {
     if (!showBicycleStands) {
       setShowBicycleStands(true);
     } else {
@@ -80,7 +85,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
-      onChangeValue: showBicycleStandLocations,
+      onChangeValue: BicycleStandsToggle,
     },
   ];
 
@@ -123,6 +128,36 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
+    <FormControlLabel
+      key={keyVal}
+      label={(
+        <Typography variant="body2">
+          {intl.formatMessage({
+            id: msgId,
+          })}
+        </Typography>
+      )}
+      control={<Switch checked={checkedValue} onChange={onChangeValue} />}
+      className={classes.formLabel}
+    />
+  );
+
+  const buttonComponent = (onClickFunc, settingState, iconName, translationId) => (
+    <Button
+      onClick={() => onClickFunc()}
+      variant="outlined"
+      className={settingState ? classes.buttonActive : classes.button}
+    >
+      <ReactSVG className={settingState ? `${classes.iconActive}` : `${classes.icon}`} src={iconName} />
+      <Typography variant="body2">
+        {intl.formatMessage({
+          id: translationId,
+        })}
+      </Typography>
+    </Button>
+  );
+
   return (
     <div>
       <TitleBar
@@ -136,129 +171,33 @@ const MobilitySettingsView = ({ classes, intl }) => {
           <FormGroup className={classes.formGroup}>
             <>
               <div className={classes.buttonContainer}>
-                <Button
-                  onClick={() => walkSettingsToggle()}
-                  variant="outlined"
-                  className={openWalkSettings ? classes.buttonActive : classes.button}
-                >
-                  <ReactSVG
-                    className={openWalkSettings
-                      ? `${classes.iconActive}`
-                      : `${classes.icon}`
-                        }
-                    src={iconWalk}
-                  />
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.title.walk',
-                    })}
-                  </Typography>
-                </Button>
+                {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
               {openWalkSettings
-                && walkingControlTypes.map(item => (
-                  <FormControlLabel
-                    key={item.type}
-                    label={(
-                      <Typography variant="body2">
-                        {intl.formatMessage({
-                          id: item.msgId,
-                        })}
-                      </Typography>
-                    )}
-                    control={<Switch checked={item.checkedValue} onChange={item.onChangeValue} />}
-                    color="warning"
-                    className={classes.formLabel}
-                  />
-                ))}
+                && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               <div className={classes.buttonContainer}>
-                <Button
-                  onClick={() => bicycleSettingsToggle()}
-                  variant="outlined"
-                  className={openBicycleSettings ? classes.buttonActive : classes.button}
-                >
-                  <ReactSVG
-                    className={openBicycleSettings
-                      ? `${classes.iconActive}`
-                      : `${classes.icon}`
-                        }
-                    src={iconBicycle}
-                  />
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.title.bicycle',
-                    })}
-                  </Typography>
-                </Button>
+                {buttonComponent(
+                  bicycleSettingsToggle,
+                  openBicycleSettings,
+                  iconBicycle,
+                  'mobilityPlatform.menu.title.bicycle',
+                )}
               </div>
               {openBicycleSettings
-                && bicycleControlTypes.map(item => (
-                  <FormControlLabel
-                    key={item.type}
-                    label={(
-                      <Typography variant="body2">
-                        {intl.formatMessage({
-                          id: item.msgId,
-                        })}
-                      </Typography>
-                    )}
-                    control={<Switch checked={item.checkedValue} onChange={item.onChangeValue} />}
-                    color="warning"
-                    className={classes.formLabel}
-                  />
-                ))}
+                && bicycleControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
               <div className={classes.buttonContainer}>
-                <Button
-                  onClick={() => carSettingsToggle()}
-                  variant="outlined"
-                  className={openCarSettings ? classes.buttonActive : classes.button}
-                >
-                  <ReactSVG
-                    className={openCarSettings
-                      ? `${classes.iconActive}`
-                      : `${classes.icon}`
-                        }
-                    src={iconCar}
-                  />
-                  <Typography variant="body2">
-                    {intl.formatMessage({
-                      id: 'mobilityPlatform.menu.title.car',
-                    })}
-                  </Typography>
-                </Button>
+                {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
               {openCarSettings
-                && carControlTypes.map(item => (
-                  <FormControlLabel
-                    key={item.type}
-                    label={(
-                      <Typography variant="body2">
-                        {intl.formatMessage({
-                          id: item.msgId,
-                        })}
-                      </Typography>
-                    )}
-                    control={<Switch checked={item.checkedValue} onChange={item.onChangeValue} />}
-                    color="warning"
-                    className={classes.formLabel}
-                  />
-                ))}
+                && carControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
             </>
           </FormGroup>
         </FormControl>
       </div>
-      {showEcoCounter ? (
-        <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" />
-      ) : null}
-      {showBicycleStands ? (
-        <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" />
-      ) : null}
-      {showChargingStations ? (
-        <InfoTextBox infoText="mobilityPlatform.info.chargingStations" />
-      ) : null}
-      {showGasFillingStations ? (
-        <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" />
-      ) : null}
+      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
+      {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
+      {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
+      {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
     </div>
   );
 };

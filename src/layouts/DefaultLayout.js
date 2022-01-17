@@ -95,6 +95,7 @@ const DefaultLayout = (props) => {
   const [showPrintView, togglePrintView] = useState(false);
   const [sidebarHidden, toggleSidebarHidden] = useState(false);
   const [error, setError] = useState(false);
+  const [openMobilityPlatform, setOpenMobilityPlatform] = useState(false);
   const [showChargingStations, setShowChargingStations] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
@@ -178,6 +179,8 @@ const DefaultLayout = (props) => {
                 <div style={styles.sidebarContent} aria-hidden={!!settingsToggled}>
                   <MobilityPlatformProvider
                     value={{
+                      openMobilityPlatform,
+                      setOpenMobilityPlatform,
                       showChargingStations,
                       setShowChargingStations,
                       showGasFillingStations,
@@ -198,6 +201,7 @@ const DefaultLayout = (props) => {
               <div aria-hidden tabIndex="-1" style={styles.map}>
                 <MobilityPlatformProvider
                   value={{
+                    openMobilityPlatform,
                     showChargingStations,
                     showGasFillingStations,
                     showEcoCounter,

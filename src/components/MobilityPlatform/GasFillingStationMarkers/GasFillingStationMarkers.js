@@ -8,7 +8,7 @@ import gasFillingIcon from '../../../../node_modules/servicemap-ui-turku/assets/
 const GasFillingStationMarkers = ({ classes }) => {
   const [gasFillingStations, setGasFillingStations] = useState(null);
 
-  const { showGasFillingStations } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showGasFillingStations } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -21,8 +21,10 @@ const GasFillingStationMarkers = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchGFSStationsData(apiUrl, setGasFillingStations);
-  }, [setGasFillingStations]);
+    if (openMobilityPlatform) {
+      fetchGFSStationsData(apiUrl, setGasFillingStations);
+    }
+  }, [openMobilityPlatform, setGasFillingStations]);
 
   return (
     <>
