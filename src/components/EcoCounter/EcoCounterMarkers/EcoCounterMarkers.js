@@ -8,7 +8,7 @@ import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icon
 const EcoCounterMarkers = ({ classes }) => {
   const [ecoCounterStations, setEcoCounterStations] = useState(null);
 
-  const { showEcoCounter } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showEcoCounter } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
 
@@ -21,8 +21,10 @@ const EcoCounterMarkers = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchEcoCounterStations(apiUrl, setEcoCounterStations);
-  }, [setEcoCounterStations]);
+    if (openMobilityPlatform) {
+      fetchEcoCounterStations(apiUrl, setEcoCounterStations);
+    }
+  }, [openMobilityPlatform, setEcoCounterStations]);
 
   return (
     <>

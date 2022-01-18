@@ -9,7 +9,7 @@ const BicycleStands = ({ classes }) => {
   const [bicycleStands, setBicycleStands] = useState(null);
   const [maintainedBicycleStands, setMaintainedBicycleStands] = useState(null);
 
-  const { showBicycleStands } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -22,8 +22,10 @@ const BicycleStands = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchBicycleStandsData(apiUrl, setBicycleStands);
-  }, [setBicycleStands]);
+    if (openMobilityPlatform) {
+      fetchBicycleStandsData(apiUrl, setBicycleStands);
+    }
+  }, [openMobilityPlatform, setBicycleStands]);
 
   useEffect(() => {
     const filtered = [];

@@ -6,7 +6,7 @@ const BicycleRoutes = () => {
   const [mainBicycleRoutes, setMainBicycleRoutes] = useState(null);
   const [qualityBicycleRoutes, setQualityBicycleRoutes] = useState(null);
 
-  const { showMainBicycleRoutes, showQualityBicycleRoutes } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showMainBicycleRoutes, showQualityBicycleRoutes } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.BICYCLE_NETWORK_API;
 
@@ -15,12 +15,16 @@ const BicycleRoutes = () => {
   const blackOptions = { color: '#000000' };
 
   useEffect(() => {
-    fetchBicycleRoutesData(apiUrl, 'main_network', setMainBicycleRoutes);
-  }, [setMainBicycleRoutes]);
+    if (openMobilityPlatform) {
+      fetchBicycleRoutesData(apiUrl, 'main_network', setMainBicycleRoutes);
+    }
+  }, [openMobilityPlatform, setMainBicycleRoutes]);
 
   useEffect(() => {
-    fetchBicycleRoutesData(apiUrl, 'quality_lanes', setQualityBicycleRoutes);
-  }, [setQualityBicycleRoutes]);
+    if (openMobilityPlatform) {
+      fetchBicycleRoutesData(apiUrl, 'quality_lanes', setQualityBicycleRoutes);
+    }
+  }, [openMobilityPlatform, setQualityBicycleRoutes]);
 
   return (
     <>

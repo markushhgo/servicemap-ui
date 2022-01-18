@@ -32,9 +32,36 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  /* buttonContainer: {
+  buttonSmall: {
+    width: '100%',
+    height: '40px',
+    background: 'rgba(230, 230, 230, 255)',
+    textTransform: 'capitalize',
+    justifyContent: 'center',
+    borderRadius: '0',
+    borderTop: 'none',
     borderBottom: '1px solid #000000',
-  }, */
+    '&:hover': {
+      background: 'rgba(222, 222, 222, 255)',
+    },
+  },
+  buttonSmallActive: {
+    width: '100%',
+    height: '40px',
+    textTransform: 'capitalize',
+    justifyContent: 'center',
+    borderRadius: '0',
+    borderBottom: '1px solid #6f7276',
+    borderTop: '1px solid #6f7276',
+    background: '#46484b',
+    color: '#fff',
+    '&:hover': {
+      color: '#fff',
+      background: '#3e3f42',
+      borderBottom: '1px solid #6f7276',
+      borderTop: '1px solid #6f7276',
+    },
+  },
   formControl: {
     width: '100%',
   },
@@ -61,6 +88,9 @@ const styles = theme => ({
     width: '40px',
     height: '40px',
     marginRight: '0.8rem',
+  },
+  paragraph: {
+    padding: theme.spacing(2),
   },
 });
 

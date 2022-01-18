@@ -8,7 +8,7 @@ export const fetchEcoCounterStations = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -20,7 +20,7 @@ export const fetchInitialHourData = async (apiUrl, day, stationId, setHourData) 
     const jsonData = await response.json();
     setHourData(jsonData);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -38,7 +38,7 @@ export const fetchInitialDayDatas = async (
     const jsonData = await response.json();
     setDayData(jsonData);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -57,7 +57,7 @@ export const fetchInitialWeekDatas = async (
     const jsonData = await response.json();
     setWeekData(jsonData);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -76,6 +76,6 @@ export const fetchInitialMonthDatas = async (
     const jsonData = await response.json();
     setMonthData(jsonData);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };

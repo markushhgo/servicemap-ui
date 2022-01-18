@@ -8,7 +8,7 @@ export const fetchCGSStationsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -18,7 +18,7 @@ export const fetchGFSStationsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -28,7 +28,7 @@ export const fetchBicycleStandsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -38,6 +38,6 @@ export const fetchBicycleRoutesData = async (apiUrl, networkName, setStations) =
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };

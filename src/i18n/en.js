@@ -579,7 +579,6 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
-  'mobilityPlatform.menu.showBicycleMain': 'Main bicycle network',
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
   'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
@@ -606,12 +605,6 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by City of Turku.',
-  'mobilityPlatform.content.rentalCars.title': 'Rental car',
-  'mobilityPlatform.content.rentalCars.address': 'Address',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
-  'mobilityPlatform.content.rentalCars.available': 'Car is available',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Car is reserved',
   'mobilityPlatform.content.streetMaintenance': 'Active maintenance',
   'mobilityPlatform.content.streetMaintenance.title': 'Maintenance work',
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snowplowing',
@@ -626,7 +619,6 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat.',
   'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
   'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
-
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',
