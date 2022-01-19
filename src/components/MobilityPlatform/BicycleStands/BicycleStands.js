@@ -29,14 +29,14 @@ const BicycleStands = ({ classes }) => {
 
   useEffect(() => {
     const filtered = [];
-    if (bicycleStands !== null && openMobilityPlatform) {
+    if (bicycleStands && openMobilityPlatform) {
       bicycleStands.forEach((item) => {
         if (item.extra.maintained_by_turku === true) {
           filtered.push(item);
         }
       });
+      setMaintainedBicycleStands(filtered);
     }
-    setMaintainedBicycleStands(filtered);
   }, [openMobilityPlatform, bicycleStands]);
 
   return (
