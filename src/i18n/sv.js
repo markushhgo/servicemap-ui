@@ -612,6 +612,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
 
   // Info text
+  'mobilityPlatform.info.description.title': 'Beskrivning av rutt',
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet.',

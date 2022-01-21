@@ -4,6 +4,7 @@ import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
+import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import { fetchCultureRoutesGroup } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
@@ -22,6 +23,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [currentLanguage, setCurrentLanguage] = useState('fi');
+  const [showDescriptionText, setShowDescriptionText] = useState(false);
 
   const {
     showChargingStations,
@@ -220,8 +222,25 @@ const MobilitySettingsView = ({ classes, intl }) => {
   );
 
   const descriptionComponent = (
-    <div className={classes.paragraph}>
-      <Typography variant="body2">{cultureRouteDesc}</Typography>
+    <div className={classes.description}>
+      <div className={classes.subtitle}>
+        <Button
+          className={classes.buttonWhite}
+          onClick={() => (showDescriptionText ? setShowDescriptionText(false) : setShowDescriptionText(true))}
+        >
+          <Typography className={classes.toggleText} variant="subtitle1">
+            {intl.formatMessage({
+              id: 'mobilityPlatform.info.description.title',
+            })}
+          </Typography>
+          {showDescriptionText ? <ArrowDropUp /> : <ArrowDropDown /> }
+        </Button>
+      </div>
+      {showDescriptionText ? (
+        <div className={classes.paragraph}>
+          <Typography variant="body2">{cultureRouteDesc}</Typography>
+        </div>
+      ) : null}
     </div>
   );
 
@@ -234,6 +253,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
+        <div>{cultureRouteDesc ? descriptionComponent : null}</div>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
@@ -249,7 +269,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     variant="outlined"
                     className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
                     onClick={() => SetCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)
-                    }
+                      }
                   >
                     <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
                   </Button>
@@ -277,7 +297,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
-      {cultureRouteDesc ? descriptionComponent : null}
     </div>
   );
 };

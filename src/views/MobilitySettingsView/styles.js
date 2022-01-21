@@ -2,6 +2,12 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.backgroundTurku.main,
   },
+  buttonWhite: {
+    width: '100%',
+    textAlign: 'left',
+    textTransform: 'none',
+    padding: theme.spacing(1),
+  },
   button: {
     width: '100%',
     height: '50px',
@@ -61,6 +67,10 @@ const styles = theme => ({
       borderBottom: '1px solid #6f7276',
       borderTop: '1px solid #6f7276',
     },
+  },
+  toggleText: {
+    width: '85%',
+    textAlign: 'left',
   },
   formControl: {
     width: '100%',
