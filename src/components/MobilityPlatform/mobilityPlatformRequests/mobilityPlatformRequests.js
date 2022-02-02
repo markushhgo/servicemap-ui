@@ -8,7 +8,7 @@ export const fetchCGSStationsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -18,7 +18,7 @@ export const fetchGFSStationsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -28,17 +28,7 @@ export const fetchBicycleStandsData = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
-  }
-};
-
-export const fetchBicycleRoutesData = async (apiUrl, networkName, setStations) => {
-  try {
-    const response = await fetch(`${apiUrl}/bicycle_networkparts?page_size=10000&network_name=${networkName}&latlon=true`);
-    const jsonData = await response.json();
-    setStations(jsonData.results);
-  } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -48,7 +38,7 @@ export const fetchCultureRoutesGroup = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -58,7 +48,7 @@ export const fetchCultureRoutesGeometry = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };
 
@@ -68,6 +58,6 @@ export const fetchCultureRoutesUnits = async (apiUrl, setStations) => {
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
-    console.log(err.message);
+    console.warn(err.message);
   }
 };

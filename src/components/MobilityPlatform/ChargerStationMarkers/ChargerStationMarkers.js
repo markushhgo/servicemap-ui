@@ -8,7 +8,7 @@ import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/ico
 const ChargerStationMarkers = ({ classes }) => {
   const [chargerStations, setChargerStations] = useState(null);
 
-  const { showChargingStations } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showChargingStations } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -21,8 +21,10 @@ const ChargerStationMarkers = ({ classes }) => {
   });
 
   useEffect(() => {
-    fetchCGSStationsData(apiUrl, setChargerStations);
-  }, [setChargerStations]);
+    if (openMobilityPlatform) {
+      fetchCGSStationsData(apiUrl, setChargerStations);
+    }
+  }, [openMobilityPlatform, setChargerStations]);
 
   return (
     <>

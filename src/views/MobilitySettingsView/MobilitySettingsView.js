@@ -26,6 +26,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [showDescriptionText, setShowDescriptionText] = useState(false);
 
   const {
+    setOpenMobilityPlatform,
     showChargingStations,
     setShowChargingStations,
     showGasFillingStations,
@@ -39,6 +40,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+
+  useEffect(() => {
+    setOpenMobilityPlatform(true);
+  }, [setOpenMobilityPlatform]);
 
   useEffect(() => {
     fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
