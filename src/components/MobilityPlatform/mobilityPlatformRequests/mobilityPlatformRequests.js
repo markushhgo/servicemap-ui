@@ -61,3 +61,23 @@ export const fetchCultureRoutesUnits = async (apiUrl, setStations) => {
     console.warn(err.message);
   }
 };
+
+export const fetchBicycleRouteNames = async (apiUrl, setStations) => {
+  try {
+    const response = await fetch(`${apiUrl}/bicycle_networks/`);
+    const jsonData = await response.json();
+    setStations(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+export const fetchBicycleRoutesGeometry = async (apiUrl, setStations) => {
+  try {
+    const response = await fetch(`${apiUrl}/bicycle_networkparts/?page_size=1000&latlon=true`);
+    const jsonData = await response.json();
+    setStations(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};

@@ -586,6 +586,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',

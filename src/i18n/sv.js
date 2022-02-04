@@ -584,6 +584,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelställning',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',

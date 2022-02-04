@@ -100,6 +100,7 @@ const styles = theme => ({
     marginRight: '0.8rem',
   },
   paragraph: {
+    textAlign: 'left',
     padding: theme.spacing(2),
   },
 });
