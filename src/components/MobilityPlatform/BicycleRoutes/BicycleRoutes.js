@@ -12,7 +12,8 @@ const BicycleRoutes = () => {
 
   const { Polyline } = global.rL;
 
-  const blackOptions = { color: '#000000' };
+  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
+  const whiteOptions = { color: '#ffff', dashArray: '10' };
 
   useEffect(() => {
     fetchBicycleRoutesGeometry(apiUrl, setBicycleRoutes);
@@ -33,14 +34,15 @@ const BicycleRoutes = () => {
   return (
     <>
       {showBicycleRoutes && (
-        <>
-          <div>
-            {activeBicycleRoute
+      <div>
+        {activeBicycleRoute
               && activeBicycleRoute.map(item => (
-                <Polyline key={item.id} weight={5} pathOptions={blackOptions} positions={item.geometry_coords} />
+                <div>
+                  <Polyline key={item.geometry} weight={8} pathOptions={blueOptions} positions={item.geometry_coords} />
+                  <Polyline key={item.geometry_coords} weight={4} pathOptions={whiteOptions} positions={item.geometry_coords} />
+                </div>
               ))}
-          </div>
-        </>
+      </div>
       )}
     </>
   );

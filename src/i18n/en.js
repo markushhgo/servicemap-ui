@@ -579,10 +579,11 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
-  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
   'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'Route info:',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Charging station',
@@ -603,12 +604,6 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by City of Turku.',
-  'mobilityPlatform.content.rentalCars.title': 'Rental car',
-  'mobilityPlatform.content.rentalCars.address': 'Address',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
-  'mobilityPlatform.content.rentalCars.available': 'Car is available',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Car is reserved',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

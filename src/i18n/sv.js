@@ -579,12 +579,13 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Laddplatser',
   'mobilityPlatform.menu.showGasStations': 'Gastationer',
   'mobilityPlatform.menu.showEcoCounter': 'Eco Counter',
-  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
+  'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito', // TODO translate
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
-  'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelställning',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'Ruttinformation:',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Laddplats',
@@ -600,17 +601,11 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställning är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställning är inte täckt',
-  'mobilityPlatform.content.bicycleStands.hullLockable': 'Hull can be locked',
-  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Hull can not be locked',
-  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
-  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
-  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun ylläpitämä.',
-  'mobilityPlatform.content.rentalCars.title': 'Rental car',
-  'mobilityPlatform.content.rentalCars.address': 'Address',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
-  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Hull can be locked', // TODO translate
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Hull can not be locked', // TODO translate
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places', // TODO translate
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands', // TODO translate
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun ylläpitämä.', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutt',

@@ -103,6 +103,9 @@ const styles = theme => ({
     textAlign: 'left',
     padding: theme.spacing(2),
   },
+  description: {
+    borderBottom: '1px solid #6f7276',
+  },
 });
 
 export default styles;

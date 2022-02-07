@@ -35,7 +35,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     showBicycleStands,
     setShowBicycleStands,
     setShowBicycleRoutes,
-    bicycleRouteName,
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
 
@@ -226,15 +225,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <div className={classes.description}>
       <div className={classes.paragraph}>
         <Typography variant="subtitle1">
-          Tietoja reitistä:
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
         </Typography>
         <Typography variant="body2">
-          Reitin nimi:
-          {' '}
-          {bicycleRouteName}
-        </Typography>
-        <Typography variant="body2">
-          Reitin pituus:
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
           {' '}
           {bicycleRouteLength}
           {' '}

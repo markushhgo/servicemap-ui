@@ -583,10 +583,11 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showMaintenanceLocations': 'Kunnossapito',
-  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
   'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'Reitin tiedot:',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -607,12 +608,6 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun kaupungin ylläpitämä.',
-  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
-  'mobilityPlatform.content.rentalCars.address': 'Osoite',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Automerkki',
-  'mobilityPlatform.content.rentalCars.carModel': 'Auton malli',
-  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
-  'mobilityPlatform.content.rentalCars.notAvailable': 'Varattu auto',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
