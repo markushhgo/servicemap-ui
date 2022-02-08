@@ -91,17 +91,19 @@ const styles = theme => ({
     fill: '#fff',
     width: '40px',
     height: '40px',
-    marginRight: '0.8rem',
+    marginRight: theme.spacing(1),
   },
   icon: {
     fill: '#000',
     width: '40px',
     height: '40px',
-    marginRight: '0.8rem',
+    marginRight: theme.spacing(1),
   },
   paragraph: {
     textAlign: 'left',
-    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(3),
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(1.5),
   },
   description: {
     borderBottom: '1px solid #6f7276',

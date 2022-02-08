@@ -57,6 +57,30 @@ const MobilitySettingsView = ({ classes, intl }) => {
     } else setCurrentLanguage('fi');
   }, [intl.locale]);
 
+  const walkSettingsToggle = () => {
+    if (!openWalkSettings) {
+      setOpenWalkSettings(true);
+    } else {
+      setOpenWalkSettings(false);
+    }
+  };
+
+  const bicycleSettingsToggle = () => {
+    if (!openBicycleSettings) {
+      setOpenBicycleSettings(true);
+    } else {
+      setOpenBicycleSettings(false);
+    }
+  };
+
+  const carSettingsToggle = () => {
+    if (!openCarSettings) {
+      setOpenCarSettings(true);
+    } else {
+      setOpenCarSettings(false);
+    }
+  };
+
   const ChargingStationsToggle = () => {
     if (!showChargingStations) {
       setShowChargingStations(true);
@@ -100,14 +124,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRouteLength(false);
   };
 
-  const selectRouteName = (routeNameFi, routeNameEn, routeNameSv) => {
-    if (currentLanguage === 'sv' && routeNameSv !== null) {
-      return routeNameSv;
+  const selectRouteName = (nameFi, nameEn, nameSv) => {
+    if (currentLanguage === 'sv' && nameSv !== null) {
+      return nameSv;
     }
-    if (currentLanguage === 'en' && routeNameEn !== null) {
-      return routeNameEn;
+    if (currentLanguage === 'en' && nameEn !== null) {
+      return nameEn;
     }
-    return routeNameFi;
+    return nameFi;
   };
 
   const formatBicycleRoutelength = (inputLength) => {
@@ -121,6 +145,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
   };
+
+  useEffect(() => {
+    if (bicycleRouteList) {
+      if (currentLanguage === 'fi') {
+        bicycleRouteList.sort((a, b) => a.name_fi.localeCompare(b.name_fi));
+      } else if (currentLanguage === 'en') {
+        bicycleRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
+      } else if (currentLanguage === 'sv') {
+        bicycleRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
+      }
+    }
+  }, [bicycleRouteList, currentLanguage]);
 
   const walkingControlTypes = [
     {
@@ -166,30 +202,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       onChangeValue: GasFillingStationsToggle,
     },
   ];
-
-  const walkSettingsToggle = () => {
-    if (!openWalkSettings) {
-      setOpenWalkSettings(true);
-    } else {
-      setOpenWalkSettings(false);
-    }
-  };
-
-  const bicycleSettingsToggle = () => {
-    if (!openBicycleSettings) {
-      setOpenBicycleSettings(true);
-    } else {
-      setOpenBicycleSettings(false);
-    }
-  };
-
-  const carSettingsToggle = () => {
-    if (!openCarSettings) {
-      setOpenCarSettings(true);
-    } else {
-      setOpenCarSettings(false);
-    }
-  };
 
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
     <FormControlLabel
@@ -247,9 +259,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
-        <div>
+        <>
           {showBicycleRouteLength ? routeLengthComponent : null}
-        </div>
+        </>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
