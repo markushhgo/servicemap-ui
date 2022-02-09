@@ -58,7 +58,33 @@ const MobilitySettingsView = ({ classes, intl }) => {
     } else setCurrentLanguage('fi');
   }, [intl.locale]);
 
-  const showAllChargingStations = () => {
+  // user type toggle functions
+  const walkSettingsToggle = () => {
+    if (!openWalkSettings) {
+      setOpenWalkSettings(true);
+    } else {
+      setOpenWalkSettings(false);
+    }
+  };
+
+  const bicycleSettingsToggle = () => {
+    if (!openBicycleSettings) {
+      setOpenBicycleSettings(true);
+    } else {
+      setOpenBicycleSettings(false);
+    }
+  };
+
+  const carSettingsToggle = () => {
+    if (!openCarSettings) {
+      setOpenCarSettings(true);
+    } else {
+      setOpenCarSettings(false);
+    }
+  };
+
+  // content type toggle functions
+  const chargingStationsToggle = () => {
     if (!showChargingStations) {
       setShowChargingStations(true);
     } else {
@@ -66,7 +92,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showAllGasFillingStations = () => {
+  const gasFillingStationsToggle = () => {
     if (!showGasFillingStations) {
       setShowGasFillingStations(true);
     } else {
@@ -74,7 +100,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const showAllEcoCounterStations = () => {
+  const ecoCounterStationsToggle = () => {
     if (!showEcoCounter) {
       setShowEcoCounter(true);
     } else {
@@ -132,7 +158,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
-      onChangeValue: showAllEcoCounterStations,
+      onChangeValue: ecoCounterStationsToggle,
     },
     {
       type: 'cultureRoutes',
@@ -144,16 +170,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const bicycleControlTypes = [
     {
-      type: 'ecoCounterStations',
-      msgId: 'mobilityPlatform.menu.showEcoCounter',
-      checkedValue: showEcoCounter,
-      onChangeValue: showAllEcoCounterStations,
-    },
-    {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
       onChangeValue: BicycleStandsToggle,
+    },
+    {
+      type: 'ecoCounterStations',
+      msgId: 'mobilityPlatform.menu.showEcoCounter',
+      checkedValue: showEcoCounter,
+      onChangeValue: ecoCounterStationsToggle,
     },
   ];
 
@@ -162,39 +188,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'chargingStations',
       msgId: 'mobilityPlatform.menu.showChargingStations',
       checkedValue: showChargingStations,
-      onChangeValue: showAllChargingStations,
+      onChangeValue: chargingStationsToggle,
     },
     {
       type: 'gasFillingStations',
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
-      onChangeValue: showAllGasFillingStations,
+      onChangeValue: gasFillingStationsToggle,
     },
   ];
-
-  const walkSettingsToggle = () => {
-    if (!openWalkSettings) {
-      setOpenWalkSettings(true);
-    } else {
-      setOpenWalkSettings(false);
-    }
-  };
-
-  const bicycleSettingsToggle = () => {
-    if (!openBicycleSettings) {
-      setOpenBicycleSettings(true);
-    } else {
-      setOpenBicycleSettings(false);
-    }
-  };
-
-  const carSettingsToggle = () => {
-    if (!openCarSettings) {
-      setOpenCarSettings(true);
-    } else {
-      setOpenCarSettings(false);
-    }
-  };
 
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
     <FormControlLabel
