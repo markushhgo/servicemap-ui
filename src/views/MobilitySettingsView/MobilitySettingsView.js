@@ -81,7 +81,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const ChargingStationsToggle = () => {
+  const chargingStationsToggle = () => {
     if (!showChargingStations) {
       setShowChargingStations(true);
     } else {
@@ -89,7 +89,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const GasFillingStationsToggle = () => {
+  const gasFillingStationsToggle = () => {
     if (!showGasFillingStations) {
       setShowGasFillingStations(true);
     } else {
@@ -97,7 +97,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const EcoCounterStationsToggle = () => {
+  const ecoCounterStationsToggle = () => {
     if (!showEcoCounter) {
       setShowEcoCounter(true);
     } else {
@@ -105,7 +105,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const BicycleStandsToggle = () => {
+  const bicycleStandsToggle = () => {
     if (!showBicycleStands) {
       setShowBicycleStands(true);
     } else {
@@ -113,7 +113,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const BicycleRoutesToggle = () => {
+  const bicycleRouteListToggle = () => {
     if (!showBicycleRouteList) {
       setShowBicycleRouteList(true);
     } else {
@@ -138,7 +138,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setBicycleRouteLength(Math.round(inputLength / 1000));
   };
 
-  const SetBicycleRouteState = (index, inputLength, routeName) => {
+  const setBicycleRouteState = (index, inputLength, routeName) => {
     setShowBicycleRouteLength(true);
     setActiveBicycleRouteIndex(index);
     formatBicycleRoutelength(inputLength);
@@ -163,7 +163,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
-      onChangeValue: EcoCounterStationsToggle,
+      onChangeValue: ecoCounterStationsToggle,
     },
   ];
 
@@ -172,19 +172,19 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'bicycleSRoutes',
       msgId: 'mobilityPlatform.menu.showBicycleRoutes',
       checkedValue: showBicycleRouteList,
-      onChangeValue: BicycleRoutesToggle,
+      onChangeValue: bicycleRouteListToggle,
     },
     {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
-      onChangeValue: BicycleStandsToggle,
+      onChangeValue: bicycleStandsToggle,
     },
     {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
-      onChangeValue: EcoCounterStationsToggle,
+      onChangeValue: ecoCounterStationsToggle,
     },
   ];
 
@@ -193,13 +193,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'chargingStations',
       msgId: 'mobilityPlatform.menu.showChargingStations',
       checkedValue: showChargingStations,
-      onChangeValue: ChargingStationsToggle,
+      onChangeValue: chargingStationsToggle,
     },
     {
       type: 'gasFillingStations',
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
-      onChangeValue: GasFillingStationsToggle,
+      onChangeValue: gasFillingStationsToggle,
     },
   ];
 
@@ -250,6 +250,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
+  const routeListComponent = (inputData, activeIndex, setRouteState) => (
+    inputData.map((item, i) => (
+      <Button
+        key={item.id}
+        variant="outlined"
+        className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+        onClick={() => setRouteState(i, item.length, item.name_fi)
+        }
+      >
+        <Typography variant="body2">{selectRouteName(item.name_fi, item.name_en, item.name_sv)}</Typography>
+      </Button>
+    ))
+  );
+
   return (
     <div>
       <TitleBar
@@ -280,18 +294,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openBicycleSettings
                 && bicycleControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
-              {showBicycleRouteList
-                && bicycleRouteList.map((item, i) => (
-                  <Button
-                    key={item.id}
-                    variant="outlined"
-                    className={i === activeBicycleRouteIndex ? classes.buttonSmallActive : classes.buttonSmall}
-                    onClick={() => SetBicycleRouteState(i, item.length, item.name_fi)
-                    }
-                  >
-                    <Typography variant="body2">{selectRouteName(item.name_fi, item.name_en, item.name_sv)}</Typography>
-                  </Button>
-                ))}
+              {showBicycleRouteList ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
