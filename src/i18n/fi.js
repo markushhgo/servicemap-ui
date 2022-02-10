@@ -579,10 +579,10 @@ const translations = {
   'mobilityPlatform.menu.title.walk': 'Kävely',
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
-  'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
+  'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
-  'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
+  'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -603,16 +603,12 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun kaupungin ylläpitämä.',
-  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
-  'mobilityPlatform.content.rentalCars.address': 'Osoite',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
-  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
+  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
-  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne -sivuston tietoihin.',
-  'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
-  'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
+  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
