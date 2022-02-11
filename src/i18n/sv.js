@@ -600,7 +600,7 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Icke ramlåsbara',
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Antal platser',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Antal cykelställ',
-  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Underhållen av Turku.',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Underhållen av Åbo stad.',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',

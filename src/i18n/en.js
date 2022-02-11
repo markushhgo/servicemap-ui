@@ -594,11 +594,11 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
-  'mobilityPlatform.content.bicycleStands.hullLockable': 'Bicycle frame lockable',
-  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Bicycle frame non-lockable',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Bicycle frame can be locked',
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Bicycle frame can not be locked',
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
-  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by City of Turku.',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by city of Turku.',
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
