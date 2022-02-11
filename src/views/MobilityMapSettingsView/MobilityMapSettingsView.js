@@ -13,7 +13,7 @@ import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/ico
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
-const MobilitySettingsView = ({ classes, intl }) => {
+const MobilityMapSettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
@@ -312,9 +312,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   );
 };
 
-MobilitySettingsView.propTypes = {
+MobilityMapSettingsView.propTypes = {
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default MobilitySettingsView;
+export default MobilityMapSettingsView;

@@ -15,7 +15,7 @@ import DivisionView from '../../../views/DivisionView';
 import InfoView from '../../../views/InfoView';
 import ExtendedData from '../../../views/UnitView/components/ExtendedData';
 import AreaView from '../../../views/AreaView';
-import MobilitySettingsView from '../../../views/MobilitySettingsView';
+import MobilityMapSettingsView from '../../../views/MobilityMapSettingsView';
 import { ErrorTrigger } from '../../../components';
 
 const TitleWrapper = ({ children, messageId }) => (
@@ -173,7 +173,7 @@ const Area = () => (
 const MobilityPlatform = () => (
   <TitleWrapper messageId="general.pageTitles.mobilityPlatform">
     <PageWrapper headMsgId="general.pageTitles.mobilityPlatform.title" page="mobilityPlatform">
-      <MobilitySettingsView />
+      <MobilityMapSettingsView />
     </PageWrapper>
   </TitleWrapper>
 );
