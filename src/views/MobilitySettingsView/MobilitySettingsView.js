@@ -20,6 +20,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState(null);
+  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [currentLanguage, setCurrentLanguage] = useState('fi');
@@ -58,7 +59,27 @@ const MobilitySettingsView = ({ classes, intl }) => {
     } else setCurrentLanguage('fi');
   }, [intl.locale]);
 
-  // user type toggle functions
+  useEffect(() => {
+    if (cultureRouteList) {
+      if (currentLanguage === 'fi') {
+        cultureRouteList.sort((a, b) => a.name.localeCompare(b.name));
+      }
+    }
+  }, [cultureRouteList, currentLanguage]);
+
+  useEffect(() => {
+    if (cultureRouteList) {
+      if (currentLanguage === 'en') {
+        const filtered = cultureRouteList.filter(item => item.name_en !== null);
+        setFilteredCultureRouteList(filtered);
+      } else if (currentLanguage === 'sv') {
+        const filtered = cultureRouteList.filter(item => item.name_sv !== null);
+        setFilteredCultureRouteList(filtered);
+      }
+    }
+  }, [cultureRouteList, currentLanguage]);
+
+  // Toggle functions for main user types
   const walkSettingsToggle = () => {
     if (!openWalkSettings) {
       setOpenWalkSettings(true);
@@ -83,7 +104,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  // content type toggle functions
+  // Toggle functions for content types
   const chargingStationsToggle = () => {
     if (!showChargingStations) {
       setShowChargingStations(true);
@@ -108,7 +129,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const BicycleStandsToggle = () => {
+  const bicycleStandsToggle = () => {
     if (!showBicycleStands) {
       setShowBicycleStands(true);
     } else {
@@ -116,7 +137,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const CultureRouteListToggle = () => {
+  const cultureRouteListToggle = () => {
     if (!openCultureRouteList) {
       setOpenCultureRouteList(true);
     } else {
@@ -136,7 +157,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const SetCultureRouteState = (descriptionSv, descriptionEn, descriptionFi, itemId, index) => {
+  const setCultureRouteState = (descriptionSv, descriptionEn, descriptionFi, itemId, index) => {
     selectRouteDescription(descriptionSv, descriptionEn, descriptionFi);
     setCultureRouteId(itemId);
     setActiveIndex(index);
@@ -164,7 +185,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'cultureRoutes',
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
-      onChangeValue: CultureRouteListToggle,
+      onChangeValue: cultureRouteListToggle,
     },
   ];
 
@@ -173,7 +194,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
-      onChangeValue: BicycleStandsToggle,
+      onChangeValue: bicycleStandsToggle,
     },
     {
       type: 'ecoCounterStations',
@@ -240,7 +261,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               id: 'mobilityPlatform.info.description.title',
             })}
           </Typography>
-          {showDescriptionText ? <ArrowDropUp /> : <ArrowDropDown /> }
+          {showDescriptionText ? <ArrowDropUp /> : <ArrowDropDown />}
         </Button>
       </div>
       {showDescriptionText ? (
@@ -250,6 +271,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
       ) : null}
     </div>
   );
+
+  const renderList = inputData => inputData.map((item, i) => (
+    <Button
+      key={item.id}
+      variant="outlined"
+      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
+    >
+      <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
+    </Button>
+  ));
 
   return (
     <div>
@@ -269,18 +301,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
-              {openCultureRouteList
-                && cultureRouteList.map((item, i) => (
+              {openCultureRouteList && (currentLanguage === 'en' || currentLanguage === 'sv')
+                ? renderList(filteredCultureRouteList)
+                : null}
+              {openCultureRouteList && currentLanguage === 'fi'
+                ? cultureRouteList.map((item, i) => (
                   <Button
                     key={item.id}
                     variant="outlined"
                     className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
-                    onClick={() => SetCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)
+                    onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)
                       }
                   >
-                    <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
+                    <Typography variant="body2">{item.name}</Typography>
                   </Button>
-                ))}
+                ))
+                : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
