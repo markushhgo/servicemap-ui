@@ -68,6 +68,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [cultureRouteList, currentLanguage]);
 
   useEffect(() => {
+    if (filteredCultureRouteList) {
+      if (currentLanguage === 'en') {
+        filteredCultureRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
+      } else if (currentLanguage === 'sv') {
+        filteredCultureRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
+      }
+    }
+  }, [filteredCultureRouteList, currentLanguage]);
+
+  useEffect(() => {
     if (cultureRouteList) {
       if (currentLanguage === 'en') {
         const filtered = cultureRouteList.filter(item => item.name_en !== null);
@@ -266,7 +276,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
       {showDescriptionText ? (
         <div className={classes.paragraph}>
-          <Typography variant="body2">{cultureRouteDesc}</Typography>
+          <Typography component="p" variant="body2">{cultureRouteDesc}</Typography>
         </div>
       ) : null}
     </div>

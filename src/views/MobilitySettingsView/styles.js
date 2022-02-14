@@ -103,6 +103,7 @@ const styles = theme => ({
   },
   paragraph: {
     padding: theme.spacing(2),
+    textAlign: 'left',
   },
 });
 
