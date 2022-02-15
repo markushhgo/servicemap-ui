@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesUnits } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import { getCurrentLocale } from '../utils/currentLocale';
+import { getCurrentLocale, selectRouteName } from '../utils/utils';
 import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
 const CultureRouteUnits = ({ classes, intl }) => {
@@ -43,31 +43,23 @@ const CultureRouteUnits = ({ classes, intl }) => {
     }
   }, [cultureRouteUnits, cultureRouteId]);
 
-  const selectRouteName = (routeNameFi, routeNameEn, routeNameSv) => {
-    if (currentLocale === 'sv' && routeNameSv !== null) {
-      return routeNameSv;
-    }
-    if (currentLocale === 'en' && routeNameEn !== null) {
-      return routeNameEn;
-    }
-    return routeNameFi;
-  };
-
   return (
     <>
       <div>
         {activeCultureRouteUnits
-              && activeCultureRouteUnits.map(item => (
-                <Marker key={item.id} icon={customIcon} position={[item.geometry_coords.lat, item.geometry_coords.lon]}>
-                  <Popup>
-                    <div className={classes.popupInner}>
-                      <div className={classes.subtitle}>
-                        <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
-                      </div>
-                    </div>
-                  </Popup>
-                </Marker>
-              ))}
+          && activeCultureRouteUnits.map(item => (
+            <Marker key={item.id} icon={customIcon} position={[item.geometry_coords.lat, item.geometry_coords.lon]}>
+              <Popup>
+                <div className={classes.popupInner}>
+                  <div className={classes.subtitle}>
+                    <Typography variant="body2">
+                      {selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}
+                    </Typography>
+                  </div>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
       </div>
     </>
   );

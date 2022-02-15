@@ -5,10 +5,9 @@ import {
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
 import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
-// eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import { fetchCultureRoutesGroup } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
-import { getCurrentLocale } from '../../components/MobilityPlatform/utils/currentLocale';
+import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
@@ -179,16 +178,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes(true);
   };
 
-  const selectRouteName = (routeNameFi, routeNameEn, routeNameSv) => {
-    if (currentLocale === 'sv' && routeNameSv !== null) {
-      return routeNameSv;
-    }
-    if (currentLocale === 'en' && routeNameEn !== null) {
-      return routeNameEn;
-    }
-    return routeNameFi;
-  };
-
   const walkingControlTypes = [
     {
       type: 'ecoCounterStations',
@@ -296,7 +285,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
-      <Typography variant="body2">{selectRouteName(item.name, item.name_en, item.name_sv)}</Typography>
+      <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
     </Button>
   ));
 
