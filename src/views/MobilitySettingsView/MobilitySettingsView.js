@@ -8,6 +8,7 @@ import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import { fetchCultureRoutesGroup } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
+import { getCurrentLocale } from '../../components/MobilityPlatform/utils/currentLocale';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
@@ -23,7 +24,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [currentLanguage, setCurrentLanguage] = useState('fi');
+  const [currentLocale, setCurrentLocale] = useState('fi');
   const [showDescriptionText, setShowDescriptionText] = useState(false);
 
   const {
@@ -53,42 +54,38 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   // Set current language based on user selection
   useEffect(() => {
-    if (intl.locale === 'en') {
-      setCurrentLanguage('en');
-    } else if (intl.locale === 'sv') {
-      setCurrentLanguage('sv');
-    } else setCurrentLanguage('fi');
+    getCurrentLocale(intl.locale, setCurrentLocale);
   }, [intl.locale]);
 
   useEffect(() => {
     if (cultureRouteList) {
-      if (currentLanguage === 'fi') {
+      if (currentLocale === 'fi') {
         cultureRouteList.sort((a, b) => a.name.localeCompare(b.name));
       }
     }
-  }, [cultureRouteList, currentLanguage]);
+  }, [cultureRouteList, currentLocale]);
 
   useEffect(() => {
     if (filteredCultureRouteList) {
-      if (currentLanguage === 'en') {
+      if (currentLocale === 'en') {
         filteredCultureRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
-      } else if (currentLanguage === 'sv') {
+      } else if (currentLocale === 'sv') {
         filteredCultureRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
       }
     }
-  }, [filteredCultureRouteList, currentLanguage]);
+  }, [filteredCultureRouteList, currentLocale]);
 
   useEffect(() => {
     if (cultureRouteList) {
-      if (currentLanguage === 'en') {
+      if (currentLocale === 'en') {
         const filtered = cultureRouteList.filter(item => item.name_en !== null);
         setFilteredCultureRouteList(filtered);
-      } else if (currentLanguage === 'sv') {
+      } else if (currentLocale === 'sv') {
         const filtered = cultureRouteList.filter(item => item.name_sv !== null);
         setFilteredCultureRouteList(filtered);
       }
     }
-  }, [cultureRouteList, currentLanguage]);
+  }, [cultureRouteList, currentLocale]);
 
   // Toggle functions for main user types
   const walkSettingsToggle = () => {
@@ -166,9 +163,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
-    if (currentLanguage === 'sv' && descriptionSv !== null) {
+    if (currentLocale === 'sv' && descriptionSv !== null) {
       setCultureRouteDesc(descriptionSv);
-    } else if (currentLanguage === 'en' && descriptionEn !== null) {
+    } else if (currentLocale === 'en' && descriptionEn !== null) {
       setCultureRouteDesc(descriptionEn);
     } else {
       setCultureRouteDesc(descriptionFi);
@@ -183,10 +180,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const selectRouteName = (routeNameFi, routeNameEn, routeNameSv) => {
-    if (currentLanguage === 'sv' && routeNameSv !== null) {
+    if (currentLocale === 'sv' && routeNameSv !== null) {
       return routeNameSv;
     }
-    if (currentLanguage === 'en' && routeNameEn !== null) {
+    if (currentLocale === 'en' && routeNameEn !== null) {
       return routeNameEn;
     }
     return routeNameFi;
@@ -321,10 +318,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
-              {openCultureRouteList && (currentLanguage === 'en' || currentLanguage === 'sv')
+              {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
-              {openCultureRouteList && currentLanguage === 'fi' ? renderList(cultureRouteList) : null}
+              {openCultureRouteList && currentLocale === 'fi' ? renderList(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
