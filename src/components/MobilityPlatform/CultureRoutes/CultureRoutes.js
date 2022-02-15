@@ -14,14 +14,14 @@ const CultureRoutes = () => {
   const { Polyline } = global.rL;
 
   const blackOptions = { color: '#000000' };
-  const grayOptions = { color: '#e8e8e8' };
+  const grayOptions = { color: '#e8e8e8', dashArray: '5, 10' };
 
   useEffect(() => {
     fetchCultureRoutesGeometry(apiUrl, setCultureRoutes);
   }, [setCultureRoutes]);
 
   useEffect(() => {
-    if (cultureRoutes !== null) {
+    if (cultureRoutes) {
       cultureRoutes.forEach((item) => {
         if (item.mobile_unit_group.id === cultureRouteId) {
           setActiveCultureRoute(item);

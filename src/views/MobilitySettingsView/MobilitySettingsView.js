@@ -36,6 +36,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
   } = useContext(MobilityPlatformContext);
@@ -153,8 +154,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     } else {
       setOpenCultureRouteList(false);
     }
-    setCultureRouteDesc(null);
-    setShowCultureRoutes(false);
+    if (cultureRouteDesc) {
+      setCultureRouteDesc(null);
+    }
+    if (activeIndex) {
+      setActiveIndex(null);
+    }
+    if (showCultureRoutes) {
+      setShowCultureRoutes(false);
+    }
   };
 
   const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
@@ -266,7 +274,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           className={classes.buttonWhite}
           onClick={() => (showDescriptionText ? setShowDescriptionText(false) : setShowDescriptionText(true))}
         >
-          <Typography className={classes.toggleText} variant="subtitle1">
+          <Typography className={classes.toggleText} variant="body1">
             {intl.formatMessage({
               id: 'mobilityPlatform.info.description.title',
             })}
@@ -276,7 +284,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
       {showDescriptionText ? (
         <div className={classes.paragraph}>
-          <Typography component="p" variant="body2">{cultureRouteDesc}</Typography>
+          <Typography component="p" variant="body2">
+            {cultureRouteDesc}
+          </Typography>
         </div>
       ) : null}
     </div>
@@ -294,7 +304,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ));
 
   return (
-    <div>
+    <div className={classes.content}>
       <TitleBar
         title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
         titleComponent="h3"
@@ -302,7 +312,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
-        <div>{cultureRouteDesc ? descriptionComponent : null}</div>
+        <>{cultureRouteDesc ? descriptionComponent : null}</>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
@@ -314,19 +324,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openCultureRouteList && (currentLanguage === 'en' || currentLanguage === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
-              {openCultureRouteList && currentLanguage === 'fi'
-                ? cultureRouteList.map((item, i) => (
-                  <Button
-                    key={item.id}
-                    variant="outlined"
-                    className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
-                    onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)
-                      }
-                  >
-                    <Typography variant="body2">{item.name}</Typography>
-                  </Button>
-                ))
-                : null}
+              {openCultureRouteList && currentLanguage === 'fi' ? renderList(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
