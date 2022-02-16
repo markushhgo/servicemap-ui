@@ -579,11 +579,11 @@ const translations = {
   'mobilityPlatform.menu.title.walk': 'Kävely',
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
-  'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
+  'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
-  'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräparkit',
-  'mobilityPlatform.menu.showSnowPlows': 'Talvikunnossapito',
+  'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
+  'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -613,9 +613,9 @@ const translations = {
 
   // Info text
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
-  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
+  'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
-  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne -sivuston tietoihin.',
+  'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
@@ -623,8 +623,8 @@ const translations = {
   'ecocounter.week': 'Viikoittain',
   'ecocounter.month': 'Kuukausittain',
   'ecocounter.walk': 'Kävely',
-  'ecocounter.bicycle': 'Pyörä',
-  'ecocounter.car': 'Auto',
+  'ecocounter.bicycle': 'Pyöräily',
+  'ecocounter.car': 'Autoilu',
   'ecocounter.chart.labelTo': 'Keskustaan',
   'ecocounter.chart.labelFrom': 'Keskustasta',
   'ecocounter.chart.labelTotal': 'Yhteensä',
