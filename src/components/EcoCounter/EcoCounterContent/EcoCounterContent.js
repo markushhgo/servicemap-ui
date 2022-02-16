@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -169,7 +170,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(currentDate);
+    setSelectedDate(moment().clone().add(-1, 'days'));
   }, [stationId]);
 
   useEffect(() => {
