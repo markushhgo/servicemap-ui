@@ -581,9 +581,6 @@ const translations = {
   'mobilityPlatform.menu.showMaintenanceLocations': 'Street maintenance',
   'mobilityPlatform.menu.showRentalCars': 'Rental cars',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle stands',
-  'mobilityPlatform.menu.showMainBicycleRoutes': 'Main bicycle routes',
-  'mobilityPlatform.menu.showLocalBicycleRoutes': 'Local bicycle routes',
-  'mobilityPlatform.menu.showQualityBicycleRoutes': 'Quality lanes',
   'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
 
   // Content
@@ -617,8 +614,6 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräparkit käsittävät kolmentyyppisiä pyöräpysäkkejä: katetut ja runkolukittavat pyöräparkit, runkolukittavat pyöräparkit ja rengastelineelliset, ei runkolukittavat pyöräparkit.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat.',
-  'mobilityPlatform.info.bicycleMain': 'Pääpyöräreitit yhdistävät seutukeskukset toisiinsa sekä pienemmät paikalliskeskukset seutukeskuksiin. Pääverkostoa käytetään ensisijaisesti pidempiin pyörämatkoihin.',
-  'mobilityPlatform.info.bicycleLocal': 'Paikallispyöräreitit yhdistävät paikalliskeskukset toisiinsa ja liittävät ne pääpyöräreitteihin. Alueiden sisäiset reitit ovat osa paikallispyöräreitistöä.',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',

@@ -100,8 +100,6 @@ const DefaultLayout = (props) => {
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
-  const [showMainBicycleRoutes, setShowMainBicycleRoutes] = useState(false);
-  const [showQualityBicycleRoutes, setShowQualityBicycleRoutes] = useState(false);
   const [showSnowPlows, setShowSnowPlows] = useState(false);
 
   const {
@@ -192,10 +190,6 @@ const DefaultLayout = (props) => {
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
-                      showMainBicycleRoutes,
-                      setShowMainBicycleRoutes,
-                      showQualityBicycleRoutes,
-                      setShowQualityBicycleRoutes,
                       showSnowPlows,
                       setShowSnowPlows,
                     }}
@@ -215,8 +209,6 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
-                    showMainBicycleRoutes,
-                    showQualityBicycleRoutes,
                     showSnowPlows,
                   }}
                 >

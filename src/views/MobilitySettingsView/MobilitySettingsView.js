@@ -27,10 +27,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
-    showMainBicycleRoutes,
-    setShowMainBicycleRoutes,
-    showQualityBicycleRoutes,
-    setShowQualityBicycleRoutes,
     showSnowPlows,
     setShowSnowPlows,
   } = useContext(MobilityPlatformContext);
@@ -39,7 +35,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
-  const ChargingStationsToggle = () => {
+  const chargingStationsToggle = () => {
     if (!showChargingStations) {
       setShowChargingStations(true);
     } else {
@@ -47,7 +43,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const GasFillingStationsToggle = () => {
+  const gasFillingStationsToggle = () => {
     if (!showGasFillingStations) {
       setShowGasFillingStations(true);
     } else {
@@ -55,7 +51,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const EcoCounterStationsToggle = () => {
+  const ecoCounterStationsToggle = () => {
     if (!showEcoCounter) {
       setShowEcoCounter(true);
     } else {
@@ -63,7 +59,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const BicycleStandsToggle = () => {
+  const bicycleStandsToggle = () => {
     if (!showBicycleStands) {
       setShowBicycleStands(true);
     } else {
@@ -71,23 +67,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const MainBicycleRoutesToggle = () => {
-    if (!showMainBicycleRoutes) {
-      setShowMainBicycleRoutes(true);
-    } else {
-      setShowMainBicycleRoutes(false);
-    }
-  };
-
-  const QualityBicycleRoutesToggle = () => {
-    if (!showQualityBicycleRoutes) {
-      setShowQualityBicycleRoutes(true);
-    } else {
-      setShowQualityBicycleRoutes(false);
-    }
-  };
-
-  const SnowPlowsToggle = () => {
+  const snowPlowsToggle = () => {
     if (!showSnowPlows) {
       setShowSnowPlows(true);
     } else {
@@ -100,13 +80,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
-      onChangeValue: EcoCounterStationsToggle,
+      onChangeValue: ecoCounterStationsToggle,
     },
     {
       type: 'snowPlows',
       msgId: 'mobilityPlatform.menu.showSnowPlows',
       checkedValue: showSnowPlows,
-      onChangeValue: SnowPlowsToggle,
+      onChangeValue: snowPlowsToggle,
     },
   ];
 
@@ -115,25 +95,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
-      onChangeValue: EcoCounterStationsToggle,
+      onChangeValue: ecoCounterStationsToggle,
     },
     {
       type: 'bicycleStands',
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
-      onChangeValue: BicycleStandsToggle,
-    },
-    {
-      type: 'bicycleMainRoutes',
-      msgId: 'mobilityPlatform.menu.showMainBicycleRoutes',
-      checkedValue: showMainBicycleRoutes,
-      onChangeValue: MainBicycleRoutesToggle,
-    },
-    {
-      type: 'bicycleQualityRoutes',
-      msgId: 'mobilityPlatform.menu.showQualityBicycleRoutes',
-      checkedValue: showQualityBicycleRoutes,
-      onChangeValue: QualityBicycleRoutesToggle,
+      onChangeValue: bicycleStandsToggle,
     },
   ];
 
@@ -142,19 +110,19 @@ const MobilitySettingsView = ({ classes, intl }) => {
       type: 'chargingStations',
       msgId: 'mobilityPlatform.menu.showChargingStations',
       checkedValue: showChargingStations,
-      onChangeValue: ChargingStationsToggle,
+      onChangeValue: chargingStationsToggle,
     },
     {
       type: 'gasFillingStations',
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
-      onChangeValue: GasFillingStationsToggle,
+      onChangeValue: gasFillingStationsToggle,
     },
     {
       type: 'snowPlows',
       msgId: 'mobilityPlatform.menu.showSnowPlows',
       checkedValue: showSnowPlows,
-      onChangeValue: SnowPlowsToggle,
+      onChangeValue: snowPlowsToggle,
     },
   ];
 
