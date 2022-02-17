@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import MobilityMapSettingsView from './MobilityMapSettingsView';
+import MobilitySettingsView from './MobilitySettingsView';
 import styles from './styles';
 
 const mapStateToProps = (state) => {
@@ -14,4 +14,4 @@ const mapStateToProps = (state) => {
 
 export default injectIntl(withRouter(withStyles(styles)(connect(
   mapStateToProps,
-)(MobilityMapSettingsView))));
+)(MobilitySettingsView))));

@@ -7,22 +7,24 @@ import { ReactSVG } from 'react-svg';
 // eslint-disable-next-line import/no-named-as-default
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import { fetchBicycleRouteNames } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
+import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
-const MobilityMapSettingsView = ({ classes, intl }) => {
+const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('fi');
+  const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState(null);
   const [showBicycleRouteList, setShowBicycleRouteList] = useState(false);
   const [bicycleRouteLength, setBicycleRouteLength] = useState(null);
   const [showBicycleRouteLength, setShowBicycleRouteLength] = useState(false);
   const [activeBicycleRouteIndex, setActiveBicycleRouteIndex] = useState(null);
+  const [apiUrlBicycle, setApiUrlBicycle] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -38,100 +40,61 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
 
-  const apiUrlBicycle = window.nodeEnvSettings.BICYCLE_NETWORK_API;
-
   useEffect(() => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
+  // Avoids pre-render causing window is not defined- error.
   useEffect(() => {
-    fetchBicycleRouteNames(apiUrlBicycle, setBicycleRouteList);
-  }, [setBicycleRouteList]);
+    if (typeof window !== 'undefined') {
+      setApiUrlBicycle(window.nodeEnvSettings.BICYCLE_NETWORK_API);
+    }
+  }, [setApiUrlBicycle]);
+
+  useEffect(() => {
+    if (apiUrlBicycle) {
+      fetchBicycleRouteNames(apiUrlBicycle, setBicycleRouteList);
+    }
+  }, [apiUrlBicycle, setBicycleRouteList]);
 
   // Set current language based on user selection
   useEffect(() => {
-    if (intl.locale === 'en') {
-      setCurrentLanguage('en');
-    } else if (intl.locale === 'sv') {
-      setCurrentLanguage('sv');
-    } else setCurrentLanguage('fi');
+    getCurrentLocale(intl.locale, setCurrentLocale);
   }, [intl.locale]);
 
   const walkSettingsToggle = () => {
-    if (!openWalkSettings) {
-      setOpenWalkSettings(true);
-    } else {
-      setOpenWalkSettings(false);
-    }
+    setOpenWalkSettings(current => !current);
   };
 
   const bicycleSettingsToggle = () => {
-    if (!openBicycleSettings) {
-      setOpenBicycleSettings(true);
-    } else {
-      setOpenBicycleSettings(false);
-    }
+    setOpenBicycleSettings(current => !current);
   };
 
   const carSettingsToggle = () => {
-    if (!openCarSettings) {
-      setOpenCarSettings(true);
-    } else {
-      setOpenCarSettings(false);
-    }
+    setOpenCarSettings(current => !current);
   };
 
   const chargingStationsToggle = () => {
-    if (!showChargingStations) {
-      setShowChargingStations(true);
-    } else {
-      setShowChargingStations(false);
-    }
+    setShowChargingStations(current => !current);
   };
 
   const gasFillingStationsToggle = () => {
-    if (!showGasFillingStations) {
-      setShowGasFillingStations(true);
-    } else {
-      setShowGasFillingStations(false);
-    }
+    setShowGasFillingStations(current => !current);
   };
 
   const ecoCounterStationsToggle = () => {
-    if (!showEcoCounter) {
-      setShowEcoCounter(true);
-    } else {
-      setShowEcoCounter(false);
-    }
+    setShowEcoCounter(current => !current);
   };
 
   const bicycleStandsToggle = () => {
-    if (!showBicycleStands) {
-      setShowBicycleStands(true);
-    } else {
-      setShowBicycleStands(false);
-    }
+    setShowBicycleStands(current => !current);
   };
 
   const bicycleRouteListToggle = () => {
-    if (!showBicycleRouteList) {
-      setShowBicycleRouteList(true);
-    } else {
-      setShowBicycleRouteList(false);
-    }
+    setShowBicycleRouteList(current => !current);
+    setShowBicycleRoutes(current => !current);
+    setShowBicycleRouteLength(current => !current);
     setBicycleRouteLength(null);
-    setShowBicycleRoutes(false);
-    setShowBicycleRouteLength(false);
-  };
-
-  const selectRouteName = (nameFi, nameEn, nameSv) => {
-    if (currentLanguage === 'sv' && nameSv !== null) {
-      return nameSv;
-    }
-    if (currentLanguage === 'en' && nameEn !== null) {
-      return nameEn;
-    }
-    return nameFi;
   };
 
   const formatBicycleRoutelength = (inputLength) => {
@@ -148,15 +111,15 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
 
   useEffect(() => {
     if (bicycleRouteList) {
-      if (currentLanguage === 'fi') {
+      if (currentLocale === 'fi') {
         bicycleRouteList.sort((a, b) => a.name_fi.localeCompare(b.name_fi));
-      } else if (currentLanguage === 'en') {
+      } else if (currentLocale === 'en') {
         bicycleRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
-      } else if (currentLanguage === 'sv') {
+      } else if (currentLocale === 'sv') {
         bicycleRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
       }
     }
-  }, [bicycleRouteList, currentLanguage]);
+  }, [bicycleRouteList, currentLocale]);
 
   const walkingControlTypes = [
     {
@@ -250,19 +213,16 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
     </div>
   );
 
-  const routeListComponent = (inputData, activeIndex, setRouteState) => (
-    inputData.map((item, i) => (
-      <Button
-        key={item.id}
-        variant="outlined"
-        className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
-        onClick={() => setRouteState(i, item.length, item.name_fi)
-        }
-      >
-        <Typography variant="body2">{selectRouteName(item.name_fi, item.name_en, item.name_sv)}</Typography>
-      </Button>
-    ))
-  );
+  const routeListComponent = (inputData, activeIndex, setRouteState) => inputData.map((item, i) => (
+    <Button
+      key={item.id}
+      variant="outlined"
+      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      onClick={() => setRouteState(i, item.length, item.name_fi)}
+    >
+      <Typography variant="body2">{selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}</Typography>
+    </Button>
+  ));
 
   return (
     <div>
@@ -273,9 +233,7 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
-        <>
-          {showBicycleRouteLength ? routeLengthComponent : null}
-        </>
+        <>{showBicycleRouteLength ? routeLengthComponent : null}</>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
@@ -294,7 +252,9 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
               </div>
               {openBicycleSettings
                 && bicycleControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
-              {showBicycleRouteList ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState) : null}
+              {showBicycleRouteList
+                ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState)
+                : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
@@ -312,9 +272,9 @@ const MobilityMapSettingsView = ({ classes, intl }) => {
   );
 };
 
-MobilityMapSettingsView.propTypes = {
+MobilitySettingsView.propTypes = {
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default MobilityMapSettingsView;
+export default MobilitySettingsView;
