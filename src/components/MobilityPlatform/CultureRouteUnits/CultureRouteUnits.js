@@ -32,13 +32,13 @@ const CultureRouteUnits = ({ classes, intl }) => {
   }, [setCultureRouteUnits]);
 
   useEffect(() => {
-    if (cultureRouteUnits !== null) {
-      const routeUnits = [];
-      cultureRouteUnits.forEach((item) => {
+    if (cultureRouteUnits) {
+      const routeUnits = cultureRouteUnits.reduce((acc, item) => {
         if (item.mobile_unit_group.id === cultureRouteId) {
-          routeUnits.push(item);
+          acc.push(item);
         }
-      });
+        return acc;
+      }, []);
       setActiveCultureRouteUnits(routeUnits);
     }
   }, [cultureRouteUnits, cultureRouteId]);
