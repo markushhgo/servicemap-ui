@@ -62,26 +62,28 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [intl.locale]);
 
   useEffect(() => {
+    const objKeys = {
+      en: 'name_en',
+      sv: 'name_sv',
+    };
+    if (cultureRouteList) {
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item[objKeys[currentLocale]]));
+    }
+  }, [cultureRouteList, currentLocale]);
+
+  useEffect(() => {
+    const objKeys = {
+      fi: 'name',
+      en: 'name_en',
+      sv: 'name_sv',
+    };
     if (cultureRouteList && currentLocale === 'fi') {
-      cultureRouteList.sort((a, b) => a.name.localeCompare(b.name));
+      cultureRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+    } else if (filteredCultureRouteList && currentLocale !== 'fi') {
+      filteredCultureRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
     }
-  }, [cultureRouteList, currentLocale]);
+  }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
 
-  useEffect(() => {
-    if (filteredCultureRouteList && currentLocale === 'en') {
-      filteredCultureRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
-    } else if (filteredCultureRouteList && currentLocale === 'sv') {
-      filteredCultureRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
-    }
-  }, [filteredCultureRouteList, currentLocale]);
-
-  useEffect(() => {
-    if (cultureRouteList && currentLocale === 'en') {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item.name_en));
-    } else if (cultureRouteList && currentLocale === 'sv') {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item.name_sv));
-    }
-  }, [cultureRouteList, currentLocale]);
 
   // Toggle functions for main user types
   const walkSettingsToggle = () => {
