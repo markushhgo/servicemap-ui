@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { fetchCultureRoutesGeometry } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import CultureRouteUnits from '../CultureRouteUnits';
 
 const CultureRoutes = () => {
@@ -18,7 +18,7 @@ const CultureRoutes = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchCultureRoutesGeometry(apiUrl, setCultureRoutes);
+      fetchCultureRoutesData(apiUrl, 'CRG', 20, setCultureRoutes);
     }
   }, [openMobilityPlatform, setCultureRoutes]);
 

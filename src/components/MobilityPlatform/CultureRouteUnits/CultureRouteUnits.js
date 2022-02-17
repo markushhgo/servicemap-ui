@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { fetchCultureRoutesUnits } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { getCurrentLocale, selectRouteName } from '../utils/utils';
 import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
@@ -28,7 +28,7 @@ const CultureRouteUnits = ({ classes, intl }) => {
   }, [intl.locale]);
 
   useEffect(() => {
-    fetchCultureRoutesUnits(apiUrl, setCultureRouteUnits);
+    fetchCultureRoutesData(apiUrl, 'CRU', 150, setCultureRouteUnits);
   }, [setCultureRouteUnits]);
 
   useEffect(() => {

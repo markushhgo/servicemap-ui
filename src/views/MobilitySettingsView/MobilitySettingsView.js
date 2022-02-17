@@ -37,7 +37,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
-    showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
   } = useContext(MobilityPlatformContext);
@@ -78,101 +77,67 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   useEffect(() => {
     if (cultureRouteList && currentLocale === 'en') {
-      const filtered = cultureRouteList.filter(item => item.name_en !== null);
+      const filtered = cultureRouteList.filter(item => item.name_en);
       setFilteredCultureRouteList(filtered);
     } else if (cultureRouteList && currentLocale === 'sv') {
-      const filtered = cultureRouteList.filter(item => item.name_sv !== null);
+      const filtered = cultureRouteList.filter(item => item.name_sv);
       setFilteredCultureRouteList(filtered);
     }
   }, [cultureRouteList, currentLocale]);
 
   // Toggle functions for main user types
   const walkSettingsToggle = () => {
-    if (!openWalkSettings) {
-      setOpenWalkSettings(true);
-    } else {
-      setOpenWalkSettings(false);
-    }
+    setOpenWalkSettings(current => !current);
   };
 
   const bicycleSettingsToggle = () => {
-    if (!openBicycleSettings) {
-      setOpenBicycleSettings(true);
-    } else {
-      setOpenBicycleSettings(false);
-    }
+    setOpenBicycleSettings(current => !current);
   };
 
   const carSettingsToggle = () => {
-    if (!openCarSettings) {
-      setOpenCarSettings(true);
-    } else {
-      setOpenCarSettings(false);
-    }
+    setOpenCarSettings(current => !current);
   };
 
   // Toggle functions for content types
   const chargingStationsToggle = () => {
-    if (!showChargingStations) {
-      setShowChargingStations(true);
-    } else {
-      setShowChargingStations(false);
-    }
+    setShowChargingStations(current => !current);
   };
 
   const gasFillingStationsToggle = () => {
-    if (!showGasFillingStations) {
-      setShowGasFillingStations(true);
-    } else {
-      setShowGasFillingStations(false);
-    }
+    setShowGasFillingStations(current => !current);
   };
 
   const ecoCounterStationsToggle = () => {
-    if (!showEcoCounter) {
-      setShowEcoCounter(true);
-    } else {
-      setShowEcoCounter(false);
-    }
+    setShowEcoCounter(current => !current);
   };
 
   const bicycleStandsToggle = () => {
-    if (!showBicycleStands) {
-      setShowBicycleStands(true);
-    } else {
-      setShowBicycleStands(false);
-    }
+    setShowBicycleStands(current => !current);
   };
 
   const cultureRouteListToggle = () => {
-    if (!openCultureRouteList) {
-      setOpenCultureRouteList(true);
-    } else {
-      setOpenCultureRouteList(false);
-    }
+    setOpenCultureRouteList(current => !current);
+    setShowCultureRoutes(current => !current);
     if (cultureRouteDesc) {
       setCultureRouteDesc(null);
     }
     if (activeIndex) {
       setActiveIndex(null);
     }
-    if (showCultureRoutes) {
-      setShowCultureRoutes(false);
-    }
   };
 
   const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
-    if (currentLocale === 'sv' && descriptionSv !== null) {
+    if (currentLocale === 'sv' && descriptionSv) {
       setCultureRouteDesc(descriptionSv);
-    } else if (currentLocale === 'en' && descriptionEn !== null) {
+    } else if (currentLocale === 'en' && descriptionEn) {
       setCultureRouteDesc(descriptionEn);
     } else {
       setCultureRouteDesc(descriptionFi);
     }
   };
 
-  const setCultureRouteState = (descriptionSv, descriptionEn, descriptionFi, itemId, index) => {
-    selectRouteDescription(descriptionSv, descriptionEn, descriptionFi);
+  const setCultureRouteState = (descriptionSV, descriptionEN, descriptionFI, itemId, index) => {
+    selectRouteDescription(descriptionSV, descriptionEN, descriptionFI);
     setCultureRouteId(itemId);
     setActiveIndex(index);
     setShowCultureRoutes(true);

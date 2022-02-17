@@ -42,19 +42,9 @@ export const fetchCultureRoutesGroup = async (apiUrl, setStations) => {
   }
 };
 
-export const fetchCultureRoutesGeometry = async (apiUrl, setStations) => {
+export const fetchCultureRoutesData = async (apiUrl, type, size, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=CRG&page_size=20&latlon=true&srid=4326`);
-    const jsonData = await response.json();
-    setStations(jsonData.results);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
-export const fetchCultureRoutesUnits = async (apiUrl, setStations) => {
-  try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=CRU&page_size=150&latlon=true&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
