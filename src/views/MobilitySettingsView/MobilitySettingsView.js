@@ -110,14 +110,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   useEffect(() => {
+    const objKeys = {
+      fi: 'name_fi',
+      en: 'name_en',
+      sv: 'name_sv',
+    };
     if (bicycleRouteList) {
-      if (currentLocale === 'fi') {
-        bicycleRouteList.sort((a, b) => a.name_fi.localeCompare(b.name_fi));
-      } else if (currentLocale === 'en') {
-        bicycleRouteList.sort((a, b) => a.name_en.localeCompare(b.name_en));
-      } else if (currentLocale === 'sv') {
-        bicycleRouteList.sort((a, b) => a.name_sv.localeCompare(b.name_sv));
-      }
+      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
     }
   }, [bicycleRouteList, currentLocale]);
 
