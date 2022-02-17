@@ -77,11 +77,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   useEffect(() => {
     if (cultureRouteList && currentLocale === 'en') {
-      const filtered = cultureRouteList.filter(item => item.name_en);
-      setFilteredCultureRouteList(filtered);
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item.name_en));
     } else if (cultureRouteList && currentLocale === 'sv') {
-      const filtered = cultureRouteList.filter(item => item.name_sv);
-      setFilteredCultureRouteList(filtered);
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item.name_sv));
     }
   }, [cultureRouteList, currentLocale]);
 
