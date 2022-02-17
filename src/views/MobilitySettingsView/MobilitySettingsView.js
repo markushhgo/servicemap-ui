@@ -61,26 +61,23 @@ const MobilitySettingsView = ({ classes, intl }) => {
     getCurrentLocale(intl.locale, setCurrentLocale);
   }, [intl.locale]);
 
+  const nameKeys = {
+    fi: 'name',
+    en: 'name_en',
+    sv: 'name_sv',
+  };
+
   useEffect(() => {
-    const objKeys = {
-      en: 'name_en',
-      sv: 'name_sv',
-    };
     if (cultureRouteList) {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item[objKeys[currentLocale]]));
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, currentLocale]);
 
   useEffect(() => {
-    const objKeys = {
-      fi: 'name',
-      en: 'name_en',
-      sv: 'name_sv',
-    };
     if (cultureRouteList && currentLocale === 'fi') {
-      cultureRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+      cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     } else if (filteredCultureRouteList && currentLocale !== 'fi') {
-      filteredCultureRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+      filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
 
