@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesUnits } from '../mobilityPlatformRequests/mobilityPlatformRequests';

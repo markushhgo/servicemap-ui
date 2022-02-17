@@ -25,6 +25,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [showDescriptionText, setShowDescriptionText] = useState(false);
+  const [apiUrl, setApiUrl] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -41,15 +42,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setCultureRouteId,
   } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+  // Avoids pre-render causing window is not defined- error.
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
+    }
+  }, [setApiUrl]);
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
   useEffect(() => {
-    fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
-  }, [setCultureRouteList]);
+    if (apiUrl) { fetchCultureRoutesGroup(apiUrl, setCultureRouteList); }
+  }, [apiUrl, setCultureRouteList]);
 
   // Set current language based on user selection
   useEffect(() => {

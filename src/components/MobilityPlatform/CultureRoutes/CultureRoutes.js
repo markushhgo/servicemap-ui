@@ -7,7 +7,7 @@ const CultureRoutes = () => {
   const [cultureRoutes, setCultureRoutes] = useState(null);
   const [activeCultureRoute, setActiveCultureRoute] = useState(null);
 
-  const { showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -17,8 +17,10 @@ const CultureRoutes = () => {
   const grayOptions = { color: '#e8e8e8', dashArray: '5, 10' };
 
   useEffect(() => {
-    fetchCultureRoutesGeometry(apiUrl, setCultureRoutes);
-  }, [setCultureRoutes]);
+    if (openMobilityPlatform) {
+      fetchCultureRoutesGeometry(apiUrl, setCultureRoutes);
+    }
+  }, [openMobilityPlatform, setCultureRoutes]);
 
   useEffect(() => {
     if (cultureRoutes) {
