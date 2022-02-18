@@ -579,6 +579,7 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
+  'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -601,10 +602,12 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by city of Turku.',
 
   // Info text
+  'mobilityPlatform.info.description.title': 'Route description',
   'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on the information on the latauskartta.fi website maintained by Sähköautoilijat ry.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
+
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',
