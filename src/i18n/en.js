@@ -605,6 +605,7 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by city of Turku.',
 
   // Info text
+  'mobilityPlatform.info.description.title': 'Route description',
   'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on the information on the latauskartta.fi website maintained by Sähköautoilijat ry.',

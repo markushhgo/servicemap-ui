@@ -40,10 +40,12 @@ const styles = theme => ({
   },
   buttonSmall: {
     width: '100%',
-    height: '40px',
+    height: '45px',
     background: 'rgba(230, 230, 230, 255)',
     textTransform: 'capitalize',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    paddingLeft: theme.spacing(2),
     borderRadius: '0',
     borderTop: 'none',
     borderBottom: '1px solid #000000',
@@ -53,9 +55,11 @@ const styles = theme => ({
   },
   buttonSmallActive: {
     width: '100%',
-    height: '40px',
+    height: '45px',
     textTransform: 'capitalize',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    paddingLeft: theme.spacing(2),
     borderRadius: '0',
     borderBottom: '1px solid #6f7276',
     borderTop: '1px solid #6f7276',
@@ -107,6 +111,7 @@ const styles = theme => ({
   },
   description: {
     borderBottom: '1px solid #6f7276',
+    textAlign: 'left',
   },
 });
 

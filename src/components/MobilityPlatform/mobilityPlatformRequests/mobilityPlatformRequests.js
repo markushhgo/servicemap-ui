@@ -32,6 +32,26 @@ export const fetchBicycleStandsData = async (apiUrl, setStations) => {
   }
 };
 
+export const fetchCultureRoutesGroup = async (apiUrl, setStations) => {
+  try {
+    const response = await fetch(`${apiUrl}/mobile_unit_groups/`);
+    const jsonData = await response.json();
+    setStations(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+export const fetchCultureRoutesData = async (apiUrl, type, size, setStations) => {
+  try {
+    const response = await fetch(`${apiUrl}/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
+    const jsonData = await response.json();
+    setStations(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
 export const fetchBicycleRouteNames = async (apiUrl, setStations) => {
   try {
     const response = await fetch(`${apiUrl}/bicycle_networks/`);

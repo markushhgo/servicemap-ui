@@ -4,9 +4,12 @@ import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
-// eslint-disable-next-line import/no-named-as-default
+import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
-import { fetchBicycleRouteNames } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
+import {
+  fetchCultureRoutesGroup,
+  fetchBicycleRouteNames,
+} from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
@@ -18,13 +21,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
+  const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
+  const [cultureRouteList, setCultureRouteList] = useState(null);
+  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
+  const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
+  const [showDescriptionText, setShowDescriptionText] = useState(false);
   const [bicycleRouteList, setBicycleRouteList] = useState(null);
   const [showBicycleRouteList, setShowBicycleRouteList] = useState(false);
   const [bicycleRouteLength, setBicycleRouteLength] = useState(null);
   const [showBicycleRouteLength, setShowBicycleRouteLength] = useState(false);
   const [activeBicycleRouteIndex, setActiveBicycleRouteIndex] = useState(null);
   const [apiUrlBicycle, setApiUrlBicycle] = useState(null);
+  const [apiUrl, setApiUrl] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -36,20 +46,29 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    setShowCultureRoutes,
+    setCultureRouteId,
     setShowBicycleRoutes,
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
+
+  // Avoids pre-render causing window is not defined- error.
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
+      setApiUrlBicycle(window.nodeEnvSettings.BICYCLE_NETWORK_API);
+    }
+  }, [setApiUrl, setApiUrlBicycle]);
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
-  // Avoids pre-render causing window is not defined- error.
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setApiUrlBicycle(window.nodeEnvSettings.BICYCLE_NETWORK_API);
+    if (apiUrl) {
+      fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
     }
-  }, [setApiUrlBicycle]);
+  }, [apiUrl, setCultureRouteList]);
 
   useEffect(() => {
     if (apiUrlBicycle) {
@@ -62,6 +81,38 @@ const MobilitySettingsView = ({ classes, intl }) => {
     getCurrentLocale(intl.locale, setCurrentLocale);
   }, [intl.locale]);
 
+  const nameKeys = {
+    fi: 'name',
+    en: 'name_en',
+    sv: 'name_sv',
+  };
+
+  useEffect(() => {
+    if (cultureRouteList) {
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
+    }
+  }, [cultureRouteList, currentLocale]);
+
+  useEffect(() => {
+    if (cultureRouteList && currentLocale === 'fi') {
+      cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
+    } else if (filteredCultureRouteList && currentLocale !== 'fi') {
+      filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
+    }
+  }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
+
+  useEffect(() => {
+    const objKeys = {
+      fi: 'name_fi',
+      en: 'name_en',
+      sv: 'name_sv',
+    };
+    if (bicycleRouteList) {
+      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+    }
+  }, [bicycleRouteList, currentLocale]);
+
+  // Toggle functions for main user types
   const walkSettingsToggle = () => {
     setOpenWalkSettings(current => !current);
   };
@@ -74,6 +125,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenCarSettings(current => !current);
   };
 
+  // Toggle functions for content types
   const chargingStationsToggle = () => {
     setShowChargingStations(current => !current);
   };
@@ -90,11 +142,41 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
+  const cultureRouteListToggle = () => {
+    setOpenCultureRouteList(current => !current);
+    setShowCultureRoutes(current => !current);
+    if (cultureRouteDesc) {
+      setCultureRouteDesc(null);
+    }
+    if (activeIndex) {
+      setActiveIndex(null);
+    }
+  };
+
   const bicycleRouteListToggle = () => {
     setShowBicycleRouteList(current => !current);
     setShowBicycleRoutes(current => !current);
     setShowBicycleRouteLength(current => !current);
-    setBicycleRouteLength(null);
+    if (bicycleRouteLength) {
+      setBicycleRouteLength(null);
+    }
+  };
+
+  const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
+    if (currentLocale === 'sv' && descriptionSv) {
+      setCultureRouteDesc(descriptionSv);
+    } else if (currentLocale === 'en' && descriptionEn) {
+      setCultureRouteDesc(descriptionEn);
+    } else {
+      setCultureRouteDesc(descriptionFi);
+    }
+  };
+
+  const setCultureRouteState = (descriptionSV, descriptionEN, descriptionFI, itemId, index) => {
+    selectRouteDescription(descriptionSV, descriptionEN, descriptionFI);
+    setCultureRouteId(itemId);
+    setActiveIndex(index);
+    setShowCultureRoutes(true);
   };
 
   const formatBicycleRoutelength = (inputLength) => {
@@ -109,17 +191,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes(true);
   };
 
-  useEffect(() => {
-    const objKeys = {
-      fi: 'name_fi',
-      en: 'name_en',
-      sv: 'name_sv',
-    };
-    if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
-    }
-  }, [bicycleRouteList, currentLocale]);
-
   const walkingControlTypes = [
     {
       type: 'ecoCounterStations',
@@ -127,11 +198,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showEcoCounter,
       onChangeValue: ecoCounterStationsToggle,
     },
+    {
+      type: 'cultureRoutes',
+      msgId: 'mobilityPlatform.menu.showCultureRoutes',
+      checkedValue: openCultureRouteList,
+      onChangeValue: cultureRouteListToggle,
+    },
   ];
 
   const bicycleControlTypes = [
     {
-      type: 'bicycleSRoutes',
+      type: 'bicycleRoutes',
       msgId: 'mobilityPlatform.menu.showBicycleRoutes',
       checkedValue: showBicycleRouteList,
       onChangeValue: bicycleRouteListToggle,
@@ -195,6 +272,42 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </Button>
   );
 
+  const descriptionComponent = (
+    <div className={classes.description}>
+      <div className={classes.subtitle}>
+        <Button
+          className={classes.buttonWhite}
+          onClick={() => (showDescriptionText ? setShowDescriptionText(false) : setShowDescriptionText(true))}
+        >
+          <Typography className={classes.toggleText} variant="body1">
+            {intl.formatMessage({
+              id: 'mobilityPlatform.info.description.title',
+            })}
+          </Typography>
+          {showDescriptionText ? <ArrowDropUp /> : <ArrowDropDown />}
+        </Button>
+      </div>
+      {showDescriptionText ? (
+        <div className={classes.paragraph}>
+          <Typography component="p" variant="body2">
+            {cultureRouteDesc}
+          </Typography>
+        </div>
+      ) : null}
+    </div>
+  );
+
+  const renderList = inputData => inputData.map((item, i) => (
+    <Button
+      key={item.id}
+      variant="outlined"
+      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
+    >
+      <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
+    </Button>
+  ));
+
   const routeLengthComponent = (
     <div className={classes.description}>
       <div className={classes.paragraph}>
@@ -212,19 +325,33 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
-  const routeListComponent = (inputData, activeIndex, setRouteState) => inputData.map((item, i) => (
+  const routeListComponent = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
     <Button
       key={item.id}
       variant="outlined"
-      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setRouteState(i, item.length, item.name_fi)}
     >
       <Typography variant="body2">{selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}</Typography>
     </Button>
   ));
 
+  const renderSettings = (settingVisibility, typeVal) => {
+    if (settingVisibility) {
+      return typeVal.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue));
+    }
+    return null;
+  };
+
+  const renderDescription = (descriptionVisibility, descriptionComp) => {
+    if (descriptionVisibility) {
+      return descriptionComp;
+    }
+    return null;
+  };
+
   return (
-    <div>
+    <div className={classes.content}>
       <TitleBar
         title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
         titleComponent="h3"
@@ -232,15 +359,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
-        <>{showBicycleRouteLength ? routeLengthComponent : null}</>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
               <div className={classes.buttonContainer}>
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
-              {openWalkSettings
-                && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+              {renderSettings(openWalkSettings, walkingControlTypes)}
+              {renderDescription(cultureRouteDesc, descriptionComponent)}
+              {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
+                ? renderList(filteredCultureRouteList)
+                : null}
+              {openCultureRouteList && currentLocale === 'fi' ? renderList(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
@@ -249,16 +379,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   'mobilityPlatform.menu.title.bicycle',
                 )}
               </div>
-              {openBicycleSettings
-                && bicycleControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+              {renderSettings(openBicycleSettings, bicycleControlTypes)}
+              {renderDescription(showBicycleRouteLength, routeLengthComponent)}
               {showBicycleRouteList
                 ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState)
                 : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
-              {openCarSettings
-                && carControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+              {renderSettings(openCarSettings, carControlTypes)}
             </>
           </FormGroup>
         </FormControl>

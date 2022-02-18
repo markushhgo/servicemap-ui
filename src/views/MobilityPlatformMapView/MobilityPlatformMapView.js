@@ -3,6 +3,7 @@ import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStat
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
+import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 import BicycleRoutes from '../../components/MobilityPlatform/BicycleRoutes';
 
 const MobilityPlatformMapView = () => (
@@ -12,6 +13,7 @@ const MobilityPlatformMapView = () => (
     <EcoCounterMarkers />
     <BicycleStands />
     <BicycleRoutes />
+    <CultureRoutes />
   </>
 );
 
