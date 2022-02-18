@@ -582,6 +582,7 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
+  'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -610,6 +611,7 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.time': 'Tid',
 
   // Info text
+  'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baseras på webbplatsen latauskartta.fi:s information som underhålls av Sähköautoilijat ry.',

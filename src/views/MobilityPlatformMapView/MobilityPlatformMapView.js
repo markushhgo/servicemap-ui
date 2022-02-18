@@ -4,6 +4,7 @@ import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFilli
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
 import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
 import SnowPlows from '../../components/MobilityPlatform/SnowPlows';
+import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -12,6 +13,7 @@ const MobilityPlatformMapView = () => (
     <EcoCounterMarkers />
     <BicycleStands />
     <SnowPlows />
+    <CultureRoutes />
   </>
 );
 

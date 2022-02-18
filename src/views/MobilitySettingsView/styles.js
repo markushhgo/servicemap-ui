@@ -2,6 +2,12 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.backgroundTurku.main,
   },
+  buttonWhite: {
+    width: '100%',
+    textAlign: 'left',
+    textTransform: 'none',
+    padding: theme.spacing(1),
+  },
   button: {
     width: '100%',
     height: '50px',
@@ -34,10 +40,12 @@ const styles = theme => ({
   },
   buttonSmall: {
     width: '100%',
-    height: '40px',
+    height: '45px',
     background: 'rgba(230, 230, 230, 255)',
     textTransform: 'capitalize',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    paddingLeft: theme.spacing(2),
     borderRadius: '0',
     borderTop: 'none',
     borderBottom: '1px solid #000000',
@@ -47,9 +55,11 @@ const styles = theme => ({
   },
   buttonSmallActive: {
     width: '100%',
-    height: '40px',
+    height: '45px',
     textTransform: 'capitalize',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    paddingLeft: theme.spacing(2),
     borderRadius: '0',
     borderBottom: '1px solid #6f7276',
     borderTop: '1px solid #6f7276',
@@ -61,6 +71,10 @@ const styles = theme => ({
       borderBottom: '1px solid #6f7276',
       borderTop: '1px solid #6f7276',
     },
+  },
+  toggleText: {
+    width: '85%',
+    textAlign: 'left',
   },
   formControl: {
     width: '100%',
@@ -91,6 +105,7 @@ const styles = theme => ({
   },
   paragraph: {
     padding: theme.spacing(2),
+    textAlign: 'left',
   },
 });
 

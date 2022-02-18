@@ -57,7 +57,7 @@ const SnowPlows = ({ classes, intl }) => {
           <div>
             {snowPlows
               && snowPlows.map(item => (
-                <Marker key={item.data.id} icon={customIcon} position={formatCoords(item.data.last_location.coords)}>
+                <Marker key={item.id} icon={customIcon} position={formatCoords(item.data.last_location.coords)}>
                   <div className={classes.popupWrapper}>
                     <Popup className="charger-stations-popup">
                       <div className={classes.popupInner}>
