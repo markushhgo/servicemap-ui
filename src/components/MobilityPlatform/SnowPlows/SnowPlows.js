@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { Typography } from '@material-ui/core';
+import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import snowPlowIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
-import snowPlowData from '../../../../node_modules/servicemap-ui-turku/assets/files/snowplow-data-helmi.json';
 
 const SnowPlows = ({ classes, intl }) => {
   const [snowPlows, setSnowPlows] = useState(null);
+  const [innerData, setInnerData] = useState(null);
 
-  const { showSnowPlows } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showSnowPlows } = useContext(MobilityPlatformContext);
+
+  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
@@ -19,15 +22,27 @@ const SnowPlows = ({ classes, intl }) => {
   });
 
   useEffect(() => {
-    setSnowPlows(snowPlowData.results);
-  }, [setSnowPlows]);
+    if (openMobilityPlatform) {
+      fetchIotData(apiUrl, 'ISP', setSnowPlows);
+    }
+  }, [openMobilityPlatform, setSnowPlows]);
+
+
+  useEffect(() => {
+    if (snowPlows) {
+      snowPlows.map((item) => {
+        setInnerData(item.data);
+        return item.data;
+      });
+    }
+  }, [snowPlows]);
 
   const formatCoords = (input) => {
     const coordsArray = [];
     const output = input.replace(/[()]/g, '');
-    const initialArray = output.split(' ').splice(0);
-    coordsArray.push(parseFloat(initialArray[1]));
-    coordsArray.push(parseFloat(initialArray[0]));
+    const initialArray = output.split(' ');
+    coordsArray.push(Number(initialArray[1]));
+    coordsArray.push(Number(initialArray[0]));
     return coordsArray;
   };
 
@@ -55,9 +70,9 @@ const SnowPlows = ({ classes, intl }) => {
       {showSnowPlows ? (
         <div>
           <div>
-            {snowPlows
-              && snowPlows.map(item => (
-                <Marker key={item.id} icon={customIcon} position={formatCoords(item.data.last_location.coords)}>
+            {innerData
+              && innerData.map(item => (
+                <Marker key={item.id} icon={customIcon} position={formatCoords(item.last_location.coords)}>
                   <div className={classes.popupWrapper}>
                     <Popup className="charger-stations-popup">
                       <div className={classes.popupInner}>
@@ -74,7 +89,7 @@ const SnowPlows = ({ classes, intl }) => {
                           </strong>
                           :
                           {' '}
-                          {formatEvent(item.data.last_location.events[0])}
+                          {formatEvent(item.last_location.events[0])}
                         </Typography>
                         <Typography>
                           <strong>
@@ -82,7 +97,7 @@ const SnowPlows = ({ classes, intl }) => {
                           </strong>
                           :
                           {' '}
-                          {formatTime(item.data.last_location.timestamp)}
+                          {formatTime(item.last_location.timestamp)}
                         </Typography>
                       </div>
                     </Popup>
