@@ -33,7 +33,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [bicycleRouteLength, setBicycleRouteLength] = useState(null);
   const [showBicycleRouteLength, setShowBicycleRouteLength] = useState(false);
   const [activeBicycleRouteIndex, setActiveBicycleRouteIndex] = useState(null);
-  const [apiUrlBicycle, setApiUrlBicycle] = useState(null);
   const [apiUrl, setApiUrl] = useState(null);
 
   const {
@@ -56,9 +55,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
-      setApiUrlBicycle(window.nodeEnvSettings.BICYCLE_NETWORK_API);
     }
-  }, [setApiUrl, setApiUrlBicycle]);
+  }, [setApiUrl]);
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
@@ -71,10 +69,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [apiUrl, setCultureRouteList]);
 
   useEffect(() => {
-    if (apiUrlBicycle) {
-      fetchBicycleRouteNames(apiUrlBicycle, setBicycleRouteList);
+    if (apiUrl) {
+      fetchBicycleRouteNames(apiUrl, setBicycleRouteList);
     }
-  }, [apiUrlBicycle, setBicycleRouteList]);
+  }, [apiUrl, setBicycleRouteList]);
 
   // Set current language based on user selection
   useEffect(() => {
@@ -184,7 +182,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const setBicycleRouteState = (index, inputLength, routeName) => {
-    setShowBicycleRouteLength(true);
     setActiveBicycleRouteIndex(index);
     formatBicycleRoutelength(inputLength);
     setBicycleRouteName(routeName);
@@ -314,6 +311,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
         <Typography variant="subtitle1">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
         </Typography>
+        {}
         <Typography variant="body2">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
           {' '}

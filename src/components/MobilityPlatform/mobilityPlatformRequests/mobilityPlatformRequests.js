@@ -4,7 +4,7 @@
 
 export const fetchCGSStationsData = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=CGS&page_size=150&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=CGS&page_size=150&srid=4326`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -14,7 +14,7 @@ export const fetchCGSStationsData = async (apiUrl, setStations) => {
 
 export const fetchGFSStationsData = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=GFS&page_size=10&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=GFS&page_size=10&srid=4326`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -24,7 +24,7 @@ export const fetchGFSStationsData = async (apiUrl, setStations) => {
 
 export const fetchBicycleStandsData = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=BIS&page_size=100&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=BIS&page_size=100&srid=4326`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -34,7 +34,7 @@ export const fetchBicycleStandsData = async (apiUrl, setStations) => {
 
 export const fetchCultureRoutesGroup = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_unit_groups/`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_unit_groups/`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -44,7 +44,7 @@ export const fetchCultureRoutesGroup = async (apiUrl, setStations) => {
 
 export const fetchCultureRoutesData = async (apiUrl, type, size, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -54,7 +54,7 @@ export const fetchCultureRoutesData = async (apiUrl, type, size, setStations) =>
 
 export const fetchBicycleRouteNames = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/bicycle_networks/`);
+    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networks/`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
@@ -64,7 +64,7 @@ export const fetchBicycleRouteNames = async (apiUrl, setStations) => {
 
 export const fetchBicycleRoutesGeometry = async (apiUrl, setStations) => {
   try {
-    const response = await fetch(`${apiUrl}/bicycle_networkparts/?page_size=1000&latlon=true`);
+    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`);
     const jsonData = await response.json();
     setStations(jsonData.results);
   } catch (err) {
