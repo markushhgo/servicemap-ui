@@ -10,7 +10,7 @@ const EcoCounterMarkers = ({ classes }) => {
 
   const { openMobilityPlatform, showEcoCounter } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
+  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
