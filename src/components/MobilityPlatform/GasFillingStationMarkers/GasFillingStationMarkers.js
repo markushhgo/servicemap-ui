@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
-import { fetchGFSStationsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import gasFillingIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 
 const GasFillingStationMarkers = ({ classes }) => {
@@ -22,7 +22,7 @@ const GasFillingStationMarkers = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchGFSStationsData(apiUrl, setGasFillingStations);
+      fetchMobilityMapData(apiUrl, 'GFS', 10, setGasFillingStations);
     }
   }, [openMobilityPlatform, setGasFillingStations]);
 
