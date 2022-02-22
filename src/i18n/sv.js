@@ -582,6 +582,7 @@ const translations = {
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringplatser', // TODO verify translation
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',

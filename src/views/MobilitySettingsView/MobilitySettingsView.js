@@ -39,6 +39,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands,
     setShowCultureRoutes,
     setCultureRouteId,
+    showParkingSpaces,
+    setShowParkingSpaces,
   } = useContext(MobilityPlatformContext);
 
   // Avoids pre-render causing window is not defined- error.
@@ -112,6 +114,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
+  const parkingSpacesToggle = () => {
+    setShowParkingSpaces(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
@@ -182,6 +188,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showGasStations',
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
+    },
+    {
+      type: 'parkingSpaces',
+      msgId: 'mobilityPlatform.menu.showParkingSpaces',
+      checkedValue: showParkingSpaces,
+      onChangeValue: parkingSpacesToggle,
     },
   ];
 

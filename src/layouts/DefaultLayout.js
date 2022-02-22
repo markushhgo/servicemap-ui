@@ -102,6 +102,7 @@ const DefaultLayout = (props) => {
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
   const [cultureRouteId, setCultureRouteId] = useState();
+  const [showParkingSpaces, setShowParkingSpaces] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -195,6 +196,8 @@ const DefaultLayout = (props) => {
                       setShowCultureRoutes,
                       cultureRouteId,
                       setCultureRouteId,
+                      showParkingSpaces,
+                      setShowParkingSpaces,
                     }}
                   >
                     <ViewRouter />
@@ -214,6 +217,7 @@ const DefaultLayout = (props) => {
                     showBicycleStands,
                     showCultureRoutes,
                     cultureRouteId,
+                    showParkingSpaces,
                   }}
                 >
                   <MapView

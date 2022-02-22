@@ -584,6 +584,7 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
+  'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
