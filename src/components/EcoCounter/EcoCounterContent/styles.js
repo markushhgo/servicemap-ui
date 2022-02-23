@@ -44,6 +44,7 @@ const styles = {
   headerSubtitle: {
     marginBlockStart: '1rem',
     marginBlockEnd: '0.1rem',
+    fontWeight: 'bold',
   },
   headerDate: {
     marginLeft: 'auto',
@@ -74,6 +75,10 @@ const styles = {
     fontWeight: 'bold',
     paddingTop: '0.3rem',
     paddingRight: '0.6rem',
+    fontSize: '0.8rem',
+  },
+  buttonText: {
+    fontSize: '0.75rem',
   },
   iconActive: {
     fill: '#fff',
