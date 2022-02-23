@@ -31,7 +31,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
   const [activeType, setActiveType] = useState(1);
-  const [noCars, setNoCars] = useState(true);
+  const [userTypesList, setUserTypesList] = useState(null);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
 
@@ -68,7 +68,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   ];
 
   // User types that include cars
-  const userTypes = [
+  const allUsers = [
     {
       type: {
         user: 'walking',
@@ -92,8 +92,8 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
     },
   ];
 
-  // User types that doesn't include cars, because some stations do not include counts for cars
-  const pedestrianTypes = [
+  // User types that doesn't include cars, because most stations do not include counts for cars
+  const pedestrianAndBicycle = [
     {
       type: {
         user: 'walking',
@@ -101,6 +101,16 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
         icon: iconWalk,
       },
     },
+    {
+      type: {
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
+      },
+    },
+  ];
+
+  const bicycleOnly = [
     {
       type: {
         user: 'bicycle',
@@ -547,13 +557,15 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
     setChannelData();
   }, [currentType, currentTime]);
 
-  // Only one station includes data about cars
-  // Sets noCars state to false for that one station only
-  // Initially used id, but it changed few times, so it's not reliable.
+  // Only one station includes data about all user types (inluding cars) and some include only data about cycling.
+  // Sets user types based on station name.
+  // Initially used id, but it can change, so it's not always reliable.
   useEffect(() => {
     if (stationName === 'Auransilta') {
-      setNoCars(false);
-    }
+      setUserTypesList(allUsers);
+    } else if (stationName === 'Kirjastosilta' || stationName === 'Teatteri ranta' || stationName === 'Teatterisilta') {
+      setUserTypesList(pedestrianAndBicycle);
+    } else setUserTypesList(bicycleOnly);
   }, [stationId]);
 
   return (
@@ -596,8 +608,8 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
-          {!noCars
-            ? userTypes.map((userType, i) => (
+          {userTypesList
+            && userTypesList.map((userType, i) => (
               <div
                 key={userType.type.user}
                 className={classes.buttonAndTextContainer}
@@ -625,34 +637,6 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
                 <div className={classes.textContainer}>
                   <p className={classes.userTypeText}>{userType.type.text}</p>
                 </div>
-              </div>
-            ))
-            : pedestrianTypes.map((userType, i) => (
-              <div
-                key={userType.type.user}
-                className={classes.buttonAndTextContainer}
-              >
-                <button
-                  type="button"
-                  className={
-                      i === activeType
-                        ? `${classes.buttonActive}`
-                        : `${classes.buttonWhite}`
-                    }
-                  onClick={() => setUserTypes(userType.type.user, i)}
-                >
-                  <div>
-                    <ReactSVG
-                      className={
-                          i === activeType
-                            ? `${classes.iconActive}`
-                            : `${classes.icon}`
-                        }
-                      src={userType.type.icon}
-                    />
-                  </div>
-                </button>
-                <p className={classes.userTypeText}>{userType.type.text}</p>
               </div>
             ))}
         </div>
@@ -684,7 +668,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
                     ? `${classes.buttonActive}`
                     : `${classes.buttonWhite}`
                 }
-                onClick={() => handleClick(timing.step.type, i, stationId)}
+                onClick={() => handleClick(timing.step.type, i)}
               >
                 {timing.step.text}
               </button>
