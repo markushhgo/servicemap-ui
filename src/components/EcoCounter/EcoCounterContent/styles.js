@@ -67,7 +67,8 @@ const styles = {
     alignItems: 'center',
   },
   textContainer: {
-    width: '50px',
+    width: '40px',
+    marginRight: '0.75rem',
   },
   userTypeText: {
     fontWeight: 'bold',
