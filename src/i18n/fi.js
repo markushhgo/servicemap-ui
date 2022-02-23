@@ -623,6 +623,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Keskustaan',
   'ecocounter.chart.labelFrom': 'Keskustasta',
   'ecocounter.chart.labelTotal': 'Yhteensä',
+  'ecocounter.jan': 'Tammi',
+  'ecocounter.feb': 'Helmi',
+  'ecocounter.march': 'Maalis',
+  'ecocounter.april': 'Huhti',
+  'ecocounter.may': 'Touko',
+  'ecocounter.june': 'Kesä',
+  'ecocounter.july': 'Heinä',
+  'ecocounter.aug': 'Elo',
+  'ecocounter.sep': 'Syys',
+  'ecocounter.oct': 'Loka',
+  'ecocounter.nov': 'Marras',
+  'ecocounter.dec': 'Joulu',
 };
 
 let overridingExternalTranslations;

@@ -6,7 +6,6 @@ import moment from 'moment';
 import { ButtonBase, Typography } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
 import { DayPickerSingleDateController } from 'react-dates';
-import { useIntl } from 'react-intl';
 import 'react-dates/initialize';
 import {
   fetchInitialHourData,
@@ -19,7 +18,9 @@ import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/
 import iconBicycle from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
-const EcoCounterContent = ({ classes, stationId, stationName }) => {
+const EcoCounterContent = ({
+  classes, intl, stationId, stationName,
+}) => {
   const [ecoCounterHour, setEcoCounterHour] = useState(null);
   const [ecoCounterDay, setEcoCounterDay] = useState(null);
   const [ecoCounterWeek, setEcoCounterWeek] = useState(null);
@@ -37,8 +38,6 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
-  const intl = useIntl();
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -223,29 +222,29 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const formatMonths = (monthValue) => {
     switch (monthValue) {
       case 1:
-        return 'Tammi';
+        return intl.formatMessage({ id: 'ecocounter.jan' });
       case 2:
-        return 'Helmi';
+        return intl.formatMessage({ id: 'ecocounter.feb' });
       case 3:
-        return 'Maalis';
+        return intl.formatMessage({ id: 'ecocounter.march' });
       case 4:
-        return 'Huhti';
+        return intl.formatMessage({ id: 'ecocounter.april' });
       case 5:
-        return 'Touko';
+        return intl.formatMessage({ id: 'ecocounter.may' });
       case 6:
-        return 'Kesä';
+        return intl.formatMessage({ id: 'ecocounter.june' });
       case 7:
-        return 'Heinä';
+        return intl.formatMessage({ id: 'ecocounter.july' });
       case 8:
-        return 'Elo';
+        return intl.formatMessage({ id: 'ecocounter.aug' });
       case 9:
-        return 'Syys';
+        return intl.formatMessage({ id: 'ecocounter.sep' });
       case 10:
-        return 'Loka';
+        return intl.formatMessage({ id: 'ecocounter.oct' });
       case 11:
-        return 'Marras';
+        return intl.formatMessage({ id: 'ecocounter.nov' });
       case 12:
-        return 'Joulu';
+        return intl.formatMessage({ id: 'ecocounter.dec' });
       default:
         return monthValue;
     }
@@ -515,7 +514,9 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
                 className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
                 onClick={() => handleClick(timing.step.type, i)}
               >
-                <Typography variant="body2" className={classes.buttonText}>{timing.step.text}</Typography>
+                <Typography variant="body2" className={classes.buttonText}>
+                  {timing.step.text}
+                </Typography>
               </ButtonBase>
             ))}
           </>
@@ -527,6 +528,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
 
 EcoCounterContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
   stationId: PropTypes.number,
   stationName: PropTypes.string,
 };

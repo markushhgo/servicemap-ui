@@ -616,10 +616,22 @@ const translations = {
   'ecocounter.month': 'Monthly',
   'ecocounter.walk': 'Walking',
   'ecocounter.bicycle': 'Cycling',
-  'ecocounter.car': 'By car',
+  'ecocounter.car': 'Driving',
   'ecocounter.chart.labelTo': 'To city',
   'ecocounter.chart.labelFrom': 'From city',
   'ecocounter.chart.labelTotal': 'Total',
+  'ecocounter.jan': 'January',
+  'ecocounter.feb': 'February',
+  'ecocounter.march': 'March',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'May',
+  'ecocounter.june': 'June',
+  'ecocounter.july': 'July',
+  'ecocounter.aug': 'August',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'October',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;
