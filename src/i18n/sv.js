@@ -609,6 +609,11 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
   'mobilityPlatform.content.streetMaintenance.time': 'Tid',
+  'mobilityPlatform.content.streetMaintenance.other': 'Övrig',
+  'mobilityPlatform.settings.buttons.1hour': '1 timme',
+  'mobilityPlatform.settings.buttons.12hours': '12 timmar',
+  'mobilityPlatform.settings.buttons.24hours': '24 timmar',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

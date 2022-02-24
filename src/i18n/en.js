@@ -605,8 +605,13 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.title': 'Maintenance work',
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snowplowing',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sand spreading',
-  'mobilityPlatform.content.streetMaintenance.deIcing': 'De-icing',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Salting',
   'mobilityPlatform.content.streetMaintenance.time': 'Time',
+  'mobilityPlatform.content.streetMaintenance.other': 'Other',
+  'mobilityPlatform.settings.buttons.1hour': '1 hour',
+  'mobilityPlatform.settings.buttons.12hours': '12 hours',
+  'mobilityPlatform.settings.buttons.24hours': '24 hours',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

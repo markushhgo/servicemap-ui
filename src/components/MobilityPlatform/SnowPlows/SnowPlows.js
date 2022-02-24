@@ -6,10 +6,12 @@ import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import snowPlowIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
 
 const SnowPlows = ({ classes, intl }) => {
-  const [snowPlows, setSnowPlows] = useState(null);
-  const [innerData, setInnerData] = useState(null);
+  const [iotData, setIotData] = useState(null);
+  const [iotDataHistory24h, setIotDataHistory24h] = useState(null);
+  const [iotDataHistory12h, setIotDataHistory12h] = useState(null);
+  const [activeSnowPlows, setActiveSnowPlows] = useState(null);
 
-  const { openMobilityPlatform, showSnowPlows } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showSnowPlows, showSnowPlowsHistory } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -21,21 +23,31 @@ const SnowPlows = ({ classes, intl }) => {
     iconSize: [45, 45],
   });
 
+  // TODO compare data and filter possible duplicate ids.
+  // TODO refactor
+
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchIotData(apiUrl, 'ISP', setSnowPlows);
+      fetchIotData(apiUrl, 'ISP', setIotData);
+      fetchIotData(apiUrl, '12H', setIotDataHistory12h);
+      fetchIotData(apiUrl, '24H', setIotDataHistory24h);
     }
-  }, [openMobilityPlatform, setSnowPlows]);
+  }, [openMobilityPlatform, setIotData, setIotDataHistory24h, setIotDataHistory12h]);
 
 
   useEffect(() => {
-    if (snowPlows) {
-      snowPlows.map((item) => {
-        setInnerData(item.data);
-        return item.data;
-      });
+    if (showSnowPlows && showSnowPlowsHistory === '1hour') {
+      setActiveSnowPlows(iotData);
     }
-  }, [snowPlows]);
+  }, [showSnowPlows, showSnowPlowsHistory]);
+
+  useEffect(() => {
+    if (showSnowPlowsHistory === '12hour') {
+      setActiveSnowPlows(iotDataHistory12h);
+    } else if (showSnowPlowsHistory === '24hours') {
+      setActiveSnowPlows(iotDataHistory24h);
+    }
+  }, [showSnowPlowsHistory, iotDataHistory12h, iotDataHistory24h]);
 
   const formatCoords = (input) => {
     const coordsArray = [];
@@ -55,7 +67,7 @@ const SnowPlows = ({ classes, intl }) => {
       case 'su':
         return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.deIcing' });
       default:
-        return inputEvent;
+        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.other' });
     }
   };
 
@@ -70,8 +82,8 @@ const SnowPlows = ({ classes, intl }) => {
       {showSnowPlows ? (
         <div>
           <div>
-            {innerData
-              && innerData.map(item => (
+            {activeSnowPlows
+              && activeSnowPlows.map(item => (
                 <Marker key={item.id} icon={customIcon} position={formatCoords(item.last_location.coords)}>
                   <div className={classes.popupWrapper}>
                     <Popup className="charger-stations-popup">

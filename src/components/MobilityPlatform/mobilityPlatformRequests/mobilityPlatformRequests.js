@@ -1,30 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable import/prefer-default-export */
+
 // Functions to make requests to the API
 
-export const fetchCGSStationsData = async (apiUrl, setData) => {
+export const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=CGS&page_size=150&srid=4326`);
-    const jsonData = await response.json();
-    setData(jsonData.results);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
-export const fetchGFSStationsData = async (apiUrl, setData) => {
-  try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=GFS&page_size=10&srid=4326`);
-    const jsonData = await response.json();
-    setData(jsonData.results);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
-export const fetchBicycleStandsData = async (apiUrl, setData) => {
-  try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=BIS&page_size=100&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -56,7 +37,7 @@ export const fetchIotData = async (apiUrl, sourceName, setData) => {
   try {
     const response = await fetch(`${apiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
-    setData(jsonData.results);
+    setData(jsonData.results[0].data);
   } catch (err) {
     console.warn(err.message);
   }

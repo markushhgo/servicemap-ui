@@ -23,6 +23,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [showDescriptionText, setShowDescriptionText] = useState(false);
   const [apiUrl, setApiUrl] = useState(null);
@@ -41,6 +42,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowSnowPlows,
     setShowCultureRoutes,
     setCultureRouteId,
+    setShowSnowPlowsHistory,
   } = useContext(MobilityPlatformContext);
 
   // Avoids pre-render causing window is not defined- error.
@@ -55,7 +57,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [setOpenMobilityPlatform]);
 
   useEffect(() => {
-    if (apiUrl) { fetchCultureRoutesGroup(apiUrl, setCultureRouteList); }
+    if (apiUrl) {
+      fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
+    }
   }, [apiUrl, setCultureRouteList]);
 
   // Set current language based on user selection
@@ -82,7 +86,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
-
 
   // Toggle functions for main user types
   const walkSettingsToggle = () => {
@@ -116,6 +119,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const snowPlowsToggle = () => {
     setShowSnowPlows(current => !current);
+    if (stepButtonIndex) {
+      setStepButtonIndex(null);
+    }
   };
 
   const cultureRouteListToggle = () => {
@@ -144,6 +150,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setCultureRouteId(itemId);
     setActiveIndex(index);
     setShowCultureRoutes(true);
+  };
+
+  const setSnowplowState = (type, index) => {
+    setShowSnowPlowsHistory(type);
+    setStepButtonIndex(index);
   };
 
   const walkingControlTypes = [
@@ -194,6 +205,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showSnowPlows',
       checkedValue: showSnowPlows,
       onChangeValue: snowPlowsToggle,
+    },
+  ];
+
+  const timeStepTypes = [
+    {
+      type: '1hour',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.1hour' }),
+    },
+    {
+      type: '12hours',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.12hours' }),
+    },
+    {
+      type: '24hours',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.24hours' }),
     },
   ];
 
@@ -256,12 +282,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       key={item.id}
       variant="outlined"
-      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      className={i === activeIndex ? classes.listButtonActive : classes.listButton}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
       <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
     </Button>
   ));
+
+  // TODO refactor jsx
 
   return (
     <div className={classes.content}>
@@ -298,8 +326,30 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
-              {openCarSettings
-                && carControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+              <>
+                {openCarSettings
+                  && carControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+                {showSnowPlows && (
+                  <div className={classes.container}>
+                    <div className={classes.paragraph}>
+                      <Typography variant="subtitle2">
+                        {intl.formatMessage({ id: 'mobilityPlatform.settings.streetMaintenance.info' })}
+                      </Typography>
+                    </div>
+                    <div className={classes.buttonList}>
+                      {timeStepTypes.map((item, i) => (
+                        <Button
+                          key={item.type}
+                          className={i === stepButtonIndex ? classes.buttonStepActive : classes.buttonStep}
+                          onClick={() => setSnowplowState(item.type, i)}
+                        >
+                          <Typography variant="body2">{item.title}</Typography>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             </>
           </FormGroup>
         </FormControl>

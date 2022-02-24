@@ -611,6 +611,11 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Hiekoitus',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Suolaus',
   'mobilityPlatform.content.streetMaintenance.time': 'Aika',
+  'mobilityPlatform.content.streetMaintenance.other': 'Muu',
+  'mobilityPlatform.settings.buttons.1hour': '1 tunti',
+  'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
+  'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
