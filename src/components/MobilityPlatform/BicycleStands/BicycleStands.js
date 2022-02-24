@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import BicycleStandContent from '../BicycleStandContent';
-import { fetchBicycleStandsData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import bicycleStandIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
 
 const BicycleStands = ({ classes }) => {
@@ -23,7 +23,7 @@ const BicycleStands = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchBicycleStandsData(apiUrl, setBicycleStands);
+      fetchMobilityMapData(apiUrl, 'BIS', 100, setBicycleStands);
     }
   }, [openMobilityPlatform, setBicycleStands]);
 

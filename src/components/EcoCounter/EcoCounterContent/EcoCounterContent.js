@@ -35,7 +35,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
 
-  const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
+  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   const intl = useIntl();
 
@@ -163,7 +163,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   // API returns empty data if start_week_number parameter is higher number than end_week_number.
   // This will set it to 1 so that weekly graph in January won't be empty.
   const checkWeekNumber = () => {
-    if (selectedWeekStart === 53) {
+    if (selectedWeekStart > selectedWeekEnd) {
       selectedWeekStart = 1;
     }
   };
