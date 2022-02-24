@@ -581,7 +581,7 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
   'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
-  'mobilityPlatform.menu.bicycleRoutes.info': 'Route info:',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'You can select route from the list below.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
 
   // Content

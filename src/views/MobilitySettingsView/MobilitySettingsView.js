@@ -308,17 +308,23 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const routeLengthComponent = (
     <div className={classes.description}>
       <div className={classes.paragraph}>
-        <Typography variant="subtitle1">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
-        </Typography>
-        {}
-        <Typography variant="body2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
-          {' '}
-          {bicycleRouteLength}
-          {' '}
-          km.
-        </Typography>
+        {bicycleRouteLength ? (
+          <>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
+              {' '}
+              {bicycleRouteLength}
+              {' '}
+              km.
+            </Typography>
+          </>
+        ) : (
+          <>
+            <Typography variant="subtitle2">
+              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
+            </Typography>
+          </>
+        )}
       </div>
     </div>
   );
@@ -363,8 +369,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
-              {renderSettings(openWalkSettings, walkingControlTypes)}
-              {renderDescription(cultureRouteDesc, descriptionComponent)}
+              <>
+                {renderSettings(openWalkSettings, walkingControlTypes)}
+                {renderDescription(cultureRouteDesc, descriptionComponent)}
+              </>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
@@ -377,8 +385,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   'mobilityPlatform.menu.title.bicycle',
                 )}
               </div>
-              {renderSettings(openBicycleSettings, bicycleControlTypes)}
-              {renderDescription(showBicycleRouteLength, routeLengthComponent)}
+              <>
+                {renderSettings(openBicycleSettings, bicycleControlTypes)}
+                {renderDescription(showBicycleRouteLength, routeLengthComponent)}
+              </>
               {showBicycleRouteList
                 ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState)
                 : null}

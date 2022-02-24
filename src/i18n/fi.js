@@ -584,7 +584,7 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
   'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
-  'mobilityPlatform.menu.bicycleRoutes.info': 'Reitin tiedot:',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'Valitse reitti oheisesta listasta.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
 

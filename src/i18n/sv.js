@@ -583,7 +583,7 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
-  'mobilityPlatform.menu.bicycleRoutes.info': 'Ruttinformation:',
+  'mobilityPlatform.menu.bicycleRoutes.info': 'Du kan välja en rutt från listan nedan.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
 
   // Content
