@@ -33,15 +33,13 @@ const BicycleRoutes = () => {
     }
   }, [bicycleRoutes, bicycleRouteName]);
 
-  // TODO fix unique key problem in the list.
-
   return (
     <>
       {showBicycleRoutes && (
         <div>
           {activeBicycleRoute
             && activeBicycleRoute.map(item => (
-              <div>
+              <div key={item.id}>
                 <Polyline key={item.geometry} weight={8} pathOptions={blueOptions} positions={item.geometry_coords} />
                 <Polyline
                   key={item.geometry_coords}

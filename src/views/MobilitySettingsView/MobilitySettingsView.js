@@ -310,6 +310,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       <div className={classes.paragraph}>
         {bicycleRouteLength ? (
           <>
+            <Typography variant="body1">
+              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
+            </Typography>
             <Typography variant="body2">
               {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
               {' '}
