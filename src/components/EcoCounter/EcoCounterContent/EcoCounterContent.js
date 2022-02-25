@@ -32,7 +32,7 @@ const EcoCounterContent = ({
   const [currentType, setCurrentType] = useState('bicycle');
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [activeType, setActiveType] = useState(1);
+  const [activeType, setActiveType] = useState(0);
   const [userTypesList, setUserTypesList] = useState(null);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
@@ -71,16 +71,16 @@ const EcoCounterContent = ({
   const allUsers = [
     {
       type: {
-        user: 'walking',
-        text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk,
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
       },
     },
     {
       type: {
-        user: 'bicycle',
-        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
-        icon: iconBicycle,
+        user: 'walking',
+        text: intl.formatMessage({ id: 'ecocounter.walk' }),
+        icon: iconWalk,
       },
     },
     {
@@ -96,16 +96,16 @@ const EcoCounterContent = ({
   const pedestrianAndBicycle = [
     {
       type: {
-        user: 'walking',
-        text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk,
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
       },
     },
     {
       type: {
-        user: 'bicycle',
-        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
-        icon: iconBicycle,
+        user: 'walking',
+        text: intl.formatMessage({ id: 'ecocounter.walk' }),
+        icon: iconWalk,
       },
     },
   ];
