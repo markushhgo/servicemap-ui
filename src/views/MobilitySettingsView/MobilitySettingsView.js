@@ -305,6 +305,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </Button>
   ));
 
+  // Check if route list is empty and render correct text.
+  const emptyRouteList = () => {
+    if (bicycleRouteList && bicycleRouteList.length > 0) {
+      return (
+        <Typography variant="subtitle2">
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
+        </Typography>
+      );
+    } return (
+      <Typography variant="subtitle2">
+        {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.emptyList' })}
+      </Typography>
+    );
+  };
+
   const routeLengthComponent = (
     <div className={classes.description}>
       <div className={classes.paragraph}>
@@ -323,9 +338,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </>
         ) : (
           <>
-            <Typography variant="subtitle2">
-              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
-            </Typography>
+            {emptyRouteList()}
           </>
         )}
       </div>
@@ -339,7 +352,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setRouteState(i, item.length, item.name_fi)}
     >
-      <Typography variant="body2">{selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}</Typography>
+      <Typography variant="body2">
+        {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+      </Typography>
     </Button>
   ));
 

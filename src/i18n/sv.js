@@ -584,6 +584,7 @@ const translations = {
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
   'mobilityPlatform.menu.bicycleRoutes.info': 'Du kan välja en rutt från listan nedan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Reittejä ei löytynyt.', // TODO translate
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
 
