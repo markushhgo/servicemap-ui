@@ -582,6 +582,8 @@ const translations = {
   'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.', // TODO translate
+  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.', // TODO translate
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',

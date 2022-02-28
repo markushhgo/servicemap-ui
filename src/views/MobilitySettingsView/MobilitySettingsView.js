@@ -240,6 +240,25 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
+  // Check if route list is empty and render correct text.
+  const emptyRouteList = (input) => {
+    if (input && input.length > 0) {
+      return (
+        <div className={classes.paragraph}>
+          <Typography variant="subtitle2">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })}
+          </Typography>
+        </div>
+      );
+    } return (
+      <div className={classes.paragraph}>
+        <Typography variant="subtitle2">
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
+        </Typography>
+      </div>
+    );
+  };
+
   const renderList = inputData => inputData.map((item, i) => (
     <Button
       key={item.id}
@@ -260,7 +279,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={classes.topBarColor}
       />
       <div className={classes.container}>
-        <>{cultureRouteDesc ? descriptionComponent : null}</>
         <FormControl variant="standard" className={classes.formControl}>
           <FormGroup className={classes.formGroup}>
             <>
@@ -269,6 +287,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
+              <>
+                {cultureRouteDesc ? descriptionComponent : null}
+                {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
+              </>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
