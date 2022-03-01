@@ -37,6 +37,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
   } = useContext(MobilityPlatformContext);
@@ -115,11 +116,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
+    setShowDescriptionText(current => !current);
     if (cultureRouteDesc) {
       setCultureRouteDesc(null);
     }
     if (activeIndex) {
       setActiveIndex(null);
+    }
+    if (showCultureRoutes) {
+      setShowCultureRoutes(false);
     }
   };
 
