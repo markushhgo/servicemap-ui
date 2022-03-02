@@ -1,7 +1,14 @@
 import pointOnFeature from '@turf/point-on-feature';
+import { isEmbed } from '../../../utils/path';
 import swapCoordinates from './swapCoordinates';
 
 /* eslint-disable global-require, no-underscore-dangle */
+
+const useMapFocusDisabled = () => {
+  const location = useLocation();
+  const searchParams = parseSearchParams(location.search);
+  return isEmbed() && !!searchParams.bbox;
+};
 
 const fitUnitsToMap = (units, map) => {
   const L = require('leaflet');
@@ -97,4 +104,5 @@ export {
   focusDistrict,
   focusDistricts,
   panViewToBounds,
+  useMapFocusDisabled,
 };
