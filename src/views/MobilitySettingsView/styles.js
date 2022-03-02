@@ -106,6 +106,8 @@ const styles = theme => ({
   paragraph: {
     padding: theme.spacing(1.5),
     textAlign: 'left',
+  },
+  border: {
     borderBottom: '1px solid #6f7276',
   },
 });

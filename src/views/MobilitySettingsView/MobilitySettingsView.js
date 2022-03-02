@@ -221,7 +221,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   );
 
   const descriptionComponent = (
-    <div className={classes.description}>
+    <div className={classes.descriptionContainer}>
       <div className={classes.subtitle}>
         <Button
           className={classes.buttonWhite}
@@ -268,6 +268,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       key={item.id}
       variant="outlined"
+      aria-pressed={item.name}
       className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
@@ -292,10 +293,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openWalkSettings
                 && walkingControlTypes.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue))}
-              <>
+              <div className={openCultureRouteList ? classes.border : null}>
                 {cultureRouteDesc ? descriptionComponent : null}
                 {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
-              </>
+              </div>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
