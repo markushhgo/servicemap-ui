@@ -1,19 +1,24 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useEffect, useState, useRef, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
-import { ArrowDropUp, Search } from '@material-ui/icons';
+import { ArrowDropUp, LocationOn } from '@material-ui/icons';
 import {
   Paper, List, Typography,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
-import { getPreviousSearches } from '../../previousSearchData';
+import { useDispatch } from 'react-redux';
 import PreviousSearches from '../../PreviousSearches';
 import createSuggestions from '../../createSuggestions';
-import config from '../../../../../config';
+// import config from '../../../../../config';
 import SuggestionItem from '../../../ListItems/SuggestionItem';
-import AddressItem from '../../../ListItems/AddressItem';
 import { keyboardHandler } from '../../../../utils';
-import { AreaIcon } from '../../../SMIcon';
+import { getIcon } from '../../../SMIcon';
 import { CloseSuggestionButton } from '../CloseSuggestionButton';
+// import { setSelectedDistrictType } from '../../../../redux/actions/district';
+import useLocaleText from '../../../../utils/useLocaleText';
+import UnitIcon from '../../../SMIcon/UnitIcon';
+import setSearchBarInitialValue from '../../../../redux/actions/searchBar';
 
 
 const SuggestionBox = (props) => {
@@ -23,24 +28,48 @@ const SuggestionBox = (props) => {
     searchQuery,
     handleArrowClick,
     handleSubmit,
+    handleBlur,
     classes,
     focusedSuggestion,
     isMobile,
     intl,
-    locale,
     navigator,
   } = props;
 
-  const [searchQueries, setSearchQueries] = useState(null);
+  const [suggestions, setSuggestions] = useState(null);
   const [loading, setLoading] = useState(false);
   const [suggestionError, setSuggestionError] = useState(false);
-  const [history] = useState(getPreviousSearches());
   // Query word on which suggestion list is based
   const [suggestionQuery, setSuggestionQuery] = useState(null);
 
+  const dispatch = useDispatch();
+  const getLocaleText = useLocaleText();
   const listRef = useRef(null);
   const fetchController = useRef(null);
-  const maxSuggestionCount = 8;
+
+  // const handleAreaItemClick = (area) => {
+  //   if (navigator) {
+  //     dispatch(setSelectedDistrictType(null));
+  //     navigator.push('area', area.id);
+  //   }
+  // };
+
+  const getAddressText = (item) => {
+    if (item.isExact) {
+      return getLocaleText(item.full_name);
+    }
+    return `${item.street}, ${intl.formatMessage({ id: 'search.suggestions.addresses' })}`;
+  };
+
+  const handleAddressItemClick = useCallback((item) => {
+    if (item.isExact) {
+      navigator.push('address', { fullAddress: getLocaleText(item.full_name) });
+    } else {
+      navigator.push('search', { q: item.street, t: 'addresses' });
+    }
+    handleBlur();
+  }, [handleBlur, navigator, getLocaleText]);
+
 
   // Component mount action
   useEffect(() => (
@@ -58,22 +87,8 @@ const SuggestionBox = (props) => {
   });
   */
 
-  const handleAreaItemClick = (area) => {
-    if (navigator) {
-      navigator.push('area', area.id);
-    }
-  };
-
-  const slicedSuggestions = () => {
-    let suggestionList = searchQueries || null;
-    if (suggestionList && suggestionList.length) {
-      suggestionList = suggestionList.slice(0, maxSuggestionCount);
-    }
-    return suggestionList;
-  };
-
   const resetSuggestions = () => {
-    setSearchQueries(null);
+    setSuggestions(null);
     setSuggestionError(false);
   };
 
@@ -87,25 +102,25 @@ const SuggestionBox = (props) => {
         fetchController.current.abort();
       }
       fetchController.current = new AbortController();
-      const { signal } = fetchController.current;
 
-      createSuggestions(query, signal, locale, intl)
-        .then((suggestions) => {
-          if (suggestions === 'error') {
+      dispatch(createSuggestions(query, fetchController.current, getLocaleText))
+        .then((data) => {
+          if (data === 'error') {
             return;
           }
           fetchController.current = null;
-          if (suggestions.length) {
-            setSearchQueries(suggestions);
-            setLoading(false);
+          setLoading(false);
+          if (data.length) {
+            setSuggestions(data);
           } else {
             setSuggestionError(true);
-            setLoading(false);
           }
+        }).catch(() => {
+          // Do nothing
         });
     } else {
       setLoading(false);
-      setSearchQueries(null);
+      setSuggestions(null);
       if (fetchController.current) {
         fetchController.current.abort();
       }
@@ -117,7 +132,6 @@ const SuggestionBox = (props) => {
       <PreviousSearches
         className={classes.infoText}
         handleArrowClick={handleArrowClick}
-        history={history}
         focusIndex={focusedSuggestion}
         listRef={listRef}
         onClick={val => handleSubmit(val)}
@@ -141,69 +155,56 @@ const SuggestionBox = (props) => {
     </>
   );
 
-  const renderSuggestionList = () => {
-    const suggestionList = slicedSuggestions();
+  const renderSuggestionList = (suggestionList) => {
+    const suggestionConfig = {
+      address: {
+        icon: <LocationOn className={classes.areaIcon} />,
+        onClick: item => handleAddressItemClick(item),
+        text: item => getAddressText(item),
+      },
+      unit: {
+        icon: <UnitIcon />,
+        onClick: item => navigator.push('unit', { id: item.id }),
+        text: item => getLocaleText(item.name),
+      },
+      service: {
+        icon: getIcon('serviceDark'),
+        onClick: (item) => {
+          handleBlur();
+          navigator.push('service', item.id);
+        },
+        text: item => getLocaleText(item.name),
+      },
+    };
 
-    if (suggestionList) {
-      return (
-        <>
-          <List role="listbox" id="SuggestionList" className="suggestionList" ref={listRef}>
-            {suggestionList.map((item, i) => {
-              if (item.object_type === 'suggestion') {
-                return (
-                  <SuggestionItem
-                    id={`suggestion${i}`}
-                    role="option"
-                    selected={i === focusedSuggestion}
-                    key={`suggestion-${item.suggestion + item.count}`}
-                    icon={<Search />}
-                    text={item.suggestion}
-                    handleArrowClick={handleArrowClick}
-                    handleItemClick={() => handleSubmit(item.suggestion)}
-                    divider={i !== suggestionList.length - 1}
-                    subtitle={intl.formatMessage({ id: 'search.suggestions.results' }, { count: item.count })}
-                    isMobile
-                    query={suggestionQuery}
-                  />
-                );
-              }
-              if (item.object_type === 'area') {
-                return (
-                  <SuggestionItem
-                    id={`suggestion${i}`}
-                    className="AreaSuggestion"
-                    role="option"
-                    selected={i === focusedSuggestion}
-                    key={`suggestion-${item.suggestion + item.count}`}
-                    icon={<AreaIcon className={classes.areaIcon} />}
-                    text={item.name}
-                    handleItemClick={() => handleAreaItemClick(item)}
-                    divider
-                    isMobile
-                    query={suggestionQuery}
-                  />
-                );
-              }
-              if (item.object_type === 'address') {
-                const sortIndex = item.sort_index;
-                return (
-                  <AddressItem
-                    id={`suggestion${i}`}
-                    role="option"
-                    selected={i === focusedSuggestion}
-                    key={`address-${sortIndex}`}
-                    address={item}
-                    className="suggestion"
-                    showPostalCode={false}
-                  />
-                );
-              }
-              return null;
-            })}
-          </List>
-        </>
-      );
-    } return null;
+    return (
+      <List role="listbox" id="SuggestionList" className="suggestionList" ref={listRef}>
+        {suggestionList.map((suggestion, i) => {
+          const conf = suggestionConfig[suggestion.object_type];
+          if (!conf) return null;
+          const text = conf.text(suggestion);
+
+          return (
+            <SuggestionItem
+              id={`suggestion${i}`}
+              key={suggestion.id}
+              className={conf.className ? 'AddressSuggestion' : ''}
+              role="option"
+              selected={i === focusedSuggestion}
+              icon={conf.icon}
+              text={text}
+              handleItemClick={() => {
+                dispatch(setSearchBarInitialValue(suggestion.street || text));
+                conf.onClick(suggestion);
+              }}
+              divider
+              isMobile
+              query={suggestionQuery}
+            />
+          );
+        })}
+      </List>
+    );
   };
 
   const renderHideSuggestions = () => {
@@ -268,10 +269,9 @@ const SuggestionBox = (props) => {
   if (visible) {
     let component = null;
     let srText = null;
-    if (searchQueries) {
-      component = renderSuggestionList();
-      const suggestionList = slicedSuggestions();
-      srText = intl.formatMessage({ id: 'search.suggestions.suggestions' }, { count: suggestionList.length });
+    if (suggestions) {
+      component = renderSuggestionList(suggestions);
+      srText = intl.formatMessage({ id: 'search.suggestions.suggestions' }, { count: suggestions.length });
     } else if (loading) {
       component = renderLoading();
       srText = null;
@@ -307,12 +307,12 @@ SuggestionBox.propTypes = {
   searchQuery: PropTypes.string,
   handleArrowClick: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   focusedSuggestion: PropTypes.number,
   navigator: PropTypes.objectOf(PropTypes.any),
   isMobile: PropTypes.bool,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  locale: PropTypes.oneOf(config.supportedLanguages).isRequired,
 };
 
 SuggestionBox.defaultProps = {

@@ -12,6 +12,8 @@ export const mapRef = (state = null, action) => basicReducer(state, action, 'MAP
 export const measuringMode = (state = false, action) => basicReducer(state, action, 'MEASURING_MODE');
 // Sort
 export const direction = (state = 'desc', action) => basicReducer(state, action, 'DIRECTION');
-export const order = (state = 'match', action) => basicReducer(state, action, 'ORDER');
+export const order = (state = 'alphabetical', action) => basicReducer(state, action, 'ORDER');
 // Settings toggling
 export const settingsToggled = (state = null, action) => basicReducer(state, action, 'SETTINGS_TOGGLE');
+// Search bar initial value
+export const searchBarInitialValue = (state = null, action) => basicReducer(state, action, 'SEARCH_BAR_INITIAL_VALUE');
