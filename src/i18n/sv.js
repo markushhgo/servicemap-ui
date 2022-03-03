@@ -626,6 +626,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Till centrum',
   'ecocounter.chart.labelFrom': 'Från centrum',
   'ecocounter.chart.labelTotal': 'Totalt',
+  'ecocounter.jan': 'Januari',
+  'ecocounter.feb': 'Februari',
+  'ecocounter.march': 'Mars',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'Maj',
+  'ecocounter.june': 'Juni',
+  'ecocounter.july': 'Juli',
+  'ecocounter.aug': 'Augusti',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'Oktober',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;

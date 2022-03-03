@@ -33,6 +33,12 @@ const BicycleRoutes = () => {
     }
   }, [bicycleRoutes, bicycleRouteName]);
 
+  useEffect(() => {
+    if (!showBicycleRoutes) {
+      setActiveBicycleRoute(null);
+    }
+  }, [showBicycleRoutes]);
+
   return (
     <>
       {showBicycleRoutes && (

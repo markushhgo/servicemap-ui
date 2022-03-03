@@ -582,7 +582,7 @@ const translations = {
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
   'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
   'mobilityPlatform.menu.routes.info': 'You can select a route from the list below.',
-  'mobilityPlatform.menu.routes.emptyList': 'No routes found.',
+  'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
 
@@ -621,10 +621,22 @@ const translations = {
   'ecocounter.month': 'Monthly',
   'ecocounter.walk': 'Walking',
   'ecocounter.bicycle': 'Cycling',
-  'ecocounter.car': 'By car',
+  'ecocounter.car': 'Driving',
   'ecocounter.chart.labelTo': 'To city',
   'ecocounter.chart.labelFrom': 'From city',
   'ecocounter.chart.labelTotal': 'Total',
+  'ecocounter.jan': 'January',
+  'ecocounter.feb': 'February',
+  'ecocounter.march': 'March',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'May',
+  'ecocounter.june': 'June',
+  'ecocounter.july': 'July',
+  'ecocounter.aug': 'August',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'October',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;

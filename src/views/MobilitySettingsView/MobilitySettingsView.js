@@ -45,6 +45,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
     setShowBicycleRoutes,
@@ -143,11 +144,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
+    setShowDescriptionText(current => !current);
     if (cultureRouteDesc) {
       setCultureRouteDesc(null);
     }
     if (activeIndex) {
       setActiveIndex(null);
+    }
+    if (showCultureRoutes) {
+      setShowCultureRoutes(false);
     }
   };
 
@@ -157,6 +162,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRouteLength(current => !current);
     if (bicycleRouteLength) {
       setBicycleRouteLength(null);
+    }
+    if (activeBicycleRouteIndex) {
+      setActiveBicycleRouteIndex(null);
     }
   };
 
@@ -270,7 +278,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   );
 
   const descriptionComponent = (
-    <div className={classes.description}>
+    <div className={classes.descriptionContainer}>
       <div className={classes.subtitle}>
         <Button
           className={classes.buttonWhite}
@@ -294,10 +302,30 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
+  // Check if route list is empty and render correct text.
+  const emptyRouteList = (input) => {
+    if (input && input.length > 0) {
+      return (
+        <div className={classes.paragraph}>
+          <Typography variant="subtitle2">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })}
+          </Typography>
+        </div>
+      );
+    } return (
+      <div className={classes.paragraph}>
+        <Typography variant="subtitle2">
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
+        </Typography>
+      </div>
+    );
+  };
+
   const renderList = inputData => inputData.map((item, i) => (
     <Button
       key={item.id}
       variant="outlined"
+      aria-pressed={item.name}
       className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
@@ -305,23 +333,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </Button>
   ));
 
-  // Check if route list is empty and render correct text.
-  const emptyRouteList = (input) => {
-    if (input && input.length > 0) {
-      return (
-        <Typography variant="subtitle2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })}
-        </Typography>
-      );
-    } return (
-      <Typography variant="subtitle2">
-        {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
-      </Typography>
-    );
-  };
-
   const routeLengthComponent = (
-    <div className={classes.description}>
+    <div className={classes.border}>
       <div className={classes.paragraph}>
         {bicycleRouteLength ? (
           <>
@@ -387,10 +400,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
-              <>
-                {renderSettings(openWalkSettings, walkingControlTypes)}
-                {renderDescription(cultureRouteDesc, descriptionComponent)}
-              </>
+              {renderSettings(openWalkSettings, walkingControlTypes)}
+              <div className={openCultureRouteList ? classes.border : null}>
+                {cultureRouteDesc ? descriptionComponent : null}
+                {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
+              </div>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
                 ? renderList(filteredCultureRouteList)
                 : null}
