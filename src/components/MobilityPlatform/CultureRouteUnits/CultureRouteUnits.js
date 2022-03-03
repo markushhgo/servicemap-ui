@@ -6,7 +6,7 @@ import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlat
 import { getCurrentLocale, selectRouteName } from '../utils/utils';
 import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
-const CultureRouteUnits = ({ classes, intl }) => {
+const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
   const [cultureRouteUnits, setCultureRouteUnits] = useState(null);
   const [activeCultureRouteUnits, setActiveCultureRouteUnits] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
@@ -34,7 +34,7 @@ const CultureRouteUnits = ({ classes, intl }) => {
   }, [openMobilityPlatform, setCultureRouteUnits]);
 
   useEffect(() => {
-    if (cultureRouteUnits) {
+    if (cultureRouteUnits && cultureRoute) {
       const routeUnits = cultureRouteUnits.reduce((acc, item) => {
         if (item.mobile_unit_group.id === cultureRouteId) {
           acc.push(item);
@@ -43,7 +43,13 @@ const CultureRouteUnits = ({ classes, intl }) => {
       }, []);
       setActiveCultureRouteUnits(routeUnits);
     }
-  }, [cultureRouteUnits, cultureRouteId]);
+  }, [cultureRouteUnits, cultureRouteId, cultureRoute]);
+
+  useEffect(() => {
+    if (!cultureRoute) {
+      setActiveCultureRouteUnits(null);
+    }
+  }, [cultureRoute]);
 
   return (
     <>
@@ -70,6 +76,11 @@ const CultureRouteUnits = ({ classes, intl }) => {
 CultureRouteUnits.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  cultureRoute: PropTypes.objectOf(PropTypes.any),
+};
+
+CultureRouteUnits.defaultProps = {
+  cultureRoute: null,
 };
 
 export default CultureRouteUnits;
