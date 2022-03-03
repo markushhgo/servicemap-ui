@@ -1,4 +1,6 @@
 import pointOnFeature from '@turf/point-on-feature';
+import { useLocation } from 'react-router-dom';
+import { parseSearchParams } from '../../../utils';
 import { isEmbed } from '../../../utils/path';
 import swapCoordinates from './swapCoordinates';
 
@@ -67,6 +69,14 @@ const focusDistricts = (map, districts) => {
   map.fitBounds(bounds);
 };
 
+const getBoundsFromBbox = (bbox) => {
+  if (!bbox) return null;
+  const L = require('leaflet');
+  const sw = L.latLng(bbox.slice(0, 2));
+  const ne = L.latLng(bbox.slice(2, 4));
+  return L.latLngBounds(sw, ne);
+};
+
 const fitBbox = (map, bbox) => {
   if (!map || !bbox || bbox.length !== 4) {
     return;
@@ -104,5 +114,6 @@ export {
   focusDistrict,
   focusDistricts,
   panViewToBounds,
+  getBoundsFromBbox,
   useMapFocusDisabled,
 };
