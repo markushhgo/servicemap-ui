@@ -583,8 +583,8 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
-  'mobilityPlatform.menu.bicycleRoutes.info': 'Du kan välja en rutt från listan nedan.',
-  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Reittejä ei löytynyt.', // TODO translate
+  'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
 

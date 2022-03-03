@@ -306,16 +306,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ));
 
   // Check if route list is empty and render correct text.
-  const emptyRouteList = () => {
-    if (bicycleRouteList && bicycleRouteList.length > 0) {
+  const emptyRouteList = (input) => {
+    if (input && input.length > 0) {
       return (
         <Typography variant="subtitle2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.info' })}
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })}
         </Typography>
       );
     } return (
       <Typography variant="subtitle2">
-        {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.emptyList' })}
+        {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
       </Typography>
     );
   };
@@ -338,7 +338,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </>
         ) : (
           <>
-            {emptyRouteList()}
+            {emptyRouteList(bicycleRouteList)}
           </>
         )}
       </div>
