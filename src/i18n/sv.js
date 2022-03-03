@@ -579,11 +579,10 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
-  'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
-  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.', // TODO translate
-  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.', // TODO translate
+  'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
