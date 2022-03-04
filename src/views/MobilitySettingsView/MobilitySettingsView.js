@@ -25,14 +25,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [showDescriptionText, setShowDescriptionText] = useState(false);
   const [bicycleRouteList, setBicycleRouteList] = useState(null);
   const [showBicycleRouteList, setShowBicycleRouteList] = useState(false);
   const [bicycleRouteLength, setBicycleRouteLength] = useState(null);
   const [showBicycleRouteLength, setShowBicycleRouteLength] = useState(false);
-  const [activeBicycleRouteIndex, setActiveBicycleRouteIndex] = useState(null);
+  const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [apiUrl, setApiUrl] = useState(null);
 
   const {
@@ -148,8 +148,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (cultureRouteDesc) {
       setCultureRouteDesc(null);
     }
-    if (activeIndex) {
-      setActiveIndex(null);
+    if (cultureRouteIndex) {
+      setCultureRouteIndex(null);
     }
     if (showCultureRoutes) {
       setShowCultureRoutes(false);
@@ -163,8 +163,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (bicycleRouteLength) {
       setBicycleRouteLength(null);
     }
-    if (activeBicycleRouteIndex) {
-      setActiveBicycleRouteIndex(null);
+    if (bicycleRouteIndex) {
+      setBicycleRouteIndex(null);
     }
   };
 
@@ -181,7 +181,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const setCultureRouteState = (descriptionSV, descriptionEN, descriptionFI, itemId, index) => {
     selectRouteDescription(descriptionSV, descriptionEN, descriptionFI);
     setCultureRouteId(itemId);
-    setActiveIndex(index);
+    setCultureRouteIndex(index);
     setShowCultureRoutes(true);
   };
 
@@ -190,7 +190,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const setBicycleRouteState = (index, inputLength, routeName) => {
-    setActiveBicycleRouteIndex(index);
+    setBicycleRouteIndex(index);
     formatBicycleRoutelength(inputLength);
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
@@ -326,7 +326,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       key={item.id}
       variant="outlined"
       aria-pressed={item.name}
-      className={i === activeIndex ? classes.buttonSmallActive : classes.buttonSmall}
+      className={i === cultureRouteIndex ? classes.buttonSmallActive : classes.buttonSmall}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
       <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
@@ -422,7 +422,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {renderDescription(showBicycleRouteLength, routeLengthComponent)}
               </>
               {showBicycleRouteList
-                ? routeListComponent(bicycleRouteList, activeBicycleRouteIndex, setBicycleRouteState)
+                ? routeListComponent(bicycleRouteList, bicycleRouteIndex, setBicycleRouteState)
                 : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
