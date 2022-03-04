@@ -581,6 +581,8 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
+  'mobilityPlatform.menu.routes.info': 'Select a route from the list below.',
+  'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',

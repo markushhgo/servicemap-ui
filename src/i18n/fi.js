@@ -585,6 +585,8 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
+  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.',
+  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
