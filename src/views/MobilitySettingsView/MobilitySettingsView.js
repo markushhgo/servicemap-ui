@@ -52,7 +52,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
 
-  // Avoids pre-render causing window is not defined- error.
+  /**
+   * Avoids pre-render causing window is not defined- error.
+   * @param {window}
+   * @returns {env var || MOBILITY_PLATFORM_API} and sets it into state
+   */
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
@@ -75,7 +79,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   }, [apiUrl, setBicycleRouteList]);
 
-  // Set current language based on user selection
+  /**
+   * Set current language based on user selection
+   */
   useEffect(() => {
     getCurrentLocale(intl.locale, setCurrentLocale);
   }, [intl.locale]);
@@ -86,12 +92,24 @@ const MobilitySettingsView = ({ classes, intl }) => {
     sv: 'name_sv',
   };
 
+  /**
+   * @param {Array}
+   * @function filter array
+   * @returns {Array} and sets it into state
+   */
   useEffect(() => {
     if (cultureRouteList) {
       setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, currentLocale]);
 
+  /**
+   * Sort routes in alphapethical order based on current locale.
+   * If locale is not finnish the filtered list is used.
+   * @param {Array && locale}
+   * @function sort
+   * @returns {Array}
+   */
   useEffect(() => {
     if (cultureRouteList && currentLocale === 'fi') {
       cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
@@ -100,6 +118,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
 
+  /**
+   * Sort routes in alphapethical order.
+   * @param {Array && locale}
+   * @function sort
+   * @returns {Array}
+   */
   useEffect(() => {
     const objKeys = {
       fi: 'name_fi',
@@ -111,7 +135,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   }, [bicycleRouteList, currentLocale]);
 
-  // Toggle functions for main user types
+  /**
+   * Toggle functions for main user types
+   * @var {Boolean}
+   * @returns {Boolean}
+   */
   const walkSettingsToggle = () => {
     setOpenWalkSettings(current => !current);
   };
@@ -124,7 +152,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenCarSettings(current => !current);
   };
 
-  // Toggle functions for content types
+  /**
+   * Toggle functions for content types
+   * @var {Boolean}
+   * @returns {Boolean}
+   */
   const chargingStationsToggle = () => {
     setShowChargingStations(current => !current);
   };
@@ -196,6 +228,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes(true);
   };
 
+  /**
+   * Control types for different user types
+   */
   const walkingControlTypes = [
     {
       type: 'ecoCounterStations',
@@ -302,23 +337,25 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
-  // Check if route list is empty and render correct text.
+  /**
+   * Check if route list is empty and render correct text
+   * @param {Array} input
+   * @param {Boolean} input
+   * @param {Boolean} length
+   * @returns {JSX Element || Typography} with correct id
+   */
   const emptyRouteList = (input) => {
-    if (input && input.length > 0) {
+    if (input) {
       return (
         <div className={classes.paragraph}>
           <Typography variant="subtitle2">
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })}
+            {input.length > 0
+              ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
+              : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
           </Typography>
         </div>
       );
-    } return (
-      <div className={classes.paragraph}>
-        <Typography variant="subtitle2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
-        </Typography>
-      </div>
-    );
+    } return null;
   };
 
   const renderList = inputData => inputData.map((item, i) => (
@@ -335,26 +372,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const routeLengthComponent = (
     <div className={classes.border}>
-      <div className={classes.paragraph}>
-        {bicycleRouteLength ? (
-          <>
-            <Typography variant="body1">
-              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
-            </Typography>
-            <Typography variant="body2">
-              {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
-              {' '}
-              {bicycleRouteLength}
-              {' '}
-              km.
-            </Typography>
-          </>
-        ) : (
-          <>
-            {emptyRouteList(bicycleRouteList)}
-          </>
-        )}
-      </div>
+      {bicycleRouteLength ? (
+        <div className={classes.paragraph}>
+          <Typography variant="body1">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
+          </Typography>
+          <Typography variant="body2">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
+            {' '}
+            {bicycleRouteLength}
+            {' '}
+            km.
+          </Typography>
+        </div>
+      ) : (
+        <>{emptyRouteList(bicycleRouteList)}</>
+      )}
     </div>
   );
 
@@ -363,6 +396,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       key={item.id}
       variant="outlined"
       className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
+      aria-pressed={item.name_fi}
       onClick={() => setRouteState(i, item.length, item.name_fi)}
     >
       <Typography variant="body2">
@@ -400,7 +434,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
-              {renderSettings(openWalkSettings, walkingControlTypes)}
+              <>{renderSettings(openWalkSettings, walkingControlTypes)}</>
               <div className={openCultureRouteList ? classes.border : null}>
                 {cultureRouteDesc ? descriptionComponent : null}
                 {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
