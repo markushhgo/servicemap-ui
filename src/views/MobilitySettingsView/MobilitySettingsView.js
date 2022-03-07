@@ -68,6 +68,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
+  /**
+   * Fetch list of routes
+   * @param {apiUrl}
+   * @returns {Array} and sets it into state
+   */
   useEffect(() => {
     if (apiUrl) {
       fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
@@ -339,7 +344,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const routeListComponent = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
+  const renderBicycleRoutes = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
     <Button
       key={item.id}
       variant="outlined"
@@ -352,7 +357,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </Button>
   ));
 
-  const renderList = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
+  const renderCultureRoutes = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
     <Button
       key={item.id}
       variant="outlined"
@@ -404,10 +409,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
               </div>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
-                ? renderList(filteredCultureRouteList, cultureRouteIndex, setCultureRouteState)
+                ? renderCultureRoutes(filteredCultureRouteList, cultureRouteIndex, setCultureRouteState)
                 : null}
               {openCultureRouteList && currentLocale === 'fi'
-                ? renderList(cultureRouteList, cultureRouteIndex, setCultureRouteState)
+                ? renderCultureRoutes(cultureRouteList, cultureRouteIndex, setCultureRouteState)
                 : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
@@ -425,7 +430,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 )}
               </>
               {showBicycleRouteList
-                ? routeListComponent(bicycleRouteList, bicycleRouteIndex, setBicycleRouteState)
+                ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex, setBicycleRouteState)
                 : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
