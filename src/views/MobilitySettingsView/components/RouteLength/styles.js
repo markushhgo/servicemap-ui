@@ -1,9 +1,7 @@
 const styles = theme => ({
   paragraph: {
     textAlign: 'left',
-    paddingLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1.25),
-    paddingBottom: theme.spacing(1.25),
+    padding: theme.spacing(1.5),
   },
   border: {
     borderBottom: '1px solid #6f7276',

@@ -7,9 +7,7 @@ const styles = theme => ({
   },
   paragraph: {
     textAlign: 'left',
-    paddingLeft: theme.spacing(1.5),
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(1.5),
+    padding: theme.spacing(1.5),
   },
   subtitle: {
     textTransform: 'none',
