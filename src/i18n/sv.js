@@ -575,7 +575,6 @@ const translations = {
   'mobilityPlatform.menu.subtitle': 'Anpassa',
   'mobilityPlatform.menu.title.walk': 'Promenad',
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
-  'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasStations': 'Tankstationer med gas',
