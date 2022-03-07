@@ -89,7 +89,7 @@ const styles = theme => ({
     color: '#fff',
   },
   subtitle: {
-    textTransform: 'capitalize',
+    textTransform: 'none',
   },
   iconActive: {
     fill: '#fff',

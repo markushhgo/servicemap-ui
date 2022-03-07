@@ -4,7 +4,6 @@ import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
-import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRoutesGroup,
@@ -13,6 +12,8 @@ import {
 import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
+import Description from './components/Description';
+import RouteLength from './components/RouteLength';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -200,6 +201,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const descriptionToggle = () => {
+    setShowDescriptionText(current => !current);
+  };
+
   const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
     if (currentLocale === 'sv' && descriptionSv) {
       setCultureRouteDesc(descriptionSv);
@@ -312,31 +317,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </Button>
   );
 
-  const descriptionComponent = (
-    <div className={classes.descriptionContainer}>
-      <div className={classes.subtitle}>
-        <Button
-          className={classes.buttonWhite}
-          onClick={() => (showDescriptionText ? setShowDescriptionText(false) : setShowDescriptionText(true))}
-        >
-          <Typography className={classes.toggleText} variant="body1">
-            {intl.formatMessage({
-              id: 'mobilityPlatform.info.description.title',
-            })}
-          </Typography>
-          {showDescriptionText ? <ArrowDropUp /> : <ArrowDropDown />}
-        </Button>
-      </div>
-      {showDescriptionText ? (
-        <div className={classes.paragraph}>
-          <Typography component="p" variant="body2">
-            {cultureRouteDesc}
-          </Typography>
-        </div>
-      ) : null}
-    </div>
-  );
-
   /**
    * Check if route list is empty and render correct text
    * @param {Array} input
@@ -348,60 +328,38 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (input) {
       return (
         <div className={classes.paragraph}>
-          <Typography variant="subtitle2">
+          <Typography component="p" variant="subtitle2">
             {input.length > 0
               ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
               : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
           </Typography>
         </div>
       );
-    } return null;
+    }
+    return null;
   };
-
-  const renderList = inputData => inputData.map((item, i) => (
-    <Button
-      key={item.id}
-      variant="outlined"
-      aria-pressed={item.name}
-      className={i === cultureRouteIndex ? classes.buttonSmallActive : classes.buttonSmall}
-      onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
-    >
-      <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
-    </Button>
-  ));
-
-  const routeLengthComponent = (
-    <div className={classes.border}>
-      {bicycleRouteLength ? (
-        <div className={classes.paragraph}>
-          <Typography variant="body1">
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
-          </Typography>
-          <Typography variant="body2">
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
-            {' '}
-            {bicycleRouteLength}
-            {' '}
-            km.
-          </Typography>
-        </div>
-      ) : (
-        <>{emptyRouteList(bicycleRouteList)}</>
-      )}
-    </div>
-  );
 
   const routeListComponent = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
     <Button
       key={item.id}
       variant="outlined"
       className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
-      aria-pressed={item.name_fi}
       onClick={() => setRouteState(i, item.length, item.name_fi)}
     >
       <Typography variant="body2">
         {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
       </Typography>
+    </Button>
+  ));
+
+  const renderList = (inputData, activeIdx, setRouteState) => inputData.map((item, i) => (
+    <Button
+      key={item.id}
+      variant="outlined"
+      className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
+      onClick={() => setRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
+    >
+      <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
     </Button>
   ));
 
@@ -436,13 +394,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               <>{renderSettings(openWalkSettings, walkingControlTypes)}</>
               <div className={openCultureRouteList ? classes.border : null}>
-                {cultureRouteDesc ? descriptionComponent : null}
+                {cultureRouteDesc ? (
+                  <Description
+                    onClick={descriptionToggle}
+                    routeDescription={cultureRouteDesc}
+                    showDescriptionText={showDescriptionText}
+                  />
+                ) : null}
                 {openCultureRouteList && !cultureRouteDesc ? emptyRouteList(cultureRouteList) : null}
               </div>
               {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
-                ? renderList(filteredCultureRouteList)
+                ? renderList(filteredCultureRouteList, cultureRouteIndex, setCultureRouteState)
                 : null}
-              {openCultureRouteList && currentLocale === 'fi' ? renderList(cultureRouteList) : null}
+              {openCultureRouteList && currentLocale === 'fi'
+                ? renderList(cultureRouteList, cultureRouteIndex, setCultureRouteState)
+                : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
@@ -453,7 +419,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               <>
                 {renderSettings(openBicycleSettings, bicycleControlTypes)}
-                {renderDescription(showBicycleRouteLength, routeLengthComponent)}
+                {renderDescription(
+                  showBicycleRouteLength,
+                  <RouteLength length={bicycleRouteLength} emptyList={emptyRouteList} routeList={bicycleRouteList} />,
+                )}
               </>
               {showBicycleRouteList
                 ? routeListComponent(bicycleRouteList, bicycleRouteIndex, setBicycleRouteState)
