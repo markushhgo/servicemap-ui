@@ -459,6 +459,7 @@ const translations = {
   'search.suggestions.expand': 'Search suggestions',
   'search.suggestions.loading': 'Loading suggestions',
   'search.suggestions.error': 'No suggestions',
+  'search.suggestions.addresses': 'Show addresses',
   'search.suggestions.suggestions': '{count} search suggestions',
   // 'search.suggestions.expandSuggestions': '{count} refinement suggestions',
   'search.suggestions.results': '{count} results',
@@ -581,6 +582,8 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
   'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
+  'mobilityPlatform.menu.routes.info': 'Select a route from the list below.',
+  'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -628,10 +631,22 @@ const translations = {
   'ecocounter.month': 'Monthly',
   'ecocounter.walk': 'Walking',
   'ecocounter.bicycle': 'Cycling',
-  'ecocounter.car': 'By car',
+  'ecocounter.car': 'Driving',
   'ecocounter.chart.labelTo': 'To city',
   'ecocounter.chart.labelFrom': 'From city',
   'ecocounter.chart.labelTotal': 'Total',
+  'ecocounter.jan': 'January',
+  'ecocounter.feb': 'February',
+  'ecocounter.march': 'March',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'May',
+  'ecocounter.june': 'June',
+  'ecocounter.july': 'July',
+  'ecocounter.aug': 'August',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'October',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;

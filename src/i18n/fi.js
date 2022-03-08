@@ -463,6 +463,7 @@ const translations = {
   'search.suggestions.expand': 'Hakuehdotukset',
   'search.suggestions.loading': 'Ladataan ehdotuksia',
   'search.suggestions.error': 'Ei ehdotuksia',
+  'search.suggestions.addresses': 'Näytä osoitteet',
   'search.suggestions.suggestions': '{count} hakuehdotusta',
   // 'search.suggestions.expandSuggestions': '{count} tarkennusehdotusta',
   'search.suggestions.results': '{count} tulosta',
@@ -585,6 +586,8 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
   'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
+  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.',
+  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -635,6 +638,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Keskustaan',
   'ecocounter.chart.labelFrom': 'Keskustasta',
   'ecocounter.chart.labelTotal': 'Yhteensä',
+  'ecocounter.jan': 'Tammi',
+  'ecocounter.feb': 'Helmi',
+  'ecocounter.march': 'Maalis',
+  'ecocounter.april': 'Huhti',
+  'ecocounter.may': 'Touko',
+  'ecocounter.june': 'Kesä',
+  'ecocounter.july': 'Heinä',
+  'ecocounter.aug': 'Elo',
+  'ecocounter.sep': 'Syys',
+  'ecocounter.oct': 'Loka',
+  'ecocounter.nov': 'Marras',
+  'ecocounter.dec': 'Joulu',
 };
 
 let overridingExternalTranslations;

@@ -460,6 +460,7 @@ const translations = {
   'search.suggestions.expand': 'Sökförslag',
   'search.suggestions.loading': 'Laddar förslag',
   'search.suggestions.error': 'Inga förslag',
+  'search.suggestions.addresses': 'Näytä osoitteet', // TODO translate
   'search.suggestions.suggestions': '{count} sökförslag',
   // 'search.suggestions.expandSuggestions': '{count} preciseringsförslag',
   'search.suggestions.results': '{count} resultat',
@@ -583,6 +584,8 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -633,6 +636,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Till centrum',
   'ecocounter.chart.labelFrom': 'Från centrum',
   'ecocounter.chart.labelTotal': 'Totalt',
+  'ecocounter.jan': 'Januari',
+  'ecocounter.feb': 'Februari',
+  'ecocounter.march': 'Mars',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'Maj',
+  'ecocounter.june': 'Juni',
+  'ecocounter.july': 'Juli',
+  'ecocounter.aug': 'Augusti',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'Oktober',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;
