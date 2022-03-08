@@ -38,12 +38,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
-    showSnowPlows,
-    setShowSnowPlows,
     showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
-    setShowSnowPlowsHistory,
+    showSnowPlows,
+    setShowSnowPlows,
+    setSnowPlowsType,
   } = useContext(MobilityPlatformContext);
 
   // Avoids pre-render causing window is not defined- error.
@@ -123,6 +123,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (stepButtonIndex) {
       setStepButtonIndex(null);
     }
+    setSnowPlowsType(null);
   };
 
   const cultureRouteListToggle = () => {
@@ -158,7 +159,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const setSnowplowState = (type, index) => {
-    setShowSnowPlowsHistory(type);
+    setSnowPlowsType(type);
     setStepButtonIndex(index);
   };
 

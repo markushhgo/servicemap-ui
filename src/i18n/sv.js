@@ -611,6 +611,8 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Katujen pesu', // TODO translate
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Hiekanpoisto', // TODO translate
   'mobilityPlatform.content.streetMaintenance.time': 'Tid',
   'mobilityPlatform.content.streetMaintenance.other': 'Övrig',
   'mobilityPlatform.settings.buttons.1hour': '1 timme',

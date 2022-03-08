@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
-import { Typography } from '@material-ui/core';
+import SnowPlowsContent from './components/SnowPlowsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import snowPlowIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
 
 const SnowPlows = ({ classes, intl }) => {
   const [iotData, setIotData] = useState(null);
-  const [iotDataHistory24h, setIotDataHistory24h] = useState(null);
   const [iotDataHistory12h, setIotDataHistory12h] = useState(null);
+  const [iotDataHistory24h, setIotDataHistory24h] = useState(null);
   const [activeSnowPlows, setActiveSnowPlows] = useState(null);
 
-  const { openMobilityPlatform, showSnowPlows, showSnowPlowsHistory } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showSnowPlows, snowPlowsType } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
@@ -23,31 +23,33 @@ const SnowPlows = ({ classes, intl }) => {
     iconSize: [45, 45],
   });
 
-  // TODO compare data and filter possible duplicate ids.
-  // TODO refactor
-
   useEffect(() => {
     if (openMobilityPlatform) {
       fetchIotData(apiUrl, 'ISP', setIotData);
       fetchIotData(apiUrl, '12H', setIotDataHistory12h);
       fetchIotData(apiUrl, '24H', setIotDataHistory24h);
     }
-  }, [openMobilityPlatform, setIotData, setIotDataHistory24h, setIotDataHistory12h]);
-
+  }, [openMobilityPlatform, setIotData, setIotDataHistory12h, setIotDataHistory24h]);
 
   useEffect(() => {
-    if (showSnowPlows && showSnowPlowsHistory === '1hour') {
+    if (snowPlowsType === '1hour') {
       setActiveSnowPlows(iotData);
     }
-  }, [showSnowPlows, showSnowPlowsHistory]);
+  }, [snowPlowsType]);
 
   useEffect(() => {
-    if (showSnowPlowsHistory === '12hour') {
+    if (snowPlowsType === '12hours') {
       setActiveSnowPlows(iotDataHistory12h);
-    } else if (showSnowPlowsHistory === '24hours') {
+    } else if (snowPlowsType === '24hours') {
       setActiveSnowPlows(iotDataHistory24h);
     }
-  }, [showSnowPlowsHistory, iotDataHistory12h, iotDataHistory24h]);
+  }, [snowPlowsType]);
+
+  useEffect(() => {
+    if (!showSnowPlows) {
+      setActiveSnowPlows(null);
+    }
+  }, [showSnowPlows]);
 
   const formatCoords = (input) => {
     const coordsArray = [];
@@ -66,6 +68,14 @@ const SnowPlows = ({ classes, intl }) => {
         return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandSpread' });
       case 'su':
         return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.deIcing' });
+      case 'pe':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.streetWashing' });
+      case 'hn':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
+      case 'hj':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
+      case 'Hiekoitushiekan poisto ja pesu':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
       default:
         return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.other' });
     }
@@ -84,34 +94,15 @@ const SnowPlows = ({ classes, intl }) => {
           <div>
             {activeSnowPlows
               && activeSnowPlows.map(item => (
-                <Marker key={item.id} icon={customIcon} position={formatCoords(item.last_location.coords)}>
+                <Marker key={item.last_location.timestamp} icon={customIcon} position={formatCoords(item.last_location.coords)}>
                   <div className={classes.popupWrapper}>
                     <Popup className="charger-stations-popup">
-                      <div className={classes.popupInner}>
-                        <div className={classes.subtitle}>
-                          <Typography variant="subtitle1">
-                            {intl.formatMessage({
-                              id: 'mobilityPlatform.content.streetMaintenance.title',
-                            })}
-                          </Typography>
-                        </div>
-                        <Typography>
-                          <strong>
-                            {intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance' })}
-                          </strong>
-                          :
-                          {' '}
-                          {formatEvent(item.last_location.events[0])}
-                        </Typography>
-                        <Typography>
-                          <strong>
-                            {intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.time' })}
-                          </strong>
-                          :
-                          {' '}
-                          {formatTime(item.last_location.timestamp)}
-                        </Typography>
-                      </div>
+                      <SnowPlowsContent
+                        formatOperation={formatEvent}
+                        operation={item.last_location.events[0]}
+                        formatTime={formatTime}
+                        timestamp={item.last_location.timestamp}
+                      />
                     </Popup>
                   </div>
                 </Marker>

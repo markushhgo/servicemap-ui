@@ -103,7 +103,7 @@ const DefaultLayout = (props) => {
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
   const [cultureRouteId, setCultureRouteId] = useState();
   const [showSnowPlows, setShowSnowPlows] = useState(false);
-  const [showSnowPlowsHistory, setShowSnowPlowsHistory] = useState(false);
+  const [snowPlowsType, setSnowPlowsType] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -199,7 +199,7 @@ const DefaultLayout = (props) => {
                       setShowCultureRoutes,
                       cultureRouteId,
                       setCultureRouteId,
-                      setShowSnowPlowsHistory,
+                      setSnowPlowsType,
                     }}
                   >
                     <ViewRouter />
@@ -220,7 +220,7 @@ const DefaultLayout = (props) => {
                     showSnowPlows,
                     showCultureRoutes,
                     cultureRouteId,
-                    showSnowPlowsHistory,
+                    snowPlowsType,
                   }}
                 >
                   <MapView

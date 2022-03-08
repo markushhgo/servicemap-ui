@@ -613,6 +613,8 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Auraus',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Hiekoitus',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Suolaus',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Katujen pesu',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Hiekanpoisto',
   'mobilityPlatform.content.streetMaintenance.time': 'Aika',
   'mobilityPlatform.content.streetMaintenance.other': 'Muu',
   'mobilityPlatform.settings.buttons.1hour': '1 tunti',
