@@ -24,17 +24,11 @@ const searchUnits = async (t, search = 'uimastadion') => {
     .pressKey('ctrl+a delete')
     .typeText(input, search)
     .pressKey('enter');
-
-  // Get search list's data length
-  const searchView = ReactSelector('SearchView');
-  const unitCount = await searchView.getReact(({props}) => props.units.length);
-
-  return unitCount;
 }
 
 test('Navigate search view', async (t) => {
   // Test result orderer navigation
-  const unitCount = await searchUnits(t, 'kirjasto');
+  await searchUnits(t, 'kirjasto');
   const input = ReactSelector('WithStyles(ForwardRef(InputBase))').nth(0);
   let select =  ReactSelector('ResultOrderer WithStyles(ForwardRef(Select))');
 
@@ -45,11 +39,11 @@ test('Navigate search view', async (t) => {
     .pressKey('tab') // Tabs to cancel button
     .pressKey('tab') // Tabs to search icon button
     .pressKey('tab') // Result orderer
-    .expect(select.getReact(({props}) => props.value)).eql('match-desc')
-    .pressKey('down')
+    // .expect(select.getReact(({props}) => props.value)).eql('match-desc')
+    // .pressKey('down')
     .expect(select.getReact(({props}) => props.value)).eql('alphabetical-desc')
-    .pressKey('up')
-    .expect(select.getReact(({props}) => props.value)).eql('match-desc');
+    .pressKey('down')
+    .expect(select.getReact(({props}) => props.value)).eql('alphabetical-asc');
   // Test result list navigation
   const items =  ReactSelector('TabLists ResultItem');
   // const secondSearchItems = firstSearchItems.nth(1);
@@ -110,10 +104,9 @@ test('Tab navigation works correctly', async (t) => {
 })
 
 test('Search does list results', async (t) => {
-  // const unitCount = await searchUnits(t);
-  const searchView = ReactSelector('SearchView')
+  const resultList = ReactSelector('ResultList')
   await t
-    .expect(searchView.getReact(({props}) => props.units.length)).gt(5, `Search didn't get results`);
+    .expect(resultList.getReact(({props}) => props.resultCount)).gt(0, `Search didn't get results`);
 });
 
 // Check that address search works and draws marker on map
@@ -160,27 +153,27 @@ test('ServiceItem click event takes to service page', async(t) => {
     .click(services.nth(0))
     .navigateTo(target);
 });
-
-test('Expanded suggestions does open and close correctly', async(t) => {
-  const button = await Selector('#ExpandSuggestions');
-  await t
-    .click(button);
+// Expanded suggestions are disabled for now
+// test('Expanded suggestions does open and close correctly', async(t) => {
+//   const button = await Selector('#ExpandSuggestions');
+//   await t
+//     .click(button);
   
-  const backButton = await ReactSelector('BackButton');
-  await t
-    .expect(backButton.focused).ok('Titlebar\'s back button should have focus')
-    // Go back to search view
-    .click(backButton);
+//   const backButton = await ReactSelector('BackButton');
+//   await t
+//     .expect(backButton.focused).ok('Titlebar\'s back button should have focus')
+//     // Go back to search view
+//     .click(backButton);
 
-  const viewText = await Selector(`#${viewTitleID}`).innerText;
-  const button2 = await Selector('#ExpandSuggestions');
-  await t
-    // Check that back button takes back to correct view
-    .expect(viewText).eql('Hakutulossivu', 'BackButton should take user back to search view')
-    // Check that focus is moved correctly when returning to search view
-    .expect(button2.focused).ok('ExpandSuggestions button should have focus');
+//   const viewText = await Selector(`#${viewTitleID}`).innerText;
+//   const button2 = await Selector('#ExpandSuggestions');
+//   await t
+//     // Check that back button takes back to correct view
+//     .expect(viewText).eql('Hakutulossivu', 'BackButton should take user back to search view')
+//     // Check that focus is moved correctly when returning to search view
+//     .expect(button2.focused).ok('ExpandSuggestions button should have focus');
 
-});
+// });
 
 test('SearchBar accessibility is OK', async(t) => {
 
@@ -242,29 +235,26 @@ test('ResultList accessibility attributes are OK', async(t) => {
 /**
  * TODO: Figure out a way to test ResultItem in isolation in order to guarantee
  * values for subtitle and distance texts. Otherwise these nodes don't exist in DOM
-
   const resultSubtitle = await result.findReact('p').nth(2); // .getAttribute('aria-hidden');
   await t
     .expect(resultSubtitle.hasClass('ResultItem-subtitle')).ok('Expected subtitle text to have class ResultItem-distance')
     .expect(resultSubtitle.getAttribute('aria-hidden')).eql('true');
-
   const resultDistance = await result.findReact('p').nth(3); // .getAttribute('aria-hidden');
   console.log(await resultDistance.classNames);
   await t
     .expect(resultDistance.hasClass('ResultItem-distance')).ok('Expected distance text to have class ResultItem-distance')
     .expect(resultDistance.getAttribute('aria-hidden')).eql('true');
-
 */
 });
 
-test('SuggestionButton accessibility attributes are OK', async(t) => {
-    // Check that ExapndSuggestions has correct accessibility attributes
-    const expandedSuggestionsButton = await Selector('#ExpandSuggestions');
-    const esbRole = await expandedSuggestionsButton.getAttribute('role')
-    await t
-      // We expect ExpandedSearchButton to have role link since it takes to another view 
-      .expect(esbRole).eql('link', 'ExpandedSearchButton should be considered a link');
-});
+// test('SuggestionButton accessibility attributes are OK', async(t) => {
+//     // Check that ExapndSuggestions has correct accessibility attributes
+//     const expandedSuggestionsButton = await Selector('#ExpandSuggestions');
+//     const esbRole = await expandedSuggestionsButton.getAttribute('role')
+//     await t
+//       // We expect ExpandedSearchButton to have role link since it takes to another view 
+//       .expect(esbRole).eql('link', 'ExpandedSearchButton should be considered a link');
+// });
 
 test('Tabs accessibility attributes are OK', async(t) => {
   await searchUnits(t, 'kirjasto');
@@ -280,9 +270,9 @@ test('Tabs accessibility attributes are OK', async(t) => {
 
 test('Search has aria-live element', async(t) => {
   await searchUnits(t, 'kirjasto');
-  const view = ReactSelector('SearchView');
-  const units = await view.getReact(({props}) => props.units ? props.units : []);
-  const unitCount = await units.filter(unit => unit.object_type === 'unit').length
+  const resultList = ReactSelector('PaginatedList')
+  const results = await resultList.getReact(({props}) => props.data || []);
+  const unitCount = await results.filter(result => result.object_type === 'unit').length
   const searchInfo = Selector('.SearchInfo').child(0);
   const siText = await searchInfo.innerText;
   const siAriaLive = await searchInfo.getAttribute('aria-live');
@@ -348,25 +338,26 @@ test('SettingsInfo works correctly', async(t) => {
 });
 
 
-test('Search suggestion click works correctly', async(t) => {
-  // Get SearchBar input
-  const input = ReactSelector('WithStyles(ForwardRef(InputBase))');
+// TODO: fix this test to work with new search suggestions
+// test('Search suggestion click works correctly', async(t) => {
+//   // Get SearchBar input
+//   const input = ReactSelector('WithStyles(ForwardRef(InputBase))');
 
-  // Make new search
-  await t
-    .expect(getLocation()).contains(`http://${server.address}:${server.port}/fi/search`)
-    .click(input)
-    .pressKey('ctrl+a delete')
-    .typeText(input, 'kirjastoa');
+//   // Make new search
+//   await t
+//     .expect(getLocation()).contains(`http://${server.address}:${server.port}/fi/search`)
+//     .click(input)
+//     .pressKey('ctrl+a delete')
+//     .typeText(input, 'kirjastoa');
 
-  const items = ReactSelector('SuggestionItem');
-  const clickedItem = await items.nth(0);
-  const text = await clickedItem.getReact(({props}) => props.text);
-  await t
-    .click(clickedItem)
-    .expect(getLocation()).contains(`http://${server.address}:${server.port}/fi/search?q=${text}`)
+//   const items = ReactSelector('SuggestionItem');
+//   const clickedItem = await items.nth(0);
+//   const text = await clickedItem.getReact(({props}) => props.fullQuery);
+//   await t
+//     .click(clickedItem)
+//     .expect(getLocation()).contains(`http://${server.address}:${server.port}/fi/search?q=${text}`)
     
-});
+// });
 
 fixture`Pagination tests`
   .page`http://${server.address}:${server.port}/fi/search?q=kirjasto&p=2`
