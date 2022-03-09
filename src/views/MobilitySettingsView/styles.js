@@ -89,23 +89,23 @@ const styles = theme => ({
     color: '#fff',
   },
   subtitle: {
-    textTransform: 'capitalize',
+    textTransform: 'none',
   },
   iconActive: {
     fill: '#fff',
     width: '40px',
     height: '40px',
-    marginRight: '0.8rem',
+    marginRight: theme.spacing(1),
   },
   icon: {
     fill: '#000',
     width: '40px',
     height: '40px',
-    marginRight: '0.8rem',
+    marginRight: theme.spacing(1),
   },
   paragraph: {
-    padding: theme.spacing(1.5),
     textAlign: 'left',
+    padding: theme.spacing(1.5),
   },
   border: {
     borderBottom: '1px solid #6f7276',

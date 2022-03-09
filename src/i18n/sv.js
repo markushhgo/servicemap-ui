@@ -582,8 +582,11 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
   'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
   'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
