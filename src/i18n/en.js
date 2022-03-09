@@ -612,7 +612,7 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.streetWashing': 'Street washing',
   'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Sand removal',
   'mobilityPlatform.content.streetMaintenance.time': 'Time',
-  'mobilityPlatform.content.streetMaintenance.other': 'Other',
+  'mobilityPlatform.content.streetMaintenance.other': 'Other maintenance work',
   'mobilityPlatform.settings.buttons.1hour': '1 hour',
   'mobilityPlatform.settings.buttons.12hours': '12 hours',
   'mobilityPlatform.settings.buttons.24hours': '24 hours',

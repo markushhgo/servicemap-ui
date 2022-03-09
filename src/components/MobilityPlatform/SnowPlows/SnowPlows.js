@@ -34,11 +34,7 @@ const SnowPlows = ({ classes, intl }) => {
   useEffect(() => {
     if (snowPlowsType === '1hour') {
       setActiveSnowPlows(iotData);
-    }
-  }, [snowPlowsType]);
-
-  useEffect(() => {
-    if (snowPlowsType === '12hours') {
+    } else if (snowPlowsType === '12hours') {
       setActiveSnowPlows(iotDataHistory12h);
     } else if (snowPlowsType === '24hours') {
       setActiveSnowPlows(iotDataHistory24h);
@@ -90,13 +86,12 @@ const SnowPlows = ({ classes, intl }) => {
   return (
     <>
       {showSnowPlows ? (
-        <div>
-          <div>
-            {activeSnowPlows
+        <div className={classes.container}>
+          {activeSnowPlows
               && activeSnowPlows.map(item => (
                 <Marker key={item.last_location.timestamp} icon={customIcon} position={formatCoords(item.last_location.coords)}>
                   <div className={classes.popupWrapper}>
-                    <Popup className="charger-stations-popup">
+                    <Popup>
                       <SnowPlowsContent
                         formatOperation={formatEvent}
                         operation={item.last_location.events[0]}
@@ -107,7 +102,6 @@ const SnowPlows = ({ classes, intl }) => {
                   </div>
                 </Marker>
               ))}
-          </div>
         </div>
       ) : null}
     </>

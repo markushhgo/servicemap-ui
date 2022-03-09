@@ -611,10 +611,10 @@ const translations = {
   'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
   'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
   'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
-  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Katujen pesu', // TODO translate
-  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Hiekanpoisto', // TODO translate
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Gatutvätt',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Sandavlägsnande',
   'mobilityPlatform.content.streetMaintenance.time': 'Tid',
-  'mobilityPlatform.content.streetMaintenance.other': 'Övrig',
+  'mobilityPlatform.content.streetMaintenance.other': 'Annat underhållsarbete',
   'mobilityPlatform.settings.buttons.1hour': '1 timme',
   'mobilityPlatform.settings.buttons.12hours': '12 timmar',
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
