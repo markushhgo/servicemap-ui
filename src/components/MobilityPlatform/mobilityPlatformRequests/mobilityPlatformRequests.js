@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
-/* eslint-disable import/prefer-default-export */
 
 // Functions to make requests to the API
 
-export const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
+const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
   try {
     const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326`);
     const jsonData = await response.json();
@@ -13,7 +12,7 @@ export const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
   }
 };
 
-export const fetchCultureRoutesGroup = async (apiUrl, setData) => {
+const fetchCultureRoutesGroup = async (apiUrl, setData) => {
   try {
     const response = await fetch(`${apiUrl}/mobility_data/mobile_unit_groups/`);
     const jsonData = await response.json();
@@ -23,7 +22,7 @@ export const fetchCultureRoutesGroup = async (apiUrl, setData) => {
   }
 };
 
-export const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
+const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
   try {
     const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
     const jsonData = await response.json();
@@ -33,7 +32,27 @@ export const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
   }
 };
 
-export const fetchIotData = async (apiUrl, sourceName, setData) => {
+const fetchBicycleRouteNames = async (apiUrl, setData) => {
+  try {
+    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networks/`);
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+const fetchBicycleRoutesGeometry = async (apiUrl, setData) => {
+  try {
+    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`);
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+const fetchIotData = async (apiUrl, sourceName, setData) => {
   try {
     const response = await fetch(`${apiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
@@ -41,4 +60,13 @@ export const fetchIotData = async (apiUrl, sourceName, setData) => {
   } catch (err) {
     console.warn(err.message);
   }
+};
+
+export {
+  fetchMobilityMapData,
+  fetchCultureRoutesGroup,
+  fetchCultureRoutesData,
+  fetchBicycleRouteNames,
+  fetchBicycleRoutesGeometry,
+  fetchIotData,
 };

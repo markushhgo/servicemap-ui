@@ -1,12 +1,10 @@
-/* eslint-disable import/prefer-default-export */
-
-export const getCurrentLocale = (locale, setLocale) => {
+const getCurrentLocale = (locale, setLocale) => {
   if (['fi', 'en', 'sv'].includes(locale)) {
     setLocale(locale);
   } else setLocale('fi');
 };
 
-export const selectRouteName = (locale, routeNameFI, routeNameEN, routeNameSV) => {
+const selectRouteName = (locale, routeNameFI, routeNameEN, routeNameSV) => {
   if (locale === 'sv' && routeNameSV) {
     return routeNameSV;
   }
@@ -14,4 +12,9 @@ export const selectRouteName = (locale, routeNameFI, routeNameEN, routeNameSV) =
     return routeNameEN;
   }
   return routeNameFI;
+};
+
+export {
+  getCurrentLocale,
+  selectRouteName,
 };

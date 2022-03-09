@@ -583,11 +583,14 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
-  'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
-  'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
+  'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
-  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.',
+  'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
+  'mobilityPlatform.menu.routes.info': 'Valitse reitti oheisesta listasta.',
   'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',

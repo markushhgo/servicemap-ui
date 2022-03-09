@@ -582,8 +582,11 @@ const translations = {
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
   'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
-  'mobilityPlatform.menu.routes.info': 'Select a route from the list below.',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
+  'mobilityPlatform.menu.routes.info': 'You can select a route from the list below.',
   'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',

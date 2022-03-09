@@ -101,7 +101,9 @@ const DefaultLayout = (props) => {
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
-  const [cultureRouteId, setCultureRouteId] = useState();
+  const [cultureRouteId, setCultureRouteId] = useState(null);
+  const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
+  const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showSnowPlows, setShowSnowPlows] = useState(false);
   const [snowPlowsType, setSnowPlowsType] = useState(false);
 
@@ -199,6 +201,10 @@ const DefaultLayout = (props) => {
                       setShowCultureRoutes,
                       cultureRouteId,
                       setCultureRouteId,
+                      showBicycleRoutes,
+                      setShowBicycleRoutes,
+                      bicycleRouteName,
+                      setBicycleRouteName,
                       setSnowPlowsType,
                     }}
                   >
@@ -220,6 +226,8 @@ const DefaultLayout = (props) => {
                     showSnowPlows,
                     showCultureRoutes,
                     cultureRouteId,
+                    showBicycleRoutes,
+                    bicycleRouteName,
                     snowPlowsType,
                   }}
                 >
