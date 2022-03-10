@@ -566,11 +566,14 @@ const translations = {
   'tool.print': 'Skriv ut',
 
   'info.title': 'Om tjänsten och tillgänglighetsredogörelsen',
-  'info.statement': 'Tillgänglighetsredogörelsen',
+  'info.statement': 'Tillgänglighetsredogörelsen (ny flik)',
 
   'alert.close': 'Stäng meddelande',
 
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Mobilitetsplatform',
+  'mobilityPlatform.info.statement': 'Mobilitetsdataplattformen från servicekartan har utvecklats som en del av SCALE-UP-projekt, finansierat av Europeiska unionens Horizon 2020-program (bidragsavtal nr 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Mobilitet',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
