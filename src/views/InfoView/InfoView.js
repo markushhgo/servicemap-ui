@@ -13,7 +13,8 @@ const InfoView = ({ classes, locale }) => {
   const a11yURLs = config.accessibilityStatementURL;
   const localeUrl = !a11yURLs[locale] || a11yURLs[locale] === 'undefined' ? null : a11yURLs[locale];
 
-  const isTurku = config.turkuTheme;
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   const handleClick = () => {
     window.open(localeUrl);
@@ -61,7 +62,7 @@ const InfoView = ({ classes, locale }) => {
       {
         // Scale up text
       }
-      {isTurku ? renderScaleUpText() : null}
+      {isExternalTheme ? renderScaleUpText() : null}
       {
         // Haku
       }
@@ -277,7 +278,7 @@ const InfoView = ({ classes, locale }) => {
       {
         // Scale up text
       }
-      {isTurku ? renderScaleUpText() : null}
+      {isExternalTheme ? renderScaleUpText() : null}
       {
         // Haku
       }
@@ -484,7 +485,7 @@ const InfoView = ({ classes, locale }) => {
       {
         // Scale up text
       }
-      {isTurku ? renderScaleUpText() : null}
+      {isExternalTheme ? renderScaleUpText() : null}
       <Typography component="h3" variant="body2">Sökning</Typography>
       <Typography component="h4" variant="body2">På Servicekartan kan du söka exempelvis:</Typography>
       <ul>
