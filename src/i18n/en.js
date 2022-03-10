@@ -570,6 +570,9 @@ const translations = {
   'alert.close': 'Close the notification',
 
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Mobility platform',
+  'mobilityPlatform.info.statement': 'The mobility data platform of the service map has been developed as part of European Union Horizon 2020 programme funded SCALE-UP project (grant agreement no. 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Mobility map',
   'mobilityPlatform.menu.subtitle': 'Settings',

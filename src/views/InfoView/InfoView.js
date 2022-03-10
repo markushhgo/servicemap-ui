@@ -13,6 +13,8 @@ const InfoView = ({ classes, locale }) => {
   const a11yURLs = config.accessibilityStatementURL;
   const localeUrl = !a11yURLs[locale] || a11yURLs[locale] === 'undefined' ? null : a11yURLs[locale];
 
+  const isTurku = config.turkuTheme;
+
   const handleClick = () => {
     window.open(localeUrl);
   };
@@ -26,6 +28,18 @@ const InfoView = ({ classes, locale }) => {
       titleComponent="h3"
     />
   );
+
+  const renderScaleUpText = () => (
+    <div className={classes.textContainer}>
+      <Typography component="h3" variant="body2">
+        <FormattedMessage id="mobilityPlatform.info.title" />
+      </Typography>
+      <Typography component="p" variant="body2" className={classes.text}>
+        <FormattedMessage id="mobilityPlatform.info.statement" />
+      </Typography>
+    </div>
+  );
+
   const renderFinnishInfo = () => (
     <div className={classes.textContainer}>
       {localeUrl ? (
@@ -44,6 +58,10 @@ const InfoView = ({ classes, locale }) => {
         palveluja. Yksityisiä palveluja, esimerkiksi turistikohteita (esimerkiksi ravintoloita) tulee palvelukartalle
         MyHelsinki-rajapinnan kautta.
       </Typography>
+      {
+        // Scale up text
+      }
+      {isTurku ? renderScaleUpText() : null}
       {
         // Haku
       }
@@ -257,6 +275,10 @@ const InfoView = ({ classes, locale }) => {
         restaurants) are added to the Service Map through the MyHelsinki API.
       </Typography>
       {
+        // Scale up text
+      }
+      {isTurku ? renderScaleUpText() : null}
+      {
         // Haku
       }
       <Typography component="h3" variant="body2">Search</Typography>
@@ -459,6 +481,10 @@ const InfoView = ({ classes, locale }) => {
         (t.ex. återvinningsstationer), Aalto-universitetets tjänster samt diverse statliga tjänster. Privata tjänster
         såsom turistobjekt (t.ex. restauranger) kommer till Servicekartan via MyHelsinki-gränssnittet.
       </Typography>
+      {
+        // Scale up text
+      }
+      {isTurku ? renderScaleUpText() : null}
       <Typography component="h3" variant="body2">Sökning</Typography>
       <Typography component="h4" variant="body2">På Servicekartan kan du söka exempelvis:</Typography>
       <ul>

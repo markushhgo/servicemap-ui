@@ -241,4 +241,5 @@ export default {
   "matomoSensesDimensionID": settings.MATOMO_SENSES_DIMENSION_ID,
   "matomoUrl": settings.MATOMO_URL,
   "matomoSiteId": settings.MATOMO_SITE_ID,
+  "turkuTheme": settings.THEME_PKG,
 }

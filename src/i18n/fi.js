@@ -574,6 +574,9 @@ const translations = {
   'alert.close': 'Sulje ilmoitus',
 
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Liikkumisnäkymä',
+  'mobilityPlatform.info.statement': 'Palvelukartan liikkumisnäkymää on kehitetty osana Euroopan unionin Horizon 2020 -ohjelman rahoittamaa SCALE-UP -hanketta (avustussopimus nro 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
