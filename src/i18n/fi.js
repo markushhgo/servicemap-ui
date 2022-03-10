@@ -593,8 +593,6 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
-  'mobilityPlatform.menu.routes.info': 'Valitse reitti alla olevasta listasta.',
-  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
