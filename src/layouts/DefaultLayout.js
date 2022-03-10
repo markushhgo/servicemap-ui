@@ -104,6 +104,8 @@ const DefaultLayout = (props) => {
   const [cultureRouteId, setCultureRouteId] = useState(null);
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
+  const [showSnowPlows, setShowSnowPlows] = useState(false);
+  const [snowPlowsType, setSnowPlowsType] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -193,6 +195,8 @@ const DefaultLayout = (props) => {
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
+                      showSnowPlows,
+                      setShowSnowPlows,
                       showCultureRoutes,
                       setShowCultureRoutes,
                       cultureRouteId,
@@ -201,6 +205,7 @@ const DefaultLayout = (props) => {
                       setShowBicycleRoutes,
                       bicycleRouteName,
                       setBicycleRouteName,
+                      setSnowPlowsType,
                     }}
                   >
                     <ViewRouter />
@@ -218,10 +223,12 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
+                    showSnowPlows,
                     showCultureRoutes,
                     cultureRouteId,
                     showBicycleRoutes,
                     bicycleRouteName,
+                    snowPlowsType,
                   }}
                 >
                   <MapView

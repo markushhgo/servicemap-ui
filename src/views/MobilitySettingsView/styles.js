@@ -38,7 +38,7 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  buttonSmall: {
+  listButton: {
     width: '100%',
     height: '45px',
     background: 'rgba(230, 230, 230, 255)',
@@ -53,7 +53,7 @@ const styles = theme => ({
       background: 'rgba(222, 222, 222, 255)',
     },
   },
-  buttonSmallActive: {
+  listButtonActive: {
     width: '100%',
     height: '45px',
     textTransform: 'capitalize',
@@ -70,6 +70,24 @@ const styles = theme => ({
       background: '#3e3f42',
       borderBottom: '1px solid #6f7276',
       borderTop: '1px solid #6f7276',
+    },
+  },
+  buttonStep: {
+    width: '25%',
+    margin: theme.spacing(1),
+    border: '1px solid #000000',
+    textTransform: 'none',
+  },
+  buttonStepActive: {
+    width: '25%',
+    margin: theme.spacing(1),
+    border: '1px solid #000000',
+    textTransform: 'none',
+    background: '#46484b',
+    color: '#fff',
+    '&:hover': {
+      color: '#fff',
+      background: '#3e3f42',
     },
   },
   toggleText: {
@@ -109,6 +127,12 @@ const styles = theme => ({
   },
   border: {
     borderBottom: '1px solid #6f7276',
+  },
+  buttonList: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
 });
 

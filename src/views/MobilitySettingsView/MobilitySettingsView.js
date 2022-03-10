@@ -26,6 +26,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
   const [cultureRouteDesc, setCultureRouteDesc] = useState(null);
+  const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [showDescriptionText, setShowDescriptionText] = useState(false);
@@ -49,6 +50,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     showCultureRoutes,
     setShowCultureRoutes,
     setCultureRouteId,
+    showSnowPlows,
+    setShowSnowPlows,
+    setSnowPlowsType,
     setShowBicycleRoutes,
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
@@ -179,6 +183,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
+  const snowPlowsToggle = () => {
+    setShowSnowPlows(current => !current);
+    if (stepButtonIndex) {
+      setStepButtonIndex(null);
+    }
+    setSnowPlowsType(null);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
@@ -225,6 +237,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setCultureRouteId(itemId);
     setCultureRouteIndex(index);
     setShowCultureRoutes(true);
+  };
+
+  const setSnowplowState = (type, index) => {
+    setSnowPlowsType(type);
+    setStepButtonIndex(index);
   };
 
   const formatBicycleRoutelength = (inputLength) => {
@@ -290,6 +307,27 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
     },
+    {
+      type: 'snowPlows',
+      msgId: 'mobilityPlatform.menu.showSnowPlows',
+      checkedValue: showSnowPlows,
+      onChangeValue: snowPlowsToggle,
+    },
+  ];
+
+  const timeStepTypes = [
+    {
+      type: '1hour',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.1hour' }),
+    },
+    {
+      type: '12hours',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.12hours' }),
+    },
+    {
+      type: '24hours',
+      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.24hours' }),
+    },
   ];
 
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
@@ -348,7 +386,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       key={item.id}
       variant="outlined"
-      className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
+      className={i === activeIdx ? classes.listButtonActive : classes.listButton}
       onClick={() => setBicycleRouteState(i, item.length, item.name_fi)}
     >
       <Typography variant="body2">
@@ -361,7 +399,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       key={item.id}
       variant="outlined"
-      className={i === activeIdx ? classes.buttonSmallActive : classes.buttonSmall}
+      className={i === activeIdx ? classes.listButtonActive : classes.listButton}
       onClick={() => setCultureRouteState(item.description_sv, item.description_en, item.description, item.id, i)}
     >
       <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
@@ -435,7 +473,29 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
-              {renderSettings(openCarSettings, carControlTypes)}
+              <>
+                {renderSettings(openCarSettings, carControlTypes)}
+                {showSnowPlows && (
+                  <div className={classes.container}>
+                    <div className={classes.paragraph}>
+                      <Typography variant="subtitle2">
+                        {intl.formatMessage({ id: 'mobilityPlatform.settings.streetMaintenance.info' })}
+                      </Typography>
+                    </div>
+                    <div className={classes.buttonList}>
+                      {timeStepTypes.map((item, i) => (
+                        <Button
+                          key={item.type}
+                          className={i === stepButtonIndex ? classes.buttonStepActive : classes.buttonStep}
+                          onClick={() => setSnowplowState(item.type, i)}
+                        >
+                          <Typography variant="body2">{item.title}</Typography>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             </>
           </FormGroup>
         </FormControl>

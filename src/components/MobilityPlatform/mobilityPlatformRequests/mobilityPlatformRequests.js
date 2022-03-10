@@ -52,10 +52,21 @@ const fetchBicycleRoutesGeometry = async (apiUrl, setData) => {
   }
 };
 
+const fetchIotData = async (apiUrl, sourceName, setData) => {
+  try {
+    const response = await fetch(`${apiUrl}/iot?source_name=${sourceName}`);
+    const jsonData = await response.json();
+    setData(jsonData.results[0].data);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
 export {
   fetchMobilityMapData,
   fetchCultureRoutesGroup,
   fetchCultureRoutesData,
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
+  fetchIotData,
 };
