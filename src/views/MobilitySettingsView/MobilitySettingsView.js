@@ -6,7 +6,7 @@ import {
 import { ReactSVG } from 'react-svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
-  fetchCultureRoutesGroup,
+  fetchCultureRouteNames,
   fetchBicycleRouteNames,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
@@ -79,7 +79,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   useEffect(() => {
     if (apiUrl) {
-      fetchCultureRoutesGroup(apiUrl, setCultureRouteList);
+      fetchCultureRouteNames(apiUrl, setCultureRouteList);
     }
   }, [apiUrl, setCultureRouteList]);
 

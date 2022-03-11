@@ -12,9 +12,9 @@ const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
   }
 };
 
-const fetchCultureRoutesGroup = async (apiUrl, setData) => {
+const fetchCultureRouteNames = async (apiUrl, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_unit_groups/`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_unit_groups?page_size=45`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -64,7 +64,7 @@ const fetchIotData = async (apiUrl, sourceName, setData) => {
 
 export {
   fetchMobilityMapData,
-  fetchCultureRoutesGroup,
+  fetchCultureRouteNames,
   fetchCultureRoutesData,
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
