@@ -32,6 +32,12 @@ const CultureRoutes = () => {
     }
   }, [cultureRoutes, cultureRouteId]);
 
+  useEffect(() => {
+    if (!showCultureRoutes) {
+      setActiveCultureRoute(null);
+    }
+  }, [showCultureRoutes]);
+
   return (
     <>
       {showCultureRoutes && (
@@ -52,9 +58,9 @@ const CultureRoutes = () => {
               </>
             )}
           </div>
-          <div>
-            <CultureRouteUnits />
-          </div>
+          <>
+            <CultureRouteUnits cultureRoute={activeCultureRoute} />
+          </>
         </>
       )}
     </>

@@ -463,6 +463,7 @@ const translations = {
   'search.suggestions.expand': 'Hakuehdotukset',
   'search.suggestions.loading': 'Ladataan ehdotuksia',
   'search.suggestions.error': 'Ei ehdotuksia',
+  'search.suggestions.addresses': 'Näytä osoitteet',
   'search.suggestions.suggestions': '{count} hakuehdotusta',
   // 'search.suggestions.expandSuggestions': '{count} tarkennusehdotusta',
   'search.suggestions.results': '{count} tulosta',
@@ -568,11 +569,14 @@ const translations = {
   'tool.print': 'Tulosta',
 
   'info.title': 'Tietoa palvelusta ja saavutettavuusseloste',
-  'info.statement': 'Saavutettavuusseloste',
+  'info.statement': 'Saavutettavuusseloste (uusi välilehti)',
 
   'alert.close': 'Sulje ilmoitus',
 
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Liikkumisnäkymä',
+  'mobilityPlatform.info.statement': 'Palvelukartan liikkumisnäkymää on kehitetty osana Euroopan unionin Horizon 2020 -ohjelman rahoittamaa SCALE-UP -hanketta (avustussopimus nro 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
@@ -582,8 +586,14 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
-  'mobilityPlatform.menu.showBicycleStands': 'Pyöräpysäköinti',
+  'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
+  'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
+  'mobilityPlatform.menu.routes.info': 'Valitse reitti oheisesta listasta.',
+  'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -604,6 +614,19 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun kaupungin ylläpitämä.',
+  'mobilityPlatform.content.streetMaintenance': 'Tekeillä',
+  'mobilityPlatform.content.streetMaintenance.title': 'Kunnossapitotyö',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Auraus',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Hiekoitus',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Suolaus',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Katujen pesu',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Hiekanpoisto',
+  'mobilityPlatform.content.streetMaintenance.time': 'Aika',
+  'mobilityPlatform.content.streetMaintenance.other': 'Muu kunnossapito',
+  'mobilityPlatform.settings.buttons.1hour': '1 tunti',
+  'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
+  'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
@@ -623,6 +646,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Keskustaan',
   'ecocounter.chart.labelFrom': 'Keskustasta',
   'ecocounter.chart.labelTotal': 'Yhteensä',
+  'ecocounter.jan': 'Tammi',
+  'ecocounter.feb': 'Helmi',
+  'ecocounter.march': 'Maalis',
+  'ecocounter.april': 'Huhti',
+  'ecocounter.may': 'Touko',
+  'ecocounter.june': 'Kesä',
+  'ecocounter.july': 'Heinä',
+  'ecocounter.aug': 'Elo',
+  'ecocounter.sep': 'Syys',
+  'ecocounter.oct': 'Loka',
+  'ecocounter.nov': 'Marras',
+  'ecocounter.dec': 'Joulu',
 };
 
 let overridingExternalTranslations;
