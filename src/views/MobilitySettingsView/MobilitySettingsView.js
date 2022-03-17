@@ -23,7 +23,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
-  const [showDescriptionText, setShowDescriptionText] = useState(false);
+  const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
