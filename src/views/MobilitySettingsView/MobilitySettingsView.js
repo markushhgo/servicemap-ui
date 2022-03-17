@@ -44,7 +44,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
-    showCultureRoutes,
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
@@ -196,8 +195,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (cultureRouteIndex) {
       setCultureRouteIndex(null);
     }
-    if (showCultureRoutes) {
-      setShowCultureRoutes(false);
+    if (cultureRouteId) {
+      setCultureRouteId(null);
     }
   };
 
