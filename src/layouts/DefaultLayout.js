@@ -96,8 +96,6 @@ const DefaultLayout = (props) => {
   const [sidebarHidden, toggleSidebarHidden] = useState(false);
   const [error, setError] = useState(false);
   const [openMobilityPlatform, setOpenMobilityPlatform] = useState(false);
-  const [showChargingStations, setShowChargingStations] = useState(false);
-  const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
@@ -187,10 +185,6 @@ const DefaultLayout = (props) => {
                     value={{
                       openMobilityPlatform,
                       setOpenMobilityPlatform,
-                      showChargingStations,
-                      setShowChargingStations,
-                      showGasFillingStations,
-                      setShowGasFillingStations,
                       showEcoCounter,
                       setShowEcoCounter,
                       showBicycleStands,
@@ -219,8 +213,6 @@ const DefaultLayout = (props) => {
                 <MobilityPlatformProvider
                   value={{
                     openMobilityPlatform,
-                    showChargingStations,
-                    showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
                     showSnowPlows,

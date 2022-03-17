@@ -16,12 +16,10 @@ import Description from './components/Description';
 import RouteLength from './components/RouteLength';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
-import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
-  const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
@@ -30,16 +28,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState(null);
-  const [showBicycleRouteList, setShowBicycleRouteList] = useState(false);
+  const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [apiUrl, setApiUrl] = useState(null);
 
   const {
     setOpenMobilityPlatform,
-    showChargingStations,
-    setShowChargingStations,
-    showGasFillingStations,
-    setShowGasFillingStations,
     showEcoCounter,
     setShowEcoCounter,
     showBicycleStands,
@@ -156,23 +150,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenBicycleSettings(current => !current);
   };
 
-  const carSettingsToggle = () => {
-    setOpenCarSettings(current => !current);
-  };
-
   /**
    * Toggle functions for content types
    * @var {Boolean}
    * @returns {Boolean}
    */
-  const chargingStationsToggle = () => {
-    setShowChargingStations(current => !current);
-  };
-
-  const gasFillingStationsToggle = () => {
-    setShowGasFillingStations(current => !current);
-  };
-
   const ecoCounterStationsToggle = () => {
     setShowEcoCounter(current => !current);
   };
@@ -201,7 +183,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const bicycleRouteListToggle = () => {
-    setShowBicycleRouteList(current => !current);
+    setOpenBicycleRouteList(current => !current);
     setShowBicycleRoutes(current => !current);
     if (bicycleRouteIndex) {
       setBicycleRouteIndex(null);
@@ -244,13 +226,19 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
     },
+    {
+      type: 'snowPlows',
+      msgId: 'mobilityPlatform.menu.showSnowPlows',
+      checkedValue: showSnowPlows,
+      onChangeValue: snowPlowsToggle,
+    },
   ];
 
   const bicycleControlTypes = [
     {
       type: 'bicycleRoutes',
       msgId: 'mobilityPlatform.menu.showBicycleRoutes',
-      checkedValue: showBicycleRouteList,
+      checkedValue: openBicycleRouteList,
       onChangeValue: bicycleRouteListToggle,
     },
     {
@@ -264,21 +252,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
       onChangeValue: ecoCounterStationsToggle,
-    },
-  ];
-
-  const carControlTypes = [
-    {
-      type: 'chargingStations',
-      msgId: 'mobilityPlatform.menu.showChargingStations',
-      checkedValue: showChargingStations,
-      onChangeValue: chargingStationsToggle,
-    },
-    {
-      type: 'gasFillingStations',
-      msgId: 'mobilityPlatform.menu.showGasStations',
-      checkedValue: showGasFillingStations,
-      onChangeValue: gasFillingStationsToggle,
     },
     {
       type: 'snowPlows',
@@ -401,7 +374,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={classes.buttonContainer}>
                 {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
               </div>
-              <>{renderSettings(openWalkSettings, walkingControlTypes)}</>
+              {renderSettings(openWalkSettings, walkingControlTypes)}
               <div className={openCultureRouteList ? classes.border : null}>
                 {cultureRouteId
                   ? cultureRouteList
@@ -432,21 +405,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   'mobilityPlatform.menu.title.bicycle',
                 )}
               </div>
-              <>
-                {renderSettings(openBicycleSettings, bicycleControlTypes)}
+              {renderSettings(openBicycleSettings, bicycleControlTypes)}
+              <div className={openBicycleRouteList ? classes.border : null}>
                 {bicycleRouteName
                   ? bicycleRouteList
                     .filter(bicycleRoute => bicycleRoute.name_fi === bicycleRouteName)
                     .map(bicycleRoute => <RouteLength key={bicycleRoute.id} route={bicycleRoute} />)
                   : null}
-              </>
-              {showBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
-              {showBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
-              <div className={classes.buttonContainer}>
-                {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
+                {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
+              {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
               <>
-                {renderSettings(openCarSettings, carControlTypes)}
                 {showSnowPlows && (
                   <div className={classes.container}>
                     <div className={classes.paragraph}>
@@ -474,8 +443,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
-      {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
-      {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
     </div>
   );
 };

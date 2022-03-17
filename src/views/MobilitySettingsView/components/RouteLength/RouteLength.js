@@ -8,7 +8,7 @@ const RouteLength = ({
   const formatRoutelength = inputLength => Math.round(inputLength / 1000);
 
   return (
-    <div className={classes.border}>
+    <div className={classes.container}>
       <div className={classes.paragraph}>
         <Typography component="h6" variant="body1">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
