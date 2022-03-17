@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const RouteLength = ({
-  classes, intl, length, emptyList, routeList,
-}) => (
-  <div className={classes.border}>
-    {length ? (
+  classes, intl, route,
+}) => {
+  const formatRoutelength = inputLength => Math.round(inputLength / 1000);
+
+  return (
+    <div className={classes.container}>
       <div className={classes.paragraph}>
         <Typography component="h6" variant="body1">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
@@ -14,28 +16,23 @@ const RouteLength = ({
         <Typography component="p" variant="body2">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
           {' '}
-          {length}
+          {formatRoutelength(route.length)}
           {' '}
           km.
         </Typography>
       </div>
-    ) : (
-      <>{emptyList(routeList)}</>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 RouteLength.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  length: PropTypes.number,
-  emptyList: PropTypes.func.isRequired,
-  routeList: PropTypes.arrayOf(PropTypes.any),
+  route: PropTypes.objectOf(PropTypes.any),
 };
 
 RouteLength.defaultProps = {
-  length: null,
-  routeList: null,
+  route: null,
 };
 
 export default RouteLength;
