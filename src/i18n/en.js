@@ -590,6 +590,7 @@ const translations = {
   'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
+  'mobilityPlatform.menu.showRentalCars': 'Rental cars', // TODO verify
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -623,6 +624,13 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 hours',
   'mobilityPlatform.settings.buttons.24hours': '24 hours',
   'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car',
+  'mobilityPlatform.content.rentalCars.provider': 'Service provider',
+  'mobilityPlatform.content.rentalCars.address': 'Location',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.available': 'Available',
+  'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

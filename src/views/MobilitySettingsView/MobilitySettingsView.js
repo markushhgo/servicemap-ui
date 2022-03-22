@@ -16,10 +16,12 @@ import Description from './components/Description';
 import RouteLength from './components/RouteLength';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
+  const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState(null);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
@@ -47,6 +49,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
+    showRentalCars,
+    setShowRentalCars,
   } = useContext(MobilityPlatformContext);
 
   /**
@@ -150,6 +154,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenBicycleSettings(current => !current);
   };
 
+  const carSettingsToggle = () => {
+    setOpenCarSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {Boolean}
@@ -161,6 +169,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const bicycleStandsToggle = () => {
     setShowBicycleStands(current => !current);
+  };
+
+  const rentalCarsToggle = () => {
+    setShowRentalCars(current => !current);
   };
 
   const snowPlowsToggle = () => {
@@ -258,6 +270,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showSnowPlows',
       checkedValue: showSnowPlows,
       onChangeValue: snowPlowsToggle,
+    },
+  ];
+
+  const carControlTypes = [
+    {
+      type: 'rentalCars',
+      msgId: 'mobilityPlatform.menu.showRentalCars',
+      checkedValue: showRentalCars,
+      onChangeValue: rentalCarsToggle,
     },
   ];
 
@@ -436,6 +457,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
                     </div>
                   </div>
                 )}
+                <div className={classes.buttonContainer}>
+                  {buttonComponent(
+                    carSettingsToggle,
+                    openCarSettings,
+                    iconCar,
+                    'mobilityPlatform.menu.title.car',
+                  )}
+                </div>
+                {renderSettings(openCarSettings, carControlTypes)}
               </>
             </>
           </FormGroup>

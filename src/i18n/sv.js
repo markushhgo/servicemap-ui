@@ -592,6 +592,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
+  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot', // TODO translate
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -625,6 +626,13 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 timmar',
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
+  'mobilityPlatform.content.rentalCars.title': 'Rental car', // TODO translate
+  'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja', // TODO translate
+  'mobilityPlatform.content.rentalCars.address': 'Location', // TODO translate
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer', // TODO translate
+  'mobilityPlatform.content.rentalCars.carModel': 'Car model', // TODO translate
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto', // TODO translate
+  'mobilityPlatform.content.rentalCars.reserved': 'Käytössä', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

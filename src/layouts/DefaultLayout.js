@@ -104,6 +104,7 @@ const DefaultLayout = (props) => {
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showSnowPlows, setShowSnowPlows] = useState(false);
   const [snowPlowsType, setSnowPlowsType] = useState(false);
+  const [showRentalCars, setShowRentalCars] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -200,6 +201,8 @@ const DefaultLayout = (props) => {
                       bicycleRouteName,
                       setBicycleRouteName,
                       setSnowPlowsType,
+                      showRentalCars,
+                      setShowRentalCars,
                     }}
                   >
                     <ViewRouter />
@@ -221,6 +224,7 @@ const DefaultLayout = (props) => {
                     showBicycleRoutes,
                     bicycleRouteName,
                     snowPlowsType,
+                    showRentalCars,
                   }}
                 >
                   <MapView

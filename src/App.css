@@ -49,7 +49,11 @@
 }
 
 .ecocounter-popup {
-  width: 429px;
+  width: 430px;
+}
+
+.rental-cars-popup {
+  width: 420px;
 }
 
 .ecocounter-popup > .leaflet-popup-content-wrapper {
@@ -60,6 +64,10 @@
 
 .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
   width: 390px !important;
+}
+
+.rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 410px !important;
 }
 
 @media (min-width: 750px) {

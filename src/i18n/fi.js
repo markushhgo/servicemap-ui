@@ -594,6 +594,7 @@ const translations = {
   'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
+  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -627,6 +628,13 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
   'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
+  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
+  'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja',
+  'mobilityPlatform.content.rentalCars.address': 'Sijainti',
+  'mobilityPlatform.content.rentalCars.manufacturer': 'Merkki',
+  'mobilityPlatform.content.rentalCars.carModel': 'Malli',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
