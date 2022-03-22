@@ -627,8 +627,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.title': 'Rental car',
   'mobilityPlatform.content.rentalCars.provider': 'Service provider',
   'mobilityPlatform.content.rentalCars.address': 'Location',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer',
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Car',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
 

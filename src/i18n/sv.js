@@ -628,9 +628,8 @@ const translations = {
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Rental car', // TODO translate
   'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja', // TODO translate
-  'mobilityPlatform.content.rentalCars.address': 'Location', // TODO translate
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Car manufacturer', // TODO translate
-  'mobilityPlatform.content.rentalCars.carModel': 'Car model', // TODO translate
+  'mobilityPlatform.content.rentalCars.address': 'Plats', // TODO verify
+  'mobilityPlatform.content.rentalCars.carInfo': 'Bil', // TODO verify
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto', // TODO translate
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä', // TODO translate
 

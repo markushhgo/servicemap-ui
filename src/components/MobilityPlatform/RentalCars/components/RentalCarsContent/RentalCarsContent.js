@@ -20,17 +20,34 @@ const RentalCarsContent = ({ classes, intl, car }) => {
     </div>
   );
 
-  const contentText = (messageId1, value1) => (
+  const contentText = (messageId, text) => (
     <div className={classes.text}>
       <Typography variant="body2">
         <strong>
           {intl.formatMessage({
-            id: messageId1,
+            id: messageId,
           })}
           :
         </strong>
         {' '}
-        {value1}
+        {text}
+      </Typography>
+    </div>
+  );
+
+  const renderCarInfo = (messageId, manufacturer, model) => (
+    <div className={classes.text}>
+      <Typography variant="body2">
+        <strong>
+          {intl.formatMessage({
+            id: messageId,
+          })}
+          :
+        </strong>
+        {' '}
+        {manufacturer}
+        {' '}
+        {model}
       </Typography>
     </div>
   );
@@ -61,8 +78,11 @@ const RentalCarsContent = ({ classes, intl, car }) => {
           </div>
         </>
       ) : null}
-      {contentText('mobilityPlatform.content.rentalCars.manufacturer', car.vehicleModelData.manufacturer)}
-      {contentText('mobilityPlatform.content.rentalCars.carModel', car.vehicleModelData.name)}
+      {renderCarInfo(
+        'mobilityPlatform.content.rentalCars.carInfo',
+        car.vehicleModelData.manufacturer,
+        car.vehicleModelData.name,
+      )}
       <div className={classes.text}>
         <Typography>
           {car.availabilityData.available

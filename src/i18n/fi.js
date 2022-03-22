@@ -631,8 +631,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
   'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja',
   'mobilityPlatform.content.rentalCars.address': 'Sijainti',
-  'mobilityPlatform.content.rentalCars.manufacturer': 'Merkki',
-  'mobilityPlatform.content.rentalCars.carModel': 'Malli',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Auto',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
 
