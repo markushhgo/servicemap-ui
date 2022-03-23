@@ -8,13 +8,14 @@ import {
 } from '@material-ui/core';
 import TitleBar from '../../components/TitleBar';
 import config from '../../../config';
+import OptionalText from './components/OptionalText';
 
 const InfoView = ({ classes, locale }) => {
   const a11yURLs = config.accessibilityStatementURL;
   const localeUrl = !a11yURLs[locale] || a11yURLs[locale] === 'undefined' ? null : a11yURLs[locale];
 
   const externalTheme = config.themePKG;
-  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+  const isExternalTheme = !externalTheme || typeof externalTheme === 'undefined' ? null : externalTheme;
 
   const handleClick = () => {
     window.open(localeUrl);
@@ -28,17 +29,6 @@ const InfoView = ({ classes, locale }) => {
       title={<FormattedMessage id="info.title" />}
       titleComponent="h3"
     />
-  );
-
-  const renderScaleUpText = () => (
-    <div className={classes.textContainer}>
-      <Typography component="h3" variant="body2">
-        <FormattedMessage id="mobilityPlatform.info.title" />
-      </Typography>
-      <Typography component="p" variant="body2" className={classes.text}>
-        <FormattedMessage id="mobilityPlatform.info.statement" />
-      </Typography>
-    </div>
   );
 
   const renderFinnishInfo = () => (
@@ -59,10 +49,6 @@ const InfoView = ({ classes, locale }) => {
         palveluja. Yksityisiä palveluja, esimerkiksi turistikohteita (esimerkiksi ravintoloita) tulee palvelukartalle
         MyHelsinki-rajapinnan kautta.
       </Typography>
-      {
-        // Scale up text
-      }
-      {isExternalTheme ? renderScaleUpText() : null}
       {
         // Haku
       }
@@ -674,15 +660,20 @@ const InfoView = ({ classes, locale }) => {
     <div>
       <div className={classes.pageContainer}>
         {renderTitlebar()}
-        {locale === 'fi' && (
+        {isExternalTheme ? (
+          <div className={classes.textContainer}>
+            <OptionalText locale={locale} />
+          </div>
+        ) : null}
+        {locale === 'fi' && !isExternalTheme ? (
           renderFinnishInfo()
-        )}
-        {locale === 'en' && (
+        ) : null}
+        {locale === 'en' && !isExternalTheme ? (
           renderEnglishInfo()
-        )}
-        {locale === 'sv' && (
+        ) : null}
+        {locale === 'sv' && !isExternalTheme ? (
           renderSwedishInfo()
-        )}
+        ) : null}
         <NoSsr>
           {config.version || config.commit
             ? <Typography align="left" aria-hidden="true" className={classes.text}>{versionText}</Typography>
