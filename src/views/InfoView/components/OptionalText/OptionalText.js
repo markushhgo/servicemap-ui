@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import { Typography, Link, ButtonBase } from '@material-ui/core';
+import OptionalA11yText from '../OptionalA11yText';
 
 const OptionalText = ({ classes, intl, locale }) => {
   const [feedbackLink, setFeedbackLink] = useState(null);
   const [serviceDirectoryLink, setServiceDirectoryLink] = useState(null);
+  const [showA11y, setShowA11y] = useState(false);
+
+  const appLink = 'https://github.com/City-of-Turku/servicemap-ui/';
+  const apiLink = 'https://github.com/City-of-Turku/smbackend/';
+  const guideMapLink = 'https://opaskartta.turku.fi';
+  const openStreetMapLink = 'https://www.openstreetmap.org/';
+  const serviceCatalogApiLink = 'https://api.palvelutietovaranto.suomi.fi/swagger/ui/index.html';
+  const dataDescriptionServiceLink = 'https://rekisteri.turku.fi/Saabe_data/';
+
+  const searchOptions = [
+    intl.formatMessage({ id: 'info.view.searchOptions.healthStation' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.school' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.dayCare' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.swimming' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.sportsField' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.library' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.community' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.units' }),
+    intl.formatMessage({ id: 'info.view.searchOptions.address' }),
+  ];
+
+  const searchOrderOptions = [
+    intl.formatMessage({ id: 'info.view.searchOrder.relevant' }),
+    intl.formatMessage({ id: 'info.view.searchOrder.alpha' }),
+    intl.formatMessage({ id: 'info.view.searchOrder.alphaReverse' }),
+    intl.formatMessage({ id: 'info.view.searchOrder.accessible' }),
+    intl.formatMessage({ id: 'info.view.searchOrder.nearest' }),
+  ];
+
+  const mapOptions = [
+    intl.formatMessage({ id: 'info.view.mapSettingsOptions.serviceMap' }),
+    intl.formatMessage({ id: 'info.view.mapSettingsOptions.contrastMap' }),
+  ];
 
   const setLocalizedLink = (setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
     if (locale === 'sv') {
@@ -44,31 +78,6 @@ const OptionalText = ({ classes, intl, locale }) => {
       </Typography>
     </div>
   );
-
-  const searchOptions = [
-    intl.formatMessage({ id: 'info.view.searchOptions.hospital' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.school' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.dayCare' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.swimming' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.sportsField' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.library' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.community' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.units' }),
-    intl.formatMessage({ id: 'info.view.searchOptions.address' }),
-  ];
-
-  const searchOrderOptions = [
-    intl.formatMessage({ id: 'info.view.searchOrder.relevant' }),
-    intl.formatMessage({ id: 'info.view.searchOrder.alpha' }),
-    intl.formatMessage({ id: 'info.view.searchOrder.alphaReverse' }),
-    intl.formatMessage({ id: 'info.view.searchOrder.accessible' }),
-    intl.formatMessage({ id: 'info.view.searchOrder.nearest' }),
-  ];
-
-  const mapOptions = [
-    intl.formatMessage({ id: 'info.view.mapSettingsOptions.serviceMap' }),
-    intl.formatMessage({ id: 'info.view.mapSettingsOptions.contrastMap' }),
-  ];
 
   const renderList = input => (
     <ul>
@@ -130,13 +139,6 @@ const OptionalText = ({ classes, intl, locale }) => {
     </ul>
   );
 
-  const appLink = 'https://github.com/City-of-Turku/servicemap-ui/';
-  const apiLink = 'https://github.com/City-of-Turku/smbackend/';
-  const guideMapLink = 'https://opaskartta.turku.fi';
-  const openStreetMapLink = 'https://www.openstreetmap.org/';
-  const serviceCatalogApiLink = 'https://api.palvelutietovaranto.suomi.fi/swagger/ui/index.html';
-  const dataDescriptionServiceLink = 'https://rekisteri.turku.fi/Saabe_data/';
-
   const renderLink = (link, translationId) => (
     <div className={classes.linkContainer}>
       <Link target="_blank" href={link}>
@@ -147,8 +149,12 @@ const OptionalText = ({ classes, intl, locale }) => {
     </div>
   );
 
-  return (
-    <div className={classes.container}>
+  const handleClick = () => {
+    setShowA11y(current => !current);
+  };
+
+  const renderGeneralInfo = () => (
+    <>
       {renderTitle('info.view.serviceInfoTitle')}
       {renderParagraph('info.view.serviceInfo')}
       {renderParagraph('info.view.guideMapInfo')}
@@ -191,6 +197,21 @@ const OptionalText = ({ classes, intl, locale }) => {
       {renderLink(serviceCatalogApiLink, 'info.view.serviceCatalogue.link')}
       {renderParagraph('info.view.registryInfo')}
       {renderLink(dataDescriptionServiceLink, 'info.view.dataDescriptionService.link')}
+    </>
+  );
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.buttonContainer}>
+        <ButtonBase onClick={() => handleClick()}>
+          <Typography className={classes.button} variant="body2">
+            {showA11y
+              ? intl.formatMessage({ id: 'info.view.a11y.button.return' })
+              : intl.formatMessage({ id: 'info.view.a11y.button.title' })}
+          </Typography>
+        </ButtonBase>
+      </div>
+      {showA11y ? <OptionalA11yText /> : renderGeneralInfo()}
     </div>
   );
 };

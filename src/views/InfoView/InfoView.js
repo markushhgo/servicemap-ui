@@ -262,10 +262,6 @@ const InfoView = ({ classes, locale }) => {
         restaurants) are added to the Service Map through the MyHelsinki API.
       </Typography>
       {
-        // Scale up text
-      }
-      {isExternalTheme ? renderScaleUpText() : null}
-      {
         // Haku
       }
       <Typography component="h3" variant="body2">Search</Typography>
@@ -468,10 +464,6 @@ const InfoView = ({ classes, locale }) => {
         (t.ex. återvinningsstationer), Aalto-universitetets tjänster samt diverse statliga tjänster. Privata tjänster
         såsom turistobjekt (t.ex. restauranger) kommer till Servicekartan via MyHelsinki-gränssnittet.
       </Typography>
-      {
-        // Scale up text
-      }
-      {isExternalTheme ? renderScaleUpText() : null}
       <Typography component="h3" variant="body2">Sökning</Typography>
       <Typography component="h4" variant="body2">På Servicekartan kan du söka exempelvis:</Typography>
       <ul>

@@ -3,14 +3,6 @@ export default theme => ({
     whiteSpace: 'pre-line',
     textAlign: 'left',
   },
-  buttonContainer: {
-    margin: theme.spacing(2),
-    marginBottom: theme.spacing(0.5),
-  },
-  button: {
-    fontWeight: 'bold',
-    textDecoration: 'underline',
-  },
   title: {
     fontWeight: 'bold',
     fontSize: '1.1rem',
