@@ -4,13 +4,29 @@ import { Typography, Link } from '@material-ui/core';
 
 const OptionalText = ({ classes, intl, locale }) => {
   const [feedbackLink, setFeedbackLink] = useState(null);
+  const [serviceDirectoryLink, setServiceDirectoryLink] = useState(null);
+
+  const setLocalizedLink = (setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
+    if (locale === 'sv') {
+      setLink(linkUrlSv);
+    } else if (locale === 'en') {
+      setLink(linkUrlEn);
+    } else setLink(linkUrlFi);
+  };
 
   useEffect(() => {
-    if (locale === 'sv') {
-      setFeedbackLink('https://www.turku.fi/feedbacktjansten');
-    } else if (locale === 'en') {
-      setFeedbackLink('https://www.turku.fi/feedback');
-    } else setFeedbackLink('https://www.turku.fi/palaute');
+    setLocalizedLink(
+      setFeedbackLink,
+      'https://www.turku.fi/feedbacktjansten',
+      'https://www.turku.fi/feedback',
+      'https://www.turku.fi/palaute',
+    );
+    setLocalizedLink(
+      setServiceDirectoryLink,
+      'https://www.turku.fi/sv/service-directory',
+      'https://www.turku.fi/en/service-directory',
+      'https://www.turku.fi/palveluhakemisto',
+    );
   }, [locale]);
 
   const renderTitle = translationId => (
@@ -67,20 +83,48 @@ const OptionalText = ({ classes, intl, locale }) => {
   const renderNestedList = () => (
     <ul>
       <li>
-        {intl.formatMessage({ id: 'info.view.accessibilityOptions.senses' })}
+        <Typography variant="body2">{intl.formatMessage({ id: 'info.view.accessibilityOptions.senses' })}</Typography>
         <ul>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.hearing' })}</li>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.sight' })}</li>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.color' })}</li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.hearing' })}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.sight' })}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.senses.color' })}
+            </Typography>
+          </li>
         </ul>
       </li>
       <li>
-        {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility' })}
+        <Typography variant="body2">{intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility' })}</Typography>
         <ul>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.wheelchair' })}</li>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.disabled' })}</li>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.rollator' })}</li>
-          <li>{intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.cart' })}</li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.wheelchair' })}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.disabled' })}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.rollator' })}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.cart' })}
+            </Typography>
+          </li>
         </ul>
       </li>
     </ul>
@@ -89,6 +133,9 @@ const OptionalText = ({ classes, intl, locale }) => {
   const appLink = 'https://github.com/City-of-Turku/servicemap-ui/';
   const apiLink = 'https://github.com/City-of-Turku/smbackend/';
   const guideMapLink = 'https://opaskartta.turku.fi';
+  const openStreetMapLink = 'https://www.openstreetmap.org/';
+  const serviceCatalogApiLink = 'https://api.palvelutietovaranto.suomi.fi/swagger/ui/index.html';
+  const dataDescriptionServiceLink = 'https://rekisteri.turku.fi/Saabe_data/';
 
   const renderLink = (link, translationId) => (
     <div className={classes.linkContainer}>
@@ -131,15 +178,19 @@ const OptionalText = ({ classes, intl, locale }) => {
       {renderList(mapOptions)}
       {renderTitle('info.view.feedbackInfoTitle')}
       {renderParagraph('info.view.feedbackInfo')}
-      {renderLink(feedbackLink, 'info.view.feedbackLink')}
+      {renderLink(feedbackLink, 'info.view.feedback.link')}
       {renderTitle('info.view.copyrightInfoTitle')}
       {renderParagraph('info.view.copyrightInfo')}
       {renderLink(appLink, 'info.view.repository.app')}
       {renderLink(apiLink, 'info.view.repository.api')}
       {renderParagraph('info.view.openStreetInfo')}
+      {renderLink(openStreetMapLink, 'info.view.openStreetMap.link')}
       {renderParagraph('info.view.usageInfo')}
       {renderParagraph('info.view.turkuServicesInfo')}
+      {renderLink(serviceDirectoryLink, 'info.view.turkuServices.link')}
+      {renderLink(serviceCatalogApiLink, 'info.view.serviceCatalogue.link')}
       {renderParagraph('info.view.registryInfo')}
+      {renderLink(dataDescriptionServiceLink, 'info.view.dataDescriptionService.link')}
     </div>
   );
 };

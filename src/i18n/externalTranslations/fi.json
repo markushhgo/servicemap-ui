@@ -76,14 +76,18 @@
   "info.view.mapSettingsOptions.serviceMap": "palvelukartta",
   "info.view.mapSettingsOptions.contrastMap": "suurikontrastinen kartta",
   "info.view.feedbackInfoTitle": "Palaute",
-  "info.view.feedbackInfo": "Kiitämme kaikesta palautteesta, joka auttaa meitä kehittämään Palvelukarttaa yhä paremmaksi. Yleistä karttaa koskevaa palautetta voit lähettää linkistä: www.turku.fi/palaute (linkki avautuu uudelle välilehdelle).",
-  "info.view.feedbackLink": "www.turku.fi/palaute (linkki avautuu uudelle välilehdelle).",
+  "info.view.feedbackInfo": "Kiitämme kaikesta palautteesta, joka auttaa meitä kehittämään Palvelukarttaa yhä paremmaksi. Yleistä karttaa koskevaa palautetta voit lähettää linkistä:",
+  "info.view.feedback.link": "www.turku.fi/palaute (linkki avautuu uudelle välilehdelle).",
   "info.view.copyrightInfoTitle": "Tiedot ja tekijänoikeudet",
   "info.view.copyrightInfo": "Palvelukartta on rakennettu mahdollisimman paljon avointa dataa ja avointa lähdekoodia hyödyntäen. Kartan lähdekoodi löytyy GitHubista, ja sen jatkokehittäminen on toivottavaa.",
   "info.view.repository.app": "Sovelluksen lähdekoodi",
   "info.view.repository.api": "Palvelinsovelluksen lähdekoodi",
   "info.view.openStreetInfo": "Karttatiedot haetaan avoimesta OpenStreetMap -yhteisön tiedoista, ja niiden tekijänoikeus kuuluu OpenStreetMap-yhteisön kehittäjille.",
+  "info.view.openStreetMap.link" : "https://www.openstreetmap.org/",
   "info.view.usageInfo": "Palvelukartan tietoja voit käyttää vapaasti, lukuun ottamatta palvelussa käytettäviä valokuvia, jotka ovat tekijänoikeuden suojaamia ja joita ei saa käyttää ilman omistajan lupaa.",
   "info.view.turkuServicesInfo": "Turun kaupungin palvelujen tiedot löytyvät Turku.fi:n palveluhakemistosta sekä kansallisen palvelutietovarannon OUT-rajapinnasta.",
-  "info.view.registryInfo": "Turku.fi-verkkopalvelun rekisteriseloste kattaa myös palvelukartan tiedot Turun kaupungin rekisteriseloste-palvelussa , sillä se toimii tiedon lähteenä Turun palvelutiedoille."
+  "info.view.turkuServices.link": "Turun palveluhakemisto",
+  "info.view.serviceCatalogue.link": "Palvelutietovarannon OUT-rajapinta",
+  "info.view.registryInfo": "Turku.fi-verkkopalvelun rekisteriseloste kattaa myös palvelukartan tiedot Turun kaupungin rekisteriseloste-palvelussa , sillä se toimii tiedon lähteenä Turun palvelutiedoille.",
+  "info.view.dataDescriptionService.link": "Turun kaupungin rekisteriseloste-palvelu"
 }

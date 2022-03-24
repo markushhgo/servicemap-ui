@@ -76,13 +76,17 @@
   "info.view.mapSettingsOptions.contrastMap": "a high-contrast map",
   "info.view.feedbackInfoTitle": "Feedback",
   "info.view.feedbackInfo": "We welcome all feedback that helps us develop and improve the Service Map. You can submit general feedback about the map service via the following link:",
-  "info.view.feedbackLink": "www.turku.fi/feedback (the link opens in a new tab).",
+  "info.view.feedback.link": "www.turku.fi/feedback (the link opens in a new tab).",
   "info.view.copyrightInfoTitle": "Data and copyrights",
   "info.view.copyrightInfo": "The Service Map has been developed using open data and open APIs. The service is developed publicly as an open source code project. The Service Map’s UI application and the source codes of the back-end application are available on GitHub, and anyone interested is encouraged to contribute to its further development.",
   "info.view.repository.app": "Source code for the UI application",
   "info.view.repository.api": "Source code for the back-end application",
   "info.view.openStreetInfo": "The map data is retrieved from the data of the open OpenStreetMap community, the copyright to which is owned by the developers of the OpenStreetMap community.",
+  "info.view.openStreetMap.link" : "https://www.openstreetmap.org/",
   "info.view.usageInfo": "The data of the Service Map can be freely used, with the exception of the photographs used in the service, which are protected by copyright and can only be used with the permission of their respective owners.",
   "info.view.turkuServicesInfo": "Information on the City of Turku’s services is available on the Turku.fi website’s service directory and via the Finnish Service Catalogue’s OUT API.",
-  "info.view.registryInfo": "Service Map on the City of Turku’s personal data file description service as it serves as a data source for Turku’s service information."
+  "info.view.turkuServices.link": "Turku.fi website’s service directory",
+  "info.view.serviceCatalogue.link": "Finnish Service Catalogue’s OUT API",
+  "info.view.registryInfo": "Service Map on the City of Turku’s personal data file description service as it serves as a data source for Turku’s service information.",
+  "info.view.dataDescriptionService.link": "City of Turku’s personal data file description service"
 }
