@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Link, ButtonBase } from '@material-ui/core';
+import { Typography, ButtonBase } from '@material-ui/core';
+import Paragraph from '../Paragraph';
+import LinkBasic from '../LinkBasic';
 import OptionalA11yText from '../OptionalA11yText';
 
 const OptionalText = ({ classes, intl, locale }) => {
@@ -63,22 +65,6 @@ const OptionalText = ({ classes, intl, locale }) => {
     );
   }, [locale]);
 
-  const renderTitle = translationId => (
-    <div className={classes.title}>
-      <Typography component="h3" variant="body2">
-        {intl.formatMessage({ id: translationId })}
-      </Typography>
-    </div>
-  );
-
-  const renderParagraph = translationId => (
-    <div className={classes.text}>
-      <Typography color="inherit" variant="body2">
-        {intl.formatMessage({ id: translationId })}
-      </Typography>
-    </div>
-  );
-
   const renderList = input => (
     <ul>
       {input.map(item => (
@@ -131,22 +117,12 @@ const OptionalText = ({ classes, intl, locale }) => {
           </li>
           <li>
             <Typography variant="body2">
-              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.cart' })}
+              {intl.formatMessage({ id: 'info.view.accessibilityOptions.mobility.stroller' })}
             </Typography>
           </li>
         </ul>
       </li>
     </ul>
-  );
-
-  const renderLink = (link, translationId) => (
-    <div className={classes.linkContainer}>
-      <Link target="_blank" href={link}>
-        <Typography className={classes.link} variant="body2">
-          {intl.formatMessage({ id: translationId })}
-        </Typography>
-      </Link>
-    </div>
   );
 
   const handleClick = () => {
@@ -155,48 +131,48 @@ const OptionalText = ({ classes, intl, locale }) => {
 
   const renderGeneralInfo = () => (
     <>
-      {renderTitle('info.view.serviceInfoTitle')}
-      {renderParagraph('info.view.serviceInfo')}
-      {renderParagraph('info.view.guideMapInfo')}
-      {renderLink(guideMapLink, 'info.view.guideMapLink')}
-      {renderParagraph('info.view.developmentInfo')}
-      {renderTitle('mobilityPlatform.info.title')}
-      {renderParagraph('mobilityPlatform.info.statement')}
-      {renderTitle('info.view.searchInfoTitle')}
-      {renderParagraph('info.view.searchInfo')}
-      {renderParagraph('info.view.searchErrorInfo')}
-      {renderTitle('info.view.searchOptions.title')}
+      <Paragraph isTitle translationId="info.view.serviceInfoTitle" />
+      <Paragraph translationId="info.view.serviceInfo" />
+      <Paragraph translationId="info.view.guideMapInfo" />
+      <LinkBasic linkUrl={guideMapLink} translationId="info.view.guideMapLink" />
+      <Paragraph translationId="info.view.developmentInfo" />
+      <Paragraph isTitle translationId="mobilityPlatform.info.title" />
+      <Paragraph translationId="mobilityPlatform.info.statement" />
+      <Paragraph isTitle translationId="info.view.searchInfoTitle" />
+      <Paragraph translationId="info.view.searchInfo" />
+      <Paragraph translationId="info.view.searchErrorInfo" />
+      <Paragraph isTitle translationId="info.view.searchOptions.title" />
       {renderList(searchOptions)}
-      {renderTitle('info.view.searchOrder.title')}
+      <Paragraph isTitle translationId="info.view.searchOrder.title" />
       {renderList(searchOrderOptions)}
-      {renderTitle('info.view.addressInfoTitle')}
-      {renderParagraph('info.view.addressInfo')}
-      {renderTitle('info.view.serviceTreeInfoTitle')}
-      {renderParagraph('info.view.serviceTreeInfo')}
-      {renderTitle('info.view.settingsInfoTitle')}
-      {renderParagraph('info.view.settingsInfo')}
-      {renderTitle('info.view.accessibilitySettingsInfoTitle')}
-      {renderParagraph('info.view.accessibilitySettingsInfoSubtitle')}
+      <Paragraph isTitle translationId="info.view.addressInfoTitle" />
+      <Paragraph translationId="info.view.addressInfo" />
+      <Paragraph isTitle translationId="info.view.serviceTreeInfoTitle" />
+      <Paragraph translationId="info.view.serviceTreeInfo" />
+      <Paragraph isTitle translationId="info.view.settingsInfoTitle" />
+      <Paragraph translationId="info.view.settingsInfo" />
+      <Paragraph isTitle translationId="info.view.accessibilitySettingsInfoTitle" />
+      <Paragraph translationId="info.view.accessibilitySettingsInfoSubtitle" />
       {renderNestedList()}
-      {renderParagraph('info.view.accessibilitySettingsInfo')}
-      {renderTitle('info.view.mapSettingsInfoTitle')}
-      {renderParagraph('info.view.mapSettingsInfo')}
+      <Paragraph translationId="info.view.accessibilitySettingsInfo" />
+      <Paragraph isTitle translationId="info.view.mapSettingsInfoTitle" />
+      <Paragraph translationId="info.view.mapSettingsInfo" />
       {renderList(mapOptions)}
-      {renderTitle('info.view.feedbackInfoTitle')}
-      {renderParagraph('info.view.feedbackInfo')}
-      {renderLink(feedbackLink, 'info.view.feedback.link')}
-      {renderTitle('info.view.copyrightInfoTitle')}
-      {renderParagraph('info.view.copyrightInfo')}
-      {renderLink(appLink, 'info.view.repository.app')}
-      {renderLink(apiLink, 'info.view.repository.api')}
-      {renderParagraph('info.view.openStreetInfo')}
-      {renderLink(openStreetMapLink, 'info.view.openStreetMap.link')}
-      {renderParagraph('info.view.usageInfo')}
-      {renderParagraph('info.view.turkuServicesInfo')}
-      {renderLink(serviceDirectoryLink, 'info.view.turkuServices.link')}
-      {renderLink(serviceCatalogApiLink, 'info.view.serviceCatalogue.link')}
-      {renderParagraph('info.view.registryInfo')}
-      {renderLink(dataDescriptionServiceLink, 'info.view.dataDescriptionService.link')}
+      <Paragraph isTitle translationId="info.view.feedbackInfoTitle" />
+      <Paragraph translationId="info.view.feedbackInfo" />
+      <LinkBasic linkUrl={feedbackLink} translationId="info.view.feedback.link" />
+      <Paragraph isTitle translationId="info.view.copyrightInfoTitle" />
+      <Paragraph translationId="info.view.copyrightInfo" />
+      <LinkBasic linkUrl={appLink} translationId="info.view.repository.app" />
+      <LinkBasic linkUrl={apiLink} translationId="info.view.repository.api" />
+      <Paragraph translationId="info.view.openStreetInfo" />
+      <LinkBasic linkUrl={openStreetMapLink} translationId="info.view.openStreetMap.link" />
+      <Paragraph translationId="info.view.usageInfo" />
+      <Paragraph translationId="info.view.turkuServicesInfo" />
+      <LinkBasic linkUrl={serviceDirectoryLink} translationId="info.view.turkuServices.link" />
+      <LinkBasic linkUrl={serviceCatalogApiLink} translationId="info.view.serviceCatalogue.link" />
+      <Paragraph translationId="info.view.registryInfo" />
+      <LinkBasic linkUrl={dataDescriptionServiceLink} translationId="info.view.dataDescriptionService.link" />
     </>
   );
 
@@ -211,7 +187,7 @@ const OptionalText = ({ classes, intl, locale }) => {
           </Typography>
         </ButtonBase>
       </div>
-      {showA11y ? <OptionalA11yText /> : renderGeneralInfo()}
+      {showA11y ? <OptionalA11yText locale={locale} /> : renderGeneralInfo()}
     </div>
   );
 };
