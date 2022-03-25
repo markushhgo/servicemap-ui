@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, ButtonBase } from '@material-ui/core';
+import { setLocalizedLink } from '../../../../components/MobilityPlatform/utils/utils';
 import Paragraph from '../Paragraph';
 import LinkBasic from '../LinkBasic';
+import List from '../List';
 import OptionalA11yText from '../OptionalA11yText';
 
 const OptionalText = ({ classes, intl, locale }) => {
@@ -42,38 +44,22 @@ const OptionalText = ({ classes, intl, locale }) => {
     intl.formatMessage({ id: 'info.view.mapSettingsOptions.contrastMap' }),
   ];
 
-  const setLocalizedLink = (setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
-    if (locale === 'sv') {
-      setLink(linkUrlSv);
-    } else if (locale === 'en') {
-      setLink(linkUrlEn);
-    } else setLink(linkUrlFi);
-  };
-
   useEffect(() => {
     setLocalizedLink(
+      locale,
       setFeedbackLink,
       'https://www.turku.fi/feedbacktjansten',
       'https://www.turku.fi/feedback',
       'https://www.turku.fi/palaute',
     );
     setLocalizedLink(
+      locale,
       setServiceDirectoryLink,
       'https://www.turku.fi/sv/service-directory',
       'https://www.turku.fi/en/service-directory',
       'https://www.turku.fi/palveluhakemisto',
     );
   }, [locale]);
-
-  const renderList = input => (
-    <ul>
-      {input.map(item => (
-        <li key={item}>
-          <Typography variant="body2">{item}</Typography>
-        </li>
-      ))}
-    </ul>
-  );
 
   const renderNestedList = () => (
     <ul>
@@ -142,9 +128,9 @@ const OptionalText = ({ classes, intl, locale }) => {
       <Paragraph translationId="info.view.searchInfo" />
       <Paragraph translationId="info.view.searchErrorInfo" />
       <Paragraph isTitle translationId="info.view.searchOptions.title" />
-      {renderList(searchOptions)}
+      <List input={searchOptions} />
       <Paragraph isTitle translationId="info.view.searchOrder.title" />
-      {renderList(searchOrderOptions)}
+      <List input={searchOrderOptions} />
       <Paragraph isTitle translationId="info.view.addressInfoTitle" />
       <Paragraph translationId="info.view.addressInfo" />
       <Paragraph isTitle translationId="info.view.serviceTreeInfoTitle" />
@@ -157,7 +143,7 @@ const OptionalText = ({ classes, intl, locale }) => {
       <Paragraph translationId="info.view.accessibilitySettingsInfo" />
       <Paragraph isTitle translationId="info.view.mapSettingsInfoTitle" />
       <Paragraph translationId="info.view.mapSettingsInfo" />
-      {renderList(mapOptions)}
+      <List input={mapOptions} />
       <Paragraph isTitle translationId="info.view.feedbackInfoTitle" />
       <Paragraph translationId="info.view.feedbackInfo" />
       <LinkBasic linkUrl={feedbackLink} translationId="info.view.feedback.link" />

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { setLocalizedLink } from '../../../../components/MobilityPlatform/utils/utils';
 import Paragraph from '../Paragraph';
 import LinkBasic from '../LinkBasic';
+import List from '../List';
 
 const OptionalA11yText = ({ classes, intl, locale }) => {
   const [serviceMapTkuLink, setServiceMapTkuLink] = useState(null);
@@ -17,50 +18,36 @@ const OptionalA11yText = ({ classes, intl, locale }) => {
 
   const auditReportLink = 'https://www.hel.fi/static/liitteet-2019/Helsinki/Saavutettavuusselosteet/Palvelukartta-auditointiraportti.pdf';
 
-  const setLocalizedLink = (setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
-    if (locale === 'sv') {
-      setLink(linkUrlSv);
-    } else if (locale === 'en') {
-      setLink(linkUrlEn);
-    } else setLink(linkUrlFi);
-  };
-
   useEffect(() => {
     setLocalizedLink(
+      locale,
       setServiceMapTkuLink,
       'https://servicekarta.turku.fi/',
       'https://servicemap.turku.fi/',
       'https://palvelukartta.turku.fi/',
     );
     setLocalizedLink(
+      locale,
       setServiceMapHelLink,
       'https://servicekarta.hel.fi/',
       'https://servicemap.hel.fi/',
       'https://palvelukartta.hel.fi/',
     );
     setLocalizedLink(
+      locale,
       setServiceDirectoryLink,
       'https://www.turku.fi/sv/service-directory',
       'https://www.turku.fi/en/service-directory',
       'https://www.turku.fi/palveluhakemisto',
     );
     setLocalizedLink(
+      locale,
       setFeedbackLink,
       'https://opaskartta.turku.fi/eFeedback/sv/Feedback/87/1048',
       'https://opaskartta.turku.fi/eFeedback/en/Feedback/87/1048',
       'https://opaskartta.turku.fi/eFeedback/fi/Feedback/87/1048',
     );
   }, [locale]);
-
-  const renderList = input => (
-    <ul>
-      {input.map(item => (
-        <li key={item}>
-          <Typography variant="body2">{item}</Typography>
-        </li>
-      ))}
-    </ul>
-  );
 
   return (
     <div className={classes.container}>
@@ -79,7 +66,7 @@ const OptionalA11yText = ({ classes, intl, locale }) => {
       <Paragraph translationId="info.view.a11y.page.information.info" />
       <LinkBasic linkUrl={serviceDirectoryLink} translationId="info.view.turkuServices.link" />
       <Paragraph translationId="info.view.a11y.page.information.units" />
-      {renderList(unitOptions)}
+      <List input={unitOptions} />
       <Paragraph isTitle translationId="info.view.a11y.page.feedback.title" />
       <Paragraph translationId="info.view.a11y.page.feedback.info" />
       <LinkBasic linkUrl={feedbackLink} translationId="info.view.a11y.page.feedback.link" />
@@ -94,7 +81,7 @@ const OptionalA11yText = ({ classes, intl, locale }) => {
       <Paragraph translationId="info.view.a11y.page.services.info" />
       <Paragraph isTitle translationId="info.view.a11y.page.support.title" />
       <Paragraph translationId="info.view.a11y.page.support.info" />
-      {renderList(unitOptions)}
+      <List input={unitOptions} />
       <Paragraph isTitle translationId="info.view.a11y.page.statement.update.title" />
       <Paragraph translationId="info.view.a11y.page.statement.update.info" />
       <Paragraph translationId="info.view.a11y.page.date" />
