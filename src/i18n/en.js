@@ -315,7 +315,7 @@ const translations = {
   'map.attribution.osm': '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>',
   'map.attribution.helsinki': '&copy; Cities of Helsinki, Espoo, Vantaa ja Kauniainen',
   'map.transit.endStation': 'Terminus',
-  'map.address.coordinate': 'Share location coordinate',
+  'map.address.coordinate': 'Create a link to GPS coordinates',
   'map.address.searching': 'Retreiving address...',
   'map.address.notFound': 'The address could not be found',
   'map.address.info': 'Address information',
@@ -459,6 +459,7 @@ const translations = {
   'search.suggestions.expand': 'Search suggestions',
   'search.suggestions.loading': 'Loading suggestions',
   'search.suggestions.error': 'No suggestions',
+  'search.suggestions.addresses': 'Show addresses',
   'search.suggestions.suggestions': '{count} search suggestions',
   // 'search.suggestions.expandSuggestions': '{count} refinement suggestions',
   'search.suggestions.results': '{count} results',
@@ -564,11 +565,14 @@ const translations = {
   'tool.print': 'Print',
 
   'info.title': 'About the service and accessibility statement',
-  'info.statement': 'Accessibility statement',
+  'info.statement': 'Accessibility statement (new tab)',
 
   'alert.close': 'Close the notification',
 
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Mobility platform',
+  'mobilityPlatform.info.statement': 'The mobility data platform of the service map has been developed as part of European Union Horizon 2020 programme funded SCALE-UP project (grant agreement no. 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Mobility map',
   'mobilityPlatform.menu.subtitle': 'Settings',
@@ -579,7 +583,13 @@ const translations = {
   'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
+  'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
+  'mobilityPlatform.menu.routes.info': 'You can select a route from the list below.',
+  'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
 
   // Content
@@ -601,6 +611,19 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by city of Turku.',
+  'mobilityPlatform.content.streetMaintenance': 'Active maintenance',
+  'mobilityPlatform.content.streetMaintenance.title': 'Maintenance work',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snowplowing',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sand spreading',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Salting',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Street washing',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Sand removal',
+  'mobilityPlatform.content.streetMaintenance.time': 'Time',
+  'mobilityPlatform.content.streetMaintenance.other': 'Other maintenance work',
+  'mobilityPlatform.settings.buttons.1hour': '1 hour',
+  'mobilityPlatform.settings.buttons.12hours': '12 hours',
+  'mobilityPlatform.settings.buttons.24hours': '24 hours',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -617,10 +640,22 @@ const translations = {
   'ecocounter.month': 'Monthly',
   'ecocounter.walk': 'Walking',
   'ecocounter.bicycle': 'Cycling',
-  'ecocounter.car': 'By car',
+  'ecocounter.car': 'Driving',
   'ecocounter.chart.labelTo': 'To city',
   'ecocounter.chart.labelFrom': 'From city',
   'ecocounter.chart.labelTotal': 'Total',
+  'ecocounter.jan': 'January',
+  'ecocounter.feb': 'February',
+  'ecocounter.march': 'March',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'May',
+  'ecocounter.june': 'June',
+  'ecocounter.july': 'July',
+  'ecocounter.aug': 'August',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'October',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;

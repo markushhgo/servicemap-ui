@@ -96,13 +96,15 @@ const DefaultLayout = (props) => {
   const [sidebarHidden, toggleSidebarHidden] = useState(false);
   const [error, setError] = useState(false);
   const [openMobilityPlatform, setOpenMobilityPlatform] = useState(false);
-  const [showChargingStations, setShowChargingStations] = useState(false);
-  const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
   const [cultureRouteId, setCultureRouteId] = useState();
   const [showParkingSpaces, setShowParkingSpaces] = useState(false);
+  const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
+  const [bicycleRouteName, setBicycleRouteName] = useState(null);
+  const [showSnowPlows, setShowSnowPlows] = useState(false);
+  const [snowPlowsType, setSnowPlowsType] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -184,20 +186,23 @@ const DefaultLayout = (props) => {
                     value={{
                       openMobilityPlatform,
                       setOpenMobilityPlatform,
-                      showChargingStations,
-                      setShowChargingStations,
-                      showGasFillingStations,
-                      setShowGasFillingStations,
                       showEcoCounter,
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
+                      showSnowPlows,
+                      setShowSnowPlows,
                       showCultureRoutes,
                       setShowCultureRoutes,
                       cultureRouteId,
                       setCultureRouteId,
                       showParkingSpaces,
                       setShowParkingSpaces,
+                      showBicycleRoutes,
+                      setShowBicycleRoutes,
+                      bicycleRouteName,
+                      setBicycleRouteName,
+                      setSnowPlowsType,
                     }}
                   >
                     <ViewRouter />
@@ -211,13 +216,15 @@ const DefaultLayout = (props) => {
                 <MobilityPlatformProvider
                   value={{
                     openMobilityPlatform,
-                    showChargingStations,
-                    showGasFillingStations,
                     showEcoCounter,
                     showBicycleStands,
+                    showSnowPlows,
                     showCultureRoutes,
                     cultureRouteId,
                     showParkingSpaces,
+                    showBicycleRoutes,
+                    bicycleRouteName,
+                    snowPlowsType,
                   }}
                 >
                   <MapView

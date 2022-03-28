@@ -315,7 +315,7 @@ const translations = {
   'map.attribution.osm': '&copy; <a href="http://osm.org/copyright">Upphovsmännen bakom OpenStreetMaps</a>',
   'map.attribution.helsinki': '&copy; Helsingfors, Esbo, Vanda och Grankulla städer',
   'map.transit.endStation': 'Ändhållplats',
-  'map.address.coordinate': 'Dela platskoordinat',
+  'map.address.coordinate': 'Skapa en länk till GPS-koordinater', // TODO Verify
   'map.address.searching': 'Söker adress...',
   'map.address.notFound': 'Adressen hittades ej',
   'map.address.info': 'Adressens uppgifter',
@@ -460,6 +460,7 @@ const translations = {
   'search.suggestions.expand': 'Sökförslag',
   'search.suggestions.loading': 'Laddar förslag',
   'search.suggestions.error': 'Inga förslag',
+  'search.suggestions.addresses': 'Näytä osoitteet', // TODO translate
   'search.suggestions.suggestions': '{count} sökförslag',
   // 'search.suggestions.expandSuggestions': '{count} preciseringsförslag',
   'search.suggestions.results': '{count} resultat',
@@ -565,11 +566,15 @@ const translations = {
   'tool.print': 'Skriv ut',
 
   'info.title': 'Om tjänsten och tillgänglighetsredogörelsen',
-  'info.statement': 'Tillgänglighetsredogörelsen',
+  'info.statement': 'Tillgänglighetsredogörelsen (ny flik)',
 
   'alert.close': 'Stäng meddelande',
 
+  // TODO update translations
   // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Mobilitetsplatform',
+  'mobilityPlatform.info.statement': 'Mobilitetsdataplattformen från servicekartan har utvecklats som en del av SCALE-UP-projekt, finansierat av Europeiska unionens Horizon 2020-program (bidragsavtal nr 955332).',
+
   // Menu
   'mobilityPlatform.menu.title': 'Mobilitet',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
@@ -579,9 +584,14 @@ const translations = {
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
-  'mobilityPlatform.menu.showBicycleMain': 'Cykelnät',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
+  'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
+  'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringplatser', // TODO verify translation
 
   // Content
@@ -603,6 +613,19 @@ const translations = {
   'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Antal platser',
   'mobilityPlatform.content.bicycleStands.numOfStands': 'Antal cykelställ',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Underhållen av Åbo stad.',
+  'mobilityPlatform.content.streetMaintenance': 'Aktivt underhåll',
+  'mobilityPlatform.content.streetMaintenance.title': 'Underhållsarbete',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Gatutvätt',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Sandavlägsnande',
+  'mobilityPlatform.content.streetMaintenance.time': 'Tid',
+  'mobilityPlatform.content.streetMaintenance.other': 'Annat underhållsarbete',
+  'mobilityPlatform.settings.buttons.1hour': '1 timme',
+  'mobilityPlatform.settings.buttons.12hours': '12 timmar',
+  'mobilityPlatform.settings.buttons.24hours': '24 timmar',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -622,6 +645,18 @@ const translations = {
   'ecocounter.chart.labelTo': 'Till centrum',
   'ecocounter.chart.labelFrom': 'Från centrum',
   'ecocounter.chart.labelTotal': 'Totalt',
+  'ecocounter.jan': 'Januari',
+  'ecocounter.feb': 'Februari',
+  'ecocounter.march': 'Mars',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'Maj',
+  'ecocounter.june': 'Juni',
+  'ecocounter.july': 'Juli',
+  'ecocounter.aug': 'Augusti',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'Oktober',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;

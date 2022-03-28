@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { ButtonBase, Typography } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
 import { DayPickerSingleDateController } from 'react-dates';
-import { useIntl } from 'react-intl';
 import 'react-dates/initialize';
 import {
   fetchInitialHourData,
@@ -18,7 +18,9 @@ import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/
 import iconBicycle from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
-const EcoCounterContent = ({ classes, stationId, stationName }) => {
+const EcoCounterContent = ({
+  classes, intl, stationId, stationName,
+}) => {
   const [ecoCounterHour, setEcoCounterHour] = useState(null);
   const [ecoCounterDay, setEcoCounterDay] = useState(null);
   const [ecoCounterWeek, setEcoCounterWeek] = useState(null);
@@ -30,14 +32,12 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const [currentType, setCurrentType] = useState('bicycle');
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [activeType, setActiveType] = useState(1);
-  const [noCars, setNoCars] = useState(true);
+  const [activeType, setActiveType] = useState(0);
+  const [userTypesList, setUserTypesList] = useState(null);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
 
-  const apiUrl = window.nodeEnvSettings.ECOCOUNTER_API;
-
-  const intl = useIntl();
+  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -68,19 +68,19 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   ];
 
   // User types that include cars
-  const userTypes = [
-    {
-      type: {
-        user: 'walking',
-        text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk,
-      },
-    },
+  const allUsers = [
     {
       type: {
         user: 'bicycle',
         text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
         icon: iconBicycle,
+      },
+    },
+    {
+      type: {
+        user: 'walking',
+        text: intl.formatMessage({ id: 'ecocounter.walk' }),
+        icon: iconWalk,
       },
     },
     {
@@ -92,8 +92,15 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
     },
   ];
 
-  // User types that doesn't include cars, because some stations do not include counts for cars
-  const pedestrianTypes = [
+  // User types that doesn't include cars, because most stations do not include counts for cars
+  const pedestrianAndBicycle = [
+    {
+      type: {
+        user: 'bicycle',
+        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
+        icon: iconBicycle,
+      },
+    },
     {
       type: {
         user: 'walking',
@@ -101,6 +108,9 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
         icon: iconWalk,
       },
     },
+  ];
+
+  const bicycleOnly = [
     {
       type: {
         user: 'bicycle',
@@ -128,10 +138,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const currentDate = moment();
   const yesterDay = moment().clone().add(-1, 'days');
   const yesterDayFormat = yesterDay.clone().format('YYYY-MM-DD');
-  const initialDateStart = yesterDay
-    .clone()
-    .startOf('week')
-    .format('YYYY-MM-DD');
+  const initialDateStart = yesterDay.clone().startOf('week').format('YYYY-MM-DD');
   const initialDateEnd = yesterDay.clone().endOf('week').format('YYYY-MM-DD');
   const initialWeekStart = yesterDay.clone().startOf('month').week();
   const initialWeekEnd = yesterDay.clone().endOf('month').week();
@@ -140,14 +147,8 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
 
   // Values that change based on the datepicker value
   const selectedDateFormat = selectedDate.clone().format('YYYY-MM-DD');
-  const selectedDateStart = selectedDate
-    .clone()
-    .startOf('week')
-    .format('YYYY-MM-DD');
-  const selectedDateEnd = selectedDate
-    .clone()
-    .endOf('week')
-    .format('YYYY-MM-DD');
+  const selectedDateStart = selectedDate.clone().startOf('week').format('YYYY-MM-DD');
+  const selectedDateEnd = selectedDate.clone().endOf('week').format('YYYY-MM-DD');
   let selectedWeekStart = selectedDate.clone().startOf('month').week();
   const selectedWeekEnd = selectedDate.clone().endOf('month').week();
   let selectedMonth = currentDate.clone().month() + 1;
@@ -163,7 +164,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   // API returns empty data if start_week_number parameter is higher number than end_week_number.
   // This will set it to 1 so that weekly graph in January won't be empty.
   const checkWeekNumber = () => {
-    if (selectedWeekStart === 53) {
+    if (selectedWeekStart > selectedWeekEnd) {
       selectedWeekStart = 1;
     }
   };
@@ -221,29 +222,29 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   const formatMonths = (monthValue) => {
     switch (monthValue) {
       case 1:
-        return 'Tammi';
+        return intl.formatMessage({ id: 'ecocounter.jan' });
       case 2:
-        return 'Helmi';
+        return intl.formatMessage({ id: 'ecocounter.feb' });
       case 3:
-        return 'Maalis';
+        return intl.formatMessage({ id: 'ecocounter.march' });
       case 4:
-        return 'Huhti';
+        return intl.formatMessage({ id: 'ecocounter.april' });
       case 5:
-        return 'Touko';
+        return intl.formatMessage({ id: 'ecocounter.may' });
       case 6:
-        return 'Kesä';
+        return intl.formatMessage({ id: 'ecocounter.june' });
       case 7:
-        return 'Heinä';
+        return intl.formatMessage({ id: 'ecocounter.july' });
       case 8:
-        return 'Elo';
+        return intl.formatMessage({ id: 'ecocounter.aug' });
       case 9:
-        return 'Syys';
+        return intl.formatMessage({ id: 'ecocounter.sep' });
       case 10:
-        return 'Loka';
+        return intl.formatMessage({ id: 'ecocounter.oct' });
       case 11:
-        return 'Marras';
+        return intl.formatMessage({ id: 'ecocounter.nov' });
       case 12:
-        return 'Joulu';
+        return intl.formatMessage({ id: 'ecocounter.dec' });
       default:
         return monthValue;
     }
@@ -273,23 +274,11 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
       if (ecoCounterHour !== null && ecoCounterHour.station === stationId) {
         const countsArr = [];
         if (currentType === 'walking') {
-          countsArr.push(
-            ecoCounterHour.values_jk,
-            ecoCounterHour.values_jp,
-            ecoCounterHour.values_jt,
-          );
+          countsArr.push(ecoCounterHour.values_jk, ecoCounterHour.values_jp, ecoCounterHour.values_jt);
         } else if (currentType === 'bicycle') {
-          countsArr.push(
-            ecoCounterHour.values_pk,
-            ecoCounterHour.values_pp,
-            ecoCounterHour.values_pt,
-          );
+          countsArr.push(ecoCounterHour.values_pk, ecoCounterHour.values_pp, ecoCounterHour.values_pt);
         } else if (currentType === 'driving') {
-          countsArr.push(
-            ecoCounterHour.values_ak,
-            ecoCounterHour.values_ap,
-            ecoCounterHour.values_at,
-          );
+          countsArr.push(ecoCounterHour.values_ak, ecoCounterHour.values_ap, ecoCounterHour.values_at);
         }
         setChannel1Counts(countsArr[0]);
         setChannel2Counts(countsArr[1]);
@@ -299,102 +288,42 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
       ecoCounterDay.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
-          countsArr.push(
-            el.value_jk,
-            el.value_jp,
-            el.value_jt,
-            el.day_info.date,
-          );
+          countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.day_info.date);
         } else if (el.station === stationId && currentType === 'bicycle') {
-          countsArr.push(
-            el.value_pk,
-            el.value_pp,
-            el.value_pt,
-            el.day_info.date,
-          );
+          countsArr.push(el.value_pk, el.value_pp, el.value_pt, el.day_info.date);
         } else if (el.station === stationId && currentType === 'driving') {
-          countsArr.push(
-            el.value_ak,
-            el.value_ap,
-            el.value_at,
-            el.day_info.date,
-          );
+          countsArr.push(el.value_ak, el.value_ap, el.value_at, el.day_info.date);
         }
-        setChannel1Counts(channel1Counts => [
-          ...channel1Counts,
-          countsArr[0],
-        ]);
-        setChannel2Counts(channel2Counts => [
-          ...channel2Counts,
-          countsArr[1],
-        ]);
+        setChannel1Counts(channel1Counts => [...channel1Counts, countsArr[0]]);
+        setChannel2Counts(channel2Counts => [...channel2Counts, countsArr[1]]);
         setChannelTotals(channelTotals => [...channelTotals, countsArr[2]]);
-        setEcoCounterLabels(ecoCounterLabels => [
-          ...ecoCounterLabels,
-          formatDates(countsArr[3]),
-        ]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
       ecoCounterWeek.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
-          countsArr.push(
-            el.value_jk,
-            el.value_jp,
-            el.value_jt,
-            el.week_info.week_number,
-          );
+          countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.week_info.week_number);
         } else if (el.station === stationId && currentType === 'bicycle') {
-          countsArr.push(
-            el.value_pk,
-            el.value_pp,
-            el.value_pt,
-            el.week_info.week_number,
-          );
+          countsArr.push(el.value_pk, el.value_pp, el.value_pt, el.week_info.week_number);
         } else if (el.station === stationId && currentType === 'driving') {
-          countsArr.push(
-            el.value_ak,
-            el.value_ap,
-            el.value_at,
-            el.week_info.week_number,
-          );
+          countsArr.push(el.value_ak, el.value_ap, el.value_at, el.week_info.week_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels(ecoCounterLabels => [
-          ...ecoCounterLabels,
-          formatWeeks(countsArr[3]),
-        ]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
       ecoCounterMonth.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
-          countsArr.push(
-            el.value_jk,
-            el.value_jp,
-            el.value_jt,
-            el.month_info.month_number,
-          );
+          countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.month_info.month_number);
         } else if (el.station === stationId && currentType === 'bicycle') {
-          countsArr.push(
-            el.value_pk,
-            el.value_pp,
-            el.value_pt,
-            el.month_info.month_number,
-          );
+          countsArr.push(el.value_pk, el.value_pp, el.value_pt, el.month_info.month_number);
         } else if (el.station === stationId && currentType === 'driving') {
-          countsArr.push(
-            el.value_ak,
-            el.value_ap,
-            el.value_at,
-            el.month_info.month_number,
-          );
+          countsArr.push(el.value_ak, el.value_ap, el.value_at, el.month_info.month_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels(ecoCounterLabels => [
-          ...ecoCounterLabels,
-          formatMonths(countsArr[3]),
-        ]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatMonths(countsArr[3])]);
       });
     }
   };
@@ -437,80 +366,35 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
   }, [stationId, setEcoCounterHour]);
 
   useEffect(() => {
-    fetchInitialDayDatas(
-      apiUrl,
-      initialDateStart,
-      initialDateEnd,
-      stationId,
-      setEcoCounterDay,
-    );
+    fetchInitialDayDatas(apiUrl, initialDateStart, initialDateEnd, stationId, setEcoCounterDay);
   }, [stationId, setEcoCounterDay]);
 
   useEffect(() => {
-    fetchInitialWeekDatas(
-      apiUrl,
-      initialYear,
-      initialWeekStart,
-      initialWeekEnd,
-      stationId,
-      setEcoCounterWeek,
-    );
+    fetchInitialWeekDatas(apiUrl, initialYear, initialWeekStart, initialWeekEnd, stationId, setEcoCounterWeek);
   }, [stationId, setEcoCounterWeek]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(
-      apiUrl,
-      initialYear,
-      '1',
-      initialMonth,
-      stationId,
-      setEcoCounterMonth,
-    );
+    fetchInitialMonthDatas(apiUrl, initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
   }, [stationId, setEcoCounterMonth]);
 
   // Fetch updated data when selected date is changed in datepicker.
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
-    fetchInitialHourData(
-      apiUrl,
-      selectedDateFormat,
-      stationId,
-      setEcoCounterHour,
-    );
+    fetchInitialHourData(apiUrl, selectedDateFormat, stationId, setEcoCounterHour);
     setActiveStep(0);
     setCurrentTime('hour');
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialDayDatas(
-      apiUrl,
-      selectedDateStart,
-      selectedDateEnd,
-      stationId,
-      setEcoCounterDay,
-    );
+    fetchInitialDayDatas(apiUrl, selectedDateStart, selectedDateEnd, stationId, setEcoCounterDay);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialWeekDatas(
-      apiUrl,
-      selectedYear,
-      selectedWeekStart,
-      selectedWeekEnd,
-      stationId,
-      setEcoCounterWeek,
-    );
+    fetchInitialWeekDatas(apiUrl, selectedYear, selectedWeekStart, selectedWeekEnd, stationId, setEcoCounterWeek);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(
-      apiUrl,
-      selectedYear,
-      '1',
-      selectedMonth,
-      stationId,
-      setEcoCounterMonth,
-    );
+    fetchInitialMonthDatas(apiUrl, selectedYear, '1', selectedMonth, stationId, setEcoCounterMonth);
   }, [selectedDate, stationId]);
 
   // useEffect is used to fill the chart with default data (default step is 'hourly')
@@ -518,23 +402,11 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
     if (ecoCounterHour !== null && ecoCounterHour.station === stationId) {
       const countsArr = [];
       if (currentType === 'walking') {
-        countsArr.push(
-          ecoCounterHour.values_jk,
-          ecoCounterHour.values_jp,
-          ecoCounterHour.values_jt,
-        );
+        countsArr.push(ecoCounterHour.values_jk, ecoCounterHour.values_jp, ecoCounterHour.values_jt);
       } else if (currentType === 'bicycle') {
-        countsArr.push(
-          ecoCounterHour.values_pk,
-          ecoCounterHour.values_pp,
-          ecoCounterHour.values_pt,
-        );
+        countsArr.push(ecoCounterHour.values_pk, ecoCounterHour.values_pp, ecoCounterHour.values_pt);
       } else if (currentType === 'driving') {
-        countsArr.push(
-          ecoCounterHour.values_ak,
-          ecoCounterHour.values_ap,
-          ecoCounterHour.values_at,
-        );
+        countsArr.push(ecoCounterHour.values_ak, ecoCounterHour.values_ap, ecoCounterHour.values_at);
       }
       setChannel1Counts(countsArr[0]);
       setChannel2Counts(countsArr[1]);
@@ -547,38 +419,36 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
     setChannelData();
   }, [currentType, currentTime]);
 
-  // Only one station includes data about cars
-  // Sets noCars state to false for that one station only
-  // Initially used id, but it changed few times, so it's not reliable.
+  // Only one station includes data about all user types (inluding cars) and some include only data about cycling.
+  // Sets user types based on station name.
+  // Initially used id, but it can change, so it's not always reliable.
   useEffect(() => {
     if (stationName === 'Auransilta') {
-      setNoCars(false);
-    }
+      setUserTypesList(allUsers);
+    } else if (stationName === 'Kirjastosilta' || stationName === 'Teatteri ranta' || stationName === 'Teatterisilta') {
+      setUserTypesList(pedestrianAndBicycle);
+    } else setUserTypesList(bicycleOnly);
   }, [stationId]);
 
   return (
     <>
       <div className={classes.ecoCounterHeader}>
-        <h2 className={classes.headerSubtitle}>{stationName}</h2>
+        <Typography component="h4" className={classes.headerSubtitle}>
+          {stationName}
+        </Typography>
         <div className={classes.headerDate}>
           {!isDatePickerOpen ? (
-            <button
-              type="button"
-              className={classes.buttonTransparent}
-              onClick={() => setIsDatePickerOpen(true)}
-            >
-              <h3 className={classes.headerSubtitle}>
+            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(true)}>
+              <Typography component="h5" className={classes.headerSubtitle}>
                 {selectedDate.clone().format('DD.MM.YYYY')}
-              </h3>
-            </button>
+              </Typography>
+            </ButtonBase>
           ) : (
-            <button
-              type="button"
-              className={classes.buttonTransparent}
-              onClick={() => setIsDatePickerOpen(false)}
-            >
-              <h3>{selectedDate.clone().format('DD.MM.YYYY')}</h3>
-            </button>
+            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(false)}>
+              <Typography component="h5" className={classes.headerSubtitle}>
+                {selectedDate.clone().format('DD.MM.YYYY')}
+              </Typography>
+            </ButtonBase>
           )}
         </div>
         {isDatePickerOpen ? (
@@ -596,63 +466,25 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
-          {!noCars
-            ? userTypes.map((userType, i) => (
-              <div
-                key={userType.type.user}
-                className={classes.buttonAndTextContainer}
-              >
-                <button
-                  type="button"
-                  className={
-                      i === activeType
-                        ? `${classes.buttonActive}`
-                        : `${classes.buttonWhite}`
-                    }
+          {userTypesList
+            && userTypesList.map((userType, i) => (
+              <div key={userType.type.user} className={classes.buttonAndTextContainer}>
+                <ButtonBase
+                  className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
                   onClick={() => setUserTypes(userType.type.user, i)}
                 >
                   <div>
                     <ReactSVG
-                      className={
-                          i === activeType
-                            ? `${classes.iconActive}`
-                            : `${classes.icon}`
-                        }
+                      className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
                       src={userType.type.icon}
                     />
                   </div>
-                </button>
+                </ButtonBase>
                 <div className={classes.textContainer}>
-                  <p className={classes.userTypeText}>{userType.type.text}</p>
+                  <Typography variant="body2" className={classes.userTypeText}>
+                    {userType.type.text}
+                  </Typography>
                 </div>
-              </div>
-            ))
-            : pedestrianTypes.map((userType, i) => (
-              <div
-                key={userType.type.user}
-                className={classes.buttonAndTextContainer}
-              >
-                <button
-                  type="button"
-                  className={
-                      i === activeType
-                        ? `${classes.buttonActive}`
-                        : `${classes.buttonWhite}`
-                    }
-                  onClick={() => setUserTypes(userType.type.user, i)}
-                >
-                  <div>
-                    <ReactSVG
-                      className={
-                          i === activeType
-                            ? `${classes.iconActive}`
-                            : `${classes.icon}`
-                        }
-                      src={userType.type.icon}
-                    />
-                  </div>
-                </button>
-                <p className={classes.userTypeText}>{userType.type.text}</p>
               </div>
             ))}
         </div>
@@ -676,18 +508,16 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
         <div className={classes.ecocounterSteps}>
           <>
             {buttonSteps.map((timing, i) => (
-              <button
+              <ButtonBase
                 key={timing.step.type}
                 type="button"
-                className={
-                  i === activeStep
-                    ? `${classes.buttonActive}`
-                    : `${classes.buttonWhite}`
-                }
-                onClick={() => handleClick(timing.step.type, i, stationId)}
+                className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+                onClick={() => handleClick(timing.step.type, i)}
               >
-                {timing.step.text}
-              </button>
+                <Typography variant="body2" className={classes.buttonText}>
+                  {timing.step.text}
+                </Typography>
+              </ButtonBase>
             ))}
           </>
         </div>
@@ -698,6 +528,7 @@ const EcoCounterContent = ({ classes, stationId, stationName }) => {
 
 EcoCounterContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
   stationId: PropTypes.number,
   stationName: PropTypes.string,
 };

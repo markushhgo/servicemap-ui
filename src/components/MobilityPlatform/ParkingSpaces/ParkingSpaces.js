@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { fetchParkingData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 
 const ParkingSpaces = () => {
@@ -7,31 +7,21 @@ const ParkingSpaces = () => {
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
+  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+
   const { Polygon } = global.rL;
 
-  const pathOptions = { color: '#000000' };
+  const pathOptions = { color: 'rgba(98,210,240,255)' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchParkingData(setParkingSpaces);
+      fetchIotData(apiUrl, 'TPH', setParkingSpaces);
     }
   }, [openMobilityPlatform, setParkingSpaces]);
 
   const swapCoords = (inputData) => {
-    const swappedCoords = [];
-    const swappedInner = [];
-    if (inputData) {
-      inputData.forEach((item) => {
-        item.forEach((item2) => {
-          item2.forEach((item3) => {
-            const swapped = item3.splice(0).reverse();
-            swappedInner.push(swapped);
-          });
-          swappedCoords.push([swappedInner]);
-        });
-      });
-      console.log(swappedCoords);
-      return swappedCoords;
+    if (inputData.length > 0) {
+      return inputData.map(item => item.map(v => v.map(j => [j[1], j[0]])));
     }
   };
 
@@ -41,7 +31,7 @@ const ParkingSpaces = () => {
         <div>
           <div>
             {parkingSpaces
-              && parkingSpaces.map(item => (
+              && parkingSpaces.features.map(item => (
                 <Polygon key={item.id} pathOptions={pathOptions} positions={swapCoords(item.geometry.coordinates)} />
               ))}
           </div>
