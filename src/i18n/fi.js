@@ -628,6 +628,10 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
   'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
+  'mobilityPlatform.content.parkingSpaces.title': 'Pysäköintialue',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Parkkipaikkojen määrä',
+  'mobilityPlatform.content.parkingSpaces.currentCount': 'Käytössä olevat parkkipaikat',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Vapaana olevat parkkipaikat',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',

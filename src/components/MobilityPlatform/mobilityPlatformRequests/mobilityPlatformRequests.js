@@ -62,6 +62,16 @@ const fetchIotData = async (apiUrl, sourceName, setData) => {
   }
 };
 
+const fetchParkingStatistics = async (setData) => {
+  try {
+    const response = await fetch('https://parkkiopas.turku.fi/public/v1/parking_area_statistics/');
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
 export {
   fetchMobilityMapData,
   fetchCultureRouteNames,
@@ -69,4 +79,5 @@ export {
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
   fetchIotData,
+  fetchParkingStatistics,
 };

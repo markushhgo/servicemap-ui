@@ -1,21 +1,30 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchIotData, fetchParkingStatistics } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import ParkingSpacesContent from './components/ParkingSpacesContent';
 
 const ParkingSpaces = () => {
   const [parkingSpaces, setParkingSpaces] = useState(null);
+  const [parkingStatistics, setParkingStatistics] = useState(null);
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
-  const { Polygon } = global.rL;
+  const { Polygon, Popup } = global.rL;
 
-  const pathOptions = { color: 'rgba(98,210,240,255)' };
+  const blueOptions = { color: 'rgba(98,210,240,255)' };
+  // const redOptions = { color: 'rgba(255,10,10,255)' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
       fetchIotData(apiUrl, 'TPH', setParkingSpaces);
+    }
+  }, [openMobilityPlatform, setParkingSpaces]);
+
+  useEffect(() => {
+    if (openMobilityPlatform) {
+      fetchParkingStatistics(setParkingStatistics);
     }
   }, [openMobilityPlatform, setParkingSpaces]);
 
@@ -32,7 +41,11 @@ const ParkingSpaces = () => {
           <div>
             {parkingSpaces
               && parkingSpaces.features.map(item => (
-                <Polygon key={item.id} pathOptions={pathOptions} positions={swapCoords(item.geometry.coordinates)} />
+                <Polygon key={item.id} pathOptions={blueOptions} positions={swapCoords(item.geometry.coordinates)}>
+                  <Popup>
+                    <ParkingSpacesContent parkingSpace={item} parkingStatistics={parkingStatistics} />
+                  </Popup>
+                </Polygon>
               ))}
           </div>
         </div>
