@@ -32,6 +32,7 @@ import EventMarkers from './components/EventMarkers';
 import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
 import MobilityPlatformMapView from '../MobilityPlatformMapView';
+import config from '../../../config';
 
 if (global.window) {
   require('leaflet');
@@ -83,6 +84,10 @@ const MapView = (props) => {
 
   // This unassigned selector is used to trigger re-render after events are fetched
   useSelector(state => getSelectedUnitEvents(state));
+
+  // If external theme (by Turku) is true, then can be used to select which components to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || typeof externalTheme === 'undefined' ? null : externalTheme;
 
   const getMapUnits = () => {
     let mapUnits = [];
@@ -355,7 +360,8 @@ const MapView = (props) => {
             </div>
           ) : null}
           <Districts mapOptions={mapOptions} embedded={embedded} />
-          <TransitStops mapObject={mapObject} />
+          {/* Turku does not yet have data to render this */}
+          {!isExternalTheme ? <TransitStops mapObject={mapObject} /> : null}
 
           {!embedded && !measuringMode && (
             // Draw address popoup on mapclick to map
