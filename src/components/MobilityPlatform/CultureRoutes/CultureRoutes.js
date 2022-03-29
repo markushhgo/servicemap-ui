@@ -4,7 +4,7 @@ import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlat
 import CultureRouteUnits from '../CultureRouteUnits';
 
 const CultureRoutes = () => {
-  const [cultureRoutesGeometry, setCultureRoutesGeometry] = useState(null);
+  const [cultureRoutesGeometry, setCultureRoutesGeometry] = useState([]);
   const [activeCultureRoute, setActiveCultureRoute] = useState(null);
 
   const { openMobilityPlatform, showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
@@ -23,12 +23,8 @@ const CultureRoutes = () => {
   }, [openMobilityPlatform, setCultureRoutesGeometry]);
 
   useEffect(() => {
-    if (cultureRoutesGeometry) {
-      cultureRoutesGeometry.forEach((item) => {
-        if (item.mobile_unit_group.id === cultureRouteId) {
-          setActiveCultureRoute(item);
-        }
-      });
+    if (cultureRoutesGeometry.length > 0) {
+      setActiveCultureRoute(cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId));
     }
   }, [cultureRoutesGeometry, cultureRouteId]);
 
