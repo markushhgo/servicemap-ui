@@ -592,7 +592,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
-  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringplatser', // TODO verify translation
+  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser', // TODO verify
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -626,6 +626,11 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 timmar',
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
+  'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.type': 'Betalnings typ', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsparkering', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

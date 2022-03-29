@@ -13,8 +13,7 @@ const ParkingSpaces = () => {
 
   const { Polygon, Popup } = global.rL;
 
-  const blueOptions = { color: 'rgba(98,210,240,255)' };
-  // const redOptions = { color: 'rgba(255,10,10,255)' };
+  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -31,13 +30,13 @@ const ParkingSpaces = () => {
   const swapCoords = (inputData) => {
     if (inputData.length > 0) {
       return inputData.map(item => item.map(v => v.map(j => [j[1], j[0]])));
-    }
+    } return inputData;
   };
 
   return (
     <>
       {showParkingSpaces ? (
-        <div>
+        <>
           <div>
             {parkingSpaces
               && parkingSpaces.features.map(item => (
@@ -48,7 +47,7 @@ const ParkingSpaces = () => {
                 </Polygon>
               ))}
           </div>
-        </div>
+        </>
       ) : null}
     </>
   );

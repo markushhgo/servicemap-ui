@@ -624,6 +624,11 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 hours',
   'mobilityPlatform.settings.buttons.24hours': '24 hours',
   'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
+  'mobilityPlatform.content.parkingSpaces.title': 'Parking space', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Capacity', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Number of vacant spaces', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.type': 'Payment type', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

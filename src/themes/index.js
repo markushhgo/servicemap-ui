@@ -68,7 +68,7 @@ const overrides = theme => ({
   },
   MuiSwitch: {
     switchBase: {
-      // Controls default (unchecked) color for the thumb
+      // Controls unchecked color for the thumb
       color: '#c4c4c4',
     },
     colorSecondary: {
@@ -78,7 +78,7 @@ const overrides = theme => ({
       },
     },
     track: {
-      // Controls default (unchecked) color for the track
+      // Controls unchecked color for the track
       opacity: 1,
       backgroundColor: '#fff',
       '$checked$checked + &': {

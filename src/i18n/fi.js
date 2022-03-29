@@ -630,8 +630,9 @@ const translations = {
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
   'mobilityPlatform.content.parkingSpaces.title': 'Pysäköintialue',
   'mobilityPlatform.content.parkingSpaces.capacity': 'Parkkipaikkojen määrä',
-  'mobilityPlatform.content.parkingSpaces.currentCount': 'Käytössä olevat parkkipaikat',
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Vapaana olevat parkkipaikat',
+  'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
