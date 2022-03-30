@@ -1,8 +1,8 @@
-// TODO: need city (and locale?) parameters to new search fetch
+// TODO: need locale parameters to new search fetch
 
 import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
 
-const createSuggestions = (query, abortController, getLocaleText) => async () => {
+const createSuggestions = (query, abortController, getLocaleText, citySettings) => async () => {
   const smAPI = new ServiceMapAPI();
   smAPI.setAbortController(abortController);
 
@@ -12,6 +12,7 @@ const createSuggestions = (query, abortController, getLocaleText) => async () =>
     unit_limit: 5,
     service_limit: 2,
     address_limit: 1,
+    municipality: citySettings.join(','),
   };
 
   const results = await smAPI.search(query, additionalOptions);
