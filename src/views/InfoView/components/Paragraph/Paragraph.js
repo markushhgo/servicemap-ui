@@ -1,0 +1,27 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Typography } from '@material-ui/core';
+
+const Paragraph = ({
+  classes, intl, isTitle, translationId,
+}) => (
+  <div className={isTitle ? classes.title : classes.text}>
+    <Typography component={isTitle ? 'h3' : 'p'} variant="body2">
+      {intl.formatMessage({ id: translationId })}
+    </Typography>
+  </div>
+);
+
+Paragraph.propTypes = {
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  isTitle: PropTypes.bool,
+  translationId: PropTypes.string,
+};
+
+Paragraph.defaultProps = {
+  isTitle: false,
+  translationId: '',
+};
+
+export default Paragraph;

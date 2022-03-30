@@ -23,13 +23,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
-  const [cultureRouteList, setCultureRouteList] = useState(null);
-  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState(null);
+  const [cultureRouteList, setCultureRouteList] = useState([]);
+  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
-  const [bicycleRouteList, setBicycleRouteList] = useState(null);
+  const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [apiUrl, setApiUrl] = useState(null);
@@ -104,7 +104,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array} and sets it into state
    */
   useEffect(() => {
-    if (cultureRouteList) {
+    if (cultureRouteList.length > 0) {
       setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, currentLocale]);
@@ -117,9 +117,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array}
    */
   useEffect(() => {
-    if (cultureRouteList && currentLocale === 'fi') {
+    if (cultureRouteList.length > 0 && currentLocale === 'fi') {
       cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
-    } else if (filteredCultureRouteList && currentLocale !== 'fi') {
+    } else if (filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
       filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
@@ -355,29 +355,33 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderBicycleRoutes = (inputData, activeIdx) => inputData.map((item, i) => (
-    <Button
-      key={item.id}
-      variant="outlined"
-      className={i === activeIdx ? classes.listButtonActive : classes.listButton}
-      onClick={() => setBicycleRouteState(i, item.name_fi)}
-    >
-      <Typography variant="body2">
-        {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
-      </Typography>
-    </Button>
-  ));
+  const renderBicycleRoutes = (inputData, activeIdx) => inputData.length > 0
+    && inputData.map((item, i) => (
+      <Button
+        key={item.id}
+        variant="outlined"
+        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
+        onClick={() => setBicycleRouteState(i, item.name_fi)}
+      >
+        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}>
+          {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+        </Typography>
+      </Button>
+    ));
 
-  const renderCultureRoutes = (inputData, activeIdx) => inputData.map((item, i) => (
-    <Button
-      key={item.id}
-      variant="outlined"
-      className={i === activeIdx ? classes.listButtonActive : classes.listButton}
-      onClick={() => setCultureRouteState(item.id, i)}
-    >
-      <Typography variant="body2">{selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}</Typography>
-    </Button>
-  ));
+  const renderCultureRoutes = (inputData, activeIdx) => inputData.length > 0
+    && inputData.map((item, i) => (
+      <Button
+        key={item.id}
+        variant="outlined"
+        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
+        onClick={() => setCultureRouteState(item.id, i)}
+      >
+        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}>
+          {selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}
+        </Typography>
+      </Button>
+    ));
 
   const renderSettings = (settingVisibility, typeVal) => {
     if (settingVisibility) {
