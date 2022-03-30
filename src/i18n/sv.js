@@ -631,13 +631,15 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser', // TODO verify
   'mobilityPlatform.content.parkingSpaces.type': 'Betalnings typ', // TODO verify
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsparkering', // TODO verify
+  'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
-  'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baseras på webbplatsen latauskartta.fi:s information som underhålls av Sähköautoilijat ry.',
-  'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
+  'mobilityPlatform.info.parkingSpaces': 'Turun pysäköintialueiden tiedot tulevat Turun kaupungin parkkioppaasta.', // TODO translate
+  // 'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baseras på webbplatsen latauskartta.fi:s information som underhålls av Sähköautoilijat ry.',
+  // 'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

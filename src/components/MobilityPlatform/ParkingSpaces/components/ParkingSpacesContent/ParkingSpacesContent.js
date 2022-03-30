@@ -5,43 +5,41 @@ import { Typography } from '@material-ui/core';
 const ParkingSpacesContent = ({
   classes, intl, parkingSpace, parkingStatistics,
 }) => {
-  const renderTitleText = (messageId, props = {}) => (
-    <div className={classes.title}>
-      <Typography variant="subtitle1" {...props}>
-        {intl.formatMessage({
-          id: messageId,
-        })}
-      </Typography>
-    </div>
-  );
-
-  const renderContentText = (messageId, text) => (
-    <div className={classes.text}>
-      <Typography variant="body2">
-        <strong>
+  const renderText = (textType, translationId, text) => (
+    <div className={textType === 'title' ? classes.title : classes.text}>
+      {textType === 'title' ? (
+        <Typography variant="subtitle1">
           {intl.formatMessage({
-            id: messageId,
+            id: translationId,
           })}
-          :
-        </strong>
-        {' '}
-        {text}
-      </Typography>
+        </Typography>
+      ) : (
+        <Typography variant="body2">
+          <strong>
+            {intl.formatMessage({
+              id: translationId,
+            })}
+            :
+          </strong>
+          {' '}
+          {text}
+        </Typography>
+      )}
     </div>
   );
 
-  const renderType = (messageId1, messageId2) => (
+  const renderPaymentType = (translationId1, translationId2) => (
     <div className={classes.text}>
       <Typography variant="body2">
         <strong>
           {intl.formatMessage({
-            id: messageId1,
+            id: translationId1,
           })}
           :
         </strong>
         {' '}
         {intl.formatMessage({
-          id: messageId2,
+          id: translationId2,
         })}
       </Typography>
     </div>
@@ -51,28 +49,34 @@ const ParkingSpacesContent = ({
     const freeParkingSpaces = capacity - parkingCount;
 
     return (
-      <div key={capacity}>
-        <Typography variant="body2">
-          <strong>
-            {intl.formatMessage({ id: 'mobilityPlatform.content.parkingSpaces.parkingCount' })}
-          </strong>
-          :
-          {' '}
-          {freeParkingSpaces > 0 ? freeParkingSpaces : 0}
-          {''}
-          /
-          {''}
-          {capacity}
-        </Typography>
+      <div key={capacity} className={classes.text}>
+        {freeParkingSpaces > 0 ? (
+          <Typography variant="body2">
+            <strong>
+              {intl.formatMessage({ id: 'mobilityPlatform.content.parkingSpaces.parkingCount' })}
+            </strong>
+            :
+            {' '}
+            {freeParkingSpaces}
+            {''}
+            /
+            {''}
+            {capacity}
+          </Typography>
+        ) : (
+          <Typography variant="body2">
+            {intl.formatMessage({ id: 'mobilityPlatform.content.parkingSpaces.empty' })}
+          </Typography>
+        )}
       </div>
     );
   };
 
   return (
     <div className={classes.container}>
-      {renderTitleText('mobilityPlatform.content.parkingSpaces.title')}
-      {renderType('mobilityPlatform.content.parkingSpaces.type', 'mobilityPlatform.content.parkingSpaces.paid')}
-      {renderContentText('mobilityPlatform.content.parkingSpaces.capacity', parkingSpace.properties.capacity_estimate)}
+      {renderText('title', 'mobilityPlatform.content.parkingSpaces.title')}
+      {renderPaymentType('mobilityPlatform.content.parkingSpaces.type', 'mobilityPlatform.content.parkingSpaces.paid')}
+      {renderText('text', 'mobilityPlatform.content.parkingSpaces.capacity', parkingSpace.properties.capacity_estimate)}
       {parkingStatistics.filter(item => item.id === parkingSpace.id).map(parking => (
         renderParkingCount(parkingSpace.properties.capacity_estimate, parking.current_parking_count)
       ))}
