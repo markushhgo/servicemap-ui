@@ -19,10 +19,10 @@ export default class ServiceMapAPI extends HttpClient {
     const options = { // TODO: adjust these values for best results and performance
       q: query,
       page_size: 200,
-      limit: 2000,
-      unit_limit: 2000,
-      service_limit: 500,
-      address_limit: 500,
+      sql_query_limit: 1000,
+      unit_limit: 500,
+      service_limit: 250,
+      address_limit: 250,
       ...additionalOptions,
     };
 
