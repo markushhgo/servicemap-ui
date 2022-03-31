@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { fetchIotData, fetchParkingStatistics } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ParkingSpacesContent from './components/ParkingSpacesContent';
 
 const ParkingSpaces = () => {
   const [parkingSpaces, setParkingSpaces] = useState(null);
-  const [parkingStatistics, setParkingStatistics] = useState(null);
+  const [parkingStatistics, setParkingStatistics] = useState([]);
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
@@ -18,14 +18,10 @@ const ParkingSpaces = () => {
   useEffect(() => {
     if (openMobilityPlatform) {
       fetchIotData(apiUrl, 'TPH', setParkingSpaces);
+      fetchIotData(apiUrl, 'PAS', setParkingStatistics);
     }
-  }, [openMobilityPlatform, setParkingSpaces]);
+  }, [openMobilityPlatform, setParkingSpaces, setParkingStatistics]);
 
-  useEffect(() => {
-    if (openMobilityPlatform) {
-      fetchParkingStatistics(setParkingStatistics);
-    }
-  }, [openMobilityPlatform, setParkingSpaces]);
 
   const swapCoords = (inputData) => {
     if (inputData.length > 0) {
@@ -42,7 +38,7 @@ const ParkingSpaces = () => {
               && parkingSpaces.features.map(item => (
                 <Polygon key={item.id} pathOptions={blueOptions} positions={swapCoords(item.geometry.coordinates)}>
                   <Popup>
-                    <ParkingSpacesContent parkingSpace={item} parkingStatistics={parkingStatistics} />
+                    <ParkingSpacesContent parkingSpace={item} parkingStatistics={parkingStatistics.results} />
                   </Popup>
                 </Polygon>
               ))}

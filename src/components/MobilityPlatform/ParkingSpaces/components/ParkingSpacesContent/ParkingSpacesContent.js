@@ -52,9 +52,7 @@ const ParkingSpacesContent = ({
       <div key={capacity} className={classes.text}>
         {freeParkingSpaces > 0 ? (
           <Typography variant="body2">
-            <strong>
-              {intl.formatMessage({ id: 'mobilityPlatform.content.parkingSpaces.parkingCount' })}
-            </strong>
+            <strong>{intl.formatMessage({ id: 'mobilityPlatform.content.parkingSpaces.parkingCount' })}</strong>
             :
             {' '}
             {freeParkingSpaces}
@@ -77,9 +75,9 @@ const ParkingSpacesContent = ({
       {renderText('title', 'mobilityPlatform.content.parkingSpaces.title')}
       {renderPaymentType('mobilityPlatform.content.parkingSpaces.type', 'mobilityPlatform.content.parkingSpaces.paid')}
       {renderText('text', 'mobilityPlatform.content.parkingSpaces.capacity', parkingSpace.properties.capacity_estimate)}
-      {parkingStatistics.filter(item => item.id === parkingSpace.id).map(parking => (
-        renderParkingCount(parkingSpace.properties.capacity_estimate, parking.current_parking_count)
-      ))}
+      {parkingStatistics.length > 0 && parkingStatistics
+        .filter(item => item.id === parkingSpace.id)
+        .map(parking => renderParkingCount(parkingSpace.properties.capacity_estimate, parking.current_parking_count))}
     </div>
   );
 };
@@ -92,7 +90,7 @@ ParkingSpacesContent.propTypes = {
 };
 
 ParkingSpacesContent.defaultProps = {
-  parkingSpace: null,
+  parkingSpace: {},
   parkingStatistics: [],
 };
 
