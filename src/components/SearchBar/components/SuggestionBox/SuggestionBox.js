@@ -7,7 +7,7 @@ import {
   Paper, List, Typography,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PreviousSearches from '../../PreviousSearches';
 import createSuggestions from '../../createSuggestions';
 // import config from '../../../../../config';
@@ -20,7 +20,9 @@ import useLocaleText from '../../../../utils/useLocaleText';
 import UnitIcon from '../../../SMIcon/UnitIcon';
 import setSearchBarInitialValue from '../../../../redux/actions/searchBar';
 import { useNavigationParams } from '../../../../utils/address';
+import config from '../../../../../config';
 
+const suggestionCount = 8;
 
 const SuggestionBox = (props) => {
   const {
@@ -48,6 +50,11 @@ const SuggestionBox = (props) => {
   const getLocaleText = useLocaleText();
   const listRef = useRef(null);
   const fetchController = useRef(null);
+
+  const citySettings = useSelector((state) => {
+    const { cities } = state.settings;
+    return config.cities.filter(c => cities[c]);
+  });
 
   // const handleAreaItemClick = (area) => {
   //   if (navigator) {
@@ -105,7 +112,7 @@ const SuggestionBox = (props) => {
       }
       fetchController.current = new AbortController();
 
-      dispatch(createSuggestions(query, fetchController.current, getLocaleText))
+      dispatch(createSuggestions(query, fetchController.current, getLocaleText, citySettings))
         .then((data) => {
           if (data === 'error') {
             return;
@@ -179,9 +186,20 @@ const SuggestionBox = (props) => {
       },
     };
 
+    // Order suggestion types and slice list
+    const addresses = suggestionList.filter(item => item.object_type === 'address');
+    const units = suggestionList.filter(item => item.object_type === 'unit');
+    const services = suggestionList.filter(item => item.object_type === 'service');
+
+    const orderedSuggestions = [
+      ...addresses,
+      ...services,
+      ...units,
+    ].slice(0, suggestionCount);
+
     return (
       <List role="listbox" id="SuggestionList" className="suggestionList" ref={listRef}>
-        {suggestionList.map((suggestion, i) => {
+        {orderedSuggestions.map((suggestion, i) => {
           const conf = suggestionConfig[suggestion.object_type];
           if (!conf) return null;
           const text = conf.text(suggestion);

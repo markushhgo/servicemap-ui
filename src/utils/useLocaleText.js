@@ -6,7 +6,7 @@ const getLocaleString = (locale, obj) => {
   // Default rerturned string is the first one listed (probably always finnish)
   let value = obj[Object.keys(obj)[0]];
   Object.keys(obj).forEach((key) => {
-    if (key === locale) {
+    if (key === locale && obj[key]) {
       value = obj[key];
     }
   });
