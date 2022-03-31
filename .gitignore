@@ -12,7 +12,7 @@
 /build
 
 # external translations
-/src/i18n/externalTranslations
+# /src/i18n/externalTranslations
 
 # misc
 .DS_Store
