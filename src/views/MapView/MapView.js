@@ -87,7 +87,7 @@ const MapView = (props) => {
 
   // If external theme (by Turku) is true, then can be used to select which components to render
   const externalTheme = config.themePKG;
-  const isExternalTheme = !externalTheme || typeof externalTheme === 'undefined' ? null : externalTheme;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   const getMapUnits = () => {
     let mapUnits = [];
