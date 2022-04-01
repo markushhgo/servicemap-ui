@@ -8,7 +8,7 @@ const createSuggestions = (query, abortController, getLocaleText, citySettings) 
 
   const additionalOptions = {
     page_size: 10,
-    sql_query_limit: 100,
+    sql_query_limit: 1000,
     unit_limit: 5,
     service_limit: 2,
     address_limit: 1,
