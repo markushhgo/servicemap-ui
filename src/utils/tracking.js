@@ -2,7 +2,7 @@ import MatomoTracker from '@datapunt/matomo-tracker-js';
 import config from '../../config';
 
 const externalTheme = config.themePKG;
-const isExternalTheme = !externalTheme || typeof externalTheme === 'undefined' ? null : externalTheme;
+const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
 const sourceOptional = `${config.matomoUrl}/piwik.min.js`;
 const sourceDefault = `${config.matomoUrl}/matomo.js`;

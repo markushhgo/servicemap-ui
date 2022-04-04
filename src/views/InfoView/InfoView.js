@@ -15,7 +15,7 @@ const InfoView = ({ classes, locale }) => {
   const localeUrl = !a11yURLs[locale] || a11yURLs[locale] === 'undefined' ? null : a11yURLs[locale];
 
   const externalTheme = config.themePKG;
-  const isExternalTheme = !externalTheme || typeof externalTheme === 'undefined' ? null : externalTheme;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   const handleClick = () => {
     window.open(localeUrl);
