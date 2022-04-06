@@ -23,7 +23,7 @@ const CultureRoutes = () => {
   }, [openMobilityPlatform, setCultureRoutesGeometry]);
 
   useEffect(() => {
-    if (cultureRoutesGeometry.length > 0) {
+    if (cultureRoutesGeometry && cultureRoutesGeometry.length > 0) {
       setActiveCultureRoute(cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId));
     }
   }, [cultureRoutesGeometry, cultureRouteId]);
@@ -38,22 +38,12 @@ const CultureRoutes = () => {
     <>
       {showCultureRoutes && (
         <>
-          <div>
-            {activeCultureRoute && (
-              <>
-                <Polyline
-                  pathOptions={blackOptions}
-                  weight={6}
-                  positions={activeCultureRoute.geometry_coords}
-                />
-                <Polyline
-                  pathOptions={grayOptions}
-                  weight={3}
-                  positions={activeCultureRoute.geometry_coords}
-                />
-              </>
-            )}
-          </div>
+          {activeCultureRoute && (
+            <>
+              <Polyline pathOptions={blackOptions} weight={6} positions={activeCultureRoute.geometry_coords} />
+              <Polyline pathOptions={grayOptions} weight={3} positions={activeCultureRoute.geometry_coords} />
+            </>
+          )}
           <>
             <CultureRouteUnits cultureRoute={activeCultureRoute} />
           </>
