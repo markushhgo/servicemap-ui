@@ -100,7 +100,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array} and sets it into state
    */
   useEffect(() => {
-    if (cultureRouteList.length > 0) {
+    if (cultureRouteList && cultureRouteList.length > 0) {
       setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, currentLocale]);
@@ -113,9 +113,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array}
    */
   useEffect(() => {
-    if (cultureRouteList.length > 0 && currentLocale === 'fi') {
+    if (cultureRouteList && cultureRouteList.length > 0 && currentLocale === 'fi') {
       cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
-    } else if (filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
+    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
       filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
@@ -328,7 +328,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderBicycleRoutes = (inputData, activeIdx) => inputData.length > 0
+  const renderBicycleRoutes = (inputData, activeIdx) => inputData && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
@@ -342,7 +342,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </Button>
     ));
 
-  const renderCultureRoutes = (inputData, activeIdx) => inputData.length > 0
+  const renderCultureRoutes = (inputData, activeIdx) => inputData && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
