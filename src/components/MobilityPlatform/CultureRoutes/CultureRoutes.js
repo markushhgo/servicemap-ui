@@ -34,14 +34,21 @@ const CultureRoutes = () => {
     }
   }, [showCultureRoutes]);
 
+  const swapCoords = (inputData) => {
+    if (inputData && inputData.length > 0) {
+      return inputData.map(item => [item[1], item[0]]);
+    }
+    return inputData;
+  };
+
   return (
     <>
       {showCultureRoutes && (
         <>
           {activeCultureRoute && (
             <>
-              <Polyline pathOptions={blackOptions} weight={6} positions={activeCultureRoute.geometry_coords} />
-              <Polyline pathOptions={grayOptions} weight={3} positions={activeCultureRoute.geometry_coords} />
+              <Polyline pathOptions={blackOptions} weight={6} positions={swapCoords(activeCultureRoute.geometry_coords)} />
+              <Polyline pathOptions={grayOptions} weight={3} positions={swapCoords(activeCultureRoute.geometry_coords)} />
             </>
           )}
           <>
