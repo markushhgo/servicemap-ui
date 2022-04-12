@@ -24,7 +24,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
-  const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
@@ -41,9 +40,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
-    showSnowPlows,
-    setShowSnowPlows,
-    setSnowPlowsType,
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
@@ -163,14 +159,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
-  const snowPlowsToggle = () => {
-    setShowSnowPlows(current => !current);
-    if (stepButtonIndex) {
-      setStepButtonIndex(null);
-    }
-    setSnowPlowsType(null);
-  };
-
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
@@ -199,11 +187,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes(true);
   };
 
-  const setSnowplowState = (type, index) => {
-    setSnowPlowsType(type);
-    setStepButtonIndex(index);
-  };
-
   const setBicycleRouteState = (index, routeName) => {
     setBicycleRouteIndex(index);
     setBicycleRouteName(routeName);
@@ -226,12 +209,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
     },
-    {
-      type: 'snowPlows',
-      msgId: 'mobilityPlatform.menu.showSnowPlows',
-      checkedValue: showSnowPlows,
-      onChangeValue: snowPlowsToggle,
-    },
   ];
 
   const bicycleControlTypes = [
@@ -253,27 +230,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showEcoCounter,
       onChangeValue: ecoCounterStationsToggle,
     },
-    {
-      type: 'snowPlows',
-      msgId: 'mobilityPlatform.menu.showSnowPlows',
-      checkedValue: showSnowPlows,
-      onChangeValue: snowPlowsToggle,
-    },
-  ];
-
-  const timeStepTypes = [
-    {
-      type: '1hour',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.1hour' }),
-    },
-    {
-      type: '12hours',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.12hours' }),
-    },
-    {
-      type: '24hours',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.24hours' }),
-    },
   ];
 
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
@@ -286,7 +242,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
           })}
         </Typography>
       )}
-      control={<Switch checked={checkedValue} onChange={onChangeValue} />}
+      control={(
+        <Switch
+          checked={checkedValue}
+          inputProps={{
+            'aria-label': intl.formatMessage({
+              id: msgId,
+            }),
+          }}
+          onChange={onChangeValue}
+        />
+)}
       className={classes.formLabel}
     />
   );
@@ -419,28 +385,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
-              <>
-                {showSnowPlows && (
-                  <div className={classes.container}>
-                    <div className={classes.paragraph}>
-                      <Typography variant="subtitle2">
-                        {intl.formatMessage({ id: 'mobilityPlatform.settings.streetMaintenance.info' })}
-                      </Typography>
-                    </div>
-                    <div className={classes.buttonList}>
-                      {timeStepTypes.map((item, i) => (
-                        <Button
-                          key={item.type}
-                          className={i === stepButtonIndex ? classes.buttonStepActive : classes.buttonStep}
-                          onClick={() => setSnowplowState(item.type, i)}
-                        >
-                          <Typography variant="body2">{item.title}</Typography>
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
             </>
           </FormGroup>
         </FormControl>
