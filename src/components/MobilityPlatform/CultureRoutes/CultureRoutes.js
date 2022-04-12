@@ -14,7 +14,7 @@ const CultureRoutes = () => {
   const { Polyline } = global.rL;
 
   const blackOptions = { color: '#000000' };
-  const grayOptions = { color: '#e8e8e8', dashArray: '5, 10' };
+  const grayOptions = { color: '#e8e8e8', dashArray: '1, 8' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -47,8 +47,8 @@ const CultureRoutes = () => {
         <>
           {activeCultureRoute && (
             <>
-              <Polyline pathOptions={blackOptions} weight={6} positions={swapCoords(activeCultureRoute.geometry_coords)} />
-              <Polyline pathOptions={grayOptions} weight={3} positions={swapCoords(activeCultureRoute.geometry_coords)} />
+              <Polyline pathOptions={blackOptions} weight={8} positions={swapCoords(activeCultureRoute.geometry_coords)} />
+              <Polyline pathOptions={grayOptions} weight={4} positions={swapCoords(activeCultureRoute.geometry_coords)} />
             </>
           )}
           <>
