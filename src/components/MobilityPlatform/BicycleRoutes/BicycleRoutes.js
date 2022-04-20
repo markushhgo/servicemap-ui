@@ -13,7 +13,7 @@ const BicycleRoutes = () => {
   const { Polyline } = global.rL;
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
-  const whiteOptions = { color: '#ffff', dashArray: '5, 10', lineCap: 'square' };
+  const whiteOptions = { color: '#ffff', dashArray: '5, 15', lineCap: 'square' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
