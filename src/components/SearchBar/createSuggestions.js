@@ -2,17 +2,18 @@
 
 import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
 
-const createSuggestions = (query, abortController, getLocaleText, citySettings) => async () => {
+const createSuggestions = (query, abortController, getLocaleText, citySettings, locale) => async () => {
   const smAPI = new ServiceMapAPI();
   smAPI.setAbortController(abortController);
 
   const additionalOptions = {
     page_size: 10,
-    sql_query_limit: 100,
+    sql_query_limit: 1000,
     unit_limit: 5,
     service_limit: 2,
     address_limit: 1,
-    municipality: citySettings.join(','),
+    language: locale,
+    municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : 'turku',
   };
 
   const results = await smAPI.search(query, additionalOptions);

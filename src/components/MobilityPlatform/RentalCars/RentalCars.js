@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useMapEvents } from 'react-leaflet';
 import RentalCarsContent from './components/RentalCarsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import carIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
+import rentalCarIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
+import providerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon-24rent.png';
 
 const RentalCars = ({ classes }) => {
   const [iotData, setIotData] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(13);
 
   const { openMobilityPlatform, showRentalCars } = useContext(MobilityPlatformContext);
 
@@ -15,9 +18,15 @@ const RentalCars = ({ classes }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
+  const map = useMapEvents({
+    zoomend() {
+      setZoomLevel(map.getZoom());
+    },
+  });
+
   const customIcon = icon({
-    iconUrl: carIcon,
-    iconSize: [45, 45],
+    iconUrl: zoomLevel < 16 ? rentalCarIcon : providerIcon,
+    iconSize: zoomLevel < 16 ? [45, 45] : [50, 25],
   });
 
   useEffect(() => {

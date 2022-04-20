@@ -44,6 +44,7 @@ const SuggestionBox = (props) => {
   const [suggestionError, setSuggestionError] = useState(false);
   // Query word on which suggestion list is based
   const [suggestionQuery, setSuggestionQuery] = useState(null);
+  const locale = useSelector(state => state.user.locale);
 
   const getAddressNavigatorParams = useNavigationParams();
   const dispatch = useDispatch();
@@ -112,7 +113,7 @@ const SuggestionBox = (props) => {
       }
       fetchController.current = new AbortController();
 
-      dispatch(createSuggestions(query, fetchController.current, getLocaleText, citySettings))
+      dispatch(createSuggestions(query, fetchController.current, getLocaleText, citySettings, locale))
         .then((data) => {
           if (data === 'error') {
             return;

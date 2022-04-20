@@ -52,9 +52,9 @@ class Navigator extends React.Component {
   }
 
   trackPageView = (settings) => {
-    const { mobility, senses } = settings;
-
     if (matomoTracker) {
+      const mobility = settings?.mobility;
+      const senses = settings?.senses;
       setTimeout(() => {
         matomoTracker.trackPageView({
           documentTitle: document.title,
@@ -65,7 +65,7 @@ class Navigator extends React.Component {
             },
             {
               id: config.matomoSensesDimensionID,
-              value: senses.join(','),
+              value: senses && senses.join(','),
             },
           ],
         });
