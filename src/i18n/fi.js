@@ -634,6 +634,8 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
+  'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
+  'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Turun saaristossa kiertävä matkailutie vie halki hienojen luonto- ja kulttuurimaisemien. Noin 250 kilometrin matkalla näet 12 siltaa, yhdeksän lossia ja lauttaa sekä monta hienoa saaristopitäjää. Autolla kierrät Rengastien jopa päivässä, mutta miksi kiirehtiä näin ihanissa maisemissa. Pyöräile tai patikoi, ja majoitu matkanvarren majapaikoissa. (kissmyturku.fi)',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
