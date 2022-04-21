@@ -5,7 +5,7 @@ import RentalCarsContent from './components/RentalCarsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import rentalCarIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
-import providerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon-24rent.png';
+import providerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_24rent.svg';
 
 const RentalCars = ({ classes }) => {
   const [iotData, setIotData] = useState(null);
@@ -25,8 +25,8 @@ const RentalCars = ({ classes }) => {
   });
 
   const customIcon = icon({
-    iconUrl: zoomLevel < 16 ? rentalCarIcon : providerIcon,
-    iconSize: zoomLevel < 16 ? [45, 45] : [50, 25],
+    iconUrl: zoomLevel < 15 ? rentalCarIcon : providerIcon,
+    iconSize: zoomLevel < 15 ? [45, 45] : [50, 56],
   });
 
   useEffect(() => {
