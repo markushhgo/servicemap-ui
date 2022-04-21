@@ -29,7 +29,7 @@ const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchCultureRoutesData(apiUrl, 'CRU', 150, setCultureRouteUnits);
+      fetchCultureRoutesData(apiUrl, 'CRU', 200, setCultureRouteUnits);
     }
   }, [openMobilityPlatform, setCultureRouteUnits]);
 

@@ -397,8 +397,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
-      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
+      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
     </div>
   );
 };
