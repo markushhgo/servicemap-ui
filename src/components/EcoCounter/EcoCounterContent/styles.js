@@ -39,7 +39,7 @@ const styles = {
     marginBottom: '0.75rem',
     alignItems: 'flex-end',
     borderBottom: '2px solid gray',
-    width: '97%',
+    width: '95%',
   },
   headerSubtitle: {
     marginBlockStart: '1rem',
