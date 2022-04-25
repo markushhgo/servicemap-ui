@@ -26,7 +26,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
-  const [stepButtonIndex, setStepButtonIndex] = useState(null);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
@@ -45,9 +44,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setCultureRouteId,
     showParkingSpaces,
     setShowParkingSpaces,
-    showSnowPlows,
-    setShowSnowPlows,
-    setSnowPlowsType,
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
@@ -104,7 +100,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array} and sets it into state
    */
   useEffect(() => {
-    if (cultureRouteList.length > 0) {
+    if (cultureRouteList && cultureRouteList.length > 0) {
       setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, currentLocale]);
@@ -117,9 +113,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array}
    */
   useEffect(() => {
-    if (cultureRouteList.length > 0 && currentLocale === 'fi') {
+    if (cultureRouteList && cultureRouteList.length > 0 && currentLocale === 'fi') {
       cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
-    } else if (filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
+    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
       filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
     }
   }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
@@ -137,7 +133,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
       sv: 'name_sv',
     };
     if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]], undefined, {
+        numeric: true,
+        sensivity: 'base',
+      }));
     }
   }, [bicycleRouteList, currentLocale]);
 
@@ -169,14 +168,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const bicycleStandsToggle = () => {
     setShowBicycleStands(current => !current);
-  };
-
-  const snowPlowsToggle = () => {
-    setShowSnowPlows(current => !current);
-    if (stepButtonIndex) {
-      setStepButtonIndex(null);
-    }
-    setSnowPlowsType(null);
   };
 
   const parkingSpacesToggle = () => {
@@ -211,11 +202,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes(true);
   };
 
-  const setSnowplowState = (type, index) => {
-    setSnowPlowsType(type);
-    setStepButtonIndex(index);
-  };
-
   const setBicycleRouteState = (index, routeName) => {
     setBicycleRouteIndex(index);
     setBicycleRouteName(routeName);
@@ -238,12 +224,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
     },
-    {
-      type: 'snowPlows',
-      msgId: 'mobilityPlatform.menu.showSnowPlows',
-      checkedValue: showSnowPlows,
-      onChangeValue: snowPlowsToggle,
-    },
   ];
 
   const bicycleControlTypes = [
@@ -265,36 +245,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showEcoCounter,
       onChangeValue: ecoCounterStationsToggle,
     },
-    {
-      type: 'snowPlows',
-      msgId: 'mobilityPlatform.menu.showSnowPlows',
-      checkedValue: showSnowPlows,
-      onChangeValue: snowPlowsToggle,
-    },
   ];
 
   const carControlTypes = [
-    {
-      type: 'parkingSpaces',
-      msgId: 'mobilityPlatform.menu.showParkingSpaces',
-      checkedValue: showParkingSpaces,
-      onChangeValue: parkingSpacesToggle,
-    },
-  ];
-
-  const timeStepTypes = [
-    {
-      type: '1hour',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.1hour' }),
-    },
-    {
-      type: '12hours',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.12hours' }),
-    },
-    {
-      type: '24hours',
-      title: intl.formatMessage({ id: 'mobilityPlatform.settings.buttons.24hours' }),
-    },
     {
       type: 'parkingSpaces',
       msgId: 'mobilityPlatform.menu.showParkingSpaces',
@@ -313,7 +266,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
           })}
         </Typography>
       )}
-      control={<Switch checked={checkedValue} onChange={onChangeValue} />}
+      control={(
+        <Switch
+          checked={checkedValue}
+          inputProps={{
+            'aria-label': intl.formatMessage({
+              id: msgId,
+            }),
+          }}
+          onChange={onChangeValue}
+        />
+      )}
       className={classes.formLabel}
     />
   );
@@ -355,7 +318,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderBicycleRoutes = (inputData, activeIdx) => inputData.length > 0
+  const renderBicycleRoutes = (inputData, activeIdx) => inputData
+    && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
@@ -363,13 +327,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setBicycleRouteState(i, item.name_fi)}
       >
-        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}>
+        <Typography
+          variant="body2"
+          aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+        >
           {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
 
-  const renderCultureRoutes = (inputData, activeIdx) => inputData.length > 0
+  const renderCultureRoutes = (inputData, activeIdx) => inputData
+    && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
@@ -446,44 +414,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
-              <>
-                {showSnowPlows && (
-                  <div className={classes.container}>
-                    <div className={classes.paragraph}>
-                      <Typography variant="subtitle2">
-                        {intl.formatMessage({ id: 'mobilityPlatform.settings.streetMaintenance.info' })}
-                      </Typography>
-                    </div>
-                    <div className={classes.buttonList}>
-                      {timeStepTypes.map((item, i) => (
-                        <Button
-                          key={item.type}
-                          className={i === stepButtonIndex ? classes.buttonStepActive : classes.buttonStep}
-                          onClick={() => setSnowplowState(item.type, i)}
-                        >
-                          <Typography variant="body2">{item.title}</Typography>
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
+              <div className={classes.buttonContainer}>
+                {buttonComponent(
+                  carSettingsToggle,
+                  openCarSettings,
+                  iconCar,
+                  'mobilityPlatform.menu.title.car',
                 )}
-                <div className={classes.buttonContainer}>
-                  {buttonComponent(
-                    carSettingsToggle,
-                    openCarSettings,
-                    iconCar,
-                    'mobilityPlatform.menu.title.car',
-                  )}
-                </div>
-                {renderSettings(openCarSettings, carControlTypes)}
-              </>
+              </div>
+              {renderSettings(openCarSettings, carControlTypes)}
             </>
           </FormGroup>
         </FormControl>
       </div>
-      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
+      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
     </div>
   );
 };

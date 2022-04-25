@@ -24,7 +24,7 @@ const fetchCultureRouteNames = async (apiUrl, setData) => {
 
 const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&latlon=true&srid=4326`);
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&srid=4326`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
