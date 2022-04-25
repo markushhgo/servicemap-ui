@@ -12,7 +12,7 @@ export default class ServiceMapAPI extends HttpClient {
     super(config.serviceMapAPI.root);
   }
 
-  search = async (query, additionalOptions) => {
+  search = async (query, locale, citySettings, additionalOptions) => {
     if (typeof query !== 'string') {
       throw new APIFetchError('Invalid query string provided to ServiceMapAPI search method');
     }
@@ -23,6 +23,8 @@ export default class ServiceMapAPI extends HttpClient {
       unit_limit: 1000,
       service_limit: 500,
       address_limit: 500,
+      language: locale,
+      municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : 'turku',
       ...additionalOptions,
     };
 
