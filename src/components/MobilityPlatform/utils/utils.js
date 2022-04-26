@@ -1,9 +1,3 @@
-const getCurrentLocale = (locale, setLocale) => {
-  if (['fi', 'en', 'sv'].includes(locale)) {
-    setLocale(locale);
-  } else setLocale('fi');
-};
-
 const selectRouteName = (locale, routeNameFI, routeNameEN, routeNameSV) => {
   if (locale === 'sv' && routeNameSV) {
     return routeNameSV;
@@ -23,7 +17,6 @@ const setLocalizedLink = (locale, setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
 };
 
 export {
-  getCurrentLocale,
   selectRouteName,
   setLocalizedLink,
 };

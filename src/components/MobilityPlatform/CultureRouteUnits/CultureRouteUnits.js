@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import { getCurrentLocale, selectRouteName } from '../utils/utils';
+import { selectRouteName } from '../utils/utils';
 import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
-const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
+const CultureRouteUnits = ({ classes, cultureRoute }) => {
   const [cultureRouteUnits, setCultureRouteUnits] = useState(null);
   const [activeCultureRouteUnits, setActiveCultureRouteUnits] = useState(null);
-  const [currentLocale, setCurrentLocale] = useState('fi');
 
   const { openMobilityPlatform, cultureRouteId } = useContext(MobilityPlatformContext);
 
   const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+
+  const locale = useSelector(state => state.user.locale);
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
@@ -22,10 +24,6 @@ const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
     iconUrl: routeUnitIcon,
     iconSize: [45, 45],
   });
-
-  useEffect(() => {
-    getCurrentLocale(intl.locale, setCurrentLocale);
-  }, [intl.locale]);
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -61,7 +59,7 @@ const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
                 <div className={classes.popupInner}>
                   <div className={classes.subtitle}>
                     <Typography variant="body2">
-                      {selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}
+                      {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
                     </Typography>
                   </div>
                 </div>
@@ -75,7 +73,6 @@ const CultureRouteUnits = ({ classes, intl, cultureRoute }) => {
 
 CultureRouteUnits.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
   cultureRoute: PropTypes.objectOf(PropTypes.any),
 };
 

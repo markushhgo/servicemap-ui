@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
@@ -9,7 +10,7 @@ import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
-import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
+import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
@@ -25,7 +26,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
-  const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
@@ -44,6 +44,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     bicycleRouteName,
     setBicycleRouteName,
   } = useContext(MobilityPlatformContext);
+
+  const locale = useSelector(state => state.user.locale);
 
   /**
    * Avoids pre-render causing window is not defined- error.
@@ -77,13 +79,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   }, [apiUrl, setBicycleRouteList]);
 
-  /**
-   * Set current language based on user selection
-   */
-  useEffect(() => {
-    getCurrentLocale(intl.locale, setCurrentLocale);
-  }, [intl.locale]);
-
   const nameKeys = {
     fi: 'name',
     en: 'name_en',
@@ -97,9 +92,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0) {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
+      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[locale]]));
     }
-  }, [cultureRouteList, currentLocale]);
+  }, [cultureRouteList, locale]);
 
   /**
    * Sort routes in alphapethical order based on current locale.
@@ -109,12 +104,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array}
    */
   useEffect(() => {
-    if (cultureRouteList && cultureRouteList.length > 0 && currentLocale === 'fi') {
-      cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
-    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
-      filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
+    if (cultureRouteList && cultureRouteList.length > 0 && locale === 'fi') {
+      cultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
+    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && locale !== 'fi') {
+      filteredCultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
     }
-  }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
+  }, [cultureRouteList, filteredCultureRouteList, locale]);
 
   /**
    * Sort routes in alphapethical order.
@@ -129,12 +124,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       sv: 'name_sv',
     };
     if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]], undefined, {
+      bicycleRouteList.sort((a, b) => a[objKeys[locale]].localeCompare(b[objKeys[locale]], undefined, {
         numeric: true,
         sensivity: 'base',
       }));
     }
-  }, [bicycleRouteList, currentLocale]);
+  }, [bicycleRouteList, locale]);
 
   /**
    * Toggle functions for main user types
@@ -308,9 +303,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       >
         <Typography
           variant="body2"
-          aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+          aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
         >
-          {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+          {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
@@ -324,8 +319,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setCultureRouteState(item.id, i)}
       >
-        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}>
-          {selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}
+        <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
+          {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
@@ -361,7 +356,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                       <Description
                         key={route.id}
                         route={route}
-                        currentLocale={currentLocale}
+                        currentLocale={locale}
                         showDescriptionText={showDescriptionText}
                         setShowDescriptionText={setShowDescriptionText}
                       />
@@ -369,10 +364,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   : null}
                 {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
               </div>
-              {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
+              {openCultureRouteList && (locale === 'en' || locale === 'sv')
                 ? renderCultureRoutes(filteredCultureRouteList, cultureRouteIndex)
                 : null}
-              {openCultureRouteList && currentLocale === 'fi'
+              {openCultureRouteList && locale === 'fi'
                 ? renderCultureRoutes(cultureRouteList, cultureRouteIndex)
                 : null}
               <div className={classes.buttonContainer}>
