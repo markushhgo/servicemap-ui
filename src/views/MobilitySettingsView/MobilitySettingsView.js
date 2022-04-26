@@ -133,7 +133,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
       sv: 'name_sv',
     };
     if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]]));
+      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]], undefined, {
+        numeric: true,
+        sensivity: 'base',
+      }));
     }
   }, [bicycleRouteList, currentLocale]);
 
@@ -273,7 +276,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           }}
           onChange={onChangeValue}
         />
-)}
+      )}
       className={classes.formLabel}
     />
   );
@@ -315,7 +318,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderBicycleRoutes = (inputData, activeIdx) => inputData && inputData.length > 0
+  const renderBicycleRoutes = (inputData, activeIdx) => inputData
+    && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
@@ -323,13 +327,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setBicycleRouteState(i, item.name_fi)}
       >
-        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}>
+        <Typography
+          variant="body2"
+          aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+        >
           {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
 
-  const renderCultureRoutes = (inputData, activeIdx) => inputData && inputData.length > 0
+  const renderCultureRoutes = (inputData, activeIdx) => inputData
+    && inputData.length > 0
     && inputData.map((item, i) => (
       <Button
         key={item.id}
@@ -421,8 +429,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
-      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
+      {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
     </div>
   );
 };

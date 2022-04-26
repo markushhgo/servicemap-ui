@@ -639,6 +639,8 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baseras på webbplatsen latauskartta.fi:s information som underhålls av Sähköautoilijat ry.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
+  'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
+  'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Skärgårdens ringväg tar dig genom natur- och kulturlandskap. Längs den ca 250 kilometer långa Ringvägen hittar du ett flertal skärgårdsbyar, tolv broar och nio färjor. Med bil kör du hela Ringvägen på en dag – men varför inte ta längre tid på dig? Cykla eller vandra och övernatta på vägen. (kissmyturku.fi)',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

@@ -2,10 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
-const RouteLength = ({
-  classes, intl, route,
-}) => {
+const RouteLength = ({ classes, intl, route }) => {
   const formatRoutelength = inputLength => Math.round(inputLength / 1000);
+
+  const renderRouteText = (routeName) => {
+    switch (routeName) {
+      case 'EuroVelo':
+        return (
+          <Typography component="p" variant="body2" className={classes.margin}>
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.euroVelo' })}
+          </Typography>
+        );
+      case 'Saariston rengastie':
+        return (
+          <Typography component="p" variant="body2" className={classes.margin}>
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail' })}
+          </Typography>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className={classes.container}>
@@ -20,6 +37,7 @@ const RouteLength = ({
           {' '}
           km.
         </Typography>
+        {renderRouteText(route.name_fi)}
       </div>
     </div>
   );
