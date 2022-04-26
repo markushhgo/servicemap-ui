@@ -8,7 +8,7 @@ import rentalCarIcon from '../../../../node_modules/servicemap-ui-turku/assets/i
 import providerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_24rent.svg';
 
 const RentalCars = ({ classes }) => {
-  const [iotData, setIotData] = useState(null);
+  const [rentalCarsData, setRentalCarsData] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(13);
 
   const { openMobilityPlatform, showRentalCars } = useContext(MobilityPlatformContext);
@@ -31,16 +31,16 @@ const RentalCars = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchIotData(apiUrl, 'R24', setIotData);
+      fetchIotData(apiUrl, 'R24', setRentalCarsData);
     }
-  }, [openMobilityPlatform, setIotData]);
+  }, [openMobilityPlatform, setRentalCarsData]);
 
   return (
     <>
       {showRentalCars ? (
         <div>
-          {iotData
-            && iotData.map(item => (
+          {rentalCarsData && rentalCarsData.length > 0
+            && rentalCarsData.filter(item => item.availabilityData.available).map(item => (
               <Marker
                 key={item.id}
                 icon={customIcon}
