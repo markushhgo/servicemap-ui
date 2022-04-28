@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
-import { useMapEvents } from 'react-leaflet';
+import { useMapEvents, useMap } from 'react-leaflet';
 import RentalCarsContent from './components/RentalCarsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
@@ -18,15 +18,15 @@ const RentalCars = ({ classes }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const map = useMapEvents({
+  const mapEvent = useMapEvents({
     zoomend() {
-      setZoomLevel(map.getZoom());
+      setZoomLevel(mapEvent.getZoom());
     },
   });
 
   const customIcon = icon({
-    iconUrl: zoomLevel < 15 ? rentalCarIcon : providerIcon,
-    iconSize: zoomLevel < 15 ? [45, 45] : [50, 56],
+    iconUrl: zoomLevel < 14 ? rentalCarIcon : providerIcon,
+    iconSize: zoomLevel < 14 ? [45, 45] : [50, 56],
   });
 
   useEffect(() => {
@@ -34,6 +34,18 @@ const RentalCars = ({ classes }) => {
       fetchIotData(apiUrl, 'R24', setRentalCarsData);
     }
   }, [openMobilityPlatform, setRentalCarsData]);
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (showRentalCars && rentalCarsData && rentalCarsData.length > 0) {
+      const bounds = [];
+      rentalCarsData.forEach((item) => {
+        bounds.push([item.homeLocationData.coordinates.latitude, item.homeLocationData.coordinates.longitude]);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showRentalCars]);
 
   return (
     <>
