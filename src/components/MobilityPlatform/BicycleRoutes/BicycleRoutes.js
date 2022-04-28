@@ -3,8 +3,7 @@ import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchBicycleRoutesGeometry } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const BicycleRoutes = () => {
-  const [bicycleRoutes, setBicycleRoutes] = useState(null);
-  const [activeBicycleRoute, setActiveBicycleRoute] = useState(null);
+  const [bicycleRoutes, setBicycleRoutes] = useState([]);
 
   const { openMobilityPlatform, showBicycleRoutes, bicycleRouteName } = useContext(MobilityPlatformContext);
 
@@ -21,23 +20,8 @@ const BicycleRoutes = () => {
     }
   }, [openMobilityPlatform, setBicycleRoutes]);
 
-  useEffect(() => {
-    const routeData = [];
-    if (bicycleRoutes) {
-      bicycleRoutes.forEach((item) => {
-        if (item.bicycle_network_name === bicycleRouteName) {
-          routeData.push(item);
-        }
-        setActiveBicycleRoute(routeData);
-      });
-    }
-  }, [bicycleRoutes, bicycleRouteName]);
 
-  useEffect(() => {
-    if (!showBicycleRoutes) {
-      setActiveBicycleRoute(null);
-    }
-  }, [showBicycleRoutes]);
+  const activeBicycleRoute = bicycleRoutes.filter(item => item.bicycle_network_name === bicycleRouteName);
 
   return (
     <>
