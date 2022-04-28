@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useMap } from 'react-leaflet';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ParkingSpacesContent from './components/ParkingSpacesContent';
 
 const ParkingSpaces = () => {
-  const [parkingSpaces, setParkingSpaces] = useState(null);
+  const [parkingSpaces, setParkingSpaces] = useState({});
   const [parkingStatistics, setParkingStatistics] = useState([]);
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
@@ -28,12 +29,24 @@ const ParkingSpaces = () => {
     } return inputData;
   };
 
+  const map = useMap();
+
+  useEffect(() => {
+    if (showParkingSpaces && parkingSpaces && Object.entries(parkingSpaces).length > 0) {
+      const bounds = [];
+      parkingSpaces.features.forEach((item) => {
+        bounds.push(swapCoords(item.geometry.coordinates));
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showParkingSpaces]);
+
   return (
     <>
       {showParkingSpaces ? (
         <>
           <div>
-            {parkingSpaces
+            {parkingSpaces && Object.entries(parkingSpaces).length > 0
               && parkingSpaces.features.map(item => (
                 <Polygon key={item.id} pathOptions={blueOptions} positions={swapCoords(item.geometry.coordinates)}>
                   <Popup>
