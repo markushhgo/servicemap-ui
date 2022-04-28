@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const BicycleStandContent = ({
-  classes, standName, standModel, standCover, hullLockable, numOfPlaces, numOfStands, intl,
+  classes, bicycleStand, intl,
 }) => {
   const titleTypo = (props = {}) => (
     <div className={classes.title}>
       <Typography variant="subtitle1" {...props}>
-        {standName}
+        {bicycleStand.name}
       </Typography>
     </div>
   );
@@ -31,7 +31,7 @@ const BicycleStandContent = ({
           :
         </strong>
         {' '}
-        {standModel}
+        {bicycleStand.extra.model}
       </Typography>
       <Typography variant="body2" display="block">
         <strong>
@@ -41,7 +41,7 @@ const BicycleStandContent = ({
           :
         </strong>
         {' '}
-        {numOfPlaces}
+        {bicycleStand.extra.number_of_places}
       </Typography>
       <Typography variant="body2" display="block">
         <strong>
@@ -51,9 +51,9 @@ const BicycleStandContent = ({
           :
         </strong>
         {' '}
-        {numOfStands}
+        {bicycleStand.extra.number_of_stands}
       </Typography>
-      {standCover ? (
+      {bicycleStand.extra.covered ? (
         <Typography variant="body2" display="block">
           {intl.formatMessage({
             id: message4Id,
@@ -66,7 +66,7 @@ const BicycleStandContent = ({
           })}
         </Typography>
       )}
-      {hullLockable ? (
+      {bicycleStand.extra.hull_lockable ? (
         <Typography variant="body2" display="block">
           {intl.formatMessage({
             id: message6Id,
@@ -100,22 +100,12 @@ const BicycleStandContent = ({
 
 BicycleStandContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  standName: PropTypes.string,
-  standModel: PropTypes.string,
-  standCover: PropTypes.bool,
-  hullLockable: PropTypes.bool,
-  numOfPlaces: PropTypes.number,
-  numOfStands: PropTypes.number,
+  bicycleStand: PropTypes.objectOf(PropTypes.any),
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 BicycleStandContent.defaultProps = {
-  standName: '',
-  standModel: '',
-  standCover: false,
-  hullLockable: false,
-  numOfPlaces: 0,
-  numOfStands: 0,
+  bicycleStand: {},
 };
 
 export default BicycleStandContent;

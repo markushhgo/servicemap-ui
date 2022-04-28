@@ -20,14 +20,13 @@ const BicycleRoutes = () => {
     }
   }, [openMobilityPlatform, setBicycleRoutes]);
 
-
   const activeBicycleRoute = bicycleRoutes.filter(item => item.bicycle_network_name === bicycleRouteName);
 
   return (
     <>
       {showBicycleRoutes && (
         <div>
-          {activeBicycleRoute
+          {activeBicycleRoute && activeBicycleRoute.length > 0
             && activeBicycleRoute.map(item => (
               <div key={item.id}>
                 <Polyline key={item.geometry} weight={8} pathOptions={blueOptions} positions={item.geometry_coords} />
