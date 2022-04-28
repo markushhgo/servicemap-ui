@@ -22,7 +22,6 @@ const ParkingSpaces = () => {
     }
   }, [openMobilityPlatform, setParkingSpaces, setParkingStatistics]);
 
-
   const swapCoords = (inputData) => {
     if (inputData.length > 0) {
       return inputData.map(item => item.map(v => v.map(j => [j[1], j[0]])));

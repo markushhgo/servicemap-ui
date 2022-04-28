@@ -62,6 +62,16 @@ const fetchIotData = async (apiUrl, sourceName, setData) => {
   }
 };
 
+const fetchPaymentZonesData = async (apiUrl, type, pageSize, setData) => {
+  try {
+    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326&latlon=true`);
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
 export {
   fetchMobilityMapData,
   fetchCultureRouteNames,
@@ -69,4 +79,5 @@ export {
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
   fetchIotData,
+  fetchPaymentZonesData,
 };

@@ -591,6 +591,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
+  'mobilityPlatform.menu.showPaymentZones': 'Parking charging zones', // TODO verify
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -630,6 +631,11 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Payment type', // TODO verify
   'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking', // TODO verify
   'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left', // TODO verify
+  'mobilityPlatform.content.paymentZones.zone': 'Charging zone',
+  'mobilityPlatform.content.paymentZones.price': 'Price',
+  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin', // TODO translate
+  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin', // TODO translate
+  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

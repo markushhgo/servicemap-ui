@@ -103,6 +103,9 @@ const DefaultLayout = (props) => {
   const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
+  const [showPaymentZones, setShowPaymentZones] = useState(false);
+  const [paymentZones, setPaymentZones] = useState([]);
+  const [paymentZoneId, setPaymentZoneId] = useState(null);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -198,6 +201,12 @@ const DefaultLayout = (props) => {
                       setShowBicycleRoutes,
                       bicycleRouteName,
                       setBicycleRouteName,
+                      showPaymentZones,
+                      setShowPaymentZones,
+                      paymentZones,
+                      setPaymentZones,
+                      paymentZoneId,
+                      setPaymentZoneId,
                     }}
                   >
                     <ViewRouter />
@@ -218,6 +227,10 @@ const DefaultLayout = (props) => {
                     showParkingSpaces,
                     showBicycleRoutes,
                     bicycleRouteName,
+                    showPaymentZones,
+                    paymentZones,
+                    setPaymentZones,
+                    paymentZoneId,
                   }}
                 >
                   <MapView

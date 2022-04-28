@@ -4,6 +4,7 @@ import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
 import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 import BicycleRoutes from '../../components/MobilityPlatform/BicycleRoutes';
 import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
+import PaymentZones from '../../components/MobilityPlatform/PaymentZones';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -12,6 +13,7 @@ const MobilityPlatformMapView = () => (
     <BicycleRoutes />
     <CultureRoutes />
     <ParkingSpaces />
+    <PaymentZones />
   </>
 );
 

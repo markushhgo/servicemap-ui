@@ -593,6 +593,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser', // TODO verify
+  'mobilityPlatform.menu.showPaymentZones': 'Parkeringsavgiftsområden',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -632,6 +633,11 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Betalnings typ', // TODO verify
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsparkering', // TODO verify
   'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä', // TODO translate
+  'mobilityPlatform.content.paymentZones.zone': 'Parkeringsavgiftsområd',
+  'mobilityPlatform.content.paymentZones.price': 'Pris',
+  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin', // TODO translate
+  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin', // TODO translate
+  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

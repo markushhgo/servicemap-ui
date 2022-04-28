@@ -1,12 +1,12 @@
 const styles = theme => ({
   topBarColor: {
-    background: theme.palette.backgroundTurku.main,
+    background: theme.palette.background.main,
   },
   buttonWhite: {
     width: '100%',
-    textAlign: 'left',
+    justifyContent: 'left',
     textTransform: 'none',
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
   },
   button: {
     width: '100%',
@@ -130,9 +130,7 @@ const styles = theme => ({
   },
   buttonList: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column',
   },
 });
 

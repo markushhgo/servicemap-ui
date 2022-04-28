@@ -595,6 +595,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
+  'mobilityPlatform.menu.showPaymentZones': 'Pysäköinnin maksuvyöhykkeet',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -634,6 +635,11 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
   'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
   'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
+  'mobilityPlatform.content.paymentZones.zone': 'Vyöhyke',
+  'mobilityPlatform.content.paymentZones.price': 'Hinta',
+  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin',
+  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin',
+  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
