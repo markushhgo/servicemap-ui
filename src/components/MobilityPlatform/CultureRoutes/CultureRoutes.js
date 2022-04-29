@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import CultureRouteUnits from '../CultureRouteUnits';
 
 const CultureRoutes = () => {
   const [cultureRoutesGeometry, setCultureRoutesGeometry] = useState([]);
-  const [activeCultureRoute, setActiveCultureRoute] = useState(null);
 
   const { openMobilityPlatform, showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
 
@@ -22,17 +22,7 @@ const CultureRoutes = () => {
     }
   }, [openMobilityPlatform, setCultureRoutesGeometry]);
 
-  useEffect(() => {
-    if (cultureRoutesGeometry && cultureRoutesGeometry.length > 0) {
-      setActiveCultureRoute(cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId));
-    }
-  }, [cultureRoutesGeometry, cultureRouteId]);
-
-  useEffect(() => {
-    if (!showCultureRoutes) {
-      setActiveCultureRoute(null);
-    }
-  }, [showCultureRoutes]);
+  const activeCultureRoute = cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId);
 
   const swapCoords = (inputData) => {
     if (inputData && inputData.length > 0) {
@@ -40,6 +30,15 @@ const CultureRoutes = () => {
     }
     return inputData;
   };
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (showCultureRoutes && activeCultureRoute) {
+      const bounds = swapCoords(activeCultureRoute.geometry_coords);
+      map.fitBounds(bounds);
+    }
+  }, [showCultureRoutes, activeCultureRoute]);
 
   return (
     <>

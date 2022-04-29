@@ -239,7 +239,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <FormControlLabel
       key={keyVal}
       label={(
-        <Typography variant="body2">
+        <Typography
+          variant="body2"
+          aria-label={intl.formatMessage({
+            id: msgId,
+          })}
+        >
           {intl.formatMessage({
             id: msgId,
           })}
@@ -265,6 +270,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       onClick={() => onClickFunc()}
       variant="outlined"
       className={settingState ? classes.buttonActive : classes.button}
+      aria-label={intl.formatMessage({
+        id: translationId,
+      })}
     >
       <ReactSVG className={settingState ? `${classes.iconActive}` : `${classes.icon}`} src={iconName} />
       <Typography variant="body2">
@@ -286,7 +294,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (input) {
       return (
         <div className={classes.paragraph}>
-          <Typography component="p" variant="subtitle2">
+          <Typography
+            component="p"
+            variant="subtitle2"
+            aria-label={input.length > 0
+              ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
+              : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
+          >
             {input.length > 0
               ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
               : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}

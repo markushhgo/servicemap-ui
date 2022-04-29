@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchBicycleRoutesGeometry } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const BicycleRoutes = () => {
-  const [bicycleRoutes, setBicycleRoutes] = useState(null);
-  const [activeBicycleRoute, setActiveBicycleRoute] = useState(null);
+  const [bicycleRoutes, setBicycleRoutes] = useState([]);
 
   const { openMobilityPlatform, showBicycleRoutes, bicycleRouteName } = useContext(MobilityPlatformContext);
 
@@ -21,29 +21,25 @@ const BicycleRoutes = () => {
     }
   }, [openMobilityPlatform, setBicycleRoutes]);
 
-  useEffect(() => {
-    const routeData = [];
-    if (bicycleRoutes) {
-      bicycleRoutes.forEach((item) => {
-        if (item.bicycle_network_name === bicycleRouteName) {
-          routeData.push(item);
-        }
-        setActiveBicycleRoute(routeData);
-      });
-    }
-  }, [bicycleRoutes, bicycleRouteName]);
+  const activeBicycleRoute = bicycleRoutes.filter(item => item.bicycle_network_name === bicycleRouteName);
+
+  const map = useMap();
 
   useEffect(() => {
-    if (!showBicycleRoutes) {
-      setActiveBicycleRoute(null);
+    if (showBicycleRoutes && activeBicycleRoute && activeBicycleRoute.length > 0) {
+      const bounds = [];
+      activeBicycleRoute.forEach((item) => {
+        bounds.push(item.geometry_coords);
+      });
+      map.fitBounds([bounds]);
     }
-  }, [showBicycleRoutes]);
+  }, [showBicycleRoutes, activeBicycleRoute]);
 
   return (
     <>
       {showBicycleRoutes && (
         <div>
-          {activeBicycleRoute
+          {activeBicycleRoute && activeBicycleRoute.length > 0
             && activeBicycleRoute.map(item => (
               <div key={item.id}>
                 <Polyline key={item.geometry} weight={8} pathOptions={blueOptions} positions={item.geometry_coords} />
