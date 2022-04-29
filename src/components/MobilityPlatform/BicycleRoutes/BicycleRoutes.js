@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchBicycleRoutesGeometry } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
@@ -21,6 +22,18 @@ const BicycleRoutes = () => {
   }, [openMobilityPlatform, setBicycleRoutes]);
 
   const activeBicycleRoute = bicycleRoutes.filter(item => item.bicycle_network_name === bicycleRouteName);
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (showBicycleRoutes && activeBicycleRoute && activeBicycleRoute.length > 0) {
+      const bounds = [];
+      activeBicycleRoute.forEach((item) => {
+        bounds.push(item.geometry_coords);
+      });
+      map.fitBounds([bounds]);
+    }
+  }, [showBicycleRoutes, activeBicycleRoute]);
 
   return (
     <>
