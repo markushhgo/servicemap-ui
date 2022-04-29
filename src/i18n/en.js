@@ -630,6 +630,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
+  'mobilityPlatform.content.rentalCars.link': 'Homepage of the service provider',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

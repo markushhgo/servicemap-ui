@@ -632,6 +632,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Bil information',
   'mobilityPlatform.content.rentalCars.available': 'Tillgängliga', // TODO verify
   'mobilityPlatform.content.rentalCars.reserved': 'Bokad', // TODO verify
+  'mobilityPlatform.content.rentalCars.link': 'Homepage of the service provider', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

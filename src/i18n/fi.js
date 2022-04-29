@@ -634,6 +634,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
+  'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Reitin kuvaus',
@@ -642,7 +643,7 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Turun saaristossa kiertävä matkailutie vie halki hienojen luonto- ja kulttuurimaisemien. Noin 250 kilometrin matkalla näet 12 siltaa, yhdeksän lossia ja lauttaa sekä monta hienoa saaristopitäjää. Autolla kierrät Rengastien jopa päivässä, mutta miksi kiirehtiä näin ihanissa maisemissa. Pyöräile tai patikoi, ja majoitu matkanvarren majapaikoissa. (kissmyturku.fi)',
-  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Tiedot niistä tulevat 24Rent Oy:lta.', // TODO verify
+  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.', // TODO verify
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

@@ -10,4 +10,7 @@ export default theme => ({
   text: {
     paddingBottom: theme.spacing(1),
   },
+  link: {
+    color: '#0000EE',
+  },
 });

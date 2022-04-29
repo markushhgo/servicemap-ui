@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Typography } from '@material-ui/core';
+import { Link, Typography } from '@material-ui/core';
 
 const RentalCarsContent = ({ classes, intl, car }) => {
   const locale = useSelector(state => state.user.locale);
@@ -64,6 +64,16 @@ const RentalCarsContent = ({ classes, intl, car }) => {
     <div className={classes.container}>
       {titleText('mobilityPlatform.content.rentalCars.title')}
       {contentText('mobilityPlatform.content.rentalCars.provider', serviceProvider)}
+      <div className={classes.text}>
+        <Link target="_blank" href="https://www.24rent.fi">
+          <Typography className={classes.link} variant="body2">
+            {intl.formatMessage({
+              id: 'mobilityPlatform.content.rentalCars.link',
+            })}
+
+          </Typography>
+        </Link>
+      </div>
       {renderCarInfo(
         'mobilityPlatform.content.rentalCars.carInfo',
         car.vehicleModelData.manufacturer,
