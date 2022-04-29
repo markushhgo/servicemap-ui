@@ -4,7 +4,12 @@ import { Typography } from '@material-ui/core';
 
 const InfoTextBox = ({ classes, infoText, intl }) => (
   <div className={classes.container}>
-    <Typography variant="body2">
+    <Typography
+      variant="body2"
+      aria-label={intl.formatMessage({
+        id: infoText,
+      })}
+    >
       {intl.formatMessage({
         id: infoText,
       })}
