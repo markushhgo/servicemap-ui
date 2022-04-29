@@ -430,11 +430,17 @@ const EcoCounterContent = ({
     } else setUserTypesList(bicycleOnly);
   }, [stationId]);
 
+  const renderStationName = (input) => {
+    if (input === 'Teatteri ranta') {
+      return 'Teatteriranta';
+    } return input;
+  };
+
   return (
     <>
       <div className={classes.ecoCounterHeader}>
         <Typography component="h4" className={classes.headerSubtitle}>
-          {stationName}
+          {renderStationName(stationName)}
         </Typography>
         <div className={classes.headerDate}>
           {!isDatePickerOpen ? (
