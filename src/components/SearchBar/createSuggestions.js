@@ -1,5 +1,3 @@
-// TODO: need locale parameters to new search fetch
-
 import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
 
 const createSuggestions = (query, abortController, getLocaleText, citySettings, locale) => async () => {
@@ -16,7 +14,7 @@ const createSuggestions = (query, abortController, getLocaleText, citySettings, 
     municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : 'turku',
   };
 
-  const results = await smAPI.search(query, additionalOptions);
+  const results = await smAPI.search(query, locale, citySettings, additionalOptions);
 
   // Handle address results
   results.forEach((item) => {
