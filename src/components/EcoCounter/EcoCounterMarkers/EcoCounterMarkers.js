@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import EcoCounterContent from '../EcoCounterContent';
 import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
 import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 
 const EcoCounterMarkers = ({ classes }) => {
-  const [ecoCounterStations, setEcoCounterStations] = useState(null);
+  const [ecoCounterStations, setEcoCounterStations] = useState([]);
 
   const { openMobilityPlatform, showEcoCounter } = useContext(MobilityPlatformContext);
 
@@ -26,12 +27,24 @@ const EcoCounterMarkers = ({ classes }) => {
     }
   }, [openMobilityPlatform, setEcoCounterStations]);
 
+  const map = useMap();
+
+  useEffect(() => {
+    if (showEcoCounter && ecoCounterStations && ecoCounterStations.length > 0) {
+      const bounds = [];
+      ecoCounterStations.forEach((item) => {
+        bounds.push([item.lat, item.lon]);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showEcoCounter]);
+
   return (
     <>
       {showEcoCounter ? (
         <div>
           <div>
-            {ecoCounterStations && ecoCounterStations.map(item => (
+            {ecoCounterStations && ecoCounterStations.length > 0 && ecoCounterStations.map(item => (
               <Marker key={item.id} icon={ecoCounterIcon} position={[item.lat, item.lon]}>
                 <div className={classes.popupWrapper}>
                   <Popup className="ecocounter-popup">
