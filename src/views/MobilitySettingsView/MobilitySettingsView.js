@@ -29,7 +29,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
-  const [apiUrl, setApiUrl] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -37,9 +36,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showCultureRoutes,
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
+    showBicycleRoutes,
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
@@ -47,37 +48,55 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const locale = useSelector(state => state.user.locale);
 
-  /**
-   * Avoids pre-render causing window is not defined- error.
-   * @param {window}
-   * @returns {env var || MOBILITY_PLATFORM_API} and sets it into state
-   */
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
-    }
-  }, [setApiUrl]);
-
   useEffect(() => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
   /**
    * Fetch list of routes
-   * @param {apiUrl}
+   * @param {('react').SetStateAction}
    * @returns {Array} and sets it into state
    */
   useEffect(() => {
-    if (apiUrl) {
-      fetchCultureRouteNames(apiUrl, setCultureRouteList);
-    }
-  }, [apiUrl, setCultureRouteList]);
+    fetchCultureRouteNames(setCultureRouteList);
+  }, [setCultureRouteList]);
 
   useEffect(() => {
-    if (apiUrl) {
-      fetchBicycleRouteNames(apiUrl, setBicycleRouteList);
+    fetchBicycleRouteNames(setBicycleRouteList);
+  }, [setBicycleRouteList]);
+
+  /**
+   * Check is visibility boolean values are true
+   * This would be so if user has not hid them, but left mobility map before returning
+   * @param {Boolean} visibility
+   * @param {('react').SetStateAction}
+   */
+  const checkVisibilityValues = (visibility, setSettings) => {
+    if (visibility) {
+      setSettings(true);
     }
-  }, [apiUrl, setBicycleRouteList]);
+  };
+
+  useEffect(() => {
+    checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
+  }, [showBicycleStands]);
+
+  useEffect(() => {
+    checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
+    checkVisibilityValues(showBicycleRoutes, setOpenBicycleRouteList);
+  }, [showBicycleRoutes]);
+
+  useEffect(() => {
+    checkVisibilityValues(showCultureRoutes, setOpenWalkSettings);
+    checkVisibilityValues(showCultureRoutes, setOpenCultureRouteList);
+  }, [showCultureRoutes]);
+
+  useEffect(() => {
+    if (showEcoCounter) {
+      setOpenWalkSettings(true);
+      setOpenBicycleSettings(true);
+    }
+  }, [showEcoCounter]);
 
   const nameKeys = {
     fi: 'name',
@@ -86,9 +105,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   /**
-   * @param {Array}
+   * @param {Array and locale}
    * @function filter array
-   * @returns {Array} and sets it into state
+   * @returns {Array and ('react').SetStateAction}
    */
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0) {
@@ -315,10 +334,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setBicycleRouteState(i, item.name_fi)}
       >
-        <Typography
-          variant="body2"
-          aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
-        >
+        <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
           {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
         </Typography>
       </Button>

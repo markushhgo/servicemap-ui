@@ -9,8 +9,6 @@ const CultureRoutes = () => {
 
   const { openMobilityPlatform, showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Polyline } = global.rL;
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
@@ -18,7 +16,7 @@ const CultureRoutes = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchCultureRoutesData(apiUrl, 'CRG', 20, setCultureRoutesGeometry);
+      fetchCultureRoutesData('CRG', 20, setCultureRoutesGeometry);
     }
   }, [openMobilityPlatform, setCultureRoutesGeometry]);
 

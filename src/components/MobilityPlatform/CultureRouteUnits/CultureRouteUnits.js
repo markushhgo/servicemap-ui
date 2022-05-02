@@ -13,8 +13,6 @@ const CultureRouteUnits = ({ classes, cultureRoute }) => {
 
   const { openMobilityPlatform, cultureRouteId } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const locale = useSelector(state => state.user.locale);
 
   const { Marker, Popup } = global.rL;
@@ -27,7 +25,7 @@ const CultureRouteUnits = ({ classes, cultureRoute }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchCultureRoutesData(apiUrl, 'CRU', 200, setCultureRouteUnits);
+      fetchCultureRoutesData('CRU', 200, setCultureRouteUnits);
     }
   }, [openMobilityPlatform, setCultureRouteUnits]);
 

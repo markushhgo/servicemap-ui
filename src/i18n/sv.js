@@ -223,6 +223,7 @@ const translations = {
   'general.backToHome': 'Stäng sökningen och gå tillbaka till början',
   'general.backToStart': 'Gå tillbaka till början av sidan',
   'general.back.serviceTree': 'Gå tillbaka till servicekatalogen',
+  'general.back.mobilityPlatform': 'Gå tillbaka',
   'general.cancel': 'Ångra',
   'general.close': 'Stäng',
   'general.distance.meters': 'Meters avstånd',
@@ -592,6 +593,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
+  'mobilityPlatform.menu.routes.name': 'Rutt',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',

@@ -223,6 +223,7 @@ const translations = {
   'general.backToHome': 'Sulje haku ja palaa alkuun',
   'general.backToStart': 'Palaa sivun alkuun',
   'general.back.serviceTree': 'Palaa palveluluettelosivulle',
+  'general.back.mobilityPlatform': 'Palaa',
   'general.cancel': 'Peruuta',
   'general.close': 'Sulje',
   'general.distance.meters': 'Metrin päässä',
@@ -594,6 +595,7 @@ const translations = {
   'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
+  'mobilityPlatform.menu.routes.name': 'Reitti',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -629,7 +631,7 @@ const translations = {
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
 
   // Info text
-  'mobilityPlatform.info.description.title': 'Reitin kuvaus',
+  'mobilityPlatform.info.description.title': 'Tietoja reitistä',
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
