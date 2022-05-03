@@ -7,14 +7,14 @@ import config from './config';
 const { server } = config;
 
 fixture`Search view test`
-  .page`http://${server.address}:${server.port}/fi/search?q=uimastadion`
+  .page`http://${server.address}:${server.port}/fi/search?q=uimahalli`
   .beforeEach(async () => {
     await waitForReact();
   });
 
 const getLocation = ClientFunction(() => document.location.href);
 
-const searchUnits = async (t, search = 'uimastadion') => {
+const searchUnits = async (t, search = 'uimahalli') => {
   const input = ReactSelector('WithStyles(ForwardRef(InputBase))');
 
   // Make new search
@@ -118,7 +118,7 @@ test('Address search does work', async (t) => {
   const distanceText = Selector('div[class*="ResultItem-rightColumn"]');
 
   await t
-    .typeText(addressInput, 'mannerheimintie')
+    .typeText(addressInput, 'aurakatu')
     .expect(suggestions.count).gt(0) // Expect address suggestions to render
     .pressKey('enter')
     .expect(marker.count).eql(1) // Expect usermarker to exist
