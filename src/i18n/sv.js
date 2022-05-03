@@ -582,7 +582,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
-  'mobilityPlatform.menu.showGasStations': 'Tankstationer med gas',
+  'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
@@ -627,12 +627,12 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
-  'mobilityPlatform.content.rentalCars.provider': 'Samåkningsbiltjänst',
+  'mobilityPlatform.content.rentalCars.provider': 'Tjänsteleverantör',
   'mobilityPlatform.content.rentalCars.address': 'Plats',
-  'mobilityPlatform.content.rentalCars.carInfo': 'Bil information',
-  'mobilityPlatform.content.rentalCars.available': 'Tillgängliga', // TODO verify
-  'mobilityPlatform.content.rentalCars.reserved': 'Bokad', // TODO verify
-  'mobilityPlatform.content.rentalCars.link': 'Homepage of the service provider', // TODO translate
+  'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
+  'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
+  'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
+  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -641,7 +641,8 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Skärgårdens ringväg tar dig genom natur- och kulturlandskap. Längs den ca 250 kilometer långa Ringvägen hittar du ett flertal skärgårdsbyar, tolv broar och nio färjor. Med bil kör du hela Ringvägen på en dag – men varför inte ta längre tid på dig? Cykla eller vandra och övernatta på vägen. (kissmyturku.fi)',
-  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Tiedot niistä tulevat 24Rent Oy:lta.', // TODO translate
+  'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Auraås cykelrutt är 70 km nationallandskap (väg 222) från Oripää till Åbo. Längs vägen möter du ståtliga herrårdsbyggnader, storgods, unika museer och lockande naturstigar.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

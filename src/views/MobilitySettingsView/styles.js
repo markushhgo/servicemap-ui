@@ -1,6 +1,6 @@
 const styles = theme => ({
   topBarColor: {
-    background: theme.palette.backgroundTurku.main,
+    background: theme.palette.background.main,
   },
   buttonWhite: {
     width: '100%',

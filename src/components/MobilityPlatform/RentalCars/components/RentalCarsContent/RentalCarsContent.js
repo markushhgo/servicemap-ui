@@ -58,13 +58,13 @@ const RentalCarsContent = ({ classes, intl, car }) => {
     return null;
   };
 
-  const serviceProvider = '24Rent';
+  const serviceProvider = '24Rent Oy';
 
   return (
     <div className={classes.container}>
       {titleText('mobilityPlatform.content.rentalCars.title')}
       {contentText('mobilityPlatform.content.rentalCars.provider', serviceProvider)}
-      <div className={classes.text}>
+      <div className={classes.linkContainer}>
         <Link target="_blank" href="https://www.24rent.fi">
           <Typography className={classes.link} variant="body2">
             {intl.formatMessage({

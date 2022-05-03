@@ -580,7 +580,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
-  'mobilityPlatform.menu.showGasStations': 'Gas filling stations',
+  'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
   'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
@@ -630,7 +630,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
-  'mobilityPlatform.content.rentalCars.link': 'Homepage of the service provider',
+  'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -639,7 +639,8 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'This tourist route going round the Archipelago of Turku takes you through the magnificent natural and cultural landscapes. Along the 250 km route you will encounter 12 bridges, 9 ferries and many idyllic Archipelago parishes. By car you can drive the route in a day, but why hurry? Bike and hike and stay along the way. (kissmyturku.fi)',
-  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Tiedot niistä tulevat 24Rent Oy:lta.', // TODO translate
+  'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'The Aura river route is 70 km of national landscapes  (road 222) from Oripää to Turku. Along the way you will find historic mansions, large estates, unique museums and inviting nature paths.',
+  'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
 
   // Ecocounter
   'ecocounter.hour': 'Hourly',

@@ -47,6 +47,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setBicycleRouteName,
     showRentalCars,
     setShowRentalCars,
+    showGasFillingStations,
+    setShowGasFillingStations,
   } = useContext(MobilityPlatformContext);
 
   /**
@@ -174,6 +176,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowRentalCars(current => !current);
   };
 
+  const gasFillingStationsToggle = () => {
+    setShowGasFillingStations(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
@@ -253,6 +259,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showRentalCars',
       checkedValue: showRentalCars,
       onChangeValue: rentalCarsToggle,
+    },
+    {
+      type: 'gasFillingStations',
+      msgId: 'mobilityPlatform.menu.showGasFillingStations',
+      checkedValue: showGasFillingStations,
+      onChangeValue: gasFillingStationsToggle,
     },
   ];
 
@@ -446,6 +458,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
+      {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
     </div>
   );
 };
