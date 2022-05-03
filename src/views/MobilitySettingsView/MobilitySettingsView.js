@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
@@ -9,7 +10,7 @@ import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
-import { getCurrentLocale, selectRouteName } from '../../components/MobilityPlatform/utils/utils';
+import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
@@ -24,14 +25,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
-  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
+  const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
-  const [currentLocale, setCurrentLocale] = useState('fi');
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
-  const [apiUrl, setApiUrl] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -39,9 +38,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowEcoCounter,
     showBicycleStands,
     setShowBicycleStands,
+    showCultureRoutes,
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
+    showBicycleRoutes,
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
@@ -51,16 +52,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations,
   } = useContext(MobilityPlatformContext);
 
-  /**
-   * Avoids pre-render causing window is not defined- error.
-   * @param {window}
-   * @returns {env var || MOBILITY_PLATFORM_API} and sets it into state
-   */
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setApiUrl(window.nodeEnvSettings.MOBILITY_PLATFORM_API);
-    }
-  }, [setApiUrl]);
+  const locale = useSelector(state => state.user.locale);
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
@@ -68,27 +60,54 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   /**
    * Fetch list of routes
-   * @param {apiUrl}
+   * @param {('react').SetStateAction}
    * @returns {Array} and sets it into state
    */
   useEffect(() => {
-    if (apiUrl) {
-      fetchCultureRouteNames(apiUrl, setCultureRouteList);
-    }
-  }, [apiUrl, setCultureRouteList]);
+    fetchCultureRouteNames(setCultureRouteList);
+  }, [setCultureRouteList]);
 
   useEffect(() => {
-    if (apiUrl) {
-      fetchBicycleRouteNames(apiUrl, setBicycleRouteList);
-    }
-  }, [apiUrl, setBicycleRouteList]);
+    fetchBicycleRouteNames(setBicycleRouteList);
+  }, [setBicycleRouteList]);
 
   /**
-   * Set current language based on user selection
+   * Check is visibility boolean values are true
+   * This would be so if user has not hid them, but left mobility map before returning
+   * @param {Boolean} visibility
+   * @param {('react').SetStateAction}
    */
+  const checkVisibilityValues = (visibility, setSettings) => {
+    if (visibility) {
+      setSettings(true);
+    }
+  };
+
   useEffect(() => {
-    getCurrentLocale(intl.locale, setCurrentLocale);
-  }, [intl.locale]);
+    checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
+  }, [showBicycleStands]);
+
+  useEffect(() => {
+    checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
+    checkVisibilityValues(showBicycleRoutes, setOpenBicycleRouteList);
+  }, [showBicycleRoutes]);
+
+  useEffect(() => {
+    checkVisibilityValues(showCultureRoutes, setOpenWalkSettings);
+    checkVisibilityValues(showCultureRoutes, setOpenCultureRouteList);
+  }, [showCultureRoutes]);
+
+  useEffect(() => {
+    if (showEcoCounter) {
+      setOpenWalkSettings(true);
+      setOpenBicycleSettings(true);
+    }
+  }, [showEcoCounter]);
+
+  useEffect(() => {
+    checkVisibilityValues(showRentalCars, setOpenCarSettings);
+    checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations]);
 
   const nameKeys = {
     fi: 'name',
@@ -97,15 +116,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   /**
-   * @param {Array}
+   * @param {Array and locale}
    * @function filter array
-   * @returns {Array} and sets it into state
+   * @returns {Array and ('react').SetStateAction}
    */
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0) {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[currentLocale]]));
+      setLocalizedCultureRoutes(cultureRouteList.filter(item => item[nameKeys[locale]]));
     }
-  }, [cultureRouteList, currentLocale]);
+  }, [cultureRouteList, locale]);
 
   /**
    * Sort routes in alphapethical order based on current locale.
@@ -115,12 +134,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @returns {Array}
    */
   useEffect(() => {
-    if (cultureRouteList && cultureRouteList.length > 0 && currentLocale === 'fi') {
-      cultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
-    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && currentLocale !== 'fi') {
-      filteredCultureRouteList.sort((a, b) => a[nameKeys[currentLocale]].localeCompare(b[nameKeys[currentLocale]]));
+    if (cultureRouteList && cultureRouteList.length > 0 && locale === 'fi') {
+      cultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
+    } else if (localizedCultureRoutes && localizedCultureRoutes.length > 0 && locale !== 'fi') {
+      localizedCultureRoutes.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
     }
-  }, [cultureRouteList, filteredCultureRouteList, currentLocale]);
+  }, [cultureRouteList, localizedCultureRoutes, locale]);
 
   /**
    * Sort routes in alphapethical order.
@@ -135,12 +154,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       sv: 'name_sv',
     };
     if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[currentLocale]].localeCompare(b[objKeys[currentLocale]], undefined, {
+      bicycleRouteList.sort((a, b) => a[objKeys[locale]].localeCompare(b[objKeys[locale]], undefined, {
         numeric: true,
         sensivity: 'base',
       }));
     }
-  }, [bicycleRouteList, currentLocale]);
+  }, [bicycleRouteList, locale]);
 
   /**
    * Toggle functions for main user types
@@ -353,11 +372,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setBicycleRouteState(i, item.name_fi)}
       >
-        <Typography
-          variant="body2"
-          aria-label={selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
-        >
-          {selectRouteName(currentLocale, item.name_fi, item.name_en, item.name_sv)}
+        <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
+          {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
@@ -371,8 +387,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
         className={i === activeIdx ? classes.listButtonActive : classes.listButton}
         onClick={() => setCultureRouteState(item.id, i)}
       >
-        <Typography variant="body2" aria-label={selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}>
-          {selectRouteName(currentLocale, item.name, item.name_en, item.name_sv)}
+        <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
+          {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
         </Typography>
       </Button>
     ));
@@ -408,7 +424,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                       <Description
                         key={route.id}
                         route={route}
-                        currentLocale={currentLocale}
+                        currentLocale={locale}
                         showDescriptionText={showDescriptionText}
                         setShowDescriptionText={setShowDescriptionText}
                       />
@@ -416,10 +432,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   : null}
                 {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
               </div>
-              {openCultureRouteList && (currentLocale === 'en' || currentLocale === 'sv')
-                ? renderCultureRoutes(filteredCultureRouteList, cultureRouteIndex)
+              {openCultureRouteList && (locale === 'en' || locale === 'sv')
+                ? renderCultureRoutes(localizedCultureRoutes, cultureRouteIndex)
                 : null}
-              {openCultureRouteList && currentLocale === 'fi'
+              {openCultureRouteList && locale === 'fi'
                 ? renderCultureRoutes(cultureRouteList, cultureRouteIndex)
                 : null}
               <div className={classes.buttonContainer}>

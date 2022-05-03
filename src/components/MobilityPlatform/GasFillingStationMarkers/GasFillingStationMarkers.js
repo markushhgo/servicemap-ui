@@ -11,8 +11,6 @@ const GasFillingStationMarkers = ({ classes }) => {
 
   const { openMobilityPlatform, showGasFillingStations } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
@@ -23,7 +21,7 @@ const GasFillingStationMarkers = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData(apiUrl, 'GFS', 10, setGasFillingStations);
+      fetchMobilityMapData('GFS', 10, setGasFillingStations);
     }
   }, [openMobilityPlatform, setGasFillingStations]);
 

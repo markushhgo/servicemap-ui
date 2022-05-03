@@ -13,8 +13,6 @@ const RentalCars = ({ classes }) => {
 
   const { openMobilityPlatform, showRentalCars } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
@@ -31,7 +29,7 @@ const RentalCars = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchIotData(apiUrl, 'R24', setRentalCarsData);
+      fetchIotData('R24', setRentalCarsData);
     }
   }, [openMobilityPlatform, setRentalCarsData]);
 
