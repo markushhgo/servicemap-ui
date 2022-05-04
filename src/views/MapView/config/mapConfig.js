@@ -129,19 +129,20 @@ const getMapOptions = (type, locale) => {
   let suffix = '';
   switch (type) {
     // For servicemap, use retina and/or swedish url if needed
+    // Swedish url suffix is temporary commented out, because tileserver is not updated yet.
     case 'servicemap': {
       if (isRetina) {
         suffix += '@2x';
       }
-      if (locale === 'sv') {
+      /* if (locale === 'sv') {
         suffix += '@sv';
-      }
+      } */
       break;
     }
     case 'accessible_map': {
-      if (locale === 'sv') {
+      /* if (locale === 'sv') {
         suffix += '@sv';
-      }
+      } */
       break;
     }
     default:

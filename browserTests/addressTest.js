@@ -5,20 +5,20 @@ import { waitForReact, ReactSelector } from 'testcafe-react-selectors';
 import config from './config';
 const { server } = config;
 fixture`Address view test`
-  .page`http://${server.address}:${server.port}/fi/address/helsinki/Topeliuksenkatu/27`
+  .page`http://${server.address}:${server.port}/fi/address/turku/Linnankatu/14`
   .beforeEach(async () => {
     await waitForReact();
   });
 
 test('AddressView does render correct view', async (t) => {
   const title = await ReactSelector('TitleBar').getReact(({props}) => props.title);
-  const tab1 = await ReactSelector('TabLists WithStyles(ForwardRef(Tab))').nth(0).textContent;
+  // const tab1 = await ReactSelector('TabLists WithStyles(ForwardRef(Tab))').nth(0).textContent;
   const tab2 = ReactSelector('TabLists WithStyles(ForwardRef(Tab))').nth(1);
   const tab2Text = await tab2.textContent;
   
   await t
-    .expect(title).eql('Topeliuksenkatu 27, 00250 Helsinki')
-    .expect(tab1).eql('Palvelualueet')
+    .expect(title).eql('Linnankatu 14')
+    // .expect(tab1).eql('Palvelualueet')
     .expect(tab2Text.indexOf('Lähellä')).eql(0, 'Tab text should include text "Lähellä"')
     ;
 

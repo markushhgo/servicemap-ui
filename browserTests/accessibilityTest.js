@@ -6,105 +6,101 @@ import componentContrastTest from './componentContrastTest';
 
 const { server } = config;
 
-const axeOptions = { rules: { 'label': { enabled: false } } };
+const axeOptions = { rules: { label: { enabled: false } } };
 
-const axeCheckHandler = (t) => {
-  return axeCheck(t, null, axeOptions)
-}
+const axeCheckHandler = t => {
+  return axeCheck(t, null, axeOptions);
+};
 
-fixture`TestCafe Axe test: frontpage`
-  .page`http://${server.address}:${server.port}/fi/`;
+fixture`TestCafe Axe test: frontpage`.page`http://${server.address}:${server.port}/fi/`;
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
+fixture`TestCafe Axe test: search page`.page`http://${server.address}:${server.port}/fi/search?q=kirjasto`;
 
-fixture`TestCafe Axe test: search page`
-  .page`http://${server.address}:${server.port}/fi/search?q=kirjasto`;
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+fixture`TestCafe Axe test: unit page`.page`http://${server.address}:${server.port}/fi/unit/148`;
 
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-fixture`TestCafe Axe test: unit page`
-  .page`http://${server.address}:${server.port}/fi/unit/8215`;
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+fixture`TestCafe Axe test: service page`.page`http://${server.address}:${server.port}/fi/service/279`;
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-
-fixture`TestCafe Axe test: service page`
-  .page`http://${server.address}:${server.port}/fi/service/813`;
-
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
-
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
-
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
 fixture`TestCafe Axe test: address page`
-  .page`http://${server.address}:${config.server.port}/fi/address/helsinki/Fleminginkatu/1`;
+  .page`http://${server.address}:${config.server.port}/fi/address/turku/Aurakatu/1`;
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
+fixture`TestCafe Axe test: area page`.page`http://${server.address}:${config.server.port}/fi/area`;
 
-fixture`TestCafe Axe test: area page`
-  .page`http://${server.address}:${config.server.port}/fi/area`;
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+fixture`TestCafe Axe test: service tree page`.page`http://${server.address}:${server.port}/fi/services`;
 
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-fixture`TestCafe Axe test: service tree page`
-  .page`http://${server.address}:${server.port}/fi/services`;
-
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
-
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
-
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');
 
 // This page expires when the event is done
-fixture`TestCafe Axe test: event page`
-  .page`http://${server.address}:${server.port}/fi/event/helmet:190724`;
+// Turku does not yet have events API linked into units.
+/* fixture`TestCafe Axe test: event page`.page`http://${server.address}:${server.port}/fi/event/helmet:190724`;
 
-  test('Automated accessibility testing', async (t) => {
-    await axeCheckHandler(t);
-  });
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
 
-  focusIndicatorTest()
-  componentContrastTest('SMButton');
-  componentContrastTest('BackButton');
+focusIndicatorTest();
+componentContrastTest('SMButton');
+componentContrastTest('BackButton'); */
 
+// Mobility platform page
+fixture`TestCafe Axe test: mobility platform page`.page`http://${server.address}:${server.port}/fi/mobility`;
+
+test('Automated accessibility testing', async t => {
+  await axeCheckHandler(t);
+});
+
+componentContrastTest('SMButton');
+componentContrastTest('BackButton');

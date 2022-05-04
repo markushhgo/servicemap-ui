@@ -223,6 +223,7 @@ const translations = {
   'general.backToHome': 'Stäng sökningen och gå tillbaka till början',
   'general.backToStart': 'Gå tillbaka till början av sidan',
   'general.back.serviceTree': 'Gå tillbaka till servicekatalogen',
+  'general.back.mobilityPlatform': 'Gå tillbaka',
   'general.cancel': 'Ångra',
   'general.close': 'Stäng',
   'general.distance.meters': 'Meters avstånd',
@@ -582,7 +583,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
-  'mobilityPlatform.menu.showGasStations': 'Tankstationer med gas',
+  'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
   'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
@@ -592,7 +593,9 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
-  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser', // TODO verify
+  'mobilityPlatform.menu.routes.name': 'Rutt',
+  'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
+  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
   'mobilityPlatform.menu.showPaymentZones': 'Parkeringsavgiftsområden',
 
   // Content
@@ -627,6 +630,13 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 timmar',
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
+  'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
+  'mobilityPlatform.content.rentalCars.provider': 'Tjänsteleverantör',
+  'mobilityPlatform.content.rentalCars.address': 'Plats',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
+  'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
+  'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
+  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
   'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats', // TODO verify
   'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet', // TODO verify
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser', // TODO verify
@@ -643,9 +653,12 @@ const translations = {
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
-  'mobilityPlatform.info.parkingSpaces': 'Turun pysäköintialueiden tiedot tulevat Turun kaupungin parkkioppaasta.', // TODO translate
+  'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Skärgårdens ringväg tar dig genom natur- och kulturlandskap. Längs den ca 250 kilometer långa Ringvägen hittar du ett flertal skärgårdsbyar, tolv broar och nio färjor. Med bil kör du hela Ringvägen på en dag – men varför inte ta längre tid på dig? Cykla eller vandra och övernatta på vägen. (kissmyturku.fi)',
+  'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Auraås cykelrutt är 70 km nationallandskap (väg 222) från Oripää till Åbo. Längs vägen möter du ståtliga herrårdsbyggnader, storgods, unika museer och lockande naturstigar.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.parkingSpaces': 'Turun pysäköintialueiden tiedot tulevat Turun kaupungin parkkioppaasta.', // TODO translate
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

@@ -1,10 +1,13 @@
 /* eslint-disable max-len */
-
 // Functions to make requests to the API
+import config from '../../../../config';
 
-const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
+const apiUrl = config.mobilityPlatformAPI;
+const isApiUrl = !apiUrl || apiUrl === 'undefined' ? null : apiUrl;
+
+const fetchMobilityMapData = async (type, pageSize, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -12,9 +15,9 @@ const fetchMobilityMapData = async (apiUrl, type, pageSize, setData) => {
   }
 };
 
-const fetchCultureRouteNames = async (apiUrl, setData) => {
+const fetchCultureRouteNames = async (setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_unit_groups/`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_unit_groups/`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -22,9 +25,9 @@ const fetchCultureRouteNames = async (apiUrl, setData) => {
   }
 };
 
-const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
+const fetchCultureRoutesData = async (type, size, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&srid=4326`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${size}&srid=4326`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -32,9 +35,9 @@ const fetchCultureRoutesData = async (apiUrl, type, size, setData) => {
   }
 };
 
-const fetchBicycleRouteNames = async (apiUrl, setData) => {
+const fetchBicycleRouteNames = async (setData) => {
   try {
-    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networks/`);
+    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networks/`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -42,9 +45,9 @@ const fetchBicycleRouteNames = async (apiUrl, setData) => {
   }
 };
 
-const fetchBicycleRoutesGeometry = async (apiUrl, setData) => {
+const fetchBicycleRoutesGeometry = async (setData) => {
   try {
-    const response = await fetch(`${apiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`);
+    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -52,9 +55,9 @@ const fetchBicycleRoutesGeometry = async (apiUrl, setData) => {
   }
 };
 
-const fetchIotData = async (apiUrl, sourceName, setData) => {
+const fetchIotData = async (sourceName, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/iot?source_name=${sourceName}`);
+    const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
     setData(jsonData.results[0].data);
   } catch (err) {
@@ -62,9 +65,9 @@ const fetchIotData = async (apiUrl, sourceName, setData) => {
   }
 };
 
-const fetchPaymentZonesData = async (apiUrl, type, pageSize, setData) => {
+const fetchPaymentZonesData = async (type, pageSize, setData) => {
   try {
-    const response = await fetch(`${apiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326&latlon=true`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326&latlon=true`);
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {

@@ -34,6 +34,14 @@ const Description = ({
       </div>
       {showDescriptionText ? (
         <div className={classes.paragraph}>
+          <Typography component="p" variant="body2" className={classes.margin}>
+            {intl.formatMessage({
+              id: 'mobilityPlatform.menu.routes.name',
+            })}
+            :
+            {' '}
+            {selectRouteDescription(route.name_sv, route.name_en, route.name)}
+          </Typography>
           <Typography component="p" variant="body2">
             {selectRouteDescription(route.description_sv, route.description_en, route.description)}
           </Typography>

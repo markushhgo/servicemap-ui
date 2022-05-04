@@ -103,6 +103,8 @@ const DefaultLayout = (props) => {
   const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
+  const [showRentalCars, setShowRentalCars] = useState(false);
+  const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showPaymentZones, setShowPaymentZones] = useState(false);
   const [paymentZones, setPaymentZones] = useState([]);
   const [paymentZoneId, setPaymentZoneId] = useState(null);
@@ -201,6 +203,10 @@ const DefaultLayout = (props) => {
                       setShowBicycleRoutes,
                       bicycleRouteName,
                       setBicycleRouteName,
+                      showRentalCars,
+                      setShowRentalCars,
+                      showGasFillingStations,
+                      setShowGasFillingStations,
                       showPaymentZones,
                       setShowPaymentZones,
                       paymentZones,
@@ -227,6 +233,8 @@ const DefaultLayout = (props) => {
                     showParkingSpaces,
                     showBicycleRoutes,
                     bicycleRouteName,
+                    showRentalCars,
+                    showGasFillingStations,
                     showPaymentZones,
                     paymentZones,
                     setPaymentZones,

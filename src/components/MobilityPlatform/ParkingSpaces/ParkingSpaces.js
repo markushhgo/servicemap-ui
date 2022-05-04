@@ -10,16 +10,14 @@ const ParkingSpaces = () => {
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Polygon, Popup } = global.rL;
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchIotData(apiUrl, 'TPH', setParkingSpaces);
-      fetchIotData(apiUrl, 'PAS', setParkingStatistics);
+      fetchIotData('TPH', setParkingSpaces);
+      fetchIotData('PAS', setParkingStatistics);
     }
   }, [openMobilityPlatform, setParkingSpaces, setParkingStatistics]);
 

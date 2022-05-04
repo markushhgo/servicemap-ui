@@ -37,8 +37,6 @@ const EcoCounterContent = ({
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   // steps that determine which data is shown on the chart
   const buttonSteps = [
     {
@@ -362,39 +360,39 @@ const EcoCounterContent = ({
   // Fetch initial data based on the default date
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
-    fetchInitialHourData(apiUrl, yesterDayFormat, stationId, setEcoCounterHour);
+    fetchInitialHourData(yesterDayFormat, stationId, setEcoCounterHour);
   }, [stationId, setEcoCounterHour]);
 
   useEffect(() => {
-    fetchInitialDayDatas(apiUrl, initialDateStart, initialDateEnd, stationId, setEcoCounterDay);
+    fetchInitialDayDatas(initialDateStart, initialDateEnd, stationId, setEcoCounterDay);
   }, [stationId, setEcoCounterDay]);
 
   useEffect(() => {
-    fetchInitialWeekDatas(apiUrl, initialYear, initialWeekStart, initialWeekEnd, stationId, setEcoCounterWeek);
+    fetchInitialWeekDatas(initialYear, initialWeekStart, initialWeekEnd, stationId, setEcoCounterWeek);
   }, [stationId, setEcoCounterWeek]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(apiUrl, initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
+    fetchInitialMonthDatas(initialYear, '1', initialMonth, stationId, setEcoCounterMonth);
   }, [stationId, setEcoCounterMonth]);
 
   // Fetch updated data when selected date is changed in datepicker.
   useEffect(() => {
     setEcoCounterLabels(labelsHour);
-    fetchInitialHourData(apiUrl, selectedDateFormat, stationId, setEcoCounterHour);
+    fetchInitialHourData(selectedDateFormat, stationId, setEcoCounterHour);
     setActiveStep(0);
     setCurrentTime('hour');
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialDayDatas(apiUrl, selectedDateStart, selectedDateEnd, stationId, setEcoCounterDay);
+    fetchInitialDayDatas(selectedDateStart, selectedDateEnd, stationId, setEcoCounterDay);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialWeekDatas(apiUrl, selectedYear, selectedWeekStart, selectedWeekEnd, stationId, setEcoCounterWeek);
+    fetchInitialWeekDatas(selectedYear, selectedWeekStart, selectedWeekEnd, stationId, setEcoCounterWeek);
   }, [selectedDate, stationId]);
 
   useEffect(() => {
-    fetchInitialMonthDatas(apiUrl, selectedYear, '1', selectedMonth, stationId, setEcoCounterMonth);
+    fetchInitialMonthDatas(selectedYear, '1', selectedMonth, stationId, setEcoCounterMonth);
   }, [selectedDate, stationId]);
 
   // useEffect is used to fill the chart with default data (default step is 'hourly')

@@ -13,8 +13,12 @@ const styles = theme => ({
     textTransform: 'none',
   },
   toggleText: {
-    width: '85%',
+    width: '100%',
     textAlign: 'left',
+    paddingLeft: theme.spacing(0.5),
+  },
+  margin: {
+    marginBottom: theme.spacing(1),
   },
 });
 

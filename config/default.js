@@ -242,4 +242,5 @@ export default {
   "matomoUrl": settings.MATOMO_URL,
   "matomoSiteId": settings.MATOMO_SITE_ID,
   "themePKG": settings.THEME_PKG,
+  "mobilityPlatformAPI": settings.MOBILITY_PLATFORM_API,
 }
