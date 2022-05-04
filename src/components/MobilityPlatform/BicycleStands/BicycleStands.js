@@ -13,8 +13,6 @@ const BicycleStands = ({ classes }) => {
 
   const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
@@ -25,7 +23,7 @@ const BicycleStands = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData(apiUrl, 'BIS', 100, setBicycleStands);
+      fetchMobilityMapData('BIS', 100, setBicycleStands);
     }
   }, [openMobilityPlatform, setBicycleStands]);
 

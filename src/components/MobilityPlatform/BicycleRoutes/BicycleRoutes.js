@@ -8,8 +8,6 @@ const BicycleRoutes = () => {
 
   const { openMobilityPlatform, showBicycleRoutes, bicycleRouteName } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
-
   const { Polyline } = global.rL;
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
@@ -17,7 +15,7 @@ const BicycleRoutes = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchBicycleRoutesGeometry(apiUrl, setBicycleRoutes);
+      fetchBicycleRoutesGeometry(setBicycleRoutes);
     }
   }, [openMobilityPlatform, setBicycleRoutes]);
 

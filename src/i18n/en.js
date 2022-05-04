@@ -223,6 +223,7 @@ const translations = {
   'general.backToHome': 'Close search and return to beginning',
   'general.backToStart': 'Back to beginning of page',
   'general.back.serviceTree': 'Back to service list page',
+  'general.back.mobilityPlatform': 'Return',
   'general.cancel': 'Cancel',
   'general.close': 'Close',
   'general.distance.meters': 'Meters away',
@@ -590,6 +591,7 @@ const translations = {
   'mobilityPlatform.menu.routes.emptyList': 'No routes were found.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Info about the route.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
+  'mobilityPlatform.menu.routes.name': 'Route name',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
