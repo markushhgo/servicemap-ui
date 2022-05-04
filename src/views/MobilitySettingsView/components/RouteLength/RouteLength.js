@@ -22,6 +22,12 @@ const RouteLength = ({ classes, intl, route }) => {
             {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail' })}
           </Typography>
         );
+      case 'Aurajoentie':
+        return (
+          <Typography component="p" variant="body2" className={classes.margin}>
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail' })}
+          </Typography>
+        );
       default:
         return null;
     }

@@ -6,7 +6,7 @@ import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatfo
 import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 
 const ChargerStationMarkers = ({ classes }) => {
-  const [chargerStations, setChargerStations] = useState(null);
+  const [chargerStations, setChargerStations] = useState([]);
 
   const { openMobilityPlatform, showChargingStations } = useContext(MobilityPlatformContext);
 
@@ -30,8 +30,7 @@ const ChargerStationMarkers = ({ classes }) => {
     <>
       {showChargingStations ? (
         <div>
-          <div>
-            {chargerStations
+          {chargerStations && chargerStations.length > 0
             && chargerStations.map(item => (
               <Marker
                 key={item.id}
@@ -42,17 +41,13 @@ const ChargerStationMarkers = ({ classes }) => {
                   <Popup className="charger-stations-popup">
                     <div className={classes.popupInner}>
                       <ChargerStationContent
-                        stationName={item.name}
-                        stationAddress={item.address}
-                        chargers={item.extra.chargers}
-                        stationUrl={item.extra.url}
+                        station={item}
                       />
                     </div>
                   </Popup>
                 </div>
               </Marker>
             ))}
-          </div>
         </div>
       ) : null}
     </>

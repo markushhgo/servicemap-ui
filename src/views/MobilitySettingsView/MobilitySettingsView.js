@@ -17,13 +17,15 @@ import Description from './components/Description';
 import RouteLength from './components/RouteLength';
 import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
+  const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
-  const [filteredCultureRouteList, setFilteredCultureRouteList] = useState([]);
+  const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
@@ -44,6 +46,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes,
     bicycleRouteName,
     setBicycleRouteName,
+    showRentalCars,
+    setShowRentalCars,
+    showGasFillingStations,
+    setShowGasFillingStations,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -98,6 +104,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   }, [showEcoCounter]);
 
+  useEffect(() => {
+    checkVisibilityValues(showRentalCars, setOpenCarSettings);
+    checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations]);
+
   const nameKeys = {
     fi: 'name',
     en: 'name_en',
@@ -111,7 +122,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0) {
-      setFilteredCultureRouteList(cultureRouteList.filter(item => item[nameKeys[locale]]));
+      setLocalizedCultureRoutes(cultureRouteList.filter(item => item[nameKeys[locale]]));
     }
   }, [cultureRouteList, locale]);
 
@@ -125,10 +136,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0 && locale === 'fi') {
       cultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
-    } else if (filteredCultureRouteList && filteredCultureRouteList.length > 0 && locale !== 'fi') {
-      filteredCultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
+    } else if (localizedCultureRoutes && localizedCultureRoutes.length > 0 && locale !== 'fi') {
+      localizedCultureRoutes.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
     }
-  }, [cultureRouteList, filteredCultureRouteList, locale]);
+  }, [cultureRouteList, localizedCultureRoutes, locale]);
 
   /**
    * Sort routes in alphapethical order.
@@ -163,6 +174,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenBicycleSettings(current => !current);
   };
 
+  const carSettingsToggle = () => {
+    setOpenCarSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {Boolean}
@@ -174,6 +189,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const bicycleStandsToggle = () => {
     setShowBicycleStands(current => !current);
+  };
+
+  const rentalCarsToggle = () => {
+    setShowRentalCars(current => !current);
+  };
+
+  const gasFillingStationsToggle = () => {
+    setShowGasFillingStations(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -246,6 +269,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showEcoCounter',
       checkedValue: showEcoCounter,
       onChangeValue: ecoCounterStationsToggle,
+    },
+  ];
+
+  const carControlTypes = [
+    {
+      type: 'rentalCars',
+      msgId: 'mobilityPlatform.menu.showRentalCars',
+      checkedValue: showRentalCars,
+      onChangeValue: rentalCarsToggle,
+    },
+    {
+      type: 'gasFillingStations',
+      msgId: 'mobilityPlatform.menu.showGasFillingStations',
+      checkedValue: showGasFillingStations,
+      onChangeValue: gasFillingStationsToggle,
     },
   ];
 
@@ -395,7 +433,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
               </div>
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
-                ? renderCultureRoutes(filteredCultureRouteList, cultureRouteIndex)
+                ? renderCultureRoutes(localizedCultureRoutes, cultureRouteIndex)
                 : null}
               {openCultureRouteList && locale === 'fi'
                 ? renderCultureRoutes(cultureRouteList, cultureRouteIndex)
@@ -418,12 +456,25 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
+              <>
+                <div className={classes.buttonContainer}>
+                  {buttonComponent(
+                    carSettingsToggle,
+                    openCarSettings,
+                    iconCar,
+                    'mobilityPlatform.menu.title.car',
+                  )}
+                </div>
+                {renderSettings(openCarSettings, carControlTypes)}
+              </>
             </>
           </FormGroup>
         </FormControl>
       </div>
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
+      {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
+      {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
     </div>
   );
 };

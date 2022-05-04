@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import gasFillingIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 
 const GasFillingStationMarkers = ({ classes }) => {
-  const [gasFillingStations, setGasFillingStations] = useState(null);
+  const [gasFillingStations, setGasFillingStations] = useState([]);
 
   const { openMobilityPlatform, showGasFillingStations } = useContext(MobilityPlatformContext);
-
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
@@ -22,16 +21,27 @@ const GasFillingStationMarkers = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData(apiUrl, 'GFS', 10, setGasFillingStations);
+      fetchMobilityMapData('GFS', 10, setGasFillingStations);
     }
   }, [openMobilityPlatform, setGasFillingStations]);
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (showGasFillingStations && gasFillingStations && gasFillingStations.length > 0) {
+      const bounds = [];
+      gasFillingStations.forEach((item) => {
+        bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showGasFillingStations]);
 
   return (
     <>
       {showGasFillingStations ? (
         <div>
-          <div>
-            {gasFillingStations
+          {gasFillingStations && gasFillingStations.length > 0
             && gasFillingStations.map(item => (
               <Marker
                 key={item.id}
@@ -42,18 +52,13 @@ const GasFillingStationMarkers = ({ classes }) => {
                   <Popup className="charger-stations-popup">
                     <div className={classes.popupInner}>
                       <ChargerStationContent
-                        stationName={item.name}
-                        stationAddress={item.address}
-                        gasType={item.extra.lng_cng}
-                        operatorName={item.extra.operator}
-                        contentType={item.content_type.type_name}
+                        station={item}
                       />
                     </div>
                   </Popup>
                 </div>
               </Marker>
             ))}
-          </div>
         </div>
       ) : null}
     </>

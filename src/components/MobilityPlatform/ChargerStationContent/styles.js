@@ -1,25 +1,20 @@
-const styles = {
+export default theme => ({
   container: {
-    margin: '0.8rem',
+    margin: theme.spacing(1),
   },
   headerContainer: {
     width: '85%',
     borderBottom: '1px solid #000',
-    paddingBottom: '0.5rem',
-  },
-  headerText: {
-    marginBottom: '0.4rem',
+    paddingBottom: theme.spacing(0.5),
   },
   textContainer: {
-    marginTop: '0.7rem',
+    marginTop: theme.spacing(0.5),
   },
   contentInner: {
-    marginLeft: '0.5rem',
-    marginBottom: '0.6rem',
+    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   margin: {
-    margin: '0.3rem 0',
+    margin: theme.spacing(0.5),
   },
-};
-
-export default styles;
+});

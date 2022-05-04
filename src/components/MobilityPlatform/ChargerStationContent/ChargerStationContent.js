@@ -2,19 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
-const ChargerStationContent = ({
-  classes,
-  stationName,
-  stationAddress,
-  gasType,
-  operatorName,
-  contentType,
-  chargers,
-  stationUrl,
-  intl,
-}) => {
+const ChargerStationContent = ({ classes, intl, station }) => {
   const titleTypo = (messageId, props = {}) => (
-    <Typography variant="subtitle1" {...props}>
+    <Typography variant="subtitle2" {...props}>
       {intl.formatMessage({
         id: messageId,
       })}
@@ -37,18 +27,18 @@ const ChargerStationContent = ({
   const gasFillingInfo = (
     <>
       {titleTypo('mobilityPlatform.content.gfsTitle')}
-      {singleValTypo('mobilityPlatform.content.address', stationAddress)}
-      {singleValTypo('mobilityPlatform.content.gfsType', gasType)}
-      {singleValTypo('mobilityPlatform.content.operator', operatorName)}
+      {singleValTypo('mobilityPlatform.content.address', station.address)}
+      {singleValTypo('mobilityPlatform.content.gfsType', station.extra.lng_cng)}
+      {singleValTypo('mobilityPlatform.content.operator', station.extra.operator)}
     </>
   );
 
   const chargerStationInfo = (
     <>
       {titleTypo('mobilityPlatform.content.cgsTitle', { className: classes.margin })}
-      {singleValTypo('mobilityPlatform.content.address', stationAddress)}
+      {singleValTypo('mobilityPlatform.content.address', station.address)}
       {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
-      {chargers.map(charger => (
+      {station.chargers && station.chargers.length > 0 ? station.chargers.map(charger => (
         <div key={charger.type} className={classes.contentInner}>
           {singleValTypo('mobilityPlatform.content.cgsType', charger.type)}
           {singleValTypo('mobilityPlatform.content.count', charger.count)}
@@ -66,24 +56,17 @@ const ChargerStationContent = ({
           </Typography>
           {singleValTypo('mobilityPlatform.content.operator', charger.operator)}
         </div>
-      ))}
-      <a href={stationUrl} target="_blank" rel="noopener noreferrer">
-        <Typography>
-          {intl.formatMessage({
-            id: 'mobilityPlatform.content.url',
-          })}
-        </Typography>
-      </a>
+      )) : null}
     </>
   );
 
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
-        <Typography variant="h6">{stationName}</Typography>
+        <Typography variant="subtitle1">{station.name}</Typography>
       </div>
       <div className={classes.textContainer}>
-        {contentType === 'GFS' ? gasFillingInfo : chargerStationInfo}
+        {station.content_type.type_name === 'GFS' ? gasFillingInfo : chargerStationInfo}
       </div>
     </div>
   );
@@ -91,24 +74,12 @@ const ChargerStationContent = ({
 
 ChargerStationContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  stationName: PropTypes.string,
-  stationAddress: PropTypes.string,
-  gasType: PropTypes.string,
-  operatorName: PropTypes.string,
-  contentType: PropTypes.string,
-  chargers: PropTypes.arrayOf(PropTypes.any),
-  stationUrl: PropTypes.string,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  station: PropTypes.objectOf(PropTypes.any),
 };
 
 ChargerStationContent.defaultProps = {
-  stationName: '',
-  stationAddress: '',
-  gasType: '',
-  operatorName: '',
-  contentType: '',
-  chargers: [],
-  stationUrl: '',
+  station: {},
 };
 
 export default ChargerStationContent;

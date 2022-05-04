@@ -585,7 +585,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
-  'mobilityPlatform.menu.showGasStations': 'Kaasutankkausasemat',
+  'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
@@ -596,6 +596,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.title': 'Tietoja reitistä.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
+  'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -629,15 +630,23 @@ const translations = {
   'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
   'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
+  'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
+  'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja',
+  'mobilityPlatform.content.rentalCars.address': 'Sijainti',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
+  'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
+  'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
+  'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
-  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat Sähköautoilijat ry:n ylläpitämän latauskartta.fi-sivuston tietoihin.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Turun saaristossa kiertävä matkailutie vie halki hienojen luonto- ja kulttuurimaisemien. Noin 250 kilometrin matkalla näet 12 siltaa, yhdeksän lossia ja lauttaa sekä monta hienoa saaristopitäjää. Autolla kierrät Rengastien jopa päivässä, mutta miksi kiirehtiä näin ihanissa maisemissa. Pyöräile tai patikoi, ja majoitu matkanvarren majapaikoissa. (kissmyturku.fi)',
+  'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Aurajoen pyöräilyreitti on 70 kilometriä kansallismaisemaa (tie 222) Oripäästä Turkuun. Tien varrella on upeita kartanoita, mahtitiloja, uniikkeja museoita ja kutsuvia luontopolkuja.',
+  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',
