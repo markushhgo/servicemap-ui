@@ -23,11 +23,9 @@ const BicycleStands = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData('BIS', 100, setBicycleStands);
+      fetchMobilityMapData('BIS', 1000, setBicycleStands);
     }
   }, [openMobilityPlatform, setBicycleStands]);
-
-  const maintainedBicycleStands = bicycleStands.filter(item => item.extra.maintained_by_turku);
 
   const mapEvent = useMapEvents({
     zoomend() {
@@ -38,22 +36,22 @@ const BicycleStands = ({ classes }) => {
   const map = useMap();
 
   useEffect(() => {
-    if (showBicycleStands && maintainedBicycleStands) {
+    if (showBicycleStands && bicycleStands && bicycleStands.length > 0) {
       const bounds = [];
-      maintainedBicycleStands.forEach((item) => {
+      bicycleStands.forEach((item) => {
         bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
       });
       map.fitBounds(bounds);
     }
-  }, [showBicycleStands]);
+  }, [showBicycleStands, bicycleStands]);
 
   return (
     <>
       {showBicycleStands ? (
         <div>
           <div>
-            {maintainedBicycleStands && maintainedBicycleStands.length > 0
-              && maintainedBicycleStands.map(item => (
+            {bicycleStands && bicycleStands.length > 0
+              && bicycleStands.map(item => (
                 <Marker
                   key={item.id}
                   icon={chargerStationIcon}

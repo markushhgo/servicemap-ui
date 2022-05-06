@@ -5,10 +5,16 @@ import { Typography } from '@material-ui/core';
 const BicycleStandContent = ({
   classes, bicycleStand, intl,
 }) => {
-  const titleTypo = (props = {}) => (
+  // Hides pyöräpysäköinti prefix
+  const renderName = (name) => {
+    const splitted = name.split(' ').slice(1);
+    return splitted.join(' ');
+  };
+
+  const titleTypo = () => (
     <div className={classes.title}>
-      <Typography variant="subtitle1" {...props}>
-        {bicycleStand.name}
+      <Typography variant="subtitle1" className={classes.titleText}>
+        {renderName(bicycleStand.name)}
       </Typography>
     </div>
   );
@@ -21,64 +27,90 @@ const BicycleStandContent = ({
     message5Id,
     message6Id,
     message7Id,
+    message8Id,
   ) => (
     <div className={classes.content}>
-      <Typography variant="body2" display="block">
-        <strong>
-          {intl.formatMessage({
-            id: message1Id,
-          })}
-          :
-        </strong>
-        {' '}
-        {bicycleStand.extra.model}
-      </Typography>
-      <Typography variant="body2" display="block">
-        <strong>
-          {intl.formatMessage({
-            id: message2Id,
-          })}
-          :
-        </strong>
-        {' '}
-        {bicycleStand.extra.number_of_places}
-      </Typography>
-      <Typography variant="body2" display="block">
-        <strong>
-          {intl.formatMessage({
-            id: message3Id,
-          })}
-          :
-        </strong>
-        {' '}
-        {bicycleStand.extra.number_of_stands}
-      </Typography>
+      {bicycleStand.extra.model ? (
+        <div className={classes.paragraph}>
+          <Typography variant="body2">
+            <strong>
+              {intl.formatMessage({
+                id: message1Id,
+              })}
+              :
+            </strong>
+            {' '}
+            {bicycleStand.extra.model}
+          </Typography>
+        </div>
+      ) : null}
+      <div className={classes.paragraph}>
+        <Typography variant="body2">
+          <strong>
+            {intl.formatMessage({
+              id: message2Id,
+            })}
+            :
+          </strong>
+          {' '}
+          {bicycleStand.extra.number_of_places}
+        </Typography>
+      </div>
+      <div className={classes.paragraph}>
+        <Typography variant="body2">
+          <strong>
+            {intl.formatMessage({
+              id: message3Id,
+            })}
+            :
+          </strong>
+          {' '}
+          {bicycleStand.extra.number_of_stands}
+        </Typography>
+      </div>
       {bicycleStand.extra.covered ? (
-        <Typography variant="body2" display="block">
-          {intl.formatMessage({
-            id: message4Id,
-          })}
-        </Typography>
+        <div className={classes.paragraph}>
+          <Typography variant="body2" display="block">
+            {intl.formatMessage({
+              id: message4Id,
+            })}
+          </Typography>
+        </div>
       ) : (
-        <Typography variant="body2" display="block">
-          {intl.formatMessage({
-            id: message5Id,
-          })}
-        </Typography>
+        <div className={classes.paragraph}>
+          <Typography variant="body2" display="block">
+            {intl.formatMessage({
+              id: message5Id,
+            })}
+          </Typography>
+        </div>
       )}
       {bicycleStand.extra.hull_lockable ? (
-        <Typography variant="body2" display="block">
-          {intl.formatMessage({
-            id: message6Id,
-          })}
-        </Typography>
+        <div className={classes.paragraph}>
+          <Typography variant="body2" display="block">
+            {intl.formatMessage({
+              id: message6Id,
+            })}
+          </Typography>
+        </div>
       ) : (
-        <Typography variant="body2" display="block">
-          {intl.formatMessage({
-            id: message7Id,
-          })}
-        </Typography>
+        <div className={classes.paragraph}>
+          <Typography variant="body2" display="block">
+            {intl.formatMessage({
+              id: message7Id,
+            })}
+          </Typography>
+        </div>
       )}
+      {bicycleStand.extra.maintained_by_turku ? (
+        <div className={classes.paragraph}>
+          <Typography variant="body2" display="block">
+            {intl.formatMessage({
+              id: message8Id,
+            })}
+          </Typography>
+        </div>
+      ) : null}
     </div>
   );
 
@@ -93,6 +125,7 @@ const BicycleStandContent = ({
         'mobilityPlatform.content.bicycleStands.notCovered',
         'mobilityPlatform.content.bicycleStands.hullLockable',
         'mobilityPlatform.content.bicycleStands.hullNotLockable',
+        'mobilityPlatform.content.bicycleStands.maintainedByTku',
       )}
     </div>
   );
