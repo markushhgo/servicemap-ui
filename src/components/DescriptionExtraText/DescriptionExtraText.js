@@ -106,16 +106,18 @@ const DescriptionExtraText = ({
         })}
       </Typography>
       <div className={classes.paragraph}>
-        <Typography variant="body2" className={classes.textItem}>
-          <strong>
-            {intl.formatMessage({
-              id: 'mobilityPlatform.content.bicycleStands.model',
-            })}
-            :
-          </strong>
-          {' '}
-          {extra.model}
-        </Typography>
+        {extra.model ? (
+          <Typography variant="body2" className={classes.textItem}>
+            <strong>
+              {intl.formatMessage({
+                id: 'mobilityPlatform.content.bicycleStands.model',
+              })}
+              :
+            </strong>
+            {' '}
+            {extra.model}
+          </Typography>
+        ) : null}
         <Typography variant="body2" className={classes.textItem}>
           <strong>
             {intl.formatMessage({
@@ -162,6 +164,13 @@ const DescriptionExtraText = ({
             })}
           </Typography>
         )}
+        {extra.maintained_by_turku ? (
+          <Typography variant="body2" className={classes.textItem}>
+            {intl.formatMessage({
+              id: 'mobilityPlatform.content.bicycleStands.maintainedByTku',
+            })}
+          </Typography>
+        ) : null}
       </div>
     </>
   );
