@@ -9,6 +9,7 @@ import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
+  fetchMobilityMapPolygons,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -31,6 +32,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
+  const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
+  const [speedLimitList, setSpeedLimitList] = useState([]);
 
   const {
     setOpenMobilityPlatform,
@@ -50,6 +53,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowRentalCars,
     showGasFillingStations,
     setShowGasFillingStations,
+    showSpeedLimitZones,
+    setShowSpeedLimitZones,
+    speedLimit,
+    setSpeedLimit,
+    speedLimitZones,
+    setSpeedLimitZones,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -70,6 +79,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     fetchBicycleRouteNames(setBicycleRouteList);
   }, [setBicycleRouteList]);
+
+  useEffect(() => {
+    fetchMobilityMapPolygons('SLZ', 1000, setSpeedLimitZones);
+  }, [setSpeedLimitZones]);
 
   /**
    * Check is visibility boolean values are true
@@ -233,6 +246,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes(true);
   };
 
+  const speedLimitZonesToggle = () => {
+    setOpenSpeedLimitList(current => !current);
+    if (showSpeedLimitZones) {
+      setShowSpeedLimitZones(false);
+    }
+    if (speedLimit) {
+      setSpeedLimit(null);
+    }
+  };
+
+  const selectSpeedLimit = (input) => {
+    setSpeedLimit(input);
+    setShowSpeedLimitZones(true);
+  };
+
   /**
    * Control types for different user types
    */
@@ -285,6 +313,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
     },
+    {
+      type: 'speedLimitZones',
+      msgId: 'mobilityPlatform.menu.showSpeedLimitZones',
+      checkedValue: openSpeedLimitList,
+      onChangeValue: speedLimitZonesToggle,
+    },
   ];
 
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
@@ -321,7 +355,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       onClick={() => onClickFunc()}
       variant="outlined"
-      className={settingState ? classes.buttonActive : classes.button}
+      className={settingState ? `${classes.buttonPrimary} ${classes.active}` : classes.buttonPrimary}
       aria-label={intl.formatMessage({
         id: translationId,
       })}
@@ -369,7 +403,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       <Button
         key={item.id}
         variant="outlined"
-        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
+        className={i === activeIdx ? `${classes.buttonSecondary} ${classes.active}` : classes.buttonSecondary}
         onClick={() => setBicycleRouteState(i, item.name_fi)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
@@ -384,7 +418,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       <Button
         key={item.id}
         variant="outlined"
-        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
+        className={i === activeIdx ? `${classes.buttonSecondary} ${classes.active}` : classes.buttonSecondary}
         onClick={() => setCultureRouteState(item.id, i)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
@@ -399,6 +433,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
     return null;
   };
+
+  const getSpeedLimits = () => {
+    const allLimits = [];
+    speedLimitZones.forEach((item) => {
+      allLimits.push(item.extra.speed_limit);
+    });
+    setSpeedLimitList([...new Set(allLimits)]);
+  };
+
+  useEffect(() => {
+    if (speedLimitZones && speedLimitZones.length > 0) {
+      getSpeedLimits();
+    }
+  }, [speedLimitZones]);
 
   return (
     <div className={classes.content}>
@@ -466,6 +514,42 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   )}
                 </div>
                 {renderSettings(openCarSettings, carControlTypes)}
+                {openSpeedLimitList ? (
+                  <div>
+                    <div className={classes.paragraph}>
+                      {!speedLimit ? (
+                        <Typography variant="subtitle2">
+                          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
+                        </Typography>
+                      ) : (
+                        <Typography variant="subtitle2">
+                          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.zone' })}
+                          :
+                          {' '}
+                          {speedLimit}
+                          {' '}
+                          km/h
+                        </Typography>
+                      )}
+                    </div>
+                    <div className={classes.buttonList}>
+                      {speedLimitList.length > 0 && speedLimitList.map(item => (
+                        <Button
+                          key={item}
+                          variant="outlined"
+                          className={classes.buttonSmall}
+                          onClick={() => selectSpeedLimit(item)}
+                        >
+                          <Typography variant="body2">
+                            {item}
+                            {' '}
+                            km/h
+                          </Typography>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </>
             </>
           </FormGroup>

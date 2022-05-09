@@ -104,6 +104,9 @@ const DefaultLayout = (props) => {
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
+  const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
+  const [speedLimit, setSpeedLimit] = useState(null);
+  const [speedLimitZones, setSpeedLimitZones] = useState([]);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -201,6 +204,12 @@ const DefaultLayout = (props) => {
                       setShowRentalCars,
                       showGasFillingStations,
                       setShowGasFillingStations,
+                      showSpeedLimitZones,
+                      setShowSpeedLimitZones,
+                      speedLimit,
+                      setSpeedLimit,
+                      speedLimitZones,
+                      setSpeedLimitZones,
                     }}
                   >
                     <ViewRouter />
@@ -222,6 +231,9 @@ const DefaultLayout = (props) => {
                     bicycleRouteName,
                     showRentalCars,
                     showGasFillingStations,
+                    showSpeedLimitZones,
+                    speedLimit,
+                    speedLimitZones,
                   }}
                 >
                   <MapView

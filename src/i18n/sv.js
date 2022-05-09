@@ -595,6 +595,9 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
+  'mobilityPlatform.menu.showSpeedLimitZones': 'Speed limit zones', // TODO translate
+  'mobilityPlatform.menu.speedLimitZones.select': 'Select a speed limit', // TODO translate
+  'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO translate
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -635,6 +638,8 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
   'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
+  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone', // TODO translate
+  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

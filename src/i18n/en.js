@@ -593,6 +593,9 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
+  'mobilityPlatform.menu.showSpeedLimitZones': 'Speed limit zones', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'Select a speed limit', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO verify
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -633,6 +636,8 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
   'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
+  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

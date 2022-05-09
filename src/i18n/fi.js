@@ -597,6 +597,9 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
+  'mobilityPlatform.menu.showSpeedLimitZones': 'Nopeusrajoitusalueet',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Valitse nopeusrajoitus',
+  'mobilityPlatform.menu.speedLimitZones.zone': 'Valittu nopeusrajoitus',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -637,6 +640,8 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
   'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
+  'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

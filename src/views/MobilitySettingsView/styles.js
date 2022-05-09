@@ -2,13 +2,7 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.background.main,
   },
-  buttonWhite: {
-    width: '100%',
-    textAlign: 'left',
-    textTransform: 'none',
-    padding: theme.spacing(1),
-  },
-  button: {
+  buttonPrimary: {
     width: '100%',
     height: '50px',
     background: 'rgba(245, 245, 245, 255)',
@@ -21,7 +15,7 @@ const styles = theme => ({
       background: 'rgba(230, 230, 230, 255)',
     },
   },
-  buttonActive: {
+  /* buttonPrimaryActive: {
     width: '100%',
     height: '50px',
     textTransform: 'capitalize',
@@ -37,8 +31,8 @@ const styles = theme => ({
       borderBottom: '1px solid #6f7276',
       borderTop: '1px solid #6f7276',
     },
-  },
-  listButton: {
+  }, */
+  buttonSecondary: {
     width: '100%',
     height: '45px',
     background: 'rgba(230, 230, 230, 255)',
@@ -53,7 +47,17 @@ const styles = theme => ({
       background: 'rgba(222, 222, 222, 255)',
     },
   },
-  listButtonActive: {
+  active: {
+    background: '#46484b',
+    color: '#fff',
+    '&:hover': {
+      color: '#fff',
+      background: '#3e3f42',
+      borderBottom: '1px solid #6f7276',
+      borderTop: '1px solid #6f7276',
+    },
+  },
+  /* buttonSecondaryActive: {
     width: '100%',
     height: '45px',
     textTransform: 'capitalize',
@@ -71,15 +75,15 @@ const styles = theme => ({
       borderBottom: '1px solid #6f7276',
       borderTop: '1px solid #6f7276',
     },
-  },
-  buttonStep: {
-    width: '25%',
+  }, */
+  buttonSmall: {
+    width: '27%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
   },
-  buttonStepActive: {
-    width: '25%',
+  buttonSmallActive: {
+    width: '27%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
@@ -132,7 +136,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'left',
   },
 });
 
