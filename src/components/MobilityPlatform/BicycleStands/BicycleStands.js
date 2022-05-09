@@ -13,10 +13,12 @@ const BicycleStands = ({ classes }) => {
 
   const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
+  const map = useMap();
+
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const chargerStationIcon = icon({
+  const customIcon = icon({
     iconUrl: zoomLevel < 15 ? circleIcon : bicycleStandIcon,
     iconSize: zoomLevel < 15 ? [15, 15] : [45, 45],
   });
@@ -27,13 +29,12 @@ const BicycleStands = ({ classes }) => {
     }
   }, [openMobilityPlatform, setBicycleStands]);
 
+
   const mapEvent = useMapEvents({
     zoomend() {
       setZoomLevel(mapEvent.getZoom());
     },
   });
-
-  const map = useMap();
 
   useEffect(() => {
     if (showBicycleStands && bicycleStands && bicycleStands.length > 0) {
@@ -49,12 +50,11 @@ const BicycleStands = ({ classes }) => {
     <>
       {showBicycleStands ? (
         <div>
-          <div>
-            {bicycleStands && bicycleStands.length > 0
+          {bicycleStands && bicycleStands.length > 0
               && bicycleStands.map(item => (
                 <Marker
                   key={item.id}
-                  icon={chargerStationIcon}
+                  icon={customIcon}
                   position={[item.geometry_coords.lat, item.geometry_coords.lon]}
                 >
                   <div className={classes.popupWrapper}>
@@ -68,7 +68,6 @@ const BicycleStands = ({ classes }) => {
                   </div>
                 </Marker>
               ))}
-          </div>
         </div>
       ) : null}
     </>
