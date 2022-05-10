@@ -34,6 +34,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [speedLimitList, setSpeedLimitList] = useState([]);
+  const [speedLimitIndex, setSpeedLimitIndex] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -111,6 +112,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [showCultureRoutes]);
 
   useEffect(() => {
+    checkVisibilityValues(showSpeedLimitZones, setOpenSpeedLimitList);
+  }, [showSpeedLimitZones]);
+
+  useEffect(() => {
     if (showEcoCounter) {
       setOpenWalkSettings(true);
       setOpenBicycleSettings(true);
@@ -120,7 +125,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showRentalCars, setOpenCarSettings);
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations]);
+    checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showSpeedLimitZones]);
 
   const nameKeys = {
     fi: 'name',
@@ -248,17 +254,19 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const speedLimitZonesToggle = () => {
     setOpenSpeedLimitList(current => !current);
-    if (showSpeedLimitZones) {
-      setShowSpeedLimitZones(false);
-    }
+    setShowSpeedLimitZones(current => !current);
     if (speedLimit) {
       setSpeedLimit(null);
     }
+    if (speedLimitIndex) {
+      setSpeedLimitIndex(null);
+    }
   };
 
-  const selectSpeedLimit = (input) => {
-    setSpeedLimit(input);
+  const setSpeedLimitState = (limitVal, index) => {
+    setSpeedLimit(limitVal);
     setShowSpeedLimitZones(true);
+    setSpeedLimitIndex(index);
   };
 
   /**
@@ -434,17 +442,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const getSpeedLimits = () => {
-    const allLimits = [];
-    speedLimitZones.forEach((item) => {
-      allLimits.push(item.extra.speed_limit);
-    });
-    setSpeedLimitList([...new Set(allLimits)]);
-  };
-
   useEffect(() => {
     if (speedLimitZones && speedLimitZones.length > 0) {
-      getSpeedLimits();
+      setSpeedLimitList([...new Set(speedLimitZones.map(item => item.extra.speed_limit))]);
     }
   }, [speedLimitZones]);
 
@@ -515,7 +515,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 </div>
                 {renderSettings(openCarSettings, carControlTypes)}
                 {openSpeedLimitList ? (
-                  <div>
+                  <>
                     <div className={classes.paragraph}>
                       {!speedLimit ? (
                         <Typography variant="subtitle2">
@@ -533,12 +533,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
                       )}
                     </div>
                     <div className={classes.buttonList}>
-                      {speedLimitList.length > 0 && speedLimitList.map(item => (
+                      {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map((item, i) => (
                         <Button
                           key={item}
                           variant="outlined"
-                          className={classes.buttonSmall}
-                          onClick={() => selectSpeedLimit(item)}
+                          className={i === speedLimitIndex ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
+                          onClick={() => setSpeedLimitState(item, i)}
                         >
                           <Typography variant="body2">
                             {item}
@@ -548,7 +548,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                         </Button>
                       ))}
                     </div>
-                  </div>
+                  </>
                 ) : null}
               </>
             </>
