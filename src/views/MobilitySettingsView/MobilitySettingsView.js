@@ -353,6 +353,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
             }),
           }}
           onChange={onChangeValue}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              onChangeValue();
+            }
+          }}
         />
       )}
       className={classes.formLabel}
@@ -391,9 +396,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
           <Typography
             component="p"
             variant="subtitle2"
-            aria-label={input.length > 0
-              ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
-              : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
+            aria-label={
+              input.length > 0
+                ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
+                : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })
+            }
           >
             {input.length > 0
               ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
@@ -506,12 +513,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
               <>
                 <div className={classes.buttonContainer}>
-                  {buttonComponent(
-                    carSettingsToggle,
-                    openCarSettings,
-                    iconCar,
-                    'mobilityPlatform.menu.title.car',
-                  )}
+                  {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
                 </div>
                 {renderSettings(openCarSettings, carControlTypes)}
                 {openSpeedLimitList ? (

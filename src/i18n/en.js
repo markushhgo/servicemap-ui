@@ -158,6 +158,7 @@ const translations = {
   'embedder.options.title': 'Show on the map',
   'embedder.options.label.units': 'Show service points',
   'embedder.options.label.transit': 'Show public transport stops (Zoom in the map to see the stops)',
+  'embedder.options.label.bbox': 'Limit the embedded map to the area in the preview window',
   'embedder.service.title': 'Services',
   'embedder.service.aria.label': 'Choose services to be shown',
   'embedder.service.none': 'Map is shown without service points',

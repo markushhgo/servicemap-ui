@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Typography, Paper, TextField } from '@material-ui/core';
+import { Checkbox, FormControlLabel, Typography } from '@material-ui/core';
 import URI from 'urijs';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ import embedderConfig from './embedderConfig';
 import SettingsUtility from '../../utils/settings';
 import useLocaleText from '../../utils/useLocaleText';
 import { useUserLocale } from '../../utils/user';
+import EmbedHTML from './components/EmbedHTML';
 
 const hideCitiesIn = [paths.unit.regex, paths.address.regex];
 
@@ -84,10 +85,12 @@ const EmbedderView = ({
   const [heightMode, setHeightMode] = useState('ratio');
   const [transit, setTransit] = useState(false);
   const [showUnits, setShowUnits] = useState(true);
+  const [restrictBounds, setRestrictBounds] = useState(true);
 
+  const boundsRef = useRef([]);
   const dialogRef = useRef();
 
-  const renderWrapperStyle = () => `position: relative; width:100%; padding-bottom:${ratioHeight}%;`;
+  const selectedBbox = restrictBounds && boundsRef.current;
   const embedUrl = getEmbedURL(url, {
     language,
     map,
@@ -96,6 +99,7 @@ const EmbedderView = ({
     defaultLanguage,
     transit,
     showUnits,
+    bbox: selectedBbox,
   });
 
   const getTitleText = () => {
@@ -130,6 +134,10 @@ const EmbedderView = ({
     buttons[0].focus();
   };
 
+  const setBoundsRef = useCallback((bounds) => {
+    boundsRef.current = bounds;
+  }, []);
+
   useEffect(() => {
     focusToFirstElement();
 
@@ -157,10 +165,11 @@ const EmbedderView = ({
   };
 
   // Figure out embed html
-  const embedHTML = (url) => {
+  const createEmbedHTML = useCallback((url) => {
     if (!url) {
       return '';
     }
+    const renderWrapperStyle = () => `position: relative; width:100%; padding-bottom:${ratioHeight}%;`;
     let height;
     let html;
     if (heightMode === 'fixed') {
@@ -170,7 +179,7 @@ const EmbedderView = ({
       if (widthMode === 'auto') {
         html = `<div style="${renderWrapperStyle()}">
           <iframe title="${iframeTitle}" style="position: absolute; top: 0; left: 0; border: none; width: 100%; height: 100%;"
-          src="${embedUrl}"></iframe></div>`;
+          src="${url}"></iframe></div>`;
       } else {
         height = parseInt(
           parseInt(customWidth, 10) * (parseInt(ratioHeight, 10) / 100.0),
@@ -187,10 +196,18 @@ const EmbedderView = ({
         : customWidth;
       const widthUnit = width !== '100%' ? 'px' : '';
       html = `<iframe title="${iframeTitle}" style="border: none; width: ${width}${widthUnit}; height: ${height}px;"
-                  src="${embedUrl}"></iframe>`;
+                  src="${url}"></iframe>`;
     }
     return html;
-  };
+  }, [
+    customWidth,
+    fixedHeight,
+    heightMode,
+    iframeTitle,
+    widthMode,
+    ratioHeight,
+    iframeConfig.style,
+  ]);
 
   const showCities = (embedUrl) => {
     const originalUrl = embedUrl.replace('/embed', '');
@@ -212,48 +229,6 @@ const EmbedderView = ({
       }
     });
     return show;
-  };
-
-  /**
-   * Renders embed HTMl based on options
-   */
-  const renderEmbedHTML = () => {
-    const htmlText = embedHTML(data.url);
-    const textFieldClass = `${classes.textField} ${classes.marginBottom}`;
-
-    return (
-      <Paper className={classes.formContainerPaper}>
-        {/* Embed address */}
-        <Typography
-          align="left"
-          className={classes.marginBottom}
-          variant="h5"
-          component="h2"
-        >
-          <FormattedMessage id="embedder.url.title" />
-        </Typography>
-        <TextField
-          id="embed-address"
-          className={textFieldClass}
-          value={embedUrl}
-          margin="normal"
-          variant="outlined"
-          inputProps={{
-            'aria-label': intl.formatMessage({ id: 'embedder.url.title' }),
-          }}
-        />
-        {/* Embed HTML code */}
-        <Typography
-          align="left"
-          className={classes.marginBottom}
-          variant="h5"
-          component="h2"
-        >
-          <FormattedMessage id="embedder.code.title" />
-        </Typography>
-        <pre className={classes.pre}>{htmlText}</pre>
-      </Paper>
-    );
   };
 
   /**
@@ -450,6 +425,20 @@ const EmbedderView = ({
     );
   };
 
+  const renderBoundsControl = useCallback(() => (
+    <FormControlLabel
+      control={(
+        <Checkbox
+          color="primary"
+          checked={!!restrictBounds}
+          value="bounds"
+          onChange={() => setRestrictBounds(!restrictBounds)}
+        />
+        )}
+      label={(<FormattedMessage id="embedder.options.label.bbox" />)}
+    />
+  ), [restrictBounds]);
+
   const renderMapOptionsControl = () => {
     let controls = [];
     if (window.nodeEnvSettings.THEME_PKG) {
@@ -552,11 +541,18 @@ const EmbedderView = ({
               title={iframeTitle}
               titleComponent="h2"
               widthMode={widthMode}
+              renderBoundsControl={renderBoundsControl}
             />
 
             {renderMapOptionsControl()}
           </form>
-          {renderEmbedHTML()}
+          <EmbedHTML
+            classes={classes}
+            url={embedUrl}
+            createEmbedHTML={createEmbedHTML}
+            setBoundsRef={setBoundsRef}
+            restrictBounds={restrictBounds}
+          />
           <SMButton
             aria-label={intl.formatMessage({ id: 'embedder.close' })}
             className={classes.button}
