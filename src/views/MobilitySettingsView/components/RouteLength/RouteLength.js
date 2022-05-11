@@ -28,81 +28,21 @@ const RouteLength = ({ classes, intl, route }) => {
             {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail' })}
           </Typography>
         );
-      case 'Seutureitti 1':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail1' })}
-          </Typography>
-        );
-      case 'Seutureitti 2':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail2' })}
-          </Typography>
-        );
-      case 'Seutureitti 3':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail3' })}
-          </Typography>
-        );
-      case 'Seutureitti 4':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail4' })}
-          </Typography>
-        );
-      case 'Seutureitti 5':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail5' })}
-          </Typography>
-        );
-      case 'Seutureitti 6':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail6' })}
-          </Typography>
-        );
-      case 'Seutureitti 7':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail7' })}
-          </Typography>
-        );
-      case 'Seutureitti 8':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail8' })}
-          </Typography>
-        );
-      case 'Seutureitti 9':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail9' })}
-          </Typography>
-        );
-      case 'Seutureitti 10':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail10' })}
-          </Typography>
-        );
-      case 'Seutureitti 11':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail11' })}
-          </Typography>
-        );
-      case 'Seutureitti 12':
-        return (
-          <Typography component="p" variant="body2" className={classes.margin}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.regionalTrail12' })}
-          </Typography>
-        );
       default:
         return null;
     }
+  };
+
+  const generateTranslations = (routeName) => {
+    const split = routeName.split(' ');
+    const [a, b] = split;
+    if (a === 'Seutureitti') {
+      return (
+        <Typography component="p" variant="body2" className={classes.margin}>
+          {intl.formatMessage({ id: `mobilityPlatform.menu.bicycleRoutes.regionalTrail${b}` })}
+        </Typography>
+      );
+    } return renderRouteText(routeName);
   };
 
   return (
@@ -124,7 +64,7 @@ const RouteLength = ({ classes, intl, route }) => {
           {' '}
           km.
         </Typography>
-        {renderRouteText(route.name_fi)}
+        {generateTranslations(route.name_fi)}
       </div>
     </div>
   );
