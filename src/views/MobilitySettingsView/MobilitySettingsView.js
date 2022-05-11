@@ -27,10 +27,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
   const [showDescriptionText, setShowDescriptionText] = useState(true);
-  const [cultureRouteIndex, setCultureRouteIndex] = useState(null);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
-  const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -202,9 +200,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
-    if (cultureRouteIndex) {
-      setCultureRouteIndex(null);
-    }
     if (cultureRouteId) {
       setCultureRouteId(null);
     }
@@ -213,22 +208,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const bicycleRouteListToggle = () => {
     setOpenBicycleRouteList(current => !current);
     setShowBicycleRoutes(current => !current);
-    if (bicycleRouteIndex) {
-      setBicycleRouteIndex(null);
-    }
     if (bicycleRouteName) {
       setBicycleRouteName(null);
     }
   };
 
-  const setCultureRouteState = (itemId, index) => {
+  const setCultureRouteState = (itemId) => {
     setCultureRouteId(itemId);
-    setCultureRouteIndex(index);
     setShowCultureRoutes(true);
   };
 
-  const setBicycleRouteState = (index, routeName) => {
-    setBicycleRouteIndex(index);
+  const setBicycleRouteState = (routeName) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
   };
@@ -370,14 +360,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderBicycleRoutes = (inputData, activeIdx) => inputData
+  const renderBicycleRoutes = inputData => inputData
     && inputData.length > 0
-    && inputData.map((item, i) => (
+    && inputData.map(item => (
       <Button
         key={item.id}
         variant="outlined"
-        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
-        onClick={() => setBicycleRouteState(i, item.name_fi)}
+        className={item.name_fi === bicycleRouteName ? classes.listButtonActive : classes.listButton}
+        onClick={() => setBicycleRouteState(item.name_fi)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
           {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
@@ -385,14 +375,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </Button>
     ));
 
-  const renderCultureRoutes = (inputData, activeIdx) => inputData
+  const renderCultureRoutes = inputData => inputData
     && inputData.length > 0
-    && inputData.map((item, i) => (
+    && inputData.map(item => (
       <Button
         key={item.id}
         variant="outlined"
-        className={i === activeIdx ? classes.listButtonActive : classes.listButton}
-        onClick={() => setCultureRouteState(item.id, i)}
+        className={item.id === cultureRouteId ? classes.listButtonActive : classes.listButton}
+        onClick={() => setCultureRouteState(item.id)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
           {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
@@ -440,10 +430,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
               </div>
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
-                ? renderCultureRoutes(localizedCultureRoutes, cultureRouteIndex)
+                ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
               {openCultureRouteList && locale === 'fi'
-                ? renderCultureRoutes(cultureRouteList, cultureRouteIndex)
+                ? renderCultureRoutes(cultureRouteList)
                 : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
@@ -462,7 +452,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   : null}
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
-              {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList, bicycleRouteIndex) : null}
+              {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
               <>
                 <div className={classes.buttonContainer}>
                   {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
