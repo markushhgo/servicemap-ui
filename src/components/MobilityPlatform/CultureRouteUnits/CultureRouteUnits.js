@@ -7,9 +7,8 @@ import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlat
 import { selectRouteName } from '../utils/utils';
 import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
-const CultureRouteUnits = ({ classes, cultureRoute }) => {
-  const [cultureRouteUnits, setCultureRouteUnits] = useState(null);
-  const [activeCultureRouteUnits, setActiveCultureRouteUnits] = useState(null);
+const CultureRouteUnits = ({ classes }) => {
+  const [cultureRouteUnits, setCultureRouteUnits] = useState([]);
 
   const { openMobilityPlatform, cultureRouteId } = useContext(MobilityPlatformContext);
 
@@ -29,28 +28,12 @@ const CultureRouteUnits = ({ classes, cultureRoute }) => {
     }
   }, [openMobilityPlatform, setCultureRouteUnits]);
 
-  useEffect(() => {
-    if (cultureRouteUnits && cultureRoute) {
-      const routeUnits = cultureRouteUnits.reduce((acc, item) => {
-        if (item.mobile_unit_group.id === cultureRouteId) {
-          acc.push(item);
-        }
-        return acc;
-      }, []);
-      setActiveCultureRouteUnits(routeUnits);
-    }
-  }, [cultureRouteUnits, cultureRouteId, cultureRoute]);
-
-  useEffect(() => {
-    if (!cultureRoute) {
-      setActiveCultureRouteUnits(null);
-    }
-  }, [cultureRoute]);
+  const activeCultureRouteUnits = cultureRouteUnits.filter(item => item.mobile_unit_group.id === cultureRouteId);
 
   return (
     <>
       <div>
-        {activeCultureRouteUnits
+        {activeCultureRouteUnits && activeCultureRouteUnits.length > 0
           && activeCultureRouteUnits.map(item => (
             <Marker key={item.id} icon={customIcon} position={[item.geometry_coords.lat, item.geometry_coords.lon]}>
               <Popup>
@@ -71,11 +54,6 @@ const CultureRouteUnits = ({ classes, cultureRoute }) => {
 
 CultureRouteUnits.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  cultureRoute: PropTypes.objectOf(PropTypes.any),
-};
-
-CultureRouteUnits.defaultProps = {
-  cultureRoute: null,
 };
 
 export default CultureRouteUnits;
