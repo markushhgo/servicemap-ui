@@ -59,9 +59,6 @@ const ToolMenu = ({
 
     const uri = URI(window.location);
     const search = uri.search(true);
-    if (!search.bbox) {
-      search.bbox = mapUtility.getBbox();
-    }
     uri.search(search);
     let searchParams = uri.search();
 
@@ -99,7 +96,7 @@ const ToolMenu = ({
     },
     {
       key: 'printTool',
-      text: intl.formatMessage({ id: 'tool.print'}),
+      text: intl.formatMessage({ id: 'tool.print' }),
       icon: <Print className={classes.smIcon} />,
       onClick: () => {
         if (typeof togglePrintView === 'function') {

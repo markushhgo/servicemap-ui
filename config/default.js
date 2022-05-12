@@ -226,6 +226,11 @@ export default {
     "en": 'en_uk',
     "sv": 'sv_se',
   },
+  "accessibilityStatementURL": {
+    fi: settings.ACCESSIBILITY_STATEMENT_URL_FI,
+    sv: settings.ACCESSIBILITY_STATEMENT_URL_SV,
+    en: settings.ACCESSIBILITY_STATEMENT_URL_EN,
+  },
   "sentryDSN": (settings.SENTRY_DSN_CLIENT !== 'false') ? settings.SENTRY_DSN_CLIENT : false,
   "showAreaSelection": (settings.SHOW_AREA_SELECTION === 'true'),
   "showReadSpeakerButton": (settings.READ_SPEAKER_URL !== 'false' && settings.READ_SPEAKER_URL !== false),
@@ -236,4 +241,6 @@ export default {
   "matomoSensesDimensionID": settings.MATOMO_SENSES_DIMENSION_ID,
   "matomoUrl": settings.MATOMO_URL,
   "matomoSiteId": settings.MATOMO_SITE_ID,
+  "themePKG": settings.THEME_PKG,
+  "mobilityPlatformAPI": settings.MOBILITY_PLATFORM_API,
 }

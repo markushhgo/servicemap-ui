@@ -53,7 +53,11 @@ const paths = {
   area: {
     generate: selected => `/area${selected ? `?selected=${selected}` : ''}`,
     regex: /\/[a-zA-Z]{2}\/area/
-  }
+  },
+  mobilityPlatform: {
+    generate: () => `/mobility`,
+    regex: /\/[a-zA-Z]{2}\/mobility/
+  },
 }
 
 export default paths;

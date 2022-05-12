@@ -48,6 +48,73 @@
   color: #61dafb;
 }
 
+.ecocounter-popup {
+  width: 430px;
+}
+
+.rental-cars-popup {
+  width: 470px;
+}
+
+.ecocounter-popup > .leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: 2px solid gray;
+}
+
+.ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 390px !important;
+}
+
+.rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 460px !important;
+}
+
+@media (min-width: 750px) {
+  .charger-stations-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 350px !important;
+  }
+}
+
+@media (max-width: 750px) {
+  .rental-cars-popup {
+    width: 375px;
+  }
+
+  .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 370px !important;
+  }
+
+  .ecocounter-popup {
+    width: 380px;
+  }
+
+  .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 370px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .rental-cars-popup {
+    width: 345px;
+  }
+
+  .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 340px !important;
+  }
+
+  .ecocounter-popup {
+    width: 355px;
+  }
+
+  .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 350px !important;
+  }
+}
+
+/* React Dates */
+@import '~react-dates/lib/css/_datepicker.css';
+
 @keyframes spin-animation {
   from {
     transform: rotate(0deg);

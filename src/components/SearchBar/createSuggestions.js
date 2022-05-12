@@ -1,65 +1,31 @@
-import config from '../../../config';
-import { dataStructure } from '../../views/AreaView/utils/districtDataHelper';
+import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
 
-// TODO: need city (and locale?) parameters to new search fetch
+const createSuggestions = (query, abortController, getLocaleText, citySettings, locale) => async () => {
+  const smAPI = new ServiceMapAPI();
+  smAPI.setAbortController(abortController);
 
-const createSuggestions = async (query, signal, locale, intl) => {
-  const data = await Promise.all([
-    fetch(`${config.serviceMapAPI.root}/suggestion/?q=${query}&language=${locale}`, { signal })
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        return 'error';
-      })
-      .catch((res) => {
-        console.warn('error:', res);
-        return 'error';
-      }),
-    fetch(`${config.serviceMapAPI.root}/search/?input=${query}&language=${locale}&page=1&page_size=3&type=address`, { signal })
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        return 'error';
-      })
-      .catch((res) => {
-        console.warn('error:', res);
-        return 'error';
-      }),
-  ]);
+  const additionalOptions = {
+    page_size: 10,
+    sql_query_limit: 1000,
+    unit_limit: 5,
+    service_limit: 2,
+    address_limit: 1,
+    language: locale,
+    municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : 'turku',
+  };
 
-  if (data[0] === 'error' && data[1] === 'error') {
-    return 'error';
-  }
+  const results = await smAPI.search(query, locale, citySettings, additionalOptions);
 
-  let suggestions = [];
-  // Handle address fetch results
-  if (data[1] !== 'error' && data[1].results && data[1].results.length) {
-    suggestions = [...data[1].results];
-  }
-
-  // Add area suggestions
-  const areas = dataStructure.flatMap(item => item.districts);
-  const matchingArea = areas.find(item => intl.formatMessage({ id: `area.list.${item}` }).toLowerCase().includes(query));
-  if (matchingArea) {
-    suggestions.push({
-      object_type: 'area',
-      id: matchingArea,
-      name: intl.formatMessage({ id: `area.list.${matchingArea}.plural` }),
-    });
-  }
-
-  // Handle suggestion API results
-  if (data[0] !== 'error' && data[0].suggestions && data[0].suggestions.length) {
-    data[0].suggestions.forEach((element) => {
-      if (!element.object_type) {
-        element.object_type = 'suggestion';
+  // Handle address results
+  results.forEach((item) => {
+    if (item.object_type === 'address') {
+      if (getLocaleText(item.name).toLowerCase() === query.toLowerCase()) {
+        item.isExact = true;
       }
-    });
-    suggestions = [...suggestions, ...data[0].suggestions];
-  }
-  return suggestions;
+    }
+  });
+
+  return results;
 };
 
 export default createSuggestions;

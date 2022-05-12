@@ -8,7 +8,8 @@ import {
 import { FormattedMessage } from 'react-intl';
 import { Map } from '@material-ui/icons';
 import Helmet from 'react-helmet';
-import { focusToPosition } from '../MapView/utils/mapActions';
+import { useSelector } from 'react-redux';
+import { focusToPosition, useMapFocusDisabled } from '../MapView/utils/mapActions';
 import fetchAdministrativeDistricts from './utils/fetchAdministrativeDistricts';
 import TitleBar from '../../components/TitleBar';
 import { AddressIcon } from '../../components/SMIcon';
@@ -55,8 +56,10 @@ const getEmergencyCareUnit = (division) => {
 
 const AddressView = (props) => {
   const [error, setError] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
   const getAddressNavigatorParams = useNavigationParams();
   const getLocaleText = useLocaleText();
+  const searchResults = useSelector(state => state.searchResults.data);
 
   const {
     addressData,
@@ -78,7 +81,14 @@ const AddressView = (props) => {
     units,
   } = props;
 
-  const title = getAddressText(addressData, getLocaleText);
+  let title = '';
+
+  if (!isFetching) {
+    if (addressData?.name) title = getLocaleText(addressData?.name);
+    else title = getAddressText(addressData, getLocaleText);
+  }
+
+  const mapFocusDisabled = useMapFocusDisabled();
 
   const fetchAddressDistricts = (lnglat) => {
     setAdminDistricts(null);
@@ -114,6 +124,28 @@ const AddressView = (props) => {
       && compareValues(newAdddress.letter, addressData.letter);
   };
 
+  const handleAddressData = (address) => {
+    // Check if address data is in different language
+    // and move navigation to address page with correct language
+    const { params } = match;
+
+    if (params.street.toLowerCase() !== getLocaleText(address.street.name).toLowerCase()) {
+      navigator.replace('address', {
+        ...getAddressNavigatorParams(address),
+        embed,
+      });
+    }
+    setAddressData(address);
+    setAddressLocation({ addressCoordinates: address.location.coordinates });
+    const { coordinates } = address.location;
+
+    if (!mapFocusDisabled) {
+      focusToPosition(map, [coordinates[0], coordinates[1]]);
+    }
+    fetchAddressDistricts(coordinates);
+    fetchUnits(coordinates);
+  };
+
   const fetchData = () => {
     const options = match ? addressMatchParamsToFetchOptions(match) : {};
 
@@ -122,32 +154,26 @@ const AddressView = (props) => {
 
     setAddressUnits([]);
 
+    setIsFetching(true);
     fetchAddressData(options)
       .then((data) => {
+        setIsFetching(false);
         const address = data;
         if (address) {
-          // Check if address data is in different language
-          // and move navigation to address page with correct language
-          const { params } = match;
-
-          if (params.street.toLowerCase() !== getLocaleText(address.street.name).toLowerCase()) {
-            navigator.replace('address', {
-              ...getAddressNavigatorParams(address),
-              embed,
-            });
-          }
-          setAddressData(address);
-          setAddressLocation({ addressCoordinates: address.location.coordinates });
-          const { coordinates } = address.location;
-
-          focusToPosition(map, [coordinates[0], coordinates[1]]);
-          fetchAddressDistricts(coordinates);
-          fetchUnits(coordinates);
+          handleAddressData(address);
         } else {
           setError(intl.formatMessage({ id: 'address.error' }));
         }
       });
   };
+
+
+  const getAddressFromSearch = () => {
+    if (!searchResults.length) return null;
+    const addressNameFromParams = [match.params.street, match.params.number].join(' ');
+    return searchResults.find(item => addressNameFromParams === getLocaleText(item.name));
+  };
+
 
   const renderHead = (title) => {
     if (addressData) {
@@ -187,7 +213,7 @@ const AddressView = (props) => {
   );
 
   const renderNearbyList = () => {
-    if (!units) {
+    if (isFetching || !units) {
       return <Typography><FormattedMessage id="general.loading" /></Typography>;
     } if (units && !units.length) {
       return <Typography><FormattedMessage id="general.noData" /></Typography>;
@@ -197,7 +223,7 @@ const AddressView = (props) => {
 
 
   const renderClosebyServices = () => {
-    if (!adminDistricts) {
+    if (isFetching || !adminDistricts) {
       return <Typography><FormattedMessage id="general.loading" /></Typography>;
     }
     // Get divisions with units
@@ -278,12 +304,6 @@ const AddressView = (props) => {
     );
   };
 
-  // Update view data when match props (url) change
-  useEffect(() => {
-    if (map) {
-      fetchData();
-    }
-  }, [match.url, map]);
 
   // Render component
   const tabs = [
@@ -322,6 +342,19 @@ const AddressView = (props) => {
       tabs[selectedTab].onClick();
     }
   }, []);
+
+  // Update view data when match props (url) change
+  useEffect(() => {
+    if (map) {
+      // If navigating from search page, address data should already be in search results
+      const addressFromSearch = getAddressFromSearch();
+      if (addressFromSearch) {
+        handleAddressData(addressFromSearch);
+      } else {
+        fetchData();
+      }
+    }
+  }, [match.url, map]);
 
   if (embed) {
     return null;

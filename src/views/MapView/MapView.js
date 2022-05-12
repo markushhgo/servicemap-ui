@@ -5,9 +5,10 @@ import { withRouter } from 'react-router-dom';
 import { Tooltip as MUITooltip, ButtonBase } from '@material-ui/core';
 import { MyLocation, LocationDisabled } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
+import { useMapEvents } from 'react-leaflet';
 import { mapOptions } from './config/mapConfig';
 import CreateMap from './utils/createMap';
-import { focusToPosition } from './utils/mapActions';
+import { focusToPosition, getBoundsFromBbox } from './utils/mapActions';
 import Districts from './components/Districts';
 import TransitStops from './components/TransitStops';
 import AddressPopup from './components/AddressPopup';
@@ -31,12 +32,28 @@ import EntranceMarker from './components/EntranceMarker';
 import EventMarkers from './components/EventMarkers';
 import CustomControls from './components/CustomControls';
 import { getSelectedUnitEvents } from '../../redux/selectors/selectedUnit';
+import MobilityPlatformMapView from '../MobilityPlatformMapView';
+import config from '../../../config';
 
 if (global.window) {
   require('leaflet');
   require('leaflet.markercluster');
   global.rL = require('react-leaflet');
 }
+
+const EmbeddedActions = () => {
+  const embedded = isEmbed();
+  const map = useMapEvents({
+    moveend() {
+      if (embedded) {
+        const bounds = map.getBounds();
+        window.parent.postMessage({ bbox: `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}` });
+      }
+    },
+  });
+
+  return null;
+};
 
 const MapView = (props) => {
   const {
@@ -65,6 +82,7 @@ const MapView = (props) => {
     measuringMode,
     toggleSidebar,
     sidebarHidden,
+    showMobilityPlatform,
   } = props;
 
   // State
@@ -83,6 +101,9 @@ const MapView = (props) => {
   // This unassigned selector is used to trigger re-render after events are fetched
   useSelector(state => getSelectedUnitEvents(state));
 
+  // If external theme (by Turku) is true, then can be used to select which components to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   const getMapUnits = () => {
     let mapUnits = [];
@@ -102,19 +123,20 @@ const MapView = (props) => {
     } else if (currentPage === 'address') {
       switch (addressToRender) {
         case 'adminDistricts':
-          mapUnits = adminDistricts ? adminDistricts
-            .filter(d => d.unit)
-            .reduce((unique, o) => {
-              // Ignore districts without unit
-              if (!o.unit) {
+          mapUnits = adminDistricts
+            ? adminDistricts
+              .filter(d => d.unit)
+              .reduce((unique, o) => {
+                // Ignore districts without unit
+                if (!o.unit) {
+                  return unique;
+                }
+                // Add only unique units
+                if (!unique.some(obj => obj.id === o.unit.id)) {
+                  unique.push(o.unit);
+                }
                 return unique;
-              }
-              // Add only unique units
-              if (!unique.some(obj => obj.id === o.unit.id)) {
-                unique.push(o.unit);
-              }
-              return unique;
-            }, [])
+              }, [])
             : [];
           break;
         case 'units':
@@ -154,20 +176,16 @@ const MapView = (props) => {
 
   const focusOnUser = () => {
     if (userLocation) {
-      focusToPosition(
-        mapElement,
-        [userLocation.longitude, userLocation.latitude],
-      );
+      focusToPosition(mapElement, [userLocation.longitude, userLocation.latitude]);
     } else if (!embedded) {
       findUserLocation();
     }
   };
 
   const navigateToAddress = (latLng) => {
-    fetchAddress(latLng)
-      .then((data) => {
-        navigator.push('address', getAddressNavigatorParams(data));
-      });
+    fetchAddress(latLng).then((data) => {
+      navigator.push('address', getAddressNavigatorParams(data));
+    });
   };
 
   const getCoordinatesFromUrl = () => {
@@ -181,7 +199,8 @@ const MapView = (props) => {
     return [lat, lng];
   };
 
-  useEffect(() => { // On map mount
+  useEffect(() => {
+    // On map mount
     initializeMap();
     if (!embedded) {
       findUserLocation();
@@ -210,8 +229,8 @@ const MapView = (props) => {
     mapUtility.centerMapToUnit(highlightedUnit);
   }, [highlightedUnit, mapUtility, currentPage]);
 
-
-  useEffect(() => { // On map type change
+  useEffect(() => {
+    // On map type change
     // Init new map and set new ref to redux
     initializeMap();
   }, [settings.mapType]);
@@ -247,7 +266,6 @@ const MapView = (props) => {
     currentPage,
   ]);
 
-
   useEffect(() => {
     if (!measuringMode) {
       setMeasuringMarkers([]);
@@ -277,23 +295,20 @@ const MapView = (props) => {
   const renderUnitGeometry = () => {
     if (highlightedDistrict) return null;
     if (currentPage !== 'unit') {
-      return unitData.map(unit => (
-        unit.geometry
-          ? <UnitGeometry key={unit.id} data={unit} />
-          : null
-      ));
-    } if (highlightedUnit) {
+      return unitData.map(unit => (unit.geometry ? <UnitGeometry key={unit.id} data={unit} /> : null));
+    }
+    if (highlightedUnit) {
       return <UnitGeometry data={highlightedUnit} />;
     }
     return null;
   };
 
-
   if (global.rL && mapObject) {
     const { MapContainer, TileLayer, WMSTileLayer } = global.rL || {};
     let center = mapOptions.initialPosition;
     let zoom = isMobile ? mapObject.options.mobileZoom : mapObject.options.zoom;
-    if (prevMap) { // If changing map type, use viewport values of previuous map
+    if (prevMap) {
+      // If changing map type, use viewport values of previuous map
       center = prevMap.getCenter() || prevMap.props.center;
       /* Different map types have different zoom levels
       Use the zoom difference to calculate the new zoom level */
@@ -304,8 +319,11 @@ const MapView = (props) => {
     }
 
     const showLoadingScreen = districtViewFetching || (embedded && unitsLoading);
-    const userLocationAriaLabel = intl.formatMessage({ id: !userLocation ? 'location.notAllowed' : 'location.center' });
+    const userLocationAriaLabel = intl.formatMessage({
+      id: !userLocation ? 'location.notAllowed' : 'location.center',
+    });
     const eventSearch = parseSearchParams(location.search).events;
+    const defaultBounds = parseSearchParams(location.search).bbox;
 
     return (
       <>
@@ -316,9 +334,10 @@ const MapView = (props) => {
           className={`${classes.map} ${embedded ? classes.mapNoSidebar : ''} `}
           key={mapObject.options.name}
           zoomControl={false}
+          bounds={getBoundsFromBbox(defaultBounds?.split(','))}
           doubleClickZoom={false}
           crs={mapObject.crs}
-          center={center}
+          center={!defaultBounds ? center : null}
           zoom={zoom}
           minZoom={mapObject.options.minZoom}
           maxZoom={mapObject.options.maxZoom}
@@ -331,52 +350,45 @@ const MapView = (props) => {
             setMapRef(map);
           }}
         >
-          {eventSearch
-            ? <EventMarkers searchData={unitData} />
-            : (
-              <MarkerCluster
-                data={currentPage === 'unit' && highlightedUnit ? [highlightedUnit] : unitData}
-                measuringMode={measuringMode}
-              />
-            )
-          }
-          {
-            renderUnitGeometry()
-          }
-          {mapObject.options.name === 'ortographic' && mapObject.options.wmsUrl !== 'undefined'
-            ? ( // Use WMS service for ortographic maps, because HSY's WMTS tiling does not work
-              <WMSTileLayer
-                url={mapObject.options.wmsUrl}
-                layers={mapObject.options.wmsLayerName}
-                attribution={intl.formatMessage({ id: mapObject.options.attribution })}
-              />
-            )
-            : (
-              <TileLayer
-                url={mapObject.options.url}
-                attribution={intl.formatMessage({ id: mapObject.options.attribution })}
-              />
-            )}
+          {eventSearch ? (
+            <EventMarkers searchData={unitData} />
+          ) : (
+            <MarkerCluster
+              data={currentPage === 'unit' && highlightedUnit ? [highlightedUnit] : unitData}
+              measuringMode={measuringMode}
+            />
+          )}
+          {renderUnitGeometry()}
+          {mapObject.options.name === 'ortographic' && mapObject.options.wmsUrl !== 'undefined' ? (
+            // Use WMS service for ortographic maps, because HSY's WMTS tiling does not work
+            <WMSTileLayer
+              url={mapObject.options.wmsUrl}
+              layers={mapObject.options.wmsLayerName}
+              attribution={intl.formatMessage({ id: mapObject.options.attribution })}
+            />
+          ) : (
+            <TileLayer
+              url={mapObject.options.url}
+              attribution={intl.formatMessage({ id: mapObject.options.attribution })}
+            />
+          )}
           {showLoadingScreen ? (
             <div className={classes.loadingScreen}>
               <Loading reducer={districtUnitsFetch.isFetching ? districtUnitsFetch : null} />
             </div>
           ) : null}
           <Districts mapOptions={mapOptions} embedded={embedded} />
-          <TransitStops mapObject={mapObject} />
+          {/* Turku does not yet have data to render this */}
+          {!isExternalTheme ? <TransitStops mapObject={mapObject} /> : null}
 
           {!embedded && !measuringMode && (
             // Draw address popoup on mapclick to map
             <AddressPopup navigator={navigator} />
           )}
 
-          {currentPage === 'address' && (
-            <AddressMarker embedded={embedded} />
-          )}
+          {currentPage === 'address' && <AddressMarker embedded={embedded} />}
 
-          {currentPage === 'unit' && highlightedUnit?.entrances?.length && (
-            <EntranceMarker />
-          )}
+          {currentPage === 'unit' && highlightedUnit?.entrances?.length && <EntranceMarker />}
 
           {!hideUserMarker && userLocation && (
             <UserMarker
@@ -399,10 +411,7 @@ const MapView = (props) => {
 
           <CustomControls position="topleft">
             {!isMobile && !embedded && toggleSidebar ? (
-              <HideSidebarButton
-                sidebarHidden={sidebarHidden}
-                toggleSidebar={toggleSidebar}
-              />
+              <HideSidebarButton sidebarHidden={sidebarHidden} toggleSidebar={toggleSidebar} />
             ) : null}
           </CustomControls>
           <CustomControls position="bottomright">
@@ -413,14 +422,17 @@ const MapView = (props) => {
                   aria-hidden
                   aria-label={userLocationAriaLabel}
                   disabled={!userLocation}
-                  className={`${classes.showLocationButton} ${!userLocation ? classes.locationDisabled : ''}`}
+                  className={`${classes.showLocationButton} ${
+                    !userLocation ? classes.locationDisabled : ''
+                  }`}
                   onClick={() => focusOnUser()}
                   focusVisibleClassName={classes.locationButtonFocus}
                 >
-                  {userLocation
-                    ? <MyLocation className={classes.showLocationIcon} />
-                    : <LocationDisabled className={classes.showLocationIcon} />
-                  }
+                  {userLocation ? (
+                    <MyLocation className={classes.showLocationIcon} />
+                  ) : (
+                    <LocationDisabled className={classes.showLocationIcon} />
+                  )}
                 </ButtonBase>
               </div>
             ) : null}
@@ -428,6 +440,8 @@ const MapView = (props) => {
             <PanControl key="panControl" />
           </CustomControls>
           <CoordinateMarker position={getCoordinatesFromUrl()} />
+          <EmbeddedActions />
+          {showMobilityPlatform ? <MobilityPlatformMapView /> : null}
         </MapContainer>
       </>
     );
@@ -441,10 +455,12 @@ export default withRouter(MapView);
 MapView.propTypes = {
   addressToRender: PropTypes.string,
   addressUnits: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
-  adminDistricts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    ocd_id: PropTypes.string,
-  })),
+  adminDistricts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      ocd_id: PropTypes.string,
+    }),
+  ),
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   currentPage: PropTypes.string.isRequired,
   hideUserMarker: PropTypes.bool,
@@ -467,6 +483,7 @@ MapView.propTypes = {
   measuringMode: PropTypes.bool.isRequired,
   toggleSidebar: PropTypes.func,
   sidebarHidden: PropTypes.bool,
+  showMobilityPlatform: PropTypes.bool,
 };
 
 MapView.defaultProps = {
@@ -485,4 +502,5 @@ MapView.defaultProps = {
   toggleSidebar: null,
   sidebarHidden: false,
   userLocation: null,
+  showMobilityPlatform: true,
 };

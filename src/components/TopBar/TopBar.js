@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Typography, AppBar, Toolbar, ButtonBase, NoSsr,
+  Button,
+  Typography,
+  AppBar,
+  Toolbar,
+  ButtonBase,
+  NoSsr,
 } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -45,27 +50,28 @@ const TopBar = (props) => {
       { type: 'accessibilitySettings' },
     ];
 
-    return (
-      settingsCategories.map(category => (
-        <SettingsButton
-          key={category.type}
-          onClick={() => {
-            toggleSettings(category.type);
-            setTimeout(() => {
-              const button = document.getElementById(`SettingsButton${category.type}`);
-              const settings = document.getElementsByClassName('TitleText')[0];
-              if (settings) {
-                // Focus on settings title
-                settings.focus();
-              } else {
-                button.focus();
-              }
-            }, 1);
-          }}
-          settingsOpen={settingsOpen}
-          type={category.type}
-        />
-      )));
+    return settingsCategories.map(category => (
+      <SettingsButton
+        key={category.type}
+        onClick={() => {
+          toggleSettings(category.type);
+          setTimeout(() => {
+            const button = document.getElementById(
+              `SettingsButton${category.type}`,
+            );
+            const settings = document.getElementsByClassName('TitleText')[0];
+            if (settings) {
+              // Focus on settings title
+              settings.focus();
+            } else {
+              button.focus();
+            }
+          }, 1);
+        }}
+        settingsOpen={settingsOpen}
+        type={category.type}
+      />
+    ));
   };
 
   const renderMapButton = () => {
@@ -73,7 +79,9 @@ const TopBar = (props) => {
     return (
       <Button
         aria-hidden
-        className={mapPage ? classes.toolbarButtonPressed : classes.toolbarButton}
+        className={
+          mapPage ? classes.toolbarButtonPressed : classes.toolbarButton
+        }
         classes={{ label: classes.buttonLabel }}
         onClick={(e) => {
           e.preventDefault();
@@ -113,33 +121,33 @@ const TopBar = (props) => {
     const typographyClass = className => `${pageType === 'mobile' ? classes.mobileFont : ''} ${className || ''}`;
     return (
       <>
-        {LocaleUtility.availableLocales
-          .map(currentLocale => (
-            <ButtonBase
-              role="link"
-              key={currentLocale}
-              focusVisibleClassName={classes.topButtonFocused}
-              lang={currentLocale}
-              onClick={() => {
-                const newLocation = location;
-                const newPath = location.pathname.replace(/^\/[a-zA-Z]{2}/, `/${currentLocale}`);
-                newLocation.pathname = newPath;
-                window.location = `${newLocation.pathname}${newLocation.search}`;
-              }}
+        {LocaleUtility.availableLocales.map(currentLocale => (
+          <ButtonBase
+            role="link"
+            key={currentLocale}
+            focusVisibleClassName={classes.topButtonFocused}
+            lang={currentLocale}
+            onClick={() => {
+              const newLocation = location;
+              const newPath = location.pathname.replace(
+                /^\/[a-zA-Z]{2}/,
+                `/${currentLocale}`,
+              );
+              newLocation.pathname = newPath;
+              window.location = `${newLocation.pathname}${newLocation.search}`;
+            }}
+          >
+            <Typography
+              className={typographyClass(
+                currentLocale === locale ? classes.bold : classes.greyText,
+              )}
+              color="inherit"
+              variant="body2"
             >
-              <Typography
-                className={typographyClass(
-                  currentLocale === locale
-                    ? classes.bold
-                    : classes.greyText,
-                )}
-                color="inherit"
-                variant="body2"
-              >
-                <FormattedMessage id={`general.language.${currentLocale}`} />
-              </Typography>
-            </ButtonBase>
-          ))}
+              <FormattedMessage id={`general.language.${currentLocale}`} />
+            </Typography>
+          </ButtonBase>
+        ))}
       </>
     );
   };
@@ -185,6 +193,12 @@ const TopBar = (props) => {
         navigator.push('info');
         break;
 
+      case 'mobilityPlatform':
+        if (currentPage !== 'mobilityPlatform') {
+          navigator.push('mobilityPlatform');
+        }
+        break;
+
       default:
         break;
     }
@@ -200,40 +214,77 @@ const TopBar = (props) => {
     />
   );
 
-
   const renderTopBar = (pageType) => {
     const fontClass = pageType === 'mobile' ? classes.mobileFont : '';
-    const toolbarBlackClass = `${
-      classes.toolbarBlack
-    } ${
+    const toolbarBlackClass = `${classes.toolbarBlack} ${
       pageType === 'mobile' ? classes.toolbarBlackMobile : ''
     }`;
-    const contrastAriaLabel = intl.formatMessage({ id: `general.contrast.ariaLabel.${theme === 'dark' ? 'off' : 'on'}` })
+    const contrastAriaLabel = intl.formatMessage({
+      id: `general.contrast.ariaLabel.${theme === 'dark' ? 'off' : 'on'}`,
+    });
     return (
       <>
         <AppBar className={classes.appBar}>
           {/* Toolbar black area */}
           <Toolbar className={toolbarBlackClass}>
             <div className={classes.toolbarBlackContainer}>
-              <ButtonBase role="link" onClick={() => handleNavigation('home')} focusVisibleClassName={classes.topButtonFocused}>
-                <Typography className={fontClass} color="inherit" variant="body2">
+              <ButtonBase
+                role="link"
+                onClick={() => handleNavigation('home')}
+                focusVisibleClassName={classes.topButtonFocused}
+              >
+                <Typography
+                  className={fontClass}
+                  color="inherit"
+                  variant="body2"
+                >
                   <FormattedMessage id="general.frontPage" />
                 </Typography>
               </ButtonBase>
-              <Typography aria-hidden color="inherit">|</Typography>
+              <Typography aria-hidden color="inherit">
+                |
+              </Typography>
               {renderLanguages(pageType)}
-              <Typography aria-hidden color="inherit">|</Typography>
-              <ButtonBase role="button" onClick={() => handleContrastChange()} focusVisibleClassName={classes.topButtonFocused} aria-label={contrastAriaLabel}>
-                <Typography className={fontClass} color="inherit" variant="body2"><FormattedMessage id="general.contrast" /></Typography>
+              <Typography aria-hidden color="inherit">
+                |
+              </Typography>
+              <ButtonBase
+                role="button"
+                onClick={() => handleContrastChange()}
+                focusVisibleClassName={classes.topButtonFocused}
+                aria-label={contrastAriaLabel}
+              >
+                <Typography
+                  className={fontClass}
+                  color="inherit"
+                  variant="body2"
+                >
+                  <FormattedMessage id="general.contrast" />
+                </Typography>
               </ButtonBase>
             </div>
           </Toolbar>
 
           {/* Toolbar white area */}
-          <Toolbar disableGutters className={pageType === 'mobile' ? classes.toolbarWhiteMobile : classes.toolbarWhite}>
-            <ButtonBase aria-label={intl.formatMessage({ id: 'general.back.goToHome' })} role="link" onClick={() => handleNavigation('home')}>
+          <Toolbar
+            disableGutters
+            className={
+              pageType === 'mobile'
+                ? classes.toolbarWhiteMobile
+                : classes.toolbarWhite
+            }
+          >
+            <ButtonBase
+              aria-label={intl.formatMessage({ id: 'general.back.goToHome' })}
+              role="link"
+              onClick={() => handleNavigation('home')}
+            >
               <NoSsr>
-                <HomeLogo aria-hidden contrast={theme === 'dark'} className={classes.logo} />
+                <HomeLogo
+                  aria-hidden
+                  contrast={theme === 'dark'}
+                  className={classes.logo}
+                />
               </NoSsr>
             </ButtonBase>
             <MobileComponent>
@@ -245,12 +296,14 @@ const TopBar = (props) => {
             </MobileComponent>
             <DesktopComponent>
               {!smallScreen ? (
-                <div className={classes.settingsButtonsContainer}>
-                  <Typography component="h2" variant="srOnly">
-                    <FormattedMessage id="settings" />
-                  </Typography>
-                  {renderSettingsButtons()}
-                </div>
+                <>
+                  <div className={classes.settingsButtonsContainer}>
+                    <Typography component="h2" variant="srOnly">
+                      <FormattedMessage id="settings" />
+                    </Typography>
+                    {renderSettingsButtons()}
+                  </div>
+                </>
               ) : (
                 <>
                   <div className={classes.mobileButtonContainer}>
@@ -259,16 +312,16 @@ const TopBar = (props) => {
                   {renderDrawerMenu(pageType)}
                 </>
               )}
-              {
-                !smallScreen && (
-                  <ToolMenu />
-                )
-              }
+              {!smallScreen && <ToolMenu />}
             </DesktopComponent>
           </Toolbar>
         </AppBar>
         {/* This empty toolbar fixes the issue where App bar hides the top page content */}
-        <Toolbar className={pageType === 'mobile' ? classes.alignerMobile : classes.aligner} />
+        <Toolbar
+          className={
+            pageType === 'mobile' ? classes.alignerMobile : classes.aligner
+          }
+        />
       </>
     );
   };
@@ -276,14 +329,10 @@ const TopBar = (props) => {
   return (
     <>
       <MobileComponent>
-        <>
-          {renderTopBar('mobile')}
-        </>
+        <>{renderTopBar('mobile')}</>
       </MobileComponent>
       <DesktopComponent>
-        <>
-          {renderTopBar('desktop')}
-        </>
+        <>{renderTopBar('desktop')}</>
       </DesktopComponent>
     </>
   );

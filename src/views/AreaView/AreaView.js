@@ -5,10 +5,10 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
-import { focusDistrict, focusDistricts } from '../MapView/utils/mapActions';
+import { focusDistrict, focusDistricts, useMapFocusDisabled } from '../MapView/utils/mapActions';
 import TabLists from '../../components/TabLists';
 import GeographicalTab from './components/GeographicalTab';
-import { parseSearchParams, uppercaseFirst } from '../../utils';
+import { parseSearchParams, formAddressString } from '../../utils';
 import ServiceTab from './components/ServiceTab';
 import { districtFetch } from '../../utils/fetch';
 import fetchAddress from '../MapView/utils/fetchAddress';
@@ -58,6 +58,7 @@ const AreaView = ({
   const selectedArea = searchParams.selected;
   // Get area parameter without year data
   const selectedAreaType = selectedArea?.split(/([0-9]+)/)[0];
+  const mapFocusDisabled = useMapFocusDisabled();
 
   const getInitialOpenItems = () => {
     if (selectedAreaType) {
@@ -74,15 +75,8 @@ const AreaView = ({
   // Pending request to focus map to districts. Executed once district data is loaded
   const [focusTo, setFocusTo] = useState(null);
 
-  const formAddressString = useCallback(
-    address => (address
-      ? `${getLocaleText(address.street.name)} ${address.number}${address.number_end ? address.number_end : ''}${address.letter ? address.letter : ''}, ${uppercaseFirst(address.street.municipality)}`
-      : ''),
-    [],
-  );
-
   const focusMapToDistrict = (district) => {
-    if (map && district?.boundary) {
+    if (!mapFocusDisabled && map && district?.boundary) {
       focusDistrict(map, district.boundary.coordinates);
     }
   };
@@ -138,7 +132,7 @@ const AreaView = ({
   useEffect(() => {
     if (selectedAddress) {
       if (!selectedAddress.districts
-        || formAddressString(districtAddressData.address) !== formAddressString(selectedAddress)
+        || formAddressString(districtAddressData.address, getLocaleText) !== formAddressString(selectedAddress, getLocaleText)
       ) {
         fetchAddressDistricts();
       }
@@ -161,7 +155,7 @@ const AreaView = ({
 
   useEffect(() => {
     // If pending district focus, focus to districts when distitct data is loaded
-    if (focusTo && selectedDistrictData.length) {
+    if (!mapFocusDisabled && focusTo && selectedDistrictData.length) {
       if (focusTo === 'districts') {
         if (selectedDistrictGeometry) {
           setFocusTo(null);
@@ -180,7 +174,7 @@ const AreaView = ({
   }, [selectedDistrictData, focusTo]);
 
   useEffect(() => {
-    if (map && !focusTo && !localAddressData.length && selectedDistrictGeometry) {
+    if (!mapFocusDisabled && map && !focusTo && !localAddressData.length && selectedDistrictGeometry) {
       focusDistricts(map, selectedDistrictData);
     }
   }, [selectedDistrictGeometry]);
@@ -212,7 +206,7 @@ const AreaView = ({
       }
 
       // Set selected geographical districts from url parameters and handle map focus
-      if (searchParams.districts) {
+      if (searchParams.districts && !mapFocusDisabled) {
         setSelectedSubdistricts(searchParams.districts.split(','));
         setFocusTo('subdistricts');
       }
@@ -234,7 +228,7 @@ const AreaView = ({
     } else if (mapState) { // Returning to page, without url parameters
       // Returns map to the previous spot
       const { center, zoom } = mapState;
-      if (map && center && zoom) map.setView(center, zoom);
+      if (!map && center && zoom) map.setView(center, zoom);
     }
   }, []);
 
@@ -253,7 +247,6 @@ const AreaView = ({
   const renderGeographicalTab = () => (
     <GeographicalTab
       initialOpenItems={initialOpenItems}
-      formAddressString={formAddressString}
       clearRadioButtonValue={clearRadioButtonValue}
     />
   );

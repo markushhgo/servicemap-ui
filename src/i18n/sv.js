@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable quote-props */
 const translations = {
   'app.title': 'Servicekarta',
@@ -156,6 +157,7 @@ const translations = {
   'embedder.options.title': 'Visa på kartan',
   'embedder.options.label.units': 'Visa verksamhetsställen',
   'embedder.options.label.transit': 'Visa kollektivtrafikens hållplatser (Zooma in kartan för att se hållplatserna)',
+  'embedder.options.label.bbox': 'Begränsa den inbäddade kartan till området i förhandsgranskningsfönstret',
   'embedder.preview.title': 'Map preview',
   'embedder.service.title': 'Tjänster',
   'embedder.service.aria.label': 'Välj tjänsterna som visas',
@@ -222,6 +224,7 @@ const translations = {
   'general.backToHome': 'Stäng sökningen och gå tillbaka till början',
   'general.backToStart': 'Gå tillbaka till början av sidan',
   'general.back.serviceTree': 'Gå tillbaka till servicekatalogen',
+  'general.back.mobilityPlatform': 'Gå tillbaka',
   'general.cancel': 'Ångra',
   'general.close': 'Stäng',
   'general.distance.meters': 'Meters avstånd',
@@ -278,6 +281,8 @@ const translations = {
   'general.search': 'Sök',
   'general.time.short': 'kl.',
   'general.tools': 'Verktyg',
+  'general.pageTitles.mobilityPlatform': 'Mobilitet',
+  'general.pageTitles.mobilityPlatform.title': 'Mobilitet',
   // Readspeaker
   'general.readspeaker.buttonText': 'Lyssna', // TODO: verify
   'general.readspeaker.title': 'Lyssna med ReadSpeaker webReader', // TODO: verify
@@ -292,6 +297,7 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
+  'home.buttons.mobilityPlatformSettings': 'Mobilitet',
 
   // Location
   'location.notFound': 'Positionen hittades inte',
@@ -311,7 +317,7 @@ const translations = {
   'map.attribution.osm': '&copy; <a href="http://osm.org/copyright">Upphovsmännen bakom OpenStreetMaps</a>',
   'map.attribution.helsinki': '&copy; Helsingfors, Esbo, Vanda och Grankulla städer',
   'map.transit.endStation': 'Ändhållplats',
-  'map.address.coordinate': 'Dela platskoordinat',
+  'map.address.coordinate': 'Skapa en länk till GPS-koordinater', // TODO Verify
   'map.address.searching': 'Söker adress...',
   'map.address.notFound': 'Adressen hittades ej',
   'map.address.info': 'Adressens uppgifter',
@@ -456,6 +462,7 @@ const translations = {
   'search.suggestions.expand': 'Sökförslag',
   'search.suggestions.loading': 'Laddar förslag',
   'search.suggestions.error': 'Inga förslag',
+  'search.suggestions.addresses': 'Visa adresser',
   'search.suggestions.suggestions': '{count} sökförslag',
   // 'search.suggestions.expandSuggestions': '{count} preciseringsförslag',
   'search.suggestions.results': '{count} resultat',
@@ -494,6 +501,9 @@ const translations = {
   'services.category.select': 'Alla',
   'services.category.open': 'Öppna kategori',
   'services.tree.level': 'Nivå',
+  'services.description.extra.cgsTitle': 'Laddplats',
+  'services.description.extra.gfsTitle': 'Gas station',
+  'services.description.extra.bisTitle': 'Cykelställning',
 
   // Settings
   'settings': 'Inställningar',
@@ -558,9 +568,122 @@ const translations = {
   'tool.print': 'Skriv ut',
 
   'info.title': 'Om tjänsten och tillgänglighetsredogörelsen',
-  'info.statement': 'Tillgänglighetsredogörelsen',
+  'info.statement': 'Tillgänglighetsredogörelsen (ny flik)',
 
   'alert.close': 'Stäng meddelande',
+
+  // TODO update translations
+  // Mobility Platform of Turku
+  'mobilityPlatform.info.title': 'Mobilitetsplatform',
+  'mobilityPlatform.info.statement': 'Mobilitetsdataplattformen från servicekartan har utvecklats som en del av SCALE-UP-projekt, finansierat av Europeiska unionens Horizon 2020-program (bidragsavtal nr 955332).',
+
+  // Menu
+  'mobilityPlatform.menu.title': 'Mobilitet',
+  'mobilityPlatform.menu.subtitle': 'Anpassa',
+  'mobilityPlatform.menu.title.walk': 'Promenad',
+  'mobilityPlatform.menu.title.bicycle': 'Cykling',
+  'mobilityPlatform.menu.title.car': 'Bilåkning',
+  'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
+  'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
+  'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
+  'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
+  'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
+  'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
+  'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
+  'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
+  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
+  'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
+  'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
+  'mobilityPlatform.menu.routes.name': 'Rutt',
+  'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
+
+  // Content
+  'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
+  'mobilityPlatform.content.address': 'Adress',
+  'mobilityPlatform.content.cgsType': 'Typ av elladdning',
+  'mobilityPlatform.content.url': 'Mer information',
+  'mobilityPlatform.content.gfsTitle': 'Tankstation med gas',
+  'mobilityPlatform.content.gfsType': 'Typ av gas',
+  'mobilityPlatform.content.chargersTitle': 'Elladdningsstationer',
+  'mobilityPlatform.content.operator': 'Operatör',
+  'mobilityPlatform.content.count': 'Antal',
+  'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.content.bicycleStands.model': 'Model',
+  'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
+  'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
+  'mobilityPlatform.content.bicycleStands.hullLockable': 'Ramlåsbara',
+  'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Icke ramlåsbara',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Antal platser',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Antal cykelställ',
+  'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Underhållen av Åbo stad.',
+  'mobilityPlatform.content.streetMaintenance': 'Aktivt underhåll',
+  'mobilityPlatform.content.streetMaintenance.title': 'Underhållsarbete',
+  'mobilityPlatform.content.streetMaintenance.snowPlow': 'Snöplogning',
+  'mobilityPlatform.content.streetMaintenance.sandSpread': 'Sandning',
+  'mobilityPlatform.content.streetMaintenance.deIcing': 'Saltning',
+  'mobilityPlatform.content.streetMaintenance.streetWashing': 'Gatutvätt',
+  'mobilityPlatform.content.streetMaintenance.sandRemoval': 'Sandavlägsnande',
+  'mobilityPlatform.content.streetMaintenance.time': 'Tid',
+  'mobilityPlatform.content.streetMaintenance.other': 'Annat underhållsarbete',
+  'mobilityPlatform.settings.buttons.1hour': '1 timme',
+  'mobilityPlatform.settings.buttons.12hours': '12 timmar',
+  'mobilityPlatform.settings.buttons.24hours': '24 timmar',
+  'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
+  'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
+  'mobilityPlatform.content.rentalCars.provider': 'Tjänsteleverantör',
+  'mobilityPlatform.content.rentalCars.address': 'Plats',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
+  'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
+  'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
+  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
+
+  // Info text
+  'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
+  'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
+  'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
+  'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+
+  // Bicycle routes
+  'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
+  'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Skärgårdens ringväg tar dig genom natur- och kulturlandskap. Längs den ca 250 kilometer långa Ringvägen hittar du ett flertal skärgårdsbyar, tolv broar och nio färjor. Med bil kör du hela Ringvägen på en dag – men varför inte ta längre tid på dig? Cykla eller vandra och övernatta på vägen. (kissmyturku.fi)',
+  'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Auraås cykelrutt är 70 km nationallandskap (väg 222) från Oripää till Åbo. Längs vägen möter du ståtliga herrårdsbyggnader, storgods, unika museer och lockande naturstigar.',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail1': 'Åbo centrum - Runsala',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail2': 'Åbo centrum - Nådendal',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail3': 'Härkämäki - Reso - Masku - Nousis',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail4': 'Åbo centrum - Reso - Nådendal',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail5': 'Västra centrum - Rusko',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail6': 'Åbo centrum - Runosbacken - Övre St:Marie',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail7': 'Åbo centrum - Ilmarinen - Lundo station',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail8': 'Metsämäki - Jäkärlä',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail9': 'Åbo centrum - Lundo',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail10': 'Åbo centrum - Kråkkärret - Pikis',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail11': 'Åbo centrum - St. Karins centrum - Pikis - Pemar',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Åbo centrum - Hirvensalo - Kakskerta',
+
+  // Ecocounter
+  'ecocounter.hour': 'Varje timme',
+  'ecocounter.day': 'Dagligen',
+  'ecocounter.week': 'Varje vecka',
+  'ecocounter.month': 'Månatligen',
+  'ecocounter.walk': 'Promenad',
+  'ecocounter.bicycle': 'Cykling',
+  'ecocounter.car': 'Bilåkning',
+  'ecocounter.chart.labelTo': 'Till centrum',
+  'ecocounter.chart.labelFrom': 'Från centrum',
+  'ecocounter.chart.labelTotal': 'Totalt',
+  'ecocounter.jan': 'Januari',
+  'ecocounter.feb': 'Februari',
+  'ecocounter.march': 'Mars',
+  'ecocounter.april': 'April',
+  'ecocounter.may': 'Maj',
+  'ecocounter.june': 'Juni',
+  'ecocounter.july': 'Juli',
+  'ecocounter.aug': 'Augusti',
+  'ecocounter.sep': 'September',
+  'ecocounter.oct': 'Oktober',
+  'ecocounter.nov': 'November',
+  'ecocounter.dec': 'December',
 };
 
 let overridingExternalTranslations;
