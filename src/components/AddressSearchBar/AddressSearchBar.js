@@ -11,6 +11,7 @@ import { keyboardHandler, formAddressString } from '../../utils';
 import useMobileStatus from '../../utils/isMobile';
 import useLocaleText from '../../utils/useLocaleText';
 import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
+import config from '../../../config';
 
 const AddressSearchBar = ({
   defaultAddress,
@@ -24,6 +25,7 @@ const AddressSearchBar = ({
   const getLocaleText = useLocaleText();
   const dispatch = useDispatch();
   const locale = useSelector(state => state.user.locale);
+  const cities = useSelector(state => state.settings.cities);
 
   const isMobile = useMobileStatus();
 
@@ -32,6 +34,7 @@ const AddressSearchBar = ({
   const [currentLocation, setCurrentLocation] = useState(null);
   const [cleared, setCleared] = useState(false);
 
+  const citySettings = config.cities.filter(c => cities[c]);
   const suggestionCount = 5;
   const inputRef = useRef();
 
@@ -43,7 +46,7 @@ const AddressSearchBar = ({
       type: 'address',
       address_limit: suggestionCount,
     };
-    return smAPI.search(text, fetchOptions);
+    return smAPI.search(text, locale, citySettings, fetchOptions);
   };
 
   const handleAddressSelect = (address) => {

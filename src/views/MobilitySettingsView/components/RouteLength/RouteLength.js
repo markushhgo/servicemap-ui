@@ -33,6 +33,18 @@ const RouteLength = ({ classes, intl, route }) => {
     }
   };
 
+  const generateTranslations = (routeName) => {
+    const split = routeName.split(' ');
+    const [a, b] = split;
+    if (a === 'Seutureitti') {
+      return (
+        <Typography component="p" variant="body2" className={classes.margin}>
+          {intl.formatMessage({ id: `mobilityPlatform.menu.bicycleRoutes.regionalTrail${b}` })}
+        </Typography>
+      );
+    } return renderRouteText(routeName);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.paragraph}>
@@ -52,7 +64,7 @@ const RouteLength = ({ classes, intl, route }) => {
           {' '}
           km.
         </Typography>
-        {renderRouteText(route.name_fi)}
+        {generateTranslations(route.name_fi)}
       </div>
     </div>
   );
