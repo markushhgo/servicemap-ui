@@ -649,10 +649,24 @@ const translations = {
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
+  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
+
+  // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Turun saaristossa kiertävä matkailutie vie halki hienojen luonto- ja kulttuurimaisemien. Noin 250 kilometrin matkalla näet 12 siltaa, yhdeksän lossia ja lauttaa sekä monta hienoa saaristopitäjää. Autolla kierrät Rengastien jopa päivässä, mutta miksi kiirehtiä näin ihanissa maisemissa. Pyöräile tai patikoi, ja majoitu matkanvarren majapaikoissa. (kissmyturku.fi)',
   'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Aurajoen pyöräilyreitti on 70 kilometriä kansallismaisemaa (tie 222) Oripäästä Turkuun. Tien varrella on upeita kartanoita, mahtitiloja, uniikkeja museoita ja kutsuvia luontopolkuja.',
-  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail1': 'Turku keskusta - Ruissalo',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail2': 'Turku keskusta - Naantali',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail3': 'Härkämäki - Raisio - Masku - Nousiainen',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail4': 'Turku keskusta - Raisio - Naantali',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail5': 'Länsikeskus - Rusko',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail6': 'Turku keskusta - Runosmäki - Yli-Maaria',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail7': 'Turku keskusta - Ilmarinen - Liedon asema',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail8': 'Metsämäki - Jäkärlä',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail9': 'Turku keskusta - Lieto',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail10': 'Turku keskusta - Varissuo - Piikkiö',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail11': 'Turku keskusta - Kaarina keskusta - Piikkiö - Paimio',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku keskusta - Hirvensalo - Kakskerta',
 
   // Ecocounter
   'ecocounter.hour': 'Tunneittain',

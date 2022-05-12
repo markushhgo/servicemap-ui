@@ -647,10 +647,24 @@ const translations = {
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+
+  // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
   'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail': 'Skärgårdens ringväg tar dig genom natur- och kulturlandskap. Längs den ca 250 kilometer långa Ringvägen hittar du ett flertal skärgårdsbyar, tolv broar och nio färjor. Med bil kör du hela Ringvägen på en dag – men varför inte ta längre tid på dig? Cykla eller vandra och övernatta på vägen. (kissmyturku.fi)',
   'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail': 'Auraås cykelrutt är 70 km nationallandskap (väg 222) från Oripää till Åbo. Längs vägen möter du ståtliga herrårdsbyggnader, storgods, unika museer och lockande naturstigar.',
-  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail1': 'Åbo centrum - Runsala',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail2': 'Åbo centrum - Nådendal',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail3': 'Härkämäki - Reso - Masku - Nousis',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail4': 'Åbo centrum - Reso - Nådendal',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail5': 'Västra centrum - Rusko',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail6': 'Åbo centrum - Runosbacken - Övre St:Marie',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail7': 'Åbo centrum - Ilmarinen - Lundo station',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail8': 'Metsämäki - Jäkärlä',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail9': 'Åbo centrum - Lundo',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail10': 'Åbo centrum - Kråkkärret - Pikis',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail11': 'Åbo centrum - St. Karins centrum - Pikis - Pemar',
+  'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Åbo centrum - Hirvensalo - Kakskerta',
 
   // Ecocounter
   'ecocounter.hour': 'Varje timme',

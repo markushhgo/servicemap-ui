@@ -19,8 +19,8 @@ const BicycleStands = ({ classes }) => {
   const { icon } = global.L;
 
   const customIcon = icon({
-    iconUrl: zoomLevel < 15 ? circleIcon : bicycleStandIcon,
-    iconSize: zoomLevel < 15 ? [15, 15] : [45, 45],
+    iconUrl: zoomLevel < 14 ? circleIcon : bicycleStandIcon,
+    iconSize: zoomLevel < 14 ? [15, 15] : [45, 45],
   });
 
   useEffect(() => {

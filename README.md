@@ -50,3 +50,6 @@ To run in production mode:
 - Make sure you have environment variables set. `.env.example` should have all required values so you can copy it to `.env`.
 - Build files by running `npm run build`
 - Then you can just run the app with `npm start`
+
+## Mobility platform
+The mobility data platform of the service map is being developed as part of European Union Horizon 2020 programme funded SCALE-UP project (grant agreement no. 955332).
