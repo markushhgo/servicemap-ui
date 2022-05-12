@@ -596,7 +596,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
-  'mobilityPlatform.menu.showSpeedLimitZones': 'Speed limit zones', // TODO translate
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO translate
   'mobilityPlatform.menu.speedLimitZones.select': 'Select a speed limit', // TODO translate
   'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO translate
 

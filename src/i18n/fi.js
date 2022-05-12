@@ -598,7 +598,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
-  'mobilityPlatform.menu.showSpeedLimitZones': 'Nopeusrajoitusalueet',
+  'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Valitse nopeusrajoitus',
   'mobilityPlatform.menu.speedLimitZones.zone': 'Valittu nopeusrajoitus',
 

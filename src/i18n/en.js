@@ -594,7 +594,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
-  'mobilityPlatform.menu.showSpeedLimitZones': 'Speed limit zones', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'Select a speed limit', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO verify
 

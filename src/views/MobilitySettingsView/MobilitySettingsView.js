@@ -34,7 +34,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [speedLimitList, setSpeedLimitList] = useState([]);
-  const [speedLimitIndex, setSpeedLimitIndex] = useState(null);
 
   const {
     setOpenMobilityPlatform,
@@ -258,15 +257,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (speedLimit) {
       setSpeedLimit(null);
     }
-    if (speedLimitIndex) {
-      setSpeedLimitIndex(null);
-    }
   };
 
-  const setSpeedLimitState = (limitVal, index) => {
+  const setSpeedLimitState = (limitVal) => {
     setSpeedLimit(limitVal);
     setShowSpeedLimitZones(true);
-    setSpeedLimitIndex(index);
   };
 
   /**
@@ -323,7 +318,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
     {
       type: 'speedLimitZones',
-      msgId: 'mobilityPlatform.menu.showSpeedLimitZones',
+      msgId: 'mobilityPlatform.menu.speedLimitZones.show',
       checkedValue: openSpeedLimitList,
       onChangeValue: speedLimitZonesToggle,
     },
@@ -535,12 +530,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
                       )}
                     </div>
                     <div className={classes.buttonList}>
-                      {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map((item, i) => (
+                      {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map(item => (
                         <Button
                           key={item}
                           variant="outlined"
-                          className={i === speedLimitIndex ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
-                          onClick={() => setSpeedLimitState(item, i)}
+                          className={item === speedLimit ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
+                          onClick={() => setSpeedLimitState(item)}
                         >
                           <Typography variant="body2">
                             {item}
