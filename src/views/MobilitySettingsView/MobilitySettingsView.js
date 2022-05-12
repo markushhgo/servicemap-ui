@@ -33,7 +33,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [bicycleRouteIndex, setBicycleRouteIndex] = useState(null);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
-  const [speedLimitList, setSpeedLimitList] = useState([]);
 
   const {
     setOpenMobilityPlatform,
@@ -444,11 +443,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  useEffect(() => {
-    if (speedLimitZones && speedLimitZones.length > 0) {
-      setSpeedLimitList([...new Set(speedLimitZones.map(item => item.extra.speed_limit))]);
-    }
-  }, [speedLimitZones]);
+  const speedLimitList = [...new Set(speedLimitZones.map(item => item.extra.speed_limit))];
 
   return (
     <div className={classes.content}>
