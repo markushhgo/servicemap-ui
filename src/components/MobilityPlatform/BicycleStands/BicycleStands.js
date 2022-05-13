@@ -13,21 +13,22 @@ const BicycleStands = ({ classes }) => {
 
   const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
+  const map = useMap();
+
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const chargerStationIcon = icon({
-    iconUrl: zoomLevel < 15 ? circleIcon : bicycleStandIcon,
-    iconSize: zoomLevel < 15 ? [15, 15] : [45, 45],
+  const customIcon = icon({
+    iconUrl: zoomLevel < 14 ? circleIcon : bicycleStandIcon,
+    iconSize: zoomLevel < 14 ? [15, 15] : [45, 45],
   });
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData('BIS', 100, setBicycleStands);
+      fetchMobilityMapData('BIS', 1000, setBicycleStands);
     }
   }, [openMobilityPlatform, setBicycleStands]);
 
-  const maintainedBicycleStands = bicycleStands.filter(item => item.extra.maintained_by_turku);
 
   const mapEvent = useMapEvents({
     zoomend() {
@@ -35,28 +36,25 @@ const BicycleStands = ({ classes }) => {
     },
   });
 
-  const map = useMap();
-
   useEffect(() => {
-    if (showBicycleStands && maintainedBicycleStands) {
+    if (showBicycleStands && bicycleStands && bicycleStands.length > 0) {
       const bounds = [];
-      maintainedBicycleStands.forEach((item) => {
+      bicycleStands.forEach((item) => {
         bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
       });
       map.fitBounds(bounds);
     }
-  }, [showBicycleStands]);
+  }, [showBicycleStands, bicycleStands]);
 
   return (
     <>
       {showBicycleStands ? (
         <div>
-          <div>
-            {maintainedBicycleStands && maintainedBicycleStands.length > 0
-              && maintainedBicycleStands.map(item => (
+          {bicycleStands && bicycleStands.length > 0
+              && bicycleStands.map(item => (
                 <Marker
                   key={item.id}
-                  icon={chargerStationIcon}
+                  icon={customIcon}
                   position={[item.geometry_coords.lat, item.geometry_coords.lon]}
                 >
                   <div className={classes.popupWrapper}>
@@ -70,7 +68,6 @@ const BicycleStands = ({ classes }) => {
                   </div>
                 </Marker>
               ))}
-          </div>
         </div>
       ) : null}
     </>

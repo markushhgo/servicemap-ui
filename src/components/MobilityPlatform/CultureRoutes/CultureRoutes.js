@@ -40,7 +40,7 @@ const CultureRoutes = () => {
 
   return (
     <>
-      {showCultureRoutes && (
+      {showCultureRoutes ? (
         <>
           {activeCultureRoute && (
             <>
@@ -49,10 +49,10 @@ const CultureRoutes = () => {
             </>
           )}
           <>
-            <CultureRouteUnits cultureRoute={activeCultureRoute} />
+            <CultureRouteUnits />
           </>
         </>
-      )}
+      ) : null}
     </>
   );
 };

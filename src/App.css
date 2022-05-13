@@ -84,6 +84,32 @@
   .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
     width: 370px !important;
   }
+
+  .ecocounter-popup {
+    width: 380px;
+  }
+
+  .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 370px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .rental-cars-popup {
+    width: 345px;
+  }
+
+  .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 340px !important;
+  }
+
+  .ecocounter-popup {
+    width: 355px;
+  }
+
+  .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 350px !important;
+  }
 }
 
 /* React Dates */
