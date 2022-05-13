@@ -594,6 +594,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
+  'mobilityPlatform.menu.showCityBikes': 'City bikes',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -634,6 +635,12 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
   'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
+  'mobilityPlatform.content.cityBikes.title': 'City bike station',
+  'mobilityPlatform.content.cityBikes.name': 'Station',
+  'mobilityPlatform.content.cityBikes.capacity': 'Capacity',
+  'mobilityPlatform.content.cityBikes.links': 'Download',
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Number of available bikes', // TODO verify
+  'mobilityPlatform.content.cityBikes.docks.available': 'Number of available docks', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

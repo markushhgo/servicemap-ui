@@ -50,6 +50,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowRentalCars,
     showGasFillingStations,
     setShowGasFillingStations,
+    showCityBikes,
+    setShowCityBikes,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -199,6 +201,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations(current => !current);
   };
 
+  const cityBikesToggle = () => {
+    setShowCityBikes(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     setShowCultureRoutes(current => !current);
@@ -263,6 +269,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
       onChangeValue: bicycleStandsToggle,
+    },
+    {
+      type: 'cityBikes',
+      msgId: 'mobilityPlatform.menu.showCityBikes',
+      checkedValue: showCityBikes,
+      onChangeValue: cityBikesToggle,
     },
     {
       type: 'ecoCounterStations',

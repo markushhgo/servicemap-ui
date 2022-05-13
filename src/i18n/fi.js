@@ -598,6 +598,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
+  'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyörät',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
@@ -638,6 +639,12 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
   'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
+  'mobilityPlatform.content.cityBikes.title': 'Kaupunkipyöräasema',
+  'mobilityPlatform.content.cityBikes.name': 'Asema',
+  'mobilityPlatform.content.cityBikes.capacity': 'Kapasiteetti',
+  'mobilityPlatform.content.cityBikes.links': 'Latauslinkit',
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana', // TODO verify
+  'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
