@@ -596,6 +596,10 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.showPaymentZones': 'Parking charging zones',
+  'mobilityPlatform.menu.paymentZones.title': 'Parking charging zones of Turku', // TODO verify
+  'mobilityPlatform.menu.paymentZones.subtitle': 'Zone', // TODO verify
+  'mobilityPlatform.menu.paymentZones.all.hide': 'Hide zones',
+  'mobilityPlatform.menu.paymentZones.all.show': 'Show zones',
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'E-charging point',
@@ -636,17 +640,17 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
   'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
-  'mobilityPlatform.content.parkingSpaces.title': 'Parking space', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.capacity': 'Capacity', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Number of vacant spaces', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.type': 'Payment type', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left', // TODO verify
-  'mobilityPlatform.content.paymentZones.zone': 'Charging zone',
-  'mobilityPlatform.content.paymentZones.price': 'Price',
-  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin', // TODO translate
-  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin', // TODO translate
-  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin', // TODO translate
+  'mobilityPlatform.content.parkingSpaces.title': 'Parking space',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Capacity',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Number of vacant spaces',
+  'mobilityPlatform.content.parkingSpaces.type': 'Payment type',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking',
+  'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left',
+  'mobilityPlatform.content.paymentZones.zone': 'Zone',
+  'mobilityPlatform.content.paymentZones.price': 'Charge',
+  'mobilityPlatform.content.paymentZones.price.weekDays': 'Toll charge on workdays',
+  'mobilityPlatform.content.paymentZones.price.saturday': 'Toll charge on saturdays',
+  'mobilityPlatform.content.paymentZones.price.sunday': 'Toll charge on sundays',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -654,6 +658,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
+  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

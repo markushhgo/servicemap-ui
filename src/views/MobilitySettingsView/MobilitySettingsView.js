@@ -54,8 +54,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations,
     paymentZones,
     setPaymentZones,
+    paymentZoneId,
     setPaymentZoneId,
+    showPaymentZones,
     setShowPaymentZones,
+    showAllPaymentZones,
+    setShowAllPaymentZones,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -117,7 +121,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showRentalCars, setOpenCarSettings);
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations]);
+    checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces]);
+
+  useEffect(() => {
+    checkVisibilityValues(showPaymentZones, setOpenCarSettings);
+    checkVisibilityValues(showPaymentZones, setOpenPaymentZoneList);
+    checkVisibilityValues(showAllPaymentZones, setOpenCarSettings);
+    checkVisibilityValues(showAllPaymentZones, setOpenPaymentZoneList);
+  }, [showPaymentZones, showAllPaymentZones]);
 
   const nameKeys = {
     fi: 'name',
@@ -205,11 +217,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowParkingSpaces(current => !current);
   };
 
-  const paymentZonesToggle = () => {
-    setOpenPaymentZoneList(current => !current);
-    setShowPaymentZones(current => !current);
-  };
-
   const rentalCarsToggle = () => {
     setShowRentalCars(current => !current);
   };
@@ -242,6 +249,37 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const setBicycleRouteState = (routeName) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
+  };
+
+  const paymentZonesListToggle = () => {
+    setOpenPaymentZoneList(current => !current);
+    if (showPaymentZones) {
+      setShowPaymentZones(false);
+    }
+    if (showAllPaymentZones) {
+      setShowAllPaymentZones(false);
+    }
+    if (paymentZoneId) {
+      setPaymentZoneId(null);
+    }
+  };
+
+  const selectPaymentZone = (id) => {
+    setPaymentZoneId(id);
+    setShowPaymentZones(true);
+    if (showAllPaymentZones) {
+      setShowAllPaymentZones(false);
+    }
+  };
+
+  const setAllPaymentZonesState = () => {
+    setShowAllPaymentZones(current => !current);
+    if (showPaymentZones) {
+      setShowPaymentZones(false);
+    }
+    if (paymentZoneId) {
+      setPaymentZoneId(null);
+    }
   };
 
   /**
@@ -285,18 +323,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const carControlTypes = [
     {
-      type: 'parkingSpaces',
-      msgId: 'mobilityPlatform.menu.showParkingSpaces',
-      checkedValue: showParkingSpaces,
-      onChangeValue: parkingSpacesToggle,
-    },
-    {
-      type: 'paymentZones',
-      msgId: 'mobilityPlatform.menu.showPaymentZones',
-      checkedValue: openPaymentZoneList,
-      onChangeValue: paymentZonesToggle,
-    },
-    {
       type: 'rentalCars',
       msgId: 'mobilityPlatform.menu.showRentalCars',
       checkedValue: showRentalCars,
@@ -307,6 +333,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showGasFillingStations',
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
+    },
+    {
+      type: 'parkingSpaces',
+      msgId: 'mobilityPlatform.menu.showParkingSpaces',
+      checkedValue: showParkingSpaces,
+      onChangeValue: parkingSpacesToggle,
+    },
+    {
+      type: 'paymentZones',
+      msgId: 'mobilityPlatform.menu.showPaymentZones',
+      checkedValue: openPaymentZoneList,
+      onChangeValue: paymentZonesListToggle,
     },
   ];
 
@@ -430,10 +468,44 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const selectPaymentZone = (id) => {
-    setPaymentZoneId(id);
-    setShowPaymentZones(true);
-  };
+  const renderPaymentZoneList = () => (
+    <>
+      <div className={classes.paragraph}>
+        <Typography variant="body2">
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.title' })}
+        </Typography>
+      </div>
+      <div className={classes.buttonList}>
+        {paymentZones
+          && paymentZones.length > 0
+          && paymentZones.map(item => (
+            <Button
+              key={item.id}
+              className={item.id === paymentZoneId ? classes.buttonSmallActive : classes.buttonSmall}
+              variant="outlined"
+              onClick={() => selectPaymentZone(item.id)}
+            >
+              <Typography variant="body2">
+                {intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.subtitle' })}
+                {' '}
+                {item.extra.maksuvyohyke}
+              </Typography>
+            </Button>
+          ))}
+        <Button
+          className={showAllPaymentZones ? classes.buttonSmallActive : classes.buttonSmall}
+          variant="outlined"
+          onClick={() => setAllPaymentZonesState()}
+        >
+          <Typography variant="body2">
+            {showAllPaymentZones
+              ? intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.all.hide' })
+              : intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.all.show' })}
+          </Typography>
+        </Button>
+      </div>
+    </>
+  );
 
   return (
     <div className={classes.content}>
@@ -470,9 +542,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
                 ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
-              {openCultureRouteList && locale === 'fi'
-                ? renderCultureRoutes(cultureRouteList)
-                : null}
+              {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
@@ -495,26 +565,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
-              {openPaymentZoneList ? (
-                <div className={classes.buttonList}>
-                  {paymentZones
-                    && paymentZones.length > 0
-                    && paymentZones.map(item => (
-                      <Button
-                        key={item.id}
-                        className={classes.buttonWhite}
-                        variant="outlined"
-                        onClick={() => selectPaymentZone(item.id)}
-                      >
-                        <Typography variant="body2">
-                          Näytä maksuvyöhyke
-                          {' '}
-                          {item.extra.maksuvyohyke}
-                        </Typography>
-                      </Button>
-                    ))}
-                </div>
-              ) : null}
+              {openPaymentZoneList ? renderPaymentZoneList() : null}
             </>
           </FormGroup>
         </FormControl>

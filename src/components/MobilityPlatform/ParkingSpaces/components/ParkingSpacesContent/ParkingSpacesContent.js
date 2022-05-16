@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const ParkingSpacesContent = ({
-  classes, intl, parkingSpace, parkingStatistics,
+  classes,
+  intl,
+  parkingSpace,
+  parkingStatistics,
 }) => {
+  let freeParkingSpaces = 0;
+
+  const parkingSpaceStats = parkingStatistics.filter(item => item.id === parkingSpace.id);
+
   const renderText = (isTitle, translationId, text) => (
     <div className={isTitle ? classes.title : classes.text}>
       {isTitle ? (
@@ -42,7 +49,7 @@ const ParkingSpacesContent = ({
   );
 
   const renderParkingCount = (capacity, parkingCount) => {
-    const freeParkingSpaces = capacity - parkingCount;
+    freeParkingSpaces = (capacity - parkingCount);
 
     return (
       <div key={capacity} className={classes.text}>
@@ -71,9 +78,9 @@ const ParkingSpacesContent = ({
       {renderText(true, 'mobilityPlatform.content.parkingSpaces.title')}
       {renderPaymentType('mobilityPlatform.content.parkingSpaces.type', 'mobilityPlatform.content.parkingSpaces.paid')}
       {renderText(false, 'mobilityPlatform.content.parkingSpaces.capacity', parkingSpace.properties.capacity_estimate)}
-      {parkingStatistics.length > 0 && parkingStatistics
-        .filter(item => item.id === parkingSpace.id)
-        .map(parking => renderParkingCount(parkingSpace.properties.capacity_estimate, parking.current_parking_count))}
+      {parkingSpaceStats
+        && parkingSpaceStats.length > 0
+        && parkingSpaceStats.map(parking => renderParkingCount(parkingSpace.properties.capacity_estimate, parking.current_parking_count))}
     </div>
   );
 };

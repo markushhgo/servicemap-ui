@@ -598,6 +598,10 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
   'mobilityPlatform.menu.showPaymentZones': 'Parkeringsavgiftsområden',
+  'mobilityPlatform.menu.paymentZones.title': 'Parkeringsplatser av Åbo',
+  'mobilityPlatform.menu.paymentZones.subtitle': 'Zon',
+  'mobilityPlatform.menu.paymentZones.all.hide': 'Dölja alla zoner', // TODO verify
+  'mobilityPlatform.menu.paymentZones.all.show': 'Visa alla zoner', // TODO verify
 
   // Content
   'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
@@ -638,17 +642,17 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
   'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
-  'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.type': 'Betalnings typ', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsparkering', // TODO verify
-  'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä', // TODO translate
-  'mobilityPlatform.content.paymentZones.zone': 'Parkeringsavgiftsområd',
-  'mobilityPlatform.content.paymentZones.price': 'Pris',
-  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin', // TODO translate
-  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin', // TODO translate
-  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin', // TODO translate
+  'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser',
+  'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
+  'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
+  'mobilityPlatform.content.paymentZones.zone': 'Zon',
+  'mobilityPlatform.content.paymentZones.price': 'Avgift',
+  'mobilityPlatform.content.paymentZones.price.weekDays': 'Avgiftsbelagd vardagar',
+  'mobilityPlatform.content.paymentZones.price.saturday': 'Avgiftsbelagd lördagar',
+  'mobilityPlatform.content.paymentZones.price.sunday': 'Avgiftsbelagd söndagar',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -656,6 +660,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

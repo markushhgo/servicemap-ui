@@ -72,14 +72,14 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  buttonStep: {
-    width: '25%',
+  buttonSmall: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
   },
-  buttonStepActive: {
-    width: '25%',
+  buttonSmallActive: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',

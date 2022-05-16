@@ -106,6 +106,7 @@ const DefaultLayout = (props) => {
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showPaymentZones, setShowPaymentZones] = useState(false);
+  const [showAllPaymentZones, setShowAllPaymentZones] = useState(false);
   const [paymentZones, setPaymentZones] = useState([]);
   const [paymentZoneId, setPaymentZoneId] = useState(null);
 
@@ -209,6 +210,8 @@ const DefaultLayout = (props) => {
                       setShowGasFillingStations,
                       showPaymentZones,
                       setShowPaymentZones,
+                      showAllPaymentZones,
+                      setShowAllPaymentZones,
                       paymentZones,
                       setPaymentZones,
                       paymentZoneId,
@@ -236,6 +239,7 @@ const DefaultLayout = (props) => {
                     showRentalCars,
                     showGasFillingStations,
                     showPaymentZones,
+                    showAllPaymentZones,
                     paymentZones,
                     setPaymentZones,
                     paymentZoneId,
