@@ -599,7 +599,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
-  'mobilityPlatform.menu.speedLimitZones.select': 'Valitse nopeusrajoitus',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.zone': 'Valittu nopeusrajoitus',
 
   // Content

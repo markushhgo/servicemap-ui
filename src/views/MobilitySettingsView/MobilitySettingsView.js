@@ -402,7 +402,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       <Button
         key={item.id}
         variant="outlined"
-        className={item.name_fi === bicycleRouteName ? classes.listButtonActive : classes.listButton}
+        className={item.name_fi === bicycleRouteName ? `${classes.active} ${classes.buttonSecondary}` : classes.buttonSecondary}
         onClick={() => setBicycleRouteState(item.name_fi)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
@@ -417,7 +417,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       <Button
         key={item.id}
         variant="outlined"
-        className={item.id === cultureRouteId ? classes.listButtonActive : classes.listButton}
+        className={item.id === cultureRouteId ? `${classes.active} ${classes.buttonSecondary}` : classes.buttonSecondary}
         onClick={() => setCultureRouteState(item.id)}
       >
         <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
@@ -434,6 +434,43 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const speedLimitList = [...new Set(speedLimitZones.map(item => item.extra.speed_limit))];
+
+  const renderSpeedLimits = () => (
+    <>
+      <div className={classes.paragraph}>
+        {!speedLimit ? (
+          <Typography variant="subtitle2">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
+          </Typography>
+        ) : (
+          <Typography variant="subtitle2">
+            {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.zone' })}
+            :
+            {' '}
+            {speedLimit}
+            {' '}
+            km/h
+          </Typography>
+        )}
+      </div>
+      <div className={classes.buttonList}>
+        {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map(item => (
+          <Button
+            key={item}
+            variant="outlined"
+            className={item === speedLimit ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
+            onClick={() => setSpeedLimitState(item)}
+          >
+            <Typography variant="body2">
+              {item}
+              {' '}
+              km/h
+            </Typography>
+          </Button>
+        ))}
+      </div>
+    </>
+  );
 
   return (
     <div className={classes.content}>
@@ -497,40 +534,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 </div>
                 {renderSettings(openCarSettings, carControlTypes)}
                 {openSpeedLimitList ? (
-                  <>
-                    <div className={classes.paragraph}>
-                      {!speedLimit ? (
-                        <Typography variant="subtitle2">
-                          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
-                        </Typography>
-                      ) : (
-                        <Typography variant="subtitle2">
-                          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.zone' })}
-                          :
-                          {' '}
-                          {speedLimit}
-                          {' '}
-                          km/h
-                        </Typography>
-                      )}
-                    </div>
-                    <div className={classes.buttonList}>
-                      {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map(item => (
-                        <Button
-                          key={item}
-                          variant="outlined"
-                          className={item === speedLimit ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
-                          onClick={() => setSpeedLimitState(item)}
-                        >
-                          <Typography variant="body2">
-                            {item}
-                            {' '}
-                            km/h
-                          </Typography>
-                        </Button>
-                      ))}
-                    </div>
-                  </>
+                  renderSpeedLimits()
                 ) : null}
               </>
             </>

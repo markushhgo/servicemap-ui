@@ -15,23 +15,6 @@ const styles = theme => ({
       background: 'rgba(230, 230, 230, 255)',
     },
   },
-  /* buttonPrimaryActive: {
-    width: '100%',
-    height: '50px',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    borderRadius: '0',
-    borderBottom: '1px solid #6f7276',
-    borderTop: '1px solid #6f7276',
-    background: '#46484b',
-    color: '#fff',
-    '&:hover': {
-      color: '#fff',
-      background: '#3e3f42',
-      borderBottom: '1px solid #6f7276',
-      borderTop: '1px solid #6f7276',
-    },
-  }, */
   buttonSecondary: {
     width: '100%',
     height: '45px',
@@ -57,25 +40,6 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  /* buttonSecondaryActive: {
-    width: '100%',
-    height: '45px',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-    paddingLeft: theme.spacing(2),
-    borderRadius: '0',
-    borderBottom: '1px solid #6f7276',
-    borderTop: '1px solid #6f7276',
-    background: '#46484b',
-    color: '#fff',
-    '&:hover': {
-      color: '#fff',
-      background: '#3e3f42',
-      borderBottom: '1px solid #6f7276',
-      borderTop: '1px solid #6f7276',
-    },
-  }, */
   buttonSmall: {
     width: '27%',
     margin: theme.spacing(1),

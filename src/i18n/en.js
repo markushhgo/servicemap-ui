@@ -595,7 +595,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'Select a speed limit', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO translate
   'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO verify
 
   // Content
