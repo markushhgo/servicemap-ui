@@ -24,7 +24,7 @@ export default class ServiceMapAPI extends HttpClient {
       service_limit: 500,
       address_limit: 500,
       language: locale,
-      municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : 'turku',
+      municipality: citySettings && citySettings.length > 0 ? citySettings.join(',') : config.cities,
       ...additionalOptions,
     };
 
