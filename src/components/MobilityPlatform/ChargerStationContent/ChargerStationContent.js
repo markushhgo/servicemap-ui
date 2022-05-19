@@ -4,24 +4,28 @@ import { Typography } from '@material-ui/core';
 
 const ChargerStationContent = ({ classes, intl, station }) => {
   const titleTypo = (messageId, props = {}) => (
-    <Typography variant="subtitle2" {...props}>
-      {intl.formatMessage({
-        id: messageId,
-      })}
-    </Typography>
-  );
-
-  const singleValTypo = (messageId, value) => (
-    <Typography>
-      <strong>
+    <div {...props}>
+      <Typography variant="subtitle2">
         {intl.formatMessage({
           id: messageId,
         })}
-        :
-      </strong>
-      {' '}
-      {value}
-    </Typography>
+      </Typography>
+    </div>
+  );
+
+  const singleValTypo = (messageId, value, props = {}) => (
+    <div {...props}>
+      <Typography>
+        <strong>
+          {intl.formatMessage({
+            id: messageId,
+          })}
+          :
+        </strong>
+        {' '}
+        {value}
+      </Typography>
+    </div>
   );
 
   const gasFillingInfo = (
@@ -36,12 +40,12 @@ const ChargerStationContent = ({ classes, intl, station }) => {
   const chargerStationInfo = (
     <>
       {titleTypo('mobilityPlatform.content.cgsTitle', { className: classes.margin })}
-      {singleValTypo('mobilityPlatform.content.address', station.address)}
+      {singleValTypo('mobilityPlatform.content.address', station.address, { className: classes.margin })}
       {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
-      {station.chargers && station.chargers.length > 0 ? station.chargers.map(charger => (
-        <div key={charger.type} className={classes.contentInner}>
-          {singleValTypo('mobilityPlatform.content.cgsType', charger.type)}
-          {singleValTypo('mobilityPlatform.content.count', charger.count)}
+      {station.extra.chargers && station.extra.chargers.length > 0 ? station.extra.chargers.map(charger => (
+        <div key={charger.plug} className={classes.contentInner}>
+          {singleValTypo('mobilityPlatform.content.cgsType', charger.plug)}
+          {singleValTypo('mobilityPlatform.content.count', charger.number)}
           <Typography>
             <strong>
               {intl.formatMessage({
@@ -54,7 +58,8 @@ const ChargerStationContent = ({ classes, intl, station }) => {
             {' '}
             kW
           </Typography>
-          {singleValTypo('mobilityPlatform.content.operator', charger.operator)}
+          {singleValTypo('mobilityPlatform.content.payment', station.extra.payment)}
+          {singleValTypo('mobilityPlatform.content.chargeTarget', station.extra.charge_target)}
         </div>
       )) : null}
     </>

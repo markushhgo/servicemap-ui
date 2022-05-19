@@ -606,6 +606,8 @@ const translations = {
   'mobilityPlatform.content.gfsType': 'Typ av gas',
   'mobilityPlatform.content.chargersTitle': 'Elladdningsstationer',
   'mobilityPlatform.content.operator': 'Operatör',
+  'mobilityPlatform.content.payment': 'Betalning',
+  'mobilityPlatform.content.chargeTarget': 'Latauskohde', // TODO translate
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
@@ -643,6 +645,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

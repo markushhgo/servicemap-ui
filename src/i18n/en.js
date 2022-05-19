@@ -604,6 +604,8 @@ const translations = {
   'mobilityPlatform.content.gfsType': 'Gas filling type',
   'mobilityPlatform.content.chargersTitle': 'E-charging points',
   'mobilityPlatform.content.operator': 'Operator',
+  'mobilityPlatform.content.payment': 'Maksullisuus',
+  'mobilityPlatform.content.chargeTarget': 'Latauskohde', // TODO translate
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
@@ -641,6 +643,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
+  'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
