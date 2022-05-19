@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import snowPlowIcon from 'servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
 import SnowPlowsContent from './components/SnowPlowsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import snowPlowIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
 
 const SnowPlows = ({ classes, intl }) => {
   const [iotData, setIotData] = useState(null);
