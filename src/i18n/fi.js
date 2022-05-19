@@ -600,7 +600,6 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
   'mobilityPlatform.content.url': 'Lisätietoja',
@@ -608,10 +607,9 @@ const translations = {
   'mobilityPlatform.content.gfsType': 'Kaasuaseman tyyppi',
   'mobilityPlatform.content.chargersTitle': 'Latausasemat',
   'mobilityPlatform.content.operator': 'Operaattori',
-  'mobilityPlatform.content.payment': 'Maksullisuus',
-  'mobilityPlatform.content.chargeTarget': 'Latauskohde',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä',
   'mobilityPlatform.content.bicycleStands.model': 'Malli',
   'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',

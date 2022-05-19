@@ -598,7 +598,6 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
   'mobilityPlatform.content.url': 'Mer information',
@@ -606,10 +605,9 @@ const translations = {
   'mobilityPlatform.content.gfsType': 'Typ av gas',
   'mobilityPlatform.content.chargersTitle': 'Elladdningsstationer',
   'mobilityPlatform.content.operator': 'Operatör',
-  'mobilityPlatform.content.payment': 'Betalning',
-  'mobilityPlatform.content.chargeTarget': 'Latauskohde', // TODO translate
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.chargerStations.content.admin': 'Administratör',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',

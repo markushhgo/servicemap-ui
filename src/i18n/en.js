@@ -596,7 +596,6 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'E-charging point',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -604,10 +603,9 @@ const translations = {
   'mobilityPlatform.content.gfsType': 'Gas filling type',
   'mobilityPlatform.content.chargersTitle': 'E-charging points',
   'mobilityPlatform.content.operator': 'Operator',
-  'mobilityPlatform.content.payment': 'Maksullisuus',
-  'mobilityPlatform.content.chargeTarget': 'Latauskohde', // TODO translate
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.chargerStations.content.admin': 'Administrator',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
