@@ -639,7 +639,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
-  'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
   'mobilityPlatform.content.parkingSpaces.title': 'Parking space',
   'mobilityPlatform.content.parkingSpaces.capacity': 'Capacity',
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Number of vacant spaces',

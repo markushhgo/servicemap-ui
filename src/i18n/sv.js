@@ -641,7 +641,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
-  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
   'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats',
   'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet',
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser',

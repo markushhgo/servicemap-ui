@@ -5,6 +5,9 @@ import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
@@ -16,9 +19,6 @@ import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
 import RouteLength from './components/RouteLength';
-import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
-import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
-import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);

@@ -643,7 +643,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
-  'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
   'mobilityPlatform.content.parkingSpaces.title': 'Pysäköintialue',
   'mobilityPlatform.content.parkingSpaces.capacity': 'Parkkipaikkojen määrä',
   'mobilityPlatform.content.parkingSpaces.parkingCount': 'Vapaana olevat parkkipaikat',
