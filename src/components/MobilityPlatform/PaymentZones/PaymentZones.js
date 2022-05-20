@@ -16,20 +16,20 @@ const PaymentZones = () => {
 
   const { Polygon, Popup } = global.rL;
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
+  const blackOptions = { color: 'rgba(0, 0, 0, 255)' };
   const greenOptions = { color: 'rgba(15, 115, 6, 255)' };
   const purpleOptions = { color: 'rgba(202, 15, 212, 255)' };
 
   const selectColor = (input) => {
     switch (input) {
       case '1':
-        return blueOptions;
+        return blackOptions;
       case '2':
         return purpleOptions;
       case '3':
         return greenOptions;
       default:
-        return blueOptions;
+        return blackOptions;
     }
   };
 
@@ -56,7 +56,7 @@ const PaymentZones = () => {
     <>
       {renderOnePaymentZone ? (
         <div>
-          <Polygon pathOptions={blueOptions} positions={paymentZone.geometry_coords}>
+          <Polygon pathOptions={blackOptions} positions={paymentZone.geometry_coords}>
             <Popup>
               <PaymentZoneContent paymentZone={paymentZone} />
             </Popup>

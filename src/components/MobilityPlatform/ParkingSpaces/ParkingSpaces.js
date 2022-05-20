@@ -12,7 +12,8 @@ const ParkingSpaces = () => {
 
   const { Polygon, Popup } = global.rL;
 
-  const blueOptions = { color: 'rgba(0, 0, 0, 255)' };
+  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
+  const redOptions = { color: 'rgba(240, 22, 22, 255)' };
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -40,6 +41,15 @@ const ParkingSpaces = () => {
     }
   }, [showParkingSpaces]);
 
+  const renderColor = (itemId, capacity) => {
+    const stats = parkingStatistics.results.find(item => item.id === itemId);
+    const almostFull = capacity * 0.85;
+    const parkingCount = stats.current_parking_count;
+    if (parkingCount >= almostFull) {
+      return redOptions;
+    } return blueOptions;
+  };
+
   return (
     <>
       {showParkingSpaces ? (
@@ -48,12 +58,13 @@ const ParkingSpaces = () => {
             {parkingSpaces
               && Object.entries(parkingSpaces).length > 0
               && parkingSpaces.features.map(item => (
-                <Polygon key={item.id} pathOptions={blueOptions} positions={swapCoords(item.geometry.coordinates)}>
+                <Polygon
+                  key={item.id}
+                  pathOptions={renderColor(item.id, item.properties.capacity_estimate)}
+                  positions={swapCoords(item.geometry.coordinates)}
+                >
                   <Popup>
-                    <ParkingSpacesContent
-                      parkingSpace={item}
-                      parkingStatistics={parkingStatistics.results}
-                    />
+                    <ParkingSpacesContent parkingSpace={item} parkingStatistics={parkingStatistics.results} />
                   </Popup>
                 </Polygon>
               ))}

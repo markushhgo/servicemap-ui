@@ -662,7 +662,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
-  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista.',
+  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.', // TODO verify
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

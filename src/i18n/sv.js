@@ -660,7 +660,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
-  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista.', // TODO translate
+  'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
