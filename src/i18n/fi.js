@@ -610,6 +610,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
   'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä',
+  'mobilityPlatform.chargerStations.content.charge': 'Maksullinen',
+  'mobilityPlatform.chargerStations.content.free': 'Ilmainen asiakkaille',
   'mobilityPlatform.content.bicycleStands.model': 'Malli',
   'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',

@@ -65,6 +65,22 @@ const ChargerStationContent = ({ classes, intl, station }) => {
     }
   };
 
+  const renderPayment = (paymentType, props = {}) => {
+    const toLower = paymentType.toLowerCase();
+    return (
+      <div {...props}>
+        <Typography variant="body2">
+          {intl.formatMessage({
+            id:
+              toLower === 'maksullinen'
+                ? 'mobilityPlatform.chargerStations.content.charge'
+                : 'mobilityPlatform.chargerStations.content.free',
+          })}
+        </Typography>
+      </div>
+    );
+  };
+
   const gasFillingInfo = (
     <>
       {titleTypo('mobilityPlatform.content.gfsTitle')}
@@ -74,14 +90,16 @@ const ChargerStationContent = ({ classes, intl, station }) => {
     </>
   );
 
+  // key property on .map() is long but it's only way to prevent all duplicate keys -warnings.
   const chargerStationInfo = (
     <>
       {renderAddress()}
       {station.extra.administrator.fi !== '' ? renderAdministrator(station.extra.administrator) : null}
+      {renderPayment(station.extra.payment, { className: classes.margin })}
       {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
       {station.extra.chargers && station.extra.chargers.length > 0
         ? station.extra.chargers.map(charger => (
-          <div key={charger.plug} className={classes.contentInner}>
+          <div key={`${charger.plug}${charger.power}${charger.number}`} className={classes.contentInner}>
             {singleValTypo('mobilityPlatform.content.cgsType', charger.plug)}
             {singleValTypo('mobilityPlatform.content.count', charger.number)}
             <Typography>

@@ -606,6 +606,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
   'mobilityPlatform.chargerStations.content.admin': 'Administrator',
+  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',

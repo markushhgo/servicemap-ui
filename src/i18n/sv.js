@@ -608,6 +608,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
   'mobilityPlatform.chargerStations.content.admin': 'Administratör',
+  'mobilityPlatform.chargerStations.content.charge': 'Betalning', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'kostnadsfritt för kunderna', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
