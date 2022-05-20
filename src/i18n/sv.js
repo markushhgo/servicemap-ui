@@ -635,14 +635,14 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
-  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
-  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

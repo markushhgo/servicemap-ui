@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Link, Typography } from '@material-ui/core';
 
 const RentalCarsContent = ({ classes, intl, car }) => {
-  const locale = useSelector(state => state.user.locale);
-
   const titleText = (messageId, props = {}) => (
     <div className={classes.title}>
       <Typography variant="subtitle1" {...props}>
@@ -48,24 +45,14 @@ const RentalCarsContent = ({ classes, intl, car }) => {
     </div>
   );
 
-  const renderLocaleText = (textFi, textEn) => {
-    if (locale === 'fi') {
-      return textFi;
-    }
-    if (locale === 'en') {
-      return textEn;
-    }
-    return null;
-  };
-
-  const serviceProvider = '24Rent Oy';
+  const serviceProvider = '24Rent';
 
   return (
     <div className={classes.container}>
       {titleText('mobilityPlatform.content.rentalCars.title')}
       {contentText('mobilityPlatform.content.rentalCars.provider', serviceProvider)}
       <div className={classes.linkContainer}>
-        <Link target="_blank" href="https://www.24rent.fi">
+        <Link target="_blank" href={`https://www.24rent.fi/#/?city=${car.homeLocationData.fullAddress}`}>
           <Typography className={classes.link} variant="body2">
             {intl.formatMessage({
               id: 'mobilityPlatform.content.rentalCars.link',
@@ -87,20 +74,9 @@ const RentalCarsContent = ({ classes, intl, car }) => {
         </Typography>
       </div>
       {contentText('mobilityPlatform.content.rentalCars.address', car.homeLocationData.fullAddress)}
-      {locale !== 'sv' ? (
-        <>
-          <div className={classes.text}>
-            <Typography>
-              {renderLocaleText(car.homeLocationData.descriptions.fi, car.homeLocationData.descriptions.en)}
-            </Typography>
-          </div>
-        </>
-      ) : null}
-      {locale !== 'sv' ? (
-        <div className={classes.text}>
-          <Typography>{renderLocaleText(car.vehicleModelData.notes, car.vehicleModelData.notesen)}</Typography>
-        </div>
-      ) : null}
+      <div>
+        <img src={`https://vehicles-cdn.24rent.fi/${car.id}_medium.jpeg`} alt="shared use car" />
+      </div>
     </div>
   );
 };

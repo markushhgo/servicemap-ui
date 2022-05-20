@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useMapEvents, useMap } from 'react-leaflet';
+import rentalCarIcon from 'servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
+import providerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_24rent.svg';
 import RentalCarsContent from './components/RentalCarsContent';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import rentalCarIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
-import providerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_24rent.svg';
 
 const RentalCars = ({ classes }) => {
   const [rentalCarsData, setRentalCarsData] = useState([]);

@@ -53,7 +53,7 @@
 }
 
 .rental-cars-popup {
-  width: 470px;
+  width: 390px;
 }
 
 .ecocounter-popup > .leaflet-popup-content-wrapper {
@@ -67,7 +67,7 @@
 }
 
 .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
-  width: 460px !important;
+  width: 380px !important;
 }
 
 @media (min-width: 750px) {
@@ -82,7 +82,7 @@
   }
 
   .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
-    width: 370px !important;
+    width: 365px !important;
   }
 
   .ecocounter-popup {
@@ -100,7 +100,7 @@
   }
 
   .rental-cars-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
-    width: 340px !important;
+    width: 335px !important;
   }
 
   .ecocounter-popup {
