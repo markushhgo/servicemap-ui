@@ -32,7 +32,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
     </div>
   );
 
-  const renderName = (nameFi, nameEn, nameSv) => {
+  const renderStationName = (nameFi, nameEn, nameSv) => {
     switch (locale) {
       case 'en':
         return nameEn;
@@ -77,7 +77,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
   const chargerStationInfo = (
     <>
       {renderAddress()}
-      {renderAdministrator(station.extra.administrator)}
+      {station.extra.administrator.fi !== '' ? renderAdministrator(station.extra.administrator) : null}
       {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
       {station.extra.chargers && station.extra.chargers.length > 0
         ? station.extra.chargers.map(charger => (
@@ -108,7 +108,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
         <Typography variant="subtitle1">
           {station.content_type.type_name === 'GFS'
             ? station.name
-            : renderName(station.name, station.name_en, station.name_sv)}
+            : renderStationName(station.name, station.name_en, station.name_sv)}
         </Typography>
       </div>
       <div className={classes.textContainer}>
