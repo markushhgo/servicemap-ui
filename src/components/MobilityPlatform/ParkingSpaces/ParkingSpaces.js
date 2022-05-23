@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
@@ -10,10 +11,15 @@ const ParkingSpaces = () => {
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
+  const mapType = useSelector(state => state.settings.mapType);
+
   const { Polygon, Popup } = global.rL;
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
-  const redOptions = { color: 'rgba(240, 22, 22, 255)' };
+  const blueColor = { fillColor: 'rgba(7, 44, 115, 255)', color: 'rgba(7, 44, 115, 255)', fillOpacity: 1 };
+  const redColor = { fillColor: 'rgba(240, 22, 22, 255)', color: 'rgba(240, 22, 22, 255)', fillOpacity: 1 };
+  const greenColor = { fillColor: 'rgba(4, 212, 91, 255)', color: 'rgba(4, 212, 91, 255)', fillOpacity: 1 };
+
+  const pathOptions = mapType === 'accessible_map' ? greenColor : blueColor;
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -46,8 +52,8 @@ const ParkingSpaces = () => {
     const almostFull = capacity * 0.85;
     const parkingCount = stats.current_parking_count;
     if (parkingCount >= almostFull) {
-      return redOptions;
-    } return blueOptions;
+      return redColor;
+    } return pathOptions;
   };
 
   return (
