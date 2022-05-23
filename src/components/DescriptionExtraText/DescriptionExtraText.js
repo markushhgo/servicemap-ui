@@ -18,7 +18,7 @@ const DescriptionExtraText = ({
         :
       </Typography>
       {chargers.map(charger => (
-        <div key={charger.type} className={classes.paragraph}>
+        <div key={`${charger.plug}${charger.power}${charger.number}`} className={classes.paragraph}>
           <Typography className={classes.textItem} variant="body2">
             <strong>
               {intl.formatMessage({

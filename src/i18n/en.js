@@ -635,7 +635,7 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
-  'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

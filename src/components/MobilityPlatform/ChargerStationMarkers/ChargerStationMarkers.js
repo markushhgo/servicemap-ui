@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useMap } from 'react-leaflet';
+import chargerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 
 const ChargerStationMarkers = ({ classes }) => {
   const [chargerStations, setChargerStations] = useState([]);

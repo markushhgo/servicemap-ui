@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useMapEvents, useMap } from 'react-leaflet';
+import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
+import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon-circle.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import BicycleStandContent from '../BicycleStandContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import bicycleStandIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
-import circleIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon-circle.svg';
 
 const BicycleStands = ({ classes }) => {
   const [bicycleStands, setBicycleStands] = useState([]);
