@@ -93,7 +93,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
   // key property on .map() is long but it's only way to prevent all duplicate keys -warnings.
   const chargerStationInfo = (
     <>
-      {renderAddress()}
+      {station.address ? renderAddress() : null}
       {station.extra.administrator.fi !== '' ? renderAdministrator(station.extra.administrator) : null}
       {renderPayment(station.extra.payment, { className: classes.margin })}
       {titleTypo('mobilityPlatform.content.chargersTitle', { className: classes.margin })}
