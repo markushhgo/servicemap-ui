@@ -109,6 +109,7 @@ const DefaultLayout = (props) => {
   const [showAllPaymentZones, setShowAllPaymentZones] = useState(false);
   const [paymentZones, setPaymentZones] = useState([]);
   const [paymentZoneId, setPaymentZoneId] = useState(null);
+  const [showChargingStations, setShowChargingStations] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -216,6 +217,8 @@ const DefaultLayout = (props) => {
                       setPaymentZones,
                       paymentZoneId,
                       setPaymentZoneId,
+                      showChargingStations,
+                      setShowChargingStations,
                     }}
                   >
                     <ViewRouter />
@@ -243,6 +246,7 @@ const DefaultLayout = (props) => {
                     paymentZones,
                     setPaymentZones,
                     paymentZoneId,
+                    showChargingStations,
                   }}
                 >
                   <MapView

@@ -15,6 +15,6 @@ export default theme => ({
     marginBottom: theme.spacing(1),
   },
   margin: {
-    margin: theme.spacing(0.5),
+    margin: theme.spacing(0.4),
   },
 });

@@ -60,6 +60,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowPaymentZones,
     showAllPaymentZones,
     setShowAllPaymentZones,
+    showChargingStations,
+    setShowChargingStations,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -122,7 +124,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showRentalCars, setOpenCarSettings);
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces]);
+    checkVisibilityValues(showChargingStations, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
 
   useEffect(() => {
     checkVisibilityValues(showPaymentZones, setOpenCarSettings);
@@ -223,6 +226,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const gasFillingStationsToggle = () => {
     setShowGasFillingStations(current => !current);
+  };
+
+  const chargingStationsToggle = () => {
+    setShowChargingStations(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -327,6 +334,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showRentalCars',
       checkedValue: showRentalCars,
       onChangeValue: rentalCarsToggle,
+    },
+    {
+      type: 'chargingStations',
+      msgId: 'mobilityPlatform.menu.showChargingStations',
+      checkedValue: showChargingStations,
+      onChangeValue: chargingStationsToggle,
     },
     {
       type: 'gasFillingStations',
@@ -574,6 +587,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
+      {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
     </div>
   );

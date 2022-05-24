@@ -606,7 +606,6 @@ const translations = {
   'mobilityPlatform.menu.paymentZones.all.show': 'Näytä kaikki',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
   'mobilityPlatform.content.url': 'Lisätietoja',
@@ -616,6 +615,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä',
+  'mobilityPlatform.chargerStations.content.charge': 'Maksullinen',
+  'mobilityPlatform.chargerStations.content.free': 'Ilmainen asiakkaille',
   'mobilityPlatform.content.bicycleStands.model': 'Malli',
   'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',
@@ -663,6 +665,7 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
   'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.', // TODO verify
+  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

@@ -602,7 +602,6 @@ const translations = {
   'mobilityPlatform.menu.paymentZones.all.show': 'Show zones',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'E-charging point',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -612,6 +611,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.chargerStations.content.admin': 'Administrator',
+  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
@@ -659,6 +661,7 @@ const translations = {
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
   'mobilityPlatform.info.parkingSpaces': 'Tiedot pysäköintialueista tulevat Turun parkkihubista. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.', // TODO translate
+  'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
