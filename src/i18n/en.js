@@ -595,11 +595,6 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
-  'mobilityPlatform.menu.showPaymentZones': 'Parking charging zones',
-  'mobilityPlatform.menu.paymentZones.title': 'Parking charging zones of Turku', // TODO verify
-  'mobilityPlatform.menu.paymentZones.subtitle': 'Zone', // TODO verify
-  'mobilityPlatform.menu.paymentZones.all.hide': 'Hide zones',
-  'mobilityPlatform.menu.paymentZones.all.show': 'Show zones',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -648,11 +643,6 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Payment type',
   'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking',
   'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left',
-  'mobilityPlatform.content.paymentZones.zone': 'Zone',
-  'mobilityPlatform.content.paymentZones.price': 'Charge',
-  'mobilityPlatform.content.paymentZones.price.weekDays': 'Toll charge on workdays',
-  'mobilityPlatform.content.paymentZones.price.saturday': 'Toll charge on saturdays',
-  'mobilityPlatform.content.paymentZones.price.sunday': 'Toll charge on sundays',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

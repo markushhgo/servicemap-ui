@@ -599,11 +599,6 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
-  'mobilityPlatform.menu.showPaymentZones': 'Pysäköinnin maksuvyöhykkeet',
-  'mobilityPlatform.menu.paymentZones.title': 'Turun alueen maksuvyöhykkeet',
-  'mobilityPlatform.menu.paymentZones.subtitle': 'Vyöhyke',
-  'mobilityPlatform.menu.paymentZones.all.hide': 'Piilota vyöhykkeet',
-  'mobilityPlatform.menu.paymentZones.all.show': 'Näytä kaikki',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -652,11 +647,6 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
   'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
   'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
-  'mobilityPlatform.content.paymentZones.zone': 'Vyöhyke',
-  'mobilityPlatform.content.paymentZones.price': 'Hinta',
-  'mobilityPlatform.content.paymentZones.price.weekDays': 'Maksullisuus arkisin',
-  'mobilityPlatform.content.paymentZones.price.saturday': 'Maksullisuus lauantaisin',
-  'mobilityPlatform.content.paymentZones.price.sunday': 'Maksullisuus sunnuntaisin',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

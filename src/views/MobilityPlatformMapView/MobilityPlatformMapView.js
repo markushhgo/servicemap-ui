@@ -5,9 +5,8 @@ import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 import BicycleRoutes from '../../components/MobilityPlatform/BicycleRoutes';
 import RentalCars from '../../components/MobilityPlatform/RentalCars';
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
-import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
-import PaymentZones from '../../components/MobilityPlatform/PaymentZones';
 import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
+import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -17,9 +16,8 @@ const MobilityPlatformMapView = () => (
     <CultureRoutes />
     <RentalCars />
     <GasFillingStationMarkers />
-    <ParkingSpaces />
-    <PaymentZones />
     <ChargerStationMarkers />
+    <ParkingSpaces />
   </>
 );
 

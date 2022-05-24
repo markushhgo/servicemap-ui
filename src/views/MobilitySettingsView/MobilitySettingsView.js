@@ -12,7 +12,6 @@ import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
-  fetchPaymentZonesData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -30,7 +29,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
-  const [openPaymentZoneList, setOpenPaymentZoneList] = useState(false);
 
   const {
     setOpenMobilityPlatform,
@@ -52,14 +50,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowRentalCars,
     showGasFillingStations,
     setShowGasFillingStations,
-    paymentZones,
-    setPaymentZones,
-    paymentZoneId,
-    setPaymentZoneId,
-    showPaymentZones,
-    setShowPaymentZones,
-    showAllPaymentZones,
-    setShowAllPaymentZones,
     showChargingStations,
     setShowChargingStations,
   } = useContext(MobilityPlatformContext);
@@ -82,10 +72,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     fetchBicycleRouteNames(setBicycleRouteList);
   }, [setBicycleRouteList]);
-
-  useEffect(() => {
-    fetchPaymentZonesData('PAZ', 10, setPaymentZones);
-  }, [setPaymentZones]);
 
   /**
    * Check is visibility boolean values are true
@@ -127,12 +113,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
   }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
 
-  useEffect(() => {
-    checkVisibilityValues(showPaymentZones, setOpenCarSettings);
-    checkVisibilityValues(showPaymentZones, setOpenPaymentZoneList);
-    checkVisibilityValues(showAllPaymentZones, setOpenCarSettings);
-    checkVisibilityValues(showAllPaymentZones, setOpenPaymentZoneList);
-  }, [showPaymentZones, showAllPaymentZones]);
 
   const nameKeys = {
     fi: 'name',
@@ -258,36 +238,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleRoutes(true);
   };
 
-  const paymentZonesListToggle = () => {
-    setOpenPaymentZoneList(current => !current);
-    if (showPaymentZones) {
-      setShowPaymentZones(false);
-    }
-    if (showAllPaymentZones) {
-      setShowAllPaymentZones(false);
-    }
-    if (paymentZoneId) {
-      setPaymentZoneId(null);
-    }
-  };
-
-  const selectPaymentZone = (id) => {
-    setPaymentZoneId(id);
-    setShowPaymentZones(true);
-    if (showAllPaymentZones) {
-      setShowAllPaymentZones(false);
-    }
-  };
-
-  const setAllPaymentZonesState = () => {
-    setShowAllPaymentZones(current => !current);
-    if (showPaymentZones) {
-      setShowPaymentZones(false);
-    }
-    if (paymentZoneId) {
-      setPaymentZoneId(null);
-    }
-  };
 
   /**
    * Control types for different user types
@@ -352,12 +302,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showParkingSpaces',
       checkedValue: showParkingSpaces,
       onChangeValue: parkingSpacesToggle,
-    },
-    {
-      type: 'paymentZones',
-      msgId: 'mobilityPlatform.menu.showPaymentZones',
-      checkedValue: openPaymentZoneList,
-      onChangeValue: paymentZonesListToggle,
     },
   ];
 
@@ -481,45 +425,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const renderPaymentZoneList = () => (
-    <>
-      <div className={classes.paragraph}>
-        <Typography variant="body2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.title' })}
-        </Typography>
-      </div>
-      <div className={classes.buttonList}>
-        {paymentZones
-          && paymentZones.length > 0
-          && paymentZones.map(item => (
-            <Button
-              key={item.id}
-              className={item.id === paymentZoneId ? classes.buttonSmallActive : classes.buttonSmall}
-              variant="outlined"
-              onClick={() => selectPaymentZone(item.id)}
-            >
-              <Typography variant="body2">
-                {intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.subtitle' })}
-                {' '}
-                {item.extra.maksuvyohyke}
-              </Typography>
-            </Button>
-          ))}
-        <Button
-          className={showAllPaymentZones ? classes.buttonSmallActive : classes.buttonSmall}
-          variant="outlined"
-          onClick={() => setAllPaymentZonesState()}
-        >
-          <Typography variant="body2">
-            {showAllPaymentZones
-              ? intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.all.hide' })
-              : intl.formatMessage({ id: 'mobilityPlatform.menu.paymentZones.all.show' })}
-          </Typography>
-        </Button>
-      </div>
-    </>
-  );
-
   return (
     <div className={classes.content}>
       <TitleBar
@@ -578,17 +483,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
-              {openPaymentZoneList ? renderPaymentZoneList() : null}
             </>
           </FormGroup>
         </FormControl>
       </div>
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
-      {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
+      {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
     </div>
   );
 };

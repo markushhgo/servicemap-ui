@@ -105,10 +105,6 @@ const DefaultLayout = (props) => {
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
-  const [showPaymentZones, setShowPaymentZones] = useState(false);
-  const [showAllPaymentZones, setShowAllPaymentZones] = useState(false);
-  const [paymentZones, setPaymentZones] = useState([]);
-  const [paymentZoneId, setPaymentZoneId] = useState(null);
   const [showChargingStations, setShowChargingStations] = useState(false);
 
   const {
@@ -199,8 +195,6 @@ const DefaultLayout = (props) => {
                       setShowCultureRoutes,
                       cultureRouteId,
                       setCultureRouteId,
-                      showParkingSpaces,
-                      setShowParkingSpaces,
                       showBicycleRoutes,
                       setShowBicycleRoutes,
                       bicycleRouteName,
@@ -209,16 +203,10 @@ const DefaultLayout = (props) => {
                       setShowRentalCars,
                       showGasFillingStations,
                       setShowGasFillingStations,
-                      showPaymentZones,
-                      setShowPaymentZones,
-                      showAllPaymentZones,
-                      setShowAllPaymentZones,
-                      paymentZones,
-                      setPaymentZones,
-                      paymentZoneId,
-                      setPaymentZoneId,
                       showChargingStations,
                       setShowChargingStations,
+                      showParkingSpaces,
+                      setShowParkingSpaces,
                     }}
                   >
                     <ViewRouter />
@@ -236,17 +224,12 @@ const DefaultLayout = (props) => {
                     showBicycleStands,
                     showCultureRoutes,
                     cultureRouteId,
-                    showParkingSpaces,
                     showBicycleRoutes,
                     bicycleRouteName,
                     showRentalCars,
                     showGasFillingStations,
-                    showPaymentZones,
-                    showAllPaymentZones,
-                    paymentZones,
-                    setPaymentZones,
-                    paymentZoneId,
                     showChargingStations,
+                    showParkingSpaces,
                   }}
                 >
                   <MapView

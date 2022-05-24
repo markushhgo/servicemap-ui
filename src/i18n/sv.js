@@ -597,11 +597,6 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
-  'mobilityPlatform.menu.showPaymentZones': 'Parkeringsavgiftsområden',
-  'mobilityPlatform.menu.paymentZones.title': 'Parkeringsplatser av Åbo',
-  'mobilityPlatform.menu.paymentZones.subtitle': 'Zon',
-  'mobilityPlatform.menu.paymentZones.all.hide': 'Dölja alla zoner', // TODO verify
-  'mobilityPlatform.menu.paymentZones.all.show': 'Visa alla zoner', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -650,11 +645,6 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
   'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
-  'mobilityPlatform.content.paymentZones.zone': 'Zon',
-  'mobilityPlatform.content.paymentZones.price': 'Avgift',
-  'mobilityPlatform.content.paymentZones.price.weekDays': 'Avgiftsbelagd vardagar',
-  'mobilityPlatform.content.paymentZones.price.saturday': 'Avgiftsbelagd lördagar',
-  'mobilityPlatform.content.paymentZones.price.sunday': 'Avgiftsbelagd söndagar',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
