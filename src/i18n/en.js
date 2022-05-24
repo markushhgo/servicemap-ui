@@ -596,7 +596,6 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'E-charging point',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -606,6 +605,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.chargerStations.content.admin': 'Administrator',
+  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
@@ -640,7 +642,8 @@ const translations = {
   'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
-  'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent.',
+  'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
+  'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

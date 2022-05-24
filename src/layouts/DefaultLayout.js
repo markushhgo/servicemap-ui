@@ -104,6 +104,7 @@ const DefaultLayout = (props) => {
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
+  const [showChargingStations, setShowChargingStations] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -201,6 +202,8 @@ const DefaultLayout = (props) => {
                       setShowRentalCars,
                       showGasFillingStations,
                       setShowGasFillingStations,
+                      showChargingStations,
+                      setShowChargingStations,
                     }}
                   >
                     <ViewRouter />
@@ -222,6 +225,7 @@ const DefaultLayout = (props) => {
                     bicycleRouteName,
                     showRentalCars,
                     showGasFillingStations,
+                    showChargingStations,
                   }}
                 >
                   <MapView
