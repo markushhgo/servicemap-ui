@@ -99,7 +99,8 @@ const DefaultLayout = (props) => {
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
-  const [cultureRouteId, setCultureRouteId] = useState(null);
+  const [cultureRouteId, setCultureRouteId] = useState();
+  const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
@@ -204,6 +205,8 @@ const DefaultLayout = (props) => {
                       setShowGasFillingStations,
                       showChargingStations,
                       setShowChargingStations,
+                      showParkingSpaces,
+                      setShowParkingSpaces,
                     }}
                   >
                     <ViewRouter />
@@ -226,6 +229,7 @@ const DefaultLayout = (props) => {
                     showRentalCars,
                     showGasFillingStations,
                     showChargingStations,
+                    showParkingSpaces,
                   }}
                 >
                   <MapView

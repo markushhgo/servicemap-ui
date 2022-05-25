@@ -598,6 +598,7 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
+  'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -640,6 +641,12 @@ const translations = {
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
   'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
+  'mobilityPlatform.content.parkingSpaces.title': 'Pysäköintialue',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Parkkipaikkojen määrä',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Vapaana olevat parkkipaikat',
+  'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
+  'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -647,6 +654,7 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
+  'mobilityPlatform.info.parkingSpaces': 'Kartalla näkyvät Turun julkiset pysäköintialueet. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.  Tiedot pysäköintialueista tulevat Turun parkkihubista.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
 
   // Bicycle routes

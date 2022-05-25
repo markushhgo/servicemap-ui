@@ -40,6 +40,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
+    showParkingSpaces,
+    setShowParkingSpaces,
     showBicycleRoutes,
     setShowBicycleRoutes,
     bicycleRouteName,
@@ -107,8 +109,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showRentalCars, setOpenCarSettings);
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
+    checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showChargingStations]);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
+
 
   const nameKeys = {
     fi: 'name',
@@ -192,6 +196,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
+  const parkingSpacesToggle = () => {
+    setShowParkingSpaces(current => !current);
+  };
+
   const rentalCarsToggle = () => {
     setShowRentalCars(current => !current);
   };
@@ -229,6 +237,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
   };
+
 
   /**
    * Control types for different user types
@@ -287,6 +296,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showGasFillingStations',
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
+    },
+    {
+      type: 'parkingSpaces',
+      msgId: 'mobilityPlatform.menu.showParkingSpaces',
+      checkedValue: showParkingSpaces,
+      onChangeValue: parkingSpacesToggle,
     },
   ];
 
@@ -445,9 +460,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
                 ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
-              {openCultureRouteList && locale === 'fi'
-                ? renderCultureRoutes(cultureRouteList)
-                : null}
+              {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
@@ -466,12 +479,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
-              <>
-                <div className={classes.buttonContainer}>
-                  {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
-                </div>
-                {renderSettings(openCarSettings, carControlTypes)}
-              </>
+              <div className={classes.buttonContainer}>
+                {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
+              </div>
+              {renderSettings(openCarSettings, carControlTypes)}
             </>
           </FormGroup>
         </FormControl>
@@ -481,6 +492,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
+      {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
     </div>
   );
 };
