@@ -15,9 +15,15 @@ const ParkingSpaces = () => {
 
   const { Polygon, Popup } = global.rL;
 
-  const blueColor = { fillColor: 'rgba(7, 44, 115, 255)', color: 'rgba(7, 44, 115, 255)', fillOpacity: 1 };
-  const redColor = { fillColor: 'rgba(240, 22, 22, 255)', color: 'rgba(240, 22, 22, 255)', fillOpacity: 1 };
-  const greenColor = { fillColor: 'rgba(4, 212, 91, 255)', color: 'rgba(4, 212, 91, 255)', fillOpacity: 1 };
+  const blueColor = {
+    fillColor: 'rgba(7, 44, 115, 255)', color: 'rgba(7, 44, 115, 255)', fillOpacity: 0.4, weigth: 5,
+  };
+  const redColor = {
+    fillColor: 'rgba(240, 22, 22, 255)', color: 'rgba(240, 22, 22, 255)', fillOpacity: 0.4, weigth: 5,
+  };
+  const greenColor = {
+    fillColor: 'rgba(4, 212, 91, 255)', color: 'rgba(4, 212, 91, 255)', fillOpacity: 0.6, weigth: 5,
+  };
 
   const pathOptions = mapType === 'accessible_map' ? greenColor : blueColor;
 
