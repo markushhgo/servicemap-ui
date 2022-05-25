@@ -434,22 +434,23 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const speedLimitList = [...new Set(speedLimitZones.map(item => item.extra.speed_limit))];
+  const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
 
   const renderSpeedLimits = () => (
     <>
       <div className={classes.paragraph}>
         {!speedLimit ? (
-          <Typography variant="subtitle2">
+          <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
             {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
           </Typography>
         ) : (
-          <Typography variant="subtitle2">
+          <Typography variant="subtitle2" aria-label={`${speedLimit} ${speedLimitSuffix}`}>
             {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.zone' })}
             :
             {' '}
             {speedLimit}
             {' '}
-            km/h
+            {speedLimitSuffix}
           </Typography>
         )}
       </div>
@@ -458,13 +459,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
           <Button
             key={item}
             variant="outlined"
+            aria-label={`${item} ${speedLimitSuffix}`}
+            aria-expanded={item === speedLimit}
             className={item === speedLimit ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
             onClick={() => setSpeedLimitState(item)}
           >
             <Typography variant="body2">
               {item}
               {' '}
-              km/h
+              {speedLimitSuffix}
             </Typography>
           </Button>
         ))}

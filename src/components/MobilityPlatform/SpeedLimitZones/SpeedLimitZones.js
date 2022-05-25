@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import { Typography } from '@material-ui/core';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
@@ -7,18 +8,15 @@ import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 const SpeedLimitZones = ({ classes, intl }) => {
   const { showSpeedLimitZones, speedLimit, speedLimitZones } = useContext(MobilityPlatformContext);
 
+  const locale = useSelector(state => state.user.locale);
+
   const { Polygon, Popup } = global.rL;
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
-  const redOptions = { color: 'rgba(251, 5, 21, 255)' };
-  const greenOptions = { color: 'rgba(15, 115, 6, 255)' };
-  const purpleOptions = { color: 'rgba(202, 15, 212, 255)' };
-  const blackOptions = { color: 'rgba(0, 0, 0, 255)' };
-  const grayOptions = { color: 'rgba(94, 94, 94, 255)' };
-  const tealOptions = { color: 'rgba(0, 128, 128, 255)' };
-  const orangeOptions = { color: 'rgba(227, 97, 32, 255)' };
+  const blueOptions = { color: 'rgba(7, 44, 115, 255)', fillOpacity: 0.3, weight: 4 };
 
   const filteredSpeedLimitZones = speedLimitZones.filter(item => item.extra.speed_limit === speedLimit);
+
+  const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
 
   const map = useMap();
 
@@ -32,31 +30,6 @@ const SpeedLimitZones = ({ classes, intl }) => {
     }
   }, [showSpeedLimitZones, filteredSpeedLimitZones]);
 
-  const selectColor = (input) => {
-    switch (input) {
-      case 20:
-        return blueOptions;
-      case 30:
-        return greenOptions;
-      case 40:
-        return purpleOptions;
-      case 50:
-        return blackOptions;
-      case 60:
-        return blueOptions;
-      case 70:
-        return tealOptions;
-      case 80:
-        return grayOptions;
-      case 100:
-        return orangeOptions;
-      case 120:
-        return redOptions;
-      default:
-        return blueOptions;
-    }
-  };
-
   return (
     <>
       {showSpeedLimitZones ? (
@@ -65,7 +38,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
             && filteredSpeedLimitZones.map(item => (
               <Polygon
                 key={item.id}
-                pathOptions={selectColor(item.extra.speed_limit)}
+                pathOptions={blueOptions}
                 positions={item.geometry_coords}
               >
                 <div className={classes.popupWrapper}>
@@ -86,7 +59,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
                         {' '}
                         {item.extra.speed_limit}
                         {' '}
-                        km/h
+                        {speedLimitSuffix}
                       </Typography>
                     </div>
                   </Popup>
