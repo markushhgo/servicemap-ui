@@ -594,12 +594,12 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Route length:',
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
+  'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO translate
   'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO verify
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'E-charging point',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -609,6 +609,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.chargerStations.content.admin': 'Administrator',
+  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
@@ -636,7 +639,13 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
-  'mobilityPlatform.content.rentalCars.link': 'Webpage of the service provider',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
+  'mobilityPlatform.content.parkingSpaces.title': 'Parking space',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Capacity',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Number of vacant spaces',
+  'mobilityPlatform.content.parkingSpaces.type': 'Payment type',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking',
+  'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left',
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone', // TODO verify
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit', // TODO verify
 
@@ -646,6 +655,8 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
+  'mobilityPlatform.info.parkingSpaces': 'The map shows public parking areas of Turku. The red colour next to a parking area indicates that it is almost full. To see the exact number of available spaces, click on the parking area on the map. The information on parking areas comes from parking hub of Turku.',
+  'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

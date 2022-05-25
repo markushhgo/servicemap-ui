@@ -18,7 +18,7 @@ const DescriptionExtraText = ({
         :
       </Typography>
       {chargers.map(charger => (
-        <div key={charger.type} className={classes.paragraph}>
+        <div key={`${charger.plug}${charger.power}${charger.number}`} className={classes.paragraph}>
           <Typography className={classes.textItem} variant="body2">
             <strong>
               {intl.formatMessage({
@@ -27,7 +27,7 @@ const DescriptionExtraText = ({
               :
             </strong>
             {' '}
-            {charger.type}
+            {charger.plug}
           </Typography>
           <Typography className={classes.textItem} variant="body2">
             <strong>
@@ -37,7 +37,7 @@ const DescriptionExtraText = ({
               :
             </strong>
             {' '}
-            {charger.count}
+            {charger.number}
           </Typography>
           <Typography className={classes.textItem} variant="body2">
             <strong>
@@ -50,16 +50,6 @@ const DescriptionExtraText = ({
             {charger.power}
             {' '}
             kW
-          </Typography>
-          <Typography className={classes.textItem} variant="body2">
-            <strong>
-              {intl.formatMessage({
-                id: 'mobilityPlatform.content.operator',
-              })}
-              :
-            </strong>
-            {' '}
-            {charger.operator}
           </Typography>
         </div>
       ))}

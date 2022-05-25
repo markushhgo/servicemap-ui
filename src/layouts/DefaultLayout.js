@@ -99,11 +99,13 @@ const DefaultLayout = (props) => {
   const [showEcoCounter, setShowEcoCounter] = useState(false);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
-  const [cultureRouteId, setCultureRouteId] = useState(null);
+  const [cultureRouteId, setCultureRouteId] = useState();
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
+  const [showChargingStations, setShowChargingStations] = useState(false);
+  const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
   const [speedLimit, setSpeedLimit] = useState(null);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
@@ -204,6 +206,10 @@ const DefaultLayout = (props) => {
                       setShowRentalCars,
                       showGasFillingStations,
                       setShowGasFillingStations,
+                      showChargingStations,
+                      setShowChargingStations,
+                      showParkingSpaces,
+                      setShowParkingSpaces,
                       showSpeedLimitZones,
                       setShowSpeedLimitZones,
                       speedLimit,
@@ -231,6 +237,8 @@ const DefaultLayout = (props) => {
                     bicycleRouteName,
                     showRentalCars,
                     showGasFillingStations,
+                    showChargingStations,
+                    showParkingSpaces,
                     showSpeedLimitZones,
                     speedLimit,
                     speedLimitZones,

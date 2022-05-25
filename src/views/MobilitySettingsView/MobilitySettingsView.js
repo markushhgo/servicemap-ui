@@ -5,6 +5,9 @@ import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
@@ -16,9 +19,6 @@ import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
 import RouteLength from './components/RouteLength';
-import iconWalk from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
-import iconBicycle from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
-import iconCar from '../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -50,6 +50,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowRentalCars,
     showGasFillingStations,
     setShowGasFillingStations,
+    showChargingStations,
+    setShowChargingStations,
+    showParkingSpaces,
+    setShowParkingSpaces,
     showSpeedLimitZones,
     setShowSpeedLimitZones,
     speedLimit,
@@ -121,8 +125,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showRentalCars, setOpenCarSettings);
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
-    checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showSpeedLimitZones]);
+    checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
+    checkVisibilityValues(showChargingStations, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
+
 
   const nameKeys = {
     fi: 'name',
@@ -206,12 +212,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBicycleStands(current => !current);
   };
 
+  const parkingSpacesToggle = () => {
+    setShowParkingSpaces(current => !current);
+  };
+
   const rentalCarsToggle = () => {
     setShowRentalCars(current => !current);
   };
 
   const gasFillingStationsToggle = () => {
     setShowGasFillingStations(current => !current);
+  };
+
+  const chargingStationsToggle = () => {
+    setShowChargingStations(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -300,10 +314,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
       onChangeValue: rentalCarsToggle,
     },
     {
+      type: 'chargingStations',
+      msgId: 'mobilityPlatform.menu.showChargingStations',
+      checkedValue: showChargingStations,
+      onChangeValue: chargingStationsToggle,
+    },
+    {
       type: 'gasFillingStations',
       msgId: 'mobilityPlatform.menu.showGasFillingStations',
       checkedValue: showGasFillingStations,
       onChangeValue: gasFillingStationsToggle,
+    },
+    {
+      type: 'parkingSpaces',
+      msgId: 'mobilityPlatform.menu.showParkingSpaces',
+      checkedValue: showParkingSpaces,
+      onChangeValue: parkingSpacesToggle,
     },
     {
       type: 'speedLimitZones',
@@ -510,9 +536,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
                 ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
-              {openCultureRouteList && locale === 'fi'
-                ? renderCultureRoutes(cultureRouteList)
-                : null}
+              {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
                 {buttonComponent(
                   bicycleSettingsToggle,
@@ -547,7 +571,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
+      {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
+      {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
     </div>
   );
 };

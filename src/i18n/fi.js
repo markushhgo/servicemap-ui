@@ -598,12 +598,12 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Reitin pituus:',
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
+  'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.zone': 'Valittu nopeusrajoitus',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'Sähkölatausasema',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
   'mobilityPlatform.content.url': 'Lisätietoja',
@@ -613,6 +613,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
   'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä',
+  'mobilityPlatform.chargerStations.content.charge': 'Maksullinen',
+  'mobilityPlatform.chargerStations.content.free': 'Ilmainen asiakkaille',
   'mobilityPlatform.content.bicycleStands.model': 'Malli',
   'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',
@@ -640,7 +643,13 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
-  'mobilityPlatform.content.rentalCars.link': 'Palveluntarjoajan sivut',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
+  'mobilityPlatform.content.parkingSpaces.title': 'Pysäköintialue',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Parkkipaikkojen määrä',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Vapaana olevat parkkipaikat',
+  'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
+  'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
 
@@ -650,6 +659,8 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
+  'mobilityPlatform.info.parkingSpaces': 'Kartalla näkyvät Turun julkiset pysäköintialueet. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.  Tiedot pysäköintialueista tulevat Turun parkkihubista.',
+  'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
