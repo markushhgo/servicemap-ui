@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
+import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../utils/utils';
-import routeUnitIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 
 const CultureRouteUnits = ({ classes }) => {
   const [cultureRouteUnits, setCultureRouteUnits] = useState([]);

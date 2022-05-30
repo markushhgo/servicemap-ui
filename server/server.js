@@ -238,7 +238,6 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, hel
         window.nodeEnvSettings.ECOCOUNTER_API = "${process.env.ECOCOUNTER_API}";
         window.nodeEnvSettings.THEME_PKG = "${process.env.THEME_PKG}";
         window.nodeEnvSettings.MOBILITY_PLATFORM_API = "${process.env.MOBILITY_PLATFORM_API}";
-        window.nodeEnvSettings.BICYCLE_NETWORK_API = "${process.env.BICYCLE_NETWORK_API}";
 
         window.appVersion = {};
         window.appVersion.tag = "${versionTag}";

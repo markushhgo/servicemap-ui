@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useMap } from 'react-leaflet';
+import markerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import EcoCounterContent from '../EcoCounterContent';
 import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
-import markerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 
 const EcoCounterMarkers = ({ classes }) => {
   const [ecoCounterStations, setEcoCounterStations] = useState([]);

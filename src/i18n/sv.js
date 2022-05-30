@@ -596,9 +596,9 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
+  'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
 
   // Content
-  'mobilityPlatform.content.cgsTitle': 'Elladdningsstation för bilar',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
   'mobilityPlatform.content.url': 'Mer information',
@@ -608,6 +608,9 @@ const translations = {
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.chargerStations.content.admin': 'Administratör',
+  'mobilityPlatform.chargerStations.content.charge': 'Betalning', // TODO verify
+  'mobilityPlatform.chargerStations.content.free': 'kostnadsfritt för kunderna', // TODO verify
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
@@ -635,7 +638,13 @@ const translations = {
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
-  'mobilityPlatform.content.rentalCars.link': 'Websida av tjänsteleverantör',
+  'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
+  'mobilityPlatform.content.parkingSpaces.title': 'Parkeringsplats',
+  'mobilityPlatform.content.parkingSpaces.capacity': 'Kapacitet',
+  'mobilityPlatform.content.parkingSpaces.parkingCount': 'Antal lediga parkeringsplatser',
+  'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
+  'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
+  'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -643,6 +652,8 @@ const translations = {
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
+  'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
