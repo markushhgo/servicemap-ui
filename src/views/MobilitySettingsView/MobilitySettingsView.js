@@ -233,31 +233,45 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const prevRouteIdRef = useRef();
+  /**
+   * Stores previous value
+   */
+  const prevCultureRouteIdRef = useRef();
 
   useEffect(() => {
-    prevRouteIdRef.current = cultureRouteId;
+    prevCultureRouteIdRef.current = cultureRouteId;
   }, [cultureRouteId]);
 
+  /**
+   * If user clicks same route again, then reset id and set visiblity to false
+   * Otherwise new values are set
+   */
   const setCultureRouteState = (itemId) => {
     setCultureRouteId(itemId);
     setShowCultureRoutes(true);
-    if (itemId === prevRouteIdRef.current) {
+    if (itemId === prevCultureRouteIdRef.current) {
       setCultureRouteId(null);
       setShowCultureRoutes(false);
     }
   };
 
-  const prevRouteNameRef = useRef();
+  /**
+   * Stores previous value
+   */
+  const prevBicycleRouteNameRef = useRef();
 
+  /**
+   * If user clicks same route again, then reset name and set visiblity to false
+   * Otherwise new values are set
+   */
   useEffect(() => {
-    prevRouteNameRef.current = bicycleRouteName;
+    prevBicycleRouteNameRef.current = bicycleRouteName;
   }, [bicycleRouteName]);
 
   const setBicycleRouteState = (routeName) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
-    if (routeName === prevRouteNameRef.current) {
+    if (routeName === prevBicycleRouteNameRef.current) {
       setBicycleRouteName(null);
       setShowBicycleRoutes(false);
     }
@@ -369,7 +383,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       onClick={() => onClickFunc()}
       variant="outlined"
-      className={settingState ? classes.buttonActive : classes.button}
+      className={settingState ? `${classes.button} ${classes.active}` : classes.button}
       aria-label={intl.formatMessage({
         id: translationId,
       })}
