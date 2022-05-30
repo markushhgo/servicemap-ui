@@ -7,16 +7,16 @@ import { ButtonBase, Typography } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
+import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
+import LineChart from '../LineChart';
 import {
   fetchInitialHourData,
   fetchInitialDayDatas,
   fetchInitialWeekDatas,
   fetchInitialMonthDatas,
 } from '../EcoCounterRequests/ecoCounterRequests';
-import LineChart from '../LineChart';
-import iconWalk from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
-import iconBicycle from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
-import iconCar from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 
 const EcoCounterContent = ({
   classes, intl, stationId, stationName,

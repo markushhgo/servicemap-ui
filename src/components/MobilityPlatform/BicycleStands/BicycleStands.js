@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useMapEvents, useMap } from 'react-leaflet';
+import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
+import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon_circle_border.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import BicycleStandContent from '../BicycleStandContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import bicycleStandIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
-import circleIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon-circle.svg';
 
 const BicycleStands = ({ classes }) => {
   const [bicycleStands, setBicycleStands] = useState([]);
@@ -20,7 +20,7 @@ const BicycleStands = ({ classes }) => {
 
   const customIcon = icon({
     iconUrl: zoomLevel < 14 ? circleIcon : bicycleStandIcon,
-    iconSize: zoomLevel < 14 ? [15, 15] : [45, 45],
+    iconSize: zoomLevel < 14 ? [20, 20] : [45, 45],
   });
 
   useEffect(() => {

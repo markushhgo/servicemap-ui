@@ -4,9 +4,9 @@ const styles = theme => ({
   },
   buttonWhite: {
     width: '100%',
-    textAlign: 'left',
+    justifyContent: 'left',
     textTransform: 'none',
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
   },
   button: {
     width: '100%',
@@ -72,14 +72,14 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  buttonStep: {
-    width: '25%',
+  buttonSmall: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
   },
-  buttonStepActive: {
-    width: '25%',
+  buttonSmallActive: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
@@ -130,9 +130,7 @@ const styles = theme => ({
   },
   buttonList: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column',
   },
 });
 
