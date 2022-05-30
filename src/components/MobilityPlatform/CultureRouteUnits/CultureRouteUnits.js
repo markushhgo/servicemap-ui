@@ -1,16 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../utils/utils';
 
-const CultureRouteUnits = ({ classes }) => {
-  const [cultureRouteUnits, setCultureRouteUnits] = useState([]);
-
-  const { openMobilityPlatform, cultureRouteId } = useContext(MobilityPlatformContext);
+const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
+  const { cultureRouteId } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
 
@@ -21,12 +18,6 @@ const CultureRouteUnits = ({ classes }) => {
     iconUrl: routeUnitIcon,
     iconSize: [45, 45],
   });
-
-  useEffect(() => {
-    if (openMobilityPlatform) {
-      fetchCultureRoutesData('CRU', 200, setCultureRouteUnits);
-    }
-  }, [openMobilityPlatform, setCultureRouteUnits]);
 
   const activeCultureRouteUnits = cultureRouteUnits.filter(item => item.mobile_unit_group.id === cultureRouteId);
 
@@ -54,6 +45,11 @@ const CultureRouteUnits = ({ classes }) => {
 
 CultureRouteUnits.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  cultureRouteUnits: PropTypes.arrayOf(PropTypes.any),
+};
+
+CultureRouteUnits.defaultProps = {
+  cultureRouteUnits: [],
 };
 
 export default CultureRouteUnits;
