@@ -132,6 +132,13 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  checkBoxContainer: {
+    borderBottom: '1px solid #6f7276',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'start',
+    paddingLeft: theme.spacing(4),
+  },
 });
 
 export default styles;

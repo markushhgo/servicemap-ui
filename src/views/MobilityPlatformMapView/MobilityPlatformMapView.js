@@ -7,6 +7,7 @@ import RentalCars from '../../components/MobilityPlatform/RentalCars';
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
 import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
 import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
+import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZones';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -18,6 +19,7 @@ const MobilityPlatformMapView = () => (
     <GasFillingStationMarkers />
     <ChargerStationMarkers />
     <ParkingSpaces />
+    <ParkingChargeZones />
   </>
 );
 
