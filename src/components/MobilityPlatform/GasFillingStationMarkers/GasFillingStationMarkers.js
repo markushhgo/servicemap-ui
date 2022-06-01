@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { useMap } from 'react-leaflet';
 import gasFillingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import ChargerStationContent from '../ChargerStationContent';
+import GasFillingStationContent from './components/GasFillingStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const GasFillingStationMarkers = ({ classes }) => {
@@ -51,7 +51,7 @@ const GasFillingStationMarkers = ({ classes }) => {
                 <div className={classes.popupWrapper}>
                   <Popup className="charger-stations-popup">
                     <div className={classes.popupInner}>
-                      <ChargerStationContent
+                      <GasFillingStationContent
                         station={item}
                       />
                     </div>
