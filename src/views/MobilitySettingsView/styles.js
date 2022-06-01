@@ -94,7 +94,6 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   checkBoxContainer: {
-    width: '100%',
     borderBottom: '1px solid #000000',
     display: 'flex',
     flexDirection: 'column',
