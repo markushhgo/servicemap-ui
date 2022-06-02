@@ -29,7 +29,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
-  const [showDescriptionText, setShowDescriptionText] = useState(true);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
@@ -232,28 +231,66 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
-    setShowCultureRoutes(current => !current);
     if (cultureRouteId) {
       setCultureRouteId(null);
+    }
+    if (showCultureRoutes) {
+      setShowCultureRoutes(false);
     }
   };
 
   const bicycleRouteListToggle = () => {
     setOpenBicycleRouteList(current => !current);
-    setShowBicycleRoutes(current => !current);
     if (bicycleRouteName) {
       setBicycleRouteName(null);
     }
+    if (showBicycleRoutes) {
+      setShowCultureRoutes(false);
+    }
   };
 
+  /**
+   * Stores previous value
+   */
+  const prevCultureRouteIdRef = useRef();
+
+  useEffect(() => {
+    prevCultureRouteIdRef.current = cultureRouteId;
+  }, [cultureRouteId]);
+
+  /**
+   * If user clicks same route again, then reset id and set visiblity to false
+   * Otherwise new values are set
+   */
   const setCultureRouteState = (itemId) => {
     setCultureRouteId(itemId);
     setShowCultureRoutes(true);
+    if (itemId === prevCultureRouteIdRef.current) {
+      setCultureRouteId(null);
+      setShowCultureRoutes(false);
+    }
   };
+
+  /**
+   * Stores previous value
+   */
+  const prevBicycleRouteNameRef = useRef();
+
+  /**
+   * If user clicks same route again, then reset name and set visiblity to false
+   * Otherwise new values are set
+   */
+  useEffect(() => {
+    prevBicycleRouteNameRef.current = bicycleRouteName;
+  }, [bicycleRouteName]);
 
   const setBicycleRouteState = (routeName) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
+    if (routeName === prevBicycleRouteNameRef.current) {
+      setBicycleRouteName(null);
+      setShowBicycleRoutes(false);
+    }
   };
 
   const parkingChargeZonesListToggle = () => {
@@ -400,7 +437,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     <Button
       onClick={() => onClickFunc()}
       variant="outlined"
-      className={settingState ? classes.buttonActive : classes.button}
+      className={settingState ? `${classes.button} ${classes.active}` : classes.button}
       aria-label={intl.formatMessage({
         id: translationId,
       })}
@@ -447,31 +484,53 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderBicycleRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
-      <Button
-        key={item.id}
-        variant="outlined"
-        className={item.name_fi === bicycleRouteName ? classes.listButtonActive : classes.listButton}
-        onClick={() => setBicycleRouteState(item.name_fi)}
-      >
-        <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
-          {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
-        </Typography>
-      </Button>
+      <div key={item.id} className={classes.checkBoxContainer}>
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked={item.name_fi === bicycleRouteName}
+              aria-checked={item.name_fi === bicycleRouteName}
+              className={classes.margin}
+              onChange={() => setBicycleRouteState(item.name_fi)}
+            />
+        )}
+          label={(
+            <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
+              {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
+            </Typography>
+         )}
+        />
+        {item.name_fi === bicycleRouteName ? (<RouteLength key={item.id} route={item} />) : null}
+      </div>
     ));
 
   const renderCultureRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
-      <Button
-        key={item.id}
-        variant="outlined"
-        className={item.id === cultureRouteId ? classes.listButtonActive : classes.listButton}
-        onClick={() => setCultureRouteState(item.id)}
-      >
-        <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
-          {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
-        </Typography>
-      </Button>
+      <div key={item.id} className={classes.checkBoxContainer}>
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked={item.id === cultureRouteId}
+              aria-checked={item.id === cultureRouteId}
+              className={classes.margin}
+              onChange={() => setCultureRouteState(item.id)}
+            />
+      )}
+          label={(
+            <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
+              {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
+            </Typography>
+      )}
+        />
+        {item.id === cultureRouteId ? (
+          <Description
+            key={item.name}
+            route={item}
+            currentLocale={locale}
+          />
+        ) : null}
+      </div>
     ));
 
   const renderSettings = (settingVisibility, typeVal) => {
@@ -492,6 +551,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 <Checkbox
                   checked={item.id === parkingChargeZoneId}
                   aria-checked={item.id === parkingChargeZoneId}
+                  className={classes.margin}
                   onChange={() => selectParkingChargeZone(item.id)}
                 />
               )}
@@ -530,19 +590,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openWalkSettings, walkingControlTypes)}
               <div className={openCultureRouteList ? classes.border : null}>
-                {cultureRouteId
-                  ? cultureRouteList
-                    .filter(route => route.id === cultureRouteId)
-                    .map(route => (
-                      <Description
-                        key={route.id}
-                        route={route}
-                        currentLocale={locale}
-                        showDescriptionText={showDescriptionText}
-                        setShowDescriptionText={setShowDescriptionText}
-                      />
-                    ))
-                  : null}
                 {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
               </div>
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
@@ -559,11 +606,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openBicycleSettings, bicycleControlTypes)}
               <div className={openBicycleRouteList ? classes.border : null}>
-                {bicycleRouteName
-                  ? bicycleRouteList
-                    .filter(bicycleRoute => bicycleRoute.name_fi === bicycleRouteName)
-                    .map(bicycleRoute => <RouteLength key={bicycleRoute.id} route={bicycleRoute} />)
-                  : null}
                 {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
