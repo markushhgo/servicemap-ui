@@ -20,11 +20,11 @@ const ParkingChargeZones = () => {
   const blackOptions = {
     fillColor: 'rgba(0, 0, 0, 255)',
     color: 'rgba(0, 0, 0, 255)',
-    fillOpacity: 0.2,
+    fillOpacity: 0.3,
     weight: 5,
   };
 
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0, weight: 6 };
+  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 6 };
   const pathOptions = mapType === 'accessible_map' ? greenOptions : blackOptions;
 
   const map = useMap();
