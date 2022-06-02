@@ -597,9 +597,8 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO translate
-  'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO translate
-  'mobilityPlatform.menu.speedLimitZones.zone': 'Selected speed limit', // TODO translate
+  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

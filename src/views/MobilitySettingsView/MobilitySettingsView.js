@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
-  Typography, FormGroup, FormControl, FormControlLabel, Switch, Button,
+  Typography, FormGroup, FormControl, FormControlLabel, Switch, Button, Checkbox,
 } from '@material-ui/core';
 import { ReactSVG } from 'react-svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
@@ -56,8 +56,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowParkingSpaces,
     showSpeedLimitZones,
     setShowSpeedLimitZones,
-    speedLimit,
-    setSpeedLimit,
+    speedLimitSelections,
+    setSpeedLimitSelections,
     speedLimitZones,
     setSpeedLimitZones,
   } = useContext(MobilityPlatformContext);
@@ -127,7 +127,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
+    checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones]);
 
 
   const nameKeys = {
@@ -257,14 +258,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const speedLimitZonesToggle = () => {
     setOpenSpeedLimitList(current => !current);
     setShowSpeedLimitZones(current => !current);
-    if (speedLimit) {
-      setSpeedLimit(null);
+    if (speedLimitSelections && speedLimitSelections.length > 0) {
+      setSpeedLimitSelections([]);
     }
   };
 
   const setSpeedLimitState = (limitVal) => {
-    setSpeedLimit(limitVal);
-    setShowSpeedLimitZones(true);
+    if (!speedLimitSelections.includes(limitVal)) {
+      setSpeedLimitSelections(speedLimitSelections => [...speedLimitSelections, limitVal]);
+      setShowSpeedLimitZones(true);
+    } else setSpeedLimitSelections(speedLimitSelections.filter(item => item !== limitVal));
   };
 
   /**
@@ -464,38 +467,32 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const renderSpeedLimits = () => (
     <>
-      <div className={classes.paragraph}>
-        {!speedLimit ? (
-          <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
-          </Typography>
-        ) : (
-          <Typography variant="subtitle2" aria-label={`${speedLimit} ${speedLimitSuffix}`}>
-            {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.zone' })}
-            :
-            {' '}
-            {speedLimit}
-            {' '}
-            {speedLimitSuffix}
-          </Typography>
-        )}
+      <div className={`${classes.paragraph} ${classes.border}`}>
+        <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
+        </Typography>
       </div>
       <div className={classes.buttonList}>
         {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map(item => (
-          <Button
-            key={item}
-            variant="outlined"
-            aria-label={`${item} ${speedLimitSuffix}`}
-            aria-expanded={item === speedLimit}
-            className={item === speedLimit ? `${classes.buttonSmall} ${classes.active}` : classes.buttonSmall}
-            onClick={() => setSpeedLimitState(item)}
-          >
-            <Typography variant="body2">
-              {item}
-              {' '}
-              {speedLimitSuffix}
-            </Typography>
-          </Button>
+          <div key={item} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={speedLimitSelections.includes(item)}
+                  aria-checked={speedLimitSelections.includes(item)}
+                  className={classes.margin}
+                  onChange={() => setSpeedLimitState(item)}
+                />
+            )}
+              label={(
+                <Typography variant="body2" aria-label={`${item} ${speedLimitSuffix}`}>
+                  {item}
+                  {' '}
+                  {speedLimitSuffix}
+                </Typography>
+            )}
+            />
+          </div>
         ))}
       </div>
     </>

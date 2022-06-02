@@ -107,7 +107,7 @@ const DefaultLayout = (props) => {
   const [showChargingStations, setShowChargingStations] = useState(false);
   const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
-  const [speedLimit, setSpeedLimit] = useState(null);
+  const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
 
   const {
@@ -212,8 +212,8 @@ const DefaultLayout = (props) => {
                       setShowParkingSpaces,
                       showSpeedLimitZones,
                       setShowSpeedLimitZones,
-                      speedLimit,
-                      setSpeedLimit,
+                      speedLimitSelections,
+                      setSpeedLimitSelections,
                       speedLimitZones,
                       setSpeedLimitZones,
                     }}
@@ -240,7 +240,7 @@ const DefaultLayout = (props) => {
                     showChargingStations,
                     showParkingSpaces,
                     showSpeedLimitZones,
-                    speedLimit,
+                    speedLimitSelections,
                     speedLimitZones,
                   }}
                 >

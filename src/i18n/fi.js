@@ -600,8 +600,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
-  'mobilityPlatform.menu.speedLimitZones.select': 'Voit oheisten nappien avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.zone': 'Valittu nopeusrajoitus',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
