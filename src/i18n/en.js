@@ -596,7 +596,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.showPaymentZones': 'Parking charging zones',
-  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone', // TODO verify
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -609,8 +609,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
   'mobilityPlatform.chargerStations.content.admin': 'Administrator',
-  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
-  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
+  'mobilityPlatform.chargerStations.content.charge': 'For a fee',
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
