@@ -609,8 +609,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Amount',
   'mobilityPlatform.content.power': 'Power',
   'mobilityPlatform.chargerStations.content.admin': 'Administrator',
-  'mobilityPlatform.chargerStations.content.charge': 'Chargeable', // TODO verify
-  'mobilityPlatform.chargerStations.content.free': 'Free for customers', // TODO verify
+  'mobilityPlatform.chargerStations.content.charge': 'For a fee',
+  'mobilityPlatform.chargerStations.content.free': 'Free for customers',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
@@ -645,8 +645,8 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Payment type',
   'mobilityPlatform.content.parkingSpaces.paid': 'Toll parking',
   'mobilityPlatform.content.parkingSpaces.empty': 'No vacant spaces left',
-  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone', // TODO verify
-  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

@@ -611,8 +611,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
   'mobilityPlatform.chargerStations.content.admin': 'Administratör',
-  'mobilityPlatform.chargerStations.content.charge': 'Betalning', // TODO verify
-  'mobilityPlatform.chargerStations.content.free': 'kostnadsfritt för kunderna', // TODO verify
+  'mobilityPlatform.chargerStations.content.charge': 'För en avgift',
+  'mobilityPlatform.chargerStations.content.free': 'Kostnadsfritt för kunderna',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
@@ -647,8 +647,8 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
   'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
-  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone', // TODO translate
-  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit', // TODO translate
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
