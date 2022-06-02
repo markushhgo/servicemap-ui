@@ -6,6 +6,7 @@ import CultureRouteUnits from '../CultureRouteUnits';
 
 const CultureRoutes = () => {
   const [cultureRoutesGeometry, setCultureRoutesGeometry] = useState([]);
+  const [cultureRouteUnits, setCultureRouteUnits] = useState([]);
 
   const { openMobilityPlatform, showCultureRoutes, cultureRouteId } = useContext(MobilityPlatformContext);
 
@@ -19,6 +20,12 @@ const CultureRoutes = () => {
       fetchCultureRoutesData('CRG', 20, setCultureRoutesGeometry);
     }
   }, [openMobilityPlatform, setCultureRoutesGeometry]);
+
+  useEffect(() => {
+    if (openMobilityPlatform) {
+      fetchCultureRoutesData('CRU', 200, setCultureRouteUnits);
+    }
+  }, [openMobilityPlatform, setCultureRouteUnits]);
 
   const activeCultureRoute = cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId);
 
@@ -49,7 +56,7 @@ const CultureRoutes = () => {
             </>
           )}
           <>
-            <CultureRouteUnits />
+            <CultureRouteUnits cultureRouteUnits={cultureRouteUnits} />
           </>
         </>
       ) : null}

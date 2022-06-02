@@ -20,7 +20,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
   const greenOptions = { color: 'rgba(15, 115, 6, 255)', fillOpacity: 0.3, weight: 4 };
   const purpleOptions = { color: 'rgba(202, 15, 212, 255)', fillOpacity: 0.3, weight: 4 };
   const blackOptions = { color: 'rgba(0, 0, 0, 255)', fillOpacity: 0.3, weight: 4 };
-  const grayOptions = { color: 'rgba(94, 94, 94, 255)', fillOpacity: 0.3, weight: 4 };
+  const burgundyOptions = { color: 'rgba(128, 0, 32, 255)', fillOpacity: 0.3, weight: 4 };
   const tealOptions = { color: 'rgba(0, 128, 128, 255)', fillOpacity: 0.3, weight: 4 };
   const orangeOptions = { color: 'rgba(227, 97, 32, 255)', fillOpacity: 0.3, weight: 4 };
   const brownOptions = { color: 'rgba(117, 44, 23, 255)', fillOpacity: 0.3, weight: 4 };
@@ -40,7 +40,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
       case 70:
         return tealOptions;
       case 80:
-        return grayOptions;
+        return burgundyOptions;
       case 100:
         return orangeOptions;
       case 120:

@@ -2,9 +2,9 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.background.main,
   },
-  buttonPrimary: {
+  button: {
     width: '100%',
-    height: '50px',
+    height: '3.125rem',
     background: 'rgba(245, 245, 245, 255)',
     textTransform: 'capitalize',
     justifyContent: 'flex-start',
@@ -15,23 +15,10 @@ const styles = theme => ({
       background: 'rgba(230, 230, 230, 255)',
     },
   },
-  buttonSecondary: {
-    width: '100%',
-    height: '45px',
-    background: 'rgba(230, 230, 230, 255)',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-    paddingLeft: theme.spacing(2),
-    borderRadius: '0',
-    borderTop: 'none',
-    borderBottom: '1px solid #000000',
-    '&:hover': {
-      background: 'rgba(222, 222, 222, 255)',
-    },
-  },
   active: {
-    background: '#46484b',
+    borderBottom: '1px solid #6f7276',
+    borderTop: '1px solid #6f7276',
+    background: 'rgba(70, 72, 75, 255)',
     color: '#fff',
     '&:hover': {
       color: '#fff',
