@@ -106,6 +106,9 @@ const DefaultLayout = (props) => {
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showChargingStations, setShowChargingStations] = useState(false);
   const [showParkingSpaces, setShowParkingSpaces] = useState(false);
+  const [showParkingChargeZones, setShowParkingChargeZones] = useState(false);
+  const [parkingChargeZones, setParkingChargeZones] = useState([]);
+  const [parkingChargeZoneId, setParkingChargeZoneId] = useState(null);
   const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
   const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
@@ -210,6 +213,12 @@ const DefaultLayout = (props) => {
                       setShowChargingStations,
                       showParkingSpaces,
                       setShowParkingSpaces,
+                      showParkingChargeZones,
+                      setShowParkingChargeZones,
+                      parkingChargeZones,
+                      setParkingChargeZones,
+                      parkingChargeZoneId,
+                      setParkingChargeZoneId,
                       showSpeedLimitZones,
                       setShowSpeedLimitZones,
                       speedLimitSelections,
@@ -239,6 +248,10 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showChargingStations,
                     showParkingSpaces,
+                    showParkingChargeZones,
+                    parkingChargeZones,
+                    setParkingChargeZones,
+                    parkingChargeZoneId,
                     showSpeedLimitZones,
                     speedLimitSelections,
                     speedLimitZones,

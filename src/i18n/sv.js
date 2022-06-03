@@ -597,6 +597,8 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
+  'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
 
@@ -647,6 +649,11 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
   'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
+  'mobilityPlatform.content.parkingChargeZones.zone': 'Zon',
+  'mobilityPlatform.content.parkingChargeZones.price': 'Avgift',
+  'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Avgiftsbelagd vardagar',
+  'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
+  'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
   'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
   'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
 
@@ -658,6 +665,7 @@ const translations = {
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
   'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
+  'mobilityPlatform.info.parkingChargeZones': 'Parkeringsavgiftszoner av Åbo.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
