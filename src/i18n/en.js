@@ -595,7 +595,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Route name',
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
-  'mobilityPlatform.menu.showPaymentZones': 'Parking charging zones',
+  'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
 
   // Content

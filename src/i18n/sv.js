@@ -597,7 +597,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
-  'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftsområden',
+  'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
 
   // Content
@@ -661,7 +661,7 @@ const translations = {
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
   'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
-  'mobilityPlatform.info.parkingChargeZones': 'Parkeringsavgiftsområden av Åbo.',
+  'mobilityPlatform.info.parkingChargeZones': 'Parkeringsavgiftszoner av Åbo.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
