@@ -100,12 +100,15 @@ const DefaultLayout = (props) => {
   const [showBicycleStands, setShowBicycleStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
   const [cultureRouteId, setCultureRouteId] = useState();
-  const [showParkingSpaces, setShowParkingSpaces] = useState(false);
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showChargingStations, setShowChargingStations] = useState(false);
+  const [showParkingSpaces, setShowParkingSpaces] = useState(false);
+  const [showParkingChargeZones, setShowParkingChargeZones] = useState(false);
+  const [parkingChargeZones, setParkingChargeZones] = useState([]);
+  const [parkingChargeZoneId, setParkingChargeZoneId] = useState(null);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -207,6 +210,12 @@ const DefaultLayout = (props) => {
                       setShowChargingStations,
                       showParkingSpaces,
                       setShowParkingSpaces,
+                      showParkingChargeZones,
+                      setShowParkingChargeZones,
+                      parkingChargeZones,
+                      setParkingChargeZones,
+                      parkingChargeZoneId,
+                      setParkingChargeZoneId,
                     }}
                   >
                     <ViewRouter />
@@ -230,6 +239,10 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showChargingStations,
                     showParkingSpaces,
+                    showParkingChargeZones,
+                    parkingChargeZones,
+                    setParkingChargeZones,
+                    parkingChargeZoneId,
                   }}
                 >
                   <MapView

@@ -89,16 +89,19 @@ const styles = theme => ({
   border: {
     borderBottom: '1px solid #6f7276',
   },
+  margin: {
+    marginLeft: theme.spacing(4),
+  },
   buttonList: {
     display: 'flex',
     flexDirection: 'column',
   },
   checkBoxContainer: {
-    borderBottom: '1px solid #000000',
+    width: '100%',
+    borderBottom: '1px solid #6f7276',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
-    paddingLeft: theme.spacing(4),
   },
 });
 

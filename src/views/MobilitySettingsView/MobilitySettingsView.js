@@ -14,6 +14,7 @@ import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
+  fetchParkingChargeZonesData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -30,6 +31,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
+  const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
 
   const {
     setOpenMobilityPlatform,
@@ -41,8 +43,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCultureRoutes,
     cultureRouteId,
     setCultureRouteId,
-    showParkingSpaces,
-    setShowParkingSpaces,
     showBicycleRoutes,
     setShowBicycleRoutes,
     bicycleRouteName,
@@ -53,6 +53,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGasFillingStations,
     showChargingStations,
     setShowChargingStations,
+    showParkingSpaces,
+    setShowParkingSpaces,
+    parkingChargeZones,
+    setParkingChargeZones,
+    parkingChargeZoneId,
+    setParkingChargeZoneId,
+    showParkingChargeZones,
+    setShowParkingChargeZones,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -73,6 +81,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     fetchBicycleRouteNames(setBicycleRouteList);
   }, [setBicycleRouteList]);
+
+  useEffect(() => {
+    fetchParkingChargeZonesData('PAZ', 10, setParkingChargeZones);
+  }, [setParkingChargeZones]);
 
   /**
    * Check is visibility boolean values are true
@@ -114,6 +126,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
   }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
 
+  useEffect(() => {
+    checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
+    checkVisibilityValues(showParkingChargeZones, setOpenParkingChargeZoneList);
+  }, [showParkingChargeZones]);
 
   const nameKeys = {
     fi: 'name',
@@ -277,6 +293,38 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const parkingChargeZonesListToggle = () => {
+    setOpenParkingChargeZoneList(current => !current);
+    if (showParkingChargeZones) {
+      setShowParkingChargeZones(false);
+    }
+    if (parkingChargeZoneId) {
+      setParkingChargeZoneId(null);
+    }
+  };
+
+  /**
+   * Stores previous value
+   */
+  const prevParkingChargeZoneIdRef = useRef();
+
+  useEffect(() => {
+    prevParkingChargeZoneIdRef.current = parkingChargeZoneId;
+  }, [parkingChargeZoneId]);
+
+  /**
+   * If user clicks same route again, then reset id and set visiblity to false
+   * Otherwise new values are set
+   */
+
+  const selectParkingChargeZone = (id) => {
+    setParkingChargeZoneId(id);
+    setShowParkingChargeZones(true);
+    if (id === prevParkingChargeZoneIdRef.current) {
+      setParkingChargeZoneId(null);
+      setShowParkingChargeZones(false);
+    }
+  };
 
   /**
    * Control types for different user types
@@ -341,6 +389,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showParkingSpaces',
       checkedValue: showParkingSpaces,
       onChangeValue: parkingSpacesToggle,
+    },
+    {
+      type: 'parkingChargeZones',
+      msgId: 'mobilityPlatform.menu.showParkingChargeZones',
+      checkedValue: openParkingChargeZoneList,
+      onChangeValue: parkingChargeZonesListToggle,
     },
   ];
 
@@ -436,6 +490,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
             <Checkbox
               checked={item.name_fi === bicycleRouteName}
               aria-checked={item.name_fi === bicycleRouteName}
+              className={classes.margin}
               onChange={() => setBicycleRouteState(item.name_fi)}
             />
         )}
@@ -458,6 +513,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
             <Checkbox
               checked={item.id === cultureRouteId}
               aria-checked={item.id === cultureRouteId}
+              className={classes.margin}
               onChange={() => setCultureRouteState(item.id)}
             />
       )}
@@ -483,6 +539,39 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
     return null;
   };
+
+  const renderParkingChargeZoneList = () => (
+    <>
+      {parkingChargeZones
+        && parkingChargeZones.length > 0
+        && parkingChargeZones.map(item => (
+          <div key={item.id} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={item.id === parkingChargeZoneId}
+                  aria-checked={item.id === parkingChargeZoneId}
+                  className={classes.margin}
+                  onChange={() => selectParkingChargeZone(item.id)}
+                />
+              )}
+              label={(
+                <Typography
+                  variant="body2"
+                  aria-label={`${intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })} ${
+                    item.extra.maksuvyohyke
+                  }`}
+                >
+                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })}
+                  {' '}
+                  {item.extra.maksuvyohyke}
+                </Typography>
+              )}
+            />
+          </div>
+        ))}
+    </>
+  );
 
   return (
     <div className={classes.content}>
@@ -524,6 +613,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
+              {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
             </>
           </FormGroup>
         </FormControl>
@@ -534,6 +624,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
+      {openParkingChargeZoneList ? <InfoTextBox infoText="mobilityPlatform.info.parkingChargeZones" /> : null}
     </div>
   );
 };

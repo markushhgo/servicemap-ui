@@ -5,14 +5,18 @@ import { Typography } from '@material-ui/core';
 const Description = ({
   classes, route, currentLocale,
 }) => {
+  // Hide references to sizes of audio files.
+  // Only finnish and english descriptions have those.
+  const replaceWord = inputStr => inputStr.replace(/Latauskoko ~90M|koko ~43M|Size ~6MB/gi, '');
+
   const selectRouteDescription = (descriptionSv, descriptionEn, descriptionFi) => {
     if (currentLocale === 'sv' && descriptionSv) {
       return descriptionSv;
     }
     if (currentLocale === 'en' && descriptionEn) {
-      return descriptionEn;
+      return replaceWord(descriptionEn);
     }
-    return descriptionFi;
+    return replaceWord(descriptionFi);
   };
 
   return (
