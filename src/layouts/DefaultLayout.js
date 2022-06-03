@@ -106,6 +106,7 @@ const DefaultLayout = (props) => {
   const [showRentalCars, setShowRentalCars] = useState(false);
   const [showGasFillingStations, setShowGasFillingStations] = useState(false);
   const [showChargingStations, setShowChargingStations] = useState(false);
+  const [showBikeServiceStations, setShowBikeServiceStations] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -207,6 +208,8 @@ const DefaultLayout = (props) => {
                       setShowChargingStations,
                       showParkingSpaces,
                       setShowParkingSpaces,
+                      showBikeServiceStations,
+                      setShowBikeServiceStations,
                     }}
                   >
                     <ViewRouter />
@@ -230,6 +233,7 @@ const DefaultLayout = (props) => {
                     showGasFillingStations,
                     showChargingStations,
                     showParkingSpaces,
+                    showBikeServiceStations,
                   }}
                 >
                   <MapView

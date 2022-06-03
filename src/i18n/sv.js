@@ -597,6 +597,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

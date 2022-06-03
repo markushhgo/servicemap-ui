@@ -599,6 +599,7 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
