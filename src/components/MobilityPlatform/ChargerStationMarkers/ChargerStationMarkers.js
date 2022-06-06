@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useMap } from 'react-leaflet';
+import chargerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ChargerStationContent from '../ChargerStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import chargerIcon from '../../../../node_modules/servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 
 const ChargerStationMarkers = ({ classes }) => {
   const [chargerStations, setChargerStations] = useState([]);
 
   const { openMobilityPlatform, showChargingStations } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+  const map = useMap();
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
@@ -22,9 +23,19 @@ const ChargerStationMarkers = ({ classes }) => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData(apiUrl, 'CGS', 150, setChargerStations);
+      fetchMobilityMapData('CGS', 500, setChargerStations);
     }
   }, [openMobilityPlatform, setChargerStations]);
+
+  useEffect(() => {
+    if (showChargingStations && chargerStations && chargerStations.length > 0) {
+      const bounds = [];
+      chargerStations.forEach((item) => {
+        bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showChargingStations, chargerStations]);
 
   return (
     <>

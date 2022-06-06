@@ -4,13 +4,13 @@ const styles = theme => ({
   },
   buttonWhite: {
     width: '100%',
-    textAlign: 'left',
+    justifyContent: 'left',
     textTransform: 'none',
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
   },
   button: {
     width: '100%',
-    height: '50px',
+    height: '3.125rem',
     background: 'rgba(245, 245, 245, 255)',
     textTransform: 'capitalize',
     justifyContent: 'flex-start',
@@ -21,15 +21,10 @@ const styles = theme => ({
       background: 'rgba(230, 230, 230, 255)',
     },
   },
-  buttonActive: {
-    width: '100%',
-    height: '50px',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    borderRadius: '0',
+  active: {
     borderBottom: '1px solid #6f7276',
     borderTop: '1px solid #6f7276',
-    background: '#46484b',
+    background: 'rgba(70, 72, 75, 255)',
     color: '#fff',
     '&:hover': {
       color: '#fff',
@@ -38,48 +33,14 @@ const styles = theme => ({
       borderTop: '1px solid #6f7276',
     },
   },
-  listButton: {
-    width: '100%',
-    height: '45px',
-    background: 'rgba(230, 230, 230, 255)',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-    paddingLeft: theme.spacing(2),
-    borderRadius: '0',
-    borderTop: 'none',
-    borderBottom: '1px solid #000000',
-    '&:hover': {
-      background: 'rgba(222, 222, 222, 255)',
-    },
-  },
-  listButtonActive: {
-    width: '100%',
-    height: '45px',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-    paddingLeft: theme.spacing(2),
-    borderRadius: '0',
-    borderBottom: '1px solid #6f7276',
-    borderTop: '1px solid #6f7276',
-    background: '#46484b',
-    color: '#fff',
-    '&:hover': {
-      color: '#fff',
-      background: '#3e3f42',
-      borderBottom: '1px solid #6f7276',
-      borderTop: '1px solid #6f7276',
-    },
-  },
-  buttonStep: {
-    width: '25%',
+  buttonSmall: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
   },
-  buttonStepActive: {
-    width: '25%',
+  buttonSmallActive: {
+    width: '35%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
@@ -128,11 +89,19 @@ const styles = theme => ({
   border: {
     borderBottom: '1px solid #6f7276',
   },
+  margin: {
+    marginLeft: theme.spacing(4),
+  },
   buttonList: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  checkBoxContainer: {
+    width: '100%',
+    borderBottom: '1px solid #6f7276',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'start',
   },
 });
 
