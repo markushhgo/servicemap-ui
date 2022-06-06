@@ -599,6 +599,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
   'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

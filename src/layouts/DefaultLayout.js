@@ -109,6 +109,7 @@ const DefaultLayout = (props) => {
   const [showParkingChargeZones, setShowParkingChargeZones] = useState(false);
   const [parkingChargeZones, setParkingChargeZones] = useState([]);
   const [parkingChargeZoneId, setParkingChargeZoneId] = useState(null);
+  const [showBikeServiceStations, setShowBikeServiceStations] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -216,6 +217,8 @@ const DefaultLayout = (props) => {
                       setParkingChargeZones,
                       parkingChargeZoneId,
                       setParkingChargeZoneId,
+                      showBikeServiceStations,
+                      setShowBikeServiceStations,
                     }}
                   >
                     <ViewRouter />
@@ -243,6 +246,7 @@ const DefaultLayout = (props) => {
                     parkingChargeZones,
                     setParkingChargeZones,
                     parkingChargeZoneId,
+                    showBikeServiceStations,
                   }}
                 >
                   <MapView

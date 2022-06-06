@@ -601,6 +601,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
   'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',

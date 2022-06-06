@@ -61,6 +61,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setParkingChargeZoneId,
     showParkingChargeZones,
     setShowParkingChargeZones,
+    showBikeServiceStations,
+    setShowBikeServiceStations,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -100,7 +102,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
-  }, [showBicycleStands]);
+    checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
+  }, [showBicycleStands, showBikeServiceStations]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -227,6 +230,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const chargingStationsToggle = () => {
     setShowChargingStations(current => !current);
+  };
+
+  const bikeServiceStationsToggle = () => {
+    setShowBikeServiceStations(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -356,6 +363,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
       onChangeValue: bicycleStandsToggle,
+    },
+    {
+      type: 'bikeServiceStations',
+      msgId: 'mobilityPlatform.menu.showBikeServiceStations',
+      checkedValue: showBikeServiceStations,
+      onChangeValue: bikeServiceStationsToggle,
     },
     {
       type: 'ecoCounterStations',

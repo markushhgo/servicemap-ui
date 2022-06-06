@@ -597,6 +597,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
