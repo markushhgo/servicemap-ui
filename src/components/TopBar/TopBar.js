@@ -22,6 +22,7 @@ import LocaleUtility from '../../utils/locale';
 import { useNavigationParams } from '../../utils/address';
 import SettingsButton from './SettingsButton';
 import MenuButton from './MenuButton';
+import paths from '../../../config/paths';
 
 const TopBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -42,6 +43,8 @@ const TopBar = (props) => {
     currentPage,
     smallScreen,
   } = props;
+
+  const isHomePage = paths.home.regex.test(location.pathname);
 
   const renderSettingsButtons = () => {
     const settingsCategories = [
@@ -78,6 +81,7 @@ const TopBar = (props) => {
     const mapPage = location.search.indexOf('showMap=true') > -1;
     return (
       <Button
+        aria-current={mapPage ? 'page' : false}
         aria-hidden
         className={
           mapPage ? classes.toolbarButtonPressed : classes.toolbarButton
@@ -124,6 +128,7 @@ const TopBar = (props) => {
         {LocaleUtility.availableLocales.map(currentLocale => (
           <ButtonBase
             role="link"
+            aria-current={currentLocale === locale ? 'true' : false}
             key={currentLocale}
             focusVisibleClassName={classes.topButtonFocused}
             lang={currentLocale}
@@ -230,6 +235,7 @@ const TopBar = (props) => {
             <div className={classes.toolbarBlackContainer}>
               <ButtonBase
                 role="link"
+                aria-current={isHomePage ? 'page' : false}
                 onClick={() => handleNavigation('home')}
                 focusVisibleClassName={classes.topButtonFocused}
               >
