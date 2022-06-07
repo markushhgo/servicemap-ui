@@ -2,6 +2,7 @@
 
 exports[`<SettingsButton /> should work 1`] = `
 <WithStyles(ForwardRef(Button))
+  aria-current="page"
   aria-haspopup="dialog"
   className="
     undefined 
