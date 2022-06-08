@@ -12,11 +12,17 @@ export default theme => ({
     alignItems: 'center',
   },
   popupCloseButton: {
-    padding: theme.spacing(0.8),
+    padding: theme.spacing(1),
     '&:hover': {
       cursor: 'pointer',
       borderRadius: '5px',
       border: '1px solid rgba(0, 0, 0, 255)',
     },
+  },
+  closeIcon: {
+    fontSize: '1.25rem',
+    width: '1.25rem',
+    height: '1.25rem',
+    lineHeight: '1.4rem',
   },
 });

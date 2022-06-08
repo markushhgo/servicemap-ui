@@ -33,6 +33,12 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
 
   const activeCultureRouteUnits = cultureRouteUnits.filter(item => item.mobile_unit_group.id === cultureRouteId);
 
+  /**
+   * Returns description based on locale
+   * If description does not exists, return message
+   * First line of description is route name
+   * To avoid repetition route name will be hidden inside description
+   */
   const renderDescription = (descriptionFi, descriptionEn, descriptionSv, nameFi, nameEn, nameSv) => {
     let desc = descriptionFi;
     let name = nameFi;
@@ -49,6 +55,11 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
     return desc.replace(name, '');
   };
 
+  /**
+   * Default close button is set to false, because it would overlap with the scrollbar
+   * It is easier to make a custom close button than to edit the default close button
+   */
+
   return (
     <>
       <div>
@@ -63,7 +74,7 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
                       {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
                     </Typography>
                     <ButtonBase onClick={() => closePopup()} className={classes.popupCloseButton}>
-                      <Close className={classes.infoIcon} />
+                      <Close className={classes.closeIcon} />
                     </ButtonBase>
                   </div>
                   <div className={classes.content}>
