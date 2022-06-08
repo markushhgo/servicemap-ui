@@ -1,24 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SettingsButton /> should work 1`] = `
-<WithStyles(ForwardRef(Button))
-  aria-current="page"
-  aria-haspopup="dialog"
-  className="
+<div>
+  <button
+    aria-current="page"
+    aria-haspopup="dialog"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text 
     undefined 
     
   "
-  classes={
-    Object {
-      "label": undefined,
-    }
-  }
-  id="SettingsButtoncitySettings"
-  onClick={[Function]}
-  role="button"
->
-  <WithStyles(SettingsText)
-    type="citySettings"
-  />
-</WithStyles(ForwardRef(Button))>
+    id="SettingsButtoncitySettings"
+    role="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      <p
+        class="MuiTypography-root SettingsText-title-1 MuiTypography-subtitle1"
+      >
+        City settings
+      </p>
+      <p
+        class="MuiTypography-root SettingsText-text-3 MuiTypography-body2"
+      >
+        Cities all
+      </p>
+    </span>
+  </button>
+</div>
 `;
