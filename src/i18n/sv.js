@@ -653,6 +653,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Avgiftsbelagd vardagar',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
+  'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

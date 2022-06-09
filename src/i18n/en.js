@@ -651,6 +651,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Toll charge on workdays',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Toll charge on saturdays',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Toll charge on sundays',
+  'mobilityPlatform.content.description.notAvailable': 'Description text is not available.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
