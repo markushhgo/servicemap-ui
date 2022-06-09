@@ -37,6 +37,9 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
    * Returns description based on locale
    * Renders linebreaks as well
    * If description does not exists, return message
+   * @param {string} descriptionFi
+   * @param {string} descriptionEn
+   * @param {string} descriptionSv
    */
   const renderDescription = (descriptionFi, descriptionEn, descriptionSv) => {
     const obj = { key: undefined, text: '' };
