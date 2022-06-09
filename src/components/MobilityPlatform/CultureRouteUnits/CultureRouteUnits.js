@@ -35,24 +35,33 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
 
   /**
    * Returns description based on locale
+   * Renders linebreaks as well
    * If description does not exists, return message
-   * First line of description is route name
-   * To avoid repetition route name will be hidden inside description
    */
-  const renderDescription = (descriptionFi, descriptionEn, descriptionSv, nameFi, nameEn, nameSv) => {
-    let desc = descriptionFi;
-    let name = nameFi;
-    if (locale === 'sv') {
-      desc = descriptionSv;
-      name = nameSv;
-    } else if (locale === 'en') {
-      desc = descriptionEn;
-      name = nameEn;
+  const renderDescription = (descriptionFi, descriptionEn, descriptionSv) => {
+    const obj = { key: undefined, text: '' };
+    if (descriptionFi && locale === 'fi') {
+      obj.key = 'fi';
+      obj.text = descriptionFi;
+    } else if (descriptionEn && locale === 'en') {
+      obj.key = 'en';
+      obj.text = descriptionEn;
+    } else if (descriptionSv && locale === 'sv') {
+      obj.key = 'sv';
+      obj.text = descriptionSv;
     }
-    if (!desc) {
-      return intl.formatMessage({ id: 'mobilityPlatform.content.description.notAvailable' });
+    if (obj.key) {
+      return obj.text.split('\n\n\n').map(paragraph => (
+        <Typography key={Math.random()} variant="body2">
+          {paragraph.split('\n').reduce((total, line) => [total, <br key={Math.random()} />, line])}
+        </Typography>
+      ));
     }
-    return desc.replace(name, '');
+    return (
+      <Typography variant="body2">
+        {intl.formatMessage({ id: 'mobilityPlatform.content.description.notAvailable' })}
+      </Typography>
+    );
   };
 
   /**
@@ -78,16 +87,11 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
                     </ButtonBase>
                   </div>
                   <div className={classes.content}>
-                    <Typography variant="body2">
-                      {renderDescription(
-                        item.description,
-                        item.description_en,
-                        item.description_sv,
-                        item.name,
-                        item.name_en,
-                        item.name_sv,
-                      )}
-                    </Typography>
+                    {renderDescription(
+                      item.description,
+                      item.description_en,
+                      item.description_sv,
+                    )}
                   </div>
                 </div>
               </Popup>
