@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Description /> should work 1`] = `
+<div>
+  <div>
+    <div
+      class="injectIntl(Description)-paragraph-1"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        testikuvaus
+      </p>
+    </div>
+  </div>
+</div>
+`;

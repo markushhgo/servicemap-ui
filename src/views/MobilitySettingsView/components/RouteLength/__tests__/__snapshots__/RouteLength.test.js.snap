@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RouteLength /> should work 1`] = `
+<div>
+  <div>
+    <div
+      class="injectIntl(RouteLength)-paragraph-1"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Reitin pituus:
+         
+        0
+         
+        km.
+      </p>
+    </div>
+  </div>
+</div>
+`;

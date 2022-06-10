@@ -8,7 +8,7 @@ const BikeServiceStationContent = ({ classes, intl, station }) => {
 
   const singleValTypo = (messageId, value, props = {}) => (
     <div {...props}>
-      <Typography>
+      <Typography component="p" variant="body2">
         <strong>
           {intl.formatMessage({
             id: messageId,
@@ -52,7 +52,7 @@ const BikeServiceStationContent = ({ classes, intl, station }) => {
       </div>
       <div className={classes.textContainer}>
         {station.address ? renderAddress() : null}
-        <Typography variant="body2">
+        <Typography component="p" variant="body2">
           {renderLocaleText(station.description, station.description_en, station.description_sv)}
         </Typography>
       </div>
