@@ -655,6 +655,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Maksullisuus arkisin',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Maksullisuus lauantaisin',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Maksullisuus sunnuntaisin',
+  'mobilityPlatform.content.description.notAvailable': 'Kuvaustekstiä ei ole saatavilla.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
