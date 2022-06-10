@@ -19,7 +19,7 @@ const intlMock = {
 const mockProps = {
   route: {
     name_fi: 'Testireitti',
-    length: 100,
+    length: 100000,
   },
 };
 
@@ -55,6 +55,6 @@ describe('<RouteLength />', () => {
     const { container } = renderWithProviders(<RouteLength {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toBeTruthy();
+    expect(p[0].textContent).toEqual('Reitin pituus: 100 km.');
   });
 });

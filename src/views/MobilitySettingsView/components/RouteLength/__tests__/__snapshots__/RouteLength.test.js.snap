@@ -11,7 +11,7 @@ exports[`<RouteLength /> should work 1`] = `
       >
         Reitin pituus:
          
-        0
+        100
          
         km.
       </p>
