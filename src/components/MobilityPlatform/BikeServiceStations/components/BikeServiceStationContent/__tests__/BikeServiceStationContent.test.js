@@ -65,7 +65,7 @@ describe('<BikeServiceStationContent />', () => {
     const h6 = container.querySelectorAll('h6');
     const p = container.querySelectorAll('p');
     expect(h6[0].textContent).toEqual(mockProps.station.name);
-    expect(p[0].textContent).toBeTruthy();
+    expect(p[0].textContent).toEqual(`Osoite: ${mockProps.station.address_fi}`);
     expect(p[1].textContent).toEqual(mockProps.station.description);
   });
 });
