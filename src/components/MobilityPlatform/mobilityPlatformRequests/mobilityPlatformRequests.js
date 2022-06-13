@@ -65,6 +65,16 @@ const fetchIotData = async (sourceName, setData) => {
   }
 };
 
+const fetchParkingChargeZonesData = async (type, pageSize, setData) => {
+  try {
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326&latlon=true`);
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
 const fetchCityBikesData = async (sourceName, setData) => {
   try {
     const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
@@ -82,5 +92,6 @@ export {
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
   fetchIotData,
+  fetchParkingChargeZonesData,
   fetchCityBikesData,
 };

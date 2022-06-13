@@ -599,6 +599,9 @@ const translations = {
   'mobilityPlatform.menu.routes.name': 'Reitti',
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
+  'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyörät',
 
   // Content
@@ -648,6 +651,12 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
   'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
   'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
+  'mobilityPlatform.content.parkingChargeZones.zone': 'Vyöhyke',
+  'mobilityPlatform.content.parkingChargeZones.price': 'Hinta',
+  'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Maksullisuus arkisin',
+  'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Maksullisuus lauantaisin',
+  'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Maksullisuus sunnuntaisin',
+  'mobilityPlatform.content.description.notAvailable': 'Kuvaustekstiä ei ole saatavilla.',
   'mobilityPlatform.content.cityBikes.title': 'Kaupunkipyöräasema',
   'mobilityPlatform.content.cityBikes.name': 'Asema',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasiteetti',
@@ -663,6 +672,7 @@ const translations = {
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
   'mobilityPlatform.info.parkingSpaces': 'Kartalla näkyvät Turun julkiset pysäköintialueet. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.  Tiedot pysäköintialueista tulevat Turun parkkihubista.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
+  'mobilityPlatform.info.parkingChargeZones': 'Turun kaupungin pysäköinnin maksuvyöhykkeet.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
