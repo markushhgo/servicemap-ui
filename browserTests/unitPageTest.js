@@ -7,7 +7,7 @@ const { server } = config;
 /* eslint-disable */
 
 fixture`Unit page tests`
-  .page`http://${server.address}:${server.port}/fi/unit/8215`
+  .page`http://${server.address}:${server.port}/fi/unit/148`
   .beforeEach(async () => {
     await waitForReact();
   });
