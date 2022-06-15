@@ -7,6 +7,7 @@ exports[`<RouteLength /> should work 1`] = `
       class="injectIntl(RouteLength)-paragraph-1"
     >
       <p
+        aria-label="Reitin pituus: 100 km."
         class="MuiTypography-root MuiTypography-body2"
       >
         Reitin pituus:
@@ -14,6 +15,12 @@ exports[`<RouteLength /> should work 1`] = `
         100
          
         km.
+      </p>
+      <p
+        aria-label="EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein."
+        class="MuiTypography-root injectIntl(RouteLength)-margin-2 MuiTypography-body2"
+      >
+        EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.
       </p>
     </div>
   </div>

@@ -58,4 +58,11 @@ describe('<Description />', () => {
     const p = container.querySelectorAll('p');
     expect(p[0].textContent).toEqual(mockProps.route.description);
   });
+
+  it('does contain aria-label attribute', () => {
+    const { container } = renderWithProviders(<Description {...mockProps} />);
+
+    const p = container.querySelectorAll('p');
+    expect(p[0].getAttribute('aria-label')).toEqual(mockProps.route.description);
+  });
 });

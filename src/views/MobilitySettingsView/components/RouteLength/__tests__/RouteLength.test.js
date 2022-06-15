@@ -18,7 +18,7 @@ const intlMock = {
 
 const mockProps = {
   route: {
-    name_fi: 'Testireitti',
+    name_fi: 'EuroVelo',
     length: 100000,
   },
 };
@@ -56,5 +56,14 @@ describe('<RouteLength />', () => {
 
     const p = container.querySelectorAll('p');
     expect(p[0].textContent).toEqual('Reitin pituus: 100 km.');
+    expect(p[1]).toBeInTheDocument();
+  });
+
+  it('does contain aria-label attribute', () => {
+    const { container } = renderWithProviders(<RouteLength {...mockProps} />);
+
+    const p = container.querySelectorAll('p');
+    expect(p[0].getAttribute('aria-label')).toEqual('Reitin pituus: 100 km.');
+    expect(p[1].getAttribute('aria-label')).toBeTruthy();
   });
 });
