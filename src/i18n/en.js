@@ -669,6 +669,11 @@ const translations = {
   'mobilityPlatform.info.parkingSpaces': 'The map shows public parking areas of Turku. The red colour next to a parking area indicates that it is almost full. To see the exact number of available spaces, click on the parking area on the map. The information on parking areas comes from parking hub of Turku.',
   'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
   'mobilityPlatform.info.parkingChargeZones': 'Parking charge zones of Turku.',
+  'mobilityPlatform.info.cityBikes.paragraph.1': 'Turku city bikes, also known as Fölläri bikes, are bicycles everyone can rent using the Donkey Republic app. You can rent a fölläri for one time, monthly or seasonal use which covers the whole summertime.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'If you have a Föli season ticket of at least 30 days, you have the right to use the Fölläri bikes free of charge for an hour at a time. There are 700 bikes to rent and more than 70 stations.',
+  'mobilityPlatform.info.cityBikes.subtitle': 'Read more:',
+  'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/en/f%C3%B6li-bikes',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Map data comes from the Donkey Republic interface in real time.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

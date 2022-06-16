@@ -600,7 +600,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
   'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
-  'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyörät', // TODO translate
+  'mobilityPlatform.menu.showCityBikes': 'Stadscyklar',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -655,12 +655,12 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
   'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
-  'mobilityPlatform.content.cityBikes.title': 'Kaupunkipyöräasema', // TODO translate
+  'mobilityPlatform.content.cityBikes.title': 'Stadscyklarstation', // TODO verify
   'mobilityPlatform.content.cityBikes.name': 'Station',
-  'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet', // TODO verify
+  'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet',
   'mobilityPlatform.content.cityBikes.links': 'Nedladdning', // TODO verify
-  'mobilityPlatform.content.cityBikes.bikes.available': 'Number of available bikes', // TODO translate
-  'mobilityPlatform.content.cityBikes.docks.available': 'Number of available docks', // TODO translate
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar', // TODO verify
+  'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -671,6 +671,11 @@ const translations = {
   'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
   'mobilityPlatform.info.parkingChargeZones': 'Parkeringsavgiftszoner av Åbo.',
+  'mobilityPlatform.info.cityBikes.paragraph.1': 'Åbos stadscyklar, eller mer allmänt känt som "föllärit", är cyklar som alla kan hyra med hjälp av appen Donkey Republic.  Du kan hyra en cykel för en engångsavgift, en månadsavgift eller en säsongsavgift för hela sommaren.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'Om du har ett FöI-säsongskort med en säsong på minst 30 dagar har du rätt att använda stadscyklar gratis en timme i taget. Det finns 700 cyklar att hyra och över 70 stationer.',
+  'mobilityPlatform.info.cityBikes.subtitle': 'Läs mer om stadscyklar:',
+  'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/sv/fölicyklar',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

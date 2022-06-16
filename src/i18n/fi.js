@@ -673,6 +673,11 @@ const translations = {
   'mobilityPlatform.info.parkingSpaces': 'Kartalla näkyvät Turun julkiset pysäköintialueet. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.  Tiedot pysäköintialueista tulevat Turun parkkihubista.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
   'mobilityPlatform.info.parkingChargeZones': 'Turun kaupungin pysäköinnin maksuvyöhykkeet.',
+  'mobilityPlatform.info.cityBikes.paragraph.1': 'Turun kaupunkipyörät eli tuttavallisemmin föllärit, ovat pyöriä, joita kuka vaan voi vuokrata Donkey Republicin sovelluksella.  Föllärin voi vuokrata kertamaksulla, kuukausimaksulla tai koko kesän kattavalla kausimaksulla.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'Jos sinulla on käytössä Fölin kausikortti, jonka kausi on vähintään 30 päivää, sisältää oikeuden käyttää fölläreitä tunnin ajan kerrallaan maksutta. Vuokrattavia pyöriä on 700 ja asemia yli 70 kappaletta.',
+  'mobilityPlatform.info.cityBikes.subtitle': 'Lue lisää kaupunkipyöristä:',
+  'mobilityPlatform.info.cityBikes.link': 'https://foli.fi/föllärit',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
