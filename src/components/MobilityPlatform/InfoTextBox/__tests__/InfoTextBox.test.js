@@ -15,15 +15,13 @@ const intlMock = {
 
 const mockProps = {
   showChargingStations: true,
-  infoText: 'Testilause.',
+  infoText: 'mobilityPlatform.info.chargingStations',
 };
 
 // eslint-disable-next-line react/prop-types
 const Providers = ({ children }) => (
   <IntlProvider {...intlMock}>
-    <MuiThemeProvider theme={themes.SMTheme}>
-      {children}
-    </MuiThemeProvider>
+    <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
   </IntlProvider>
 );
 
@@ -39,6 +37,17 @@ describe('<InfoTextBox />', () => {
     const { container } = renderWithProviders(<InfoTextBox {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual(mockProps.infoText);
+    expect(p[0].textContent).toEqual(
+      'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
+    );
+  });
+
+  it('does contain aria-label attribute', () => {
+    const { container } = renderWithProviders(<InfoTextBox {...mockProps} />);
+
+    const p = container.querySelectorAll('p');
+    expect(p[0].getAttribute('aria-label')).toEqual(
+      'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
+    );
   });
 });

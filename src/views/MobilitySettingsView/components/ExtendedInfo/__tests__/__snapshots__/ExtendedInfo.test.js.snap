@@ -6,10 +6,10 @@ exports[`<ExtendedInfo /> should work 1`] = `
     class="injectIntl(ExtendedInfo)-container-1"
   >
     <p
-      aria-label="testiteksti"
+      aria-label="Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut."
       class="MuiTypography-root MuiTypography-body2"
     >
-      testiteksti
+      Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut.
     </p>
     <ul>
       <li>
@@ -38,16 +38,16 @@ exports[`<ExtendedInfo /> should work 1`] = `
       </li>
     </ul>
     <p
-      aria-label="testiteksti 2"
+      aria-label="3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella."
       class="MuiTypography-root injectIntl(ExtendedInfo)-margin-2 MuiTypography-body2"
     >
-      testiteksti 2
+      3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella.
     </p>
     <p
-      aria-label="testiteksti 3"
+      aria-label="Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa."
       class="MuiTypography-root MuiTypography-body2"
     >
-      testiteksti 3
+      Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa.
     </p>
   </div>
 </div>
