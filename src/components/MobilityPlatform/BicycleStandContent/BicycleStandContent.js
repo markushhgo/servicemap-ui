@@ -11,6 +11,17 @@ const BicycleStandContent = ({
     return splitted.join(' ');
   };
 
+  const messageIds = {
+    model: 'mobilityPlatform.content.bicycleStands.model',
+    places: 'mobilityPlatform.content.bicycleStands.numOfPlaces',
+    stands: 'mobilityPlatform.content.bicycleStands.numOfStands',
+    covered: 'mobilityPlatform.content.bicycleStands.covered',
+    notCovered: 'mobilityPlatform.content.bicycleStands.notCovered',
+    lockable: 'mobilityPlatform.content.bicycleStands.hullLockable',
+    notLockable: 'mobilityPlatform.content.bicycleStands.hullNotLockable',
+    maintained: 'mobilityPlatform.content.bicycleStands.maintainedByTku',
+  };
+
   const titleTypo = () => (
     <div className={classes.title}>
       <Typography variant="subtitle1" className={classes.titleText}>
@@ -19,23 +30,14 @@ const BicycleStandContent = ({
     </div>
   );
 
-  const multiValueTypo = (
-    message1Id,
-    message2Id,
-    message3Id,
-    message4Id,
-    message5Id,
-    message6Id,
-    message7Id,
-    message8Id,
-  ) => (
+  const multiValueTypo = messages => (
     <div className={classes.content}>
       {bicycleStand.extra.model ? (
         <div className={classes.paragraph}>
-          <Typography variant="body2">
+          <Typography component="p" variant="body2">
             <strong>
               {intl.formatMessage({
-                id: message1Id,
+                id: messages.model,
               })}
               :
             </strong>
@@ -45,10 +47,10 @@ const BicycleStandContent = ({
         </div>
       ) : null}
       <div className={classes.paragraph}>
-        <Typography variant="body2">
+        <Typography component="p" variant="body2">
           <strong>
             {intl.formatMessage({
-              id: message2Id,
+              id: messages.places,
             })}
             :
           </strong>
@@ -57,10 +59,10 @@ const BicycleStandContent = ({
         </Typography>
       </div>
       <div className={classes.paragraph}>
-        <Typography variant="body2">
+        <Typography component="p" variant="body2">
           <strong>
             {intl.formatMessage({
-              id: message3Id,
+              id: messages.stands,
             })}
             :
           </strong>
@@ -70,43 +72,43 @@ const BicycleStandContent = ({
       </div>
       {bicycleStand.extra.covered ? (
         <div className={classes.paragraph}>
-          <Typography variant="body2" display="block">
+          <Typography component="p" variant="body2" display="block">
             {intl.formatMessage({
-              id: message4Id,
+              id: messages.covered,
             })}
           </Typography>
         </div>
       ) : (
         <div className={classes.paragraph}>
-          <Typography variant="body2" display="block">
+          <Typography component="p" variant="body2" display="block">
             {intl.formatMessage({
-              id: message5Id,
+              id: messages.notCovered,
             })}
           </Typography>
         </div>
       )}
       {bicycleStand.extra.hull_lockable ? (
         <div className={classes.paragraph}>
-          <Typography variant="body2" display="block">
+          <Typography component="p" variant="body2" display="block">
             {intl.formatMessage({
-              id: message6Id,
+              id: messages.lockable,
             })}
           </Typography>
         </div>
       ) : (
         <div className={classes.paragraph}>
-          <Typography variant="body2" display="block">
+          <Typography component="p" variant="body2" display="block">
             {intl.formatMessage({
-              id: message7Id,
+              id: messages.notLockable,
             })}
           </Typography>
         </div>
       )}
       {bicycleStand.extra.maintained_by_turku ? (
         <div className={classes.paragraph}>
-          <Typography variant="body2" display="block">
+          <Typography component="p" variant="body2" display="block">
             {intl.formatMessage({
-              id: message8Id,
+              id: messages.maintained,
             })}
           </Typography>
         </div>
@@ -117,16 +119,7 @@ const BicycleStandContent = ({
   return (
     <div>
       {titleTypo()}
-      {multiValueTypo(
-        'mobilityPlatform.content.bicycleStands.model',
-        'mobilityPlatform.content.bicycleStands.numOfPlaces',
-        'mobilityPlatform.content.bicycleStands.numOfStands',
-        'mobilityPlatform.content.bicycleStands.covered',
-        'mobilityPlatform.content.bicycleStands.notCovered',
-        'mobilityPlatform.content.bicycleStands.hullLockable',
-        'mobilityPlatform.content.bicycleStands.hullNotLockable',
-        'mobilityPlatform.content.bicycleStands.maintainedByTku',
-      )}
+      {multiValueTypo(messageIds)}
     </div>
   );
 };
