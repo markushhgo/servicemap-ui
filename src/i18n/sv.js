@@ -655,7 +655,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
   'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
-  'mobilityPlatform.content.cityBikes.title': 'Stadscyklarstation', // TODO verify
+  'mobilityPlatform.content.cityBikes.title': 'Stadscyklarstation',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet',
   'mobilityPlatform.content.cityBikes.links': 'Nedladdning', // TODO verify

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCityBikesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import CityBikesContent from './components/CityBikesContent';
@@ -9,6 +10,8 @@ const CityBikes = () => {
   const [cityBikeStatistics, setCityBikeStatistics] = useState([]);
 
   const { openMobilityPlatform, showCityBikes } = useContext(MobilityPlatformContext);
+
+  const map = useMap();
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
@@ -29,6 +32,16 @@ const CityBikes = () => {
       fetchCityBikesData('CBS', setCityBikeStatistics);
     }
   }, [openMobilityPlatform, setCityBikeStatistics]);
+
+  useEffect(() => {
+    if (showCityBikes && cityBikeStations && cityBikeStations.length > 0) {
+      const bounds = [];
+      cityBikeStations.forEach((item) => {
+        bounds.push([item.lat, item.lon]);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [showCityBikes, cityBikeStations, map]);
 
   return (
     <>
