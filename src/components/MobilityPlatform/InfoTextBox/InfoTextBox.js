@@ -19,8 +19,8 @@ const InfoTextBox = ({ classes, infoText, intl }) => (
 
 InfoTextBox.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  infoText: PropTypes.string,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  infoText: PropTypes.string,
 };
 
 InfoTextBox.defaultProps = {

@@ -1,12 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
-import { selectRouteName } from '../../../../components/MobilityPlatform/utils/utils';
 
 const RouteLength = ({ classes, intl, route }) => {
   const formatRoutelength = inputLength => Math.round(inputLength / 1000);
-  const locale = useSelector(state => state.user.locale);
 
   const renderRouteText = (routeName) => {
     switch (routeName) {
@@ -48,15 +45,6 @@ const RouteLength = ({ classes, intl, route }) => {
   return (
     <div className={classes.container}>
       <div className={classes.paragraph}>
-        <Typography component="h6" variant="body1">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.title' })}
-        </Typography>
-        <Typography component="h6" variant="body2">
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.routes.name' })}
-          :
-          {' '}
-          {selectRouteName(locale, route.name_fi, route.name_en, route.name_sv)}
-        </Typography>
         <Typography component="p" variant="body2">
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
           {' '}

@@ -4,4 +4,7 @@ export default theme => ({
     textAlign: 'left',
     paddingBottom: theme.spacing(2),
   },
+  margin: {
+    marginBottom: theme.spacing(1),
+  },
 });

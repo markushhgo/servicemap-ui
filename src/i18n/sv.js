@@ -591,12 +591,15 @@ const translations = {
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
   'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
-  'mobilityPlatform.menu.bicycleRoutes.emptyList': 'Inga rutter hittades.',
+  'mobilityPlatform.menu.routes.emptyList': 'Inga rutter hittades.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.routes.name': 'Rutt',
   'mobilityPlatform.menu.showRentalCars': 'Bil för delad användning',
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
+  'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -609,8 +612,8 @@ const translations = {
   'mobilityPlatform.content.count': 'Antal',
   'mobilityPlatform.content.power': 'Effekt',
   'mobilityPlatform.chargerStations.content.admin': 'Administratör',
-  'mobilityPlatform.chargerStations.content.charge': 'Betalning', // TODO verify
-  'mobilityPlatform.chargerStations.content.free': 'kostnadsfritt för kunderna', // TODO verify
+  'mobilityPlatform.chargerStations.content.charge': 'För en avgift',
+  'mobilityPlatform.chargerStations.content.free': 'Kostnadsfritt för kunderna',
   'mobilityPlatform.content.bicycleStands.model': 'Model',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
@@ -645,15 +648,27 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Typ av betalning',
   'mobilityPlatform.content.parkingSpaces.paid': 'Avgiftsbelagd',
   'mobilityPlatform.content.parkingSpaces.empty': 'Inga lediga platser kvar',
+  'mobilityPlatform.content.parkingChargeZones.zone': 'Zon',
+  'mobilityPlatform.content.parkingChargeZones.price': 'Avgift',
+  'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Avgiftsbelagd vardagar',
+  'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
+  'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
+  'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
-  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent.',
   'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.1': 'I Åbo finns tre olika zoner, som har olika timavgift för parkering.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.2': 'Zon 3 omfattar området mellan gränserna för zon 2 och stadens gränser.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.3': 'Avgiften bestäms dock alltid av de gällande trafikskyltarna och gäller Åbo gator och stadens egna områden, t.ex. marknadshuset och stadshuset.',
+  'mobilityPlatform.info.parkingChargeZones.zone.1': 'Zon ett (kärncentrum): 3,00 €/timme',
+  'mobilityPlatform.info.parkingChargeZones.zone.2': 'Zon två: 1,50 €/timme',
+  'mobilityPlatform.info.parkingChargeZones.zone.3': 'Zon tre: 0,60€/timme',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

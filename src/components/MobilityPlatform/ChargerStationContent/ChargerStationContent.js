@@ -81,15 +81,6 @@ const ChargerStationContent = ({ classes, intl, station }) => {
     );
   };
 
-  const gasFillingInfo = (
-    <>
-      {titleTypo('mobilityPlatform.content.gfsTitle')}
-      {singleValTypo('mobilityPlatform.content.address', station.address)}
-      {singleValTypo('mobilityPlatform.content.gfsType', station.extra.lng_cng)}
-      {singleValTypo('mobilityPlatform.content.operator', station.extra.operator)}
-    </>
-  );
-
   // key property on .map() is long but it's only way to prevent all duplicate keys -warnings.
   const chargerStationInfo = (
     <>
@@ -124,13 +115,11 @@ const ChargerStationContent = ({ classes, intl, station }) => {
     <div className={classes.container}>
       <div className={classes.headerContainer}>
         <Typography variant="subtitle1">
-          {station.content_type.type_name === 'GFS'
-            ? station.name
-            : renderStationName(station.name, station.name_en, station.name_sv)}
+          {renderStationName(station.name, station.name_en, station.name_sv)}
         </Typography>
       </div>
       <div className={classes.textContainer}>
-        {station.content_type.type_name === 'GFS' ? gasFillingInfo : chargerStationInfo}
+        {chargerStationInfo}
       </div>
     </div>
   );

@@ -70,6 +70,14 @@
   width: 380px !important;
 }
 
+.culture-route-unit-popup {
+  width: 400px;
+}
+
+.culture-route-unit-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+  width: 400px !important;
+}
+
 @media (min-width: 750px) {
   .charger-stations-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
     width: 350px !important;
@@ -92,6 +100,14 @@
   .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
     width: 370px !important;
   }
+
+  .culture-route-unit-popup {
+    width: 380px;
+  }
+  
+  .culture-route-unit-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 380px !important;
+  }
 }
 
 @media (max-width: 380px) {
@@ -108,6 +124,14 @@
   }
 
   .ecocounter-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
+    width: 350px !important;
+  }
+
+  .culture-route-unit-popup {
+    width: 350px;
+  }
+  
+  .culture-route-unit-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content {
     width: 350px !important;
   }
 }

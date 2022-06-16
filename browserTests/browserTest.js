@@ -61,13 +61,13 @@ test('Contrast does change', async (t) => {
   ;
 });
 
-fixture`Map tests`
+/* fixture`Map tests`
   .page`http://${server.address}:${server.port}/fi`
   .beforeEach(async () => {
     await waitForReact();
-  });
+  }); */
 
-test('Transit marker visible after zoom', async (t) => {
+/* test('Transit marker visible after zoom', async (t) => {
   const zoomIn  = Selector('.zoomIn');
   const markers = Selector('.leaflet-marker-icon');
   
@@ -85,4 +85,4 @@ test('Transit marker visible after zoom', async (t) => {
 
   await t
     .expect(markerCount).gt(0, 'no transit markers found on high zoom')
-});
+}); */
