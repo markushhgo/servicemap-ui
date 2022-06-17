@@ -599,6 +599,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Parkeringsplatser',
   'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
 
@@ -654,18 +655,24 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Avgiftsbelagd vardagar',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
-  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
-  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
+  'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
   'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
-  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent Ab.',
+  'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent.',
   'mobilityPlatform.info.parkingSpaces': 'Kartan visar Åbos allmänna parkeringsområden. Den röda färgen bredvid en parkeringsplats betyder att den är nästan full. För att se det exakta antalet lediga platser, klicka på parkeringsområdet på kartan.  Informationen om parkeringsområden kommer från Åbo parkeringscentral.',
   'mobilityPlatform.info.chargingStations': 'Åboområdets allmänna billaddningsplatser. Informationen om laddningsplatser baserar sig på en kartläggning som gjordes 05/2022.',
-  'mobilityPlatform.info.parkingChargeZones': 'Parkeringsavgiftszoner av Åbo.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.1': 'I Åbo finns tre olika zoner, som har olika timavgift för parkering.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.2': 'Zon 3 omfattar området mellan gränserna för zon 2 och stadens gränser.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.3': 'Avgiften bestäms dock alltid av de gällande trafikskyltarna och gäller Åbo gator och stadens egna områden, t.ex. marknadshuset och stadshuset.',
+  'mobilityPlatform.info.parkingChargeZones.zone.1': 'Zon ett (kärncentrum): 3,00 €/timme',
+  'mobilityPlatform.info.parkingChargeZones.zone.2': 'Zon två: 1,50 €/timme',
+  'mobilityPlatform.info.parkingChargeZones.zone.3': 'Zon tre: 0,60€/timme',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

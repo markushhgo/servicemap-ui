@@ -601,6 +601,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
   'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
 
@@ -656,6 +657,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Maksullisuus arkisin',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Maksullisuus lauantaisin',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Maksullisuus sunnuntaisin',
+  'mobilityPlatform.content.description.notAvailable': 'Kuvaustekstiä ei ole saatavilla.',
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
 
@@ -664,10 +666,15 @@ const translations = {
   'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
-  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent Oy:lta.',
+  'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent:lta.',
   'mobilityPlatform.info.parkingSpaces': 'Kartalla näkyvät Turun julkiset pysäköintialueet. Punainen väri parkkialueen kohdalla tarkoittaa, että se on jo lähes täynnä. Tarkat lukumäärät vapaista paikoista näet klikkaamalla parkkialuetta kartalla.  Tiedot pysäköintialueista tulevat Turun parkkihubista.',
   'mobilityPlatform.info.chargingStations': 'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
-  'mobilityPlatform.info.parkingChargeZones': 'Turun kaupungin pysäköinnin maksuvyöhykkeet.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.1': 'Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.2': '3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.3': 'Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa.',
+  'mobilityPlatform.info.parkingChargeZones.zone.1': 'Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti',
+  'mobilityPlatform.info.parkingChargeZones.zone.2': 'Toinen vyöhyke : 1,50 €/tunti',
+  'mobilityPlatform.info.parkingChargeZones.zone.3': 'Kolmas vyöhyke: 0,60 €/tunti',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

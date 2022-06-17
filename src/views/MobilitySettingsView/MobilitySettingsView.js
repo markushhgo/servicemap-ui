@@ -21,6 +21,7 @@ import TitleBar from '../../components/TitleBar';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
 import RouteLength from './components/RouteLength';
+import ExtendedInfo from './components/ExtendedInfo';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -62,6 +63,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setParkingChargeZoneId,
     showParkingChargeZones,
     setShowParkingChargeZones,
+    showBikeServiceStations,
+    setShowBikeServiceStations,
     showSpeedLimitZones,
     setShowSpeedLimitZones,
     speedLimitSelections,
@@ -111,7 +114,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
-  }, [showBicycleStands]);
+    checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
+  }, [showBicycleStands, showBikeServiceStations]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -243,6 +247,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const chargingStationsToggle = () => {
     setShowChargingStations(current => !current);
+  };
+
+  const bikeServiceStationsToggle = () => {
+    setShowBikeServiceStations(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -387,6 +395,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
       onChangeValue: bicycleStandsToggle,
+    },
+    {
+      type: 'bikeServiceStations',
+      msgId: 'mobilityPlatform.menu.showBikeServiceStations',
+      checkedValue: showBikeServiceStations,
+      onChangeValue: bikeServiceStationsToggle,
     },
     {
       type: 'ecoCounterStations',
@@ -646,6 +660,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const chargeZoneTranslations = {
+    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
+    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
+    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
+    zones: [
+      'mobilityPlatform.info.parkingChargeZones.zone.1',
+      'mobilityPlatform.info.parkingChargeZones.zone.2',
+      'mobilityPlatform.info.parkingChargeZones.zone.3',
+    ],
+  };
+
   return (
     <div className={classes.content}>
       <TitleBar
@@ -702,7 +727,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
-      {openParkingChargeZoneList ? <InfoTextBox infoText="mobilityPlatform.info.parkingChargeZones" /> : null}
+      {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
     </div>
   );
 };

@@ -597,6 +597,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
+  'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
 
@@ -652,6 +653,7 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Toll charge on workdays',
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Toll charge on saturdays',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Toll charge on sundays',
+  'mobilityPlatform.content.description.notAvailable': 'Description text is not available.',
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
 
@@ -660,10 +662,15 @@ const translations = {
   'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
-  'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent Oy.',
+  'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent.',
   'mobilityPlatform.info.parkingSpaces': 'The map shows public parking areas of Turku. The red colour next to a parking area indicates that it is almost full. To see the exact number of available spaces, click on the parking area on the map. The information on parking areas comes from parking hub of Turku.',
   'mobilityPlatform.info.chargingStations': 'Turku area public car e-charging points. The charging point information is based on a mappig carried out 05/2022.',
-  'mobilityPlatform.info.parkingChargeZones': 'Parking charge zones of Turku.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.1': 'There are three different zones with different hourly rates in the City of Turku.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.2': 'Zone 3 applies to the area between the boundaries of Zone 2 and the city limits.',
+  'mobilityPlatform.info.parkingChargeZones.paragraph.3': 'However, the charge is always determined by the traffic signs in force and applies to the streets of Turku and the city’s own areas, such as the market hall and the City Hall.',
+  'mobilityPlatform.info.parkingChargeZones.zone.1': 'Zone I (downtown): 3,00 €/hour',
+  'mobilityPlatform.info.parkingChargeZones.zone.2': 'Zone II : 1,50 €/hour',
+  'mobilityPlatform.info.parkingChargeZones.zone.3': 'Zone III: 0,60€/hour',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
