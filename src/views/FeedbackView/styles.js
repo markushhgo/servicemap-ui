@@ -105,6 +105,7 @@ export default theme => ({
     marginBottom: 26,
     textAlign: 'left',
     textDecoration: 'underline',
+    color: theme.palette.link.main,
   },
   modalContainer: {
     display: 'flex',
