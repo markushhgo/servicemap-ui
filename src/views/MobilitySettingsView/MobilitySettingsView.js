@@ -92,7 +92,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   /**
    * Check is visibility boolean values are true
    * This would be so if user has not hid them, but left mobility map before returning
-   * @param {Boolean} visibility
+   * @param {boolean} visibility
    * @param {('react').SetStateAction}
    */
   const checkVisibilityValues = (visibility, setSettings) => {
@@ -142,9 +142,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   /**
-   * @param {Array and locale}
+   * @var {(Array|locale)}
    * @function filter array
-   * @returns {Array and ('react').SetStateAction}
+   * @returns {(Array|('react').SetStateAction)}
    */
   useEffect(() => {
     if (cultureRouteList && cultureRouteList.length > 0) {
@@ -206,8 +206,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   /**
    * Toggle functions for content types
-   * @var {Boolean}
-   * @returns {Boolean}
+   * @var {boolean}
+   * @returns {boolean}
    */
   const ecoCounterStationsToggle = () => {
     setShowEcoCounter(current => !current);
@@ -269,6 +269,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   /**
    * If user clicks same route again, then reset id and set visiblity to false
    * Otherwise new values are set
+   * @param {string} itemId
    */
   const setCultureRouteState = (itemId) => {
     setCultureRouteId(itemId);
@@ -292,6 +293,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     prevBicycleRouteNameRef.current = bicycleRouteName;
   }, [bicycleRouteName]);
 
+  /**
+   * @param {string} routeName
+   */
   const setBicycleRouteState = (routeName) => {
     setBicycleRouteName(routeName);
     setShowBicycleRoutes(true);
@@ -323,8 +327,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   /**
    * If user clicks same route again, then reset id and set visiblity to false
    * Otherwise new values are set
+   * @param {string} id
    */
-
   const selectParkingChargeZone = (id) => {
     setParkingChargeZoneId(id);
     setShowParkingChargeZones(true);
@@ -412,6 +416,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  /**
+   * @param {string} keyVal
+   * @param {string} msgId
+   * @param {boolean} checkedValue
+   * @param {Function} onChangeValue
+   */
   const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
     <FormControlLabel
       key={keyVal}
@@ -447,6 +457,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     />
   );
 
+  /**
+   * @param {Function} onClickFunc
+   * @param {boolean} settingState
+   * @param {string} iconName
+   * @param {string} translationId
+   */
   const buttonComponent = (onClickFunc, settingState, iconName, translationId) => (
     <Button
       onClick={() => onClickFunc()}
@@ -470,7 +486,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @param {Array} input
    * @param {Boolean} input
    * @param {Boolean} length
-   * @returns {JSX Element || Typography} with correct id
+   * @returns {JSX Element} with correct id
    */
   const emptyRouteList = (input) => {
     if (input) {
@@ -495,6 +511,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
+  /**
+     * @param {Array} inputData
+     * @returns {JSX Element}
+     */
   const renderBicycleRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
@@ -518,6 +538,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
     ));
 
+  /**
+     * @param {Array} inputData
+     * @returns {JSX Element}
+     */
   const renderCultureRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
@@ -547,6 +571,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
     ));
 
+  /**
+     * @param {boolean} settingVisibility
+     * @param {Array} typeVal
+     * @returns {JSX Element}
+     */
   const renderSettings = (settingVisibility, typeVal) => {
     if (settingVisibility) {
       return typeVal.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue));
