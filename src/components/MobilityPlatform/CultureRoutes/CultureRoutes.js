@@ -27,7 +27,7 @@ const CultureRoutes = () => {
     }
   }, [openMobilityPlatform, setCultureRouteUnits]);
 
-  const activeCultureRoute = cultureRoutesGeometry.find(item => item.mobile_unit_group.id === cultureRouteId);
+  const activeCultureRoute = cultureRoutesGeometry.filter(item => item.mobile_unit_group.id === cultureRouteId);
 
   const swapCoords = (inputData) => {
     if (inputData && inputData.length > 0) {
@@ -39,22 +39,30 @@ const CultureRoutes = () => {
   const map = useMap();
 
   useEffect(() => {
-    if (showCultureRoutes && activeCultureRoute) {
-      const bounds = swapCoords(activeCultureRoute.geometry_coords);
-      map.fitBounds(bounds);
+    if (showCultureRoutes && activeCultureRoute && activeCultureRoute.length > 0) {
+      const bounds = [];
+      activeCultureRoute.forEach((item) => {
+        bounds.push(swapCoords(item.geometry_coords));
+      });
+      map.fitBounds([bounds]);
     }
   }, [showCultureRoutes, activeCultureRoute]);
-
   return (
     <>
       {showCultureRoutes ? (
         <>
-          {activeCultureRoute && (
-            <>
-              <Polyline pathOptions={blueOptions} weight={8} positions={swapCoords(activeCultureRoute.geometry_coords)} />
-              <Polyline pathOptions={whiteOptions} weight={4} positions={swapCoords(activeCultureRoute.geometry_coords)} />
-            </>
-          )}
+          {activeCultureRoute && activeCultureRoute.length > 0
+            && activeCultureRoute.map(item => (
+              <div key={item.id}>
+                <Polyline key={item.geometry} weight={8} pathOptions={blueOptions} positions={swapCoords(item.geometry_coords)} />
+                <Polyline
+                  key={item.geometry_coords}
+                  weight={4}
+                  pathOptions={whiteOptions}
+                  positions={swapCoords(item.geometry_coords)}
+                />
+              </div>
+            ))}
           <>
             <CultureRouteUnits cultureRouteUnits={cultureRouteUnits} />
           </>
