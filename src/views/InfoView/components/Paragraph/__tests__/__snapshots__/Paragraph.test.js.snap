@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph /> should work 1`] = `
+<div>
+  <div
+    class="Paragraph-text-2"
+  >
+    <p
+      aria-label="Palvelukartalta löytyvät Turun julkiset toimipisteet ja niiden palvelut, esimerkiksi koulut, päiväkodit ja terveysasemat."
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Palvelukartalta löytyvät Turun julkiset toimipisteet ja niiden palvelut, esimerkiksi koulut, päiväkodit ja terveysasemat.
+    </p>
+  </div>
+</div>
+`;
