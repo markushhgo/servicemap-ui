@@ -9,19 +9,34 @@ const RouteLength = ({ classes, intl, route }) => {
     switch (routeName) {
       case 'EuroVelo':
         return (
-          <Typography component="p" variant="body2" className={classes.margin}>
+          <Typography
+            component="p"
+            variant="body2"
+            aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.euroVelo' })}
+            className={classes.margin}
+          >
             {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.euroVelo' })}
           </Typography>
         );
       case 'Saariston rengastie':
         return (
-          <Typography component="p" variant="body2" className={classes.margin}>
+          <Typography
+            component="p"
+            variant="body2"
+            aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail' })}
+            className={classes.margin}
+          >
             {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.archipelagoTrail' })}
           </Typography>
         );
       case 'Aurajoentie':
         return (
-          <Typography component="p" variant="body2" className={classes.margin}>
+          <Typography
+            component="p"
+            variant="body2"
+            aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail' })}
+            className={classes.margin}
+          >
             {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.auraRiverTrail' })}
           </Typography>
         );
@@ -35,17 +50,29 @@ const RouteLength = ({ classes, intl, route }) => {
     const [a, b] = split;
     if (a === 'Seutureitti') {
       return (
-        <Typography component="p" variant="body2" className={classes.margin}>
+        <Typography
+          component="p"
+          variant="body2"
+          aria-label={intl.formatMessage({ id: `mobilityPlatform.menu.bicycleRoutes.regionalTrail${b}` })}
+          className={classes.margin}
+        >
           {intl.formatMessage({ id: `mobilityPlatform.menu.bicycleRoutes.regionalTrail${b}` })}
         </Typography>
       );
-    } return renderRouteText(routeName);
+    }
+    return renderRouteText(routeName);
   };
 
   return (
     <div className={classes.container}>
       <div className={classes.paragraph}>
-        <Typography component="p" variant="body2">
+        <Typography
+          component="p"
+          variant="body2"
+          aria-label={`${intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })} ${formatRoutelength(
+            route.length,
+          )} km.`}
+        >
           {intl.formatMessage({ id: 'mobilityPlatform.menu.bicycleRoutes.length' })}
           {' '}
           {formatRoutelength(route.length)}

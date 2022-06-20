@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExtendedInfo /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(ExtendedInfo)-container-1"
+  >
+    <p
+      aria-label="Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut."
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut.
+    </p>
+    <ul>
+      <li>
+        <p
+          aria-label="Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti"
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti
+        </p>
+      </li>
+      <li>
+        <p
+          aria-label="Toinen vyöhyke : 1,50 €/tunti"
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          Toinen vyöhyke : 1,50 €/tunti
+        </p>
+      </li>
+      <li>
+        <p
+          aria-label="Kolmas vyöhyke: 0,60 €/tunti"
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          Kolmas vyöhyke: 0,60 €/tunti
+        </p>
+      </li>
+    </ul>
+    <p
+      aria-label="3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella."
+      class="MuiTypography-root injectIntl(ExtendedInfo)-margin-2 MuiTypography-body2"
+    >
+      3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella.
+    </p>
+    <p
+      aria-label="Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa."
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa.
+    </p>
+  </div>
+</div>
+`;

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GasFillingStationContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(GasFillingStationContent)-container-1"
+  >
+    <div
+      class="injectIntl(GasFillingStationContent)-headerContainer-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1"
+      >
+        Testinimi
+      </h6>
+    </div>
+    <div
+      class="injectIntl(GasFillingStationContent)-textContainer-3"
+    >
+      <div
+        class="injectIntl(GasFillingStationContent)-margin-5"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Osoite
+            :
+          </strong>
+           
+          Osoite
+        </p>
+      </div>
+      <div
+        class="injectIntl(GasFillingStationContent)-margin-5"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Kaasuaseman tyyppi
+            :
+          </strong>
+           
+          LNG
+        </p>
+      </div>
+      <div
+        class="injectIntl(GasFillingStationContent)-margin-5"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Operaattori
+            :
+          </strong>
+           
+          Operaattori
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

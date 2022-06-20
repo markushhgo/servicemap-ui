@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LinkBasic /> should work 1`] = `
+<div>
+  <div
+    class="LinkBasic-linkContainer-1"
+  >
+    <a
+      class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+      href="https://www.turku.fi/feedback"
+      target="_blank"
+    >
+      <p
+        aria-label="www.turku.fi/palaute (linkki avautuu uudelle välilehdelle)."
+        class="MuiTypography-root LinkBasic-link-2 MuiTypography-body2"
+      >
+        www.turku.fi/palaute (linkki avautuu uudelle välilehdelle).
+      </p>
+    </a>
+  </div>
+</div>
+`;

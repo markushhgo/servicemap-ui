@@ -1,9 +1,12 @@
 import React from 'react';
-import { createShallow } from '@material-ui/core/test-utils';
+import { render } from '@testing-library/react';
 import { MuiThemeProvider } from '@material-ui/core';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import SettingsButton from '../SettingsButton';
+import initialState from '../../../../redux/rootReducer';
 import themes from '../../../../themes';
-
 
 const mockProps = {
   'aria-haspopup': 'dialog',
@@ -13,34 +16,56 @@ const mockProps = {
   onClick: () => {},
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <MuiThemeProvider theme={themes.SMTheme}>
-    {children}
-  </MuiThemeProvider>
-);
+// Mock props for intl provider
+const intlMock = {
+  locale: 'en',
+  messages: {
+    'settings.city.all': 'Cities all',
+    'settings.citySettings': 'City settings',
+  },
+};
 
+const mockStore = configureStore([]);
+
+// eslint-disable-next-line react/prop-types
+const Providers = ({ children }) => {
+  const store = mockStore({
+    settings: {
+      visuallyImpaired: false,
+      colorblind: false,
+      hearingAid: false,
+      mapType: 'servicemap',
+      mobility: 'none',
+      cities: 'helsinki',
+    },
+  });
+  return (
+    <Provider store={store}>
+      <IntlProvider {...intlMock}>
+        <MuiThemeProvider theme={themes.SMTheme}>
+          {children}
+        </MuiThemeProvider>
+      </IntlProvider>
+    </Provider>
+  );
+};
+
+const renderWithProviders = component => render(component, { wrapper: Providers });
 
 describe('<SettingsButton />', () => {
-  let shallow;
-
-  beforeEach(() => {
-    shallow = createShallow({ wrappingComponent: Providers });
-  });
-
   it('should work', () => {
-    const component = shallow(<SettingsButton {...mockProps} />);
-    expect(component).toMatchSnapshot();
+    const { container } = renderWithProviders(<SettingsButton {...mockProps} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('does use correct aria arrtibutes', () => {
-    const component = shallow(<SettingsButton {...mockProps} />);
+    const { container } = renderWithProviders(<SettingsButton {...mockProps} />);
     /*
       The following aria-attributes are based on the accessibility testing report from 26.4.2021
     */
     // Expect button role to be button
-    expect(component.props().role).toEqual('button');
+    expect(container.querySelector('button')).toHaveAttribute('role', 'button');
     // Expect button aria-haspopup value to be dialog
-    expect(component.props()['aria-haspopup']).toEqual('dialog');
+    expect(container.querySelector('button')).toHaveAttribute('aria-haspopup', 'dialog');
   });
 });
