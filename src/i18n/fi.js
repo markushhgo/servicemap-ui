@@ -602,7 +602,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
-  'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyörät',
+  'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -661,8 +661,9 @@ const translations = {
   'mobilityPlatform.content.cityBikes.name': 'Asema',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasiteetti',
   'mobilityPlatform.content.cityBikes.links': 'Latauslinkit',
-  'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana', // TODO verify
-  'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana', // TODO verify
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana',
+  'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana',
+  'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

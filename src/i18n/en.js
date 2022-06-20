@@ -598,7 +598,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
-  'mobilityPlatform.menu.showCityBikes': 'City bikes',
+  'mobilityPlatform.menu.showCityBikes': 'City bike stations',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -657,8 +657,8 @@ const translations = {
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Capacity',
   'mobilityPlatform.content.cityBikes.links': 'Download',
-  'mobilityPlatform.content.cityBikes.bikes.available': 'Number of available bikes', // TODO verify
-  'mobilityPlatform.content.cityBikes.docks.available': 'Number of available docks', // TODO verify
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
+  'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

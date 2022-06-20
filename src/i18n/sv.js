@@ -600,7 +600,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Parkeringsavgiftszoner',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
   'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
-  'mobilityPlatform.menu.showCityBikes': 'Stadscyklar',
+  'mobilityPlatform.menu.showCityBikes': 'Stadscykelstationer',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -655,12 +655,12 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Avgiftsbelagd lördagar',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Avgiftsbelagd söndagar',
   'mobilityPlatform.content.description.notAvailable': 'Beskrivningstext är inte tillgänglig.',
-  'mobilityPlatform.content.cityBikes.title': 'Stadscyklarstation',
+  'mobilityPlatform.content.cityBikes.title': 'Stadscykelstation',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet',
-  'mobilityPlatform.content.cityBikes.links': 'Nedladdning', // TODO verify
-  'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar', // TODO verify
-  'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar', // TODO verify
+  'mobilityPlatform.content.cityBikes.links': 'Nedladdning',
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
+  'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

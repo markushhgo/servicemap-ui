@@ -28,6 +28,18 @@ const CityBikesContent = ({
     </div>
   );
 
+  const renderStationType = (isVirtual, translationId) => {
+    if (isVirtual) {
+      return (
+        <div className={classes.paragraph}>
+          <Typography variant="body2">
+            {intl.formatMessage({ id: translationId })}
+          </Typography>
+        </div>
+      );
+    } return null;
+  };
+
   return (
     <div className={classes.popupInner}>
       <div className={classes.subtitle}>
@@ -36,6 +48,7 @@ const CityBikesContent = ({
         </Typography>
       </div>
       {renderText('mobilityPlatform.content.cityBikes.name', bikeStation.name)}
+      {renderStationType(bikeStation.is_virtual_station, 'mobilityPlatform.content.cityBikes.virtualStation')}
       {renderText('mobilityPlatform.content.cityBikes.capacity', bikeStation.capacity)}
       {station && station.length > 0 && station.map(item => (
         <div key={item.station_id}>
