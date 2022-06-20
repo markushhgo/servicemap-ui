@@ -19,7 +19,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
 
   const singleValTypo = (messageId, value, props = {}) => (
     <div {...props}>
-      <Typography>
+      <Typography variant="body2">
         <strong>
           {intl.formatMessage({
             id: messageId,
@@ -93,7 +93,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
           <div key={`${charger.plug}${charger.power}${charger.number}`} className={classes.contentInner}>
             {singleValTypo('mobilityPlatform.content.cgsType', charger.plug)}
             {singleValTypo('mobilityPlatform.content.count', charger.number)}
-            <Typography>
+            <Typography variant="body2">
               <strong>
                 {intl.formatMessage({
                   id: 'mobilityPlatform.content.power',

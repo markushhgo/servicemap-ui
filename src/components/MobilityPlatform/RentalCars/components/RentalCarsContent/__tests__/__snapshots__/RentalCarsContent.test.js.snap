@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RentalCarsContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(RentalCarsContent)-container-1"
+  >
+    <div
+      class="injectIntl(RentalCarsContent)-title-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1"
+      >
+        Yhteiskäyttöauto
+      </h6>
+    </div>
+    <div
+      class="injectIntl(RentalCarsContent)-text-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        <strong>
+          Palveluntarjoaja
+          :
+        </strong>
+         
+        24Rent
+      </p>
+    </div>
+    <div
+      class="injectIntl(RentalCarsContent)-linkContainer-4"
+    >
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://www.24rent.fi/#/?city=Testiosoite"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root injectIntl(RentalCarsContent)-link-5 MuiTypography-body2"
+        >
+          https://www.24rent.fi
+        </p>
+      </a>
+    </div>
+    <div
+      class="injectIntl(RentalCarsContent)-text-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        <strong>
+          Auton tiedot
+          :
+        </strong>
+         
+        Testimerkki
+         
+        Testiauto
+      </p>
+    </div>
+    <div
+      class="injectIntl(RentalCarsContent)-text-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Vapaa auto
+      </p>
+    </div>
+    <div
+      class="injectIntl(RentalCarsContent)-text-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        <strong>
+          Sijainti
+          :
+        </strong>
+         
+        Testiosoite
+      </p>
+    </div>
+    <div>
+      <img
+        alt="shared use car"
+        src="https://vehicles-cdn.24rent.fi/undefined_medium.jpeg"
+      />
+    </div>
+  </div>
+</div>
+`;

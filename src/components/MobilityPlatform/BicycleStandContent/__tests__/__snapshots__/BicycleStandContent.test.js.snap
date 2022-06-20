@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BicycleStandContent /> should work 1`] = `
+<div>
+  <div>
+    <div
+      class="injectIntl(BicycleStandContent)-title-1"
+    >
+      <h6
+        class="MuiTypography-root injectIntl(BicycleStandContent)-titleText-2 MuiTypography-subtitle1"
+      />
+    </div>
+    <div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Malli
+            :
+          </strong>
+           
+          Testimalli
+        </p>
+      </div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Pyöräpaikkojen määrä
+            :
+          </strong>
+           
+          10
+        </p>
+      </div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Pyörätelineiden määrä
+            :
+          </strong>
+           
+          5
+        </p>
+      </div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+        >
+          Pyöräparkki on katettu
+        </p>
+      </div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+        >
+          Pyörän voi runkolukita
+        </p>
+      </div>
+      <div
+        class="injectIntl(BicycleStandContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+        >
+          Turun kaupungin ylläpitämä.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
