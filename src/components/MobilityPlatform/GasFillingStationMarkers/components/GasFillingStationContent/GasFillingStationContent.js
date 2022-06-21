@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 const GasFillingStationContent = ({ classes, intl, station }) => {
   const singleValTypo = (messageId, value, props = {}) => (
     <div {...props}>
-      <Typography>
+      <Typography variant="body2">
         <strong>
           {intl.formatMessage({
             id: messageId,
