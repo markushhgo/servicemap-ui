@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
-import CultureRouteUnits from '../CultureRouteUnits';
+import CultureRouteUnits from './components/CultureRouteUnits';
 
 const CultureRoutes = () => {
   const [cultureRoutesGeometry, setCultureRoutesGeometry] = useState([]);
@@ -46,7 +46,7 @@ const CultureRoutes = () => {
       });
       map.fitBounds([bounds]);
     }
-  }, [showCultureRoutes, activeCultureRoute]);
+  }, [showCultureRoutes, activeCultureRoute, map]);
   return (
     <>
       {showCultureRoutes ? (

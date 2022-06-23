@@ -659,6 +659,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.links': 'Download',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
   'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
+  'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

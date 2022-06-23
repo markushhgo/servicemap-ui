@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { useMap } from 'react-leaflet';
 import chargerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import ChargerStationContent from '../ChargerStationContent';
+import ChargerStationContent from './components/ChargerStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const ChargerStationMarkers = ({ classes }) => {

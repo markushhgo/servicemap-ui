@@ -661,6 +661,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.links': 'Nedladdning',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
+  'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -677,10 +678,10 @@ const translations = {
   'mobilityPlatform.info.parkingChargeZones.zone.2': 'Zon två: 1,50 €/timme',
   'mobilityPlatform.info.parkingChargeZones.zone.3': 'Zon tre: 0,60€/timme',
   'mobilityPlatform.info.cityBikes.paragraph.1': 'Åbos stadscyklar, eller mer allmänt känt som "föllärit", är cyklar som alla kan hyra med hjälp av appen Donkey Republic.  Du kan hyra en cykel för en engångsavgift, en månadsavgift eller en säsongsavgift för hela sommaren.',
-  'mobilityPlatform.info.cityBikes.paragraph.2': 'Om du har ett FöI-säsongskort med en säsong på minst 30 dagar har du rätt att använda stadscyklar gratis en timme i taget. Det finns 700 cyklar att hyra och över 70 stationer.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'Om du har ett Föli-periodkort för minst 30 dagar har du rätt att använda stadscyklarna gratis en timme i taget. Det finns 700 cyklar att hyra och över 70 stationer.',
   'mobilityPlatform.info.cityBikes.subtitle': 'Läs mer om stadscyklar:',
   'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/sv/fölicyklar',
-  'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic.',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic i realtid.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
