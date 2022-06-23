@@ -3,9 +3,9 @@ import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
-import themes from '../../../../themes';
+import themes from '../../../../../../themes';
 import BicycleStandContent from '../index';
-import finnishTranslations from '../../../../i18n/fi';
+import finnishTranslations from '../../../../../../i18n/fi';
 
 // Mock props for intl provider
 const intlMock = {

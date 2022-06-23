@@ -6,8 +6,8 @@ import { useMap } from 'react-leaflet';
 import { Typography, ButtonBase } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
-import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { selectRouteName } from '../utils/utils';
+import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { selectRouteName } from '../../../utils/utils';
 
 const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
   const { cultureRouteId } = useContext(MobilityPlatformContext);
