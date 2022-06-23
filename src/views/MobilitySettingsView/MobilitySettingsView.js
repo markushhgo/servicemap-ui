@@ -4,9 +4,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
-  Typography, FormGroup, FormControl, FormControlLabel, Switch, Button, Checkbox,
+  Typography, FormGroup, FormControl, FormControlLabel, Switch, Checkbox,
 } from '@material-ui/core';
-import { ReactSVG } from 'react-svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -23,6 +22,7 @@ import Description from './components/Description';
 import RouteLength from './components/RouteLength';
 import ExtendedInfo from './components/ExtendedInfo';
 import CityBikeInfo from './components/CityBikeInfo';
+import ButtonMain from './components/ButtonMain';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -484,30 +484,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   );
 
   /**
-   * @param {Function} onClickFunc
-   * @param {boolean} settingState
-   * @param {string} iconName
-   * @param {string} translationId
-   */
-  const buttonComponent = (onClickFunc, settingState, iconName, translationId) => (
-    <Button
-      onClick={() => onClickFunc()}
-      variant="outlined"
-      className={settingState ? `${classes.button} ${classes.active}` : classes.button}
-      aria-label={intl.formatMessage({
-        id: translationId,
-      })}
-    >
-      <ReactSVG className={settingState ? `${classes.iconActive}` : `${classes.icon}`} src={iconName} />
-      <Typography variant="body2">
-        {intl.formatMessage({
-          id: translationId,
-        })}
-      </Typography>
-    </Button>
-  );
-
-  /**
    * Check if route list is empty and render correct text
    * @param {Array} input
    * @param {Boolean} input
@@ -666,7 +642,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
           <FormGroup className={classes.formGroup}>
             <>
               <div className={classes.buttonContainer}>
-                {buttonComponent(walkSettingsToggle, openWalkSettings, iconWalk, 'mobilityPlatform.menu.title.walk')}
+                <ButtonMain
+                  onClickFunc={walkSettingsToggle}
+                  settingState={openWalkSettings}
+                  iconName={iconWalk}
+                  translationId="mobilityPlatform.menu.title.walk"
+                />
               </div>
               {renderSettings(openWalkSettings, walkingControlTypes)}
               <div className={openCultureRouteList ? classes.border : null}>
@@ -677,12 +658,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 : null}
               {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
               <div className={classes.buttonContainer}>
-                {buttonComponent(
-                  bicycleSettingsToggle,
-                  openBicycleSettings,
-                  iconBicycle,
-                  'mobilityPlatform.menu.title.bicycle',
-                )}
+                <ButtonMain
+                  onClickFunc={bicycleSettingsToggle}
+                  settingState={openBicycleSettings}
+                  iconName={iconBicycle}
+                  translationId="mobilityPlatform.menu.title.bicycle"
+                />
               </div>
               {renderSettings(openBicycleSettings, bicycleControlTypes)}
               <div className={openBicycleRouteList ? classes.border : null}>
@@ -690,7 +671,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
               <div className={classes.buttonContainer}>
-                {buttonComponent(carSettingsToggle, openCarSettings, iconCar, 'mobilityPlatform.menu.title.car')}
+                <ButtonMain
+                  onClickFunc={carSettingsToggle}
+                  settingState={openCarSettings}
+                  iconName={iconCar}
+                  translationId="mobilityPlatform.menu.title.car"
+                />
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
