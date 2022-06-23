@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InfoTextBox /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(InfoTextBox)-container-1"
+  >
+    <p
+      aria-label="Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen."
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.
+    </p>
+  </div>
+</div>
+`;

@@ -7,7 +7,7 @@ const LinkBasic = ({
 }) => (
   <div className={classes.linkContainer}>
     <Link target="_blank" href={linkUrl}>
-      <Typography className={classes.link} variant="body2">
+      <Typography className={classes.link} variant="body2" aria-label={intl.formatMessage({ id: translationId })}>
         {intl.formatMessage({ id: translationId })}
       </Typography>
     </Link>

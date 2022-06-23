@@ -598,6 +598,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
+  'mobilityPlatform.menu.showCityBikes': 'City bike stations',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -652,6 +653,12 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Toll charge on saturdays',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Toll charge on sundays',
   'mobilityPlatform.content.description.notAvailable': 'Description text is not available.',
+  'mobilityPlatform.content.cityBikes.title': 'City bike station',
+  'mobilityPlatform.content.cityBikes.name': 'Station',
+  'mobilityPlatform.content.cityBikes.capacity': 'Capacity',
+  'mobilityPlatform.content.cityBikes.links': 'Download',
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
+  'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -667,6 +674,11 @@ const translations = {
   'mobilityPlatform.info.parkingChargeZones.zone.1': 'Zone I (downtown): 3,00 €/hour',
   'mobilityPlatform.info.parkingChargeZones.zone.2': 'Zone II : 1,50 €/hour',
   'mobilityPlatform.info.parkingChargeZones.zone.3': 'Zone III: 0,60€/hour',
+  'mobilityPlatform.info.cityBikes.paragraph.1': 'Turku city bikes, also known as Fölläri bikes, are bicycles everyone can rent using the Donkey Republic app. You can rent a fölläri for one time, monthly or seasonal use which covers the whole summertime.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'If you have a Föli season ticket of at least 30 days, you have the right to use the Fölläri bikes free of charge for an hour at a time. There are 700 bikes to rent and more than 70 stations.',
+  'mobilityPlatform.info.cityBikes.subtitle': 'Read more:',
+  'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/en/f%C3%B6li-bikes',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Map data comes from the Donkey Republic interface in real time.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

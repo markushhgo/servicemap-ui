@@ -67,7 +67,7 @@ const RentalCarsContent = ({ classes, intl, car }) => {
         car.vehicleModelData.name,
       )}
       <div className={classes.text}>
-        <Typography>
+        <Typography variant="body2">
           {car.availabilityData.available
             ? intl.formatMessage({ id: 'mobilityPlatform.content.rentalCars.available' })
             : intl.formatMessage({ id: 'mobilityPlatform.content.rentalCars.reserved' })}
