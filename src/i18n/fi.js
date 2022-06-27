@@ -602,6 +602,7 @@ const translations = {
   'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
+  'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -656,6 +657,13 @@ const translations = {
   'mobilityPlatform.content.parkingChargeZones.price.saturday': 'Maksullisuus lauantaisin',
   'mobilityPlatform.content.parkingChargeZones.price.sunday': 'Maksullisuus sunnuntaisin',
   'mobilityPlatform.content.description.notAvailable': 'Kuvaustekstiä ei ole saatavilla.',
+  'mobilityPlatform.content.cityBikes.title': 'Kaupunkipyöräasema',
+  'mobilityPlatform.content.cityBikes.name': 'Asema',
+  'mobilityPlatform.content.cityBikes.capacity': 'Kapasiteetti',
+  'mobilityPlatform.content.cityBikes.links': 'Latauslinkit',
+  'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana',
+  'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana',
+  'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -671,6 +679,11 @@ const translations = {
   'mobilityPlatform.info.parkingChargeZones.zone.1': 'Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti',
   'mobilityPlatform.info.parkingChargeZones.zone.2': 'Toinen vyöhyke : 1,50 €/tunti',
   'mobilityPlatform.info.parkingChargeZones.zone.3': 'Kolmas vyöhyke: 0,60 €/tunti',
+  'mobilityPlatform.info.cityBikes.paragraph.1': 'Turun kaupunkipyörät eli tuttavallisemmin föllärit, ovat pyöriä, joita kuka vaan voi vuokrata Donkey Republicin sovelluksella.  Föllärin voi vuokrata kertamaksulla, kuukausimaksulla tai koko kesän kattavalla kausimaksulla.',
+  'mobilityPlatform.info.cityBikes.paragraph.2': 'Jos sinulla on käytössä Fölin kausikortti, jonka kausi on vähintään 30 päivää, sisältää oikeuden käyttää fölläreitä tunnin ajan kerrallaan maksutta. Vuokrattavia pyöriä on 700 ja asemia yli 70 kappaletta.',
+  'mobilityPlatform.info.cityBikes.subtitle': 'Lue lisää kaupunkipyöristä:',
+  'mobilityPlatform.info.cityBikes.link': 'https://foli.fi/föllärit',
+  'mobilityPlatform.info.cityBikes.apiInfo': 'Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

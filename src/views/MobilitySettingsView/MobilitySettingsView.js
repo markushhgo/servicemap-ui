@@ -22,6 +22,7 @@ import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import Description from './components/Description';
 import RouteLength from './components/RouteLength';
 import ExtendedInfo from './components/ExtendedInfo';
+import CityBikeInfo from './components/CityBikeInfo';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -64,9 +65,24 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowParkingChargeZones,
     showBikeServiceStations,
     setShowBikeServiceStations,
+    showCityBikes,
+    setShowCityBikes,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
+
+  const bikeInfo = {
+    paragraph1: 'mobilityPlatform.info.cityBikes.paragraph.1',
+    paragraph2: 'mobilityPlatform.info.cityBikes.paragraph.2',
+    subtitle: 'mobilityPlatform.info.cityBikes.subtitle',
+    link: 'mobilityPlatform.info.cityBikes.link',
+    apiInfo: 'mobilityPlatform.info.cityBikes.apiInfo',
+    url: {
+      fi: 'https://foli.fi/föllärit',
+      en: 'https://www.foli.fi/en/f%C3%B6li-bikes',
+      sv: 'https://www.foli.fi/sv/fölicyklar',
+    },
+  };
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
@@ -237,6 +253,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBikeServiceStations(current => !current);
   };
 
+  const cityBikesToggle = () => {
+    setShowCityBikes(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -368,6 +388,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showBicycleStands',
       checkedValue: showBicycleStands,
       onChangeValue: bicycleStandsToggle,
+    },
+    {
+      type: 'cityBikes',
+      msgId: 'mobilityPlatform.menu.showCityBikes',
+      checkedValue: showCityBikes,
+      onChangeValue: cityBikesToggle,
     },
     {
       type: 'bikeServiceStations',
@@ -674,6 +700,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
+      {showCityBikes ? <CityBikeInfo bikeInfo={bikeInfo} /> : null}
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
