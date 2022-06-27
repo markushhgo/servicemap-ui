@@ -581,6 +581,7 @@ const translations = {
   'mobilityPlatform.menu.title.walk': 'Walking',
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
+  'mobilityPlatform.menu.title.boating': 'Boating',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -599,6 +600,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
   'mobilityPlatform.menu.showCityBikes': 'City bike stations',
+  'mobilityPlatform.menu.show.marinas': 'Marinas',
 
   // Content
   'mobilityPlatform.content.address': 'Address',

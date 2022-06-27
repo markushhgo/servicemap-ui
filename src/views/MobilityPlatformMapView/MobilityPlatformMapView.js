@@ -10,6 +10,7 @@ import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
 import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZones';
 import BikeServiceStations from '../../components/MobilityPlatform/BikeServiceStations';
 import CityBikes from '../../components/MobilityPlatform/CityBikes';
+import Marinas from '../../components/MobilityPlatform/Marinas';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -24,6 +25,7 @@ const MobilityPlatformMapView = () => (
     <ParkingChargeZones />
     <BikeServiceStations />
     <CityBikes />
+    <Marinas />
   </>
 );
 

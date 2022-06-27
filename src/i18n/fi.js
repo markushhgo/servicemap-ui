@@ -585,6 +585,7 @@ const translations = {
   'mobilityPlatform.menu.title.walk': 'Kävely',
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
+  'mobilityPlatform.menu.title.boating': 'Veneily',
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
@@ -603,6 +604,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
+  'mobilityPlatform.menu.show.marinas': 'Venesatamat',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',

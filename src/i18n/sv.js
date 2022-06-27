@@ -583,6 +583,7 @@ const translations = {
   'mobilityPlatform.menu.title.walk': 'Promenad',
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
+  'mobilityPlatform.menu.title.boating': 'Båtliv',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
@@ -601,6 +602,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon',
   'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
   'mobilityPlatform.menu.showCityBikes': 'Stadscykelstationer',
+  'mobilityPlatform.menu.show.marinas': 'Marinas',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

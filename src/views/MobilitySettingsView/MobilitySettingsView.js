@@ -10,11 +10,12 @@ import { ReactSVG } from 'react-svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
+import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
-  fetchParkingChargeZonesData,
+  fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -28,6 +29,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
+  const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -67,6 +69,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBikeServiceStations,
     showCityBikes,
     setShowCityBikes,
+    showMarinas,
+    setShowMarinas,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -82,6 +86,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
       en: 'https://www.foli.fi/en/f%C3%B6li-bikes',
       sv: 'https://www.foli.fi/sv/fölicyklar',
     },
+  };
+
+  const chargeZoneTranslations = {
+    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
+    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
+    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
+    zones: [
+      'mobilityPlatform.info.parkingChargeZones.zone.1',
+      'mobilityPlatform.info.parkingChargeZones.zone.2',
+      'mobilityPlatform.info.parkingChargeZones.zone.3',
+    ],
   };
 
   useEffect(() => {
@@ -102,7 +117,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [setBicycleRouteList]);
 
   useEffect(() => {
-    fetchParkingChargeZonesData('PAZ', 10, setParkingChargeZones);
+    fetchMobilityMapPolygonData('PAZ', 10, setParkingChargeZones);
   }, [setParkingChargeZones]);
 
   /**
@@ -220,6 +235,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenCarSettings(current => !current);
   };
 
+  const boatingSettingsToggle = () => {
+    setOpenBoatingSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {boolean}
@@ -255,6 +274,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const cityBikesToggle = () => {
     setShowCityBikes(current => !current);
+  };
+
+  const marinasToggle = () => {
+    setShowMarinas(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -439,6 +462,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showParkingChargeZones',
       checkedValue: openParkingChargeZoneList,
       onChangeValue: parkingChargeZonesListToggle,
+    },
+  ];
+
+  const boatingControlTypes = [
+    {
+      type: 'marinas',
+      msgId: 'mobilityPlatform.menu.show.marinas',
+      checkedValue: showMarinas,
+      onChangeValue: marinasToggle,
     },
   ];
 
@@ -642,17 +674,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const chargeZoneTranslations = {
-    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
-    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
-    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
-    zones: [
-      'mobilityPlatform.info.parkingChargeZones.zone.1',
-      'mobilityPlatform.info.parkingChargeZones.zone.2',
-      'mobilityPlatform.info.parkingChargeZones.zone.3',
-    ],
-  };
-
   return (
     <div className={classes.content}>
       <TitleBar
@@ -694,6 +715,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
+              <div className={classes.buttonContainer}>
+                {buttonComponent(boatingSettingsToggle, openBoatingSettings, iconBoat, 'mobilityPlatform.menu.title.boating')}
+              </div>
+              {renderSettings(openBoatingSettings, boatingControlTypes)}
             </>
           </FormGroup>
         </FormControl>
