@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
-  Typography, FormGroup, FormControl, FormControlLabel, Switch, Checkbox,
+  Typography, FormGroup, FormControl, FormControlLabel, Checkbox,
 } from '@material-ui/core';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
@@ -23,6 +23,7 @@ import RouteLength from './components/RouteLength';
 import ExtendedInfo from './components/ExtendedInfo';
 import CityBikeInfo from './components/CityBikeInfo';
 import ButtonMain from './components/ButtonMain';
+import FormLabel from './components/FormLabel';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -443,47 +444,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   /**
-   * @param {string} keyVal
-   * @param {string} msgId
-   * @param {boolean} checkedValue
-   * @param {Function} onChangeValue
-   */
-  const formLabel = (keyVal, msgId, checkedValue, onChangeValue) => (
-    <FormControlLabel
-      key={keyVal}
-      label={(
-        <Typography
-          variant="body2"
-          aria-label={intl.formatMessage({
-            id: msgId,
-          })}
-        >
-          {intl.formatMessage({
-            id: msgId,
-          })}
-        </Typography>
-      )}
-      control={(
-        <Switch
-          checked={checkedValue}
-          inputProps={{
-            'aria-label': intl.formatMessage({
-              id: msgId,
-            }),
-          }}
-          onChange={onChangeValue}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              onChangeValue();
-            }
-          }}
-        />
-      )}
-      className={classes.formLabel}
-    />
-  );
-
-  /**
    * Check if route list is empty and render correct text
    * @param {Array} input
    * @param {Boolean} input
@@ -580,7 +540,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
      */
   const renderSettings = (settingVisibility, typeVal) => {
     if (settingVisibility) {
-      return typeVal.map(item => formLabel(item.type, item.msgId, item.checkedValue, item.onChangeValue));
+      return typeVal.map(item => (
+        <FormLabel
+          key={item.type}
+          msgId={item.msgId}
+          checkedValue={item.checkedValue}
+          onChangeValue={item.onChangeValue}
+        />
+      ));
     }
     return null;
   };
