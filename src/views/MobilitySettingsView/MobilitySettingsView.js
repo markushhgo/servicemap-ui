@@ -24,6 +24,7 @@ import ExtendedInfo from './components/ExtendedInfo';
 import CityBikeInfo from './components/CityBikeInfo';
 import ButtonMain from './components/ButtonMain';
 import FormLabel from './components/FormLabel';
+import EmptyRouteList from './components/EmptyRouteList';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -83,6 +84,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
       en: 'https://www.foli.fi/en/f%C3%B6li-bikes',
       sv: 'https://www.foli.fi/sv/fölicyklar',
     },
+  };
+
+  const chargeZoneTranslations = {
+    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
+    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
+    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
+    zones: [
+      'mobilityPlatform.info.parkingChargeZones.zone.1',
+      'mobilityPlatform.info.parkingChargeZones.zone.2',
+      'mobilityPlatform.info.parkingChargeZones.zone.3',
+    ],
   };
 
   useEffect(() => {
@@ -444,36 +456,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   /**
-   * Check if route list is empty and render correct text
-   * @param {Array} input
-   * @param {Boolean} input
-   * @param {Boolean} length
-   * @returns {JSX Element} with correct id
-   */
-  const emptyRouteList = (input) => {
-    if (input) {
-      return (
-        <div className={classes.paragraph}>
-          <Typography
-            component="p"
-            variant="subtitle2"
-            aria-label={
-              input.length > 0
-                ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
-                : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })
-            }
-          >
-            {input.length > 0
-              ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
-              : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
-          </Typography>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  /**
      * @param {Array} inputData
      * @returns {JSX Element}
      */
@@ -585,17 +567,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const chargeZoneTranslations = {
-    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
-    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
-    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
-    zones: [
-      'mobilityPlatform.info.parkingChargeZones.zone.1',
-      'mobilityPlatform.info.parkingChargeZones.zone.2',
-      'mobilityPlatform.info.parkingChargeZones.zone.3',
-    ],
-  };
-
   return (
     <div className={classes.content}>
       <TitleBar
@@ -618,7 +589,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openWalkSettings, walkingControlTypes)}
               <div className={openCultureRouteList ? classes.border : null}>
-                {openCultureRouteList && !cultureRouteId ? emptyRouteList(cultureRouteList) : null}
+                {openCultureRouteList && !cultureRouteId ? <EmptyRouteList route={cultureRouteList} /> : null}
               </div>
               {openCultureRouteList && (locale === 'en' || locale === 'sv')
                 ? renderCultureRoutes(localizedCultureRoutes)
@@ -634,7 +605,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openBicycleSettings, bicycleControlTypes)}
               <div className={openBicycleRouteList ? classes.border : null}>
-                {openBicycleRouteList && !bicycleRouteName ? emptyRouteList(bicycleRouteList) : null}
+                {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={bicycleRouteList} /> : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
               <div className={classes.buttonContainer}>
