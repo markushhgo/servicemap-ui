@@ -686,6 +686,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.subtitle': 'Läs mer om stadscyklar:',
   'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/sv/fölicyklar',
   'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic i realtid.',
+  'mobilityPlatform.info.guestHarbour': 'Turku Gästhamn ligger precis intill centrum, på Västra Strandgatan 57. Mer information t.ex. om bokning av båtplats finns på',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

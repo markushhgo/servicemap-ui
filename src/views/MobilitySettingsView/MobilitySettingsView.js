@@ -761,6 +761,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
+      {showGuestHarbour ? (
+        <InfoTextBox
+          infoText="mobilityPlatform.info.guestHarbour"
+          linkUrl="https://www.turunvierasvenesatama.fi"
+        />
+      ) : null}
     </div>
   );
 };

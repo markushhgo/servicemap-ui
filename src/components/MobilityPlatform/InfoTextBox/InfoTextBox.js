@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography, Link } from '@material-ui/core';
 
-const InfoTextBox = ({ classes, infoText, intl }) => (
+const InfoTextBox = ({
+  classes, intl, infoText, linkUrl,
+}) => (
   <div className={classes.container}>
     <Typography
       variant="body2"
@@ -14,6 +16,13 @@ const InfoTextBox = ({ classes, infoText, intl }) => (
         id: infoText,
       })}
     </Typography>
+    {linkUrl ? (
+      <Link target="_blank" href={linkUrl}>
+        <Typography className={classes.link} variant="body2" aria-label={linkUrl}>
+          {linkUrl}
+        </Typography>
+      </Link>
+    ) : null}
   </div>
 );
 
@@ -21,10 +30,12 @@ InfoTextBox.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   infoText: PropTypes.string,
+  linkUrl: PropTypes.string,
 };
 
 InfoTextBox.defaultProps = {
   infoText: '',
+  linkUrl: '',
 };
 
 export default InfoTextBox;
