@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CityBikesContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(CityBikesContent)-popupInner-1"
+  >
+    <div
+      class="injectIntl(CityBikesContent)-subtitle-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1"
+      >
+        Kaupunkipyöräasema
+      </h6>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        <strong>
+          Asema
+        </strong>
+        :
+         
+        Testiasema
+      </p>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Virtuaaliasema
+      </p>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        <strong>
+          Kapasiteetti
+        </strong>
+        :
+         
+        20
+      </p>
+    </div>
+    <div>
+      <div
+        class="injectIntl(CityBikesContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Pyöriä vapaana
+          </strong>
+          :
+           
+          10
+        </p>
+      </div>
+      <div
+        class="injectIntl(CityBikesContent)-paragraph-3"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2"
+        >
+          <strong>
+            Telineitä vapaana
+          </strong>
+          :
+           
+          20
+        </p>
+      </div>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <p
+        class="MuiTypography-root injectIntl(CityBikesContent)-bold-4 MuiTypography-body2"
+      >
+        Latauslinkit
+        :
+      </p>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://www.testilinkki.fi"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root injectIntl(CityBikesContent)-link-5 MuiTypography-body2"
+        >
+          Android
+        </p>
+      </a>
+    </div>
+    <div
+      class="injectIntl(CityBikesContent)-paragraph-3"
+    >
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://www.testilinkki.fi"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root injectIntl(CityBikesContent)-link-5 MuiTypography-body2"
+        >
+          iOS
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+`;
