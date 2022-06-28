@@ -281,7 +281,7 @@ const TopBar = (props) => {
             }
           >
             <ButtonBase
-              aria-label={intl.formatMessage({ id: 'general.back.goToHome' })}
+              aria-label={intl.formatMessage({ id: 'home.logo.ariaLabel' })}
               role="link"
               onClick={() => handleNavigation('home')}
             >
