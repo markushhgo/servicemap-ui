@@ -1,5 +1,5 @@
 import React, {
-  useState, useContext, useEffect, useRef,
+  useState, useContext, useEffect, useRef, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
@@ -89,6 +89,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
       en: 'https://www.foli.fi/en/f%C3%B6li-bikes',
       sv: 'https://www.foli.fi/sv/fölicyklar',
     },
+  };
+
+  const chargeZoneTranslations = {
+    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
+    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
+    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
+    zones: [
+      'mobilityPlatform.info.parkingChargeZones.zone.1',
+      'mobilityPlatform.info.parkingChargeZones.zone.2',
+      'mobilityPlatform.info.parkingChargeZones.zone.3',
+    ],
   };
 
   useEffect(() => {
@@ -646,7 +657,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
-  const speedLimitList = [...new Set(speedLimitZones.map(item => item.extra.speed_limit))];
+  const speedLimitList = useMemo(() => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
+    [speedLimitZones]);
+
   const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
 
   const renderSpeedLimits = () => (
@@ -714,17 +727,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
         ))}
     </>
   );
-
-  const chargeZoneTranslations = {
-    message1: 'mobilityPlatform.info.parkingChargeZones.paragraph.1',
-    message2: 'mobilityPlatform.info.parkingChargeZones.paragraph.2',
-    message3: 'mobilityPlatform.info.parkingChargeZones.paragraph.3',
-    zones: [
-      'mobilityPlatform.info.parkingChargeZones.zone.1',
-      'mobilityPlatform.info.parkingChargeZones.zone.2',
-      'mobilityPlatform.info.parkingChargeZones.zone.3',
-    ],
-  };
 
   return (
     <div className={classes.content}>
