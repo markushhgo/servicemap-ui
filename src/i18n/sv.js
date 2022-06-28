@@ -603,6 +603,8 @@ const translations = {
   'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
   'mobilityPlatform.menu.showCityBikes': 'Stadscykelstationer',
   'mobilityPlatform.menu.show.marinas': 'Marinas',
+  'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
+  'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

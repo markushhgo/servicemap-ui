@@ -71,6 +71,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowCityBikes,
     showMarinas,
     setShowMarinas,
+    showBoatParking,
+    setShowBoatParking,
+    showGuestHarbour,
+    setShowGuestHarbour,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -165,6 +169,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
     checkVisibilityValues(showParkingChargeZones, setOpenParkingChargeZoneList);
   }, [showParkingChargeZones]);
+
+  useEffect(() => {
+    checkVisibilityValues(showMarinas, setOpenBoatingSettings);
+    checkVisibilityValues(showBoatParking, setOpenBoatingSettings);
+    checkVisibilityValues(showGuestHarbour, setOpenBoatingSettings);
+  }, [showMarinas, showBoatParking, showGuestHarbour]);
 
   const nameKeys = {
     fi: 'name',
@@ -278,6 +288,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const marinasToggle = () => {
     setShowMarinas(current => !current);
+  };
+
+  const boatParkingToggle = () => {
+    setShowBoatParking(current => !current);
+  };
+
+  const guestHarbourToggle = () => {
+    setShowGuestHarbour(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -471,6 +489,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.show.marinas',
       checkedValue: showMarinas,
       onChangeValue: marinasToggle,
+    },
+    {
+      type: 'boatParking',
+      msgId: 'mobilityPlatform.menu.show.boatParking',
+      checkedValue: showBoatParking,
+      onChangeValue: boatParkingToggle,
+    },
+    {
+      type: 'guestHarbour',
+      msgId: 'mobilityPlatform.menu.show.guestHarbour',
+      checkedValue: showGuestHarbour,
+      onChangeValue: guestHarbourToggle,
     },
   ];
 

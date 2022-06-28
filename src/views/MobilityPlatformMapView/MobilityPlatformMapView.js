@@ -11,6 +11,8 @@ import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZ
 import BikeServiceStations from '../../components/MobilityPlatform/BikeServiceStations';
 import CityBikes from '../../components/MobilityPlatform/CityBikes';
 import Marinas from '../../components/MobilityPlatform/Marinas';
+import BoatParking from '../../components/MobilityPlatform/Boating/BoatParking';
+import GuestHarbour from '../../components/MobilityPlatform/Boating/GuestHarbour';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -26,6 +28,8 @@ const MobilityPlatformMapView = () => (
     <BikeServiceStations />
     <CityBikes />
     <Marinas />
+    <BoatParking />
+    <GuestHarbour />
   </>
 );
 

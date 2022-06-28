@@ -601,6 +601,8 @@ const translations = {
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
   'mobilityPlatform.menu.showCityBikes': 'City bike stations',
   'mobilityPlatform.menu.show.marinas': 'Marinas',
+  'mobilityPlatform.menu.show.boatParking': 'Boat parking',
+  'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
 
   // Content
   'mobilityPlatform.content.address': 'Address',

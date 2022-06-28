@@ -605,6 +605,8 @@ const translations = {
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
   'mobilityPlatform.menu.show.marinas': 'Venesatamat',
+  'mobilityPlatform.menu.show.boatParking': 'Veneparkit',
+  'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
