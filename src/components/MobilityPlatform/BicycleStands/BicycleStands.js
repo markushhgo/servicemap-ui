@@ -4,7 +4,7 @@ import { useMapEvents, useMap } from 'react-leaflet';
 import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
 import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon_circle_border.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import BicycleStandContent from '../BicycleStandContent';
+import BicycleStandContent from './components/BicycleStandContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const BicycleStands = ({ classes }) => {
