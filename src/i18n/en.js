@@ -685,7 +685,9 @@ const translations = {
   'mobilityPlatform.info.cityBikes.link': 'https://www.foli.fi/en/f%C3%B6li-bikes',
   'mobilityPlatform.info.cityBikes.apiInfo': 'Map data comes from the Donkey Republic interface in real time.',
   'mobilityPlatform.info.guestHarbour': 'Turku Guest harbour is directly next to the city centre, on Läntinen Rantakatu 57. More information about e.g. booking of boat place can be found on',
+  'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
   'mobilityPlatform.info.marinas': 'City of Turku´s marina berths are located in Uittamo, Lauttaranta and Aura River. A berth can be reserved and paid either on the Varauspalvelu reservation service (in Finnish only) or at the customer service of the City of Turku (Puolalankatu 5). On the Varauspalvelu reservation service you can browse available berths by harbour and by boat size. There are also winter storage places for boats in Lauttaranta.',
+  'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
 
   // Bicycle routes

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Typography, Link } from '@material-ui/core';
 
 const InfoTextBox = ({
-  classes, intl, infoText, linkUrl,
+  classes, intl, infoText, linkUrl, linkText,
 }) => (
   <div className={classes.container}>
     <Typography
@@ -19,7 +19,9 @@ const InfoTextBox = ({
     {linkUrl ? (
       <Link target="_blank" href={linkUrl}>
         <Typography className={classes.link} variant="body2" aria-label={linkUrl}>
-          {linkUrl}
+          {intl.formatMessage({
+            id: linkText,
+          })}
         </Typography>
       </Link>
     ) : null}
@@ -31,11 +33,13 @@ InfoTextBox.propTypes = {
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   infoText: PropTypes.string,
   linkUrl: PropTypes.string,
+  linkText: PropTypes.string,
 };
 
 InfoTextBox.defaultProps = {
   infoText: '',
   linkUrl: '',
+  linkText: '',
 };
 
 export default InfoTextBox;
