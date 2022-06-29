@@ -27,6 +27,7 @@ const styles = theme => ({
   },
   link: {
     color: theme.palette.link.main,
+    textDecoration: 'underline',
   },
   linkButton: {
     padding: theme.spacing(2),

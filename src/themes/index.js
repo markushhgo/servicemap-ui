@@ -232,7 +232,7 @@ export const paletteDefault = {
     border: '#fff',
   },
   link: {
-    main: '#0000EE',
+    main: '#3333FF',
   },
 };
 

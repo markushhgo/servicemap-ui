@@ -101,11 +101,11 @@ export default theme => ({
     marginTop: 14,
   },
   link: {
+    color: theme.palette.link.main,
     marginTop: 14,
     marginBottom: 26,
     textAlign: 'left',
     textDecoration: 'underline',
-    color: theme.palette.link.main,
   },
   modalContainer: {
     display: 'flex',
