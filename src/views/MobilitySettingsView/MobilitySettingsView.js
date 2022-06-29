@@ -761,6 +761,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
+      {showMarinas ? <InfoTextBox infoText="mobilityPlatform.info.marinas" /> : null}
+      {showBoatParking ? <InfoTextBox infoText="mobilityPlatform.info.boatParking" /> : null}
       {showGuestHarbour ? (
         <InfoTextBox
           infoText="mobilityPlatform.info.guestHarbour"
