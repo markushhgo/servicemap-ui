@@ -6,7 +6,7 @@ export default theme => ({
   },
   link: {
     marginTop: theme.spacing(0.5),
-    color: '#3333FF',
+    color: theme.palette.link.main,
     textDecoration: 'underline',
   },
 });
