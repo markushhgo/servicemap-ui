@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
-import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { fetchMobilityMapPolygonData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
+import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const Marinas = () => {
   const [marinasData, setMarinasData] = useState([]);
