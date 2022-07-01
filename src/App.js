@@ -68,7 +68,7 @@ class App extends React.Component {
     const intlData = LocaleUtility.intlData(locale);
 
     return (
-      <StyledEngineProvider injectFirst>
+      <StyledEngineProvider>
         <ThemeWrapper>
           <IntlProvider {...intlData}>
             <MetaTags />

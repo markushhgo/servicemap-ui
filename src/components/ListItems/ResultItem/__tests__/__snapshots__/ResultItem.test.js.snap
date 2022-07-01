@@ -3,7 +3,7 @@
 exports[`<ResultItem /> should work 1`] = `
 <div>
   <li
-    class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-button ResultItem-listItem-2 css-6w6cpn-MuiButtonBase-root-MuiListItem-root"
+    class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-button ResultItem-listItem-2 css-1cs8ifn-MuiButtonBase-root-MuiListItem-root"
     role="link"
     tabindex="0"
   >
@@ -14,7 +14,8 @@ exports[`<ResultItem /> should work 1`] = `
         class="ResultItem-topRow-10"
       >
         <p
-          class="MuiTypography-root MuiTypography-srOnly ResultItem-title-7 ResultItem-srOnly css-37jdci-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 ResultItem-title-7 ResultItem-srOnly css-1ak20dk-MuiTypography-root"
+          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
         >
           
     Title text 

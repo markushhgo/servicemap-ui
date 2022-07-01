@@ -1,7 +1,7 @@
 // Link.react.test.js
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { IntlProvider } from 'react-intl';
 import themes from '../../../themes';
 import PaginationComponent from '../index';
@@ -47,6 +47,7 @@ describe('<PaginationComponent />', () => {
     const mockCallBack = jest.fn((newCurrent, totalCount) => ({ newCurrent, totalCount }));
     const { getAllByRole } = renderWithProviders(<PaginationComponent {...mockProps} handlePageChange={mockCallBack} />);
 
+    // component.find('PageElement ForwardRef(ButtonBase)').at(2).simulate('click');
     fireEvent.click(getAllByRole('link')[1]);
     expect(mockCallBack.mock.calls.length).toEqual(1);
 
@@ -70,15 +71,14 @@ describe('<PaginationComponent />', () => {
     expect(buttons[0]).toHaveAttribute('aria-label', intlMock.messages['general.pagination.previous']);
     expect(buttons[0]).toBeDisabled();
     expect(buttons[0]).toHaveAttribute('role', 'link');
-
     // Test next page button accessibility
     expect(buttons[1]).toHaveAttribute('aria-label', intlMock.messages['general.pagination.next']);
     expect(buttons[1]).not.toBeDisabled();
     expect(buttons[1]).toHaveAttribute('role', 'link');
 
     // Expect page 1 button to have opened text
-    expect(buttons[2].querySelectorAll('span')[1]).toHaveTextContent(1);
+    expect(buttons[2].querySelectorAll('p')[1]).toHaveTextContent('Sivu 1, avattu');
     // expect page 2 button to have open new page text
-    expect(buttons[3].querySelectorAll('span')[1]).toHaveTextContent(2);
+    expect(buttons[3].querySelectorAll('p')[1]).toHaveTextContent('Avaa sivu 2');
   });
 });

@@ -1,6 +1,6 @@
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { fireEvent, render } from '@testing-library/react';
 import themes from '../../../../themes';
 import SimpleListItem from '../index';
@@ -28,7 +28,7 @@ describe('<SimpleListItem />', () => {
   it('simulates click event', () => {
     const mockCallBack = jest.fn();
     const { getByRole } = renderWithProviders(
-      <SimpleListItem {...mockProps} handleItemClick={mockCallBack} button />,
+      <SimpleListItem {...mockProps} handleItemClick={mockCallBack} button />
     );
 
     fireEvent.click(getByRole('listitem'));
@@ -55,6 +55,7 @@ describe('<SimpleListItem />', () => {
       charCode: 32,
     });
 
+    // One of the events in fired twice for some reason
     expect(mockCallBack.mock.calls.length).toEqual(3);
   });
 
@@ -89,9 +90,11 @@ describe('<SimpleListItem />', () => {
   });
 
   it('does use default accessibility attributes correctly', () => {
-    const { container, getByText, getByRole } = renderWithProviders(<SimpleListItem {...mockProps} />);
+    const { container, getByText, getByRole } = renderWithProviders(
+      <SimpleListItem {...mockProps} />,
+    );
 
-    const srText = container.querySelector('span');
+    const srText = container.querySelectorAll('p')[1];
     const text = getByText(mockProps.text, { selector: 'p' });
 
     // Expect screen reader texts to render correctly
@@ -116,7 +119,7 @@ describe('<SimpleListItem />', () => {
       />,
     );
 
-    const srText = container.querySelector('span');
+    const srText = container.querySelectorAll('p')[1];
     const visibleText = container.querySelector('p');
     const srTextContains = srText.textContent.indexOf('Screen reader text') !== -1;
     const visibleTextContains = visibleText.textContent.indexOf(mockProps.text) !== -1;
