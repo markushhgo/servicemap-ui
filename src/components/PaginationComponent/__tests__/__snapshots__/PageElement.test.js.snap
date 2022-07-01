@@ -4,16 +4,16 @@ exports[`<PageElement /> should work 1`] = `
 <div>
   <li>
     <button
-      class="MuiButtonBase-root"
+      class="MuiButtonBase-root css-5x6wf3-MuiButtonBase-root"
       role="link"
       tabindex="0"
       type="button"
     >
       <p
-        class="MuiTypography-root  PageElement-pageItem-10 PageElement-pageElement-8 MuiTypography-subtitle1"
+        class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-10 PageElement-pageElement-8 css-dlbwt1-MuiTypography-root"
       >
         <span
-          class="MuiTypography-root MuiTypography-srOnly"
+          class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
         >
           Open page 2
         </span>

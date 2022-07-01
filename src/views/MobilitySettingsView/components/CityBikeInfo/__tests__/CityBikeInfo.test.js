@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -43,7 +43,7 @@ const Providers = ({ children }) => {
   return (
     <Provider store={store}>
       <IntlProvider {...intlMock}>
-        <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
+        <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
       </IntlProvider>
     </Provider>
   );

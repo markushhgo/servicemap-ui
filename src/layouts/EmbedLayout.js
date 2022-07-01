@@ -5,7 +5,7 @@ import {
   Switch, Route,
 } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import MapView from '../views/MapView';
 import PageHandler from './components/PageHandler';
 import AddressView from '../views/AddressView';

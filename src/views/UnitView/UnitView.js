@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-import { Map, Mail, Hearing } from '@material-ui/icons';
+import { Map, Mail, Hearing } from '@mui/icons-material';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import { SearchBar } from '../../components';

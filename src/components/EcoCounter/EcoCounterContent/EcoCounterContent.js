@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { ButtonBase, Typography } from '@material-ui/core';
+import { ButtonBase, Typography } from '@mui/material';
 import { ReactSVG } from 'react-svg';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';

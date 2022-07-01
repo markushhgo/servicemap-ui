@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
   Container, Divider, Link, NoSsr, Paper, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import fetchSearchResults from '../../redux/actions/search';
 import fetchRedirectService from '../../redux/actions/redirectService';

@@ -6,8 +6,8 @@ import {
   AppBar,
   Toolbar,
   ButtonBase,
-} from '@material-ui/core';
-import { Map } from '@material-ui/icons';
+} from '@mui/material';
+import { Map } from '@mui/icons-material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';

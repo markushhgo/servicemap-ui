@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { useIntl } from 'react-intl';
 import ResultList from '../ResultList';
 import PaginationComponent from '../../PaginationComponent';

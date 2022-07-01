@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
   Typography, FormGroup, FormControl, FormControlLabel, Switch, Button, Checkbox,
-} from '@material-ui/core';
+} from '@mui/material';
 import { ReactSVG } from 'react-svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';

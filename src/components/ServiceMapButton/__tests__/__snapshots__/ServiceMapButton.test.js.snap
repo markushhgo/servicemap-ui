@@ -3,7 +3,7 @@
 exports[`<ServiceMapButton /> should work 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root ForwardRef-button-1  ForwardRef-marginRight-4  ForwardRef-default-7"
+    class="MuiButtonBase-root ForwardRef-button-1  ForwardRef-marginRight-4  ForwardRef-default-7 css-5x6wf3-MuiButtonBase-root"
     role="button"
     tabindex="0"
     type="button"

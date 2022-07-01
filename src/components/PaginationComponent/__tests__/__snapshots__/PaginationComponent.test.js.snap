@@ -7,7 +7,7 @@ exports[`<PaginationComponent /> should work 1`] = `
   >
     <button
       aria-label="Aiempi sivu"
-      class="MuiButtonBase-root ForwardRef-button-16  ForwardRef-marginRight-19 injectIntl(PaginationComponent)-button-4 injectIntl(PaginationComponent)-arrowFlip-2 injectIntl(PaginationComponent)-borderBlack-3 ForwardRef-primary-20"
+      class="MuiButtonBase-root ForwardRef-button-16  ForwardRef-marginRight-19 injectIntl(PaginationComponent)-button-4 injectIntl(PaginationComponent)-arrowFlip-2 injectIntl(PaginationComponent)-borderBlack-3 ForwardRef-primary-20 css-5x6wf3-MuiButtonBase-root"
       role="link"
       tabindex="0"
       type="button"
@@ -15,18 +15,19 @@ exports[`<PaginationComponent /> should work 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root injectIntl(PaginationComponent)-arrowIcon-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-6yqi1c-MuiSvgIcon-root"
+        data-testid="ArrowForwardIosIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
         <path
-          d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+          d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z"
         />
       </svg>
     </button>
     <button
       aria-label="Seuraava sivu"
-      class="MuiButtonBase-root ForwardRef-button-16  ForwardRef-marginRight-19 injectIntl(PaginationComponent)-button-4 injectIntl(PaginationComponent)-borderBlack-3 ForwardRef-primary-20"
+      class="MuiButtonBase-root ForwardRef-button-16  ForwardRef-marginRight-19 injectIntl(PaginationComponent)-button-4 injectIntl(PaginationComponent)-borderBlack-3 ForwardRef-primary-20 css-5x6wf3-MuiButtonBase-root"
       role="link"
       tabindex="0"
       type="button"
@@ -34,12 +35,13 @@ exports[`<PaginationComponent /> should work 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root injectIntl(PaginationComponent)-arrowIcon-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-6yqi1c-MuiSvgIcon-root"
+        data-testid="ArrowForwardIosIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
         <path
-          d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+          d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z"
         />
       </svg>
     </button>
@@ -51,16 +53,16 @@ exports[`<PaginationComponent /> should work 1`] = `
       >
         <li>
           <button
-            class="MuiButtonBase-root"
+            class="MuiButtonBase-root css-5x6wf3-MuiButtonBase-root"
             role="link"
             tabindex="0"
             type="button"
           >
             <p
-              class="MuiTypography-root  PageElement-pageItem-33 PageElement-pageElement-31 MuiTypography-subtitle1"
+              class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-srOnly"
+                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
               >
                 Avaa sivu 1
               </span>
@@ -74,17 +76,17 @@ exports[`<PaginationComponent /> should work 1`] = `
         </li>
         <li>
           <button
-            class="MuiButtonBase-root Mui-disabled"
+            class="MuiButtonBase-root Mui-disabled css-5x6wf3-MuiButtonBase-root"
             disabled=""
             role="link"
             tabindex="-1"
             type="button"
           >
             <p
-              class="MuiTypography-root  PageElement-pageItem-33 PageElement-pageElementActive-32 MuiTypography-subtitle1"
+              class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElementActive-32 css-dlbwt1-MuiTypography-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-srOnly"
+                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
               >
                 Sivu 2, avattu
               </span>
@@ -98,16 +100,16 @@ exports[`<PaginationComponent /> should work 1`] = `
         </li>
         <li>
           <button
-            class="MuiButtonBase-root"
+            class="MuiButtonBase-root css-5x6wf3-MuiButtonBase-root"
             role="link"
             tabindex="0"
             type="button"
           >
             <p
-              class="MuiTypography-root  PageElement-pageItem-33 PageElement-pageElement-31 MuiTypography-subtitle1"
+              class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-srOnly"
+                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
               >
                 Avaa sivu 3
               </span>
@@ -121,16 +123,16 @@ exports[`<PaginationComponent /> should work 1`] = `
         </li>
         <li>
           <button
-            class="MuiButtonBase-root"
+            class="MuiButtonBase-root css-5x6wf3-MuiButtonBase-root"
             role="link"
             tabindex="0"
             type="button"
           >
             <p
-              class="MuiTypography-root  PageElement-pageItem-33 PageElement-pageElement-31 MuiTypography-subtitle1"
+              class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-srOnly"
+                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
               >
                 Avaa sivu 4
               </span>
@@ -144,16 +146,16 @@ exports[`<PaginationComponent /> should work 1`] = `
         </li>
         <li>
           <button
-            class="MuiButtonBase-root"
+            class="MuiButtonBase-root css-5x6wf3-MuiButtonBase-root"
             role="link"
             tabindex="0"
             type="button"
           >
             <p
-              class="MuiTypography-root  PageElement-pageItem-33 PageElement-pageElement-31 MuiTypography-subtitle1"
+              class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-srOnly"
+                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
               >
                 Avaa sivu 5
               </span>
