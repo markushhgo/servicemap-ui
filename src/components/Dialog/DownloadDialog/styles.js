@@ -14,8 +14,8 @@ export default theme => ({
     display: 'inline-block',
     backgroundColor: '#DEDEDE',
     width: 'fit-content',
-    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-    margin: `${theme.spacing(1)}px 0`,
+    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+    margin: `${theme.spacing(1)} 0`,
   },
   croppingTitle: {
     marginTop: theme.spacing(1),
@@ -29,7 +29,7 @@ export default theme => ({
     flexDirection: 'row',
     '& p': {
       margin: 0,
-    }
+    },
   },
   formControlLabel: {
     color: 'rgba(0, 0, 0, 0.87)',
@@ -44,8 +44,8 @@ export default theme => ({
     flexDirection: 'row',
     backgroundColor: 'rgba(222, 222, 222, 0.15)',
     width: 'fit-content',
-    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-    margin: `${theme.spacing(1)}px 0`,
+    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+    margin: `${theme.spacing(1)} 0`,
     '& img': {
       marginRight: theme.spacing(1),
     },
