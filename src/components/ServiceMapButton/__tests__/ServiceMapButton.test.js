@@ -2,7 +2,7 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import ServiceMapButton from '../index';
 import themes from '../../../themes';
 

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';

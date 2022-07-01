@@ -28,7 +28,7 @@ describe('<SimpleListItem />', () => {
   it('simulates click event', () => {
     const mockCallBack = jest.fn();
     const { getByRole } = renderWithProviders(
-      <SimpleListItem {...mockProps} handleItemClick={mockCallBack} button />
+      <SimpleListItem {...mockProps} handleItemClick={mockCallBack} button />,
     );
 
     fireEvent.click(getByRole('listitem'));

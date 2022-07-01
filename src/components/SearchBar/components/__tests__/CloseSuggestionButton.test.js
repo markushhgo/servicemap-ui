@@ -1,7 +1,7 @@
 // CloseSuggestionButton.test.js
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { IntlProvider } from 'react-intl';
 import { ArrowDownward } from '@mui/icons-material';
 import themes from '../../../../themes';

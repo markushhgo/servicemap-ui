@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';

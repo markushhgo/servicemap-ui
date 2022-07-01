@@ -1,6 +1,6 @@
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';

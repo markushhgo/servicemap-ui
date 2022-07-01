@@ -1,7 +1,7 @@
 // Link.react.test.js
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { IntlProvider } from 'react-intl';
 import themes from '../../../themes';
 import PageElement from '../PageElement';
