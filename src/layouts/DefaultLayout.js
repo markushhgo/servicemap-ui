@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import MapView from '../views/MapView';
 import config from '../../config';
 import TopBar from '../components/TopBar';
@@ -228,7 +229,7 @@ const DefaultLayout = (props) => {
                   </MobilityPlatformProvider>
                 </div>
               </main>
-              <Typography variant="srOnly">
+              <Typography style={visuallyHidden}>
                 {intl.formatMessage({ id: 'map.ariaLabel' })}
               </Typography>
               <div aria-hidden tabIndex="-1" style={styles.map}>

@@ -8,6 +8,7 @@ import {
   ButtonBase,
 } from '@mui/material';
 import { Map } from '@mui/icons-material';
+import { visuallyHidden } from '@mui/utils';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
@@ -291,7 +292,7 @@ const TopBar = (props) => {
               {!smallScreen ? (
                 <>
                   <div className={classes.settingsButtonsContainer}>
-                    <Typography component="h2" variant="srOnly">
+                    <Typography component="h2" style={visuallyHidden}>
                       <FormattedMessage id="settings" />
                     </Typography>
                     {renderSettingsButtons()}

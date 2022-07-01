@@ -5,6 +5,7 @@ import {
   InputBase, IconButton, Paper, List, ListItem, Typography, Divider,
 } from '@mui/material';
 import { Clear, Search } from '@mui/icons-material';
+import { visuallyHidden } from '@mui/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOrder, setDirection } from '../../redux/actions/sort';
 import { keyboardHandler, formAddressString } from '../../utils';
@@ -173,7 +174,7 @@ const AddressSearchBar = ({
             </>
           )}
         />
-        <Typography aria-live="polite" id="resultLength" variant="srOnly">{infoText}</Typography>
+        <Typography aria-live="polite" id="resultLength" style={visuallyHidden}>{infoText}</Typography>
         {showSuggestions ? (
           <Paper>
             <List role="listbox" id="address-results">

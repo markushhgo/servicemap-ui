@@ -2,8 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
-import { FormattedMessage } from 'react-intl';
 import { Map, Mail, Hearing } from '@mui/icons-material';
+import { visuallyHidden } from '@mui/utils';
+import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import { SearchBar } from '../../components';
@@ -170,7 +171,7 @@ const UnitView = (props) => {
   const renderTitleForRS = () => {
     const title = unit && unit.name ? getLocaleText(unit.name) : '';
     return (
-      <Typography variant="srOnly" aria-hidden>{title}</Typography>
+      <Typography style={visuallyHidden} aria-hidden>{title}</Typography>
     );
   };
 
