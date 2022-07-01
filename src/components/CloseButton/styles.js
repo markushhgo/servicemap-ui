@@ -2,6 +2,7 @@ export default ({
   button: {
     textTransform: 'none',
     fontSize: 12,
+    color: 'black',
   },
   buttonLabel: {
     display: 'flex',

@@ -9,6 +9,7 @@ export default theme => ({
     flex: '0 1 auto',
   },
   button: {
+    color: 'black',
     height: '100%',
     width: '100%',
     paddingLeft: theme.spacing(1),
