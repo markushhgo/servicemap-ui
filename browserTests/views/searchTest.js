@@ -6,14 +6,14 @@ import config from '../config';
 const { server } = config;
 
 fixture`Search view test`
-  .page`http://${server.address}:${server.port}/fi/search?q=uimahalli`
+  .page`http://${server.address}:${server.port}/fi/search?q=kirjasto`
   .beforeEach(async () => {
     await waitForReact();
   });
 
 const getLocation = ClientFunction(() => document.location.href);
 
-const searchUnits = async (t, search = 'uimahalli') => {
+const searchUnits = async (t, search = 'kirjasto') => {
   const input = Selector('#SearchBar input');
 
   // Make new search
