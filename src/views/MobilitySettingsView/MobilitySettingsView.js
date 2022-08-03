@@ -670,7 +670,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               <div className={classes.buttonContainer}>
-                {buttonComponent(boatingSettingsToggle, openBoatingSettings, iconBoat, 'mobilityPlatform.menu.title.boating')}
+                <ButtonMain
+                  onClickFunc={boatingSettingsToggle}
+                  settingState={openBoatingSettings}
+                  iconName={iconBoat}
+                  translationId="mobilityPlatform.menu.title.boating"
+                />
               </div>
               {renderSettings(openBoatingSettings, boatingControlTypes)}
             </>
