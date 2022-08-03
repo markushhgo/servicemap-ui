@@ -4,10 +4,14 @@ import { ReactSVG } from 'react-svg';
 import { Typography, Button } from '@material-ui/core';
 
 /**
-   * @param {Function} onClickFunc
-   * @param {boolean} settingState
-   * @param {string} iconName
-   * @param {string} translationId
+ * Render 1 or more buttons with icon and text
+   * @property {any} classes
+   * @property {any} intl
+   * @property {Function} onClickFunc
+   * @property {boolean} settingState
+   * @property {string} iconName
+   * @property {string} translationId
+   * @return {JSX Element}
    */
 
 const ButtonMain = ({

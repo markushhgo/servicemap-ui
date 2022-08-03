@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { FormControlLabel, Typography, Switch } from '@material-ui/core';
 
 /**
-   * @param {string} keyVal
-   * @param {string} msgId
-   * @param {boolean} checkedValue
-   * @param {Function} onChangeValue
+ * Render 1 or more switches inside form.
+   * @property {any} classes
+   * @property {any} intl
+   * @property {string} keyVal
+   * @property {string} msgId
+   * @property {boolean} checkedValue
+   * @property {Function} onChangeValue
+   * @return {JSX Element}
    */
 
 const FormLabel = ({

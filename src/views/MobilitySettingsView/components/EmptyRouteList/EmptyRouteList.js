@@ -4,10 +4,10 @@ import { Typography } from '@material-ui/core';
 
 /**
    * Check if route list is empty and render correct text
-   * @param {Array} input
-   * @param {Boolean} input
-   * @param {Boolean} length
-   * @returns {JSX Element} with correct id
+   * @property {any} classes
+   * @property {any} intl
+   * @property {Array} route
+   * @return {JSX Element}
    */
 
 const EmptyRouteList = ({ classes, intl, route }) => {
