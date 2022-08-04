@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormLabel /> should work 1`] = `
+<div>
+  <label
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd injectIntl(FormLabel)-formLabel-3 css-j204z7-MuiFormControlLabel-root"
+  >
+    <span
+      class="MuiSwitch-root MuiSwitch-sizeMedium css-tnsvld-MuiSwitch-root"
+    >
+      <span
+        class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-1vjrp7e-MuiButtonBase-root-MuiSwitch-switchBase"
+        role="switch"
+      >
+        <input
+          aria-label="Polkupyöräpysäköinti"
+          class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+          type="checkbox"
+        />
+        <span
+          class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+        />
+      </span>
+      <span
+        class="MuiSwitch-track css-9rqevs-MuiSwitch-track"
+      />
+    </span>
+    <p
+      aria-label="Polkupyöräpysäköinti"
+      class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+    >
+      Polkupyöräpysäköinti
+    </p>
+  </label>
+</div>
+`;
