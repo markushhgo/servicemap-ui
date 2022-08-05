@@ -170,7 +170,7 @@ const DefaultLayout = (props) => {
         {!error && (
           <ErrorBoundary>
             <div id="topArea" aria-hidden={!!settingsToggled} className={printClass}>
-              <h1 id="app-title" tabIndex="-1" className="sr-only app-title" component="h1">
+              <h1 id="app-title" tabIndex={-1} className="sr-only app-title" component="h1">
                 <FormattedMessage id="app.title" />
               </h1>
               {/* Jump link to main content for screenreaders
@@ -232,7 +232,7 @@ const DefaultLayout = (props) => {
               <Typography style={visuallyHidden}>
                 {intl.formatMessage({ id: 'map.ariaLabel' })}
               </Typography>
-              <div aria-hidden tabIndex="-1" style={styles.map}>
+              <div aria-hidden tabIndex={-1} style={styles.map}>
                 <MobilityPlatformProvider
                   value={{
                     openMobilityPlatform,

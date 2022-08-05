@@ -52,7 +52,7 @@ class DropDownMenuButton extends React.Component {
                 onClick={e => this.handleItemClick(e, v)}
                 onKeyPress={e => keyboardHandler(this.handleItemClick(e, v), ['space', 'enter'])}
                 component="span"
-                tabIndex="0"
+                tabIndex={0}
                 aria-hidden={v.ariaHidden}
               >
                 <span>{v.icon}</span>

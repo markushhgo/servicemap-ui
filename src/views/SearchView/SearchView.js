@@ -314,7 +314,7 @@ const SearchView = (props) => {
       <NoSsr>
         <Typography
           role="link"
-          tabIndex="-1"
+          tabIndex={-1}
           onClick={() => skipToContent()}
           onKeyPress={() => {
             keyboardHandler(() => skipToContent(), ['space', 'enter']);
@@ -340,7 +340,7 @@ const SearchView = (props) => {
     const { isFetching, max } = searchFetchState;
     return (
       <Paper className={!isFetching ? classes.noPadding : ''} elevation={1} square aria-live="polite">
-        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex="-1">
+        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex={-1}>
           {!isFetching && (
             <FormattedMessage id="search.results.title" />
           )}
@@ -489,7 +489,7 @@ const SearchView = (props) => {
       {isMobile ? (
         // Jump link back to beginning of current page
         <Typography style={visuallyHidden} component="h3">
-          <Link href={`#${viewTitleID}`} tabIndex="-1">
+          <Link href={`#${viewTitleID}`} tabIndex={-1}>
             <FormattedMessage id="general.return.viewTitle" />
           </Link>
         </Typography>
