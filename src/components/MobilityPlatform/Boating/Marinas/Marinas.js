@@ -4,6 +4,10 @@ import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 
+/**
+ * Displays marinas on the map in polygon format.
+ */
+
 const Marinas = () => {
   const [marinasData, setMarinasData] = useState([]);
 

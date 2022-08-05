@@ -4,6 +4,10 @@ import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 
+/**
+ * Displays quest harbour on the map in polygon format.
+ */
+
 const GuestHarbour = () => {
   const [guestHarbourData, setGuestHarbourData] = useState([]);
 
