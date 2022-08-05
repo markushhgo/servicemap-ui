@@ -141,7 +141,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
     checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
-  }, [showBicycleStands, showBikeServiceStations]);
+    checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
+  }, [showBicycleStands, showBikeServiceStations, showCityBikes]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
