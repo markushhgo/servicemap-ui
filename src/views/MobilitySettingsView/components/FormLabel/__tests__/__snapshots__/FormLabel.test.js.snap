@@ -6,7 +6,7 @@ exports[`<FormLabel /> should work 1`] = `
     class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd injectIntl(FormLabel)-formLabel-3 css-j204z7-MuiFormControlLabel-root"
   >
     <span
-      class="MuiSwitch-root MuiSwitch-sizeMedium css-tnsvld-MuiSwitch-root"
+      class="MuiSwitch-root MuiSwitch-sizeMedium css-n01vko-MuiSwitch-root"
     >
       <span
         class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-1vjrp7e-MuiButtonBase-root-MuiSwitch-switchBase"

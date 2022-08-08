@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormControlLabel, Typography, Switch } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 /**
  * Render 1 or more switches inside form.
@@ -30,7 +31,7 @@ const FormLabel = ({
       </Typography>
       )}
     control={(
-      <Switch
+      <CustomSwitch
         checked={checkedValue}
         role="switch"
         inputProps={{
@@ -49,6 +50,19 @@ const FormLabel = ({
     className={classes.formLabel}
   />
 );
+
+const CustomSwitch = styled(Switch)(() => ({
+  '& .MuiSwitch-switchBase.Mui-checked': {
+    color: '#ecaa00',
+    '&:hover': {
+      backgroundColor: ('#f2f2f2'),
+    },
+  },
+  '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+    backgroundColor: 'rgba(245, 245, 245, 255)',
+    opacity: 0.9,
+  },
+}));
 
 FormLabel.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,

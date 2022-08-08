@@ -116,23 +116,12 @@ const components = theme => ({
     styleOverrides: {
       switchBase: {
         // Controls unchecked color for the thumb
-        color: '#c4c4c4',
-      },
-      colorSecondary: {
-        '&$checked': {
-          // Controls checked color for the thumb
-          color: '#ecaa00',
-        },
+        color: 'rgba(172, 172, 172, 255)',
       },
       track: {
         // Controls unchecked color for the track
         opacity: 1,
-        backgroundColor: '#fff',
-        '$checked$checked + &': {
-          // Controls checked color for the track
-          opacity: 0.7,
-          backgroundColor: '#fccc58',
-        },
+        backgroundColor: 'rgba(250, 250, 250, 255)',
       },
     },
   },
