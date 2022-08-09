@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core';
