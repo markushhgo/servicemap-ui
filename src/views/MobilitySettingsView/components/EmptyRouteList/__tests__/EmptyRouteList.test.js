@@ -37,17 +37,13 @@ describe('<CityBikeInfo />', () => {
     const { container } = renderWithProviders(<EmptyRouteList {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual(
-      'Reittejä ei löytynyt.',
-    );
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.menu.routes.emptyList']);
   });
 
   it('does contain aria-label attributes', () => {
     const { container } = renderWithProviders(<EmptyRouteList {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toEqual(
-      'Reittejä ei löytynyt.',
-    );
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.menu.routes.emptyList']);
   });
 });
