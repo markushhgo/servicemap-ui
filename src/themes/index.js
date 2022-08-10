@@ -57,7 +57,7 @@ const overrides = theme => ({
   },
   MuiSvgIcon: {
     root: {
-      fontSize: 24,
+      fontSize: '1.5rem',
     },
   },
   PrivateSwitchBase: {
@@ -117,7 +117,7 @@ const zIndex = {
 
 const typography = {
   useNextVariants: true,
-  fontSize: 16,
+  fontSize: '1rem',
   // Use the system font instead of the default Roboto font.
   fontFamily: [
     'Lato',

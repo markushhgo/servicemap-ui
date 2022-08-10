@@ -96,7 +96,7 @@ export default theme => ({
     padding: theme.spacing(0.5, 0),
     textTransform: 'none',
     '& svg': {
-      fontSize: 28,
+      fontSize: '1.75rem',
     },
   },
   searchButtonFocus: {
@@ -175,7 +175,7 @@ export default theme => ({
   },
   cancelButton: {
     '& svg': {
-      fontSize: 14,
+      fontSize: '0.875rem',
     },
   },
   closeButton: {

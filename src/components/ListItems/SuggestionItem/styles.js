@@ -36,7 +36,7 @@ export default theme => ({
     padding: theme.spacing(1),
   },
   subtitle: {
-    fontSize: '10px',
+    fontSize: '0.625rem',
     fontWeight: 'none',
     lineHeight: '18px',
   },

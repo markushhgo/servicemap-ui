@@ -49,7 +49,7 @@ const styles = () => ({
   container: {
     margin: '5%',
     fontFamily: 'Lato',
-    fontSize: 18,
+    fontSize: '1.125rem',
     lineHeight: '18px',
   },
   row: {
@@ -64,7 +64,7 @@ const styles = () => ({
   errorIcon: {
     alignSelf: 'center',
     color: 'rgb(25, 100, 230)',
-    fontSize: 32,
+    fontSize: '2rem',
     marginRight: 24,
   }
 })
