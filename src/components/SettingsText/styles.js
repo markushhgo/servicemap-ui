@@ -18,7 +18,7 @@ export default theme => ({
   },
   textSmall: {
     ...theme.typography.caption,
-    lineHeight: '18px',
+    lineHeight: '1.125rem',
     color: 'inherit',
   },
   titlePlain: {

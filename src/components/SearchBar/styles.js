@@ -135,7 +135,7 @@ export default theme => ({
     paddingLeft: '18px',
   },
   subtitleText: {
-    lineHeight: '32px',
+    lineHeight: '2rem',
   },
   expandTitle: {
     alignSelf: 'center',

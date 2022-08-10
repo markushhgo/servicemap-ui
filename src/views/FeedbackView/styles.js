@@ -19,7 +19,7 @@ export default theme => ({
   },
   input: {
     fontSize: '0.75rem',
-    lineHeight: '20px',
+    lineHeight: '1.25rem',
     padding: 10,
     paddingLeft: 14,
     paddingRight: 14,
