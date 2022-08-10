@@ -189,7 +189,9 @@ const translations = {
   'feedback.sending': 'Sending...',
   'feedback.send.error': 'Send feedback. Mandatory field is empty',
   'feedback.error.required': 'Mandatory field',
-  'feedback.srError.required': 'Feedback is required',
+  'feedback.error.email.invalid': 'Email is not valid', // TODO verify
+  'feedback.srError.email.invalid': 'Email should be in valid form', // TODO verify
+  'feedback.srError.feedback.required': 'Feedback is required',
   'feedback.modal.confirm': 'OK',
   'feedback.modal.leave': 'Are you sure you want to leave the page?',
   'feedback.modal.success': 'Thank you for your feedback!',

@@ -189,7 +189,9 @@ const translations = {
   'feedback.sending': 'Lähetetään...',
   'feedback.send.error': 'Lähetä palaute. Pakollinen kenttä täyttämättä',
   'feedback.error.required': 'Pakollinen kenttä',
-  'feedback.srError.required': 'Palaute ei saa olla tyhjä',
+  'feedback.error.email.invalid': 'Sähköposti ei kelpaa',
+  'feedback.srError.email.invalid': 'Sähköpostin pitää olla oikeassa muodossa', // TODO vahvista
+  'feedback.srError.feedback.required': 'Palaute ei saa olla tyhjä',
   'feedback.modal.confirm': 'OK',
   'feedback.modal.leave': 'Haluatko varmasti poistua tältä sivulta?',
   'feedback.modal.success': 'Kiitos palautteestasi!',
