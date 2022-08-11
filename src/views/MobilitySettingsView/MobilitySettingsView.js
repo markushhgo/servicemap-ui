@@ -9,11 +9,12 @@ import {
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
+import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
   fetchBicycleRouteNames,
-  fetchMobilityMapPolygons,
+  fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -30,6 +31,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
+  const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -70,6 +72,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBikeServiceStations,
     showCityBikes,
     setShowCityBikes,
+    showMarinas,
+    setShowMarinas,
+    showBoatParking,
+    setShowBoatParking,
+    showGuestHarbour,
+    setShowGuestHarbour,
     showSpeedLimitZones,
     setShowSpeedLimitZones,
     speedLimitSelections,
@@ -122,11 +130,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [setBicycleRouteList]);
 
   useEffect(() => {
-    fetchMobilityMapPolygons('SLZ', 1000, setSpeedLimitZones);
+    fetchMobilityMapPolygonData('SLZ', 1000, setSpeedLimitZones);
   }, [setSpeedLimitZones]);
 
   useEffect(() => {
-    fetchMobilityMapPolygons('PAZ', 10, setParkingChargeZones);
+    fetchMobilityMapPolygonData('PAZ', 10, setParkingChargeZones);
   }, [setParkingChargeZones]);
 
   /**
@@ -144,7 +152,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
     checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
-  }, [showBicycleStands, showBikeServiceStations]);
+    checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
+  }, [showBicycleStands, showBikeServiceStations, showCityBikes]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -179,6 +188,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
     checkVisibilityValues(showParkingChargeZones, setOpenParkingChargeZoneList);
   }, [showParkingChargeZones]);
+
+  useEffect(() => {
+    checkVisibilityValues(showMarinas, setOpenBoatingSettings);
+    checkVisibilityValues(showBoatParking, setOpenBoatingSettings);
+    checkVisibilityValues(showGuestHarbour, setOpenBoatingSettings);
+  }, [showMarinas, showBoatParking, showGuestHarbour]);
 
   const nameKeys = {
     fi: 'name',
@@ -249,6 +264,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenCarSettings(current => !current);
   };
 
+  const boatingSettingsToggle = () => {
+    setOpenBoatingSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {boolean}
@@ -284,6 +303,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const cityBikesToggle = () => {
     setShowCityBikes(current => !current);
+  };
+
+  const marinasToggle = () => {
+    setShowMarinas(current => !current);
+  };
+
+  const boatParkingToggle = () => {
+    setShowBoatParking(current => !current);
+  };
+
+  const guestHarbourToggle = () => {
+    setShowGuestHarbour(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -492,6 +523,27 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  const boatingControlTypes = [
+    {
+      type: 'marinas',
+      msgId: 'mobilityPlatform.menu.show.marinas',
+      checkedValue: showMarinas,
+      onChangeValue: marinasToggle,
+    },
+    {
+      type: 'boatParking',
+      msgId: 'mobilityPlatform.menu.show.boatParking',
+      checkedValue: showBoatParking,
+      onChangeValue: boatParkingToggle,
+    },
+    {
+      type: 'guestHarbour',
+      msgId: 'mobilityPlatform.menu.show.guestHarbour',
+      checkedValue: showGuestHarbour,
+      onChangeValue: guestHarbourToggle,
+    },
+  ];
+
   /**
      * @param {Array} inputData
      * @returns {JSX Element}
@@ -694,6 +746,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
+              <div className={classes.buttonContainer}>
+                <ButtonMain
+                  onClickFunc={boatingSettingsToggle}
+                  settingState={openBoatingSettings}
+                  iconName={iconBoat}
+                  translationId="mobilityPlatform.menu.title.boating"
+                />
+              </div>
+              {renderSettings(openBoatingSettings, boatingControlTypes)}
             </>
           </FormGroup>
         </FormControl>
@@ -706,6 +767,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
+      {showMarinas ? (
+        <InfoTextBox
+          infoText="mobilityPlatform.info.marinas"
+          linkUrl="https://opaskartta.turku.fi/ePermit/fi/Reservation/"
+          linkText="mobilityPlatform.info.marinas.link"
+        />
+      ) : null}
+      {showBoatParking ? <InfoTextBox infoText="mobilityPlatform.info.boatParking" /> : null}
+      {showGuestHarbour ? (
+        <InfoTextBox
+          infoText="mobilityPlatform.info.guestHarbour"
+          linkUrl="https://www.turunvierasvenesatama.fi"
+          linkText="mobilityPlatform.info.guestHarbour.link"
+        />
+      ) : null}
     </div>
   );
 };
