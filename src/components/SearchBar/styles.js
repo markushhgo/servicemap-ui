@@ -96,7 +96,7 @@ export default theme => ({
     padding: theme.spacing(0.5, 0),
     textTransform: 'none',
     '& svg': {
-      fontSize: 28,
+      fontSize: '1.75rem',
     },
     flexDirection: 'column',
   },
@@ -136,7 +136,7 @@ export default theme => ({
     paddingLeft: '18px',
   },
   subtitleText: {
-    lineHeight: '32px',
+    lineHeight: '2rem',
   },
   expandTitle: {
     alignSelf: 'center',
@@ -176,7 +176,7 @@ export default theme => ({
   },
   cancelButton: {
     '& svg': {
-      fontSize: 14,
+      fontSize: '0.875rem',
     },
   },
   closeButton: {

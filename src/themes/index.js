@@ -95,7 +95,7 @@ const components = theme => ({
   MuiSvgIcon: {
     styleOverrides: {
       root: {
-        fontSize: 24,
+        fontSize: '1.5rem',
       },
     },
   },

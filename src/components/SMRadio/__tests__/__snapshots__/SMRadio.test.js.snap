@@ -28,7 +28,7 @@ exports[`<SMRadio /> should work 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7iu7pi-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7uhoi9-MuiSvgIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ exports[`<SMRadio /> should work 1`] = `
             </svg>
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1fjbjql-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1s4v6tq-MuiSvgIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -73,7 +73,7 @@ exports[`<SMRadio /> should work 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7iu7pi-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7uhoi9-MuiSvgIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ exports[`<SMRadio /> should work 1`] = `
             </svg>
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dilyji-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-13kz5qh-MuiSvgIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -118,7 +118,7 @@ exports[`<SMRadio /> should work 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7iu7pi-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-7uhoi9-MuiSvgIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -129,7 +129,7 @@ exports[`<SMRadio /> should work 1`] = `
             </svg>
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dilyji-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-13kz5qh-MuiSvgIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"

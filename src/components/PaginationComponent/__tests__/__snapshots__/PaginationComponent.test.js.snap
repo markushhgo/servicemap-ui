@@ -15,7 +15,7 @@ exports[`<PaginationComponent /> should work 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-6yqi1c-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-1y2wfx3-MuiSvgIcon-root"
         data-testid="ArrowForwardIosIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ exports[`<PaginationComponent /> should work 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-6yqi1c-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium injectIntl(PaginationComponent)-arrowIcon-1 css-1y2wfx3-MuiSvgIcon-root"
         data-testid="ArrowForwardIosIcon"
         focusable="false"
         viewBox="0 0 24 24"

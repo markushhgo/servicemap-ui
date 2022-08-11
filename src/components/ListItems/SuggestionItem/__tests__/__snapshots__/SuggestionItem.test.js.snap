@@ -17,7 +17,7 @@ exports[`<SuggestionItem /> should work 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-6yqi1c-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1y2wfx3-MuiSvgIcon-root"
           data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
