@@ -16,6 +16,8 @@ const intlMock = {
 const mockProps = {
   showChargingStations: true,
   infoText: 'mobilityPlatform.info.chargingStations',
+  linkUrl: '',
+  linkText: '',
 };
 
 // eslint-disable-next-line react/prop-types
