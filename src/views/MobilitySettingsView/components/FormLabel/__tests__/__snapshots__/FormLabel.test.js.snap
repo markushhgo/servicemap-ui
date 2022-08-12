@@ -9,7 +9,7 @@ exports[`<FormLabel /> should work 1`] = `
       class="MuiSwitch-root MuiSwitch-sizeMedium css-n01vko-MuiSwitch-root"
     >
       <span
-        class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-1exifcp-MuiButtonBase-root-MuiSwitch-switchBase"
+        class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-1o8q10t-MuiButtonBase-root-MuiSwitch-switchBase"
         role="switch"
       >
         <input
