@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import {
   Typography, ButtonBase, Link, NoSsr,
-} from '@material-ui/core';
+} from '@mui/material';
 import TitleBar from '../../components/TitleBar';
 import config from '../../../config';
 import OptionalText from './components/OptionalText';

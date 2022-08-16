@@ -9,7 +9,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
       class="injectIntl(GasFillingStationContent)-headerContainer-2"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle1"
+        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
       >
         Testinimi
       </h6>
@@ -21,7 +21,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         class="injectIntl(GasFillingStationContent)-margin-5"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
           <strong>
             Osoite
@@ -35,7 +35,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         class="injectIntl(GasFillingStationContent)-margin-5"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
           <strong>
             Kaasuaseman tyyppi
@@ -49,7 +49,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         class="injectIntl(GasFillingStationContent)-margin-5"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
           <strong>
             Operaattori

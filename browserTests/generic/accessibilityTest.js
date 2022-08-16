@@ -24,8 +24,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: search page`
     .page`http://${server.address}:${server.port}/fi/search?q=kirjasto`
@@ -38,8 +38,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: unit page`
     .page`http://${server.address}:${server.port}/fi/unit/148`
@@ -52,8 +52,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: service page`
     .page`http://${server.address}:${server.port}/fi/service/279`
@@ -66,8 +66,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: address page`
     .page`http://${server.address}:${config.server.port}/fi/address/turku/Aurakatu/1`
@@ -80,8 +80,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: area page`
     .page`http://${server.address}:${config.server.port}/fi/area`
@@ -93,8 +93,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 fixture`TestCafe Axe test: service tree page`
     .page`http://${server.address}:${server.port}/fi/services`
@@ -107,8 +107,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');
 
 // This page expires when the event is done
 // Turku does not yet have events API linked into units.
@@ -119,8 +119,8 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton'); */
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton'); */
 
 // Mobility platform page
 fixture`TestCafe Axe test: mobility platform page`
@@ -134,5 +134,5 @@ test('Automated accessibility testing', async t => {
 });
 
 focusIndicatorTest();
-componentContrastTest('SMButton');
-componentContrastTest('BackButton');
+componentContrastTest('.SMButton');
+componentContrastTest('.SMBackButton');

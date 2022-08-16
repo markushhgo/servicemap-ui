@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, ButtonBase } from '@material-ui/core';
+import { Typography, ButtonBase } from '@mui/material';
 import { setLocalizedLink } from '../../../../components/MobilityPlatform/utils/utils';
 import Paragraph from '../Paragraph';
 import LinkBasic from '../LinkBasic';

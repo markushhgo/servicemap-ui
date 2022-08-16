@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonBase, NoSsr } from '@material-ui/core';
+import { ButtonBase, NoSsr } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import HomeLogo from '../../Logos/HomeLogo';

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material/styles';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import themes from '../../../../../themes';
@@ -21,7 +21,7 @@ const mockProps = {
 // eslint-disable-next-line react/prop-types
 const Providers = ({ children }) => (
   <IntlProvider {...intlMock}>
-    <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
+    <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
   </IntlProvider>
 );
 
