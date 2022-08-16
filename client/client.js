@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime';
 import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from "@sentry/react";
+import * as Sentry from '@sentry/react';
 import { Helmet } from 'react-helmet';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -17,6 +17,8 @@ import SettingsUtility from '../src/utils/settings';
 import LocalStorageUtility from '../src/utils/localStorage';
 import favicon from '../src/assets/icons/favicon.ico';
 import config from '../config';
+import createEmotionCache from '../server/createEmotionCache';
+import { CacheProvider } from '@emotion/react';
 
 if (config.sentryDSN) {
   Sentry.init({
@@ -66,6 +68,9 @@ const insertCss = (...styles) => {
   return () => removeCss.forEach(dispose => dispose());
 };
 
+// Create cache object which will inject emotion styles from cache
+const cache = createEmotionCache();
+
 function Main() {
   // Remove server side styles
   React.useEffect(() => {
@@ -76,23 +81,21 @@ function Main() {
   }, []);
 
   return (
-    <Provider store={store}>
-
-      {/* Provider to help with isomorphic style loader */}
-      <StyleContext.Provider value={{ insertCss }}>
-        {
-          // HTML head tags
-        }
-        <Helmet>
-          <link rel="shortcut icon" href={favicon} />
-        </Helmet>
-        <App />
-      </StyleContext.Provider>
-    </Provider>
+    <CacheProvider value={cache}>
+      <Provider store={store}>
+        {/* Provider to help with isomorphic style loader */}
+        <StyleContext.Provider value={{ insertCss }}>
+          {
+            // HTML head tags
+          }
+          <Helmet>
+            <link rel="shortcut icon" href={favicon} />
+          </Helmet>
+          <App />
+        </StyleContext.Provider>
+      </Provider>
+    </CacheProvider>
   );
 }
 
-
-ReactDOM.hydrate(
-  <Main />, app,
-);
+ReactDOM.hydrate(<Main />, app);

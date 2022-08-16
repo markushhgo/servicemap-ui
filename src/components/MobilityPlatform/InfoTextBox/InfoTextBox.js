@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import { Typography, Link } from '@mui/material';
 
 const InfoTextBox = ({
   classes, intl, infoText, linkUrl, linkText,

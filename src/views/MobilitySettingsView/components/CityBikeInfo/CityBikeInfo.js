@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Link, Typography } from '@material-ui/core';
+import { Link, Typography } from '@mui/material';
 
 const CityBikeInfo = ({
   classes, intl, bikeInfo,

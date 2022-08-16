@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@mui/styles';
 import { withRouter } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import SearchView from './SearchView';
