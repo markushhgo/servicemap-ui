@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  List, withStyles, Typography,
-} from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+  List, Typography,
+} from '@mui/material';
+import { Search } from '@mui/icons-material';
+import { withStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 import styles from './styles';
 import SuggestionItem from '../ListItems/SuggestionItem';

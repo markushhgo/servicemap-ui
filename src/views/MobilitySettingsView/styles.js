@@ -9,6 +9,7 @@ const styles = theme => ({
     padding: theme.spacing(1.5),
   },
   button: {
+    color: 'black',
     width: '100%',
     height: '3.125rem',
     background: 'rgba(245, 245, 245, 255)',

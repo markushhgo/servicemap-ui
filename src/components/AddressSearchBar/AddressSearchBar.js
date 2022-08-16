@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import {
   InputBase, IconButton, Paper, List, ListItem, Typography, Divider,
-} from '@material-ui/core';
-import { Clear, Search } from '@material-ui/icons';
+} from '@mui/material';
+import { Clear, Search } from '@mui/icons-material';
+import { visuallyHidden } from '@mui/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOrder, setDirection } from '../../redux/actions/sort';
 import { keyboardHandler, formAddressString } from '../../utils';
@@ -173,13 +174,13 @@ const AddressSearchBar = ({
             </>
           )}
         />
-        <Typography aria-live="polite" id="resultLength" variant="srOnly">{infoText}</Typography>
+        <Typography aria-live="polite" id="resultLength" style={visuallyHidden}>{infoText}</Typography>
         {showSuggestions ? (
           <Paper>
             <List role="listbox" id="address-results">
               {addressResults.map((address, i) => (
                 <ListItem
-                  tabIndex="-1"
+                  tabIndex={-1}
                   id={`address-suggestion${i}`}
                   role="option"
                   selected={i === resultIndex}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Warning } from '@material-ui/icons';
+import { Warning } from '@mui/icons-material';
 import {
   Typography, InputBase, Checkbox, FormControl, Dialog, ButtonBase, DialogTitle, DialogContent,
-} from '@material-ui/core';
+} from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import { FormattedMessage } from 'react-intl';
 import { Prompt } from 'react-router-dom';
 import TitleBar from '../../components/TitleBar';
@@ -155,7 +156,7 @@ const FeedbackView = ({
         && (
           <Dialog open={!!modalOpen} onEntered={() => document.getElementById('dialog-title').focus()}>
             <div className={classes.modalContainer}>
-              <DialogTitle tabIndex="-1" id="dialog-title">
+              <DialogTitle tabIndex={-1} id="dialog-title">
                 <Typography aria-live="polite" className={classes.modalTitle}>
                   <FormattedMessage id={modalOpen === 'send' ? 'feedback.modal.success' : 'feedback.modal.error'} />
                 </Typography>
@@ -230,7 +231,7 @@ const FeedbackView = ({
               </div>
             )}
             {fbFieldVisited && !feedbackLength && (
-              <Typography id="srError" role="alert" variant="srOnly">
+              <Typography id="srError" role="alert" style={visuallyHidden}>
                 <FormattedMessage id="feedback.srError.required" />
               </Typography>
             )}
