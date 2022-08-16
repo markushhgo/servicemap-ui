@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   InputBase, Paper, Typography, Button, IconButton, Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   Search, Cancel,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';

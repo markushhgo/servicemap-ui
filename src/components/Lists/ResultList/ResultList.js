@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   List, Typography, Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import UnitItem from '../../ListItems/UnitItem';
 import ServiceItem from '../../ListItems/ServiceItem';
@@ -35,7 +35,7 @@ class ResultList extends React.Component {
                   component={titleComponent}
                   variant="subtitle1"
                   aria-labelledby={`${listId}-result-title ${listId}-result-title-info`}
-                  tabIndex="-1"
+                  tabIndex={-1}
                 >
                   {title}
 

@@ -32,34 +32,42 @@ fixture `Service page tests`
   });
 
 test('Keyboard navigation is OK', async (t) => {
-  const input = ReactSelector('WithStyles(ForwardRef(InputBase))');
-  const select =  ReactSelector('ResultOrderer WithStyles(ForwardRef(Select))');
+  const input = Selector('#SearchBar input');
+  let select = Selector('#result-sorter')
+  const listItems = Selector('#paginatedList-events li[role="link"]')
+
+  const alphaDescText = await listItems.nth(0).textContent;
 
   // Use keyboard to change result ordering
   await t
     .click(input)
     .pressKey('tab') // Tabs to search icon button
-    .pressKey('tab') // Result orderer
-    .expect(select.getReact(({props}) => props.value)).eql('match-desc')
-    .pressKey('down')
-    .expect(select.getReact(({props}) => props.value)).eql('alphabetical-desc')
-    .pressKey('down') 
-    .expect(select.getReact(({props}) => props.value)).eql('alphabetical-asc')
-    .pressKey('down') 
-    .expect(select.getReact(({props}) => props.value)).eql('accessibility-desc')
-    .pressKey('up')
-    .expect(select.getReact(({props}) => props.value)).eql('alphabetical-asc')
+    // .pressKey('tab') // Result orderer
+    // .pressKey('down');
+
+  const alphaAscText = await listItems.nth(0).textContent;
+  await t
+    .expect(alphaAscText).notEql(alphaDescText)
+    .pressKey('down');
+
+  const accessibilityDescText = await listItems.nth(0).textContent;
+  await t
+    .expect(accessibilityDescText).notEql(alphaAscText)
+    .pressKey('up');
+
+  const accessibilityAscText = await listItems.nth(0).textContent;
+  await t
+    .expect(accessibilityAscText).notEql(accessibilityDescText)
   ;
 
   // Use keyboard to navigate result list
-  const resultItem = ReactSelector('ResultItem'); 
   await t
     .pressKey('tab')
-    .expect(resultItem.nth(0).focused).ok()
+    .expect(listItems.nth(0).focused).ok()
     .pressKey('tab')
-    .expect(resultItem.nth(1).focused).ok()
+    .expect(listItems.nth(1).focused).ok()
     .pressKey('shift+tab')
-    .expect(resultItem.nth(0).focused).ok()
+    .expect(listItems.nth(0).focused).ok()
   ;
 
   const pagination = ReactSelector('PaginationComponent');

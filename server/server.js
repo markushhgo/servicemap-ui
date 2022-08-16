@@ -10,10 +10,19 @@ import thunk from 'redux-thunk';
 import config from '../config';
 import rootReducer from '../src/redux/rootReducer';
 import App from '../src/App';
-import { makeLanguageHandler, languageSubdomainRedirect, unitRedirect, parseInitialMapPositionFromHostname, getRequestFullUrl, sitemapActive } from './utils';
+import {
+  makeLanguageHandler,
+  languageSubdomainRedirect,
+  unitRedirect,
+  parseInitialMapPositionFromHostname,
+  getRequestFullUrl,
+  sitemapActive,
+} from './utils';
 import { setLocale } from '../src/redux/actions/user';
 import { Helmet } from 'react-helmet';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@mui/styles';
+import { CacheProvider } from '@emotion/react';
+import createEmotionServer from '@emotion/server/create-instance';
 import fetch from 'node-fetch';
 import { fetchEventData, fetchSelectedUnitData } from './dataFetcher';
 import IntlPolyfill from 'intl';
@@ -22,9 +31,10 @@ import legacyRedirector from './legacyRedirector';
 import { appDynamicsTrackingCode, cookieHubCode } from './externalScripts';
 import { getLastCommit, getVersion } from './version';
 import ieHandler from './ieMiddleware';
-import schedule from 'node-schedule'
+import schedule from 'node-schedule';
 import ogImage from '../src/assets/images/servicemap-meta-img.png';
 import { generateSitemap, getRobotsFile, getSitemap } from './sitemapMiddlewares';
+import createEmotionCache from './createEmotionCache';
 
 // Get sentry dsn from environtment variables
 const sentryDSN = process.env.SENTRY_DSN_SERVER;
@@ -51,12 +61,12 @@ const setupTests = () => {
 setupTests();
 
 // Handle sitemap creation
-  if (sitemapActive()) {
+if (sitemapActive()) {
   // Generate sitemap on start
   generateSitemap();
   // Update sitemap every monday
   schedule.scheduleJob({ hour: 8, minute: 0, dayOfWeek: 1 }, () => {
-    console.log('Updating sitemap...')
+    console.log('Updating sitemap...');
     generateSitemap();
   });
 }
@@ -79,12 +89,12 @@ if (Sentry) {
 app.use(express.static(path.resolve(__dirname, 'src')));
 
 // Add middlewares
-app.use(`/*`, (req, res, next) => {
+app.use(`/*`, (req, res, next) => {
   const store = createStore(rootReducer, applyMiddleware(thunk));
   req._context = store;
   next();
 });
-app.use('/*', ieHandler)
+app.use('/*', ieHandler);
 app.use(`/rdr`, legacyRedirector);
 app.use('/sitemap.xml', getSitemap);
 app.get('/robots.txt', getRobotsFile);
@@ -104,31 +114,35 @@ app.use(paths.event.regex, fetchEventData);
 app.use(paths.unit.regex, fetchSelectedUnitData);
 
 app.get('/*', (req, res, next) => {
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache);
   // CSS for all rendered React components
   const css = new Set();
   const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()));
 
   // Locale for page
-  const localeParam = req.params[0].slice(0, 2)
+  const localeParam = req.params[0].slice(0, 2);
   const locale = supportedLanguages.indexOf(localeParam > -1) ? localeParam : 'fi';
 
   let store = req._context;
   if (store && store.dispatch) {
-    store.dispatch(setLocale(locale))
+    store.dispatch(setLocale(locale));
   }
 
   // Create server style sheets
   const sheets = new ServerStyleSheets();
 
   const jsx = sheets.collect(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={{}}>
-        {/* Provider to help with isomorphic style loader */}
-        <StyleContext.Provider value={{ insertCss }}>
-          <App />
-        </StyleContext.Provider>
-      </StaticRouter>
-    </Provider>
+    <CacheProvider value={cache}>
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={{}}>
+          {/* Provider to help with isomorphic style loader */}
+          <StyleContext.Provider value={{ insertCss }}>
+            <App />
+          </StyleContext.Provider>
+        </StaticRouter>
+      </Provider>
+    </CacheProvider>
   );
   const reactDom = ReactDOMServer.renderToString(jsx);
   const cssString = sheets.toString();
@@ -137,11 +151,14 @@ app.get('/*', (req, res, next) => {
   const preloadedState = store.getState();
 
   const customValues = {
-    initialMapPosition: parseInitialMapPositionFromHostname(req, Sentry)
+    initialMapPosition: parseInitialMapPositionFromHostname(req, Sentry),
   };
 
+  const emotionChunks = extractCriticalToChunks(reactDom);
+  const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.end(htmlTemplate(req, reactDom, preloadedState, css, cssString, locale, helmet, customValues));
+  res.end(htmlTemplate(req, reactDom, preloadedState, css, cssString, emotionCss, locale, helmet, customValues));
 });
 
 // The error handler must be before any other error middleware
@@ -152,9 +169,9 @@ if (Sentry) {
 console.log(`Starting server on port ${process.env.PORT || 2048}`);
 app.listen(process.env.PORT || 2048);
 
-const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, helmet, customValues) => `
+const htmlTemplate = (req, reactDom, preloadedState, css, cssString, emotionCss, locale, helmet, customValues) => `
 <!DOCTYPE html>
-<html lang="${locale || 'fi'}">
+<html lang="${locale || 'fi'}">
   <head>
     <meta charset="utf-8">
     ${helmet.title.toString()}
@@ -162,6 +179,7 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, hel
     <meta property="og:url" data-react-helmet="true" content="${getRequestFullUrl(req)}" />
     <meta property="og:image" data-react-helmet="true" content="${ogImage}" />
     <meta name="twitter:card" data-react-helmet="true" content="summary" />
+    ${emotionCss}
     <!-- jss-insertion-point -->
     <style id="jss-server-side">${cssString}</style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
@@ -181,8 +199,8 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, hel
     ${appDynamicsTrackingCode(process.env.APP_DYNAMICS_APP_KEY)}
     ${cookieHubCode(req)}
     ${
-      process.env.READ_SPEAKER_URL
-      && process.env.READ_SPEAKER_URL !== 'false' ? `
+      process.env.READ_SPEAKER_URL && process.env.READ_SPEAKER_URL !== 'false'
+        ? `
         <script type="text/javascript">
           window.rsConf = {
             params: '${process.env.READ_SPEAKER_URL}',
@@ -190,7 +208,9 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, hel
           };
         </script>
         <script src="${process.env.READ_SPEAKER_URL}" type="text/javascript"></script>
-      ` : ''}
+      `
+        : ''
+    }
   </head>
 
   <body>

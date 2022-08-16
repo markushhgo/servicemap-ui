@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import {
   Typography, Divider, Button,
-} from '@material-ui/core';
-import { ArrowUpward } from '@material-ui/icons';
+} from '@mui/material';
+import { ArrowUpward } from '@mui/icons-material';
 import BoldedText from '../../BoldedText';
 import { keyboardHandler } from '../../../utils';
 import useMobileStatus from '../../../utils/isMobile';
