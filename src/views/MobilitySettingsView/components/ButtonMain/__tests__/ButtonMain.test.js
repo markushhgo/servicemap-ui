@@ -40,14 +40,14 @@ describe('<ButtonMain />', () => {
     const { container } = renderWithProviders(<ButtonMain {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual('Pyöräily');
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.menu.title.bicycle']);
   });
 
   it('does contain aria-label attribute', () => {
     const { container } = renderWithProviders(<ButtonMain {...mockProps} />);
 
     const button = container.querySelectorAll('button');
-    expect(button[0].getAttribute('aria-label')).toEqual('Pyöräily');
+    expect(button[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.menu.title.bicycle']);
   });
 
   it('simulates click event', () => {
@@ -55,9 +55,7 @@ describe('<ButtonMain />', () => {
     const { getByRole } = renderWithProviders(
       <ButtonMain {...mockProps} onClickFunc={mockCallBack} button />,
     );
-
     fireEvent.click(getByRole('button'));
-
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
 });

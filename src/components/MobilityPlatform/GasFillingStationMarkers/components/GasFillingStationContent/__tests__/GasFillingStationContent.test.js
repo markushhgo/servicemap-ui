@@ -46,9 +46,9 @@ describe('<GasFillingStationContent />', () => {
 
     const p = container.querySelectorAll('p');
     const h6 = container.querySelector('h6');
-    expect(h6.textContent).toEqual(mockProps.station.name);
-    expect(p[0].textContent).toEqual(`Osoite: ${mockProps.station.address}`);
-    expect(p[1].textContent).toEqual(`Kaasuaseman tyyppi: ${mockProps.station.extra.lng_cng}`);
-    expect(p[2].textContent).toEqual(`Operaattori: ${mockProps.station.extra.operator}`);
+    expect(h6.textContent).toContain(mockProps.station.name);
+    expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.address']}: ${mockProps.station.address}`);
+    expect(p[1].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.gfsType']}: ${mockProps.station.extra.lng_cng}`);
+    expect(p[2].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.operator']}: ${mockProps.station.extra.operator}`);
   });
 });

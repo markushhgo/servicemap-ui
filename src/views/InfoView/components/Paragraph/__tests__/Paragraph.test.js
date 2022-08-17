@@ -39,13 +39,13 @@ describe('<Paragraph />', () => {
     const { container } = renderWithProviders(<Paragraph {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0]).toBeInTheDocument();
+    expect(p[0].textContent).toContain(finnishTranslations['info.view.serviceInfo']);
   });
 
   it('does contain aria-label attribute', () => {
     const { container } = renderWithProviders(<Paragraph {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toBeTruthy();
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['info.view.serviceInfo']);
   });
 });
