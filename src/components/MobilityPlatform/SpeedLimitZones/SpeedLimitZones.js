@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 
 const SpeedLimitZones = ({ classes, intl }) => {
