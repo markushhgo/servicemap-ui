@@ -275,8 +275,11 @@ const FeedbackView = ({
         <div className={classes.contentArea}>
           {/* Email field */}
           <FormControl>
-            <Typography className={classes.title}><FormattedMessage id="feedback.email.info" /></Typography>
-            <Typography id="emailTitle" className={classes.subtitle}><FormattedMessage id="feedback.email" /></Typography>
+            <Typography id="emailTitle" className={classes.title}>
+              <span style={visuallyHidden}><FormattedMessage id="feedback.email" /></span>
+              <FormattedMessage id="feedback.email.info" />
+            </Typography>
+            <Typography aria-hidden className={classes.subtitle}><FormattedMessage id="feedback.email" /></Typography>
             <InputBase
               autoComplete="email"
               type="email"
@@ -310,8 +313,11 @@ const FeedbackView = ({
 
           {/* Feedback field */}
           <FormControl>
-            <Typography className={classes.title}><FormattedMessage id="feedback.feedback.info" /></Typography>
-            <Typography id="feedbackTitle" className={classes.subtitle}><FormattedMessage id="feedback.feedback" /></Typography>
+            <Typography id="feedbackTitle" className={classes.title}>
+              <span style={visuallyHidden}><FormattedMessage id="feedback.feedback" /></span>
+              <FormattedMessage id="feedback.feedback.info" />
+            </Typography>
+            <Typography aria-hidden className={classes.subtitle}><FormattedMessage id="feedback.feedback" /></Typography>
             <InputBase
               className={classes.inputField}
               multiline
