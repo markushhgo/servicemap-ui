@@ -39,13 +39,13 @@ describe('<FormLabel />', () => {
     const { container } = renderWithProviders(<FormLabel {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual('Polkupyöräpysäköinti');
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.menu.showBicycleStands']);
   });
 
   it('does contain aria-label attribute', () => {
     const { container } = renderWithProviders(<FormLabel {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toEqual('Polkupyöräpysäköinti');
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.menu.showBicycleStands']);
   });
 });
