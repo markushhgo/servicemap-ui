@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 const GasFillingStationContent = ({ classes, intl, station }) => {
   const singleValTypo = (messageId, value, props = {}) => (

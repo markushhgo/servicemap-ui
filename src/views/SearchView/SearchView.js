@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
   Container, Divider, Link, NoSsr, Paper, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import { FormattedMessage } from 'react-intl';
 import fetchSearchResults from '../../redux/actions/search';
 import fetchRedirectService from '../../redux/actions/redirectService';
@@ -313,12 +314,12 @@ const SearchView = (props) => {
       <NoSsr>
         <Typography
           role="link"
-          tabIndex="-1"
+          tabIndex={-1}
           onClick={() => skipToContent()}
           onKeyPress={() => {
             keyboardHandler(() => skipToContent(), ['space', 'enter']);
           }}
-          variant="srOnly"
+          style={visuallyHidden}
         >
           <FormattedMessage id="search.skipLink" />
         </Typography>
@@ -339,7 +340,7 @@ const SearchView = (props) => {
     const { isFetching, max } = searchFetchState;
     return (
       <Paper className={!isFetching ? classes.noPadding : ''} elevation={1} square aria-live="polite">
-        <Typography className={classes.srOnly} variant="srOnly" component="h3" tabIndex="-1">
+        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex={-1}>
           {!isFetching && (
             <FormattedMessage id="search.results.title" />
           )}
@@ -487,8 +488,8 @@ const SearchView = (props) => {
       {renderNotFound()}
       {isMobile ? (
         // Jump link back to beginning of current page
-        <Typography variant="srOnly" component="h3">
-          <Link href={`#${viewTitleID}`} tabIndex="-1">
+        <Typography style={visuallyHidden} component="h3">
+          <Link href={`#${viewTitleID}`} tabIndex={-1}>
             <FormattedMessage id="general.return.viewTitle" />
           </Link>
         </Typography>

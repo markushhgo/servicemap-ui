@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Typography } from '@material-ui/core';
+import { Link, Typography } from '@mui/material';
 
 const RentalCarsContent = ({ classes, intl, car }) => {
   const titleText = (messageId, props = {}) => (
