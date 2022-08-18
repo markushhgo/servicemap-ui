@@ -393,11 +393,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
-  const setSpeedLimitState = (limitVal) => {
-    if (!speedLimitSelections.includes(limitVal)) {
-      setSpeedLimitSelections(speedLimitSelections => [...speedLimitSelections, limitVal]);
+  const setSpeedLimitState = (limitItem) => {
+    if (!speedLimitSelections.includes(limitItem)) {
+      setSpeedLimitSelections(speedLimitSelections => [...speedLimitSelections, limitItem]);
       setShowSpeedLimitZones(true);
-    } else setSpeedLimitSelections(speedLimitSelections.filter(item => item !== limitVal));
+    } else setSpeedLimitSelections(speedLimitSelections.filter(item => item !== limitItem));
   };
 
   const parkingChargeZonesListToggle = () => {
@@ -623,8 +623,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
+  // Create array of speed limit values from data and remove duplicates
   const speedLimitList = useMemo(() => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
     [speedLimitZones]);
+
+  // Sort in ascending order, because entries can be in random order
+  // This list will be displayed for users
+  const speedLimitListAsc = speedLimitList.sort((a, b) => a - b);
 
   const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
 
@@ -636,7 +641,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
         </Typography>
       </div>
       <div className={classes.buttonList}>
-        {openSpeedLimitList && speedLimitList.length > 0 && speedLimitList.map(item => (
+        {openSpeedLimitList && speedLimitListAsc.length > 0 && speedLimitListAsc.map(item => (
           <div key={item} className={classes.checkBoxContainer}>
             <FormControlLabel
               control={(
