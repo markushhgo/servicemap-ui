@@ -115,6 +115,7 @@ const DefaultLayout = (props) => {
   const [showMarinas, setShowMarinas] = useState(false);
   const [showBoatParking, setShowBoatParking] = useState(false);
   const [showGuestHarbour, setShowGuestHarbour] = useState(false);
+  const [showPublicToilets, setShowPublicToilets] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -232,6 +233,8 @@ const DefaultLayout = (props) => {
                       setShowBoatParking,
                       showGuestHarbour,
                       setShowGuestHarbour,
+                      showPublicToilets,
+                      setShowPublicToilets,
                     }}
                   >
                     <ViewRouter />
@@ -264,6 +267,7 @@ const DefaultLayout = (props) => {
                     showMarinas,
                     showBoatParking,
                     showGuestHarbour,
+                    showPublicToilets,
                   }}
                 >
                   <MapView

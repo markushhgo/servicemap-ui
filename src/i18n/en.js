@@ -606,6 +606,7 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
+  'mobilityPlatform.menu.show.publicToilets': 'Public toilets',
 
   // Content
   'mobilityPlatform.content.address': 'Address',

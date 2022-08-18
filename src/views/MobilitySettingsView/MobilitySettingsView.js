@@ -77,6 +77,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBoatParking,
     showGuestHarbour,
     setShowGuestHarbour,
+    showPublicToilets,
+    setShowPublicToilets,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -301,6 +303,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGuestHarbour(current => !current);
   };
 
+  const publicToiletsToggle = () => {
+    setShowPublicToilets(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -417,6 +423,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
+    },
+    {
+      type: 'publicToilets',
+      msgId: 'mobilityPlatform.menu.show.publicToilets',
+      checkedValue: showPublicToilets,
+      onChangeValue: publicToiletsToggle,
     },
   ];
 

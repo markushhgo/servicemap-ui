@@ -610,6 +610,7 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Venesatamat',
   'mobilityPlatform.menu.show.boatParking': 'Veneparkit',
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
+  'mobilityPlatform.menu.show.publicToilets': 'Julkiset WC:t',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',

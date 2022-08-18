@@ -608,6 +608,7 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Båtplatser',
   'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
+  'mobilityPlatform.menu.show.publicToilets': 'Allmän toaletter', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
