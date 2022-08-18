@@ -47,7 +47,9 @@ describe('<BicycleStandContent />', () => {
   it('does show text correctly', () => {
     const { container } = renderWithProviders(<BicycleStandContent {...mockProps} />);
 
+    const h6 = container.querySelector('h6');
     const p = container.querySelectorAll('p');
+    expect(h6.textContent).toContain(mockProps.bicycleStand.name);
     expect(p[0].textContent).toContain(
       `${finnishTranslations['mobilityPlatform.content.bicycleStands.model']}: ${mockProps.bicycleStand.extra.model}`,
     );
