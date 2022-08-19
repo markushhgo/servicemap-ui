@@ -671,6 +671,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
   'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
   'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

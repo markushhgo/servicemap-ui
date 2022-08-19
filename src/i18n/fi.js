@@ -673,6 +673,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

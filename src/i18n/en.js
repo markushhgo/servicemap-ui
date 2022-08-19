@@ -669,6 +669,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

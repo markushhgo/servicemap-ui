@@ -631,8 +631,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   // This list will be displayed for users
   const speedLimitListAsc = speedLimitList.sort((a, b) => a - b);
 
-  const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
-
   const renderSpeedLimits = () => (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
@@ -653,10 +651,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
             )}
               label={(
-                <Typography variant="body2" aria-label={`${item} ${speedLimitSuffix}`}>
+                <Typography
+                  variant="body2"
+                  aria-label={`${item} ${intl.formatMessage({
+                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                  })}`}
+                >
                   {item}
                   {' '}
-                  {speedLimitSuffix}
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                  })}
                 </Typography>
             )}
             />

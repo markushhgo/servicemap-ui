@@ -1,53 +1,59 @@
 import React, { useContext } from 'react';
 import { PropTypes } from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 
 const SpeedLimitZones = ({ classes, intl }) => {
   const { showSpeedLimitZones, speedLimitSelections, speedLimitZones } = useContext(MobilityPlatformContext);
 
-  const locale = useSelector(state => state.user.locale);
-
   const { Polygon, Popup } = global.rL;
 
   const filteredSpeedLimitZones = speedLimitZones.filter(item => speedLimitSelections.includes(item.extra.speed_limit));
 
-  const speedLimitSuffix = locale === 'fi' ? 'km/t' : 'km/h';
+  const options = {
+    black: [0, 0, 0, 255],
+    blue: [7, 44, 115, 255],
+    brown: [117, 44, 23, 255],
+    burgundy: [128, 0, 32, 255],
+    green: [15, 115, 6, 255],
+    orange: [227, 97, 32, 255],
+    purple: [202, 15, 212, 255],
+    red: [251, 5, 21, 255],
+    teal: [0, 128, 128, 255],
+  };
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)', fillOpacity: 0.3, weight: 4 };
-  const redOptions = { color: 'rgba(251, 5, 21, 255)', fillOpacity: 0.3, weight: 4 };
-  const greenOptions = { color: 'rgba(15, 115, 6, 255)', fillOpacity: 0.3, weight: 4 };
-  const purpleOptions = { color: 'rgba(202, 15, 212, 255)', fillOpacity: 0.3, weight: 4 };
-  const blackOptions = { color: 'rgba(0, 0, 0, 255)', fillOpacity: 0.3, weight: 4 };
-  const burgundyOptions = { color: 'rgba(128, 0, 32, 255)', fillOpacity: 0.3, weight: 4 };
-  const tealOptions = { color: 'rgba(0, 128, 128, 255)', fillOpacity: 0.3, weight: 4 };
-  const orangeOptions = { color: 'rgba(227, 97, 32, 255)', fillOpacity: 0.3, weight: 4 };
-  const brownOptions = { color: 'rgba(117, 44, 23, 255)', fillOpacity: 0.3, weight: 4 };
-
-  const selectColor = (input) => {
+  const getOption = (input) => {
     switch (input) {
       case 20:
-        return brownOptions;
+        return options.brown;
       case 30:
-        return greenOptions;
+        return options.green;
       case 40:
-        return purpleOptions;
+        return options.purple;
       case 50:
-        return blueOptions;
+        return options.blue;
       case 60:
-        return redOptions;
+        return options.red;
       case 70:
-        return tealOptions;
+        return options.teal;
       case 80:
-        return burgundyOptions;
+        return options.burgundy;
       case 100:
-        return orangeOptions;
+        return options.orange;
       case 120:
-        return blackOptions;
+        return options.black;
       default:
-        return blueOptions;
+        return options.blue;
     }
+  };
+
+  const getPathOptions = (input) => {
+    const option = getOption(input);
+    return {
+      color: `rgba(${option})`,
+      fillOpacity: 0.3,
+      weight: 4,
+    };
   };
 
   return (
@@ -58,7 +64,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
             && filteredSpeedLimitZones.map(item => (
               <Polygon
                 key={item.id}
-                pathOptions={selectColor(item.extra.speed_limit)}
+                pathOptions={getPathOptions(item.extra.speed_limit)}
                 positions={item.geometry_coords}
               >
                 <div className={classes.popupWrapper}>
@@ -79,7 +85,9 @@ const SpeedLimitZones = ({ classes, intl }) => {
                         {' '}
                         {item.extra.speed_limit}
                         {' '}
-                        {speedLimitSuffix}
+                        {intl.formatMessage({
+                          id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                        })}
                       </Typography>
                     </div>
                   </Popup>
