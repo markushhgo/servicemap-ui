@@ -47,12 +47,20 @@ describe('<BicycleStandContent />', () => {
   it('does show text correctly', () => {
     const { container } = renderWithProviders(<BicycleStandContent {...mockProps} />);
 
+    const h6 = container.querySelector('h6');
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual(`Malli: ${mockProps.bicycleStand.extra.model}`);
-    expect(p[1].textContent).toEqual(`Pyöräpaikkojen määrä: ${mockProps.bicycleStand.extra.number_of_places}`);
-    expect(p[2].textContent).toEqual(`Pyörätelineiden määrä: ${mockProps.bicycleStand.extra.number_of_stands}`);
-    expect(p[3].textContent).toEqual('Pyöräparkki on katettu');
-    expect(p[4].textContent).toEqual('Pyörän voi runkolukita');
-    expect(p[5].textContent).toEqual('Turun kaupungin ylläpitämä.');
+    expect(h6.textContent).toContain(mockProps.bicycleStand.name);
+    expect(p[0].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.model']}: ${mockProps.bicycleStand.extra.model}`,
+    );
+    expect(p[1].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.numOfPlaces']}: ${mockProps.bicycleStand.extra.number_of_places}`,
+    );
+    expect(p[2].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.numOfStands']}: ${mockProps.bicycleStand.extra.number_of_stands}`,
+    );
+    expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.covered']);
+    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.hullLockable']);
+    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.maintainedByTku']);
   });
 });

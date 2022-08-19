@@ -28,13 +28,11 @@ const mockProps = {
 };
 
 // eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  return (
-    <IntlProvider {...intlMock}>
-      <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
-    </IntlProvider>
-  );
-};
+const Providers = ({ children }) => (
+  <IntlProvider {...intlMock}>
+    <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
+  </IntlProvider>
+);
 
 const renderWithProviders = component => render(component, { wrapper: Providers });
 
@@ -49,33 +47,23 @@ describe('<ExtendedInfo />', () => {
 
     const p = container.querySelectorAll('p');
     const list = container.querySelectorAll('li');
-    expect(p[0].textContent).toEqual('Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut.');
-    expect(p[4].textContent).toEqual(
-      '3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella.',
-    );
-    expect(p[5].textContent).toEqual(
-      'Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa.',
-    );
-    expect(list[0].textContent).toEqual('Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti');
-    expect(list[1].textContent).toEqual('Toinen vyöhyke : 1,50 €/tunti');
-    expect(list[2].textContent).toEqual('Kolmas vyöhyke: 0,60 €/tunti');
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.1']);
+    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.2']);
+    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.3']);
+    expect(list[0].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.1']);
+    expect(list[1].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.2']);
+    expect(list[2].textContent).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.3']);
   });
 
   it('does contain aria-label attributes', () => {
     const { container } = renderWithProviders(<ExtendedInfo {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toEqual(
-      'Turussa on käytössä kolme eri vyöhykettä, joilla on eri tuntimaksut.',
-    );
-    expect(p[1].getAttribute('aria-label')).toEqual('Ensimmäinen vyöhyke (ydinkeskusta-alue): 3,00 €/tunti');
-    expect(p[2].getAttribute('aria-label')).toEqual('Toinen vyöhyke : 1,50 €/tunti');
-    expect(p[3].getAttribute('aria-label')).toEqual('Kolmas vyöhyke: 0,60 €/tunti');
-    expect(p[4].getAttribute('aria-label')).toEqual(
-      '3. vyöhyke on voimassa 2. vyöhykkeen rajojen, sekä kaupungin rajojen välisellä alueella.',
-    );
-    expect(p[5].getAttribute('aria-label')).toEqual(
-      'Maksullisuus määräytyy kuitenkin aina voimassa olevien liikennemerkkien mukaisesti ja koskee Turun kaupungin katutilaa ja kaupungin omia alueita, kuten kauppahallia ja kaupungintaloa.',
-    );
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.1']);
+    expect(p[1].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.1']);
+    expect(p[2].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.2']);
+    expect(p[3].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.zone.3']);
+    expect(p[4].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.2']);
+    expect(p[5].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.parkingChargeZones.paragraph.3']);
   });
 });

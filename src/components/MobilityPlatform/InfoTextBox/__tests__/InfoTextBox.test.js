@@ -39,18 +39,13 @@ describe('<InfoTextBox />', () => {
     const { container } = renderWithProviders(<InfoTextBox {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual(
-      'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
-    );
-    expect(p[1]).toBeFalsy();
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.info.chargingStations']);
   });
 
   it('does contain aria-label attribute', () => {
     const { container } = renderWithProviders(<InfoTextBox {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toEqual(
-      'Turun alueen julkiset autojen sähkölatauspisteet. Latauspistetiedot perustuvat 05/2022 tehtyyn kartoitukseen.',
-    );
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.chargingStations']);
   });
 });

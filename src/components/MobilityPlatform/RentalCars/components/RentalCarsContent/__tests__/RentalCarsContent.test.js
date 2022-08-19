@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
@@ -50,9 +51,13 @@ describe('<RentalCarsContent />', () => {
     const p = container.querySelectorAll('p');
     expect(p[0]).toBeInTheDocument();
     expect(p[1].textContent).toEqual(mockProps.car.link);
-    expect(p[2].textContent).toEqual(`Auton tiedot: ${mockProps.car.vehicleModelData.manufacturer} ${mockProps.car.vehicleModelData.name}`);
-    expect(p[3].textContent).toEqual('Vapaa auto');
-    expect(p[4].textContent).toEqual(`Sijainti: ${mockProps.car.homeLocationData.fullAddress}`);
+    expect(p[2].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.rentalCars.carInfo']}: ${mockProps.car.vehicleModelData.manufacturer} ${mockProps.car.vehicleModelData.name}`,
+    );
+    expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.rentalCars.available']);
+    expect(p[4].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.rentalCars.address']}: ${mockProps.car.homeLocationData.fullAddress}`,
+    );
   });
 
   it('does show link correctly', () => {
