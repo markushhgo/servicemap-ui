@@ -1,5 +1,5 @@
 import React, {
-  useState, useContext, useEffect, useRef,
+  useState, useContext, useEffect, useRef, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
@@ -37,6 +37,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
+  const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
 
   const {
@@ -77,6 +78,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBoatParking,
     showGuestHarbour,
     setShowGuestHarbour,
+    showSpeedLimitZones,
+    setShowSpeedLimitZones,
+    speedLimitSelections,
+    setSpeedLimitSelections,
+    speedLimitZones,
+    setSpeedLimitZones,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -123,6 +130,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [setBicycleRouteList]);
 
   useEffect(() => {
+    fetchMobilityMapPolygonData('SLZ', 1000, setSpeedLimitZones);
+  }, [setSpeedLimitZones]);
+
+  useEffect(() => {
     fetchMobilityMapPolygonData('PAZ', 10, setParkingChargeZones);
   }, [setParkingChargeZones]);
 
@@ -155,6 +166,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [showCultureRoutes]);
 
   useEffect(() => {
+    checkVisibilityValues(showSpeedLimitZones, setOpenSpeedLimitList);
+  }, [showSpeedLimitZones]);
+
+  useEffect(() => {
     if (showEcoCounter) {
       setOpenWalkSettings(true);
       setOpenBicycleSettings(true);
@@ -166,7 +181,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showGasFillingStations, setOpenCarSettings);
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations]);
+    checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones]);
 
   useEffect(() => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
@@ -369,6 +385,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const speedLimitZonesToggle = () => {
+    setOpenSpeedLimitList(current => !current);
+    setShowSpeedLimitZones(current => !current);
+    if (speedLimitSelections && speedLimitSelections.length > 0) {
+      setSpeedLimitSelections([]);
+    }
+  };
+
+  const setSpeedLimitState = (limitItem) => {
+    if (!speedLimitSelections.includes(limitItem)) {
+      setSpeedLimitSelections(speedLimitSelections => [...speedLimitSelections, limitItem]);
+      setShowSpeedLimitZones(true);
+    } else setSpeedLimitSelections(speedLimitSelections.filter(item => item !== limitItem));
+  };
+
   const parkingChargeZonesListToggle = () => {
     setOpenParkingChargeZoneList(current => !current);
     if (showParkingChargeZones) {
@@ -484,6 +515,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: openParkingChargeZoneList,
       onChangeValue: parkingChargeZonesListToggle,
     },
+    {
+      type: 'speedLimitZones',
+      msgId: 'mobilityPlatform.menu.speedLimitZones.show',
+      checkedValue: openSpeedLimitList,
+      onChangeValue: speedLimitZonesToggle,
+    },
   ];
 
   const boatingControlTypes = [
@@ -586,6 +623,54 @@ const MobilitySettingsView = ({ classes, intl }) => {
     return null;
   };
 
+  // Create array of speed limit values from data and remove duplicates
+  const speedLimitList = useMemo(() => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
+    [speedLimitZones]);
+
+  // Sort in ascending order, because entries can be in random order
+  // This list will be displayed for users
+  const speedLimitListAsc = speedLimitList.sort((a, b) => a - b);
+
+  const renderSpeedLimits = () => (
+    <>
+      <div className={`${classes.paragraph} ${classes.border}`}>
+        <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
+        </Typography>
+      </div>
+      <div className={classes.buttonList}>
+        {openSpeedLimitList && speedLimitListAsc.length > 0 && speedLimitListAsc.map(item => (
+          <div key={item} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={speedLimitSelections.includes(item)}
+                  aria-checked={speedLimitSelections.includes(item)}
+                  className={classes.margin}
+                  onChange={() => setSpeedLimitState(item)}
+                />
+            )}
+              label={(
+                <Typography
+                  variant="body2"
+                  aria-label={`${item} ${intl.formatMessage({
+                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                  })}`}
+                >
+                  {item}
+                  {' '}
+                  {intl.formatMessage({
+                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                  })}
+                </Typography>
+            )}
+            />
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
   const renderParkingChargeZoneList = () => (
     <>
       {parkingChargeZones
@@ -670,6 +755,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
+              {openSpeedLimitList ? renderSpeedLimits() : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={boatingSettingsToggle}

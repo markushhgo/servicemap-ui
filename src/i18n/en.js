@@ -606,6 +606,8 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -667,6 +669,9 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
   'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
+  'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

@@ -115,6 +115,9 @@ const DefaultLayout = (props) => {
   const [showMarinas, setShowMarinas] = useState(false);
   const [showBoatParking, setShowBoatParking] = useState(false);
   const [showGuestHarbour, setShowGuestHarbour] = useState(false);
+  const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
+  const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
+  const [speedLimitZones, setSpeedLimitZones] = useState([]);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -232,6 +235,12 @@ const DefaultLayout = (props) => {
                       setShowBoatParking,
                       showGuestHarbour,
                       setShowGuestHarbour,
+                      showSpeedLimitZones,
+                      setShowSpeedLimitZones,
+                      speedLimitSelections,
+                      setSpeedLimitSelections,
+                      speedLimitZones,
+                      setSpeedLimitZones,
                     }}
                   >
                     <ViewRouter />
@@ -264,6 +273,9 @@ const DefaultLayout = (props) => {
                     showMarinas,
                     showBoatParking,
                     showGuestHarbour,
+                    showSpeedLimitZones,
+                    speedLimitSelections,
+                    speedLimitZones,
                   }}
                 >
                   <MapView
