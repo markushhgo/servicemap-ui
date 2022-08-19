@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useMap } from 'react-leaflet';
-import gasFillingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
+import publicToiletIcon from 'servicemap-ui-turku/assets/icons/icons-icon_toilet.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
@@ -13,8 +13,8 @@ const PublicToilets = () => {
   const { icon } = global.L;
 
   // TODO change icon
-  const gasStationIcon = icon({
-    iconUrl: gasFillingIcon,
+  const customIcon = icon({
+    iconUrl: publicToiletIcon,
     iconSize: [45, 45],
   });
 
@@ -44,7 +44,7 @@ const PublicToilets = () => {
             && publicToiletsData.map(item => (
               <Marker
                 key={item.id}
-                icon={gasStationIcon}
+                icon={customIcon}
                 position={[item.geometry_coords.lat, item.geometry_coords.lon]}
               />
             ))}
