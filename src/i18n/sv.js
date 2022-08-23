@@ -587,6 +587,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.title.boating': 'Båtliv',
+  'mobilityPlatform.menu.title.scooter': 'Skotrar', // TODO verify
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
@@ -610,6 +611,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
+  'mobilityPlatform.menu.show.noParking': 'No-parking zones', // TODO translate
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

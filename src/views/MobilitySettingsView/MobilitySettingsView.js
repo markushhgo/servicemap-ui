@@ -10,6 +10,7 @@ import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
+import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import {
   fetchCultureRouteNames,
@@ -32,6 +33,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
+  const [openScooterSettings, setOpenScooterSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -84,6 +86,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setSpeedLimitSelections,
     speedLimitZones,
     setSpeedLimitZones,
+    showNoParking,
+    setShowNoParking,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -268,6 +272,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenBoatingSettings(current => !current);
   };
 
+  const scooterSettingsToggle = () => {
+    setOpenScooterSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {boolean}
@@ -315,6 +323,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const guestHarbourToggle = () => {
     setShowGuestHarbour(current => !current);
+  };
+
+  const noParkingToggle = () => {
+    setShowNoParking(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -544,6 +556,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  const scooterControlTypes = [
+    {
+      type: 'noParking',
+      msgId: 'mobilityPlatform.menu.show.noParking',
+      checkedValue: showNoParking,
+      onChangeValue: noParkingToggle,
+    },
+  ];
+
   /**
      * @param {Array} inputData
      * @returns {JSX Element}
@@ -756,6 +777,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
+              <div className={classes.buttonContainer}>
+                <ButtonMain
+                  onClickFunc={scooterSettingsToggle}
+                  settingState={openScooterSettings}
+                  iconName={iconScooter}
+                  translationId="mobilityPlatform.menu.title.scooter"
+                />
+              </div>
+              {renderSettings(openScooterSettings, scooterControlTypes)}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={boatingSettingsToggle}

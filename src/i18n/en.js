@@ -585,6 +585,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.title.boating': 'Boating',
+  'mobilityPlatform.menu.title.scooter': 'Scooters', // TODO verify
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -608,6 +609,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
+  'mobilityPlatform.menu.show.noParking': 'No-parking zones', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Address',

@@ -14,6 +14,7 @@ import Marinas from '../../components/MobilityPlatform/Boating/Marinas';
 import BoatParking from '../../components/MobilityPlatform/Boating/BoatParking';
 import GuestHarbour from '../../components/MobilityPlatform/Boating/GuestHarbour';
 import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
+import NoParking from '../../components/MobilityPlatform/Scooters/components/NoParking';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -32,6 +33,7 @@ const MobilityPlatformMapView = () => (
     <BoatParking />
     <GuestHarbour />
     <SpeedLimitZones />
+    <NoParking />
   </>
 );
 

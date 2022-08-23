@@ -589,6 +589,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.title.boating': 'Veneily',
+  'mobilityPlatform.menu.title.scooter': 'Sähköpotkulaudat',
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
@@ -612,6 +613,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
+  'mobilityPlatform.menu.show.noParking': 'Pysäköintikieltoalueet',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
