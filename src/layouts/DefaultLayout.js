@@ -115,6 +115,9 @@ const DefaultLayout = (props) => {
   const [showMarinas, setShowMarinas] = useState(false);
   const [showBoatParking, setShowBoatParking] = useState(false);
   const [showGuestHarbour, setShowGuestHarbour] = useState(false);
+  const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
+  const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
+  const [speedLimitZones, setSpeedLimitZones] = useState([]);
   const [showPublicToilets, setShowPublicToilets] = useState(false);
 
   const {
@@ -233,6 +236,12 @@ const DefaultLayout = (props) => {
                       setShowBoatParking,
                       showGuestHarbour,
                       setShowGuestHarbour,
+                      showSpeedLimitZones,
+                      setShowSpeedLimitZones,
+                      speedLimitSelections,
+                      setSpeedLimitSelections,
+                      speedLimitZones,
+                      setSpeedLimitZones,
                       showPublicToilets,
                       setShowPublicToilets,
                     }}
@@ -267,6 +276,9 @@ const DefaultLayout = (props) => {
                     showMarinas,
                     showBoatParking,
                     showGuestHarbour,
+                    showSpeedLimitZones,
+                    speedLimitSelections,
+                    speedLimitZones,
                     showPublicToilets,
                   }}
                 >

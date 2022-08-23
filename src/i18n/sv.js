@@ -608,6 +608,8 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Båtplatser',
   'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
+  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
   'mobilityPlatform.menu.show.publicToilets': 'Allmän toaletter', // TODO verify
 
   // Content
@@ -670,6 +672,9 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

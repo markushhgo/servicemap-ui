@@ -610,6 +610,8 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Venesatamat',
   'mobilityPlatform.menu.show.boatParking': 'Veneparkit',
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
+  'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
   'mobilityPlatform.menu.show.publicToilets': 'Julkiset WC:t',
 
   // Content
@@ -672,6 +674,9 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana',
   'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
+  'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
+  'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
