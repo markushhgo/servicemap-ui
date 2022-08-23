@@ -119,6 +119,7 @@ const DefaultLayout = (props) => {
   const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
   const [showNoParking, setShowNoParking] = useState(false);
+  const [showParkingAreas, setShowParkingAreas] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -244,6 +245,8 @@ const DefaultLayout = (props) => {
                       setSpeedLimitZones,
                       showNoParking,
                       setShowNoParking,
+                      showParkingAreas,
+                      setShowParkingAreas,
                     }}
                   >
                     <ViewRouter />
@@ -280,6 +283,7 @@ const DefaultLayout = (props) => {
                     speedLimitSelections,
                     speedLimitZones,
                     showNoParking,
+                    showParkingAreas,
                   }}
                 >
                   <MapView

@@ -607,9 +607,10 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
-  'mobilityPlatform.menu.show.noParking': 'No-parking zones', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
+  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
+  'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO verify
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Address',

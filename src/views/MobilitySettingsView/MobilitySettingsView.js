@@ -88,6 +88,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setSpeedLimitZones,
     showNoParking,
     setShowNoParking,
+    showParkingAreas,
+    setShowParkingAreas,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -329,6 +331,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowNoParking(current => !current);
   };
 
+  const parkingAreasToggle = () => {
+    setShowParkingAreas(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -559,9 +565,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const scooterControlTypes = [
     {
       type: 'noParking',
-      msgId: 'mobilityPlatform.menu.show.noParking',
+      msgId: 'mobilityPlatform.menu.show.scooterNoParking',
       checkedValue: showNoParking,
       onChangeValue: noParkingToggle,
+    },
+    {
+      type: 'parkingAreas',
+      msgId: 'mobilityPlatform.menu.show.scooterParkingAreas',
+      checkedValue: showParkingAreas,
+      onChangeValue: parkingAreasToggle,
     },
   ];
 

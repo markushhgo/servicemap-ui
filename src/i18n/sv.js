@@ -609,9 +609,10 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Båtplatser',
   'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
-  'mobilityPlatform.menu.show.noParking': 'No-parking zones', // TODO translate
+  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
+  'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO translate
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO translate
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
