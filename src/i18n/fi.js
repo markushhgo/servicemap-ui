@@ -677,6 +677,13 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
+  'mobilityPlatform.content.publicToilets.title': 'Yleinen vessa',
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Aukioloajat:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Erityisaukioloajat:',
+  'mobilityPlatform.content.publicToilets.openNormalDate': 'Välillä: 1.10 - 30.4',
+  'mobilityPlatform.content.publicToilets.openSummerDate': 'Välillä: 1.5 - 30.9',
+  'mobilityPlatform.content.publicToilets.openNormal': 'Joka päivä kello 7 - 23',
+  'mobilityPlatform.content.publicToilets.openSummer': 'Joka päivä kello 7 - 02',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

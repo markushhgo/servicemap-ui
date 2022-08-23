@@ -672,9 +672,16 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
-  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
-  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
+  'mobilityPlatform.content.publicToilets.title': 'Yleinen vessa', // TODO translate
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Aukioloajat:', // TODO translate
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Erityisaukioloajat:', // TODO translate
+  'mobilityPlatform.content.publicToilets.openNormalDate': 'Välillä: 1.10 - 30.4', // TODO translate
+  'mobilityPlatform.content.publicToilets.openSummerDate': 'Välillä: 1.5 - 30.9', // TODO translate
+  'mobilityPlatform.content.publicToilets.openNormal': 'Joka päivä kello 7 - 23', // TODO translate
+  'mobilityPlatform.content.publicToilets.openSummer': 'Joka päivä kello 7 - 02', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
