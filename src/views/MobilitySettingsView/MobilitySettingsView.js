@@ -834,6 +834,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ) : null}
+      {showNoParking ? <InfoTextBox infoText="mobilityPlatform.info.scooters.noParking" /> : null}
+      {showParkingAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.parkingAreas" /> : null}
     </div>
   );
 };

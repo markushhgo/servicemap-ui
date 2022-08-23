@@ -702,6 +702,8 @@ const translations = {
   'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
+  'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.', // TODO translate
+  'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
