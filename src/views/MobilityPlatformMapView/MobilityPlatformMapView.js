@@ -16,6 +16,7 @@ import GuestHarbour from '../../components/MobilityPlatform/Boating/GuestHarbour
 import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
 import NoParking from '../../components/MobilityPlatform/Scooters/components/NoParking';
 import ParkingAreas from '../../components/MobilityPlatform/Scooters/components/ParkingAreas';
+import SpeedLimitAreas from '../../components/MobilityPlatform/Scooters/components/SpeedLimitAreas';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -36,6 +37,7 @@ const MobilityPlatformMapView = () => (
     <SpeedLimitZones />
     <NoParking />
     <ParkingAreas />
+    <SpeedLimitAreas />
   </>
 );
 

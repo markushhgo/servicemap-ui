@@ -86,10 +86,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setSpeedLimitSelections,
     speedLimitZones,
     setSpeedLimitZones,
-    showNoParking,
-    setShowNoParking,
-    showParkingAreas,
-    setShowParkingAreas,
+    showScooterNoParking,
+    setShowScooterNoParking,
+    showScooterParkingAreas,
+    setShowScooterParkingAreas,
+    showScooterSpeedLimitAreas,
+    setShowScooterSpeedLimitAreas,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -200,6 +202,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showBoatParking, setOpenBoatingSettings);
     checkVisibilityValues(showGuestHarbour, setOpenBoatingSettings);
   }, [showMarinas, showBoatParking, showGuestHarbour]);
+
+  useEffect(() => {
+    checkVisibilityValues(showScooterNoParking, setOpenScooterSettings);
+    checkVisibilityValues(showScooterParkingAreas, setOpenScooterSettings);
+    checkVisibilityValues(showScooterSpeedLimitAreas, setOpenScooterSettings);
+  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas]);
 
   const nameKeys = {
     fi: 'name',
@@ -328,11 +336,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   const noParkingToggle = () => {
-    setShowNoParking(current => !current);
+    setShowScooterNoParking(current => !current);
   };
 
   const parkingAreasToggle = () => {
-    setShowParkingAreas(current => !current);
+    setShowScooterParkingAreas(current => !current);
+  };
+
+  const scooterSpeedLimitAreasToggle = () => {
+    setShowScooterSpeedLimitAreas(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -566,14 +578,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
     {
       type: 'noParking',
       msgId: 'mobilityPlatform.menu.show.scooterNoParking',
-      checkedValue: showNoParking,
+      checkedValue: showScooterNoParking,
       onChangeValue: noParkingToggle,
     },
     {
       type: 'parkingAreas',
       msgId: 'mobilityPlatform.menu.show.scooterParkingAreas',
-      checkedValue: showParkingAreas,
+      checkedValue: showScooterParkingAreas,
       onChangeValue: parkingAreasToggle,
+    },
+    {
+      type: 'speedLimitAreas',
+      msgId: 'mobilityPlatform.menu.show.scooterSpeedLimitAreas',
+      checkedValue: showScooterSpeedLimitAreas,
+      onChangeValue: scooterSpeedLimitAreasToggle,
     },
   ];
 
@@ -834,8 +852,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ) : null}
-      {showNoParking ? <InfoTextBox infoText="mobilityPlatform.info.scooters.noParking" /> : null}
-      {showParkingAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.parkingAreas" /> : null}
+      {showScooterNoParking ? <InfoTextBox infoText="mobilityPlatform.info.scooters.noParking" /> : null}
+      {showScooterParkingAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.parkingAreas" /> : null}
+      {showScooterSpeedLimitAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.speedLimitAreas" /> : null}
     </div>
   );
 };

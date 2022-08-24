@@ -5,13 +5,13 @@ import MobilityPlatformContext from '../../../../../context/MobilityPlatformCont
 import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 
 /**
- * Displays no parking zones of scooter on the map in polygon format.
+ * Displays no parking zones of scooters on the map in polygon format.
  */
 
 const NoParking = () => {
   const [noParkingData, setNoParkingData] = useState([]);
 
-  const { openMobilityPlatform, showNoParking } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, showScooterNoParking } = useContext(MobilityPlatformContext);
 
   const mapType = useSelector(state => state.settings.mapType);
 
@@ -31,18 +31,18 @@ const NoParking = () => {
   const map = useMap();
 
   useEffect(() => {
-    if (showNoParking && noParkingData && noParkingData.length > 0) {
+    if (showScooterNoParking && noParkingData && noParkingData.length > 0) {
       const bounds = [];
       noParkingData.forEach((item) => {
         bounds.push(item.geometry_coords);
       });
       map.fitBounds(bounds);
     }
-  }, [showNoParking, noParkingData, map]);
+  }, [showScooterNoParking, noParkingData, map]);
 
   return (
     <>
-      {showNoParking
+      {showScooterNoParking
         && noParkingData
         && noParkingData.length > 0
         && noParkingData.map(item => <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />)}

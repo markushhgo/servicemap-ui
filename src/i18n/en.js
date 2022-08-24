@@ -611,6 +611,7 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
   'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO verify
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO verify
+  'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit areas', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -702,6 +703,7 @@ const translations = {
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.', // TODO translate
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.', // TODO translate
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
