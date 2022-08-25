@@ -152,6 +152,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   useEffect(() => {
+    checkVisibilityValues(showPublicToilets, setOpenWalkSettings);
+  }, [showPublicToilets]);
+
+  useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
     checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
     checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
@@ -781,6 +785,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
+      {showPublicToilets ? <InfoTextBox infoText="mobilityPlatform.info.publicToilets" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showCityBikes ? <CityBikeInfo bikeInfo={bikeInfo} /> : null}

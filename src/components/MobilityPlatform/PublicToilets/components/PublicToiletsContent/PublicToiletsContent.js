@@ -9,7 +9,6 @@ const PublicToiletsContent = ({ classes, intl }) => {
         {intl.formatMessage({
           id: messageId,
         })}
-        :
       </Typography>
     </div>
   );
