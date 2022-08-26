@@ -48,6 +48,9 @@ const styles = {
   },
   headerDate: {
     marginLeft: 'auto',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   ecocounterDatePicker: {
     position: 'absolute',
@@ -99,6 +102,10 @@ const styles = {
   },
   ecocounterChart: {
     margin: 0,
+  },
+  iconContainer: {
+    marginRight: '0.3rem',
+    paddingTop: '0.6rem',
   },
 };
 
