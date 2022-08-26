@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ButtonBase, Typography } from '@mui/material';
+import DateRangeIcon from '@mui/icons-material/DateRange';
 import { ReactSVG } from 'react-svg';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
@@ -441,6 +442,9 @@ const EcoCounterContent = ({
           {renderStationName(stationName)}
         </Typography>
         <div className={classes.headerDate}>
+          <div className={classes.iconContainer}>
+            <DateRangeIcon />
+          </div>
           {!isDatePickerOpen ? (
             <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(true)}>
               <Typography component="h5" className={classes.headerSubtitle}>
