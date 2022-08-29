@@ -674,6 +674,11 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
   'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
+  'mobilityPlatform.content.marinas.price': 'Price', // TODO translate
+  'mobilityPlatform.content.marinas.typeTitle': 'Esimerkkikohde:', // TODO translate
+  'mobilityPlatform.content.marinas.type': 'Typ', // TODO verify
+  'mobilityPlatform.content.marinas.vacantSpaces': 'Number of vacant spaces', // TODO translate
+  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkoja', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

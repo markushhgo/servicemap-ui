@@ -676,6 +676,11 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
+  'mobilityPlatform.content.marinas.price': 'Hinta',
+  'mobilityPlatform.content.marinas.typeTitle': 'Esimerkkikohde:',
+  'mobilityPlatform.content.marinas.type': 'Tyyppi',
+  'mobilityPlatform.content.marinas.vacantSpaces': 'Vapaita paikkoja',
+  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkoja',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
