@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MarinasContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(MarinasContent)-container-1"
+  >
+    <div
+      class="injectIntl(MarinasContent)-headerContainer-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
+      >
+        Satama: Marina
+      </h6>
+    </div>
+    <div
+      class="injectIntl(MarinasContent)-textContainer-3"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
+      >
+        Vapaita paikkoja: 1
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
+      >
+        <strong>
+          Esimerkkikohde:
+        </strong>
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
+      >
+        Tyyppi
+        :
+         
+        Aisapaikka
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
+      >
+        Hinta
+        :
+         
+        124
+         
+        €
+      </p>
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-fixjtq-MuiTypography-root-MuiLink-root"
+        href="https://opaskartta.turku.fi/ePermit/fi/Reservation/"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-link-5 css-1ak20dk-MuiTypography-root"
+        >
+          Varauspalvelu
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+`;
