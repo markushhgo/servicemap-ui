@@ -5,6 +5,15 @@ import { Typography, Link } from '@mui/material';
 const MarinasContent = ({
   classes, intl, name, berths,
 }) => {
+  const renderText = (translationId, value) => (
+    <Typography variant="body2" className={classes.margin}>
+      {intl.formatMessage({ id: translationId })}
+      :
+      {' '}
+      {value}
+    </Typography>
+  );
+
   const renderTypePrice = (price, berthType) => {
     const alvTax = 1.24;
     const fullPrice = price * alvTax;
@@ -15,12 +24,7 @@ const MarinasContent = ({
             {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.typeTitle' })}
           </strong>
         </Typography>
-        <Typography variant="body2" className={classes.margin}>
-          {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.type' })}
-          :
-          {' '}
-          {berthType}
-        </Typography>
+        {renderText('mobilityPlatform.content.marinas.type', berthType)}
         <Typography variant="body2" className={classes.margin}>
           {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.price' })}
           :
@@ -40,7 +44,9 @@ const MarinasContent = ({
         count += 1;
       }
     });
-    return `${intl.formatMessage({ id: 'mobilityPlatform.content.marinas.vacantSpaces' })}: ${count}`;
+    return (
+      renderText('mobilityPlatform.content.marinas.vacantSpaces', count)
+    );
   };
 
   const renderWinterStorage = (berthsData) => {
@@ -51,12 +57,7 @@ const MarinasContent = ({
       }
     });
     return (
-      <Typography variant="body2" className={classes.margin}>
-        {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.winterStorage' })}
-        :
-        {' '}
-        {count}
-      </Typography>
+      renderText('mobilityPlatform.content.marinas.winterStorage', count)
     );
   };
 
@@ -78,11 +79,12 @@ const MarinasContent = ({
         </Typography>
       </div>
       <div className={classes.textContainer}>
-        <Typography variant="body2" className={classes.margin}>
-          {countVacant(berths)}
-        </Typography>
+        {countVacant(berths)}
         {name === 'Satama: Lauttaranta' ? renderWinterStorage(berths) : null}
         {renderTypePrice(berths[0].HintaAlv0, berths[0].Kohdetyyppi)}
+        <Typography variant="body2" className={classes.margin}>
+          {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.serviceInfo' })}
+        </Typography>
         {renderLink()}
       </div>
     </div>

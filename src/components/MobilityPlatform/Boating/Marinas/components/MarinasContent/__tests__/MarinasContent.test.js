@@ -49,8 +49,9 @@ describe('<MarinasContent />', () => {
     expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.marinas.vacantSpaces']}: 1`);
     expect(p[1].textContent).toContain(finnishTranslations['mobilityPlatform.content.marinas.typeTitle']);
     expect(p[2].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.marinas.type']}: ${mockProps.berths[0].Kohdetyyppi}`);
-    expect(p[3].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.marinas.price']}: 124`);
-    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.info.marinas.link']);
+    expect(p[3].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.marinas.price']}: 124 €`);
+    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.content.marinas.serviceInfo']);
+    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.info.marinas.link']);
   });
 
   it('does show link correctly', () => {

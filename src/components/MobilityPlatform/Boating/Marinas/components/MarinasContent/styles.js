@@ -11,10 +11,10 @@ export default theme => ({
     marginTop: theme.spacing(0.5),
   },
   margin: {
-    marginTop: theme.spacing(0.5),
+    marginTop: theme.spacing(0.6),
   },
   link: {
-    marginTop: theme.spacing(0.5),
+    marginTop: theme.spacing(0.6),
     color: theme.palette.link.main,
     textDecoration: 'underline',
   },

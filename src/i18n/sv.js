@@ -671,14 +671,15 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
-  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
-  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
-  'mobilityPlatform.content.marinas.price': 'Price', // TODO translate
-  'mobilityPlatform.content.marinas.typeTitle': 'Esimerkkikohde:', // TODO translate
+  'mobilityPlatform.content.marinas.price': 'Priset', // TODO verify
+  'mobilityPlatform.content.marinas.typeTitle': 'Till exempel:', // TODO verify
   'mobilityPlatform.content.marinas.type': 'Typ', // TODO verify
-  'mobilityPlatform.content.marinas.vacantSpaces': 'Number of vacant spaces', // TODO translate
-  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkoja', // TODO translate
+  'mobilityPlatform.content.marinas.vacantSpaces': 'Inga lediga platser kvar',
+  'mobilityPlatform.content.marinas.winterStorage': 'Vinterförvaringplatser', // TODO verify
+  'mobilityPlatform.content.marinas.serviceInfo': 'Båtplatsen är reserverad för en säsong och blir ledig i slutet av året.', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -701,7 +702,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic i realtid.',
   'mobilityPlatform.info.guestHarbour': 'Turku Gästhamn ligger precis intill centrum, på Västra Strandgatan 57. Mer information t.ex. om bokning av båtplats finns på',
   'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
-  'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
+  'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Båtsäsongen börjar den 1 maj och slutar den 31 oktober. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
 
