@@ -37,19 +37,19 @@ const MarinasContent = ({
     );
   };
 
-  const countVacant = (berthsData) => {
+  const countBerths = (berthsData) => {
     let count = 0;
     berthsData.forEach((item) => {
-      if (item.Varattavissa === 'Kylla - julkisesti') {
+      if (item.Varaustyyppi === 'Venepaikat' || item.Varaustyyppi === 'Soutuvenepaikka') {
         count += 1;
       }
     });
     return (
-      renderText('mobilityPlatform.content.marinas.vacantSpaces', count)
+      renderText('mobilityPlatform.content.marinas.berthsCount', count)
     );
   };
 
-  const renderWinterStorage = (berthsData) => {
+  const countWinterStorage = (berthsData) => {
     let count = 0;
     berthsData.forEach((item) => {
       if (item.Varaustyyppi === 'Soutuveneiden talvisäilytyspaikat' || item.Varaustyyppi === 'Talvisäilytyspaikat') {
@@ -61,11 +61,11 @@ const MarinasContent = ({
     );
   };
 
-  const renderLink = () => (
-    <Link target="_blank" href="https://opaskartta.turku.fi/ePermit/fi/Reservation/">
+  const renderLink = (linkUrl, translationId) => (
+    <Link target="_blank" href={linkUrl}>
       <Typography className={classes.link} variant="body2">
         {intl.formatMessage({
-          id: 'mobilityPlatform.info.marinas.link',
+          id: translationId,
         })}
       </Typography>
     </Link>
@@ -79,13 +79,17 @@ const MarinasContent = ({
         </Typography>
       </div>
       <div className={classes.textContainer}>
-        {countVacant(berths)}
-        {name === 'Satama: Lauttaranta' ? renderWinterStorage(berths) : null}
+        {countBerths(berths)}
+        {name === 'Satama: Lauttaranta' ? countWinterStorage(berths) : null}
         {renderTypePrice(berths[0].HintaAlv0, berths[0].Kohdetyyppi)}
-        <Typography variant="body2" className={classes.margin}>
+        {/* <Typography variant="body2" className={classes.margin}>
           {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.serviceInfo' })}
+        </Typography> */}
+        <Typography variant="body2" className={classes.margin}>
+          {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.reservationInfo' })}
         </Typography>
-        {renderLink()}
+        {renderLink('https://opaskartta.turku.fi/ePermit/fi/Reservation/', 'mobilityPlatform.info.marinas.link')}
+        {renderLink('https://www.turku.fi/venepaikat', 'mobilityPlatform.content.marinas.infoLink')}
       </div>
     </div>
   );

@@ -675,9 +675,11 @@ const translations = {
   'mobilityPlatform.content.marinas.price': 'Price',
   'mobilityPlatform.content.marinas.typeTitle': 'For example:', // TODO verify
   'mobilityPlatform.content.marinas.type': 'Type',
-  'mobilityPlatform.content.marinas.vacantSpaces': 'Number of vacant spaces',
-  'mobilityPlatform.content.marinas.winterStorage': 'Winter storage places', // TODO verify
-  'mobilityPlatform.content.marinas.serviceInfo': 'Marina berth is leased for a season and will expire at the end of year.', // TODO translate
+  'mobilityPlatform.content.marinas.berthsCount': 'Number of berths',
+  'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places', // TODO verify
+  'mobilityPlatform.content.marinas.serviceInfo': 'Marina berth is leased for a season and will expire at the end of year.', // TODO verify
+  'mobilityPlatform.content.marinas.reservationInfo': 'Information about open berths can be found on the reservation service -page.', // TODO verify
+  'mobilityPlatform.content.marinas.infoLink': 'Additional info',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -700,7 +702,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.apiInfo': 'Map data comes from the Donkey Republic interface in real time.',
   'mobilityPlatform.info.guestHarbour': 'Turku Guest harbour is directly next to the city centre, on Läntinen Rantakatu 57. More information about e.g. booking of boat place can be found on',
   'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
-  'mobilityPlatform.info.marinas': 'City of Turku´s marina berths are located in Uittamo, Lauttaranta and Aura River. A berth can be reserved and paid either on the Varauspalvelu reservation service (in Finnish only) or at the customer service of the City of Turku (Puolalankatu 5). Boating season begins 1st of May and ends on 31st of October. On the Varauspalvelu reservation service you can browse available berths by harbour and by boat size. There are also winter storage places for boats in Lauttaranta.',
+  'mobilityPlatform.info.marinas': 'City of Turku´s marina berths are located in Uittamo, Lauttaranta and Aura River. A berth can be reserved and paid either on the Varauspalvelu reservation service (in Finnish only) or at the customer service of the City of Turku (Puolalankatu 5). Boating season begins 1st of May and ends on 31st of October. Reservations open on January 31. On the Varauspalvelu reservation service you can browse available berths by harbour and by boat size. There are also winter storage places for boats in Lauttaranta. Boats can be stored for winter between September 1st and May 31st.',
   'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
 

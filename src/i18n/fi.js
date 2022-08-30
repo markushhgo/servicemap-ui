@@ -611,7 +611,7 @@ const translations = {
   'mobilityPlatform.menu.show.boatParking': 'Veneparkit',
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
-  'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -679,9 +679,11 @@ const translations = {
   'mobilityPlatform.content.marinas.price': 'Hinta',
   'mobilityPlatform.content.marinas.typeTitle': 'Esimerkkikohde:',
   'mobilityPlatform.content.marinas.type': 'Tyyppi',
-  'mobilityPlatform.content.marinas.vacantSpaces': 'Vapaita paikkoja',
-  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkoja',
+  'mobilityPlatform.content.marinas.berthsCount': 'Venepaikkojen määrä',
+  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
   'mobilityPlatform.content.marinas.serviceInfo': 'Paikat varataan kaudeksi ja ne vapautuvat vuodenvaihteessa.',
+  'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
+  'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -704,7 +706,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.apiInfo': 'Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.',
   'mobilityPlatform.info.guestHarbour': 'Turun vierasvenesatama sijaitsee aivan keskustan kupeessa, osoitteessa Läntinen Rantakatu 57. Lisätietoja liittyen esimerkiksi venepaikan varaamiseen löytyy osoitteesta',
   'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
-  'mobilityPlatform.info.marinas': 'Turun kaupungilla on venepaikkoja Lauttarannassa, Uittamolla ja Aurajoessa.  Venepaikkoja voi varata ja maksaa Varauspalvelussa, jossa vapaita paikkoja voi selata satamittain ja myös veneen mittojen mukaan. Veneilykausi on 1.5 - 31.10. Lauttarannassa on lisäksi talvisäilytyspaikkoja.',
+  'mobilityPlatform.info.marinas': 'Turun kaupungilla on venepaikkoja Lauttarannassa, Uittamolla ja Aurajoessa.  Venepaikkoja voi varata ja maksaa Varauspalvelussa, jossa vapaita paikkoja voi selata satamittain ja myös veneen mittojen mukaan. Veneilykausi on 1.5 - 31.10. Venepaikkoja voi varata 31.1 alkaen. Lauttarannassa on lisäksi talvisäilytyspaikkoja. Talvisäilytysaika on 1.9 - 31.5.',
   'mobilityPlatform.info.marinas.link': 'Varauspalvelu',
   'mobilityPlatform.info.boatParking': 'Veneparkit sijaitsevat Aurajoen kummallakin rannalla Auransillan vieressä. Veneen niihin voi jättää 3 tunniksi maksutta pysäköintikiekkoa käyttäen.',
 

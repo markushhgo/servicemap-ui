@@ -20,7 +20,7 @@ exports[`<MarinasContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
       >
-        Vapaita paikkoja
+        Venepaikkojen määrä
         :
          
         1
@@ -53,7 +53,7 @@ exports[`<MarinasContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
       >
-        Paikat varataan kaudeksi ja ne vapautuvat vuodenvaihteessa.
+        Tiedot vapaista venepaikoista löytyvät varauspalvelusta.
       </p>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-fixjtq-MuiTypography-root-MuiLink-root"
@@ -64,6 +64,17 @@ exports[`<MarinasContent /> should work 1`] = `
           class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-link-5 css-1ak20dk-MuiTypography-root"
         >
           Varauspalvelu
+        </p>
+      </a>
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-fixjtq-MuiTypography-root-MuiLink-root"
+        href="https://www.turku.fi/venepaikat"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-link-5 css-1ak20dk-MuiTypography-root"
+        >
+          Lisätietoja
         </p>
       </a>
     </div>
