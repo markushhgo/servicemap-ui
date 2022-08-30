@@ -705,7 +705,7 @@ const translations = {
   'mobilityPlatform.info.marinas': 'City of Turku´s marina berths are located in Uittamo, Lauttaranta and Aura River. A berth can be reserved and paid either on the Varauspalvelu reservation service (in Finnish only) or at the customer service of the City of Turku (Puolalankatu 5). On the Varauspalvelu reservation service you can browse available berths by harbour and by boat size. There are also winter storage places for boats in Lauttaranta.',
   'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
-  'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.', // TODO translate
+  'mobilityPlatform.info.publicToilets': 'In Turku there are 6 public toilets, which are open from 7 am to 11 pm. First of May until the last of September the toilets are open from 7 am to 2 am.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

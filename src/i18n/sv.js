@@ -707,7 +707,7 @@ const translations = {
   'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
-  'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.', // TODO translate
+  'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
