@@ -685,7 +685,7 @@ const translations = {
   'mobilityPlatform.content.marinas.type': 'Type',
   'mobilityPlatform.content.marinas.berthsCount': 'Number of berths',
   'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places',
-  'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.', // TODO verify
+  'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.',
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
 
   // Info text

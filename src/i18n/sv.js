@@ -683,11 +683,11 @@ const translations = {
   'mobilityPlatform.content.publicToilets.openNormal': 'Varje dag, 7 - 23',
   'mobilityPlatform.content.publicToilets.openSummer': 'Varje dag, 7 - 02',
   'mobilityPlatform.content.marinas.price': 'Priset',
-  'mobilityPlatform.content.marinas.typeTitle': 'Båttyp (exempel):', // TODO verify
+  'mobilityPlatform.content.marinas.typeTitle': 'Båttyp (exempel):',
   'mobilityPlatform.content.marinas.type': 'Typ',
   'mobilityPlatform.content.marinas.berthsCount': 'Antal båtplatser',
   'mobilityPlatform.content.marinas.winterStorage': 'Antal vinterförvaringplatser',
-  'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.', // TODO verify
+  'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.',
   'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
 
   // Info text
