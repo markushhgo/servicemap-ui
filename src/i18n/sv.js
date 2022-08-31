@@ -682,6 +682,13 @@ const translations = {
   'mobilityPlatform.content.publicToilets.openSummerDate': 'Mellan: 1.5 - 30.9',
   'mobilityPlatform.content.publicToilets.openNormal': 'Varje dag, 7 - 23',
   'mobilityPlatform.content.publicToilets.openSummer': 'Varje dag, 7 - 02',
+  'mobilityPlatform.content.marinas.price': 'Priset',
+  'mobilityPlatform.content.marinas.typeTitle': 'Båttyp (exempel):',
+  'mobilityPlatform.content.marinas.type': 'Typ',
+  'mobilityPlatform.content.marinas.berthsCount': 'Antal båtplatser',
+  'mobilityPlatform.content.marinas.winterStorage': 'Antal vinterförvaringplatser',
+  'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.',
+  'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -704,7 +711,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.apiInfo': 'Informationen om cyklarna kommer från Donkey Rebuplic i realtid.',
   'mobilityPlatform.info.guestHarbour': 'Turku Gästhamn ligger precis intill centrum, på Västra Strandgatan 57. Mer information t.ex. om bokning av båtplats finns på',
   'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
-  'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
+  'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Båtsäsongen börjar den 1 maj och slutar den 31 oktober. Båtplatser kan bokas från januari 31. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser. Båten kan laggas i vinterforvaring mellan september 1 och maj 31.',
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
   'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',

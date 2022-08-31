@@ -684,6 +684,13 @@ const translations = {
   'mobilityPlatform.content.publicToilets.openSummerDate': 'Välillä: 1.5 - 30.9',
   'mobilityPlatform.content.publicToilets.openNormal': 'Joka päivä kello 7 - 23',
   'mobilityPlatform.content.publicToilets.openSummer': 'Joka päivä kello 7 - 02',
+  'mobilityPlatform.content.marinas.price': 'Hinta',
+  'mobilityPlatform.content.marinas.typeTitle': 'Venetyyppi (esimerkki):',
+  'mobilityPlatform.content.marinas.type': 'Tyyppi',
+  'mobilityPlatform.content.marinas.berthsCount': 'Venepaikkojen määrä',
+  'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
+  'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
+  'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -706,7 +713,7 @@ const translations = {
   'mobilityPlatform.info.cityBikes.apiInfo': 'Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.',
   'mobilityPlatform.info.guestHarbour': 'Turun vierasvenesatama sijaitsee aivan keskustan kupeessa, osoitteessa Läntinen Rantakatu 57. Lisätietoja liittyen esimerkiksi venepaikan varaamiseen löytyy osoitteesta',
   'mobilityPlatform.info.guestHarbour.link': 'www.turunvierasvenesatama.fi',
-  'mobilityPlatform.info.marinas': 'Turun kaupungilla on venepaikkoja Lauttarannassa, Uittamolla ja Aurajoessa.  Venepaikkoja voi varata ja maksaa Varauspalvelussa, jossa vapaita paikkoja voi selata satamittain ja myös veneen mittojen mukaan. Lauttarannassa on lisäksi talvisäilytyspaikkoja.',
+  'mobilityPlatform.info.marinas': 'Turun kaupungilla on venepaikkoja Lauttarannassa, Uittamolla ja Aurajoessa.  Venepaikkoja voi varata ja maksaa Varauspalvelussa, jossa vapaita paikkoja voi selata satamittain ja myös veneen mittojen mukaan. Veneilykausi on 1.5 - 31.10. Venepaikkoja voi varata 31.1 alkaen. Lauttarannassa on lisäksi talvisäilytyspaikkoja. Talvisäilytysaika on 1.9 - 31.5.',
   'mobilityPlatform.info.marinas.link': 'Varauspalvelu',
   'mobilityPlatform.info.boatParking': 'Veneparkit sijaitsevat Aurajoen kummallakin rannalla Auransillan vieressä. Veneen niihin voi jättää 3 tunniksi maksutta pysäköintikiekkoa käyttäen.',
   'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.',
