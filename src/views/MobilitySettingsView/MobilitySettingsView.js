@@ -86,6 +86,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setSpeedLimitSelections,
     speedLimitZones,
     setSpeedLimitZones,
+    showPublicToilets,
+    setShowPublicToilets,
     showScooterNoParking,
     setShowScooterNoParking,
     showScooterParkingAreas,
@@ -156,6 +158,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
       setSettings(true);
     }
   };
+
+  useEffect(() => {
+    checkVisibilityValues(showPublicToilets, setOpenWalkSettings);
+  }, [showPublicToilets]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
@@ -335,6 +341,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowGuestHarbour(current => !current);
   };
 
+  const publicToiletsToggle = () => {
+    setShowPublicToilets(current => !current);
+  };
+
   const noParkingToggle = () => {
     setShowScooterNoParking(current => !current);
   };
@@ -478,6 +488,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
+    },
+    {
+      type: 'publicToilets',
+      msgId: 'mobilityPlatform.menu.show.publicToilets',
+      checkedValue: showPublicToilets,
+      onChangeValue: publicToiletsToggle,
     },
   ];
 
@@ -829,6 +845,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           </FormGroup>
         </FormControl>
       </div>
+      {showPublicToilets ? <InfoTextBox infoText="mobilityPlatform.info.publicToilets" /> : null}
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showCityBikes ? <CityBikeInfo bikeInfo={bikeInfo} /> : null}

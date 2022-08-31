@@ -680,6 +680,13 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
+  'mobilityPlatform.content.publicToilets.title': 'Yleinen vessa',
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Aukioloajat:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Erityisaukioloajat:',
+  'mobilityPlatform.content.publicToilets.openNormalDate': 'Välillä: 1.10 - 30.4',
+  'mobilityPlatform.content.publicToilets.openSummerDate': 'Välillä: 1.5 - 30.9',
+  'mobilityPlatform.content.publicToilets.openNormal': 'Joka päivä kello 7 - 23',
+  'mobilityPlatform.content.publicToilets.openSummer': 'Joka päivä kello 7 - 02',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -705,6 +712,7 @@ const translations = {
   'mobilityPlatform.info.marinas': 'Turun kaupungilla on venepaikkoja Lauttarannassa, Uittamolla ja Aurajoessa.  Venepaikkoja voi varata ja maksaa Varauspalvelussa, jossa vapaita paikkoja voi selata satamittain ja myös veneen mittojen mukaan. Lauttarannassa on lisäksi talvisäilytyspaikkoja.',
   'mobilityPlatform.info.marinas.link': 'Varauspalvelu',
   'mobilityPlatform.info.boatParking': 'Veneparkit sijaitsevat Aurajoen kummallakin rannalla Auransillan vieressä. Veneen niihin voi jättää 3 tunniksi maksutta pysäköintikiekkoa käyttäen.',
+  'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.',
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO verify
