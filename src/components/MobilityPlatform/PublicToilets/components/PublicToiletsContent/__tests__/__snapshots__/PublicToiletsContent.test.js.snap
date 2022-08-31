@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PublicToiletsContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(PublicToiletsContent)-container-1"
+  >
+    <div
+      class="injectIntl(PublicToiletsContent)-headerContainer-2"
+    >
+      <div>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
+        >
+          Yleinen vessa
+        </h6>
+      </div>
+    </div>
+    <div
+      class="injectIntl(PublicToiletsContent)-textContainer-3"
+    >
+      <div>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-chrj9w-MuiTypography-root"
+        >
+          Aukioloajat:
+        </h6>
+      </div>
+      <div>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+        >
+          Välillä: 1.10 - 30.4
+        </p>
+      </div>
+      <div>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+        >
+          Joka päivä kello 7 - 23
+        </p>
+      </div>
+      <div
+        class="injectIntl(PublicToiletsContent)-marginTop-5"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-chrj9w-MuiTypography-root"
+        >
+          Erityisaukioloajat:
+        </h6>
+      </div>
+      <div>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+        >
+          Välillä: 1.5 - 30.9
+        </p>
+      </div>
+      <div>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+        >
+          Joka päivä kello 7 - 02
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

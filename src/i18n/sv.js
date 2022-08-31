@@ -608,8 +608,9 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Båtplatser',
   'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
+  'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
+  'mobilityPlatform.menu.show.publicToilets': 'Offentliga toaletter',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -671,9 +672,16 @@ const translations = {
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
-  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon', // TODO verify
-  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning', // TODO verify
+  'mobilityPlatform.content.speedLimitZones.area': 'Hastighetsbegränsningszon',
+  'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
+  'mobilityPlatform.content.publicToilets.title': 'Offentlig toalett',
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Öppningstider:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Specialöppningstider:',
+  'mobilityPlatform.content.publicToilets.openNormalDate': 'Mellan: 1.10 - 30.4',
+  'mobilityPlatform.content.publicToilets.openSummerDate': 'Mellan: 1.5 - 30.9',
+  'mobilityPlatform.content.publicToilets.openNormal': 'Varje dag, 7 - 23',
+  'mobilityPlatform.content.publicToilets.openSummer': 'Varje dag, 7 - 02',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -699,6 +707,7 @@ const translations = {
   'mobilityPlatform.info.marinas': 'Åbo stad har båtplatser vid Färjstranden, Uittamo och Aura å. Båtplatser kan bokas och betalas via Bokningstjänsten. Där går det att bläddra bland lediga platser efter hamn och båtens mått. Vid Färjstranden finns det också vinterförvaringsplatser.',
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
+  'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
