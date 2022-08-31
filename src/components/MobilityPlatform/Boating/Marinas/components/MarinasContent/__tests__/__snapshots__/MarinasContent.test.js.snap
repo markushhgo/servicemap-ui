@@ -29,7 +29,7 @@ exports[`<MarinasContent /> should work 1`] = `
         class="MuiTypography-root MuiTypography-body2 injectIntl(MarinasContent)-margin-4 css-1ak20dk-MuiTypography-root"
       >
         <strong>
-          Esimerkkikohde:
+          Venetyyppi (esimerkki):
         </strong>
       </p>
       <p
