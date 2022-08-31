@@ -82,9 +82,6 @@ const MarinasContent = ({
         {countBerths(berths)}
         {name === 'Satama: Lauttaranta' ? countWinterStorage(berths) : null}
         {renderTypePrice(berths[0].HintaAlv0, berths[0].Kohdetyyppi)}
-        {/* <Typography variant="body2" className={classes.margin}>
-          {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.serviceInfo' })}
-        </Typography> */}
         <Typography variant="body2" className={classes.margin}>
           {intl.formatMessage({ id: 'mobilityPlatform.content.marinas.reservationInfo' })}
         </Typography>
