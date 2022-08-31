@@ -681,12 +681,11 @@ const translations = {
   'mobilityPlatform.content.publicToilets.openNormal': 'Every day, 7 - 23',
   'mobilityPlatform.content.publicToilets.openSummer': 'Every day, 7 - 02',
   'mobilityPlatform.content.marinas.price': 'Price',
-  'mobilityPlatform.content.marinas.typeTitle': 'For example:', // TODO verify
+  'mobilityPlatform.content.marinas.typeTitle': 'Boat type (example):',
   'mobilityPlatform.content.marinas.type': 'Type',
   'mobilityPlatform.content.marinas.berthsCount': 'Number of berths',
-  'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places', // TODO verify
-  'mobilityPlatform.content.marinas.serviceInfo': 'Marina berth is leased for a season and will expire at the end of year.', // TODO verify
-  'mobilityPlatform.content.marinas.reservationInfo': 'Information about open berths can be found on the reservation service -page.', // TODO verify
+  'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places',
+  'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.', // TODO verify
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
 
   // Info text

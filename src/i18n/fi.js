@@ -685,11 +685,10 @@ const translations = {
   'mobilityPlatform.content.publicToilets.openNormal': 'Joka päivä kello 7 - 23',
   'mobilityPlatform.content.publicToilets.openSummer': 'Joka päivä kello 7 - 02',
   'mobilityPlatform.content.marinas.price': 'Hinta',
-  'mobilityPlatform.content.marinas.typeTitle': 'Esimerkkikohde:',
+  'mobilityPlatform.content.marinas.typeTitle': 'Venetyyppi (esimerkki):',
   'mobilityPlatform.content.marinas.type': 'Tyyppi',
   'mobilityPlatform.content.marinas.berthsCount': 'Venepaikkojen määrä',
   'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
-  'mobilityPlatform.content.marinas.serviceInfo': 'Paikat varataan kaudeksi ja ne vapautuvat vuodenvaihteessa.',
   'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
 
