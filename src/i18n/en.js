@@ -606,9 +606,9 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
-  'mobilityPlatform.menu.show.publicToilets': 'Public toilets',
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
+  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
+  'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -673,9 +673,9 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
-  'mobilityPlatform.content.publicToilets.title': 'Public toilet',
-  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Opening hours:', // TODO verify
-  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Special opening hours:', // TODO verify
+  'mobilityPlatform.content.publicToilets.title': 'Public restroom',
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Opening hours:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Special opening hours:',
   'mobilityPlatform.content.publicToilets.openNormalDate': 'Between: 1.10 - 30.4',
   'mobilityPlatform.content.publicToilets.openSummerDate': 'Between: 1.5 - 30.9',
   'mobilityPlatform.content.publicToilets.openNormal': 'Every day, 7 - 23',

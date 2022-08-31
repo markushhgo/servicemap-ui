@@ -610,7 +610,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
-  'mobilityPlatform.menu.show.publicToilets': 'Offentliga toaletter', // TODO verify
+  'mobilityPlatform.menu.show.publicToilets': 'Offentliga toaletter',
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -676,8 +676,8 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.limit': 'Hastighetsbegränsning',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
   'mobilityPlatform.content.publicToilets.title': 'Offentlig toalett',
-  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Öppningstider:', // TODO verify
-  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Specialöppningstider:', // TODO verify
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Öppningstider:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Specialöppningstider:',
   'mobilityPlatform.content.publicToilets.openNormalDate': 'Mellan: 1.10 - 30.4',
   'mobilityPlatform.content.publicToilets.openSummerDate': 'Mellan: 1.5 - 30.9',
   'mobilityPlatform.content.publicToilets.openNormal': 'Varje dag, 7 - 23',
