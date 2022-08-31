@@ -606,8 +606,9 @@ const translations = {
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
-  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones', // TODO verify
-  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.', // TODO verify
+  'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
+  'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
+  'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -672,6 +673,13 @@ const translations = {
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
   'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
+  'mobilityPlatform.content.publicToilets.title': 'Public restroom',
+  'mobilityPlatform.content.publicToilets.openNormalTitle': 'Opening hours:',
+  'mobilityPlatform.content.publicToilets.openSummerTitle': 'Special opening hours:',
+  'mobilityPlatform.content.publicToilets.openNormalDate': 'Between: 1.10 - 30.4',
+  'mobilityPlatform.content.publicToilets.openSummerDate': 'Between: 1.5 - 30.9',
+  'mobilityPlatform.content.publicToilets.openNormal': 'Every day, 7 - 23',
+  'mobilityPlatform.content.publicToilets.openSummer': 'Every day, 7 - 02',
   'mobilityPlatform.content.marinas.price': 'Price',
   'mobilityPlatform.content.marinas.typeTitle': 'For example:', // TODO verify
   'mobilityPlatform.content.marinas.type': 'Type',
@@ -705,6 +713,7 @@ const translations = {
   'mobilityPlatform.info.marinas': 'City of Turku´s marina berths are located in Uittamo, Lauttaranta and Aura River. A berth can be reserved and paid either on the Varauspalvelu reservation service (in Finnish only) or at the customer service of the City of Turku (Puolalankatu 5). Boating season begins 1st of May and ends on 31st of October. Reservations open on January 31. On the Varauspalvelu reservation service you can browse available berths by harbour and by boat size. There are also winter storage places for boats in Lauttaranta. Boats can be stored for winter between September 1st and May 31st.',
   'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
+  'mobilityPlatform.info.publicToilets': 'In Turku there are 6 public toilets, which are open from 7 am to 11 pm. First of May until the last of September the toilets are open from 7 am to 2 am.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

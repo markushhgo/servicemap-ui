@@ -118,6 +118,7 @@ const DefaultLayout = (props) => {
   const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
   const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
+  const [showPublicToilets, setShowPublicToilets] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -241,6 +242,8 @@ const DefaultLayout = (props) => {
                       setSpeedLimitSelections,
                       speedLimitZones,
                       setSpeedLimitZones,
+                      showPublicToilets,
+                      setShowPublicToilets,
                     }}
                   >
                     <ViewRouter />
@@ -276,6 +279,7 @@ const DefaultLayout = (props) => {
                     showSpeedLimitZones,
                     speedLimitSelections,
                     speedLimitZones,
+                    showPublicToilets,
                   }}
                 >
                   <MapView
