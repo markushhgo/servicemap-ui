@@ -8,7 +8,6 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import {
   Switch, Route, BrowserRouter,
 } from 'react-router-dom';
-import { StyledEngineProvider } from '@mui/material';
 import styles from './index.css';
 import SMFonts from './service-map-icons.css';
 import HSLFonts from './hsl-icons.css';
@@ -68,24 +67,22 @@ class App extends React.Component {
     const intlData = LocaleUtility.intlData(locale);
 
     return (
-      <StyledEngineProvider>
-        <ThemeWrapper>
-          <IntlProvider {...intlData}>
-            <MetaTags />
-            {/* <StylesProvider generateClassName={generateClassName}> */}
-            <div className="App">
-              <Switch>
-                <Route path="*/embedder" component={EmbedderView} />
-                <Route path="*/embed" component={EmbedLayout} />
-                <Route render={() => <DefaultLayout />} />
-              </Switch>
-              <Navigator />
-              <DataFetcher />
-            </div>
-            {/* </StylesProvider> */}
-          </IntlProvider>
-        </ThemeWrapper>
-      </StyledEngineProvider>
+      <ThemeWrapper>
+        <IntlProvider {...intlData}>
+          <MetaTags />
+          {/* <StylesProvider generateClassName={generateClassName}> */}
+          <div className="App">
+            <Switch>
+              <Route path="*/embedder" component={EmbedderView} />
+              <Route path="*/embed" component={EmbedLayout} />
+              <Route render={() => <DefaultLayout />} />
+            </Switch>
+            <Navigator />
+            <DataFetcher />
+          </div>
+          {/* </StylesProvider> */}
+        </IntlProvider>
+      </ThemeWrapper>
     );
   }
 }
