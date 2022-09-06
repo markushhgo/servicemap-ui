@@ -2,7 +2,7 @@ import React, {
   useEffect, useState, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import { AccessTime, ArrowDropUp, LocationOn } from '@mui/icons-material';
+import { AccessTime, ArrowDropUp, LocationOn, Search } from '@mui/icons-material';
 import {
   Paper, List, Typography,
 } from '@mui/material';
@@ -141,7 +141,7 @@ const SuggestionBox = (props) => {
     const suggestionConfig = {
       address: {
         text: item => getAddressText(item),
-        icon: <LocationOn className={classes.areaIcon} />,
+        icon: item => (item.isExact ? <LocationOn /> : <Search />),
         onClick: (item) => {
           handleBlur();
           saveSearchToHistory(getAddressText(item), item);
@@ -154,7 +154,7 @@ const SuggestionBox = (props) => {
       },
       unit: {
         text: item => getLocaleText(item.name),
-        icon: <UnitIcon />,
+        icon: () => <UnitIcon />,
         onClick: (item) => {
           saveSearchToHistory(getLocaleText(item.name), item);
           navigator.push('unit', { id: item.id });
@@ -162,7 +162,7 @@ const SuggestionBox = (props) => {
       },
       service: {
         text: item => getLocaleText(item.name),
-        icon: getIcon('serviceDark'),
+        icon: () => getIcon('serviceDark'),
         onClick: (item) => {
           handleBlur();
           saveSearchToHistory(getLocaleText(item.name), item);
@@ -171,7 +171,7 @@ const SuggestionBox = (props) => {
       },
       servicenode: {
         text: item => getLocaleText(item.name),
-        icon: getIcon('serviceDark'),
+        icon: () => getIcon('serviceDark'),
         onClick: (item) => {
           handleBlur();
           saveSearchToHistory(getLocaleText(item.name), item);
@@ -180,7 +180,7 @@ const SuggestionBox = (props) => {
       },
       searchHistory: {
         text: item => item.text,
-        icon: <AccessTime />,
+        icon: () => <AccessTime />,
         onClick: (item) => {
           handleBlur();
           handleSubmit(item.text);
@@ -235,7 +235,7 @@ const SuggestionBox = (props) => {
               key={suggestion.id || text}
               role="option"
               selected={i === focusedSuggestion}
-              icon={conf.icon}
+              icon={conf.icon(suggestion)}
               text={uppercaseFirst(text)}
               handleItemClick={() => conf.onClick(suggestion)}
               handleRemoveClick={type === 'history'
