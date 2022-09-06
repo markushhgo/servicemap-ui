@@ -214,7 +214,7 @@ const SuggestionBox = (props) => {
     }
 
     // If no searches in search history, display info text
-    if (type === 'history' && !suggestionList.length) {
+    if (type === 'history' && !suggestionList?.length) {
       return (
         <Typography align="left" aria-live="polite" className={classes.infoText}>
           <FormattedMessage id="search.suggestions.noHistory" />
