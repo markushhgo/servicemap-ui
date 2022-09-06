@@ -232,43 +232,45 @@ const TopBar = (props) => {
         <AppBar className={classes.appBar}>
           {/* Toolbar black area */}
           <Toolbar className={toolbarBlackClass}>
-            <div className={classes.toolbarBlackContainer}>
-              <ButtonBase
-                role="link"
-                aria-current={isHomePage ? 'page' : false}
-                onClick={() => handleNavigation('home')}
-                focusVisibleClassName={classes.topButtonFocused}
-              >
-                <Typography
-                  className={fontClass}
-                  color="inherit"
-                  variant="body2"
+            <nav>
+              <div className={classes.toolbarBlackContainer}>
+                <ButtonBase
+                  role="link"
+                  aria-current={isHomePage ? 'page' : false}
+                  onClick={() => handleNavigation('home')}
+                  focusVisibleClassName={classes.topButtonFocused}
                 >
-                  <FormattedMessage id="general.frontPage" />
+                  <Typography
+                    className={fontClass}
+                    color="inherit"
+                    variant="body2"
+                  >
+                    <FormattedMessage id="general.frontPage" />
+                  </Typography>
+                </ButtonBase>
+                <Typography aria-hidden color="inherit">
+                  |
                 </Typography>
-              </ButtonBase>
-              <Typography aria-hidden color="inherit">
-                |
-              </Typography>
-              {renderLanguages(pageType)}
-              <Typography aria-hidden color="inherit">
-                |
-              </Typography>
-              <ButtonBase
-                role="button"
-                onClick={() => handleContrastChange()}
-                focusVisibleClassName={classes.topButtonFocused}
-                aria-label={contrastAriaLabel}
-              >
-                <Typography
-                  className={fontClass}
-                  color="inherit"
-                  variant="body2"
+                {renderLanguages(pageType)}
+                <Typography aria-hidden color="inherit">
+                  |
+                </Typography>
+                <ButtonBase
+                  role="button"
+                  onClick={() => handleContrastChange()}
+                  focusVisibleClassName={classes.topButtonFocused}
+                  aria-label={contrastAriaLabel}
                 >
-                  <FormattedMessage id="general.contrast" />
-                </Typography>
-              </ButtonBase>
-            </div>
+                  <Typography
+                    className={fontClass}
+                    color="inherit"
+                    variant="body2"
+                  >
+                    <FormattedMessage id="general.contrast" />
+                  </Typography>
+                </ButtonBase>
+              </div>
+            </nav>
           </Toolbar>
 
           {/* Toolbar white area */}
@@ -289,23 +291,25 @@ const TopBar = (props) => {
               {renderDrawerMenu(pageType)}
             </MobileComponent>
             <DesktopComponent>
-              {!smallScreen ? (
-                <>
-                  <div className={classes.settingsButtonsContainer}>
-                    <Typography component="h2" style={visuallyHidden}>
-                      <FormattedMessage id="settings" />
-                    </Typography>
-                    {renderSettingsButtons()}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className={classes.mobileButtonContainer}>
-                    {renderMenuButton()}
-                  </div>
-                  {renderDrawerMenu(pageType)}
-                </>
-              )}
+              <nav>
+                {!smallScreen ? (
+                  <>
+                    <div className={classes.settingsButtonsContainer}>
+                      <Typography component="h2" style={visuallyHidden}>
+                        <FormattedMessage id="settings" />
+                      </Typography>
+                      {renderSettingsButtons()}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className={classes.mobileButtonContainer}>
+                      {renderMenuButton()}
+                    </div>
+                    {renderDrawerMenu(pageType)}
+                  </>
+                )}
+              </nav>
               {!smallScreen && <ToolMenu />}
             </DesktopComponent>
           </Toolbar>
