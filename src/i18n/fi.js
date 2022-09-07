@@ -5,6 +5,9 @@ const translations = {
   'app.description': 'Pääkaupunkiseudun kaikki julkiset palvelut ulottuvillasi.',
   'app.og.image.alt': 'Palvelukartan logo',
   'app.errorpage.title': 'Virheviestisivu',
+  'app.navigation.language': 'Kieli ja kontrasti',
+  'app.navigation.home': 'Koti',
+  'app.navigation.settings': 'Asetukset',
 
   // Accessibility
   'accessibility': 'Esteettömyys',

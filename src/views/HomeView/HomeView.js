@@ -1,21 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Map } from '@mui/icons-material';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useIntl } from 'react-intl';
+import config from '../../../config';
 import { SearchBar } from '../../components';
+import MobileComponent from '../../components/MobileComponent';
+import NewsInfo from '../../components/NewsInfo';
 import PaperButton from '../../components/PaperButton';
 import { getIcon } from '../../components/SMIcon';
-import MobileComponent from '../../components/MobileComponent';
-import config from '../../../config';
-import NewsInfo from '../../components/NewsInfo';
 import { useNavigationParams } from '../../utils/address';
-// import useLocaleText from '../../utils/useLocaleText';
 
 const HomeView = (props) => {
   const {
     classes, toggleSettings, navigator, userLocation,
   } = props;
 
-  // const getLocaleText = useLocaleText();
+  const { formatMessage } = useIntl();
   const getAddressNavigatorParams = useNavigationParams();
 
   const renderNavigationOptions = () => {
@@ -35,7 +35,7 @@ const HomeView = (props) => {
     return (
       <div className={classes.background}>
         <div className={classes.buttonContainer}>
-          <nav>
+          <nav aria-label={formatMessage({ id: 'app.navigation.home' })}>
             {areaSelection}
             <PaperButton
               messageID="home.buttons.closeByServices"
