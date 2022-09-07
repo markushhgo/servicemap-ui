@@ -1,18 +1,9 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../themes';
 import ExtendedInfo from '../index';
+import { getRenderWithProviders } from '../../../../../../jestUtils';
 import finnishTranslations from '../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
 
 const mockProps = {
   translations: {
@@ -27,14 +18,7 @@ const mockProps = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<ExtendedInfo />', () => {
   it('should work', () => {
