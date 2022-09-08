@@ -1,22 +1,9 @@
 // Link.react.test.js
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material/styles';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../themes';
+import { fireEvent } from '@testing-library/react';
 import PaginationComponent from '../index';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'en',
-  messages: {
-    'general.pagination.previous': 'Aiempi sivu',
-    'general.pagination.next': 'Seuraava sivu',
-    'general.pagination.openPage': 'Avaa sivu {count}',
-    'general.pagination.currentlyOpenedPage': 'Sivu {count}, avattu',
-  },
-  wrapRichTextChunksInFragment: false,
-};
+import { getRenderWithProviders } from '../../../../jestUtils';
+import finnishTranslations from '../../../i18n/fi';
 
 // Generic required props for ResultItem
 const mockProps = {
@@ -26,16 +13,7 @@ const mockProps = {
   pageCount: 8,
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <ThemeProvider theme={themes.SMTheme}>
-      {children}
-    </ThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<PaginationComponent />', () => {
   it('should work', () => {
@@ -68,11 +46,11 @@ describe('<PaginationComponent />', () => {
     const buttons = getAllByRole('link');
 
     // Test previous page button accessibility
-    expect(buttons[0]).toHaveAttribute('aria-label', intlMock.messages['general.pagination.previous']);
+    expect(buttons[0]).toHaveAttribute('aria-label', finnishTranslations['general.pagination.previous']);
     expect(buttons[0]).toBeDisabled();
     expect(buttons[0]).toHaveAttribute('role', 'link');
     // Test next page button accessibility
-    expect(buttons[1]).toHaveAttribute('aria-label', intlMock.messages['general.pagination.next']);
+    expect(buttons[1]).toHaveAttribute('aria-label', finnishTranslations['general.pagination.next']);
     expect(buttons[1]).not.toBeDisabled();
     expect(buttons[1]).toHaveAttribute('role', 'link');
 

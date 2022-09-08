@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
+import MarinasContent from './components/MarinasContent';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 
 /**
@@ -15,7 +16,7 @@ const Marinas = () => {
 
   const mapType = useSelector(state => state.settings.mapType);
 
-  const { Polygon } = global.rL;
+  const { Polygon, Popup } = global.rL;
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -45,7 +46,13 @@ const Marinas = () => {
       {showMarinas
         && marinasData
         && marinasData.length > 0
-        && marinasData.map(item => <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />)}
+        && marinasData.map(item => (
+          <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords}>
+            <Popup>
+              <MarinasContent name={item.name} berths={item.extra.berths} />
+            </Popup>
+          </Polygon>
+        ))}
     </>
   );
 };

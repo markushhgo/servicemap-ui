@@ -1,33 +1,15 @@
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../themes';
 import LinkBasic from '../index';
+import { getRenderWithProviders } from '../../../../../../jestUtils';
 import finnishTranslations from '../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
 
 const mockProps = {
   linkUrl: 'https://www.turku.fi/feedback',
   translationId: 'info.view.feedback.link',
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <ThemeProvider theme={themes.SMTheme}>
-      {children}
-    </ThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<LinkBasic />', () => {
   it('should work', () => {
@@ -39,13 +21,13 @@ describe('<LinkBasic />', () => {
     const { container } = renderWithProviders(<LinkBasic {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0]).toBeInTheDocument();
+    expect(p[0].textContent).toContain(finnishTranslations['info.view.feedback.link']);
   });
 
   it('does contain aria-label attribute', () => {
     const { container } = renderWithProviders(<LinkBasic {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toBeTruthy();
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['info.view.feedback.link']);
   });
 });

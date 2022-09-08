@@ -16,7 +16,7 @@ exports[`<PageElement /> should work 1`] = `
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
         >
-          Open page 2
+          Avaa sivu 2
         </p>
         <span
           aria-hidden="true"

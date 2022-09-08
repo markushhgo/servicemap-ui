@@ -1,10 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material/styles';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../themes';
 import MenuButton from '../MenuButton';
-
+import { getRenderWithProviders } from '../../../../../jestUtils';
+import finnishTranslations from '../../../../i18n/fi';
 
 const mockProps = {
   classes: {},
@@ -12,23 +9,7 @@ const mockProps = {
   toggleDrawerMenu: () => {},
 };
 
-const intlMock = {
-  locale: 'en',
-  messages: {
-    'general.menu': 'Valikko',
-  },
-};
-
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <ThemeProvider theme={themes.SMTheme}>
-      {children}
-    </ThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<MenuButton />', () => {
   it('should work', () => {
@@ -43,10 +24,10 @@ describe('<MenuButton />', () => {
       The following aria-attributes are based on the accessibility testing report from 26.4.2021
     */
     // Expect button aria-haspopup value to be true
-    expect(getByLabelText('Valikko').getAttribute('aria-haspopup')).toEqual('true');
+    expect(getByLabelText(finnishTranslations['general.menu']).getAttribute('aria-haspopup')).toEqual('true');
     // Expect button aria-label value to be Valikko
-    expect(getByLabelText('Valikko').getAttribute('aria-label')).toEqual('Valikko');
+    expect(getByLabelText(finnishTranslations['general.menu']).getAttribute('aria-label')).toEqual('Valikko');
     // Expect button aria-expanded value to be same as from props
-    expect(getByLabelText('Valikko').getAttribute('aria-expanded')).toEqual(`${mockProps.drawerOpen}`);
+    expect(getByLabelText(finnishTranslations['general.menu']).getAttribute('aria-expanded')).toEqual(`${mockProps.drawerOpen}`);
   });
 });
