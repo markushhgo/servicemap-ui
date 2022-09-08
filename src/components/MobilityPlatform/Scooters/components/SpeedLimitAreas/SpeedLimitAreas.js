@@ -1,7 +1,7 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
-import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 
 /**
  * Displays speed limit areas of scooters on the map in polygon format.
@@ -37,13 +37,13 @@ const SpeedLimitAreas = () => {
   return (
     <>
       {showScooterSpeedLimitAreas ? (
-        <div>
+        <>
           {speedLimitAreas
             && speedLimitAreas.length > 0
             && speedLimitAreas.map(item => (
               <Polygon key={item.id} pathOptions={blueOptions} positions={item.geometry_coords} />
             ))}
-        </div>
+        </>
       ) : null}
     </>
   );
