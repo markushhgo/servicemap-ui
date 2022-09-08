@@ -1,23 +1,10 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../themes';
 import CityBikeInfo from '../index';
 import { initialState } from '../../../../../redux/reducers/user';
+import { getRenderWithProviders } from '../../../../../../jestUtils';
 import finnishTranslations from '../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
-
-const mockStore = configureStore([]);
 
 const mockProps = {
   bikeInfo: {
@@ -34,22 +21,9 @@ const mockProps = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  const store = mockStore({
-    user: initialState,
-  });
-
-  return (
-    <Provider store={store}>
-      <IntlProvider {...intlMock}>
-        <ThemeProvider theme={themes.SMTheme}>{children}</ThemeProvider>
-      </IntlProvider>
-    </Provider>
-  );
-};
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({
+  user: initialState,
+});
 
 describe('<CityBikeInfo />', () => {
   it('should work', () => {

@@ -1,20 +1,9 @@
 // Link.react.test.js
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import themes from '../../../../../../themes';
 import BikeServiceStationContent from '../index';
 import { initialState } from '../../../../../../redux/reducers/user';
 import finnishTranslations from '../../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
+import { getRenderWithProviders } from '../../../../../../../jestUtils';
 
 const mockProps = {
   station: {
@@ -31,27 +20,9 @@ const mockProps = {
   },
 };
 
-const mockStore = configureStore([]);
-
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  const store = mockStore({
-    user: initialState,
-    settings: {},
-  });
-
-  return (
-    <Provider store={store}>
-      <IntlProvider {...intlMock}>
-        <ThemeProvider theme={themes.SMTheme}>
-          {children}
-        </ThemeProvider>
-      </IntlProvider>
-    </Provider>
-  );
-};
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({
+  user: initialState,
+});
 
 describe('<BikeServiceStationContent />', () => {
   it('should work', () => {
@@ -65,7 +36,7 @@ describe('<BikeServiceStationContent />', () => {
     const h6 = container.querySelectorAll('h6');
     const p = container.querySelectorAll('p');
     expect(h6[0].textContent).toEqual(mockProps.station.name);
-    expect(p[0].textContent).toEqual(`Osoite: ${mockProps.station.address_fi}`);
+    expect(p[0].textContent).toEqual(`${finnishTranslations['mobilityPlatform.content.address']}: ${mockProps.station.address_fi}`);
     expect(p[1].textContent).toEqual(mockProps.station.description);
   });
 });
