@@ -12,7 +12,7 @@ const mockData = {
   },
   id: 148,
   municipality: 'Turku',
-  name: { fi: 'Pääkirjasto', sv: 'Huvudbiblioteket', en: 'Main library' },
+  name: { fi: 'Pääkirjasto', sv: 'Huvudbiblioteket', en: 'The Main Library' },
   object_type: 'unit',
   street_address: { fi: 'Linnankatu 2', sv: 'Slottsgatan 2', en: 'Linnankatu 2' },
 };

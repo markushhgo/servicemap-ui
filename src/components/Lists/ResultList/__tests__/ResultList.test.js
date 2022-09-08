@@ -1,8 +1,8 @@
 // Link.react.test.js
 import React from 'react';
-import ResultList from '../ResultList';
-import { initialState } from '../../../../redux/reducers/user';
 import { getRenderWithProviders } from '../../../../../jestUtils';
+import { initialState } from '../../../../redux/reducers/user';
+import ResultList from '../ResultList';
 
 const mockData = [
   {
@@ -12,11 +12,11 @@ const mockData = [
       id: 'municipal_service',
       description: { fi: 'kunnallinen palvelu', sv: 'kommunal tjänst', en: 'municipal service' },
     },
-    id: 63115,
-    municipality: 'espoo',
-    name: { fi: 'Lippulaivan kirjasto', sv: 'Lippulaivabiblioteket', en: 'Lippulaiva library' },
+    id: 148,
+    municipality: 'Turku',
+    name: { fi: 'Pääkirjasto', sv: 'Huvudbiblioteket', en: 'The Main Library' },
     object_type: 'unit',
-    street_address: { fi: 'Merikarhunkuja 11', sv: 'Sjöbjörnsgränden 11', en: 'Merikarhunkuja 11' },
+    street_address: { fi: 'Linnankatu 2', sv: 'Slottsgatan 2', en: 'Linnankatu 2' },
   },
   {
     accessibility_properties: [],
