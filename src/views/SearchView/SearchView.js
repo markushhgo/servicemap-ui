@@ -1,27 +1,27 @@
 /* eslint-disable camelcase */
 
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useRouteMatch } from 'react-router-dom';
 import {
-  Container, Divider, Link, NoSsr, Paper, Typography,
+  Container, Divider, Link, NoSsr, Paper, Typography
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import fetchSearchResults from '../../redux/actions/search';
-import fetchRedirectService from '../../redux/actions/redirectService';
-import { parseSearchParams, getSearchParam, keyboardHandler } from '../../utils';
-import { fitUnitsToMap } from '../MapView/utils/mapActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useRouteMatch } from 'react-router-dom';
 import { SearchBar } from '../../components';
-import { isEmbed } from '../../utils/path';
+import Loading from '../../components/Loading';
+import SettingsInfo from '../../components/SettingsInfo';
+import TabLists from '../../components/TabLists';
+import fetchRedirectService from '../../redux/actions/redirectService';
+import fetchSearchResults from '../../redux/actions/search';
+import { getOrderedData } from '../../redux/selectors/results';
+import { getSearchParam, keyboardHandler, parseSearchParams } from '../../utils';
+import { viewTitleID } from '../../utils/accessibility';
 import { useNavigationParams } from '../../utils/address';
 import useMobileStatus from '../../utils/isMobile';
-import Loading from '../../components/Loading';
-import TabLists from '../../components/TabLists';
-import SettingsInfo from '../../components/SettingsInfo';
-import { viewTitleID } from '../../utils/accessibility';
-import { getOrderedData } from '../../redux/selectors/results';
+import { isEmbed } from '../../utils/path';
+import { fitUnitsToMap } from '../MapView/utils/mapActions';
 
 const focusClass = 'TabListFocusTarget';
 
@@ -284,7 +284,7 @@ const SearchView = (props) => {
       <NoSsr>
         <Typography
           role="link"
-          tabIndex="-1"
+          tabIndex={-1}
           onClick={() => skipToContent()}
           onKeyPress={() => {
             keyboardHandler(() => skipToContent(), ['space', 'enter']);
@@ -310,7 +310,7 @@ const SearchView = (props) => {
     const { isFetching, max } = searchFetchState;
     return (
       <Paper className={!isFetching ? classes.noPadding : ''} elevation={1} square aria-live="polite">
-        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex="-1">
+        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex={-1}>
           {!isFetching && (
             <FormattedMessage id="search.results.title" />
           )}
@@ -449,7 +449,7 @@ const SearchView = (props) => {
       {isMobile ? (
         // Jump link back to beginning of current page
         <Typography style={visuallyHidden} component="h3">
-          <Link href={`#${viewTitleID}`} tabIndex="-1">
+          <Link href={`#${viewTitleID}`} tabIndex={-1}>
             <FormattedMessage id="general.return.viewTitle" />
           </Link>
         </Typography>
