@@ -616,6 +616,7 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
   'mobilityPlatform.menu.show.publicToilets': 'Yleiset vessat',
+  'mobilityPlatform.menu.show.disabledParking': 'Invapysäköinti',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -694,6 +695,8 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
   'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
+  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintipaikka',
+  'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

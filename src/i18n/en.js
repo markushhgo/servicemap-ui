@@ -690,6 +690,8 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places',
   'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.',
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
+  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintipaikka', // TODO translate
+  'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

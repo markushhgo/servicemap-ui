@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { visuallyHidden } from '@mui/utils';
-import MapView from '../views/MapView';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import config from '../../config';
-import TopBar from '../components/TopBar';
-import Settings from '../components/Settings';
-import ViewRouter from './components/ViewRouter';
-import DesktopComponent from '../components/DesktopComponent';
-import useMobileStatus from '../utils/isMobile';
-import FocusableSRLinks from '../components/FocusableSRLinks';
+import { ErrorComponent } from '../components';
 import AlertBox from '../components/AlertBox';
-import PrintView from '../views/PrintView';
+import DesktopComponent from '../components/DesktopComponent';
+import ErrorBoundary from '../components/ErrorBoundary';
+import FocusableSRLinks from '../components/FocusableSRLinks';
+import Settings from '../components/Settings';
+import TopBar from '../components/TopBar';
+import { ErrorProvider } from '../context/ErrorContext';
+import { MobilityPlatformProvider } from '../context/MobilityPlatformContext';
 import { PrintProvider } from '../context/PrintContext';
 import { viewTitleID } from '../utils/accessibility';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { ErrorProvider } from '../context/ErrorContext';
-import { ErrorComponent } from '../components';
-import { MobilityPlatformProvider } from '../context/MobilityPlatformContext';
+import useMobileStatus from '../utils/isMobile';
+import MapView from '../views/MapView';
+import PrintView from '../views/PrintView';
+import ViewRouter from './components/ViewRouter';
 
 const { smallScreenBreakpoint } = config;
 
@@ -119,6 +119,7 @@ const DefaultLayout = (props) => {
   const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
   const [showPublicToilets, setShowPublicToilets] = useState(false);
+  const [showDisabledParking, setShowDisabledParking] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -244,6 +245,8 @@ const DefaultLayout = (props) => {
                       setSpeedLimitZones,
                       showPublicToilets,
                       setShowPublicToilets,
+                      showDisabledParking,
+                      setShowDisabledParking,
                     }}
                   >
                     <ViewRouter />
@@ -280,6 +283,7 @@ const DefaultLayout = (props) => {
                     speedLimitSelections,
                     speedLimitZones,
                     showPublicToilets,
+                    showDisabledParking,
                   }}
                 >
                   <MapView

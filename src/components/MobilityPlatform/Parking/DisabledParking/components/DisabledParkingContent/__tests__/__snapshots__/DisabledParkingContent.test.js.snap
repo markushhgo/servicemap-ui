@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DisabledParkingContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(DisabledParkingContent)-container-1"
+  >
+    <div
+      class="injectIntl(DisabledParkingContent)-headerContainer-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
+      >
+        Invapysäköintipaikka
+      </h6>
+    </div>
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+    >
+      Invapaikkojen määrä
+      :
+       
+      5
+    </p>
+  </div>
+</div>
+`;
