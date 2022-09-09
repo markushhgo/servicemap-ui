@@ -9,7 +9,7 @@ exports[`<CloseSuggestionButton /> should work 1`] = `
     <p
       class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
     >
-      Hide the list of suggestions
+      Piilota ehdotuslista
     </p>
     <svg
       aria-hidden="true"

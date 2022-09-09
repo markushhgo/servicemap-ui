@@ -5,6 +5,9 @@ const translations = {
   'app.description': 'Find services near your home',
   'app.og.image.alt': 'Servicemap logo',
   'app.errorpage.title': 'Error message page',
+  'app.navigation.language': 'Language and contrast',
+  'app.navigation.home': 'Home',
+  'app.navigation.settings': 'Settings',
 
   // Accessibility
   'accessibility': 'Accessibility',
