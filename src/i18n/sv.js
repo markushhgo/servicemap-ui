@@ -468,7 +468,7 @@ const translations = {
   'search.suggestions.expand': 'Sökförslag',
   'search.suggestions.loading': 'Laddar förslag',
   'search.suggestions.error': 'Inga förslag',
-  'search.suggestions.addresses': 'Hae osoitteella', // TODO: translate
+  'search.suggestions.addresses': 'Sök på adress',
   'search.suggestions.suggestions': '{count} sökförslag',
   // 'search.suggestions.expandSuggestions': '{count} preciseringsförslag',
   'search.suggestions.results': '{count} resultat',
