@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-import { StyledEngineProvider } from '@mui/material';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -66,24 +65,22 @@ class App extends React.Component {
     const intlData = LocaleUtility.intlData(locale);
 
     return (
-      <StyledEngineProvider>
-        <ThemeWrapper>
-          <IntlProvider {...intlData}>
-            <MetaTags />
-            {/* <StylesProvider generateClassName={generateClassName}> */}
-            <div className="App">
-              <Switch>
-                <Route path="*/embedder" component={EmbedderView} />
-                <Route path="*/embed" component={EmbedLayout} />
-                <Route render={() => <DefaultLayout />} />
-              </Switch>
-              <Navigator />
-              <DataFetcher />
-            </div>
-            {/* </StylesProvider> */}
-          </IntlProvider>
-        </ThemeWrapper>
-      </StyledEngineProvider>
+      <ThemeWrapper>
+        <IntlProvider {...intlData}>
+          <MetaTags />
+          {/* <StylesProvider generateClassName={generateClassName}> */}
+          <div className="App">
+            <Switch>
+              <Route path="*/embedder" component={EmbedderView} />
+              <Route path="*/embed" component={EmbedLayout} />
+              <Route render={() => <DefaultLayout />} />
+            </Switch>
+            <Navigator />
+            <DataFetcher />
+          </div>
+          {/* </StylesProvider> */}
+        </IntlProvider>
+      </ThemeWrapper>
     );
   }
 }
