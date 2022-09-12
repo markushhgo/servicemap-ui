@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { Link, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import config from '../../../../../config';
+import { parseSearchParams } from '../../../../utils';
+import UnitHelper from '../../../../utils/unitHelper';
+import useLocaleText from '../../../../utils/useLocaleText';
+import { geographicalDistricts, getCategoryDistricts } from '../../../AreaView/utils/districtDataHelper';
 import { drawMarkerIcon } from '../../utils/drawIcon';
 import swapCoordinates from '../../utils/swapCoordinates';
 import AddressMarker from '../AddressMarker';
-import { parseSearchParams } from '../../../../utils';
-import config from '../../../../../config';
-import useLocaleText from '../../../../utils/useLocaleText';
-import { geographicalDistricts, getCategoryDistricts } from '../../../AreaView/utils/districtDataHelper';
-import UnitHelper from '../../../../utils/unitHelper';
 
 
 const Districts = ({

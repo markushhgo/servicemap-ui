@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PrintView from './PrintView';
 import styles from './styles';

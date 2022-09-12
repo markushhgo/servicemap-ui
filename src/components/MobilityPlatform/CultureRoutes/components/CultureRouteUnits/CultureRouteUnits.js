@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { ButtonBase, Typography } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { useIntl } from 'react-intl';
 import { useMap } from 'react-leaflet';
-import { Typography, ButtonBase } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { selectRouteName } from '../../../utils/utils';

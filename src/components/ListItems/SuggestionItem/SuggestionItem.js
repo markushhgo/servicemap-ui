@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import { Button, Divider, Typography } from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import { ArrowUpward } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import {
-  Typography, Divider, Button,
-} from '@mui/material';
-import { ArrowUpward } from '@mui/icons-material';
-import BoldedText from '../../BoldedText';
+import React, { useState } from 'react';
 import { keyboardHandler } from '../../../utils';
 import useMobileStatus from '../../../utils/isMobile';
+import BoldedText from '../../BoldedText';
 
 const SuggestionItem = (props) => {
   const {

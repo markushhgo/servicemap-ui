@@ -1,7 +1,7 @@
+import { withStyles } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@mui/styles';
-import { injectIntl } from 'react-intl';
 import FeedbackView from './FeedbackView';
 import styles from './styles';
 

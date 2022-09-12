@@ -1,40 +1,32 @@
+import { ServerStyleSheets } from '@material-ui/core/styles';
 import express from 'express';
+import IntlPolyfill from 'intl';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
+import fetch from 'node-fetch';
+import schedule from 'node-schedule';
 import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { createStore, applyMiddleware } from 'redux';
+import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
-import StyleContext from 'isomorphic-style-loader/StyleContext';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import config from '../config';
-import rootReducer from '../src/redux/rootReducer';
-import App from '../src/App';
-import {
-  makeLanguageHandler,
-  languageSubdomainRedirect,
-  unitRedirect,
-  parseInitialMapPositionFromHostname,
-  getRequestFullUrl,
-  sitemapActive,
-} from './utils';
-import { setLocale } from '../src/redux/actions/user';
-import { Helmet } from 'react-helmet';
-import { ServerStyleSheets } from '@mui/styles';
-import { CacheProvider } from '@emotion/react';
-import createEmotionServer from '@emotion/server/create-instance';
-import fetch from 'node-fetch';
-import { fetchEventData, fetchSelectedUnitData } from './dataFetcher';
-import IntlPolyfill from 'intl';
 import paths from '../config/paths';
-import legacyRedirector from './legacyRedirector';
-import { appDynamicsTrackingCode, cookieHubCode } from './externalScripts';
-import { getLastCommit, getVersion } from './version';
-import ieHandler from './ieMiddleware';
-import schedule from 'node-schedule';
+import App from '../src/App';
 import ogImage from '../src/assets/images/servicemap-meta-img.png';
+import { setLocale } from '../src/redux/actions/user';
+import rootReducer from '../src/redux/rootReducer';
+import { fetchEventData, fetchSelectedUnitData } from './dataFetcher';
+import { appDynamicsTrackingCode, cookieHubCode } from './externalScripts';
+import ieHandler from './ieMiddleware';
+import legacyRedirector from './legacyRedirector';
 import { generateSitemap, getRobotsFile, getSitemap } from './sitemapMiddlewares';
-import createEmotionCache from './createEmotionCache';
+import {
+  getRequestFullUrl, languageSubdomainRedirect, makeLanguageHandler, parseInitialMapPositionFromHostname, sitemapActive, unitRedirect
+} from './utils';
+import { getLastCommit, getVersion } from './version';
 
 // Get sentry dsn from environtment variables
 const sentryDSN = process.env.SENTRY_DSN_SERVER;
@@ -114,8 +106,6 @@ app.use(paths.event.regex, fetchEventData);
 app.use(paths.unit.regex, fetchSelectedUnitData);
 
 app.get('/*', (req, res, next) => {
-  const cache = createEmotionCache();
-  const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache);
   // CSS for all rendered React components
   const css = new Set();
   const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()));
@@ -133,7 +123,6 @@ app.get('/*', (req, res, next) => {
   const sheets = new ServerStyleSheets();
 
   const jsx = sheets.collect(
-    <CacheProvider value={cache}>
       <Provider store={store}>
         <StaticRouter location={req.url} context={{}}>
           {/* Provider to help with isomorphic style loader */}
@@ -142,7 +131,6 @@ app.get('/*', (req, res, next) => {
           </StyleContext.Provider>
         </StaticRouter>
       </Provider>
-    </CacheProvider>
   );
   const reactDom = ReactDOMServer.renderToString(jsx);
   const cssString = sheets.toString();
@@ -154,11 +142,8 @@ app.get('/*', (req, res, next) => {
     initialMapPosition: parseInitialMapPositionFromHostname(req, Sentry),
   };
 
-  const emotionChunks = extractCriticalToChunks(reactDom);
-  const emotionCss = constructStyleTagsFromChunks(emotionChunks);
-
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.end(htmlTemplate(req, reactDom, preloadedState, css, cssString, emotionCss, locale, helmet, customValues));
+  res.end(htmlTemplate(req, reactDom, preloadedState, css, cssString, locale, helmet, customValues));
 });
 
 // The error handler must be before any other error middleware
@@ -169,7 +154,7 @@ if (Sentry) {
 console.log(`Starting server on port ${process.env.PORT || 2048}`);
 app.listen(process.env.PORT || 2048);
 
-const htmlTemplate = (req, reactDom, preloadedState, css, cssString, emotionCss, locale, helmet, customValues) => `
+const htmlTemplate = (req, reactDom, preloadedState, css, cssString, locale, helmet, customValues) => `
 <!DOCTYPE html>
 <html lang="${locale || 'fi'}">
   <head>
@@ -179,7 +164,6 @@ const htmlTemplate = (req, reactDom, preloadedState, css, cssString, emotionCss,
     <meta property="og:url" data-react-helmet="true" content="${getRequestFullUrl(req)}" />
     <meta property="og:image" data-react-helmet="true" content="${ogImage}" />
     <meta name="twitter:card" data-react-helmet="true" content="summary" />
-    ${emotionCss}
     <!-- jss-insertion-point -->
     <style id="jss-server-side">${cssString}</style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"

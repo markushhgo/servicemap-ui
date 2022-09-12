@@ -1,10 +1,8 @@
-import React from 'react';
+import { Divider, List, Typography } from '@material-ui/core';
+import { ArrowDropDown } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import {
-  List, Typography, Divider,
-} from '@mui/material';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { ArrowDropDown } from '@mui/icons-material';
 import SMButton from '../../ServiceMapButton';
 
 const TitledList = ({

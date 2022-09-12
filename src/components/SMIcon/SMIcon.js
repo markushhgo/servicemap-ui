@@ -1,6 +1,6 @@
-import React from 'react';
+import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
+import React from 'react';
 import styles from './styles';
 
 const SMIcon = ({

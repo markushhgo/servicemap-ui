@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import ResultItem from './ResultItem';
 import styles from './styles';
 

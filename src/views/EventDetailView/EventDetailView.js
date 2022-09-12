@@ -1,20 +1,20 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
 // TODO Remove this when redux selected event is used
-import { AccessTime, Phone, Event } from '@mui/icons-material';
-import DescriptionText from '../../components/DescriptionText';
+import { AccessTime, Event, Phone } from '@material-ui/icons';
 import { SearchBar } from '../../components';
-import TitleBar from '../../components/TitleBar';
+import DescriptionText from '../../components/DescriptionText';
 import SimpleListItem from '../../components/ListItems/SimpleListItem';
 import UnitItem from '../../components/ListItems/UnitItem';
 import TitledList from '../../components/Lists/TitledList';
-import UnitHelper from '../../utils/unitHelper';
+import TitleBar from '../../components/TitleBar';
 import { eventFetch } from '../../utils/fetch';
-import { focusToPosition } from '../MapView/utils/mapActions';
-import useLocaleText from '../../utils/useLocaleText';
 import useMobileStatus from '../../utils/isMobile';
+import UnitHelper from '../../utils/unitHelper';
+import useLocaleText from '../../utils/useLocaleText';
+import { focusToPosition } from '../MapView/utils/mapActions';
 
 const EventDetailView = (props) => {
   const {

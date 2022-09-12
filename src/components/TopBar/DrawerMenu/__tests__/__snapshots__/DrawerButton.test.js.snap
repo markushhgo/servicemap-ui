@@ -5,7 +5,7 @@ exports[`<DrawerButton /> should work 1`] = `
   <button
     aria-hidden="true"
     aria-label="Drawer button text"
-    class="MuiButtonBase-root DrawerButton-drawerButton-4  css-fvdnvy-MuiButtonBase-root"
+    class="MuiButtonBase-root DrawerButton-drawerButton-4 "
     role="link"
     tabindex="-1"
     type="button"
@@ -15,8 +15,7 @@ exports[`<DrawerButton /> should work 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1y2wfx3-MuiSvgIcon-root"
-        data-testid="SearchIcon"
+        class="MuiSvgIcon-root"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -29,7 +28,7 @@ exports[`<DrawerButton /> should work 1`] = `
       aria-hidden="true"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 DrawerButton-drawerButtonText-6  css-8739fq-MuiTypography-root"
+        class="MuiTypography-root DrawerButton-drawerButtonText-6  MuiTypography-body1"
       >
         Drawer button text
       </p>

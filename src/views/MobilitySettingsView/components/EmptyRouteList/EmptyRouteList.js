@@ -1,6 +1,6 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
+import React from 'react';
 
 /**
    * Check if route list is empty and render correct text

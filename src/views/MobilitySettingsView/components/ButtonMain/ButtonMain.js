@@ -1,7 +1,7 @@
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { ReactSVG } from 'react-svg';
-import { Typography, Button } from '@mui/material';
 
 /**
  * Render 1 or more buttons with icon and text

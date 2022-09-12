@@ -1,14 +1,12 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import { Divider, List, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import {
-  List, Typography, Divider,
-} from '@mui/material';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import UnitItem from '../../ListItems/UnitItem';
-import ServiceItem from '../../ListItems/ServiceItem';
 import AddressItem from '../../ListItems/AddressItem';
 import EventItem from '../../ListItems/EventItem';
+import ServiceItem from '../../ListItems/ServiceItem';
+import UnitItem from '../../ListItems/UnitItem';
 
 class ResultList extends React.Component {
   // Update only when data changes

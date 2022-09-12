@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import DescriptionText from './DescriptionText';
 import styles from './styles';
 

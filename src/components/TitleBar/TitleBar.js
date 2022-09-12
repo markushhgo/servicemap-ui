@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Typography,
-} from '@mui/material';
-import BackButton from '../BackButton';
+    Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 import useMobileStatus from '../../utils/isMobile';
+import BackButton from '../BackButton';
 
 const TitleBar = ({
   backButton,

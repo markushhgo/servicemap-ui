@@ -1,16 +1,15 @@
-import React, { useRef } from 'react';
 import {
   Dialog as MUIDialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Typography,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+  Typography
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React, { useRef } from 'react';
 import { useIntl } from 'react-intl';
-import SMButton from '../ServiceMapButton';
 import CloseButton from '../CloseButton';
+import SMButton from '../ServiceMapButton';
 
 const Dialog = ({
   classes,
@@ -52,7 +51,7 @@ const Dialog = ({
       <MUIDialog ref={dialogRef} open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <div className={classes.root}>
           {/* Empty element that makes keyboard focus loop in dialog */}
-          <Typography style={visuallyHidden} aria-hidden tabIndex={0} onFocus={focusToLastElement} />
+          <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={focusToLastElement} />
           <CloseButton
             autoFocus
             className={classes.topCloseButton}
@@ -70,7 +69,7 @@ const Dialog = ({
             </SMButton>
           </DialogActions>
           {/* Empty element that makes keyboard focus loop in dialog */}
-          <Typography style={visuallyHidden} aria-hidden tabIndex={0} onFocus={focusToFirstElement} />
+          <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={focusToFirstElement} />
         </div>
       </MUIDialog>
     </div>

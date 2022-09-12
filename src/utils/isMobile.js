@@ -1,4 +1,4 @@
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import config from '../../config';
 
 const mobileBreakpoint = config.mobileUiBreakpoint;

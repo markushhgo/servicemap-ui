@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { Typography } from '@material-ui/core';
 import distance from '@turf/distance';
 import flip from '@turf/flip';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useMap } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 import { getSelectedUnit } from '../../../../redux/selectors/selectedUnit';
 import useLocaleText from '../../../../utils/useLocaleText';
 import { drawEntranceMarkreIcon } from '../../utils/drawIcon';

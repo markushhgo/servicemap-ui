@@ -1,9 +1,9 @@
 // Link.react.test.js
-import React from 'react';
-import { Search } from '@mui/icons-material';
+import { Search } from '@material-ui/icons';
 import { fireEvent } from '@testing-library/react';
-import SuggestionItem from '../index';
+import React from 'react';
 import { getRenderWithProviders } from '../../../../../jestUtils';
+import SuggestionItem from '../index';
 
 // Generic required props for SimpleListItem
 const mockProps = {

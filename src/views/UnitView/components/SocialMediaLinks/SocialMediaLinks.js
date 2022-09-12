@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  List, ListItem, Divider, Typography,
-} from '@mui/material';
-import DefaultIcon from '@mui/icons-material/Public';
+  Divider, List, ListItem, Typography
+} from '@material-ui/core';
+import DefaultIcon from '@material-ui/icons/Public';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import unitSectionFilter from '../../utils/unitSectionFilter';
 import { getIcon } from '../../../../components/SMIcon';
 import useLocaleText from '../../../../utils/useLocaleText';
+import unitSectionFilter from '../../utils/unitSectionFilter';
 
 const SocialMediaLinks = ({ unit, classes }) => {
   const getLocaleText = useLocaleText();

@@ -1,11 +1,10 @@
-import React from 'react';
+import { ButtonBase, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Typography, ButtonBase } from '@mui/material';
-import { withStyles } from '@mui/styles';
-import { visuallyHidden } from '@mui/utils';
-import styles from './styles';
 import { keyboardHandler } from '../../utils';
+import styles from './styles';
 
 // Page number element
 const PageElement = ({
@@ -27,7 +26,7 @@ const PageElement = ({
           className={newClassName}
           {...rest}
         >
-          <Typography style={visuallyHidden}>
+          <Typography variant="srOnly">
             {
             isActive
               ? intl.formatMessage({ id: 'general.pagination.currentlyOpenedPage' }, { count: number })

@@ -1,17 +1,14 @@
 /* eslint-disable react/no-multi-comp */
-import React, { useState, useEffect, useRef } from 'react';
+import { Tab, Tabs, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import {
-  Tabs, Tab, Typography,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { parseSearchParams, stringifySearchParams } from '../../utils';
-import ResultOrderer from '../ResultOrderer';
 import config from '../../../config';
+import { parseSearchParams, stringifySearchParams } from '../../utils';
 import useMobileStatus from '../../utils/isMobile';
 import AddressSearchBar from '../AddressSearchBar';
 import PaginatedList from '../Lists/PaginatedList';
+import ResultOrderer from '../ResultOrderer';
 
 const TabLists = ({
   changeCustomUserLocation,
@@ -204,7 +201,7 @@ const TabLists = ({
           focusClass
           && focusText
           && (
-            <Typography style={visuallyHidden} className={focusClass} tabIndex={-1}>{focusText}</Typography>
+            <Typography variant="srOnly" className={focusClass} tabIndex={-1}>{focusText}</Typography>
           )
         }
         <Tabs

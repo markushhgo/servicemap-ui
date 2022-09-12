@@ -1,8 +1,7 @@
-import { Map } from '@mui/icons-material';
 import {
-  AppBar, Button, ButtonBase, Toolbar, Typography,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+  AppBar, Button, ButtonBase, Toolbar, Typography
+} from '@material-ui/core';
+import { Map } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -291,7 +290,7 @@ const TopBar = (props) => {
                 {!smallScreen ? (
                   <>
                     <div className={classes.settingsButtonsContainer}>
-                      <Typography component="h2" style={visuallyHidden}>
+                      <Typography component="h2" variant="srOnly">
                         <FormattedMessage id="settings" />
                       </Typography>
                       {renderSettingsButtons()}

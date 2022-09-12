@@ -1,20 +1,18 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import {
-  List,
+  Divider, List,
   ListItem,
-  Typography,
-  Divider,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+  Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import SMAccordion from '../../../../components/SMAccordion';
 import { fetchDistrictGeometry, handleOpenItems, setSelectedDistrictType } from '../../../../redux/actions/district';
-import DistrictUnitList from '../DistrictUnitList';
-import DistrictToggleButton from '../DistrictToggleButton';
 import { dataStructure } from '../../utils/districtDataHelper';
 import DistrictAreaList from '../DistrictAreaList';
+import DistrictToggleButton from '../DistrictToggleButton';
+import DistrictUnitList from '../DistrictUnitList';
 
 const ServiceTab = (props) => {
   const {
@@ -151,7 +149,7 @@ const ServiceTab = (props) => {
 
   return (
     <div>
-      <Typography style={visuallyHidden} component="h3">
+      <Typography variant="srOnly" component="h3">
         <FormattedMessage id="area.list" />
       </Typography>
       <List>

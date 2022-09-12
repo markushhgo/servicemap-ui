@@ -1,18 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { Divider, IconButton, InputBase, List, ListItem, Paper, Typography } from '@material-ui/core';
+import { Clear, Search } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import {
-  InputBase, IconButton, Paper, List, ListItem, Typography, Divider,
-} from '@mui/material';
-import { Clear, Search } from '@mui/icons-material';
-import { visuallyHidden } from '@mui/utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOrder, setDirection } from '../../redux/actions/sort';
-import { keyboardHandler, formAddressString } from '../../utils';
-import useMobileStatus from '../../utils/isMobile';
-import useLocaleText from '../../utils/useLocaleText';
-import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
 import config from '../../../config';
+import { setDirection, setOrder } from '../../redux/actions/sort';
+import { formAddressString, keyboardHandler } from '../../utils';
+import useMobileStatus from '../../utils/isMobile';
+import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
+import useLocaleText from '../../utils/useLocaleText';
 
 const AddressSearchBar = ({
   defaultAddress,
@@ -174,7 +171,7 @@ const AddressSearchBar = ({
             </>
           )}
         />
-        <Typography aria-live="polite" id="resultLength" style={visuallyHidden}>{infoText}</Typography>
+        <Typography aria-live="polite" id="resultLength" variant="srOnly">{infoText}</Typography>
         {showSuggestions ? (
           <Paper>
             <List role="listbox" id="address-results">

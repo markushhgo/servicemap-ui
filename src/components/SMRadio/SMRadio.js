@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
-  FormControl, FormLabel, RadioGroup, FormControlLabel, Radio,
-} from '@mui/material';
+    FormControl, FormControlLabel, FormLabel, Radio, RadioGroup
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 const SMRadio = ({
   controls, initialValue, name, label, onChange, ...rest

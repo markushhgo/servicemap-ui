@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import {
-  Typography,
-} from '@mui/material';
-import Container from '../Container';
+    Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import CloseButton from '../CloseButton';
+import Container from '../Container';
 
 const SettingsTitle = ({
   classes, close, id, intl, titleID, typography,
