@@ -5,6 +5,9 @@ const translations = {
   'app.description': 'Alla tjänster i huvudstadsregionen inom räckhåll.',
   'app.og.image.alt': 'Servicekarta logo',
   'app.errorpage.title': 'Felmeddelandesida',
+  'app.navigation.language': 'Språk och kontrast',
+  'app.navigation.home': 'Hem',
+  'app.navigation.settings': 'Inställningar',
 
   // Accessibility
   'accessibility': 'Tillgänglighet',
