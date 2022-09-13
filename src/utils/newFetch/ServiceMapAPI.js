@@ -16,7 +16,7 @@ export default class ServiceMapAPI extends HttpClient {
     if (typeof query !== 'string') {
       throw new APIFetchError('Invalid query string provided to ServiceMapAPI search method');
     }
-    const options = { // TODO: adjust these values for best results and performance
+    const options = {
       q: query,
       page_size: 200,
       limit: 2000,
@@ -53,7 +53,7 @@ export default class ServiceMapAPI extends HttpClient {
     return this.get('unit', options);
   }
 
-  serviceUnits = async (serviceId, additionalOptions) => {
+  serviceUnitSearch = async (serviceId, additionalOptions) => {
     if (typeof serviceId !== 'string') {
       throw new APIFetchError('Invalid id string provided to ServiceMapAPI serviceUnits method');
     }
@@ -70,6 +70,23 @@ export default class ServiceMapAPI extends HttpClient {
     /* TODO: should use getConcurrent here instead.
     Progress updater needs to be updated to allow concurrency first. */
     return this.get('unit', options);
+  }
+
+  // Fetch units of multiple services concurrently
+  serviceUnits = async (idList, additionalOptions) => {
+    if (typeof idList !== 'string' && typeof idList !== 'number') {
+      throw new APIFetchError('Invalid idList string provided to ServiceMapAPI services method');
+    }
+
+    const options = {
+      service: idList,
+      page_size: 200,
+      geometry: true,
+      only: 'street_address,name,accessibility_shortcoming_count,location,municipality,contract_type',
+      ...additionalOptions,
+    };
+
+    return this.getConcurrent('unit', options);
   }
 
   serviceNames = async (idList) => {
