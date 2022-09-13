@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import { withStyles } from '@mui/styles';
-import DrawerMenu from './DrawerMenu';
+import { connect } from 'react-redux';
 import { findUserLocation } from '../../../redux/actions/user';
+import DrawerMenu from './DrawerMenu';
 import styles from './styles';
 
 const mapStateToProps = (state) => {

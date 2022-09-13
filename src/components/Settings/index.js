@@ -1,18 +1,12 @@
-import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import {
-  toggleHearingAid,
-  setMobility,
-  setMapType,
-  toggleColorblind,
-  toggleVisuallyImpaired,
-  toggleCity,
-  toggleSettings,
+    setMapType, setMobility, toggleCity, toggleColorblind, toggleHearingAid, toggleSettings, toggleVisuallyImpaired
 } from '../../redux/actions/settings';
+import { changeTheme } from '../../redux/actions/user';
 import Settings from './Settings';
 import styles from './styles';
-import { changeTheme } from '../../redux/actions/user';
 
 const mapStateToProps = (state) => {
   const { settings } = state;

@@ -1,22 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { Button, Divider, IconButton, InputBase, Paper, Typography } from '@material-ui/core';
+import { Cancel, Search } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import {
-  InputBase, Paper, Typography, Button, IconButton, Divider,
-} from '@mui/material';
-import {
-  Search, Cancel,
-} from '@mui/icons-material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import BackButton from '../BackButton';
-import { keyboardHandler, uppercaseFirst, useQuery } from '../../utils';
-import SuggestionBox from './components/SuggestionBox';
-import MobileComponent from '../MobileComponent';
-import DesktopComponent from '../DesktopComponent';
-import { CloseSuggestionButton } from './components/CloseSuggestionButton';
 import paths from '../../../config/paths';
+import { keyboardHandler, uppercaseFirst, useQuery } from '../../utils';
 import useLocaleText from '../../utils/useLocaleText';
+import BackButton from '../BackButton';
+import DesktopComponent from '../DesktopComponent';
+import MobileComponent from '../MobileComponent';
+import { CloseSuggestionButton } from './components/CloseSuggestionButton';
+import SuggestionBox from './components/SuggestionBox';
 import { getPreviousSearches } from './previousSearchData';
 
 let blurTimeout = null;

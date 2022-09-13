@@ -1,6 +1,6 @@
-import { withStyles } from '@mui/styles';
-import SMLogoComponent from './SMLogoComponent';
+import { withStyles } from '@material-ui/core';
 import styles from '../styles';
+import SMLogoComponent from './SMLogoComponent';
 
 const SMLogo = withStyles(styles)(SMLogoComponent);
 

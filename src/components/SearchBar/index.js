@@ -1,9 +1,9 @@
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
-import styles from './styles';
 import fetchSearchResults from '../../redux/actions/search';
 import { changeSelectedUnit } from '../../redux/actions/selectedUnit';
 import SearchBarComponent from './SearchBarComponent';
+import styles from './styles';
 
 // Listen to redux state
 const mapStateToProps = (state) => {

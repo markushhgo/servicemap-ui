@@ -1,32 +1,30 @@
 /* eslint-disable global-require */
 /* eslint-disable camelcase */
-import React, { useEffect, useState } from 'react';
+import { ButtonBase, Divider, List, Typography } from '@material-ui/core';
+import { Map } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import {
-  Typography, Divider, List, ButtonBase,
-} from '@mui/material';
-import { FormattedMessage } from 'react-intl';
-import { Map } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react';
 import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
+import { AddressIcon } from '../../components/SMIcon';
+import TitleBar from '../../components/TitleBar';
 import { focusToPosition, useMapFocusDisabled } from '../MapView/utils/mapActions';
 import fetchAdministrativeDistricts from './utils/fetchAdministrativeDistricts';
-import TitleBar from '../../components/TitleBar';
-import { AddressIcon } from '../../components/SMIcon';
 
-import fetchAddressUnits from './utils/fetchAddressUnits';
-import fetchAddressData from './utils/fetchAddressData';
+import config from '../../../config';
+import { DistrictItem, SearchBar } from '../../components';
+import DesktopComponent from '../../components/DesktopComponent';
+import DivisionItem from '../../components/ListItems/DivisionItem';
+import MobileComponent from '../../components/MobileComponent';
 import SMButton from '../../components/ServiceMapButton';
 import TabLists from '../../components/TabLists';
-import { getAddressText, addressMatchParamsToFetchOptions, useNavigationParams } from '../../utils/address';
-import DesktopComponent from '../../components/DesktopComponent';
-import MobileComponent from '../../components/MobileComponent';
-import DivisionItem from '../../components/ListItems/DivisionItem';
-import config from '../../../config';
-import useLocaleText from '../../utils/useLocaleText';
 import { parseSearchParams } from '../../utils';
+import { addressMatchParamsToFetchOptions, getAddressText, useNavigationParams } from '../../utils/address';
+import useLocaleText from '../../utils/useLocaleText';
 import { getCategoryDistricts } from '../AreaView/utils/districtDataHelper';
-import { DistrictItem, SearchBar } from '../../components';
+import fetchAddressData from './utils/fetchAddressData';
+import fetchAddressUnits from './utils/fetchAddressUnits';
 
 
 const hiddenDivisions = {

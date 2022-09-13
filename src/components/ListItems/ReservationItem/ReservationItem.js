@@ -1,8 +1,8 @@
-import React from 'react';
+import { EventAvailable } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { EventAvailable } from '@mui/icons-material';
-import SimpleListItem from '../SimpleListItem';
+import React from 'react';
 import useLocaleText from '../../../utils/useLocaleText';
+import SimpleListItem from '../SimpleListItem';
 
 const ReservationItem = ({ reservation, intl, divider }) => {
   const getLocaleText = useLocaleText();

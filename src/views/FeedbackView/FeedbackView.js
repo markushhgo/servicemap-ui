@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { ButtonBase, Checkbox, Dialog, DialogContent, DialogTitle, FormControl, InputBase, Typography } from '@material-ui/core';
+import { Warning } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { Warning } from '@mui/icons-material';
-import {
-  Typography, InputBase, Checkbox, FormControl, Dialog, ButtonBase, DialogTitle, DialogContent,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Prompt } from 'react-router-dom';
-import TitleBar from '../../components/TitleBar';
-import SMButton from '../../components/ServiceMapButton';
 import config from '../../../config';
 import DesktopComponent from '../../components/DesktopComponent';
+import SMButton from '../../components/ServiceMapButton';
+import TitleBar from '../../components/TitleBar';
+import { validateEmail } from '../../utils';
 import { focusToViewTitle } from '../../utils/accessibility';
 import useLocaleText from '../../utils/useLocaleText';
-import { validateEmail } from '../../utils';
 
 const formFieldInitialState = {
   email: {
@@ -276,7 +273,6 @@ const FeedbackView = ({
           {/* Email field */}
           <FormControl>
             <Typography id="emailTitle" className={classes.title}>
-              <span style={visuallyHidden}><FormattedMessage id="feedback.email" /></span>
               <FormattedMessage id="feedback.email.info" />
             </Typography>
             <Typography aria-hidden className={classes.subtitle}><FormattedMessage id="feedback.email" /></Typography>
@@ -304,7 +300,7 @@ const FeedbackView = ({
                     {intl.formatMessage({ id: formFields.email.errorMessageId })}
                   </Typography>
                 </div>
-                <Typography id="srErrorEmail" role="alert" style={visuallyHidden}>
+                <Typography id="srErrorEmail" role="alert" variant="srOnly">
                   <FormattedMessage id="feedback.srError.email.invalid" />
                 </Typography>
               </>
@@ -314,7 +310,6 @@ const FeedbackView = ({
           {/* Feedback field */}
           <FormControl>
             <Typography id="feedbackTitle" className={classes.title}>
-              <span style={visuallyHidden}><FormattedMessage id="feedback.feedback" /></span>
               <FormattedMessage id="feedback.feedback.info" />
             </Typography>
             <Typography aria-hidden className={classes.subtitle}><FormattedMessage id="feedback.feedback" /></Typography>
@@ -342,7 +337,7 @@ const FeedbackView = ({
                     {intl.formatMessage({ id: formFields.feedback.errorMessageId })}
                   </Typography>
                 </div>
-                <Typography id="srErrorFeedback" role="alert" style={visuallyHidden}>
+                <Typography id="srErrorFeedback" role="alert" variant="srOnly">
                   <FormattedMessage id="feedback.srError.feedback.required" />
                 </Typography>
               </>

@@ -1,14 +1,14 @@
+import { ButtonBase } from '@material-ui/core';
 import {
-  Add,
-  ArrowDropDown,
-  ArrowDropUp,
-  ArrowLeft,
-  ArrowRight,
-  Remove,
-} from '@mui/icons-material';
-import { ButtonBase } from '@mui/material';
-import React, { useCallback } from 'react';
+    Add,
+    ArrowDropDown,
+    ArrowDropUp,
+    ArrowLeft,
+    ArrowRight,
+    Remove
+} from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
 import { useMap } from 'react-leaflet';
 import isClient from '../../../../utils';
 import { isEmbed } from '../../../../utils/path';

@@ -1,7 +1,7 @@
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
-import HomeView from './HomeView';
 import { toggleSettings } from '../../redux/actions/settings';
+import HomeView from './HomeView';
 import styles from './styles';
 
 // Listen to redux state

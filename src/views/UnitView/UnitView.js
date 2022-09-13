@@ -1,34 +1,33 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, useEffect, useRef } from 'react';
+import { Typography } from '@material-ui/core';
+import { Hearing, Mail, Map } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import { Map, Mail, Hearing } from '@mui/icons-material';
-import { visuallyHidden } from '@mui/utils';
-import { FormattedMessage } from 'react-intl';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
+import config from '../../../config';
+import paths from '../../../config/paths';
 import { SearchBar } from '../../components';
-import TitleBar from '../../components/TitleBar';
 import Container from '../../components/Container';
-import AccessibilityInfo from './components/AccessibilityInfo';
-import ContactInfo from './components/ContactInfo';
-import Highlights from './components/Highlights';
-import ElectronicServices from './components/ElectronicServices';
-import Description from './components/Description';
-import SMButton from '../../components/ServiceMapButton';
-import TabLists from '../../components/TabLists';
-import { AddressIcon } from '../../components/SMIcon';
-import SocialMediaLinks from './components/SocialMediaLinks';
-import UnitLinks from './components/UnitLinks';
 import SimpleListItem from '../../components/ListItems/SimpleListItem';
 import TitledList from '../../components/Lists/TitledList';
 import ReadSpeakerButton from '../../components/ReadSpeakerButton';
-import config from '../../../config';
+import SMButton from '../../components/ServiceMapButton';
+import { AddressIcon } from '../../components/SMIcon';
+import TabLists from '../../components/TabLists';
+import TitleBar from '../../components/TitleBar';
 import useMobileStatus from '../../utils/isMobile';
 import UnitHelper from '../../utils/unitHelper';
 import useLocaleText from '../../utils/useLocaleText';
-import paths from '../../../config/paths';
+import AccessibilityInfo from './components/AccessibilityInfo';
+import ContactInfo from './components/ContactInfo';
+import Description from './components/Description';
+import ElectronicServices from './components/ElectronicServices';
+import Highlights from './components/Highlights';
+import SocialMediaLinks from './components/SocialMediaLinks';
 import UnitDataList from './components/UnitDataList';
+import UnitLinks from './components/UnitLinks';
 import UnitsServicesList from './components/UnitsServicesList';
 
 const UnitView = (props) => {
@@ -171,7 +170,7 @@ const UnitView = (props) => {
   const renderTitleForRS = () => {
     const title = unit && unit.name ? getLocaleText(unit.name) : '';
     return (
-      <Typography style={visuallyHidden} aria-hidden>{title}</Typography>
+      <Typography variant="srOnly" aria-hidden>{title}</Typography>
     );
   };
 

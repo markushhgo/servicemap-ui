@@ -1,6 +1,6 @@
-import React from 'react';
+import { Paper, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Paper } from '@mui/material';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import embedderConfig from '../embedderConfig';
 

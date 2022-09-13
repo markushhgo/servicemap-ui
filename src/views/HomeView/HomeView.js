@@ -1,4 +1,4 @@
-import { Map } from '@mui/icons-material';
+import { Map } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useIntl } from 'react-intl';

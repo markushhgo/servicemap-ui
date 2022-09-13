@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import { withStyles } from '@mui/styles';
-import Districts from './Districts';
+import { connect } from 'react-redux';
+import { setSelectedDistrictServices, setSelectedSubdistricts } from '../../../../redux/actions/district';
+import { getAddressDistrict, getDistrictsByType, getHighlightedDistrict } from '../../../../redux/selectors/district';
 import styles from '../../styles';
-import { getDistrictsByType, getAddressDistrict, getHighlightedDistrict } from '../../../../redux/selectors/district';
-import { setSelectedSubdistricts, setSelectedDistrictServices } from '../../../../redux/actions/district';
+import Districts from './Districts';
 
 const mapStateToProps = (state) => {
   const { navigator, measuringMode } = state;

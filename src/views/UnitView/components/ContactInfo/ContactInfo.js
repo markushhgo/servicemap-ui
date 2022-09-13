@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import {
-  ButtonBase, Divider, ListItem, Typography,
-} from '@mui/material';
+    ButtonBase, Divider, ListItem, Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useHistory, useLocation } from 'react-router-dom';
 import config from '../../../../../config';
-import InfoList from '../InfoList';
-import unitSectionFilter from '../../utils/unitSectionFilter';
-import { getAddressFromUnit } from '../../../../utils/address';
-import useLocaleText from '../../../../utils/useLocaleText';
 import SMAccordion from '../../../../components/SMAccordion';
 import { parseSearchParams, stringifySearchParams } from '../../../../utils';
+import { getAddressFromUnit } from '../../../../utils/address';
+import useLocaleText from '../../../../utils/useLocaleText';
+import unitSectionFilter from '../../utils/unitSectionFilter';
+import InfoList from '../InfoList';
 
 const ContactInfo = ({
   unit, userLocation, intl, classes,

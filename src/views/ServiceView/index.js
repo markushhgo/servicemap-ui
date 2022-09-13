@@ -1,11 +1,11 @@
 
+import { withStyles } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@mui/styles';
-import { injectIntl } from 'react-intl';
 import { fetchService } from '../../redux/actions/services';
-import ServiceView from './ServiceView';
 import { getServiceUnits } from '../../redux/selectors/service';
+import ServiceView from './ServiceView';
 import styles from './styles';
 
 const mapStateToProps = (state) => {

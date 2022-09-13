@@ -1,10 +1,10 @@
 // CloseSuggestionButton.test.js
-import React from 'react';
+import { ArrowDownward } from '@material-ui/icons';
 import { fireEvent } from '@testing-library/react';
-import { ArrowDownward } from '@mui/icons-material';
-import { CloseSuggestionButton } from '../CloseSuggestionButton';
+import React from 'react';
 import { getRenderWithProviders } from '../../../../../jestUtils';
 import finnishTranslations from '../../../../i18n/fi';
+import { CloseSuggestionButton } from '../CloseSuggestionButton';
 
 // Generic required props for ResultItem
 const mockProps = {

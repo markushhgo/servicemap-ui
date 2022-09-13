@@ -1,7 +1,7 @@
-import React from 'react';
+import { MuiThemeProvider } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
-import { ThemeProvider } from '@mui/material/styles';
 import themes from '.';
 
 const mapStateToProps = (state) => {
@@ -14,9 +14,9 @@ const mapStateToProps = (state) => {
 // Component to handle theme changes
 const ThemeHandler = ({ children, theme }) => (
 // Get correct theme setting from store
-  <ThemeProvider theme={theme === 'dark' ? themes.SMThemeDark : themes.SMTheme}>
+  <MuiThemeProvider theme={theme === 'dark' ? themes.SMThemeDark : themes.SMTheme}>
     {children}
-  </ThemeProvider>
+  </MuiThemeProvider>
 );
 ThemeHandler.propTypes = {
   children: PropTypes.node,

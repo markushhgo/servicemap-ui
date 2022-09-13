@@ -2,8 +2,7 @@
 
 import {
   Container, Divider, Link, NoSsr, Paper, Typography
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -289,7 +288,7 @@ const SearchView = (props) => {
           onKeyPress={() => {
             keyboardHandler(() => skipToContent(), ['space', 'enter']);
           }}
-          style={visuallyHidden}
+          variant="srOnly"
         >
           <FormattedMessage id="search.skipLink" />
         </Typography>
@@ -310,7 +309,7 @@ const SearchView = (props) => {
     const { isFetching, max } = searchFetchState;
     return (
       <Paper className={!isFetching ? classes.noPadding : ''} elevation={1} square aria-live="polite">
-        <Typography className={classes.srOnly} style={visuallyHidden} component="h3" tabIndex={-1}>
+        <Typography className={classes.srOnly} variant="srOnly" component="h3" tabIndex={-1}>
           {!isFetching && (
             <FormattedMessage id="search.results.title" />
           )}
@@ -448,7 +447,7 @@ const SearchView = (props) => {
       {renderNotFound()}
       {isMobile ? (
         // Jump link back to beginning of current page
-        <Typography style={visuallyHidden} component="h3">
+        <Typography variant="srOnly" component="h3">
           <Link href={`#${viewTitleID}`} tabIndex={-1}>
             <FormattedMessage id="general.return.viewTitle" />
           </Link>

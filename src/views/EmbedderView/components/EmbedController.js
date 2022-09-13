@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Typography,
-  Paper,
-  InputBase,
-  Divider,
-  Button,
-  List,
-  FormGroup,
-  FormControlLabel,
-  ListItem,
-  Checkbox,
-} from '@mui/material';
-import { withStyles } from '@mui/styles';
+  Button, Checkbox, Divider, FormControlLabel, FormGroup, InputBase, List, ListItem, Paper, Typography
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import SMRadio from '../../../components/SMRadio';
 import styles from '../styles';

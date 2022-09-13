@@ -1,11 +1,11 @@
-import React from 'react';
+import { MuiThemeProvider } from '@material-ui/core';
 import { render } from '@testing-library/react';
-import configureStore from 'redux-mock-store';
-import { ThemeProvider } from '@mui/material/styles';
+import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import themes from './src/themes';
+import configureStore from 'redux-mock-store';
 import finnish from './src/i18n/fi';
+import themes from './src/themes';
 
 const mockStore = configureStore([]);
 
@@ -21,9 +21,9 @@ const Providers = (mockState) => ({ children }) => {
   return (
     <Provider store={store}>
       <IntlProvider {...intlMock}>
-        <ThemeProvider theme={themes.SMTheme}>
+        <MuiThemeProvider theme={themes.SMTheme}>
           {children}
-        </ThemeProvider>
+        </MuiThemeProvider>
       </IntlProvider>
     </Provider>
   );

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Typography,
-} from '@mui/material';
+    Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const SettingsInfoItem = ({
   ariaText,
