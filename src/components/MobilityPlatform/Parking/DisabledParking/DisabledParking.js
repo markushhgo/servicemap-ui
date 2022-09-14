@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
+import disabledParkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_disabled_parking.svg';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 import DisabledParkingContent from './components/DisabledParkingContent';
@@ -16,7 +17,13 @@ const DisabledParking = () => {
 
   const mapType = useSelector(state => state.settings.mapType);
 
-  const { Polygon, Popup } = global.rL;
+  const { Marker, Polygon, Popup } = global.rL;
+  const { icon } = global.L;
+
+  const customIcon = icon({
+    iconUrl: disabledParkingIcon,
+    iconSize: [45, 45],
+  });
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -43,6 +50,16 @@ const DisabledParking = () => {
     }
   }, [showDisabledParking, disabledParkingData, map]);
 
+  const getSingleCoordinates = (data) => {
+    let coordinates = [];
+    data.forEach((item) => {
+      item.forEach((coords) => {
+        coordinates = coords;
+      });
+    });
+    return coordinates;
+  };
+
   return (
     <>
       {showDisabledParking
@@ -50,11 +67,12 @@ const DisabledParking = () => {
         && disabledParkingData.length > 0
         && disabledParkingData.map(item => (
           <>
-            <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords}>
+            <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />
+            <Marker key={item} icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
               <Popup>
                 <DisabledParkingContent item={item} />
               </Popup>
-            </Polygon>
+            </Marker>
           </>
         ))}
     </>
