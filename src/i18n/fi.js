@@ -697,6 +697,9 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
   'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
+  'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Nopeusrajoitusalue',
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'Pysäköintikieltoalue',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Pysäköintialue',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import scooterParkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_scooter_parking.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import TextContent from '../../../TextContent';
 
 const ParkingAreas = () => {
   const [parkingAreas, setParkingAreas] = useState([]);
@@ -11,7 +12,7 @@ const ParkingAreas = () => {
 
   const map = useMap();
 
-  const { Marker } = global.rL;
+  const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
   const customIcon = icon({
@@ -46,7 +47,14 @@ const ParkingAreas = () => {
                   key={item.id}
                   icon={customIcon}
                   position={[item.geometry_coords.lat, item.geometry_coords.lon]}
-                />
+                >
+                  <Popup>
+                    <TextContent
+                      titleId="mobilityPlatform.content.scooters.parkingAreas.title"
+                      translationId="mobilityPlatform.info.scooters.parkingAreas"
+                    />
+                  </Popup>
+                </Marker>
               ))}
         </>
       ) : null}

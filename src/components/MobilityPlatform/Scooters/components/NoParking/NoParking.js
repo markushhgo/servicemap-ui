@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import TextContent from '../../../TextContent';
 
 /**
  * Displays no parking zones of scooters on the map in polygon format.
@@ -15,7 +16,7 @@ const NoParking = () => {
 
   const mapType = useSelector(state => state.settings.mapType);
 
-  const { Polygon } = global.rL;
+  const { Polygon, Popup } = global.rL;
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -45,7 +46,16 @@ const NoParking = () => {
       {showScooterNoParking
         && noParkingData
         && noParkingData.length > 0
-        && noParkingData.map(item => <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />)}
+        && noParkingData.map(item => (
+          <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords}>
+            <Popup>
+              <TextContent
+                titleId="mobilityPlatform.content.scooters.noParkingAreas.title"
+                translationId="mobilityPlatform.info.scooters.noParking"
+              />
+            </Popup>
+          </Polygon>
+        ))}
     </>
   );
 };
