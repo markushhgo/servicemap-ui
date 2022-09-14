@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import AlertBox from './AlertBox';

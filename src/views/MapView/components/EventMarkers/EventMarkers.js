@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import {
-  ButtonBase, List, ListItem, Typography,
-} from '@mui/material';
+    ButtonBase, List, ListItem, Typography
+} from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { Close } from '@mui/icons-material';
-import { useLocation } from 'react-router-dom';
 import { useMap } from 'react-leaflet';
-import useLocaleText from '../../../../utils/useLocaleText';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { changeSelectedEvent } from '../../../../redux/actions/event';
+import { parseSearchParams } from '../../../../utils';
 import { getAddressFromUnit } from '../../../../utils/address';
 import formatEventDate from '../../../../utils/events';
-import { changeSelectedEvent } from '../../../../redux/actions/event';
-import { drawMarkerIcon } from '../../utils/drawIcon';
 import { generatePath, isEmbed } from '../../../../utils/path';
-import { parseSearchParams } from '../../../../utils';
+import useLocaleText from '../../../../utils/useLocaleText';
+import { drawMarkerIcon } from '../../utils/drawIcon';
 
 
 const EventMarkers = ({ searchData, classes, navigator }) => {

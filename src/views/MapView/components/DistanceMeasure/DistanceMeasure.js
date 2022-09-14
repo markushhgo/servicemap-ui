@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { Typography, useTheme } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, useTheme } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useMapEvents } from 'react-leaflet';
 

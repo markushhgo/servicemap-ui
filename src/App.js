@@ -1,41 +1,38 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { IntlProvider, useIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import withStyles from 'isomorphic-style-loader/withStyles';
-import {
-  Switch, Route, BrowserRouter,
-} from 'react-router-dom';
-import { StyledEngineProvider } from '@mui/material';
-import styles from './index.css';
-import SMFonts from './service-map-icons.css';
-import HSLFonts from './hsl-icons.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import appStyles from './App.css';
-import printCSS from './print.css';
-import isClient from './utils';
-import { getLocale } from './redux/selectors/locale';
-import { changeLocaleAction } from './redux/actions/user';
+import DataFetcher from './components/DataFetchers/DataFetcher';
+import Navigator from './components/Navigator';
+import HSLFonts from './hsl-icons.css';
+import styles from './index.css';
 import DefaultLayout from './layouts';
 import EmbedLayout from './layouts/EmbedLayout';
-import Navigator from './components/Navigator';
-import DataFetcher from './components/DataFetchers/DataFetcher';
+import printCSS from './print.css';
+import { changeLocaleAction } from './redux/actions/user';
+import { getLocale } from './redux/selectors/locale';
+import SMFonts from './service-map-icons.css';
+import isClient from './utils';
 import EmbedderView from './views/EmbedderView';
 
-import '@formatjs/intl-pluralrules/polyfill';
 import '@formatjs/intl-pluralrules/dist/locale-data/en';
 import '@formatjs/intl-pluralrules/dist/locale-data/fi';
 import '@formatjs/intl-pluralrules/dist/locale-data/sv';
+import '@formatjs/intl-pluralrules/polyfill';
 
-import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/dist/locale-data/en';
 import '@formatjs/intl-relativetimeformat/dist/locale-data/fi';
 import '@formatjs/intl-relativetimeformat/dist/locale-data/sv';
-import ThemeWrapper from './themes/ThemeWrapper';
-import LocaleUtility from './utils/locale';
+import '@formatjs/intl-relativetimeformat/polyfill';
 import config from '../config';
 import ogImage from './assets/images/servicemap-meta-img.png';
+import ThemeWrapper from './themes/ThemeWrapper';
+import LocaleUtility from './utils/locale';
 
 // General meta tags for app
 const MetaTags = () => {
@@ -68,24 +65,22 @@ class App extends React.Component {
     const intlData = LocaleUtility.intlData(locale);
 
     return (
-      <StyledEngineProvider injectFirst>
-        <ThemeWrapper>
-          <IntlProvider {...intlData}>
-            <MetaTags />
-            {/* <StylesProvider generateClassName={generateClassName}> */}
-            <div className="App">
-              <Switch>
-                <Route path="*/embedder" component={EmbedderView} />
-                <Route path="*/embed" component={EmbedLayout} />
-                <Route render={() => <DefaultLayout />} />
-              </Switch>
-              <Navigator />
-              <DataFetcher />
-            </div>
-            {/* </StylesProvider> */}
-          </IntlProvider>
-        </ThemeWrapper>
-      </StyledEngineProvider>
+      <ThemeWrapper>
+        <IntlProvider {...intlData}>
+          <MetaTags />
+          {/* <StylesProvider generateClassName={generateClassName}> */}
+          <div className="App">
+            <Switch>
+              <Route path="*/embedder" component={EmbedderView} />
+              <Route path="*/embed" component={EmbedLayout} />
+              <Route render={() => <DefaultLayout />} />
+            </Switch>
+            <Navigator />
+            <DataFetcher />
+          </div>
+          {/* </StylesProvider> */}
+        </IntlProvider>
+      </ThemeWrapper>
     );
   }
 }

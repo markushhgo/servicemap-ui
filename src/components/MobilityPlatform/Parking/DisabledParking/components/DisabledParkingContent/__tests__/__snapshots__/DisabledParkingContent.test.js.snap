@@ -9,13 +9,13 @@ exports[`<DisabledParkingContent /> should work 1`] = `
       class="injectIntl(DisabledParkingContent)-headerContainer-2"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle1"
       >
         Invapysäköintipaikka
       </h6>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body2"
     >
       Invapaikkojen määrä
       :

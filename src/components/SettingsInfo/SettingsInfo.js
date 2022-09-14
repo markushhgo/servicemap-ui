@@ -1,22 +1,17 @@
-import React from 'react';
+import { ButtonBase, Divider, NoSsr, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import {
-  Typography, Divider, ButtonBase, NoSsr,
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import config from '../../../config';
+import isClient from '../../utils';
 import Container from '../Container';
 import {
-  ColorblindIcon,
-  HearingIcon,
-  VisualImpairmentIcon,
-  getIcon,
+  ColorblindIcon, getIcon, HearingIcon,
+  VisualImpairmentIcon
 } from '../SMIcon';
 import SMIcon from '../SMIcon/SMIcon';
 import constants from './constants';
 import SettingsInfoItem from './SettingsInfoItem';
-import isClient from '../../utils';
-import config from '../../../config';
 
 const SettingsInfo = ({
   classes,
@@ -67,7 +62,7 @@ const SettingsInfo = ({
 
   return (
     <NoSsr>
-      <Typography component="h3" style={visuallyHidden}>
+      <Typography component="h3" variant="srOnly">
         <FormattedMessage id="settings.info.heading" />
       </Typography>
       {!noDivider && (
@@ -99,7 +94,7 @@ const SettingsInfo = ({
             <FormattedMessage id={titleText} />
           </Typography>
         </ButtonBase>
-        <Typography aria-hidden id="SettingsInfo-srTitle" style={visuallyHidden}>
+        <Typography aria-hidden id="SettingsInfo-srTitle" variant="srOnly">
           <FormattedMessage id={titleText} />
           <FormattedMessage id="settings.aria.open" />
         </Typography>

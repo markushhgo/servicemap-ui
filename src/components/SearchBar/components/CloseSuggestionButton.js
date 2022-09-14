@@ -1,7 +1,6 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 // Close suggestions button for suggestions dropdowns
@@ -26,7 +25,7 @@ export const CloseSuggestionButton = ({
           tabIndex={tabIndex}
           onClick={onClick}
           onKeyPress={onKeyPress}
-          style={visuallyHidden}
+          variant="srOnly"
           {...rest}
         >
           <FormattedMessage id="search.suggestions.hideButton" />

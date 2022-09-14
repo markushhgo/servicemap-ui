@@ -1,10 +1,10 @@
-import { withStyles } from '@mui/styles';
-import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import ToolMenu from './ToolMenu';
-import styles from './styles';
-import MapUtility from '../../utils/mapUtility';
+import { connect } from 'react-redux';
 import { setMeasuringMode } from '../../redux/actions/map';
+import MapUtility from '../../utils/mapUtility';
+import styles from './styles';
+import ToolMenu from './ToolMenu';
 
 const mapStateToProps = (state) => {
   const {

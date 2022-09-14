@@ -1,24 +1,22 @@
 /* eslint-disable no-underscore-dangle */
+import * as Sentry from '@sentry/react';
+import ac from 'abortcontroller-polyfill';
 import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import 'whatwg-fetch';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from '@sentry/react';
 import { Helmet } from 'react-helmet';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import StyleContext from 'isomorphic-style-loader/StyleContext';
-import ac from 'abortcontroller-polyfill';
-import rootReducer from '../src/redux/rootReducer';
-import App from '../src/App';
-import SettingsUtility from '../src/utils/settings';
-import LocalStorageUtility from '../src/utils/localStorage';
-import favicon from '../src/assets/icons/favicon.ico';
+import 'regenerator-runtime/runtime';
+import 'whatwg-fetch';
 import config from '../config';
-import createEmotionCache from '../server/createEmotionCache';
-import { CacheProvider } from '@emotion/react';
+import App from '../src/App';
+import favicon from '../src/assets/icons/favicon.ico';
+import rootReducer from '../src/redux/rootReducer';
+import LocalStorageUtility from '../src/utils/localStorage';
+import SettingsUtility from '../src/utils/settings';
 
 if (config.sentryDSN) {
   Sentry.init({
@@ -68,9 +66,6 @@ const insertCss = (...styles) => {
   return () => removeCss.forEach(dispose => dispose());
 };
 
-// Create cache object which will inject emotion styles from cache
-const cache = createEmotionCache();
-
 function Main() {
   // Remove server side styles
   React.useEffect(() => {
@@ -81,7 +76,6 @@ function Main() {
   }, []);
 
   return (
-    <CacheProvider value={cache}>
       <Provider store={store}>
         {/* Provider to help with isomorphic style loader */}
         <StyleContext.Provider value={{ insertCss }}>
@@ -94,7 +88,6 @@ function Main() {
           <App />
         </StyleContext.Provider>
       </Provider>
-    </CacheProvider>
   );
 }
 

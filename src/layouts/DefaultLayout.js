@@ -1,6 +1,5 @@
-import { Typography } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { visuallyHidden } from '@mui/utils';
+import { Typography } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -253,7 +252,7 @@ const DefaultLayout = (props) => {
                   </MobilityPlatformProvider>
                 </div>
               </main>
-              <Typography style={visuallyHidden}>
+              <Typography variant="srOnly">
                 {intl.formatMessage({ id: 'map.ariaLabel' })}
               </Typography>
               <div aria-hidden tabIndex={-1} style={styles.map}>

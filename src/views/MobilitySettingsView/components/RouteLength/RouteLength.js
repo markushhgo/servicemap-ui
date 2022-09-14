@@ -1,6 +1,6 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
+import React from 'react';
 
 const RouteLength = ({ classes, intl, route }) => {
   const formatRoutelength = inputLength => Math.round(inputLength / 1000);

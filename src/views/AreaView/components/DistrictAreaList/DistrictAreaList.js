@@ -1,11 +1,11 @@
-import React from 'react';
+import { Divider, List, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Divider, List, Typography } from '@mui/material';
+import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
+import { DistrictItem } from '../../../../components';
 import SMAccordion from '../../../../components/SMAccordion';
 import { getAddressDistrict } from '../../../../redux/selectors/district';
-import { DistrictItem } from '../../../../components';
 import { sortByOriginID } from '../../utils';
 
 export const DistrictAreaList = ({

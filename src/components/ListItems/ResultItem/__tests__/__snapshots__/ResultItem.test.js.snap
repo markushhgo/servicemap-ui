@@ -3,7 +3,8 @@
 exports[`<ResultItem /> should work 1`] = `
 <div>
   <li
-    class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-button ResultItem-listItem-2 css-16e6fe9-MuiButtonBase-root-MuiListItem-root"
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiListItem-root ResultItem-listItem-2 MuiListItem-gutters MuiListItem-button"
     role="link"
     tabindex="0"
   >
@@ -14,8 +15,7 @@ exports[`<ResultItem /> should work 1`] = `
         class="ResultItem-topRow-10"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 ResultItem-title-7 ResultItem-srOnly css-1ak20dk-MuiTypography-root"
-          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
+          class="MuiTypography-root ResultItem-title-7 ResultItem-srOnly MuiTypography-srOnly"
         >
           
     Title text 
@@ -27,7 +27,7 @@ exports[`<ResultItem /> should work 1`] = `
         </p>
         <p
           aria-hidden="true"
-          class="MuiTypography-root MuiTypography-body2 ResultItem-title-7   ResultItem-title css-1ak20dk-MuiTypography-root"
+          class="MuiTypography-root ResultItem-title-7   ResultItem-title MuiTypography-body2"
           role="textbox"
         >
           Title text
@@ -37,7 +37,7 @@ exports[`<ResultItem /> should work 1`] = `
         >
           <p
             aria-hidden="true"
-            class="MuiTypography-root MuiTypography-caption ResultItem-caption-14 ResultItem-text-15 ResultItem-marginLeft-12  ResultItem-distance css-r3hlsg-MuiTypography-root"
+            class="MuiTypography-root ResultItem-caption-14 ResultItem-text-15 ResultItem-marginLeft-12  ResultItem-distance MuiTypography-caption"
           >
             100m
           </p>
@@ -47,7 +47,7 @@ exports[`<ResultItem /> should work 1`] = `
         <div>
           <p
             aria-hidden="true"
-            class="MuiTypography-root MuiTypography-caption ResultItem-noMargin-8 ResultItem-text-15  ResultItem-subtitle css-r3hlsg-MuiTypography-root"
+            class="MuiTypography-root ResultItem-noMargin-8 ResultItem-text-15  ResultItem-subtitle MuiTypography-caption"
           >
             Subtitle text
           </p>
@@ -57,7 +57,7 @@ exports[`<ResultItem /> should work 1`] = `
         >
           <p
             aria-hidden="true"
-            class="MuiTypography-root MuiTypography-caption   ResultItem-bottom css-o763o0-MuiTypography-root"
+            class="MuiTypography-root   ResultItem-bottom MuiTypography-caption MuiTypography-colorInherit"
           >
             Bottom text
           </p>
@@ -69,7 +69,7 @@ exports[`<ResultItem /> should work 1`] = `
     aria-hidden="true"
   >
     <hr
-      class="MuiDivider-root MuiDivider-inset ResultItem-divider-16 css-uls1yk-MuiDivider-root"
+      class="MuiDivider-root ResultItem-divider-16 MuiDivider-inset"
     />
   </li>
 </div>

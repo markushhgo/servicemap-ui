@@ -134,15 +134,15 @@ const getMapOptions = (type, locale) => {
       if (isRetina) {
         suffix += '@2x';
       }
-      /* if (locale === 'sv') {
+      if (locale === 'sv') {
         suffix += '@sv';
-      } */
+      }
       break;
     }
     case 'accessible_map': {
-      /* if (locale === 'sv') {
+      if (locale === 'sv') {
         suffix += '@sv';
-      } */
+      }
       break;
     }
     default:

@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  NoSsr,
-  Typography,
-} from '@mui/material';
+    NoSsr,
+    Typography
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import config from '../../../config';
-import { getIcon } from '../SMIcon';
 import isClient from '../../utils';
+import { getIcon } from '../SMIcon';
 
 const SettingsText = ({ classes, type, variant }) => {
   const a11ySettings = useSelector(state => ['colorblind', 'hearingAid', 'visuallyImpaired'].filter(a => state.settings[a]));

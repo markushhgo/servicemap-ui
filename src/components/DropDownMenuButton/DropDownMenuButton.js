@@ -1,12 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Button,
-  ClickAwayListener,
-  Typography,
-  ButtonBase,
-} from '@mui/material';
-import { ArrowDropUp, ArrowDropDown } from '@mui/icons-material';
+    Button, ButtonBase, ClickAwayListener,
+    Typography
+} from '@material-ui/core';
+import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { keyboardHandler } from '../../utils';
 
 class DropDownMenuButton extends React.Component {

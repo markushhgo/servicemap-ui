@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import styles from '../../styles';
 import AddressMarker from './AddressMarker';

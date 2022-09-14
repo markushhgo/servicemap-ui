@@ -1,5 +1,5 @@
-import { withStyles } from '@mui/styles';
-import TitleBar from './TitleBar';
+import { withStyles } from '@material-ui/core';
 import styles from './styles';
+import TitleBar from './TitleBar';
 
 export default withStyles(styles)(TitleBar);

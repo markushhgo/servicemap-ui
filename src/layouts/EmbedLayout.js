@@ -1,21 +1,18 @@
 
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import {
-  Switch, Route,
-} from 'react-router-dom';
+import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Typography } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
-import MapView from '../views/MapView';
-import PageHandler from './components/PageHandler';
+import { Route, Switch } from 'react-router-dom';
 import AddressView from '../views/AddressView';
-import EventDetailView from '../views/EventDetailView';
-import SearchView from '../views/SearchView';
-import UnitView from '../views/UnitView';
-import ServiceView from '../views/ServiceView';
-import DivisionView from '../views/DivisionView';
 import AreaView from '../views/AreaView';
+import DivisionView from '../views/DivisionView';
+import EventDetailView from '../views/EventDetailView';
+import MapView from '../views/MapView';
+import SearchView from '../views/SearchView';
+import ServiceView from '../views/ServiceView';
+import UnitView from '../views/UnitView';
+import PageHandler from './components/PageHandler';
 
 const createContentStyles = (
   isSmallScreen, landscape, mobileMapOnly, fullMobileMap, settingsOpen,
@@ -127,7 +124,7 @@ const EmbedLayout = ({ intl }) => {
             />
           </Switch>
         </div>
-        <Typography style={visuallyHidden}>{intl.formatMessage({ id: 'map.ariaLabel' })}</Typography>
+        <Typography variant="srOnly">{intl.formatMessage({ id: 'map.ariaLabel' })}</Typography>
         <div aria-hidden tabIndex={-1} style={styles.map}>
           <MapView showMobilityPlatform={false} />
         </div>

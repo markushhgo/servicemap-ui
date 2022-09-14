@@ -1,14 +1,14 @@
 import {
-  Checkbox, FormControlLabel, List, ListItem, Typography,
-} from '@mui/material';
-import React from 'react';
+    Checkbox, FormControlLabel, List, ListItem, Typography
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedDistrictServices, setSelectedSubdistricts } from '../../../../redux/actions/district';
 import { getDistrictsByType } from '../../../../redux/selectors/district';
-import { panViewToBounds } from '../../../MapView/utils/mapActions';
 import useLocaleText from '../../../../utils/useLocaleText';
+import { panViewToBounds } from '../../../MapView/utils/mapActions';
 
 
 const GeographicalDistrictList = ({ district, classes }) => {

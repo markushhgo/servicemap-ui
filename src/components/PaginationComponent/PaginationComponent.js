@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import { ArrowForwardIos } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { ArrowForwardIos } from '@mui/icons-material';
+import React from 'react';
 import Container from '../Container';
-import PageElement from './PageElement';
 import SMButton from '../ServiceMapButton';
+import PageElement from './PageElement';
 
 class PaginationComponent extends React.Component {
   constructor(props) {
