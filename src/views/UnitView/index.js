@@ -1,17 +1,17 @@
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import { fetchSelectedUnit, changeSelectedUnit } from '../../redux/actions/selectedUnit';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { changeSelectedUnit, fetchSelectedUnit } from '../../redux/actions/selectedUnit';
 import { fetchAccessibilitySentences } from '../../redux/actions/selectedUnitAccessibility';
-import { fetchHearingMaps } from '../../redux/actions/selectedUnitHearingMaps';
 import { fetchUnitEvents } from '../../redux/actions/selectedUnitEvents';
+import { fetchHearingMaps } from '../../redux/actions/selectedUnitHearingMaps';
 import { fetchReservations } from '../../redux/actions/selectedUnitReservations';
 
-import UnitView from './UnitView';
-import styles from './styles/styles';
 import { calculateDistance, getCurrentlyUsedPosition } from '../../redux/selectors/unit';
 import { formatDistanceObject } from '../../utils';
+import styles from './styles/styles';
+import UnitView from './UnitView';
 
 // Listen to redux state
 const mapStateToProps = (state, props) => {

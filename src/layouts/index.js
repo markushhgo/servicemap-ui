@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@mui/styles';
+import { fetchErrors, fetchNews } from '../redux/actions/alerts';
 import DefaultLayout from './DefaultLayout';
 import styles from './styles';
-import { fetchErrors, fetchNews } from '../redux/actions/alerts';
 
 // Listen to redux state
 const mapStateToProps = (state) => {

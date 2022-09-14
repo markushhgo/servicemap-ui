@@ -1,32 +1,30 @@
-import React, {
-  useState, useContext, useEffect, useRef, useMemo,
-} from 'react';
+import {
+  Checkbox, FormControl, FormControlLabel, FormGroup, Typography
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React, {
+  useContext, useEffect, useMemo, useRef, useState
+} from 'react';
 import { useSelector } from 'react-redux';
-import {
-  Typography, FormGroup, FormControl, FormControlLabel, Checkbox,
-} from '@mui/material';
-import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
-import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
+import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
-import MobilityPlatformContext from '../../context/MobilityPlatformContext';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
-  fetchCultureRouteNames,
-  fetchBicycleRouteNames,
-  fetchMobilityMapPolygonData,
+  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
-import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
-import Description from './components/Description';
-import RouteLength from './components/RouteLength';
-import ExtendedInfo from './components/ExtendedInfo';
-import CityBikeInfo from './components/CityBikeInfo';
+import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import ButtonMain from './components/ButtonMain';
-import FormLabel from './components/FormLabel';
+import CityBikeInfo from './components/CityBikeInfo';
+import Description from './components/Description';
 import EmptyRouteList from './components/EmptyRouteList';
+import ExtendedInfo from './components/ExtendedInfo';
+import FormLabel from './components/FormLabel';
+import RouteLength from './components/RouteLength';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);

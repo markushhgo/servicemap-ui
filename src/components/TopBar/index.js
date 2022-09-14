@@ -1,9 +1,9 @@
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
-import styles from './styles';
-import TopBar from './TopBar';
 import { setMapType, toggleSettings } from '../../redux/actions/settings';
 import { changeTheme } from '../../redux/actions/user';
+import styles from './styles';
+import TopBar from './TopBar';
 
 // Listen to redux state
 const mapStateToProps = (state) => {

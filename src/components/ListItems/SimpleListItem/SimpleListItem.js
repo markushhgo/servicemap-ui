@@ -1,10 +1,9 @@
-import React from 'react';
+import { Divider, Typography } from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { Typography, Divider } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React from 'react';
 import { keyboardHandler } from '../../../utils';
 
 const SimpleListItem = (props) => {
@@ -58,7 +57,7 @@ const SimpleListItem = (props) => {
             variant="body2"
             classes={{ root: `${link ? classes.link : null} ${dark ? classes.whiteText : ''}` }}
           >
-            <Typography style={visuallyHidden}>{srText}</Typography>
+            <Typography variant="srOnly">{srText}</Typography>
             {text}
           </Typography>
         </ListItemText>

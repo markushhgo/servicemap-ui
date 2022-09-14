@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import OptionalA11yText from './OptionalA11yText';
 import styles from './styles';

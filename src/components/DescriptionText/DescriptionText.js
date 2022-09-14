@@ -1,6 +1,6 @@
-import React from 'react';
+import { Divider, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Divider } from '@mui/material';
+import React from 'react';
 import isClient from '../../utils';
 
 const DescriptionText = ({

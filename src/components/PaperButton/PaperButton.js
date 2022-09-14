@@ -1,7 +1,7 @@
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Button, Typography } from '@mui/material';
 import Container from '../Container';
 
 const PaperButton = ({

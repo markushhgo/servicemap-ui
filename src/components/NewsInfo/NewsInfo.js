@@ -1,7 +1,6 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import NewsItem from './components/NewsItem/NewsItem';
 
@@ -18,7 +17,7 @@ const NewsInfo = ({
 
   return (
     <>
-      <Typography style={visuallyHidden} component="h3">
+      <Typography variant="srOnly" component="h3">
         <FormattedMessage id="general.news.info.title" />
       </Typography>
       { newsItems }

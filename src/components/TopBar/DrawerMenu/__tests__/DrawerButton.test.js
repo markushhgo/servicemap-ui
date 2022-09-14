@@ -1,9 +1,9 @@
 // Link.react.test.js
-import React from 'react';
+import { Search } from '@material-ui/icons';
 import { fireEvent } from '@testing-library/react';
-import { Search } from '@mui/icons-material';
-import DrawerButton from '../DrawerButton';
+import React from 'react';
 import { getRenderWithProviders } from '../../../../../jestUtils';
+import DrawerButton from '../DrawerButton';
 
 // Generic required props for ServiceMapButton
 const buttonMockProps = {

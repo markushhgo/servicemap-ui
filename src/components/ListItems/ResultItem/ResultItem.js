@@ -1,16 +1,13 @@
 /* eslint-disable camelcase */
-import React, { useEffect } from 'react';
+import { Divider, ListItem, ListItemIcon, Typography } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import {
-  ListItem, ListItemIcon, Typography, Divider,
-} from '@mui/material';
-import { useTheme } from '@mui/styles';
-import { visuallyHidden } from '@mui/utils';
-import { keyboardHandler } from '../../../utils';
+import React, { useEffect } from 'react';
 import locationIcon from '../../../assets/icons/LocationDefault.svg';
-import locationIconHover from '../../../assets/icons/LocationHover.svg';
 import locationIconContrast from '../../../assets/icons/LocationDefaultContrast.svg';
+import locationIconHover from '../../../assets/icons/LocationHover.svg';
 import locationIconContrastHover from '../../../assets/icons/LocationHoverContrast.svg';
+import { keyboardHandler } from '../../../utils';
 
 const ResultItem = ({
   bottomHighlight,
@@ -114,7 +111,7 @@ const ResultItem = ({
             <Typography
               className={`${classes.title || ''} ResultItem-srOnly`}
               component="p"
-              style={visuallyHidden}
+              variant="srOnly"
             >
               {srText}
             </Typography>

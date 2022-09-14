@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import setTreeState from '../../redux/actions/serviceTree';
 import ServiceTreeView from './ServiceTreeView';
 import styles from './styles';

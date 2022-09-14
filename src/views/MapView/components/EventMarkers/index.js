@@ -1,7 +1,7 @@
-import { withStyles } from '@mui/styles';
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import EventMarkers from './EventMarkers';
 import styles from '../../styles';
+import EventMarkers from './EventMarkers';
 
 const mapStateToProps = (state) => {
   const { navigator } = state;

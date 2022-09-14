@@ -1,5 +1,5 @@
-import { transitIconSize } from './config/mapConfig';
 import config from '../../../config';
+import { transitIconSize } from './config/mapConfig';
 
 const styles = theme => ({
   map: {
@@ -77,7 +77,7 @@ const styles = theme => ({
     paddingTop: theme.spacing(0.5),
   },
   marginBottom: {
-    marginBottom: `${theme.spacing(2)} !important`,
+    marginBottom: `${theme.spacing(2)}px !important`,
   },
   embedLogo: {
     top: 0,

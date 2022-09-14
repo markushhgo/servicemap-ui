@@ -1,6 +1,6 @@
-import React from 'react';
+import { ButtonBase, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { ButtonBase, Typography } from '@mui/material';
+import React from 'react';
 
 // ServiceMapButton
 const SMButton = (props) => {

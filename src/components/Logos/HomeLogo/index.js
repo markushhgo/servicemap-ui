@@ -1,17 +1,17 @@
-import React from 'react';
+import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
-import logoNormal from '../../../assets/images/service-map-logo-fi.svg';
+import React from 'react';
+import config from '../../../../config';
+import logoENContrast from '../../../assets/images/Logo-ENG-Contrast.svg';
+import logoEN from '../../../assets/images/Logo-ENG.svg';
+import logoSVContrast from '../../../assets/images/Logo-SWE-Contrast.svg';
+import logoSV from '../../../assets/images/Logo-SWE.svg';
+import logoContrastDev from '../../../assets/images/service-map-logo-contrast-dev.svg';
 import logoContrast from '../../../assets/images/service-map-logo-contrast.svg';
 import logoNormalDev from '../../../assets/images/service-map-logo-fi-dev.svg';
-import logoContrastDev from '../../../assets/images/service-map-logo-contrast-dev.svg';
-import logoEN from '../../../assets/images/Logo-ENG.svg';
-import logoENContrast from '../../../assets/images/Logo-ENG-Contrast.svg';
-import logoSV from '../../../assets/images/Logo-SWE.svg';
-import logoSVContrast from '../../../assets/images/Logo-SWE-Contrast.svg';
-import styles from './styles';
-import config from '../../../../config';
+import logoNormal from '../../../assets/images/service-map-logo-fi.svg';
 import { useUserLocale } from '../../../utils/user';
+import styles from './styles';
 
 const HomeLogo = (props) => {
   const {

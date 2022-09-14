@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage, useIntl } from 'react-intl';
 import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from '@mui/material';
-import { OpenInNew } from '@mui/icons-material';
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+    Typography
+} from '@material-ui/core';
+import { OpenInNew } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import Dialog from '../index';
-import SMButton from '../../ServiceMapButton';
 import useDownloadData from '../../../utils/downloadData';
-import { getIcon } from '../../SMIcon';
-import { fetchServiceNames } from './utils';
 import useLocaleText from '../../../utils/useLocaleText';
+import SMButton from '../../ServiceMapButton';
+import { getIcon } from '../../SMIcon';
+import Dialog from '../index';
+import { fetchServiceNames } from './utils';
 
 const DownloadDialog = ({
   classes,
