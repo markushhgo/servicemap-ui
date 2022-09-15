@@ -617,6 +617,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO translate
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO translate
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit areas', // TODO translate
+  'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters', // TODO translate
 
   // Content
   'mobilityPlatform.content.address': 'Adress',

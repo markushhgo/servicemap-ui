@@ -92,6 +92,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterParkingAreas,
     showScooterSpeedLimitAreas,
     setShowScooterSpeedLimitAreas,
+    showScooters,
+    setShowScooters,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -211,7 +213,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showScooterNoParking, setOpenScooterSettings);
     checkVisibilityValues(showScooterParkingAreas, setOpenScooterSettings);
     checkVisibilityValues(showScooterSpeedLimitAreas, setOpenScooterSettings);
-  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas]);
+    checkVisibilityValues(showScooters, setOpenScooterSettings);
+  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas, showScooters]);
 
   const nameKeys = {
     fi: 'name',
@@ -353,6 +356,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const scooterSpeedLimitAreasToggle = () => {
     setShowScooterSpeedLimitAreas(current => !current);
+  };
+
+  const scooterMarkersToggle = () => {
+    setShowScooters(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -589,6 +596,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   const scooterControlTypes = [
+    {
+      type: 'scootersRyde',
+      msgId: 'mobilityPlatform.menu.show.scootersRyde',
+      checkedValue: showScooters,
+      onChangeValue: scooterMarkersToggle,
+    },
     {
       type: 'noParking',
       msgId: 'mobilityPlatform.menu.show.scooterNoParking',
