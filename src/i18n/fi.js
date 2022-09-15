@@ -695,8 +695,12 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
   'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
-  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintipaikka',
+  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue',
   'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä',
+  'mobilityPlatform.content.publicParking.title': 'Ylenen pysäköintialue',
+  'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä',
+  'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika',
+  'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

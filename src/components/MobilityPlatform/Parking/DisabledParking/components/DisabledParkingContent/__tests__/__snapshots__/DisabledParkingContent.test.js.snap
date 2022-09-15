@@ -11,17 +11,39 @@ exports[`<DisabledParkingContent /> should work 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1"
       >
-        Invapysäköintipaikka
+        Invapysäköintialue
       </h6>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body2"
+    <div
+      class="injectIntl(DisabledParkingContent)-textContainer-3"
     >
-      Invapaikkojen määrä
-      :
-       
-      5
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Invapaikkojen määrä
+        :
+         
+        5
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Parkkipaikkoja yhteensä
+        :
+         
+        5
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Erityisalue
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body2"
+      >
+        Vapaa pääsy
+      </p>
+    </div>
   </div>
 </div>
 `;

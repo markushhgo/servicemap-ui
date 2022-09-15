@@ -692,8 +692,12 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Antal vinterförvaringplatser',
   'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.',
   'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
-  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintipaikka', // TODO translate
+  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue', // TODO translate
   'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä', // TODO translate
+  'mobilityPlatform.content.publicParking.title': 'Ylenen pysäköintialue', // TODO translate
+  'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä', // TODO translate
+  'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika', // TODO translate
+  'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

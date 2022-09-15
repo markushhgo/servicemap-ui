@@ -31,7 +31,7 @@ const DisabledParking = () => {
     }
   }, [openMobilityPlatform, setPublicParkingData]);
 
-  const disabledParkingData = publicParkingData.filter(item => item.extra.invapaikkoja);
+  const disabledParkingData = publicParkingData.filter(item => item.extra.invapaikkoja && item.extra.invapaikkoja === item.extra.paikkoja_y);
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
 
