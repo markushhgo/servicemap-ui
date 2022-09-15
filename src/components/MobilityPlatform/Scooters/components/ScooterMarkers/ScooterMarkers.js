@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useMap } from 'react-leaflet';
 import scooterIcon from 'servicemap-ui-turku/assets/icons/icons-icon_scooters_marker.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { fetchIotData2 } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
@@ -11,6 +12,8 @@ const ScooterMarkers = () => {
   const { Marker } = global.rL;
   const { icon } = global.L;
 
+  const map = useMap();
+
   const chargerStationIcon = icon({
     iconUrl: scooterIcon,
     iconSize: [45, 45],
@@ -22,14 +25,16 @@ const ScooterMarkers = () => {
     }
   }, [openMobilityPlatform, setScooterData]);
 
+  const filteredScooters = scooterData.filter(item => map.getBounds().contains([item.lat, item.lon]));
+
   return (
     <>
       {showScooters ? (
         <div>
-          {scooterData && scooterData.length > 0
-            && scooterData.map(item => (
+          {filteredScooters && filteredScooters.length > 0
+            && filteredScooters.map(item => (
               <Marker
-                key={item.lon}
+                key={`${item.lon}${item.lat}${item.current_range_meters}`}
                 icon={chargerStationIcon}
                 position={[item.lat, item.lon]}
               />
