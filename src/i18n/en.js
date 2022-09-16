@@ -696,6 +696,7 @@ const translations = {
   'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä', // TODO translate
   'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika', // TODO translate
   'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy', // TODO translate
+  'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta', // TODO translate
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

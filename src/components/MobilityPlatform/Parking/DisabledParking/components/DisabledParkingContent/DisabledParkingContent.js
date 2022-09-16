@@ -6,6 +6,24 @@ import useLocaleText from '../../../../../../utils/useLocaleText';
 const DisabledParkingContent = ({ classes, intl, item }) => {
   const getLocaleText = useLocaleText();
 
+  const renderAccessInfo = (accessValue) => {
+    const accessValueLower = accessValue.toLowerCase();
+    if (accessValueLower === 'vapaa paasy') {
+      return (
+        <Typography variant="body2">
+          {intl.formatMessage({ id: 'mobilityPlatform.content.publicParking.access' })}
+        </Typography>
+      );
+    }
+    if (accessValueLower === 'portti') {
+      return (
+        <Typography variant="body2">
+          {intl.formatMessage({ id: 'mobilityPlatform.content.publicParking.access.gate' })}
+        </Typography>
+      );
+    } return null;
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
@@ -27,11 +45,7 @@ const DisabledParkingContent = ({ classes, intl, item }) => {
         <Typography variant="body2">
           {getLocaleText(item.extra.rajoitustyyppi)}
         </Typography>
-        {item.extra.saavutettavuus.fi === 'vapaa paasy' ? (
-          <Typography variant="body2">
-            {intl.formatMessage({ id: 'mobilityPlatform.content.publicParking.access' })}
-          </Typography>
-        ) : null}
+        {renderAccessInfo(item.extra.saavutettavuus.fi)}
       </div>
     </div>
   );
@@ -40,11 +54,11 @@ const DisabledParkingContent = ({ classes, intl, item }) => {
 DisabledParkingContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  item: PropTypes.arrayOf(PropTypes.any),
+  item: PropTypes.objectOf(PropTypes.any),
 };
 
 DisabledParkingContent.defaultProps = {
-  item: [],
+  item: {},
 };
 
 export default DisabledParkingContent;

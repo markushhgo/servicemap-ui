@@ -530,16 +530,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
       onChangeValue: parkingSpacesToggle,
     },
     {
-      type: 'parkingChargeZones',
-      msgId: 'mobilityPlatform.menu.showParkingChargeZones',
-      checkedValue: openParkingChargeZoneList,
-      onChangeValue: parkingChargeZonesListToggle,
-    },
-    {
       type: 'disabledParking',
       msgId: 'mobilityPlatform.menu.show.disabledParking',
       checkedValue: showDisabledParking,
       onChangeValue: disabledParkingToggle,
+    },
+    {
+      type: 'parkingChargeZones',
+      msgId: 'mobilityPlatform.menu.showParkingChargeZones',
+      checkedValue: openParkingChargeZoneList,
+      onChangeValue: parkingChargeZonesListToggle,
     },
     {
       type: 'speedLimitZones',

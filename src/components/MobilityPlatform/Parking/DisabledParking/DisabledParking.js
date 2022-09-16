@@ -11,7 +11,7 @@ import DisabledParkingContent from './components/DisabledParkingContent';
  */
 
 const DisabledParking = () => {
-  const [publicParkingData, setPublicParkingData] = useState([]);
+  const [disabledParkingData, setDisabledParkingData] = useState([]);
 
   const { openMobilityPlatform, showDisabledParking } = useContext(MobilityPlatformContext);
 
@@ -27,11 +27,9 @@ const DisabledParking = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapPolygonData('NSP', 1000, setPublicParkingData);
+      fetchMobilityMapPolygonData('DSP', 1000, setDisabledParkingData);
     }
-  }, [openMobilityPlatform, setPublicParkingData]);
-
-  const disabledParkingData = publicParkingData.filter(item => item.extra.invapaikkoja && item.extra.invapaikkoja === item.extra.paikkoja_y);
+  }, [openMobilityPlatform, setDisabledParkingData]);
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
 
