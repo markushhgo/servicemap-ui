@@ -55,21 +55,11 @@ const fetchBicycleRoutesGeometry = async (setData) => {
   }
 };
 
-const fetchIotData = async (sourceName, setData) => {
+const fetchIotData = async (sourceName, setData, isScooter) => {
   try {
     const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
-    setData(jsonData.results[0].data);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
-const fetchIotData2 = async (sourceName, setData) => {
-  try {
-    const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
-    const jsonData = await response.json();
-    setData(jsonData.results[0].data.data.bikes);
+    setData(!isScooter ? jsonData.results[0].data : jsonData.results[0].data.data.bikes);
   } catch (err) {
     console.warn(err.message);
   }
@@ -104,5 +94,4 @@ export {
   fetchIotData,
   fetchMobilityMapPolygonData,
   fetchCityBikesData,
-  fetchIotData2,
 };

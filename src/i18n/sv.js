@@ -620,6 +620,8 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters', // TODO translate
 
   // Content
+  'mobilityPlatform.content.general.provider': 'Tjänsteleverantör',
+  'mobilityPlatform.content.general.rentalUris': 'Bokningslänkar', // TODO verify
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
   'mobilityPlatform.content.url': 'Mer information',
@@ -654,7 +656,6 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
-  'mobilityPlatform.content.rentalCars.provider': 'Tjänsteleverantör',
   'mobilityPlatform.content.rentalCars.address': 'Plats',
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
@@ -675,7 +676,6 @@ const translations = {
   'mobilityPlatform.content.cityBikes.title': 'Stadscykelstation',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet',
-  'mobilityPlatform.content.cityBikes.links': 'Nedladdning',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
@@ -699,6 +699,9 @@ const translations = {
   'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Speed limit zone', // TODO translate
   'mobilityPlatform.content.scooters.noParkingAreas.title': 'No-parking zone', // TODO translate
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Parking spot', // TODO translate
+  'mobilityPlatform.content.scooter.title': 'E-skoter', // TODO verify
+  'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra', // TODO verify
+  'mobilityPlatform.content.scooter.range': 'Aktuellt räckvidd', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

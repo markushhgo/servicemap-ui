@@ -87,7 +87,7 @@ exports[`<CityBikesContent /> should work 1`] = `
       <p
         class="MuiTypography-root injectIntl(CityBikesContent)-bold-4 MuiTypography-body2"
       >
-        Latauslinkit
+        Varauslinkit
         :
       </p>
     </div>

@@ -618,6 +618,8 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters', // TODO verify
 
   // Content
+  'mobilityPlatform.content.general.provider': 'Service provider',
+  'mobilityPlatform.content.general.rentalUris': 'Rental links', // TODO verify
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -652,7 +654,6 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 hours',
   'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
   'mobilityPlatform.content.rentalCars.title': 'Shared use car',
-  'mobilityPlatform.content.rentalCars.provider': 'Service provider',
   'mobilityPlatform.content.rentalCars.address': 'Location',
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
@@ -673,7 +674,6 @@ const translations = {
   'mobilityPlatform.content.cityBikes.title': 'City bike station',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Capacity',
-  'mobilityPlatform.content.cityBikes.links': 'Download',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
   'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
@@ -697,6 +697,9 @@ const translations = {
   'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Speed limit zone', // TODO verify
   'mobilityPlatform.content.scooters.noParkingAreas.title': 'No-parking zone', // TODO verify
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Parking spot', // TODO verify
+  'mobilityPlatform.content.scooter.title': 'E-scooter', // TODO verify
+  'mobilityPlatform.content.scooter.notReserved': 'Available for rent', // TODO verify
+  'mobilityPlatform.content.scooter.range': 'Current range', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

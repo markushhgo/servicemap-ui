@@ -50,7 +50,7 @@ const RentalCarsContent = ({ classes, intl, car }) => {
   return (
     <div className={classes.container}>
       {titleText('mobilityPlatform.content.rentalCars.title')}
-      {contentText('mobilityPlatform.content.rentalCars.provider', serviceProvider)}
+      {contentText('mobilityPlatform.content.general.provider', serviceProvider)}
       <div className={classes.linkContainer}>
         <Link target="_blank" href={`https://www.24rent.fi/#/?city=${car.homeLocationData.fullAddress}`}>
           <Typography className={classes.link} variant="body2">
