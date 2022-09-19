@@ -37,12 +37,6 @@ const DisabledParkingContent = ({ classes, intl, item }) => {
           {item.extra.invapaikkoja}
         </Typography>
         <Typography variant="body2">
-          {intl.formatMessage({ id: 'mobilityPlatform.content.publicParking.amount' })}
-          :
-          {' '}
-          {item.extra.paikkoja_y}
-        </Typography>
-        <Typography variant="body2">
           {getLocaleText(item.extra.rajoitustyyppi)}
         </Typography>
         {renderAccessInfo(item.extra.saavutettavuus.fi)}

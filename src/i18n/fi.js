@@ -616,7 +616,7 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
   'mobilityPlatform.menu.show.publicToilets': 'Yleiset vessat',
-  'mobilityPlatform.menu.show.disabledParking': 'Invapysäköinti',
+  'mobilityPlatform.menu.show.disabledParking': 'Invapysäköintialueet',
 
   // Content
   'mobilityPlatform.content.address': 'Osoite',
@@ -697,10 +697,7 @@ const translations = {
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
   'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue',
   'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä',
-  'mobilityPlatform.content.publicParking.title': 'Ylenen pysäköintialue',
-  'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä',
-  'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika',
-  'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy',
+  'mobilityPlatform.content.publicParking.access': 'Esteetön pääsy',
   'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta',
 
   // Info text
@@ -728,6 +725,7 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Varauspalvelu',
   'mobilityPlatform.info.boatParking': 'Veneparkit sijaitsevat Aurajoen kummallakin rannalla Auransillan vieressä. Veneen niihin voi jättää 3 tunniksi maksutta pysäköintikiekkoa käyttäen.',
   'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.',
+  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, joihin pääsee portin kautta.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

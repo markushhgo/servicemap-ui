@@ -10,7 +10,6 @@ const mockProps = {
   item: {
     extra: {
       invapaikkoja: 5,
-      paikkoja_y: 5,
       rajoitustyyppi: {
         fi: 'Erityisalue',
       },
@@ -38,8 +37,7 @@ describe('<DisabledParkingContent />', () => {
     const h6 = container.querySelector('h6');
     expect(h6.textContent).toContain(finnishTranslations['mobilityPlatform.content.disabledParking.title']);
     expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.disabledParking.amount']}: ${mockProps.item.extra.invapaikkoja}`);
-    expect(p[1].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.publicParking.amount']}: ${mockProps.item.extra.paikkoja_y}`);
-    expect(p[2].textContent).toContain(mockProps.item.extra.rajoitustyyppi.fi);
-    expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.publicParking.access']);
+    expect(p[1].textContent).toContain(mockProps.item.extra.rajoitustyyppi.fi);
+    expect(p[2].textContent).toContain(finnishTranslations['mobilityPlatform.content.publicParking.access']);
   });
 });

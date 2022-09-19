@@ -612,6 +612,7 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
   'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
+  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled', // TODO verify
 
   // Content
   'mobilityPlatform.content.address': 'Address',
@@ -690,13 +691,10 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places',
   'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.',
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
-  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue', // TODO translate
-  'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä', // TODO translate
-  'mobilityPlatform.content.publicParking.title': 'Ylenen pysäköintialue', // TODO translate
-  'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä', // TODO translate
-  'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika', // TODO translate
-  'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy', // TODO translate
-  'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta', // TODO translate
+  'mobilityPlatform.content.disabledParking.title': 'Parking area for disabled', // TODO verify
+  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces', // TODO verify
+  'mobilityPlatform.content.publicParking.access': 'Accessible access', // TODO verify
+  'mobilityPlatform.content.publicParking.access.gate': 'Accessible through a gate', // TODO verify
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -723,6 +721,7 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
   'mobilityPlatform.info.publicToilets': 'In Turku there are 6 public toilets, which are open from 7 am to 11 pm. First of May until the last of September the toilets are open from 7 am to 2 am.',
+  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, jotka ovat portin takana.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

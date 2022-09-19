@@ -28,20 +28,12 @@ exports[`<DisabledParkingContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        Parkkipaikkoja yhteensä
-        :
-         
-        5
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body2"
-      >
         Erityisalue
       </p>
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        Vapaa pääsy
+        Esteetön pääsy
       </p>
     </div>
   </div>

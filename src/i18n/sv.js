@@ -613,7 +613,8 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
-  'mobilityPlatform.menu.show.publicToilets': 'Offentliga toaletter',
+  'mobilityPlatform.menu.show.publicToilets': 'Almänna toaletter',
+  'mobilityPlatform.menu.show.disabledParking': 'Invapysäköintialueet', // TODO translate
 
   // Content
   'mobilityPlatform.content.address': 'Adress',
@@ -694,9 +695,6 @@ const translations = {
   'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
   'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue', // TODO translate
   'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä', // TODO translate
-  'mobilityPlatform.content.publicParking.title': 'Ylenen pysäköintialue', // TODO translate
-  'mobilityPlatform.content.publicParking.amount': 'Parkkipaikkoja yhteensä', // TODO translate
-  'mobilityPlatform.content.publicParking.limit': 'Pysäköinnin enimmäisaika', // TODO translate
   'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy', // TODO translate
   'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta', // TODO translate
 
@@ -725,6 +723,7 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
   'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',
+  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, jotka ovat portin takana.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
