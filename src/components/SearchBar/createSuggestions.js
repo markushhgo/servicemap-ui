@@ -25,7 +25,7 @@ const createSuggestions = (
     municipality: citySettings.join(','),
   };
 
-  const results = await smAPI.search(query, additionalOptions);
+  const results = await smAPI.searchSuggestions(query, additionalOptions);
 
   let filteredResults = results;
 
