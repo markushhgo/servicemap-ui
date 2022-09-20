@@ -121,7 +121,7 @@ const DefaultLayout = (props) => {
   const [showScooterNoParking, setShowScooterNoParking] = useState(false);
   const [showScooterParkingAreas, setShowScooterParkingAreas] = useState(false);
   const [showScooterSpeedLimitAreas, setShowScooterSpeedLimitAreas] = useState(false);
-  const [showScooters, setShowScooters] = useState(false);
+  const [showScootersRyde, setShowScootersRyde] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -253,8 +253,8 @@ const DefaultLayout = (props) => {
                       setShowScooterParkingAreas,
                       showScooterSpeedLimitAreas,
                       setShowScooterSpeedLimitAreas,
-                      showScooters,
-                      setShowScooters,
+                      showScootersRyde,
+                      setShowScootersRyde,
                     }}
                   >
                     <ViewRouter />
@@ -294,7 +294,7 @@ const DefaultLayout = (props) => {
                     showScooterNoParking,
                     showScooterParkingAreas,
                     showScooterSpeedLimitAreas,
-                    showScooters,
+                    showScootersRyde,
                   }}
                 >
                   <MapView

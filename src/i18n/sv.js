@@ -617,7 +617,8 @@ const translations = {
   'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO translate
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO translate
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit areas', // TODO translate
-  'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters', // TODO translate
+  'mobilityPlatform.menu.show.scooterProviders': 'Elektriska skotrar', // TODO verify
+  'mobilityPlatform.menu.show.scootersRyde': 'Ryde skotrar', // TODO translate
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör',

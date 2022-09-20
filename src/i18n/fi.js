@@ -619,6 +619,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterNoParking': 'Pysäköintikieltoalueet',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintiruudut',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',
+  'mobilityPlatform.menu.show.scooterProviders': 'Sähköpotkulaudat',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
 
   // Content

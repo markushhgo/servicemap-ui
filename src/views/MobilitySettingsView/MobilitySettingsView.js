@@ -39,6 +39,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
+  const [openScooterProviderList, setOpenScooterProviderList] = useState(false);
 
   const {
     setOpenMobilityPlatform,
@@ -92,8 +93,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterParkingAreas,
     showScooterSpeedLimitAreas,
     setShowScooterSpeedLimitAreas,
-    showScooters,
-    setShowScooters,
+    showScootersRyde,
+    setShowScootersRyde,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -121,6 +122,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
       'mobilityPlatform.info.parkingChargeZones.zone.3',
     ],
   };
+
+  const scooterProviders = [
+    {
+      type: 'scootersRyde',
+      msgId: 'mobilityPlatform.menu.show.scootersRyde',
+      checkedValue: showScootersRyde,
+    },
+  ];
 
   useEffect(() => {
     setOpenMobilityPlatform(true);
@@ -213,8 +222,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showScooterNoParking, setOpenScooterSettings);
     checkVisibilityValues(showScooterParkingAreas, setOpenScooterSettings);
     checkVisibilityValues(showScooterSpeedLimitAreas, setOpenScooterSettings);
-    checkVisibilityValues(showScooters, setOpenScooterSettings);
-  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas, showScooters]);
+  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas]);
+
+  useEffect(() => {
+    checkVisibilityValues(showScootersRyde, setOpenScooterSettings);
+    checkVisibilityValues(showScootersRyde, setOpenScooterProviderList);
+  }, [showScootersRyde]);
 
   const nameKeys = {
     fi: 'name',
@@ -358,8 +371,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterSpeedLimitAreas(current => !current);
   };
 
-  const scooterMarkersToggle = () => {
-    setShowScooters(current => !current);
+  const scooterListToggle = () => {
+    setOpenScooterProviderList(current => !current);
+    if (showScootersRyde) {
+      setShowScootersRyde(false);
+    }
+  };
+
+  const scootersRydeToggle = () => {
+    setShowScootersRyde(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -597,10 +617,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const scooterControlTypes = [
     {
-      type: 'scootersRyde',
-      msgId: 'mobilityPlatform.menu.show.scootersRyde',
-      checkedValue: showScooters,
-      onChangeValue: scooterMarkersToggle,
+      type: 'scooterProviders',
+      msgId: 'mobilityPlatform.menu.show.scooterProviders',
+      checkedValue: openScooterProviderList,
+      onChangeValue: scooterListToggle,
     },
     {
       type: 'noParking',
@@ -782,6 +802,35 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const renderScooterProviderList = () => (
+    <>
+      {scooterProviders
+        && scooterProviders.length > 0
+        && scooterProviders.map(item => (
+          <div key={item.type} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={item.checkedValue}
+                  aria-checked={item.checkedValue}
+                  className={classes.margin}
+                  onChange={() => scootersRydeToggle()}
+                />
+              )}
+              label={(
+                <Typography
+                  variant="body2"
+                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
+                >
+                  {intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
+                </Typography>
+              )}
+            />
+          </div>
+        ))}
+    </>
+  );
+
   return (
     <div className={classes.content}>
       <TitleBar
@@ -843,6 +892,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               </div>
               {renderSettings(openScooterSettings, scooterControlTypes)}
+              {openScooterProviderList ? renderScooterProviderList() : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={boatingSettingsToggle}
