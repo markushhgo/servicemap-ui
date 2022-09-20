@@ -39,7 +39,7 @@ const ScooterMarkers = () => {
       return [20, 20];
     }
     if (zoomLvl > 16) {
-      return [35, 35];
+      return [40, 40];
     }
     return [45, 45];
   };
