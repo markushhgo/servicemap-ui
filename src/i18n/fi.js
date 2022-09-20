@@ -617,9 +617,9 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
   'mobilityPlatform.menu.show.scooterNoParking': 'Pysäköintikieltoalueet',
-  'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintiruudut',
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintipaikat',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',
-  'mobilityPlatform.menu.show.scooterProviders': 'Sähköpotkulaudat',
+  'mobilityPlatform.menu.show.scooterProviders': 'Vapaat sähköpotkulaudat',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
 
   // Content
@@ -701,7 +701,7 @@ const translations = {
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
   'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.scooters.noParkingAreas.title': 'Pysäköintikieltoalue',
-  'mobilityPlatform.content.scooters.parkingAreas.title': 'Pysäköintialue',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Pysäköintipaikka',
   'mobilityPlatform.content.scooter.title': 'Sähköpotkulauta',
   'mobilityPlatform.content.scooter.notReserved': 'Vuokrattavissa oleva',
   'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama',
@@ -734,6 +734,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO verify
+  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO verify
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

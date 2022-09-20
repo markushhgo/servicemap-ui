@@ -588,7 +588,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.title.boating': 'Boating',
-  'mobilityPlatform.menu.title.scooter': 'Scooters', // TODO verify
+  'mobilityPlatform.menu.title.scooter': 'Electric scooters', // TODO verify
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -612,10 +612,10 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
-  'mobilityPlatform.menu.show.scooterNoParking': 'No-parking zones', // TODO verify
+  'mobilityPlatform.menu.show.scooterNoParking': 'No parking zones', // TODO verify
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking spots', // TODO verify
-  'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit areas', // TODO verify
-  'mobilityPlatform.menu.show.scooterProviders': 'Electric scooters', // TODO verify
+  'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones', // TODO verify
+  'mobilityPlatform.menu.show.scooterProviders': 'Available electric scooters', // TODO verify
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters', // TODO verify
 
   // Content
@@ -696,9 +696,9 @@ const translations = {
   'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.',
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
   'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Speed limit zone', // TODO verify
-  'mobilityPlatform.content.scooters.noParkingAreas.title': 'No-parking zone', // TODO verify
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'No parking zone', // TODO verify
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Parking spot', // TODO verify
-  'mobilityPlatform.content.scooter.title': 'E-scooter', // TODO verify
+  'mobilityPlatform.content.scooter.title': 'Electric scooter', // TODO verify
   'mobilityPlatform.content.scooter.notReserved': 'Available for rent', // TODO verify
   'mobilityPlatform.content.scooter.range': 'Current range', // TODO verify
 
@@ -730,6 +730,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.', // TODO translate
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.', // TODO translate
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO translate
+  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
