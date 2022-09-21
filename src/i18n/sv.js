@@ -615,15 +615,15 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
-  'mobilityPlatform.menu.show.scooterNoParking': 'Parkeringsförbudszoner', // TODO verify
-  'mobilityPlatform.menu.show.scooterParkingAreas': 'Parkering', // TODO verify
+  'mobilityPlatform.menu.show.scooterNoParking': 'Parkeringsförbudszoner',
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Parkeringplatser',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Hastighetsbegränsningszoner',
-  'mobilityPlatform.menu.show.scooterProviders': 'Tillgängligt elsparkcyklar', // TODO verify
-  'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar', // TODO verify
+  'mobilityPlatform.menu.show.scooterProviders': 'Tillgängligt elsparkcyklar',
+  'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör',
-  'mobilityPlatform.content.general.rentalUris': 'Bokningslänkar', // TODO verify
+  'mobilityPlatform.content.general.rentalUris': 'Bokningslänkar',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
   'mobilityPlatform.content.url': 'Mer information',
@@ -699,11 +699,11 @@ const translations = {
   'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.',
   'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
   'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Hastighetsbegränsningszon',
-  'mobilityPlatform.content.scooters.noParkingAreas.title': 'Parkeringsförbudszon', // TODO verify
-  'mobilityPlatform.content.scooters.parkingAreas.title': 'Parkeringplats', // TODO verify
-  'mobilityPlatform.content.scooter.title': 'Elsparkcykel', // TODO verify
-  'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra', // TODO verify
-  'mobilityPlatform.content.scooter.range': 'Aktuellt räckvidd', // TODO verify
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'Parkeringsförbudszon',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Parkeringplats',
+  'mobilityPlatform.content.scooter.title': 'Elsparkcykel',
+  'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra',
+  'mobilityPlatform.content.scooter.range': 'Återstående räckvidd',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -730,10 +730,10 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
   'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',
-  'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.', // TODO translate
-  'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.', // TODO translate
-  'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO translate
-  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO translate
+  'mobilityPlatform.info.scooters.noParking': 'Elsparkcykelparkering förbjuden på det på kartan synliga området.',
+  'mobilityPlatform.info.scooters.parkingAreas': 'Elsparkcyklarna har också dedikerade parkeringsplatser, som är märkta med målade rutor.',
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Hastigheten på området är max. 15km/h.',
+  'mobilityPlatform.info.scooters.general': 'Servicekartan visar tjänsteleverantörernas lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

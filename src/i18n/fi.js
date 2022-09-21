@@ -734,7 +734,7 @@ const translations = {
   'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.',
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
-  'mobilityPlatform.info.scooters.speedLimitAreas': 'Nopeusrajoitus alueella on rajoitettu enintään 15 km/h.', // TODO verify
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Ylin sallittu nopeus alueilla on 15 km/t.',
   'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO verify
 
   // Bicycle routes
