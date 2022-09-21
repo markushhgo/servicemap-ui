@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-import { Button, Divider, IconButton, InputBase, Paper, Typography } from '@material-ui/core';
+import {
+  Button, Divider, IconButton, InputBase, Paper, Typography
+} from '@material-ui/core';
 import { Cancel, Search } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import paths from '../../../config/paths';
@@ -13,7 +14,7 @@ import DesktopComponent from '../DesktopComponent';
 import MobileComponent from '../MobileComponent';
 import { CloseSuggestionButton } from './components/CloseSuggestionButton';
 import SuggestionBox from './components/SuggestionBox';
-import { getPreviousSearches } from './previousSearchData';
+import { getFullHistory } from './previousSearchData';
 
 let blurTimeout = null;
 
@@ -62,7 +63,7 @@ const SearchBarComponent = ({
         return;
       }
 
-      const history = getPreviousSearches();
+      const history = getFullHistory();
       // Get correct history item by comparing url params to search history entries
       const historyItem = history.find((item) => {
         if (queryParams.address) {

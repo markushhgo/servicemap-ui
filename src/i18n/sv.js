@@ -422,6 +422,7 @@ const translations = {
   'search': 'Sök',
   'search.arrowLabel': 'Precisera',
   'search.cancelText': 'Töm sökfältet',
+  'search.removeSuggestion': 'Ta bort', // TODO verify
   'search.notFoundWith': 'Inga träffar för sökningen "{query}".',
   'search.placeholder': 'Sök tjänst eller verksamhetsställe',
   'search.info': `{count, plural,
