@@ -123,14 +123,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
     ],
   };
 
-  const scooterProviders = [
-    {
-      type: 'scootersRyde',
-      msgId: 'mobilityPlatform.menu.show.scootersRyde',
-      checkedValue: showScootersRyde,
-    },
-  ];
-
   useEffect(() => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
@@ -642,6 +634,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  const scooterProviders = [
+    {
+      type: 'scootersRyde',
+      msgId: 'mobilityPlatform.menu.show.scootersRyde',
+      checkedValue: showScootersRyde,
+      onChangeValue: scootersRydeToggle,
+    },
+  ];
+
   /**
      * @param {Array} inputData
      * @returns {JSX Element}
@@ -814,7 +815,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                   checked={item.checkedValue}
                   aria-checked={item.checkedValue}
                   className={classes.margin}
-                  onChange={() => scootersRydeToggle()}
+                  onChange={() => item.onChangeValue()}
                 />
               )}
               label={(
@@ -930,6 +931,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ) : null}
+      {openScooterProviderList ? <InfoTextBox infoText="mobilityPlatform.info.scooters.general" /> : null}
       {showScooterNoParking ? <InfoTextBox infoText="mobilityPlatform.info.scooters.noParking" /> : null}
       {showScooterParkingAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.parkingAreas" /> : null}
       {showScooterSpeedLimitAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.speedLimitAreas" /> : null}
