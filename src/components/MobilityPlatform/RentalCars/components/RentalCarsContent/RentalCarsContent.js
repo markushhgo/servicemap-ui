@@ -13,17 +13,10 @@ const RentalCarsContent = ({ classes, intl, car }) => {
     </div>
   );
 
-  const contentText = (messageId, text) => (
+  const contentText = (messageId, value) => (
     <div className={classes.text}>
       <Typography variant="body2">
-        <strong>
-          {intl.formatMessage({
-            id: messageId,
-          })}
-          :
-        </strong>
-        {' '}
-        {text}
+        {intl.formatMessage({ id: messageId }, { value })}
       </Typography>
     </div>
   );
@@ -31,12 +24,10 @@ const RentalCarsContent = ({ classes, intl, car }) => {
   const renderCarInfo = (messageId, manufacturer, model) => (
     <div className={classes.text}>
       <Typography variant="body2">
-        <strong>
-          {intl.formatMessage({
-            id: messageId,
-          })}
-          :
-        </strong>
+        {intl.formatMessage({
+          id: messageId,
+        })}
+        :
         {' '}
         {manufacturer}
         {' '}
@@ -50,7 +41,7 @@ const RentalCarsContent = ({ classes, intl, car }) => {
   return (
     <div className={classes.container}>
       {titleText('mobilityPlatform.content.rentalCars.title')}
-      {contentText('mobilityPlatform.content.rentalCars.provider', serviceProvider)}
+      {contentText('mobilityPlatform.content.general.provider', serviceProvider)}
       <div className={classes.linkContainer}>
         <Link target="_blank" href={`https://www.24rent.fi/#/?city=${car.homeLocationData.fullAddress}`}>
           <Typography className={classes.link} variant="body2">

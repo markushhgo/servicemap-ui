@@ -4,27 +4,27 @@ import { getLocaleString } from '../selectors/locale';
 import { searchResults } from './fetchDataActions';
 
 // Actions
-const { isFetching, fetchSuccess, fetchProgressUpdate } = searchResults;
+const { isFetching, fetchSuccess, fetchProgressUpdateConcurrent } = searchResults;
 
 const smFetch = (dispatch, options) => {
   let results = [];
   const smAPI = new ServiceMapAPI();
 
-  const onProgressUpdate = (total, max) => {
-    dispatch(fetchProgressUpdate(total, max));
+  const onProgressUpdateConcurrent = (total, max) => {
+    dispatch(fetchProgressUpdateConcurrent(total, max));
   };
 
   if (options.q) { // General text search
     const { q, ...additionalOptions } = options;
-    smAPI.setOnProgressUpdate(onProgressUpdate);
+    smAPI.setOnProgressUpdate(onProgressUpdateConcurrent);
     results = smAPI.search(options.q, additionalOptions);
   } else if (options.service_id) { // Service fetch
     const { service_id, ...additionalOptions } = options;
-    smAPI.setOnProgressUpdate(onProgressUpdate);
-    results = smAPI.serviceUnits(service_id, additionalOptions);
+    smAPI.setOnProgressUpdate(onProgressUpdateConcurrent);
+    results = smAPI.serviceUnitSearch(service_id, additionalOptions);
   } else if (options.service_node) { // Service  node fetch
     const { service_node, ...additionalOptions } = options;
-    smAPI.setOnProgressUpdate(onProgressUpdate);
+    smAPI.setOnProgressUpdate(onProgressUpdateConcurrent);
     results = smAPI.serviceNodeSearch(service_node, additionalOptions);
   } else if (options.address) { // Search units and addresses with address
     const { address, ...additionalOptions } = options;

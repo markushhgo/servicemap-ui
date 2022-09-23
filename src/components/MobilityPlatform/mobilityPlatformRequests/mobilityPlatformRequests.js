@@ -55,11 +55,11 @@ const fetchBicycleRoutesGeometry = async (setData) => {
   }
 };
 
-const fetchIotData = async (sourceName, setData) => {
+const fetchIotData = async (sourceName, setData, isScooter) => {
   try {
     const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
-    setData(jsonData.results[0].data);
+    setData(!isScooter ? jsonData.results[0].data : jsonData.results[0].data.data.bikes);
   } catch (err) {
     console.warn(err.message);
   }

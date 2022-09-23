@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
+import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
@@ -30,6 +31,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
+  const [openScooterSettings, setOpenScooterSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -37,6 +39,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
+  const [openScooterProviderList, setOpenScooterProviderList] = useState(false);
 
   const {
     setOpenMobilityPlatform,
@@ -84,6 +87,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setSpeedLimitZones,
     showPublicToilets,
     setShowPublicToilets,
+    showScooterNoParking,
+    setShowScooterNoParking,
+    showScooterParkingAreas,
+    setShowScooterParkingAreas,
+    showScooterSpeedLimitAreas,
+    setShowScooterSpeedLimitAreas,
+    showScootersRyde,
+    setShowScootersRyde,
     showDisabledParking,
     setShowDisabledParking,
   } = useContext(MobilityPlatformContext);
@@ -201,6 +212,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showGuestHarbour, setOpenBoatingSettings);
   }, [showMarinas, showBoatParking, showGuestHarbour]);
 
+  useEffect(() => {
+    checkVisibilityValues(showScooterNoParking, setOpenScooterSettings);
+    checkVisibilityValues(showScooterParkingAreas, setOpenScooterSettings);
+    checkVisibilityValues(showScooterSpeedLimitAreas, setOpenScooterSettings);
+  }, [showScooterNoParking, showScooterParkingAreas, showScooterSpeedLimitAreas]);
+
+  useEffect(() => {
+    checkVisibilityValues(showScootersRyde, setOpenScooterSettings);
+    checkVisibilityValues(showScootersRyde, setOpenScooterProviderList);
+  }, [showScootersRyde]);
+
   const nameKeys = {
     fi: 'name',
     en: 'name_en',
@@ -274,6 +296,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setOpenBoatingSettings(current => !current);
   };
 
+  const scooterSettingsToggle = () => {
+    setOpenScooterSettings(current => !current);
+  };
+
   /**
    * Toggle functions for content types
    * @var {boolean}
@@ -325,6 +351,29 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const publicToiletsToggle = () => {
     setShowPublicToilets(current => !current);
+  };
+
+  const noParkingToggle = () => {
+    setShowScooterNoParking(current => !current);
+  };
+
+  const parkingAreasToggle = () => {
+    setShowScooterParkingAreas(current => !current);
+  };
+
+  const scooterSpeedLimitAreasToggle = () => {
+    setShowScooterSpeedLimitAreas(current => !current);
+  };
+
+  const scooterListToggle = () => {
+    setOpenScooterProviderList(current => !current);
+    if (showScootersRyde) {
+      setShowScootersRyde(false);
+    }
+  };
+
+  const scootersRydeToggle = () => {
+    setShowScootersRyde(current => !current);
   };
 
   const disabledParkingToggle = () => {
@@ -570,6 +619,42 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  const scooterControlTypes = [
+    {
+      type: 'scooterProviders',
+      msgId: 'mobilityPlatform.menu.show.scooterProviders',
+      checkedValue: openScooterProviderList,
+      onChangeValue: scooterListToggle,
+    },
+    {
+      type: 'noParking',
+      msgId: 'mobilityPlatform.menu.show.scooterNoParking',
+      checkedValue: showScooterNoParking,
+      onChangeValue: noParkingToggle,
+    },
+    {
+      type: 'parkingAreas',
+      msgId: 'mobilityPlatform.menu.show.scooterParkingAreas',
+      checkedValue: showScooterParkingAreas,
+      onChangeValue: parkingAreasToggle,
+    },
+    {
+      type: 'speedLimitAreas',
+      msgId: 'mobilityPlatform.menu.show.scooterSpeedLimitAreas',
+      checkedValue: showScooterSpeedLimitAreas,
+      onChangeValue: scooterSpeedLimitAreasToggle,
+    },
+  ];
+
+  const scooterProviders = [
+    {
+      type: 'scootersRyde',
+      msgId: 'mobilityPlatform.menu.show.scootersRyde',
+      checkedValue: showScootersRyde,
+      onChangeValue: scootersRydeToggle,
+    },
+  ];
+
   /**
      * @param {Array} inputData
      * @returns {JSX Element}
@@ -730,6 +815,35 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const renderScooterProviderList = () => (
+    <>
+      {scooterProviders
+        && scooterProviders.length > 0
+        && scooterProviders.map(item => (
+          <div key={item.type} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={item.checkedValue}
+                  aria-checked={item.checkedValue}
+                  className={classes.margin}
+                  onChange={() => item.onChangeValue()}
+                />
+              )}
+              label={(
+                <Typography
+                  variant="body2"
+                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
+                >
+                  {intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
+                </Typography>
+              )}
+            />
+          </div>
+        ))}
+    </>
+  );
+
   return (
     <div className={classes.content}>
       <TitleBar
@@ -784,6 +898,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openSpeedLimitList ? renderSpeedLimits() : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
+                  onClickFunc={scooterSettingsToggle}
+                  settingState={openScooterSettings}
+                  iconName={iconScooter}
+                  translationId="mobilityPlatform.menu.title.scooter"
+                />
+              </div>
+              {renderSettings(openScooterSettings, scooterControlTypes)}
+              {openScooterProviderList ? renderScooterProviderList() : null}
+              <div className={classes.buttonContainer}>
+                <ButtonMain
                   onClickFunc={boatingSettingsToggle}
                   settingState={openBoatingSettings}
                   iconName={iconBoat}
@@ -820,6 +944,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ) : null}
+      {openScooterProviderList ? <InfoTextBox infoText="mobilityPlatform.info.scooters.general" /> : null}
+      {showScooterNoParking ? <InfoTextBox infoText="mobilityPlatform.info.scooters.noParking" /> : null}
+      {showScooterParkingAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.parkingAreas" /> : null}
+      {showScooterSpeedLimitAreas ? <InfoTextBox infoText="mobilityPlatform.info.scooters.speedLimitAreas" /> : null}
     </div>
   );
 };

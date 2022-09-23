@@ -422,6 +422,7 @@ const translations = {
   'search': 'Sök',
   'search.arrowLabel': 'Precisera',
   'search.cancelText': 'Töm sökfältet',
+  'search.removeSuggestion': 'Ta bort', // TODO verify
   'search.notFoundWith': 'Inga träffar för sökningen "{query}".',
   'search.placeholder': 'Sök tjänst eller verksamhetsställe',
   'search.info': `{count, plural,
@@ -590,6 +591,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.title.boating': 'Båtliv',
+  'mobilityPlatform.menu.title.scooter': 'Elsparkcyklar',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
@@ -614,9 +616,11 @@ const translations = {
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
   'mobilityPlatform.menu.show.publicToilets': 'Almänna toaletter',
-  'mobilityPlatform.menu.show.disabledParking': 'Invapysäköintialueet', // TODO translate
+  'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
 
   // Content
+  'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
+  'mobilityPlatform.content.general.rentalUris': 'Bokningslänkar',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
   'mobilityPlatform.content.url': 'Mer information',
@@ -651,8 +655,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
-  'mobilityPlatform.content.rentalCars.provider': 'Tjänsteleverantör',
-  'mobilityPlatform.content.rentalCars.address': 'Plats',
+  'mobilityPlatform.content.rentalCars.address': 'Plats: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
@@ -672,7 +675,6 @@ const translations = {
   'mobilityPlatform.content.cityBikes.title': 'Stadscykelstation',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasitet',
-  'mobilityPlatform.content.cityBikes.links': 'Nedladdning',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Antal lediga cycklar kvar',
   'mobilityPlatform.content.cityBikes.docks.available': 'Antal lediga cykelställ kvar',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
@@ -693,10 +695,16 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Antal vinterförvaringplatser',
   'mobilityPlatform.content.marinas.reservationInfo': 'Information om lediga båtplatser finns på bokningstjänsten.',
   'mobilityPlatform.content.marinas.infoLink': 'Ytterligare info',
-  'mobilityPlatform.content.disabledParking.title': 'Invapysäköintialue', // TODO translate
-  'mobilityPlatform.content.disabledParking.amount': 'Invapaikkojen määrä', // TODO translate
-  'mobilityPlatform.content.publicParking.access': 'Vapaa pääsy', // TODO translate
-  'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta', // TODO translate
+  'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Hastighetsbegränsningszon',
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'Parkeringsförbudszon',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Parkeringplats',
+  'mobilityPlatform.content.scooter.title': 'Elsparkcykel',
+  'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra',
+  'mobilityPlatform.content.scooter.range': 'Återstående räckvidd: {value}',
+  'mobilityPlatform.content.disabledParking.title': 'Inva-parkeringsplatser',
+  'mobilityPlatform.content.disabledParking.amount': 'Antal inva-parkeringsplatser',
+  'mobilityPlatform.content.publicParking.access': 'Tillgänglig ingång',
+  'mobilityPlatform.content.publicParking.access.gate': 'Ingång via port',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -723,7 +731,11 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Bokningstjänsten',
   'mobilityPlatform.info.boatParking': 'Vid båtparkeringarna på båda sidorna av Aura å intill Aurabron kan man förtöja båten avgiftsfritt i tre timmar med parkeringsskiva.',
   'mobilityPlatform.info.publicToilets': 'I Åbo finns 6 almänna toaletter som är öppna klockan 7-23. 1.5-30.9 är öppettiderna klockan 7-02.',
-  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, jotka ovat portin takana.', // TODO translate
+  'mobilityPlatform.info.scooters.noParking': 'Elsparkcykelparkering förbjuden på det på kartan synliga området.',
+  'mobilityPlatform.info.scooters.parkingAreas': 'Elsparkcyklarna har också dedikerade parkeringsplatser, som är märkta med målade rutor.',
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Hastigheten på området är max. 15km/h.',
+  'mobilityPlatform.info.scooters.general': 'Servicekartan visar tjänsteleverantörernas lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
+  'mobilityPlatform.info.disabledParking': 'Parkeringsplatser avsedda för personer med nedsatt rörlighet visas på kartan. För att parkera på dem behöver du ett parkeringstillstånd för rörelsehindrade. Plattserna ärr tillgängliga, förutom de som nås via en port.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

@@ -417,10 +417,12 @@ const translations = {
   'unit.outdoorLink': 'Check the condition of an exercise location in the ulkoliikunta.fi service',
   'unit.seo.description': 'View service point on the map',
   'unit.seo.description.accessibility': 'View accessibility info and service point on the map',
+
   // Search
   'search': 'Search',
   'search.arrowLabel': 'Refine',
   'search.cancelText': 'Clear search text',
+  'search.removeSuggestion': 'Remove',
   'search.notFoundWith': 'No results for search "{query}".',
   'search.placeholder': 'Search for services or locations',
   'search.info': `{count, plural,
@@ -588,6 +590,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.title.boating': 'Boating',
+  'mobilityPlatform.menu.title.scooter': 'Electric scooters',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -611,10 +614,16 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
-  'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
-  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled', // TODO verify
+  'mobilityPlatform.menu.show.scooterNoParking': 'No parking zones',
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking places',
+  'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones',
+  'mobilityPlatform.menu.show.scooterProviders': 'Available electric scooters',
+  'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
+  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
 
   // Content
+  'mobilityPlatform.content.general.provider': 'Service provider: {value}',
+  'mobilityPlatform.content.general.rentalUris': 'Rental links',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
   'mobilityPlatform.content.url': 'More information',
@@ -649,8 +658,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 hours',
   'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
   'mobilityPlatform.content.rentalCars.title': 'Shared use car',
-  'mobilityPlatform.content.rentalCars.provider': 'Service provider',
-  'mobilityPlatform.content.rentalCars.address': 'Location',
+  'mobilityPlatform.content.rentalCars.address': 'Location: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
@@ -670,7 +678,6 @@ const translations = {
   'mobilityPlatform.content.cityBikes.title': 'City bike station',
   'mobilityPlatform.content.cityBikes.name': 'Station',
   'mobilityPlatform.content.cityBikes.capacity': 'Capacity',
-  'mobilityPlatform.content.cityBikes.links': 'Download',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Number of vacant bikes',
   'mobilityPlatform.content.cityBikes.docks.available': 'Number of vacant docks',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
@@ -691,10 +698,16 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Number of winter storage places',
   'mobilityPlatform.content.marinas.reservationInfo': 'Information about vacant berths can be found on the reservation service.',
   'mobilityPlatform.content.marinas.infoLink': 'Additional info',
-  'mobilityPlatform.content.disabledParking.title': 'Parking area for disabled', // TODO verify
-  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces', // TODO verify
-  'mobilityPlatform.content.publicParking.access': 'Accessible access', // TODO verify
-  'mobilityPlatform.content.publicParking.access.gate': 'Accessible through a gate', // TODO verify
+  'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Speed limit zone',
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'No parking zone',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Parking spot',
+  'mobilityPlatform.content.scooter.title': 'Electric scooter',
+  'mobilityPlatform.content.scooter.notReserved': 'Available for rent',
+  'mobilityPlatform.content.scooter.range': 'Current range: {value}',
+  'mobilityPlatform.content.disabledParking.title': 'Parking area for disabled',
+  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces',
+  'mobilityPlatform.content.publicParking.access': 'Accessible access',
+  'mobilityPlatform.content.publicParking.access.gate': 'Accessible through a gate',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -721,7 +734,11 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Reservation service',
   'mobilityPlatform.info.boatParking': 'You can park your boat for 3 hours on the eastern bank of the Aura River next to Aurasilta (Aura Bridge). Parking is free of charge but you must use a parking disc.',
   'mobilityPlatform.info.publicToilets': 'In Turku there are 6 public toilets, which are open from 7 am to 11 pm. First of May until the last of September the toilets are open from 7 am to 2 am.',
-  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, jotka ovat portin takana.', // TODO translate
+  'mobilityPlatform.info.scooters.noParking': 'It is prohibited to park the electric scooter on the areas shown on the map.',
+  'mobilityPlatform.info.scooters.parkingAreas': 'Electric scooters also have dedicated parking places, which are marked by painted squares.',
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Maximum speed allowed on the areas shown on the map is 15 km/h.',
+  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by service providers. Electric scooters by other companies will be visible later on the mobility map.',
+  'mobilityPlatform.info.disabledParking': 'Parking spaces intended for people with reduced mobility are shown on the map. To park on them, you need a disabled parking permit. There is accessible access to the parking places, excluding those parking places that can only be accessed through a gate.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

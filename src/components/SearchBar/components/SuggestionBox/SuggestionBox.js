@@ -1,8 +1,10 @@
 import { List, Paper, Typography } from '@material-ui/core';
-import { AccessTime, ArrowDropUp, LocationOn, Search } from '@material-ui/icons';
+import {
+  AccessTime, ArrowDropUp, LocationOn, Search
+} from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React, {
-    useEffect, useRef, useState
+  useEffect, useRef, useState
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';

@@ -15,6 +15,10 @@ import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZ
 import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
 import PublicToilets from '../../components/MobilityPlatform/PublicToilets';
 import RentalCars from '../../components/MobilityPlatform/RentalCars';
+import NoParking from '../../components/MobilityPlatform/Scooters/components/NoParking';
+import ParkingAreas from '../../components/MobilityPlatform/Scooters/components/ParkingAreas';
+import ScooterMarkers from '../../components/MobilityPlatform/Scooters/components/ScooterMarkers';
+import SpeedLimitAreas from '../../components/MobilityPlatform/Scooters/components/SpeedLimitAreas';
 import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
 
 const MobilityPlatformMapView = () => (
@@ -35,6 +39,10 @@ const MobilityPlatformMapView = () => (
     <GuestHarbour />
     <SpeedLimitZones />
     <PublicToilets />
+    <NoParking />
+    <ParkingAreas />
+    <SpeedLimitAreas />
+    <ScooterMarkers />
     <DisabledParking />
   </>
 );
