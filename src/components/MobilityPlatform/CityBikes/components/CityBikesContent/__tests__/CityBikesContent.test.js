@@ -1,8 +1,8 @@
 // Link.react.test.js
 import React from 'react';
-import CityBikesContent from '../index';
 import { getRenderWithProviders } from '../../../../../../../jestUtils';
 import finnishTranslations from '../../../../../../i18n/fi';
+import CityBikesContent from '../index';
 
 const mockProps = {
   bikeStation: {
@@ -49,7 +49,7 @@ describe('<CityBikesContent />', () => {
     expect(p[2].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.cityBikes.capacity']}: ${mockProps.bikeStation.capacity}`);
     expect(p[3].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.cityBikes.bikes.available']}: 10`);
     expect(p[4].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.cityBikes.docks.available']}: 20`);
-    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.content.cityBikes.links']);
+    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.content.general.rentalUris']);
     expect(link[0].textContent).toEqual('Android');
     expect(link[1].textContent).toEqual('iOS');
   });

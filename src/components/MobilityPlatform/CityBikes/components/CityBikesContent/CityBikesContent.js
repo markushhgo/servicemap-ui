@@ -58,7 +58,7 @@ const CityBikesContent = ({
       ))}
       <div className={classes.paragraph}>
         <Typography variant="body2" className={classes.bold}>
-          {intl.formatMessage({ id: 'mobilityPlatform.content.cityBikes.links' })}
+          {intl.formatMessage({ id: 'mobilityPlatform.content.general.rentalUris' })}
           :
         </Typography>
       </div>

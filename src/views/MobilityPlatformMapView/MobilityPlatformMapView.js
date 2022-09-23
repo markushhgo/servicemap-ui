@@ -1,20 +1,24 @@
 import React from 'react';
 import EcoCounterMarkers from '../../components/EcoCounter/EcoCounterMarkers';
-import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
-import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 import BicycleRoutes from '../../components/MobilityPlatform/BicycleRoutes';
-import RentalCars from '../../components/MobilityPlatform/RentalCars';
-import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
-import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
-import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
-import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZones';
+import BicycleStands from '../../components/MobilityPlatform/BicycleStands';
 import BikeServiceStations from '../../components/MobilityPlatform/BikeServiceStations';
-import CityBikes from '../../components/MobilityPlatform/CityBikes';
-import Marinas from '../../components/MobilityPlatform/Boating/Marinas';
 import BoatParking from '../../components/MobilityPlatform/Boating/BoatParking';
 import GuestHarbour from '../../components/MobilityPlatform/Boating/GuestHarbour';
-import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
+import Marinas from '../../components/MobilityPlatform/Boating/Marinas';
+import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStationMarkers';
+import CityBikes from '../../components/MobilityPlatform/CityBikes';
+import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
+import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
+import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZones';
+import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
 import PublicToilets from '../../components/MobilityPlatform/PublicToilets';
+import RentalCars from '../../components/MobilityPlatform/RentalCars';
+import NoParking from '../../components/MobilityPlatform/Scooters/components/NoParking';
+import ParkingAreas from '../../components/MobilityPlatform/Scooters/components/ParkingAreas';
+import ScooterMarkers from '../../components/MobilityPlatform/Scooters/components/ScooterMarkers';
+import SpeedLimitAreas from '../../components/MobilityPlatform/Scooters/components/SpeedLimitAreas';
+import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -34,6 +38,10 @@ const MobilityPlatformMapView = () => (
     <GuestHarbour />
     <SpeedLimitZones />
     <PublicToilets />
+    <NoParking />
+    <ParkingAreas />
+    <SpeedLimitAreas />
+    <ScooterMarkers />
   </>
 );
 

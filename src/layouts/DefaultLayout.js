@@ -118,6 +118,10 @@ const DefaultLayout = (props) => {
   const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
   const [speedLimitZones, setSpeedLimitZones] = useState([]);
   const [showPublicToilets, setShowPublicToilets] = useState(false);
+  const [showScooterNoParking, setShowScooterNoParking] = useState(false);
+  const [showScooterParkingAreas, setShowScooterParkingAreas] = useState(false);
+  const [showScooterSpeedLimitAreas, setShowScooterSpeedLimitAreas] = useState(false);
+  const [showScootersRyde, setShowScootersRyde] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -243,6 +247,14 @@ const DefaultLayout = (props) => {
                       setSpeedLimitZones,
                       showPublicToilets,
                       setShowPublicToilets,
+                      showScooterNoParking,
+                      setShowScooterNoParking,
+                      showScooterParkingAreas,
+                      setShowScooterParkingAreas,
+                      showScooterSpeedLimitAreas,
+                      setShowScooterSpeedLimitAreas,
+                      showScootersRyde,
+                      setShowScootersRyde,
                     }}
                   >
                     <ViewRouter />
@@ -279,6 +291,10 @@ const DefaultLayout = (props) => {
                     speedLimitSelections,
                     speedLimitZones,
                     showPublicToilets,
+                    showScooterNoParking,
+                    showScooterParkingAreas,
+                    showScooterSpeedLimitAreas,
+                    showScootersRyde,
                   }}
                 >
                   <MapView

@@ -593,6 +593,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',
   'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.title.boating': 'Veneily',
+  'mobilityPlatform.menu.title.scooter': 'Sähköpotkulaudat',
   'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
@@ -616,9 +617,15 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
-  'mobilityPlatform.menu.show.publicToilets': 'Yleiset vessat',
+  'mobilityPlatform.menu.show.scooterNoParking': 'Pysäköintikieltoalueet',
+  'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintipaikat',
+  'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',
+  'mobilityPlatform.menu.show.scooterProviders': 'Vapaat sähköpotkulaudat',
+  'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
 
   // Content
+  'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
+  'mobilityPlatform.content.general.rentalUris': 'Varauslinkit',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
   'mobilityPlatform.content.url': 'Lisätietoja',
@@ -653,8 +660,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
   'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
-  'mobilityPlatform.content.rentalCars.provider': 'Palveluntarjoaja',
-  'mobilityPlatform.content.rentalCars.address': 'Sijainti',
+  'mobilityPlatform.content.rentalCars.address': 'Sijainti: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
@@ -674,7 +680,6 @@ const translations = {
   'mobilityPlatform.content.cityBikes.title': 'Kaupunkipyöräasema',
   'mobilityPlatform.content.cityBikes.name': 'Asema',
   'mobilityPlatform.content.cityBikes.capacity': 'Kapasiteetti',
-  'mobilityPlatform.content.cityBikes.links': 'Latauslinkit',
   'mobilityPlatform.content.cityBikes.bikes.available': 'Pyöriä vapaana',
   'mobilityPlatform.content.cityBikes.docks.available': 'Telineitä vapaana',
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
@@ -695,6 +700,12 @@ const translations = {
   'mobilityPlatform.content.marinas.winterStorage': 'Talvisäilytyspaikkojen määrä',
   'mobilityPlatform.content.marinas.reservationInfo': 'Tiedot vapaista venepaikoista löytyvät varauspalvelusta.',
   'mobilityPlatform.content.marinas.infoLink': 'Lisätietoja',
+  'mobilityPlatform.content.scooters.speedLimitAreas.title': 'Nopeusrajoitusalue',
+  'mobilityPlatform.content.scooters.noParkingAreas.title': 'Pysäköintikieltoalue',
+  'mobilityPlatform.content.scooters.parkingAreas.title': 'Pysäköintipaikka',
+  'mobilityPlatform.content.scooter.title': 'Sähköpotkulauta',
+  'mobilityPlatform.content.scooter.notReserved': 'Vuokrattavissa oleva',
+  'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama: {value}',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -721,6 +732,10 @@ const translations = {
   'mobilityPlatform.info.marinas.link': 'Varauspalvelu',
   'mobilityPlatform.info.boatParking': 'Veneparkit sijaitsevat Aurajoen kummallakin rannalla Auransillan vieressä. Veneen niihin voi jättää 3 tunniksi maksutta pysäköintikiekkoa käyttäen.',
   'mobilityPlatform.info.publicToilets': 'Turussa on 6 yleistä vessaa, jotka ovat normaalisti avoinna kello 7 - 23. 1.5 - 30.9 voimassa ovat erityisaukioloajat, kello 7 - 02.',
+  'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.',
+  'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
+  'mobilityPlatform.info.scooters.speedLimitAreas': 'Ylin sallittu nopeus alueilla on 15 km/t.',
+  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO verify
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
