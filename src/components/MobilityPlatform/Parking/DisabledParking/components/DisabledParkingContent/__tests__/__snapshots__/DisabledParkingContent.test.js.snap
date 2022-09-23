@@ -11,7 +11,7 @@ exports[`<DisabledParkingContent /> should work 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1"
       >
-        Invapysäköintialue
+        Pysäköintialue liikkumisesteiselle
       </h6>
     </div>
     <div
@@ -20,7 +20,7 @@ exports[`<DisabledParkingContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        Invapaikkojen määrä
+        Parkkipaikkojen määrä
         :
          
         5
