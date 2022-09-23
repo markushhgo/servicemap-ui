@@ -67,7 +67,7 @@ const DisabledParking = () => {
           <>
             <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />
             <Marker key={item} icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
-              <Popup>
+              <Popup className="disabled-parking-popup">
                 <DisabledParkingContent item={item} />
               </Popup>
             </Marker>

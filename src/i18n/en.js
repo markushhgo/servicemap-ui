@@ -705,7 +705,7 @@ const translations = {
   'mobilityPlatform.content.scooter.notReserved': 'Available for rent',
   'mobilityPlatform.content.scooter.range': 'Current range: {value}',
   'mobilityPlatform.content.disabledParking.title': 'Parking area for disabled',
-  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces',
+  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces: {value}',
   'mobilityPlatform.content.publicParking.access': 'Accessible access',
   'mobilityPlatform.content.publicParking.access.gate': 'Accessible through a gate',
 

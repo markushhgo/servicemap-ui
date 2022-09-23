@@ -702,7 +702,7 @@ const translations = {
   'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra',
   'mobilityPlatform.content.scooter.range': 'Återstående räckvidd: {value}',
   'mobilityPlatform.content.disabledParking.title': 'Inva-parkeringsplatser',
-  'mobilityPlatform.content.disabledParking.amount': 'Antal inva-parkeringsplatser',
+  'mobilityPlatform.content.disabledParking.amount': 'Antal inva-parkeringsplatser: {value}',
   'mobilityPlatform.content.publicParking.access': 'Tillgänglig ingång',
   'mobilityPlatform.content.publicParking.access.gate': 'Ingång via port',
 

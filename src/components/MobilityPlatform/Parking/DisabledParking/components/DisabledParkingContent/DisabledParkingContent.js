@@ -24,18 +24,19 @@ const DisabledParkingContent = ({ classes, intl, item }) => {
     } return null;
   };
 
+  const renderText = value => (
+    <Typography variant="body2">
+      {intl.formatMessage({ id: 'mobilityPlatform.content.disabledParking.amount' }, { value })}
+    </Typography>
+  );
+
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
         <Typography variant="subtitle1">{intl.formatMessage({ id: 'mobilityPlatform.content.disabledParking.title' })}</Typography>
       </div>
       <div className={classes.textContainer}>
-        <Typography variant="body2">
-          {intl.formatMessage({ id: 'mobilityPlatform.content.disabledParking.amount' })}
-          :
-          {' '}
-          {item.extra.invapaikkoja}
-        </Typography>
+        {renderText(item.extra.invapaikkoja)}
         <Typography variant="body2">
           {getLocaleText(item.extra.rajoitustyyppi)}
         </Typography>

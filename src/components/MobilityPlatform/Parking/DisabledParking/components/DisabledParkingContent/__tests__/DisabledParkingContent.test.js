@@ -25,7 +25,7 @@ const renderWithProviders = getRenderWithProviders({
 });
 
 describe('<DisabledParkingContent />', () => {
-  it('should work', () => {
+  it('does match snapshot', () => {
     const { container } = renderWithProviders(<DisabledParkingContent {...mockProps} />);
     expect(container).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe('<DisabledParkingContent />', () => {
     const p = container.querySelectorAll('p');
     const h6 = container.querySelector('h6');
     expect(h6.textContent).toContain(finnishTranslations['mobilityPlatform.content.disabledParking.title']);
-    expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.disabledParking.amount']}: ${mockProps.item.extra.invapaikkoja}`);
+    expect(p[0].textContent).toContain(`Parkkipaikkojen määrä: ${mockProps.item.extra.invapaikkoja}`);
     expect(p[1].textContent).toContain(mockProps.item.extra.rajoitustyyppi.fi);
     expect(p[2].textContent).toContain(finnishTranslations['mobilityPlatform.content.publicParking.access']);
   });
