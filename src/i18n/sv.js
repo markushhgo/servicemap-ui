@@ -591,7 +591,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cykling',
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.title.boating': 'Båtliv',
-  'mobilityPlatform.menu.title.scooter': 'Elsparkcyklar', // TODO verify
+  'mobilityPlatform.menu.title.scooter': 'Elsparkcyklar',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
@@ -622,7 +622,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
 
   // Content
-  'mobilityPlatform.content.general.provider': 'Tjänsteleverantör',
+  'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
   'mobilityPlatform.content.general.rentalUris': 'Bokningslänkar',
   'mobilityPlatform.content.address': 'Adress',
   'mobilityPlatform.content.cgsType': 'Typ av elladdning',
@@ -658,7 +658,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 timmar',
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
-  'mobilityPlatform.content.rentalCars.address': 'Plats',
+  'mobilityPlatform.content.rentalCars.address': 'Plats: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
@@ -703,7 +703,7 @@ const translations = {
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Parkeringplats',
   'mobilityPlatform.content.scooter.title': 'Elsparkcykel',
   'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra',
-  'mobilityPlatform.content.scooter.range': 'Återstående räckvidd',
+  'mobilityPlatform.content.scooter.range': 'Återstående räckvidd: {value}',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

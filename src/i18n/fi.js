@@ -624,7 +624,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
 
   // Content
-  'mobilityPlatform.content.general.provider': 'Palveluntarjoaja',
+  'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
   'mobilityPlatform.content.general.rentalUris': 'Varauslinkit',
   'mobilityPlatform.content.address': 'Osoite',
   'mobilityPlatform.content.cgsType': 'Sähkölatausaseman tyyppi',
@@ -660,7 +660,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 tuntia',
   'mobilityPlatform.settings.streetMaintenance.info': 'Näytä tiedot ajalta.',
   'mobilityPlatform.content.rentalCars.title': 'Yhteiskäyttöauto',
-  'mobilityPlatform.content.rentalCars.address': 'Sijainti',
+  'mobilityPlatform.content.rentalCars.address': 'Sijainti: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Auton tiedot',
   'mobilityPlatform.content.rentalCars.available': 'Vapaa auto',
   'mobilityPlatform.content.rentalCars.reserved': 'Käytössä',
@@ -705,7 +705,7 @@ const translations = {
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Pysäköintipaikka',
   'mobilityPlatform.content.scooter.title': 'Sähköpotkulauta',
   'mobilityPlatform.content.scooter.notReserved': 'Vuokrattavissa oleva',
-  'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama',
+  'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama: {value}',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

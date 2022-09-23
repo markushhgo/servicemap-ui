@@ -30,9 +30,9 @@ describe('<ScooterInfo />', () => {
     const p = container.querySelectorAll('p');
     const h6 = container.querySelector('h6');
     expect(h6.textContent).toContain(finnishTranslations['mobilityPlatform.content.scooter.title']);
-    expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.general.provider']}: Ryde`);
+    expect(p[0].textContent).toContain('Palveluntarjoaja: Ryde');
     expect(p[1].textContent).toContain(finnishTranslations['mobilityPlatform.content.scooter.notReserved']);
-    expect(p[2].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.scooter.range']}: 20.20 km`);
+    expect(p[2].textContent).toContain('Jäljellä oleva kantama: 20.20 km');
     expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.general.rentalUris']);
   });
 

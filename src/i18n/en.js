@@ -590,7 +590,7 @@ const translations = {
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.title.boating': 'Boating',
-  'mobilityPlatform.menu.title.scooter': 'Electric scooters', // TODO verify
+  'mobilityPlatform.menu.title.scooter': 'Electric scooters',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -621,7 +621,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
 
   // Content
-  'mobilityPlatform.content.general.provider': 'Service provider',
+  'mobilityPlatform.content.general.provider': 'Service provider: {value}',
   'mobilityPlatform.content.general.rentalUris': 'Rental links',
   'mobilityPlatform.content.address': 'Address',
   'mobilityPlatform.content.cgsType': 'E-charging type',
@@ -657,7 +657,7 @@ const translations = {
   'mobilityPlatform.settings.buttons.24hours': '24 hours',
   'mobilityPlatform.settings.streetMaintenance.info': 'Select from time period to show information.',
   'mobilityPlatform.content.rentalCars.title': 'Shared use car',
-  'mobilityPlatform.content.rentalCars.address': 'Location',
+  'mobilityPlatform.content.rentalCars.address': 'Location: {value}',
   'mobilityPlatform.content.rentalCars.carInfo': 'Car information',
   'mobilityPlatform.content.rentalCars.available': 'Available',
   'mobilityPlatform.content.rentalCars.reserved': 'Reserved',
@@ -702,7 +702,7 @@ const translations = {
   'mobilityPlatform.content.scooters.parkingAreas.title': 'Parking spot',
   'mobilityPlatform.content.scooter.title': 'Electric scooter',
   'mobilityPlatform.content.scooter.notReserved': 'Available for rent',
-  'mobilityPlatform.content.scooter.range': 'Current range',
+  'mobilityPlatform.content.scooter.range': 'Current range: {value}',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

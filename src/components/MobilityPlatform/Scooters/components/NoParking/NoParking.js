@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
-import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import { fetchMobilityMapData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import TextContent from '../../../TextContent';
 
 /**
@@ -20,7 +20,7 @@ const NoParking = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapPolygonData('SNP', 100, setNoParkingData);
+      fetchMobilityMapData('SNP', 100, setNoParkingData);
     }
   }, [openMobilityPlatform, setNoParkingData]);
 
@@ -29,13 +29,20 @@ const NoParking = () => {
   const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 5 };
   const pathOptions = mapType === 'accessible_map' ? greenOptions : redOptions;
 
+  const swapCoords = (inputData) => {
+    if (inputData.length > 0) {
+      return inputData.map(item => item.map(v => [v[1], v[0]]));
+    }
+    return inputData;
+  };
+
   const map = useMap();
 
   useEffect(() => {
     if (showScooterNoParking && noParkingData && noParkingData.length > 0) {
       const bounds = [];
       noParkingData.forEach((item) => {
-        bounds.push(item.geometry_coords);
+        bounds.push(swapCoords(item.geometry_coords));
       });
       map.fitBounds(bounds);
     }
@@ -47,7 +54,7 @@ const NoParking = () => {
         && noParkingData
         && noParkingData.length > 0
         && noParkingData.map(item => (
-          <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords}>
+          <Polygon key={item.id} pathOptions={pathOptions} positions={swapCoords(item.geometry_coords)}>
             <Popup>
               <TextContent
                 titleId="mobilityPlatform.content.scooters.noParkingAreas.title"

@@ -16,12 +16,7 @@ const ScooterInfo = ({ classes, intl, item }) => {
   const singleValTypo = (messageId, value) => (
     <div className={classes.marginTop}>
       <Typography variant="body2">
-        {intl.formatMessage({
-          id: messageId,
-        })}
-        :
-        {' '}
-        {value}
+        {intl.formatMessage({ id: messageId }, { value })}
       </Typography>
     </div>
   );
