@@ -599,7 +599,6 @@ const translations = {
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulttuurikuntoilu',
-  'mobilityPlatform.menu.showSnowPlows': 'Katujen kunnossapito',
   'mobilityPlatform.menu.showBicycleRoutes': 'Pyöräilyreitit',
   'mobilityPlatform.menu.routes.info': 'Valitse reitti oheisesta listasta.',
   'mobilityPlatform.menu.routes.emptyList': 'Reittejä ei löytynyt.',
@@ -622,6 +621,13 @@ const translations = {
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.show.scooterProviders': 'Vapaat sähköpotkulaudat',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
+  'mobilityPlatform.menu.show.streetMaintenance': 'Katujen kunnossapito',
+  'mobilityPlatform.menu.streetMaintenance.1hour': '1 tunti',
+  'mobilityPlatform.menu.streetMaintenance.3hours': '3 tuntia',
+  'mobilityPlatform.menu.streetMaintenance.6hours': '6 tuntia',
+  'mobilityPlatform.menu.streetMaintenance.12hours': '12 tuntia',
+  'mobilityPlatform.menu.streetMaintenance.1day': '1 päivä',
+  'mobilityPlatform.menu.streetMaintenance.3days': '3 päivää',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',

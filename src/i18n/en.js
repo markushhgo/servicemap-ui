@@ -595,7 +595,6 @@ const translations = {
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
   'mobilityPlatform.menu.showBicycleStands': 'Bicycle parking',
-  'mobilityPlatform.menu.showSnowPlows': 'Street maintenance',
   'mobilityPlatform.menu.showCultureRoutes': 'Culture routes',
   'mobilityPlatform.menu.showBicycleRoutes': 'Bicycle routes',
   'mobilityPlatform.menu.routes.info': 'You can select a route from the list below.',
@@ -619,6 +618,13 @@ const translations = {
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones',
   'mobilityPlatform.menu.show.scooterProviders': 'Available electric scooters',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
+  'mobilityPlatform.menu.show.streetMaintenance': 'Street maintenance',
+  'mobilityPlatform.menu.streetMaintenance.1hour': '1 hour',
+  'mobilityPlatform.menu.streetMaintenance.3hours': '3 hours',
+  'mobilityPlatform.menu.streetMaintenance.6hours': '6 hours',
+  'mobilityPlatform.menu.streetMaintenance.12hours': '12 hours',
+  'mobilityPlatform.menu.streetMaintenance.1day': '1 day',
+  'mobilityPlatform.menu.streetMaintenance.3days': '3 days',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',

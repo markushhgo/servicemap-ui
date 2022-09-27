@@ -596,7 +596,6 @@ const translations = {
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
   'mobilityPlatform.menu.showBicycleStands': 'Cykelparkering',
-  'mobilityPlatform.menu.showSnowPlows': 'Underhållsarbete',
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
   'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
@@ -620,6 +619,13 @@ const translations = {
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.show.scooterProviders': 'Tillgängligt elsparkcyklar',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
+  'mobilityPlatform.menu.show.streetMaintenance': 'Underhållsarbete',
+  'mobilityPlatform.menu.streetMaintenance.1hour': '1 timme',
+  'mobilityPlatform.menu.streetMaintenance.3hours': '3 timmar',
+  'mobilityPlatform.menu.streetMaintenance.6hours': '6 timmar',
+  'mobilityPlatform.menu.streetMaintenance.12hours': '12 timmar',
+  'mobilityPlatform.menu.streetMaintenance.1day': '1 dag',
+  'mobilityPlatform.menu.streetMaintenance.3days': '3 dagar',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',

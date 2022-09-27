@@ -1,116 +1,99 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { PropTypes } from 'prop-types';
-import snowPlowIcon from 'servicemap-ui-turku/assets/icons/icons-icon_snowplow.svg';
-import SnowPlowsContent from './components/SnowPlowsContent';
-import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import moment from 'moment';
+import React, { useContext, useEffect, useState } from 'react';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { fetchStreetMaintenanceData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
-const SnowPlows = ({ classes, intl }) => {
-  const [iotData, setIotData] = useState(null);
-  const [iotDataHistory12h, setIotDataHistory12h] = useState(null);
-  const [iotDataHistory24h, setIotDataHistory24h] = useState(null);
-  const [activeSnowPlows, setActiveSnowPlows] = useState(null);
+const SnowPlows = () => {
+  const [streetMaintenanceData1Day, setStreetMaintenanceData1Day] = useState([]);
+  const [streetMaintenanceData3Days, setStreetMaintenanceData3Days] = useState([]);
+  const [streetMaintenanceData1Hour, setStreetMaintenanceData1Hour] = useState([]);
+  const [streetMaintenanceData3Hours, setStreetMaintenanceData3hours] = useState([]);
+  const [streetMaintenanceData6Hours, setStreetMaintenanceData6Hours] = useState([]);
+  const [streetMaintenanceData12Hours, setStreetMaintenanceData12Hours] = useState([]);
 
-  const { openMobilityPlatform, showSnowPlows, snowPlowsType } = useContext(MobilityPlatformContext);
+  const {
+    openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance,
+  } = useContext(MobilityPlatformContext);
 
-  const apiUrl = window.nodeEnvSettings.MOBILITY_PLATFORM_API;
+  const { Polyline } = global.rL;
 
-  const { Marker, Popup } = global.rL;
-  const { icon } = global.L;
+  const yesterDay = moment().clone().add(-1, 'days');
+  const yesterDayFormat = yesterDay.clone().format('YYYY-MM-DD HH:mm');
+  const threeDays = moment().clone().add(-3, 'days');
+  const threeDaysFormat = threeDays.clone().format('YYYY-MM-DD HH:mm');
+  const oneHour = moment().clone().add(-1, 'hours');
+  const oneHourFormat = oneHour.clone().format('YYYY-MM-DD HH:mm');
+  const threeHours = moment().clone().add(-3, 'hours');
+  const threeHoursFormat = threeHours.clone().format('YYYY-MM-DD HH:mm');
+  const sixHours = moment().clone().add(-6, 'hours');
+  const sixHoursFormat = sixHours.clone().format('YYYY-MM-DD HH:mm');
+  const twelveHours = moment().clone().add(-12, 'hours');
+  const twelveHoursFormat = twelveHours.clone().format('YYYY-MM-DD HH:mm');
 
-  const customIcon = icon({
-    iconUrl: snowPlowIcon,
-    iconSize: [45, 45],
-  });
+  const endpointYesterDay = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${yesterDayFormat}`;
+  const endpointThreeDays = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${threeDaysFormat}`;
+  const endpointOneHour = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${oneHourFormat}`;
+  const endpointThreeHours = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${threeHoursFormat}`;
+  const endpointSixHours = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${sixHoursFormat}`;
+  const endpointTwelveHours = `maintenance_works/get_geometry_history/?event=Puhtaanapito&start_date_time=${twelveHoursFormat}`;
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchIotData(apiUrl, 'ISP', setIotData);
-      fetchIotData(apiUrl, '12H', setIotDataHistory12h);
-      fetchIotData(apiUrl, '24H', setIotDataHistory24h);
+      fetchStreetMaintenanceData(endpointYesterDay, setStreetMaintenanceData1Day);
+      fetchStreetMaintenanceData(endpointThreeDays, setStreetMaintenanceData3Days);
+      fetchStreetMaintenanceData(endpointOneHour, setStreetMaintenanceData1Hour);
+      fetchStreetMaintenanceData(endpointThreeHours, setStreetMaintenanceData3hours);
+      fetchStreetMaintenanceData(endpointSixHours, setStreetMaintenanceData6Hours);
+      fetchStreetMaintenanceData(endpointTwelveHours, setStreetMaintenanceData12Hours);
     }
-  }, [openMobilityPlatform, setIotData, setIotDataHistory12h, setIotDataHistory24h]);
+  }, [openMobilityPlatform]);
 
-  useEffect(() => {
-    if (snowPlowsType === '1hour') {
-      setActiveSnowPlows(iotData);
-    } else if (snowPlowsType === '12hours') {
-      setActiveSnowPlows(iotDataHistory12h);
-    } else if (snowPlowsType === '24hours') {
-      setActiveSnowPlows(iotDataHistory24h);
+  const swapCoords = (coordsData) => {
+    if (coordsData.length > 0) {
+      const swapped = coordsData.map(item => [item[1], item[0]]);
+      return swapped;
     }
-  }, [snowPlowsType]);
-
-  useEffect(() => {
-    if (!showSnowPlows) {
-      setActiveSnowPlows(null);
-    }
-  }, [showSnowPlows]);
-
-  const formatCoords = (input) => {
-    const coordsArray = [];
-    const output = input.replace(/[()]/g, '');
-    const initialArray = output.split(' ');
-    coordsArray.push(Number(initialArray[1]));
-    coordsArray.push(Number(initialArray[0]));
-    return coordsArray;
+    return coordsData;
   };
 
-  const formatEvent = (inputEvent) => {
-    switch (inputEvent) {
-      case 'au':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.snowPlow' });
-      case 'hi':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandSpread' });
-      case 'su':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.deIcing' });
-      case 'pe':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.streetWashing' });
-      case 'hn':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
-      case 'hj':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
-      case 'Hiekoitushiekan poisto ja pesu':
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.sandRemoval' });
+  const validateData = (inputData) => {
+    let isNotEmpty = false;
+    if (inputData && inputData.length > 0) {
+      inputData.forEach((item) => {
+        isNotEmpty = Object.keys(item).length !== 0;
+      });
+    }
+    return isNotEmpty;
+  };
+
+  const renderData = (inputData) => {
+    const validation = validateData(inputData);
+    if (validation) {
+      return inputData.map(item => <Polyline key={item} weight={5} positions={swapCoords(item.linestring_0)} />);
+    }
+    return null;
+  };
+
+  const setSelectedMaintenanceWork = () => {
+    switch (streetMaintenancePeriod) {
+      case '1day':
+        return renderData(streetMaintenanceData1Day);
+      case '3days':
+        return renderData(streetMaintenanceData3Days);
+      case '1hour':
+        return renderData(streetMaintenanceData1Hour);
+      case '3hours':
+        return renderData(streetMaintenanceData3Hours);
+      case '6hours':
+        return renderData(streetMaintenanceData6Hours);
+      case '12hours':
+        return renderData(streetMaintenanceData12Hours);
       default:
-        return intl.formatMessage({ id: 'mobilityPlatform.content.streetMaintenance.other' });
+        return null;
     }
   };
 
-  const formatTime = (inputTimeStamp) => {
-    const outputTimeStamp = inputTimeStamp.split(' ');
-    const timeArr = outputTimeStamp[1].split(':');
-    return `${timeArr[0]}:${timeArr[1]}`;
-  };
-
-  return (
-    <>
-      {showSnowPlows ? (
-        <div className={classes.container}>
-          {activeSnowPlows
-              && activeSnowPlows.map(item => (
-                <Marker key={item.last_location.timestamp} icon={customIcon} position={formatCoords(item.last_location.coords)}>
-                  <div className={classes.popupWrapper}>
-                    <Popup>
-                      <SnowPlowsContent
-                        formatOperation={formatEvent}
-                        operation={item.last_location.events[0]}
-                        formatTime={formatTime}
-                        timestamp={item.last_location.timestamp}
-                      />
-                    </Popup>
-                  </div>
-                </Marker>
-              ))}
-        </div>
-      ) : null}
-    </>
-  );
-};
-
-SnowPlows.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  return <>{showStreetMaintenance ? <>{setSelectedMaintenanceWork()}</> : null}</>;
 };
 
 export default SnowPlows;

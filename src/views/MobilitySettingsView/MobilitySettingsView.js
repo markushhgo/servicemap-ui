@@ -40,6 +40,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
   const [openScooterProviderList, setOpenScooterProviderList] = useState(false);
+  const [openStreetMaintenanceSelectionList, setOpenStreetMaintenanceSelectionList] = useState(false);
 
   const {
     setOpenMobilityPlatform,
@@ -95,6 +96,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterSpeedLimitAreas,
     showScootersRyde,
     setShowScootersRyde,
+    showStreetMaintenance,
+    setShowStreetMaintenance,
+    streetMaintenancePeriod,
+    setStreetMaintenancePeriod,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -203,6 +208,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
     checkVisibilityValues(showParkingChargeZones, setOpenParkingChargeZoneList);
   }, [showParkingChargeZones]);
+
+  useEffect(() => {
+    checkVisibilityValues(showStreetMaintenance, setOpenCarSettings);
+    checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSelectionList);
+  }, [showStreetMaintenance]);
 
   useEffect(() => {
     checkVisibilityValues(showMarinas, setOpenBoatingSettings);
@@ -394,6 +404,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const streetMaintenanceListToggle = () => {
+    setOpenStreetMaintenanceSelectionList(current => !current);
+    if (streetMaintenancePeriod) {
+      setStreetMaintenancePeriod(null);
+    }
+    if (showStreetMaintenance) {
+      setShowStreetMaintenance(false);
+    }
+  };
+
   /**
    * Stores previous value
    */
@@ -491,6 +511,57 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   /**
+   * Stores previous value
+   */
+  const prevStreetMaintenancePeriodRef = useRef();
+
+  useEffect(() => {
+    prevStreetMaintenancePeriodRef.current = streetMaintenancePeriod;
+  }, [streetMaintenancePeriod]);
+
+  const setStreetMaintenancePeriodSelection = (periodType) => {
+    setStreetMaintenancePeriod(periodType);
+    setShowStreetMaintenance(true);
+    if (periodType === prevStreetMaintenancePeriodRef.current) {
+      setStreetMaintenancePeriod(null);
+      setShowStreetMaintenance(false);
+    }
+  };
+
+  const streetMaintenanceSelections = [
+    {
+      type: '1hour',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.1hour',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+    {
+      type: '3hours',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.3hours',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+    {
+      type: '6hours',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.6hours',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+    {
+      type: '12hours',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.12hours',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+    {
+      type: '1day',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.1day',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+    {
+      type: '3days',
+      msgId: 'mobilityPlatform.menu.streetMaintenance.3days',
+      onChangeValue: setStreetMaintenancePeriodSelection,
+    },
+  ];
+
+  /**
    * Control types for different user types
    */
   const walkingControlTypes = [
@@ -583,6 +654,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.speedLimitZones.show',
       checkedValue: openSpeedLimitList,
       onChangeValue: speedLimitZonesToggle,
+    },
+    {
+      type: 'streetMaintenance',
+      msgId: 'mobilityPlatform.menu.show.streetMaintenance',
+      checkedValue: openStreetMaintenanceSelectionList,
+      onChangeValue: streetMaintenanceListToggle,
     },
   ];
 
@@ -832,6 +909,35 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const renderMaintenanceSelectionList = () => (
+    <>
+      {streetMaintenanceSelections
+        && streetMaintenanceSelections.length > 0
+        && streetMaintenanceSelections.map(item => (
+          <div key={item.type} className={classes.checkBoxContainer}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={item.type === streetMaintenancePeriod}
+                  aria-checked={item.type === streetMaintenancePeriod}
+                  className={classes.margin}
+                  onChange={() => item.onChangeValue(item.type)}
+                />
+              )}
+              label={(
+                <Typography
+                  variant="body2"
+                  aria-label={intl.formatMessage({ id: item.msgId })}
+                >
+                  {intl.formatMessage({ id: item.msgId })}
+                </Typography>
+              )}
+            />
+          </div>
+        ))}
+    </>
+  );
+
   return (
     <div className={classes.content}>
       <TitleBar
@@ -884,6 +990,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
+              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={scooterSettingsToggle}
