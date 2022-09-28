@@ -106,7 +106,7 @@ const SnowPlows = () => {
   }, [openMobilityPlatform]);
 
   const swapCoords = (coordsData) => {
-    if (coordsData.length > 0) {
+    if (coordsData && coordsData.length > 0) {
       const swapped = coordsData.map(item => [item[1], item[0]]);
       return swapped;
     }
@@ -121,9 +121,8 @@ const SnowPlows = () => {
       return inputData.map(item => (
         <Polyline
           key={item}
-          pathOptions={getPathOptions(item.event)}
-          weight={5}
-          positions={swapCoords(item.linestring_0)}
+          pathOptions={getPathOptions(item.geometry.event)}
+          positions={swapCoords(item.geometry.coordinates)}
         />
       ));
     }
