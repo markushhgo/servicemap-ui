@@ -95,16 +95,6 @@ const fetchStreetMaintenanceData = async (endpoint, setData) => {
   }
 };
 
-const fetchStreetMaintenanceEvents = async (setData) => {
-  try {
-    const response = await fetch(`${isApiUrl}/street_maintenance/active_events/`);
-    const jsonData = await response.json();
-    setData(jsonData.results);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
 export {
   fetchMobilityMapData,
   fetchCultureRouteNames,
@@ -115,5 +105,4 @@ export {
   fetchMobilityMapPolygonData,
   fetchCityBikesData,
   fetchStreetMaintenanceData,
-  fetchStreetMaintenanceEvents,
 };
