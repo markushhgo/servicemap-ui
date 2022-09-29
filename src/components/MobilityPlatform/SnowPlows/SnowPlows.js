@@ -40,13 +40,13 @@ const SnowPlows = () => {
       case 'Muut työt':
         return options.black;
       case 'Auraus':
-        return options.teal;
+        return options.blue;
       case 'Suolaus':
         return options.purple;
       case 'Hiekoitus':
         return options.burgundy;
       default:
-        return options.blue;
+        return options.teal;
     }
   };
 
@@ -61,9 +61,9 @@ const SnowPlows = () => {
 
   const maintenanceEvents = {
     sanitation: 'Puhtaanapito',
-    auraus: 'Auraus',
-    suolaus: 'Suolaus',
-    hiekoitus: 'Hiekoitus',
+    snowplow: 'Auraus',
+    deicing: 'Suolaus',
+    sanding: 'Hiekoitus',
     other: 'Muut työt',
   };
 
@@ -105,6 +105,13 @@ const SnowPlows = () => {
     }
   }, [openMobilityPlatform]);
 
+  const streetMaintenance1Day = [...streetMaintenanceSanitation1Day, ...streetMaintenanceOther1Day];
+  const streetMaintenance3Days = [...streetMaintenanceSanitation3Days, ...streetMaintenanceOther3Days];
+  const streetMaintenance1Hour = [...streetMaintenanceSanitation1Hour, ...streetMaintenanceOther1Hour];
+  const streetMaintenance3Hours = [...streetMaintenanceSanitation3Hours, ...streetMaintenanceOther3Hours];
+  const streetMaintenance6Hours = [...streetMaintenanceSanitation6Hours, ...streetMaintenanceOther6Hours];
+  const streetMaintenance12Hours = [...streetMaintenanceSanitation12Hours, ...streetMaintenanceOther12Hours];
+
   const swapCoords = (coordsData) => {
     if (coordsData && coordsData.length > 0) {
       const swapped = coordsData.map(item => [item[1], item[0]]);
@@ -129,39 +136,20 @@ const SnowPlows = () => {
     return null;
   };
 
-  const setSanitationMaintenanceWork = () => {
+  const rendernMaintenanceWorks = () => {
     switch (streetMaintenancePeriod) {
       case '1day':
-        return renderData(streetMaintenanceSanitation1Day);
+        return renderData(streetMaintenance1Day);
       case '3days':
-        return renderData(streetMaintenanceSanitation3Days);
+        return renderData(streetMaintenance3Days);
       case '1hour':
-        return renderData(streetMaintenanceSanitation1Hour);
+        return renderData(streetMaintenance1Hour);
       case '3hours':
-        return renderData(streetMaintenanceSanitation3Hours);
+        return renderData(streetMaintenance3Hours);
       case '6hours':
-        return renderData(streetMaintenanceSanitation6Hours);
+        return renderData(streetMaintenance6Hours);
       case '12hours':
-        return renderData(streetMaintenanceSanitation12Hours);
-      default:
-        return null;
-    }
-  };
-
-  const setOtherMaintenanceWork = () => {
-    switch (streetMaintenancePeriod) {
-      case '1day':
-        return renderData(streetMaintenanceOther1Day);
-      case '3days':
-        return renderData(streetMaintenanceOther3Days);
-      case '1hour':
-        return renderData(streetMaintenanceOther1Hour);
-      case '3hours':
-        return renderData(streetMaintenanceOther3Hours);
-      case '6hours':
-        return renderData(streetMaintenanceOther6Hours);
-      case '12hours':
-        return renderData(streetMaintenanceOther12Hours);
+        return renderData(streetMaintenance12Hours);
       default:
         return null;
     }
@@ -169,8 +157,7 @@ const SnowPlows = () => {
 
   return (
     <>
-      {showStreetMaintenance ? <>{setSanitationMaintenanceWork()}</> : null}
-      {showStreetMaintenance ? <>{setOtherMaintenanceWork()}</> : null}
+      {showStreetMaintenance ? <>{rendernMaintenanceWorks()}</> : null}
     </>
   );
 };

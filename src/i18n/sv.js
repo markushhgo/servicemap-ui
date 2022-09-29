@@ -626,6 +626,12 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.12hours': '12 timmar',
   'mobilityPlatform.menu.streetMaintenance.1day': '1 dag',
   'mobilityPlatform.menu.streetMaintenance.3days': '3 dagar',
+  'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.', // TODO translate
+  'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Snowplows', // TODO translate
+  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'De-icing', // TODO translate
+  'mobilityPlatform.menu.streetMaintenance.info.sanding': 'Sanding', // TODO translate
+  'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Sanitation work', // TODO // TODO translate
+  'mobilityPlatform.menu.streetMaintenance.info.other': 'Other works', // TODO // TODO translate
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',

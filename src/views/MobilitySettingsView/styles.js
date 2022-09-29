@@ -87,6 +87,9 @@ const styles = theme => ({
   margin: {
     marginLeft: theme.spacing(4),
   },
+  marginSm: {
+    marginLeft: theme.spacing(0.7),
+  },
   buttonList: {
     display: 'flex',
     flexDirection: 'row',
@@ -99,6 +102,36 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
+  },
+  flexBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: theme.spacing(1),
+  },
+  black: {
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: 'rgba(0, 0, 0,255)',
+  },
+  green: {
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: 'rgba(15, 115, 6, 255)',
+  },
+  blue: {
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: 'rgba(7, 44, 115, 255)',
+  },
+  purple: {
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: 'rgba(202, 15, 212, 255)',
+  },
+  burgundy: {
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: 'rgba(128, 0, 32, 255)',
   },
 });
 

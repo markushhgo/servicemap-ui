@@ -909,8 +909,29 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const streetMaintenanceInfo = (colorClass, translationId) => (
+    <div className={classes.flexBox}>
+      <div className={colorClass} />
+      <div className={classes.marginSm}>
+        <Typography variant="body2">{intl.formatMessage({ id: translationId })}</Typography>
+      </div>
+    </div>
+  );
+
   const renderMaintenanceSelectionList = () => (
     <>
+      <div className={`${classes.paragraph} ${classes.border}`}>
+        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}>
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
+        </Typography>
+        <div className={classes.infoText}>
+          {streetMaintenanceInfo(classes.blue, 'Auraus')}
+          {streetMaintenanceInfo(classes.purple, 'Suolaus')}
+          {streetMaintenanceInfo(classes.burgundy, 'Hiekoitus')}
+          {streetMaintenanceInfo(classes.green, 'Puhtaanapito')}
+          {streetMaintenanceInfo(classes.black, 'Muut työt')}
+        </div>
+      </div>
       {streetMaintenanceSelections
         && streetMaintenanceSelections.length > 0
         && streetMaintenanceSelections.map(item => (
