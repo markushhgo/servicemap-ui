@@ -618,8 +618,9 @@ const translations = {
   'mobilityPlatform.menu.show.scooterNoParking': 'No parking zones',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking places',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones',
-  'mobilityPlatform.menu.show.scooterProviders': 'Available electric scooters',
+  'mobilityPlatform.menu.show.scooterProviders': 'Electric scooter operators',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
+  'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -733,7 +734,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'It is prohibited to park the electric scooter on the areas shown on the map.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Electric scooters also have dedicated parking places, which are marked by painted squares.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Maximum speed allowed on the areas shown on the map is 15 km/h.',
-  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by service providers. Electric scooters by other companies will be visible later on the mobility map.',
+  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by operators. Electric scooters by other companies will be visible later on the mobility map.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

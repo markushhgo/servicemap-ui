@@ -619,8 +619,9 @@ const translations = {
   'mobilityPlatform.menu.show.scooterNoParking': 'Parkeringsförbudszoner',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parkeringplatser',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Hastighetsbegränsningszoner',
-  'mobilityPlatform.menu.show.scooterProviders': 'Tillgängligt elsparkcyklar',
+  'mobilityPlatform.menu.show.scooterProviders': 'Elsparkcyklarföretagen',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
+  'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -734,7 +735,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Elsparkcykelparkering förbjuden på det på kartan synliga området.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Elsparkcyklarna har också dedikerade parkeringsplatser, som är märkta med målade rutor.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Hastigheten på området är max. 15km/h.',
-  'mobilityPlatform.info.scooters.general': 'Servicekartan visar tjänsteleverantörernas lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
+  'mobilityPlatform.info.scooters.general': 'Servicekartan visar lediga hyreselsparkcyklar från foretagen. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

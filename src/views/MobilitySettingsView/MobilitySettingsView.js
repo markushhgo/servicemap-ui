@@ -733,7 +733,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderSpeedLimits = () => (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
+        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
           {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
         </Typography>
       </div>
@@ -805,6 +805,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const renderScooterProviderList = () => (
     <>
+      <div className={`${classes.paragraph} ${classes.border}`}>
+        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}>
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}
+        </Typography>
+      </div>
       {scooterProviders
         && scooterProviders.length > 0
         && scooterProviders.map(item => (
