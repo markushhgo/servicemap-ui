@@ -752,15 +752,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
               label={(
                 <Typography
                   variant="body2"
-                  aria-label={`${item} ${intl.formatMessage({
+                  aria-label={intl.formatMessage({
                     id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  })}`}
+                  }, { item })}
                 >
-                  {item}
-                  {' '}
                   {intl.formatMessage({
                     id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  })}
+                  }, { item })}
                 </Typography>
             )}
             />
@@ -788,13 +786,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
               label={(
                 <Typography
                   variant="body2"
-                  aria-label={`${intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })} ${
-                    item.extra.maksuvyohyke
-                  }`}
+                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
                 >
-                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })}
-                  {' '}
-                  {item.extra.maksuvyohyke}
+                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
                 </Typography>
               )}
             />
