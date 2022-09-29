@@ -617,6 +617,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
+  'mobilityPlatform.menu.show.publicToilets': 'Yleiset vessat',
   'mobilityPlatform.menu.show.scooterNoParking': 'Pysäköintikieltoalueet',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintipaikat',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',

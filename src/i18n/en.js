@@ -614,6 +614,7 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
+  'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
   'mobilityPlatform.menu.show.scooterNoParking': 'No parking zones',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking places',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones',
