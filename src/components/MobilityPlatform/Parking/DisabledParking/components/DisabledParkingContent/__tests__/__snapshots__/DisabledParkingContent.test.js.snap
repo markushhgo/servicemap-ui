@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DisabledParkingContent /> should work 1`] = `
+exports[`<DisabledParkingContent /> does match snapshot 1`] = `
 <div>
   <div
     class="injectIntl(DisabledParkingContent)-container-1"
