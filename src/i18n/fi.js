@@ -707,7 +707,7 @@ const translations = {
   'mobilityPlatform.content.scooter.title': 'Sähköpotkulauta',
   'mobilityPlatform.content.scooter.notReserved': 'Vuokrattavissa oleva',
   'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama: {value}',
-  'mobilityPlatform.content.disabledParking.title': 'Liikkumisesteisen pysäköintialue',
+  'mobilityPlatform.content.disabledParking.title': 'Pysäköintialue liikkumisesteisille',
   'mobilityPlatform.content.disabledParking.amount': 'Parkkipaikkojen määrä: {value}',
   'mobilityPlatform.content.publicParking.access': 'Esteetön pääsy',
   'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta',

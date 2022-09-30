@@ -11,7 +11,7 @@ exports[`<DisabledParkingContent /> does match snapshot 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1"
       >
-        Liikkumisesteisen pysäköintialue
+        Pysäköintialue liikkumisesteisille
       </h6>
     </div>
     <div

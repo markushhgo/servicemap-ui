@@ -7,7 +7,7 @@ import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobi
 import DisabledParkingContent from './components/DisabledParkingContent';
 
 /**
- * Displays disabled parking on the map in polygon format.
+ * Displays disabled parking areas on the map in polygon and marker format.
  */
 
 const DisabledParking = () => {
@@ -58,20 +58,24 @@ const DisabledParking = () => {
     return coordinates;
   };
 
+  const randomNum = () => {
+    return Math.random();
+  };
+
   return (
     <>
       {showDisabledParking
         && disabledParkingData
         && disabledParkingData.length > 0
         && disabledParkingData.map(item => (
-          <>
+          <div key={randomNum()}>
             <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />
-            <Marker key={item} icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
+            <Marker key={`${item.id}${item.extra.invapaikkoja}`} icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
               <Popup className="disabled-parking-popup">
                 <DisabledParkingContent item={item} />
               </Popup>
             </Marker>
-          </>
+          </div>
         ))}
     </>
   );
