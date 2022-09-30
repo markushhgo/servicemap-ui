@@ -606,7 +606,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Shared use cars',
   'mobilityPlatform.menu.showParkingSpaces': 'Parking spaces',
   'mobilityPlatform.menu.showParkingChargeZones': 'Parking charging zones',
-  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone',
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone {value}',
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
   'mobilityPlatform.menu.showCityBikes': 'City bike stations',
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
@@ -614,11 +614,13 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
   'mobilityPlatform.menu.speedLimitZones.show': 'Speed limit zones',
   'mobilityPlatform.menu.speedLimitZones.select': 'You can select speed limit zones from the list and show them on the map.',
+  'mobilityPlatform.menu.show.publicToilets': 'Public restrooms',
   'mobilityPlatform.menu.show.scooterNoParking': 'No parking zones',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parking places',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Speed limit zones',
-  'mobilityPlatform.menu.show.scooterProviders': 'Available electric scooters',
+  'mobilityPlatform.menu.show.scooterProviders': 'Electric scooter operators',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
+  'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -682,7 +684,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtual station',
   'mobilityPlatform.content.speedLimitZones.area': 'Speed limit zone',
   'mobilityPlatform.content.speedLimitZones.limit': 'Speed limit',
-  'mobilityPlatform.content.speedLimitZones.suffix': 'km/h',
+  'mobilityPlatform.content.speedLimitZones.suffix': '{item} km/h',
   'mobilityPlatform.content.publicToilets.title': 'Public restroom',
   'mobilityPlatform.content.publicToilets.openNormalTitle': 'Opening hours:',
   'mobilityPlatform.content.publicToilets.openSummerTitle': 'Special opening hours:',
@@ -732,7 +734,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'It is prohibited to park the electric scooter on the areas shown on the map.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Electric scooters also have dedicated parking places, which are marked by painted squares.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Maximum speed allowed on the areas shown on the map is 15 km/h.',
-  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by service providers. Electric scooters by other companies will be visible later on the mobility map.',
+  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by operators. Electric scooters by other companies will be visible later on the mobility map.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

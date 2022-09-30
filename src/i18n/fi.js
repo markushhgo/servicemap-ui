@@ -609,7 +609,7 @@ const translations = {
   'mobilityPlatform.menu.showRentalCars': 'Yhteiskäyttöautot',
   'mobilityPlatform.menu.showParkingSpaces': 'Pysäköintialueet',
   'mobilityPlatform.menu.showParkingChargeZones': 'Pysäköinnin maksuvyöhykkeet',
-  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke',
+  'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke {value}',
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
   'mobilityPlatform.menu.show.marinas': 'Venesatamat',
@@ -617,11 +617,13 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
   'mobilityPlatform.menu.speedLimitZones.show': 'Nopeusrajoitusalueet',
   'mobilityPlatform.menu.speedLimitZones.select': 'Voit valintojen avulla näyttää nopeusrajoitusalueita kartalla.',
+  'mobilityPlatform.menu.show.publicToilets': 'Yleiset vessat',
   'mobilityPlatform.menu.show.scooterNoParking': 'Pysäköintikieltoalueet',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Pysäköintipaikat',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Nopeusrajoitusalueet',
-  'mobilityPlatform.menu.show.scooterProviders': 'Vapaat sähköpotkulaudat',
+  'mobilityPlatform.menu.show.scooterProviders': 'Sähköpotkulautaoperaattorit',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
+  'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -685,7 +687,7 @@ const translations = {
   'mobilityPlatform.content.cityBikes.virtualStation': 'Virtuaaliasema',
   'mobilityPlatform.content.speedLimitZones.area': 'Nopeusrajoitusalue',
   'mobilityPlatform.content.speedLimitZones.limit': 'Nopeusrajoitus',
-  'mobilityPlatform.content.speedLimitZones.suffix': 'km/t',
+  'mobilityPlatform.content.speedLimitZones.suffix': '{item} km/t',
   'mobilityPlatform.content.publicToilets.title': 'Yleinen vessa',
   'mobilityPlatform.content.publicToilets.openNormalTitle': 'Aukioloajat:',
   'mobilityPlatform.content.publicToilets.openSummerTitle': 'Erityisaukioloajat:',
@@ -735,7 +737,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Sähköpotkulautojen pysäköinti kartalla näkyville alueille on kielletty.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Ylin sallittu nopeus alueilla on 15 km/t.',
-  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät palveluntarjoajien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin palveluntarjoajien sähköpotkulaudoista.', // TODO verify
+  'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät operaattorien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin operaattorien sähköpotkulaudoista.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
