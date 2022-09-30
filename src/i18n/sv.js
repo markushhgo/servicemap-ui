@@ -740,7 +740,7 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Elsparkcykelparkering förbjuden på det på kartan synliga området.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Elsparkcyklarna har också dedikerade parkeringsplatser, som är märkta med målade rutor.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Hastigheten på området är max. 15km/h.',
-  'mobilityPlatform.info.scooters.general': 'Servicekartan visar lediga hyreselsparkcyklar från foretagen. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
+  'mobilityPlatform.info.scooters.general': 'Servicekartan visar företagets lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
   'mobilityPlatform.info.disabledParking': 'Parkeringsplatser avsedda för personer med nedsatt rörlighet visas på kartan. För att parkera på dem behöver du ett parkeringstillstånd för rörelsehindrade. Plattserna ärr tillgängliga, förutom de som nås via en port.',
 
   // Bicycle routes
