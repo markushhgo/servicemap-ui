@@ -49,13 +49,10 @@ const DisabledParking = () => {
   }, [showDisabledParking, disabledParkingData, map]);
 
   const getSingleCoordinates = (data) => {
-    let coordinates = [];
-    data.forEach((item) => {
-      item.forEach((coords) => {
-        coordinates = coords;
-      });
-    });
-    return coordinates;
+    if (data && data.length > 0) {
+      return data[0][0];
+    }
+    return data;
   };
 
   return (
