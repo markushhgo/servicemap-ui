@@ -624,6 +624,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterProviders': 'Sähköpotkulautaoperaattorit',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
   'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
+  'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -708,6 +709,10 @@ const translations = {
   'mobilityPlatform.content.scooter.title': 'Sähköpotkulauta',
   'mobilityPlatform.content.scooter.notReserved': 'Vuokrattavissa oleva',
   'mobilityPlatform.content.scooter.range': 'Jäljellä oleva kantama: {value}',
+  'mobilityPlatform.content.disabledParking.title': 'Pysäköintialue liikkumisesteisille',
+  'mobilityPlatform.content.disabledParking.amount': 'Parkkipaikkojen määrä: {value}',
+  'mobilityPlatform.content.publicParking.access': 'Esteetön pääsy',
+  'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -738,6 +743,7 @@ const translations = {
   'mobilityPlatform.info.scooters.parkingAreas': 'Sähköpotkulaudoille on myös olemassa niille tarkoitettuja pysäköintiruutuja, jotka on merkitty maalausmerkein.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Ylin sallittu nopeus alueilla on 15 km/t.',
   'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät operaattorien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin operaattorien sähköpotkulaudoista.',
+  'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, joihin pääsee portin kautta.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

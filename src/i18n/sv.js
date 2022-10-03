@@ -615,13 +615,14 @@ const translations = {
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
   'mobilityPlatform.menu.speedLimitZones.show': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.speedLimitZones.select': 'Du kan välja hastighetsbegränsningszoner från listan och visa dem på kartan.',
-  'mobilityPlatform.menu.show.publicToilets': 'Allmänna toaletter',
+  'mobilityPlatform.menu.show.publicToilets': 'Almänna toaletter',
   'mobilityPlatform.menu.show.scooterNoParking': 'Parkeringsförbudszoner',
   'mobilityPlatform.menu.show.scooterParkingAreas': 'Parkeringplatser',
   'mobilityPlatform.menu.show.scooterSpeedLimitAreas': 'Hastighetsbegränsningszoner',
   'mobilityPlatform.menu.show.scooterProviders': 'Elsparkcyklarföretagen',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
   'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
+  'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -706,6 +707,10 @@ const translations = {
   'mobilityPlatform.content.scooter.title': 'Elsparkcykel',
   'mobilityPlatform.content.scooter.notReserved': 'Finns at hyra',
   'mobilityPlatform.content.scooter.range': 'Återstående räckvidd: {value}',
+  'mobilityPlatform.content.disabledParking.title': 'Inva-parkeringsplatser',
+  'mobilityPlatform.content.disabledParking.amount': 'Antal inva-parkeringsplatser: {value}',
+  'mobilityPlatform.content.publicParking.access': 'Tillgänglig ingång',
+  'mobilityPlatform.content.publicParking.access.gate': 'Ingång via port',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -735,7 +740,8 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'Elsparkcykelparkering förbjuden på det på kartan synliga området.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Elsparkcyklarna har också dedikerade parkeringsplatser, som är märkta med målade rutor.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Hastigheten på området är max. 15km/h.',
-  'mobilityPlatform.info.scooters.general': 'Servicekartan visar lediga hyreselsparkcyklar från foretagen. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
+  'mobilityPlatform.info.scooters.general': 'Servicekartan visar företagets lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
+  'mobilityPlatform.info.disabledParking': 'Parkeringsplatser avsedda för personer med nedsatt rörlighet visas på kartan. För att parkera på dem behöver du ett parkeringstillstånd för rörelsehindrade. Plattserna ärr tillgängliga, förutom de som nås via en port.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

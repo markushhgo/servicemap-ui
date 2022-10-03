@@ -95,6 +95,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterSpeedLimitAreas,
     showScootersRyde,
     setShowScootersRyde,
+    showDisabledParking,
+    setShowDisabledParking,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -374,6 +376,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScootersRyde(current => !current);
   };
 
+  const disabledParkingToggle = () => {
+    setShowDisabledParking(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -571,6 +577,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showParkingSpaces',
       checkedValue: showParkingSpaces,
       onChangeValue: parkingSpacesToggle,
+    },
+    {
+      type: 'disabledParking',
+      msgId: 'mobilityPlatform.menu.show.disabledParking',
+      checkedValue: showDisabledParking,
+      onChangeValue: disabledParkingToggle,
     },
     {
       type: 'parkingChargeZones',
@@ -914,6 +926,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
+      {showDisabledParking ? <InfoTextBox infoText="mobilityPlatform.info.disabledParking" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
       {showMarinas ? (
         <InfoTextBox

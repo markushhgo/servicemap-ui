@@ -621,6 +621,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterProviders': 'Electric scooter operators',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
   'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
+  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -705,6 +706,10 @@ const translations = {
   'mobilityPlatform.content.scooter.title': 'Electric scooter',
   'mobilityPlatform.content.scooter.notReserved': 'Available for rent',
   'mobilityPlatform.content.scooter.range': 'Current range: {value}',
+  'mobilityPlatform.content.disabledParking.title': 'Parking area for disabled',
+  'mobilityPlatform.content.disabledParking.amount': 'Number of parking spaces: {value}',
+  'mobilityPlatform.content.publicParking.access': 'Accessible access',
+  'mobilityPlatform.content.publicParking.access.gate': 'Accessible through a gate',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -734,7 +739,8 @@ const translations = {
   'mobilityPlatform.info.scooters.noParking': 'It is prohibited to park the electric scooter on the areas shown on the map.',
   'mobilityPlatform.info.scooters.parkingAreas': 'Electric scooters also have dedicated parking places, which are marked by painted squares.',
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Maximum speed allowed on the areas shown on the map is 15 km/h.',
-  'mobilityPlatform.info.scooters.general': 'The service map shows currently available electric scooters provided by operators. Electric scooters by other companies will be visible later on the mobility map.',
+  'mobilityPlatform.info.scooters.general': 'The service map shows available electric scooters provided by operators. Electric scooters provided by other operators will be visible on the mobility view later.',
+  'mobilityPlatform.info.disabledParking': 'Parking spaces intended for people with reduced mobility are shown on the map. To park on them, you need a disabled parking permit. There is accessible access to the parking places, excluding those parking places that can only be accessed through a gate.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
