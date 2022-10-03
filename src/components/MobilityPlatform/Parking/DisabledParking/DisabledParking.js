@@ -58,19 +58,15 @@ const DisabledParking = () => {
     return coordinates;
   };
 
-  const randomNum = () => {
-    return Math.random();
-  };
-
   return (
     <>
       {showDisabledParking
         && disabledParkingData
         && disabledParkingData.length > 0
         && disabledParkingData.map(item => (
-          <div key={randomNum()}>
-            <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />
-            <Marker key={`${item.id}${item.extra.invapaikkoja}`} icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
+          <div key={item.id}>
+            <Polygon pathOptions={pathOptions} positions={item.geometry_coords} />
+            <Marker icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
               <Popup className="disabled-parking-popup">
                 <DisabledParkingContent item={item} />
               </Popup>
