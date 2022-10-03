@@ -48,13 +48,7 @@ const DisabledParking = () => {
     }
   }, [showDisabledParking, disabledParkingData, map]);
 
-  const getSingleCoordinates = (data) => {
-    const indexExist = data && data.length > 0 && data?.[0];
-    if (indexExist) {
-      return data[0][0];
-    }
-    return null;
-  };
+  const getSingleCoordinates = data => data[0][0];
 
   return (
     <>
