@@ -925,11 +925,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
           {intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
         </Typography>
         <div className={classes.infoText}>
-          {streetMaintenanceInfo(classes.blue, 'Auraus')}
-          {streetMaintenanceInfo(classes.purple, 'Suolaus')}
-          {streetMaintenanceInfo(classes.burgundy, 'Hiekoitus')}
-          {streetMaintenanceInfo(classes.green, 'Puhtaanapito')}
-          {streetMaintenanceInfo(classes.black, 'Muut työt')}
+          {streetMaintenanceInfo(classes.blue, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
+          {streetMaintenanceInfo(classes.purple, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
+          {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
+          {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
+          {streetMaintenanceInfo(classes.black, 'mobilityPlatform.menu.streetMaintenance.info.other')}
         </div>
       </div>
       {streetMaintenanceSelections

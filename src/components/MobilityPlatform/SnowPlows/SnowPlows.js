@@ -194,7 +194,7 @@ const SnowPlows = () => {
     if (isValid) {
       return inputData.map(item => (
         <Polyline
-          key={item}
+          key={`${item.geometry.event}${item.geometry.coordinates[0]}`}
           pathOptions={getPathOptions(item.geometry.event)}
           positions={swapCoords(item.geometry.coordinates)}
         />

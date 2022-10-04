@@ -630,8 +630,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.3days': '3 päivää',
   'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.',
   'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Auraus',
-  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Suolaus',
-  'mobilityPlatform.menu.streetMaintenance.info.sanding': 'Hiekoitus',
+  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Liukkaudenesto',
+  'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Hiekanpoisto',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Puhtaanapito',
   'mobilityPlatform.menu.streetMaintenance.info.other': 'Muut työt',
 
