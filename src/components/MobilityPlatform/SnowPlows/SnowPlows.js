@@ -16,6 +16,18 @@ const SnowPlows = () => {
   const [streetMaintenanceOther3Hours, setStreetMaintenanceOther3Hours] = useState([]);
   const [streetMaintenanceOther6Hours, setStreetMaintenanceOther6Hours] = useState([]);
   const [streetMaintenanceOther12Hours, setStreetMaintenanceOther12Hours] = useState([]);
+  const [streetMaintenanceSandRemoval1Day, setStreetMaintenanceSandRemoval1Day] = useState([]);
+  const [streetMaintenanceSandRemoval3Days, setStreetMaintenanceSandRemoval3Days] = useState([]);
+  const [streetMaintenanceSandRemoval1Hour, setStreetMaintenanceSandRemoval1Hour] = useState([]);
+  const [streetMaintenanceSandRemoval3Hours, setStreetMaintenanceSandRemoval3Hours] = useState([]);
+  const [streetMaintenanceSandRemoval6Hours, setStreetMaintenanceSandRemoval6Hours] = useState([]);
+  const [streetMaintenanceSandRemoval12Hours, setStreetMaintenanceSandRemoval12Hours] = useState([]);
+  const [streetMaintenanceSnowplow1Day, setStreetMaintenanceSnowplow1Day] = useState([]);
+  const [streetMaintenanceSnowplow3Days, setStreetMaintenanceSnowplow3Days] = useState([]);
+  const [streetMaintenanceSnowplow1Hour, setStreetMaintenanceSnowplow1Hour] = useState([]);
+  const [streetMaintenanceSnowplow3Hours, setStreetMaintenanceSnowplow3Hours] = useState([]);
+  const [streetMaintenanceSnowplow6Hours, setStreetMaintenanceSnowplow6Hours] = useState([]);
+  const [streetMaintenanceSnowplow12Hours, setStreetMaintenanceSnowplow12Hours] = useState([]);
 
   const { openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance } = useContext(MobilityPlatformContext);
 
@@ -64,7 +76,27 @@ const SnowPlows = () => {
     snowplow: 'Auraus',
     deicing: 'Suolaus',
     sanding: 'Hiekoitus',
+    sandRemoval: 'Hiekanpoisto',
     other: 'Muut työt',
+  };
+
+  const getEvent = (input) => {
+    switch (input) {
+      case 'sanitation':
+        return maintenanceEvents.sanitation;
+      case 'other':
+        return maintenanceEvents.other;
+      case 'snowplow':
+        return maintenanceEvents.snowplow;
+      case 'deicing':
+        return maintenanceEvents.deicing;
+      case 'sanding':
+        return maintenanceEvents.sanding;
+      case 'sandRemoval':
+        return maintenanceEvents.sandRemoval;
+      default:
+        return maintenanceEvents.sanitation;
+    }
   };
 
   const yesterDay = moment().clone().add(-1, 'days').format('YYYY-MM-DD HH:mm');
@@ -74,43 +106,78 @@ const SnowPlows = () => {
   const sixHours = moment().clone().add(-6, 'hours').format('YYYY-MM-DD HH:mm');
   const twelveHours = moment().clone().add(-12, 'hours').format('YYYY-MM-DD HH:mm');
 
-  // Endpoints
-  const sanitation1Day = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${yesterDay}`;
-  const sanitation3Days = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${threeDays}`;
-  const sanitation1Hour = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${oneHour}`;
-  const sanitation3Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${threeHours}`;
-  const sanitation6Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${sixHours}`;
-  const sanitation12Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.sanitation}&start_date_time=${twelveHours}`;
-  const other1Day = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${yesterDay}`;
-  const other3Days = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${threeDays}`;
-  const other1Hour = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${oneHour}`;
-  const other3Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${threeHours}`;
-  const other6Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${sixHours}`;
-  const other12Hours = `maintenance_works/get_geometry_history/?event=${maintenanceEvents.other}&start_date_time=${twelveHours}`;
+  const createQuery = (type, dateItem) => `get_geometry_history/?event=${getEvent(type)}&start_date_time=${dateItem}`;
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchStreetMaintenanceData(sanitation1Day, setStreetMaintenanceSanitation1Day);
-      fetchStreetMaintenanceData(sanitation3Days, setStreetMaintenanceSanitation3Days);
-      fetchStreetMaintenanceData(sanitation1Hour, setStreetMaintenanceSanitation1Hour);
-      fetchStreetMaintenanceData(sanitation3Hours, setStreetMaintenanceSanitation3Hours);
-      fetchStreetMaintenanceData(sanitation6Hours, setStreetMaintenanceSanitation6Hours);
-      fetchStreetMaintenanceData(sanitation12Hours, setStreetMaintenanceSanitation12Hours);
-      fetchStreetMaintenanceData(other1Day, setStreetMaintenanceOther1Day);
-      fetchStreetMaintenanceData(other3Days, setStreetMaintenanceOther3Days);
-      fetchStreetMaintenanceData(other1Hour, setStreetMaintenanceOther1Hour);
-      fetchStreetMaintenanceData(other3Hours, setStreetMaintenanceOther3Hours);
-      fetchStreetMaintenanceData(other6Hours, setStreetMaintenanceOther6Hours);
-      fetchStreetMaintenanceData(other12Hours, setStreetMaintenanceOther12Hours);
+      fetchStreetMaintenanceData(createQuery('sanitation', yesterDay), setStreetMaintenanceSanitation1Day);
+      fetchStreetMaintenanceData(createQuery('sanitation', threeDays), setStreetMaintenanceSanitation3Days);
+      fetchStreetMaintenanceData(createQuery('sanitation', oneHour), setStreetMaintenanceSanitation1Hour);
+      fetchStreetMaintenanceData(createQuery('sanitation', threeHours), setStreetMaintenanceSanitation3Hours);
+      fetchStreetMaintenanceData(createQuery('sanitation', sixHours), setStreetMaintenanceSanitation6Hours);
+      fetchStreetMaintenanceData(createQuery('sanitation', twelveHours), setStreetMaintenanceSanitation12Hours);
+      fetchStreetMaintenanceData(createQuery('other', yesterDay), setStreetMaintenanceOther1Day);
+      fetchStreetMaintenanceData(createQuery('other', threeDays), setStreetMaintenanceOther3Days);
+      fetchStreetMaintenanceData(createQuery('other', oneHour), setStreetMaintenanceOther1Hour);
+      fetchStreetMaintenanceData(createQuery('other', threeHours), setStreetMaintenanceOther3Hours);
+      fetchStreetMaintenanceData(createQuery('other', sixHours), setStreetMaintenanceOther6Hours);
+      fetchStreetMaintenanceData(createQuery('other', twelveHours), setStreetMaintenanceOther12Hours);
     }
   }, [openMobilityPlatform]);
 
-  const streetMaintenance1Day = [...streetMaintenanceSanitation1Day, ...streetMaintenanceOther1Day];
-  const streetMaintenance3Days = [...streetMaintenanceSanitation3Days, ...streetMaintenanceOther3Days];
-  const streetMaintenance1Hour = [...streetMaintenanceSanitation1Hour, ...streetMaintenanceOther1Hour];
-  const streetMaintenance3Hours = [...streetMaintenanceSanitation3Hours, ...streetMaintenanceOther3Hours];
-  const streetMaintenance6Hours = [...streetMaintenanceSanitation6Hours, ...streetMaintenanceOther6Hours];
-  const streetMaintenance12Hours = [...streetMaintenanceSanitation12Hours, ...streetMaintenanceOther12Hours];
+  useEffect(() => {
+    if (openMobilityPlatform) {
+      fetchStreetMaintenanceData(createQuery('sandRemoval', yesterDay), setStreetMaintenanceSandRemoval1Day);
+      fetchStreetMaintenanceData(createQuery('sandRemoval', threeDays), setStreetMaintenanceSandRemoval3Days);
+      fetchStreetMaintenanceData(createQuery('sandRemoval', oneHour), setStreetMaintenanceSandRemoval1Hour);
+      fetchStreetMaintenanceData(createQuery('sandRemoval', threeHours), setStreetMaintenanceSandRemoval3Hours);
+      fetchStreetMaintenanceData(createQuery('sandRemoval', sixHours), setStreetMaintenanceSandRemoval6Hours);
+      fetchStreetMaintenanceData(createQuery('sandRemoval', twelveHours), setStreetMaintenanceSandRemoval12Hours);
+      fetchStreetMaintenanceData(createQuery('snowplow', yesterDay), setStreetMaintenanceSnowplow1Day);
+      fetchStreetMaintenanceData(createQuery('snowplow', threeDays), setStreetMaintenanceSnowplow3Days);
+      fetchStreetMaintenanceData(createQuery('snowplow', oneHour), setStreetMaintenanceSnowplow1Hour);
+      fetchStreetMaintenanceData(createQuery('snowplow', threeHours), setStreetMaintenanceSnowplow3Hours);
+      fetchStreetMaintenanceData(createQuery('snowplow', sixHours), setStreetMaintenanceSnowplow6Hours);
+      fetchStreetMaintenanceData(createQuery('snowplow', twelveHours), setStreetMaintenanceSnowplow12Hours);
+    }
+  }, [openMobilityPlatform]);
+
+  const streetMaintenance1Day = [
+    ...streetMaintenanceSanitation1Day,
+    ...streetMaintenanceOther1Day,
+    ...streetMaintenanceSandRemoval1Day,
+    ...streetMaintenanceSnowplow1Day,
+  ];
+  const streetMaintenance3Days = [
+    ...streetMaintenanceSanitation3Days,
+    ...streetMaintenanceOther3Days,
+    ...streetMaintenanceSandRemoval3Days,
+    ...streetMaintenanceSnowplow3Days,
+  ];
+  const streetMaintenance1Hour = [
+    ...streetMaintenanceSanitation1Hour,
+    ...streetMaintenanceOther1Hour,
+    ...streetMaintenanceSandRemoval1Hour,
+    ...streetMaintenanceSnowplow1Hour,
+  ];
+  const streetMaintenance3Hours = [
+    ...streetMaintenanceSanitation3Hours,
+    ...streetMaintenanceOther3Hours,
+    ...streetMaintenanceSandRemoval3Hours,
+    ...streetMaintenanceSnowplow3Hours,
+  ];
+  const streetMaintenance6Hours = [
+    ...streetMaintenanceSanitation6Hours,
+    ...streetMaintenanceOther6Hours,
+    ...streetMaintenanceSandRemoval6Hours,
+    ...streetMaintenanceSnowplow6Hours,
+  ];
+  const streetMaintenance12Hours = [
+    ...streetMaintenanceSanitation12Hours,
+    ...streetMaintenanceOther12Hours,
+    ...streetMaintenanceSandRemoval12Hours,
+    ...streetMaintenanceSnowplow12Hours,
+  ];
 
   const swapCoords = (coordsData) => {
     if (coordsData && coordsData.length > 0) {
@@ -155,11 +222,7 @@ const SnowPlows = () => {
     }
   };
 
-  return (
-    <>
-      {showStreetMaintenance ? <>{rendernMaintenanceWorks()}</> : null}
-    </>
-  );
+  return <>{showStreetMaintenance ? <>{rendernMaintenanceWorks()}</> : null}</>;
 };
 
 export default SnowPlows;
