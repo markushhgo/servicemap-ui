@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import distance from '@turf/distance';
-import { useSelector } from 'react-redux';
 import { Divider, List, Typography } from '@material-ui/core';
+import distance from '@turf/distance';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { formatDistanceObject } from '../../../../utils';
-import { getAddressDistrict } from '../../../../redux/selectors/district';
+import { useSelector } from 'react-redux';
 import DivisionItem from '../../../../components/ListItems/DivisionItem';
-import { getAddressFromUnit } from '../../../../utils/address';
 import SMAccordion from '../../../../components/SMAccordion';
+import { getAddressDistrict } from '../../../../redux/selectors/district';
+import { formatDistanceObject } from '../../../../utils';
+import { getAddressFromUnit } from '../../../../utils/address';
 import useLocaleText from '../../../../utils/useLocaleText';
-import { getCategoryDistricts } from '../../utils/districtDataHelper';
 import { sortByOriginID } from '../../utils';
+import { getCategoryDistricts } from '../../utils/districtDataHelper';
 
 const DistrictUnitList = (props) => {
   const {

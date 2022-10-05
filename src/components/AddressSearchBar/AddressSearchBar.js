@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import {
-  InputBase, IconButton, Paper, List, ListItem, Typography, Divider,
+  Divider, IconButton, InputBase, List, ListItem, Paper, Typography
 } from '@material-ui/core';
 import { Clear, Search } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOrder, setDirection } from '../../redux/actions/sort';
-import { keyboardHandler, formAddressString } from '../../utils';
+import { setDirection, setOrder } from '../../redux/actions/sort';
+import { formAddressString, keyboardHandler } from '../../utils';
 import useMobileStatus from '../../utils/isMobile';
-import useLocaleText from '../../utils/useLocaleText';
 import ServiceMapAPI from '../../utils/newFetch/ServiceMapAPI';
-import config from '../../../config';
+import useLocaleText from '../../utils/useLocaleText';
 
 const AddressSearchBar = ({
   defaultAddress,
@@ -25,7 +24,6 @@ const AddressSearchBar = ({
   const getLocaleText = useLocaleText();
   const dispatch = useDispatch();
   const locale = useSelector(state => state.user.locale);
-  const cities = useSelector(state => state.settings.cities);
 
   const isMobile = useMobileStatus();
 
@@ -33,12 +31,12 @@ const AddressSearchBar = ({
   const [resultIndex, setResultIndex] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [cleared, setCleared] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
-  const citySettings = config.cities.filter(c => cities[c]);
   const suggestionCount = 5;
   const inputRef = useRef();
 
-  const fetchAddressResults = (text) => {
+  const fetchAddressResults = async (text) => {
     const smAPI = new ServiceMapAPI();
     const fetchOptions = {
       language: locale,
@@ -46,7 +44,10 @@ const AddressSearchBar = ({
       type: 'address',
       address_limit: suggestionCount,
     };
-    return smAPI.search(text, locale, citySettings, fetchOptions);
+    setIsFetching(true);
+    const results = smAPI.search(text, fetchOptions);
+    setIsFetching(false);
+    return results;
   };
 
   const handleAddressSelect = (address) => {
@@ -107,8 +108,10 @@ const AddressSearchBar = ({
         setCurrentLocation(null);
       }
       fetchAddressResults(text)
-        .then(data => setAddressResults(data));
-    }
+        .then((data) => {
+          if (!isFetching) setAddressResults(data);
+        });
+    } else if (addressResults.length) setAddressResults([]);
   };
 
   useEffect(() => {
@@ -179,7 +182,7 @@ const AddressSearchBar = ({
             <List role="listbox" id="address-results">
               {addressResults.map((address, i) => (
                 <ListItem
-                  tabIndex="-1"
+                  tabIndex={-1}
                   id={`address-suggestion${i}`}
                   role="option"
                   selected={i === resultIndex}

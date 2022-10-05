@@ -1,32 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import {
-  Typography,
-  Divider,
-  List,
-  ListItem,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  RadioGroup,
-  Radio,
-  FormLabel,
-  FormControl,
+  Checkbox, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, List,
+  ListItem, Radio, RadioGroup, Typography
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import config from '../../../config';
 import SettingsUtility from '../../utils/settings';
 import Container from '../Container';
+import SMButton from '../ServiceMapButton';
 import {
-  ColorblindIcon,
-  HearingIcon,
-  VisualImpairmentIcon,
-  getIcon,
+  ColorblindIcon, getIcon, HearingIcon,
+  VisualImpairmentIcon
 } from '../SMIcon';
 import SMIcon from '../SMIcon/SMIcon';
-import SettingsTitle from './SettingsTitle';
 import TitleBar from '../TitleBar';
-import SMButton from '../ServiceMapButton';
-import config from '../../../config';
+import SettingsTitle from './SettingsTitle';
 
 class Settings extends React.Component {
   buttonID = 'SettingsButton';
@@ -695,7 +684,7 @@ class Settings extends React.Component {
     return (
       <div id="SettingsContainer" className={`${classes.container}`} ref={this.dialogRef} role="dialog">
         {/* Empty element that makes keyboard focus loop in dialog */}
-        <Typography variant="srOnly" aria-hidden tabIndex="0" onFocus={() => this.focusToLastElement()} />
+        <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={() => this.focusToLastElement()} />
 
         <TitleBar id="SettingsTitle" titleComponent="h2" title={<FormattedMessage id={`settings.${settingsPage}.long`} />} />
         <>
@@ -718,7 +707,7 @@ class Settings extends React.Component {
               color="primary"
             />
             <SMButton
-              innerRef={this.closeButtonRef}
+              passingRef={this.closeButtonRef}
               aria-label={intl.formatMessage({ id: 'general.closeSettings' })}
               small
               role="button"
@@ -737,7 +726,7 @@ class Settings extends React.Component {
           </Typography>
         </>
         {/* Empty element that makes keyboard focus loop in dialog */}
-        <Typography variant="srOnly" aria-hidden tabIndex="0" onFocus={() => this.focusToFirstElement()} />
+        <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={() => this.focusToFirstElement()} />
       </div>
     );
   }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { getIcon } from '../SMIcon';
-import LocalStorageUtility from '../../utils/localStorage';
 import { focusToViewTitle } from '../../utils/accessibility';
+import LocalStorageUtility from '../../utils/localStorage';
 import useLocaleText from '../../utils/useLocaleText';
+import { getIcon } from '../SMIcon';
 
 // LocalStorage key for alert message
 const lsKey = 'alertMessage';

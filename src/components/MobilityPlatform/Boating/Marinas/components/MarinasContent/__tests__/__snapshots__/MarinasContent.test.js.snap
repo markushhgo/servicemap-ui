@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MarinasContent /> should work 1`] = `
+<div>
+  <div
+    class="injectIntl(MarinasContent)-container-1"
+  >
+    <div
+      class="injectIntl(MarinasContent)-headerContainer-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1"
+      >
+        Satama: Marina
+      </h6>
+    </div>
+    <div
+      class="injectIntl(MarinasContent)-textContainer-3"
+    >
+      <p
+        class="MuiTypography-root injectIntl(MarinasContent)-margin-4 MuiTypography-body2"
+      >
+        Venepaikkojen määrä
+        :
+         
+        1
+      </p>
+      <p
+        class="MuiTypography-root injectIntl(MarinasContent)-margin-4 MuiTypography-body2"
+      >
+        <strong>
+          Venetyyppi (esimerkki):
+        </strong>
+      </p>
+      <p
+        class="MuiTypography-root injectIntl(MarinasContent)-margin-4 MuiTypography-body2"
+      >
+        Tyyppi
+        :
+         
+        Aisapaikka
+      </p>
+      <p
+        class="MuiTypography-root injectIntl(MarinasContent)-margin-4 MuiTypography-body2"
+      >
+        Hinta
+        :
+         
+        124
+         
+        €
+      </p>
+      <p
+        class="MuiTypography-root injectIntl(MarinasContent)-margin-4 MuiTypography-body2"
+      >
+        Tiedot vapaista venepaikoista löytyvät varauspalvelusta.
+      </p>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://opaskartta.turku.fi/ePermit/fi/Reservation/"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root injectIntl(MarinasContent)-link-5 MuiTypography-body2"
+        >
+          Varauspalvelu
+        </p>
+      </a>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://www.turku.fi/venepaikat"
+        target="_blank"
+      >
+        <p
+          class="MuiTypography-root injectIntl(MarinasContent)-link-5 MuiTypography-body2"
+        >
+          Lisätietoja
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+`;

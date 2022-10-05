@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Event } from '@material-ui/icons';
 import { NoSsr } from '@material-ui/core';
-import ResultItem from '../ResultItem';
-import useLocaleText from '../../../utils/useLocaleText';
+import { Event } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React from 'react';
 import formatEventDate from '../../../utils/events';
+import useLocaleText from '../../../utils/useLocaleText';
+import ResultItem from '../ResultItem';
 
 const EventItem = ({
   changeSelectedEvent,

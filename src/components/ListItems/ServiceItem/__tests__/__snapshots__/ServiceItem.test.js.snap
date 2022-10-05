@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ServiceItem /> should work 1`] = `
+<div>
+  <li
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiListItem-root SimpleListItem-listItem-2 null  MuiListItem-gutters MuiListItem-button"
+    role="link"
+    tabindex="0"
+  >
+    <div
+      aria-hidden="true"
+      class="MuiListItemIcon-root SimpleListItem-listIcon-6 "
+    >
+      <img
+        alt=""
+        aria-hidden="true"
+        class="Connect(ServiceItem)-icon-1"
+        src="test-file-stub"
+        style=""
+      />
+    </div>
+    <div
+      class="MuiListItemText-root SimpleListItem-textContainer-3"
+    >
+      <p
+        class="MuiTypography-root null  MuiTypography-body2 MuiTypography-colorInherit"
+      >
+        <span
+          class="MuiTypography-root MuiTypography-srOnly"
+        />
+        Kirjastot
+      </p>
+    </div>
+  </li>
+  <li
+    aria-hidden="true"
+  >
+    <hr
+      class="MuiDivider-root SimpleListItem-divider-7"
+    />
+  </li>
+</div>
+`;

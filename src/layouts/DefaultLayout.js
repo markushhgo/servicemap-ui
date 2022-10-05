@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Typography } from '@material-ui/core';
-import MapView from '../views/MapView';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import config from '../../config';
-import TopBar from '../components/TopBar';
-import Settings from '../components/Settings';
-import ViewRouter from './components/ViewRouter';
-import DesktopComponent from '../components/DesktopComponent';
-import useMobileStatus from '../utils/isMobile';
-import FocusableSRLinks from '../components/FocusableSRLinks';
+import { ErrorComponent } from '../components';
 import AlertBox from '../components/AlertBox';
-import PrintView from '../views/PrintView';
+import DesktopComponent from '../components/DesktopComponent';
+import ErrorBoundary from '../components/ErrorBoundary';
+import FocusableSRLinks from '../components/FocusableSRLinks';
+import Settings from '../components/Settings';
+import TopBar from '../components/TopBar';
+import { ErrorProvider } from '../context/ErrorContext';
+import { MobilityPlatformProvider } from '../context/MobilityPlatformContext';
 import { PrintProvider } from '../context/PrintContext';
 import { viewTitleID } from '../utils/accessibility';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { ErrorProvider } from '../context/ErrorContext';
-import { ErrorComponent } from '../components';
-import { MobilityPlatformProvider } from '../context/MobilityPlatformContext';
+import useMobileStatus from '../utils/isMobile';
+import MapView from '../views/MapView';
+import PrintView from '../views/PrintView';
+import ViewRouter from './components/ViewRouter';
 
 const { smallScreenBreakpoint } = config;
 
@@ -111,6 +111,18 @@ const DefaultLayout = (props) => {
   const [parkingChargeZoneId, setParkingChargeZoneId] = useState(null);
   const [showBikeServiceStations, setShowBikeServiceStations] = useState(false);
   const [showCityBikes, setShowCityBikes] = useState(false);
+  const [showMarinas, setShowMarinas] = useState(false);
+  const [showBoatParking, setShowBoatParking] = useState(false);
+  const [showGuestHarbour, setShowGuestHarbour] = useState(false);
+  const [showSpeedLimitZones, setShowSpeedLimitZones] = useState(false);
+  const [speedLimitSelections, setSpeedLimitSelections] = useState([]);
+  const [speedLimitZones, setSpeedLimitZones] = useState([]);
+  const [showPublicToilets, setShowPublicToilets] = useState(false);
+  const [showScooterNoParking, setShowScooterNoParking] = useState(false);
+  const [showScooterParkingAreas, setShowScooterParkingAreas] = useState(false);
+  const [showScooterSpeedLimitAreas, setShowScooterSpeedLimitAreas] = useState(false);
+  const [showScootersRyde, setShowScootersRyde] = useState(false);
+  const [showDisabledParking, setShowDisabledParking] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -169,7 +181,7 @@ const DefaultLayout = (props) => {
         {!error && (
           <ErrorBoundary>
             <div id="topArea" aria-hidden={!!settingsToggled} className={printClass}>
-              <h1 id="app-title" tabIndex="-1" className="sr-only app-title" component="h1">
+              <h1 id="app-title" tabIndex={-1} className="sr-only app-title" component="h1">
                 <FormattedMessage id="app.title" />
               </h1>
               {/* Jump link to main content for screenreaders
@@ -222,6 +234,30 @@ const DefaultLayout = (props) => {
                       setShowBikeServiceStations,
                       showCityBikes,
                       setShowCityBikes,
+                      showMarinas,
+                      setShowMarinas,
+                      showBoatParking,
+                      setShowBoatParking,
+                      showGuestHarbour,
+                      setShowGuestHarbour,
+                      showSpeedLimitZones,
+                      setShowSpeedLimitZones,
+                      speedLimitSelections,
+                      setSpeedLimitSelections,
+                      speedLimitZones,
+                      setSpeedLimitZones,
+                      showPublicToilets,
+                      setShowPublicToilets,
+                      showScooterNoParking,
+                      setShowScooterNoParking,
+                      showScooterParkingAreas,
+                      setShowScooterParkingAreas,
+                      showScooterSpeedLimitAreas,
+                      setShowScooterSpeedLimitAreas,
+                      showScootersRyde,
+                      setShowScootersRyde,
+                      showDisabledParking,
+                      setShowDisabledParking,
                     }}
                   >
                     <ViewRouter />
@@ -231,7 +267,7 @@ const DefaultLayout = (props) => {
               <Typography variant="srOnly">
                 {intl.formatMessage({ id: 'map.ariaLabel' })}
               </Typography>
-              <div aria-hidden tabIndex="-1" style={styles.map}>
+              <div aria-hidden tabIndex={-1} style={styles.map}>
                 <MobilityPlatformProvider
                   value={{
                     openMobilityPlatform,
@@ -251,6 +287,18 @@ const DefaultLayout = (props) => {
                     parkingChargeZoneId,
                     showBikeServiceStations,
                     showCityBikes,
+                    showMarinas,
+                    showBoatParking,
+                    showGuestHarbour,
+                    showSpeedLimitZones,
+                    speedLimitSelections,
+                    speedLimitZones,
+                    showPublicToilets,
+                    showScooterNoParking,
+                    showScooterParkingAreas,
+                    showScooterSpeedLimitAreas,
+                    showScootersRyde,
+                    showDisabledParking,
                   }}
                 >
                   <MapView

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Divider, Typography } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Typography, Divider } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { keyboardHandler } from '../../../utils';
 
 const SimpleListItem = (props) => {

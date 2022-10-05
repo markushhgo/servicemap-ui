@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@material-ui/styles';
-import { getHighlightedDistrict, getFilteredSubdistrictUnits } from '../../redux/selectors/district';
-import { getSelectedUnit } from '../../redux/selectors/selectedUnit';
 import { setMapRef } from '../../redux/actions/map';
 import { findUserLocation } from '../../redux/actions/user';
+import { getFilteredSubdistrictUnits, getHighlightedDistrict } from '../../redux/selectors/district';
+import { getProcessedData } from '../../redux/selectors/results';
+import { getSelectedUnit } from '../../redux/selectors/selectedUnit';
+import { getServiceUnits } from '../../redux/selectors/service';
 import MapView from './MapView';
 import styles from './styles';
-import { getServiceUnits } from '../../redux/selectors/service';
-import { getProcessedData } from '../../redux/selectors/results';
 
 // Get redux states as props to component
 const mapStateToProps = (state) => {

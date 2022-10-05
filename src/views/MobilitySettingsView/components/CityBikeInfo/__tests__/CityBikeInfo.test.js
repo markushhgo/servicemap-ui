@@ -1,23 +1,10 @@
 /* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../themes';
 import CityBikeInfo from '../index';
 import { initialState } from '../../../../../redux/reducers/user';
+import { getRenderWithProviders } from '../../../../../../jestUtils';
 import finnishTranslations from '../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
-
-const mockStore = configureStore([]);
 
 const mockProps = {
   bikeInfo: {
@@ -34,22 +21,9 @@ const mockProps = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  const store = mockStore({
-    user: initialState,
-  });
-
-  return (
-    <Provider store={store}>
-      <IntlProvider {...intlMock}>
-        <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
-      </IntlProvider>
-    </Provider>
-  );
-};
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({
+  user: initialState,
+});
 
 describe('<CityBikeInfo />', () => {
   it('should work', () => {
@@ -62,29 +36,21 @@ describe('<CityBikeInfo />', () => {
 
     const p = container.querySelectorAll('p');
     const link = container.querySelector('a');
-    expect(p[0].textContent).toEqual(
-      'Turun kaupunkipyörät eli tuttavallisemmin föllärit, ovat pyöriä, joita kuka vaan voi vuokrata Donkey Republicin sovelluksella.  Föllärin voi vuokrata kertamaksulla, kuukausimaksulla tai koko kesän kattavalla kausimaksulla.'
-    );
-    expect(p[1].textContent).toEqual(
-      'Jos sinulla on käytössä Fölin kausikortti, jonka kausi on vähintään 30 päivää, sisältää oikeuden käyttää fölläreitä tunnin ajan kerrallaan maksutta. Vuokrattavia pyöriä on 700 ja asemia yli 70 kappaletta.'
-    );
-    expect(p[2].textContent).toEqual('Lue lisää kaupunkipyöristä:');
-    expect(link.textContent).toEqual('https://foli.fi/föllärit');
-    expect(p[4].textContent).toEqual('Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.');
+    expect(p[0].textContent).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.paragraph.1']);
+    expect(p[1].textContent).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.paragraph.2']);
+    expect(p[2].textContent).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.subtitle']);
+    expect(link.textContent).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.link']);
+    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.apiInfo']);
   });
 
   it('does contain aria-label attributes', () => {
     const { container } = renderWithProviders(<CityBikeInfo {...mockProps} />);
 
     const p = container.querySelectorAll('p');
-    expect(p[0].getAttribute('aria-label')).toEqual(
-      'Turun kaupunkipyörät eli tuttavallisemmin föllärit, ovat pyöriä, joita kuka vaan voi vuokrata Donkey Republicin sovelluksella.  Föllärin voi vuokrata kertamaksulla, kuukausimaksulla tai koko kesän kattavalla kausimaksulla.'
-    );
-    expect(p[1].getAttribute('aria-label')).toEqual(
-      'Jos sinulla on käytössä Fölin kausikortti, jonka kausi on vähintään 30 päivää, sisältää oikeuden käyttää fölläreitä tunnin ajan kerrallaan maksutta. Vuokrattavia pyöriä on 700 ja asemia yli 70 kappaletta.'
-    );
-    expect(p[2].getAttribute('aria-label')).toEqual('Lue lisää kaupunkipyöristä:');
-    expect(p[3].getAttribute('aria-label')).toEqual('https://foli.fi/föllärit');
-    expect(p[4].getAttribute('aria-label')).toEqual('Kartan tiedot tulevat Donkey Republicin rajapinnasta reaaliajassa.');
+    expect(p[0].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.paragraph.1']);
+    expect(p[1].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.paragraph.2']);
+    expect(p[2].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.subtitle']);
+    expect(p[3].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.link']);
+    expect(p[4].getAttribute('aria-label')).toContain(finnishTranslations['mobilityPlatform.info.cityBikes.apiInfo']);
   });
 });

@@ -1,9 +1,9 @@
 // Link.react.test.js
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { MuiThemeProvider } from '@material-ui/core';
-import themes from '../../../../themes';
+import { fireEvent } from '@testing-library/react';
 import ResultItem from '../index';
+import { getRenderWithProviders } from '../../../../../jestUtils';
+import { initialState } from '../../../../redux/reducers/user';
 
 // Generic required props for ResultItem
 const mockProps = {
@@ -16,14 +16,10 @@ const mockProps = {
   subtitle: 'Subtitle text',
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <MuiThemeProvider theme={themes.SMTheme}>
-    {children}
-  </MuiThemeProvider>
-);
+const renderWithProviders = getRenderWithProviders({
+  user: initialState,
+});
 
-const renderWithProviders = component => render(component, { wrapper: Providers });
 describe('<ResultItem />', () => {
   it('should work', () => {
     const { container } = renderWithProviders(<ResultItem {...mockProps} />);

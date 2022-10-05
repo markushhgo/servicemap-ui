@@ -1,13 +1,11 @@
 /* eslint-disable max-len */
 
-import React from 'react';
+import { ButtonBase, Link, NoSsr, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import {
-  Typography, ButtonBase, Link, NoSsr,
-} from '@material-ui/core';
-import TitleBar from '../../components/TitleBar';
 import config from '../../../config';
+import TitleBar from '../../components/TitleBar';
 import OptionalText from './components/OptionalText';
 
 const InfoView = ({ classes, locale }) => {

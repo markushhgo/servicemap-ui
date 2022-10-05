@@ -1,6 +1,6 @@
-import React from 'react';
+import { Link, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import React from 'react';
 
 const CityBikesContent = ({
   classes, intl, bikeStation, cityBikeStatistics,
@@ -58,7 +58,7 @@ const CityBikesContent = ({
       ))}
       <div className={classes.paragraph}>
         <Typography variant="body2" className={classes.bold}>
-          {intl.formatMessage({ id: 'mobilityPlatform.content.cityBikes.links' })}
+          {intl.formatMessage({ id: 'mobilityPlatform.content.general.rentalUris' })}
           :
         </Typography>
       </div>

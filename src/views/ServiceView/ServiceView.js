@@ -1,20 +1,20 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { SearchBar } from '../../components';
-import TitleBar from '../../components/TitleBar';
-import { fitUnitsToMap, focusToPosition } from '../MapView/utils/mapActions';
-import Loading from '../../components/Loading';
 import Container from '../../components/Container';
+import DesktopComponent from '../../components/DesktopComponent';
 import PaginatedList from '../../components/Lists/PaginatedList';
+import Loading from '../../components/Loading';
+import MobileComponent from '../../components/MobileComponent';
 import ResultOrderer from '../../components/ResultOrderer';
 import { getIcon } from '../../components/SMIcon';
-import DesktopComponent from '../../components/DesktopComponent';
-import MobileComponent from '../../components/MobileComponent';
+import TitleBar from '../../components/TitleBar';
 import coordinateIsActive from '../../utils/coordinate';
 import useLocaleText from '../../utils/useLocaleText';
+import { fitUnitsToMap, focusToPosition } from '../MapView/utils/mapActions';
 
 const ServiceView = (props) => {
   const {

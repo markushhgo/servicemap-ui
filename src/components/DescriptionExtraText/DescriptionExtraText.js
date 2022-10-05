@@ -1,6 +1,6 @@
-import React from 'react';
+import { Divider, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Divider } from '@material-ui/core';
+import React from 'react';
 import isClient from '../../utils';
 
 const DescriptionExtraText = ({

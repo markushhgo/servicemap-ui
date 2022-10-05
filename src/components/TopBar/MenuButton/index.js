@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core';
-import MenuButton from './MenuButton';
 import styles from '../styles';
+import MenuButton from './MenuButton';
 
 export default withStyles(styles)(MenuButton);

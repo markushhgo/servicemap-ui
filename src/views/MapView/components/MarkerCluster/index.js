@@ -1,10 +1,10 @@
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/styles';
-import MarkerCluster from './MarkerCluster';
-import { formatDistanceObject } from '../../../../utils';
-import { calculateDistance, getCurrentlyUsedPosition } from '../../../../redux/selectors/unit';
-import styles from '../../styles';
 import { getSelectedUnit, getSelectedUnitEvents } from '../../../../redux/selectors/selectedUnit';
+import { calculateDistance, getCurrentlyUsedPosition } from '../../../../redux/selectors/unit';
+import { formatDistanceObject } from '../../../../utils';
+import styles from '../../styles';
+import MarkerCluster from './MarkerCluster';
 
 
 const mapStateToProps = (state) => {

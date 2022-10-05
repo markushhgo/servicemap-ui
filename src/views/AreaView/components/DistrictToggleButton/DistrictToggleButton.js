@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Switch } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const DistrictToggleButton = ({
   district, onToggle, selected, selectionSize, label, classes, ...rest

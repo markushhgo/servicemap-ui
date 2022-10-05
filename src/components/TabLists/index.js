@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
 import { withStyles } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import TabLists from './TabLists';
-import styles from './styles';
 import { changeCustomUserLocation } from '../../redux/actions/user';
+import styles from './styles';
+import TabLists from './TabLists';
 
 // Listen to redux state
 const mapStateToProps = (state) => {

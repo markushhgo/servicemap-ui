@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
+import { connect } from 'react-redux';
 import { setNewCurrentService } from '../../../redux/actions/services';
 import ServiceItem from './ServiceItem';
 import styles from './styles';

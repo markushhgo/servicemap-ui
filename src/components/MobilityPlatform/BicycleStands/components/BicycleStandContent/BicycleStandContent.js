@@ -1,16 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const BicycleStandContent = ({
   classes, bicycleStand, intl,
 }) => {
-  // Hides pyöräpysäköinti prefix
-  const renderName = (name) => {
-    const splitted = name.split(' ').slice(1);
-    return splitted.join(' ');
-  };
-
   const messageIds = {
     model: 'mobilityPlatform.content.bicycleStands.model',
     places: 'mobilityPlatform.content.bicycleStands.numOfPlaces',
@@ -25,7 +19,7 @@ const BicycleStandContent = ({
   const titleTypo = () => (
     <div className={classes.title}>
       <Typography variant="subtitle1" className={classes.titleText}>
-        {renderName(bicycleStand.name)}
+        {bicycleStand.name}
       </Typography>
     </div>
   );

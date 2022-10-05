@@ -1,17 +1,8 @@
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../../themes';
 import BicycleStandContent from '../index';
 import finnishTranslations from '../../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
+import { getRenderWithProviders } from '../../../../../../../jestUtils';
 
 const mockProps = {
   bicycleStand: {
@@ -27,16 +18,7 @@ const mockProps = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <MuiThemeProvider theme={themes.SMTheme}>
-      {children}
-    </MuiThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<BicycleStandContent />', () => {
   it('should work', () => {
@@ -47,12 +29,20 @@ describe('<BicycleStandContent />', () => {
   it('does show text correctly', () => {
     const { container } = renderWithProviders(<BicycleStandContent {...mockProps} />);
 
+    const h6 = container.querySelector('h6');
     const p = container.querySelectorAll('p');
-    expect(p[0].textContent).toEqual(`Malli: ${mockProps.bicycleStand.extra.model}`);
-    expect(p[1].textContent).toEqual(`Pyöräpaikkojen määrä: ${mockProps.bicycleStand.extra.number_of_places}`);
-    expect(p[2].textContent).toEqual(`Pyörätelineiden määrä: ${mockProps.bicycleStand.extra.number_of_stands}`);
-    expect(p[3].textContent).toEqual('Pyöräparkki on katettu');
-    expect(p[4].textContent).toEqual('Pyörän voi runkolukita');
-    expect(p[5].textContent).toEqual('Turun kaupungin ylläpitämä.');
+    expect(h6.textContent).toContain(mockProps.bicycleStand.name);
+    expect(p[0].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.model']}: ${mockProps.bicycleStand.extra.model}`,
+    );
+    expect(p[1].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.numOfPlaces']}: ${mockProps.bicycleStand.extra.number_of_places}`,
+    );
+    expect(p[2].textContent).toContain(
+      `${finnishTranslations['mobilityPlatform.content.bicycleStands.numOfStands']}: ${mockProps.bicycleStand.extra.number_of_stands}`,
+    );
+    expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.covered']);
+    expect(p[4].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.hullLockable']);
+    expect(p[5].textContent).toContain(finnishTranslations['mobilityPlatform.content.bicycleStands.maintainedByTku']);
   });
 });

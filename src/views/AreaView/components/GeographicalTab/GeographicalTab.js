@@ -1,24 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { List, Typography, ListItem } from '@material-ui/core';
-import { FormattedMessage } from 'react-intl';
+import { List, ListItem, Typography } from '@material-ui/core';
 import { FormatListBulleted, LocationOn } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import SMAccordion from '../../../../components/SMAccordion';
-import DistrictToggleButton from '../DistrictToggleButton';
 import {
   fetchDistrictGeometry,
   handleOpenGeographicalCategory,
   setSelectedDistrictServices,
   setSelectedDistrictType,
-  setSelectedSubdistricts,
+  setSelectedSubdistricts
 } from '../../../../redux/actions/district';
 import { getFilteredSubdistrictServices } from '../../../../redux/selectors/district';
-import GeographicalDistrictList from '../GeographicalDistrictList';
-import GeographicalUnitList from '../GeographicalUnitList';
+import { formAddressString } from '../../../../utils';
 import useLocaleText from '../../../../utils/useLocaleText';
 import { geographicalDistricts } from '../../utils/districtDataHelper';
-import { formAddressString } from '../../../../utils';
+import DistrictToggleButton from '../DistrictToggleButton';
+import GeographicalDistrictList from '../GeographicalDistrictList';
+import GeographicalUnitList from '../GeographicalUnitList';
 
 
 const GeographicalTab = ({

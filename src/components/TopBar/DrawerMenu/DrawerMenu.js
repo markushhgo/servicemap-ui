@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Drawer,
+    Drawer
 } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React from 'react';
+import useLocaleText from '../../../utils/useLocaleText';
 import { getIcon } from '../../SMIcon';
 import DrawerButton from './DrawerButton';
-import useLocaleText from '../../../utils/useLocaleText';
 import DrawerSettings from './DrawerSettings';
 
 const DrawerMenu = (props) => {

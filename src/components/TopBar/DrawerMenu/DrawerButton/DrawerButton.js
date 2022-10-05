@@ -1,8 +1,7 @@
-import React from 'react';
+import { ButtonBase, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import {
-  Typography, ButtonBase, withStyles,
-} from '@material-ui/core';
+import React from 'react';
 import styles from '../styles';
 
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Button, useMediaQuery,
+    Button, useMediaQuery
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 import SettingsText from '../../SettingsText';
 
 const SettingsButton = ({

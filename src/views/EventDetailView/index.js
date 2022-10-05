@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
-import EventDetailView from './EventDetailView';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { changeSelectedEvent } from '../../redux/actions/event';
 import { fetchSelectedUnit } from '../../redux/actions/selectedUnit';
+import EventDetailView from './EventDetailView';
 import styles from './styles';
 
 const mapStateToProps = (state) => {

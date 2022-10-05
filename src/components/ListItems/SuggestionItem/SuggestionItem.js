@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { Button, Divider, Typography } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {
-  Typography, Divider, Button,
-} from '@material-ui/core';
 import { ArrowUpward } from '@material-ui/icons';
-import BoldedText from '../../BoldedText';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { keyboardHandler } from '../../../utils';
 import useMobileStatus from '../../../utils/isMobile';
+import BoldedText from '../../BoldedText';
 
 const SuggestionItem = (props) => {
   const {
@@ -18,6 +17,7 @@ const SuggestionItem = (props) => {
     divider,
     text,
     handleItemClick,
+    handleRemoveClick,
     handleArrowClick,
     icon,
     selected,
@@ -99,6 +99,26 @@ const SuggestionItem = (props) => {
           }
           </ListItemText>
         </span>
+        {handleRemoveClick && (
+          <Button
+            aria-hidden
+            className={`${classes.suggestIcon}`}
+            classes={{
+              label: classes.suggestIconLabel,
+            }}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const value = text.props ? text.props.text : text;
+              handleRemoveClick(value);
+              return false;
+            }}
+          >
+            <Typography variant="caption" className={classes.removeText}>
+              <FormattedMessage id="search.removeSuggestion" />
+            </Typography>
+          </Button>
+        )}
         {
           isMobile
           && handleArrowClick
@@ -137,6 +157,7 @@ SuggestionItem.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   icon: PropTypes.objectOf(PropTypes.any),
+  handleRemoveClick: PropTypes.func,
   handleArrowClick: PropTypes.func,
   handleItemClick: PropTypes.func,
   divider: PropTypes.bool,
@@ -151,6 +172,7 @@ SuggestionItem.propTypes = {
 SuggestionItem.defaultProps = {
   icon: null,
   handleArrowClick: null,
+  handleRemoveClick: null,
   handleItemClick: null,
   divider: false,
   selected: false,

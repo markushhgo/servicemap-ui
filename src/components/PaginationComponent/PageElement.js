@@ -1,9 +1,10 @@
-import React from 'react';
+import { ButtonBase, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Typography, withStyles, ButtonBase } from '@material-ui/core';
-import styles from './styles';
 import { keyboardHandler } from '../../utils';
+import styles from './styles';
 
 // Page number element
 const PageElement = ({
@@ -17,7 +18,7 @@ const PageElement = ({
         disabled={isActive}
         onClick={onClick}
         onKeyDown={keyboardHandler(onClick, ['space', 'enter'])}
-        tabIndex={isActive ? '-1' : '0'}
+        tabIndex={isActive ? -1 : 0}
       >
         <Typography
           variant="subtitle1"

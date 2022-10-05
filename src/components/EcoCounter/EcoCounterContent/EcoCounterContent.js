@@ -1,22 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
 import { ButtonBase, Typography } from '@material-ui/core';
-import { ReactSVG } from 'react-svg';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
-import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import { ReactSVG } from 'react-svg';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
-import LineChart from '../LineChart';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import {
-  fetchInitialHourData,
-  fetchInitialDayDatas,
-  fetchInitialWeekDatas,
-  fetchInitialMonthDatas,
+  fetchInitialDayDatas, fetchInitialHourData, fetchInitialMonthDatas, fetchInitialWeekDatas
 } from '../EcoCounterRequests/ecoCounterRequests';
+import LineChart from '../LineChart';
 
 const EcoCounterContent = ({
   classes, intl, stationId, stationName,
@@ -441,6 +439,9 @@ const EcoCounterContent = ({
           {renderStationName(stationName)}
         </Typography>
         <div className={classes.headerDate}>
+          <div className={classes.iconContainer}>
+            <DateRangeIcon />
+          </div>
           {!isDatePickerOpen ? (
             <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(true)}>
               <Typography component="h5" className={classes.headerSubtitle}>

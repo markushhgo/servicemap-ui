@@ -55,17 +55,17 @@ const fetchBicycleRoutesGeometry = async (setData) => {
   }
 };
 
-const fetchIotData = async (sourceName, setData) => {
+const fetchIotData = async (sourceName, setData, isScooter) => {
   try {
     const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
     const jsonData = await response.json();
-    setData(jsonData.results[0].data);
+    setData(!isScooter ? jsonData.results[0].data : jsonData.results[0].data.data.bikes);
   } catch (err) {
     console.warn(err.message);
   }
 };
 
-const fetchParkingChargeZonesData = async (type, pageSize, setData) => {
+const fetchMobilityMapPolygonData = async (type, pageSize, setData) => {
   try {
     const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?type_name=${type}&page_size=${pageSize}&srid=4326&latlon=true`);
     const jsonData = await response.json();
@@ -92,6 +92,6 @@ export {
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
   fetchIotData,
-  fetchParkingChargeZonesData,
+  fetchMobilityMapPolygonData,
   fetchCityBikesData,
 };

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { ButtonBase, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, ButtonBase } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { setLocalizedLink } from '../../../../components/MobilityPlatform/utils/utils';
-import Paragraph from '../Paragraph';
 import LinkBasic from '../LinkBasic';
 import List from '../List';
 import OptionalA11yText from '../OptionalA11yText';
+import Paragraph from '../Paragraph';
 
 const OptionalText = ({ classes, intl, locale }) => {
   const [feedbackLink, setFeedbackLink] = useState(null);

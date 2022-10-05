@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Typography,
+    Typography
 } from '@material-ui/core';
-import BackButton from '../BackButton';
+import PropTypes from 'prop-types';
+import React from 'react';
 import useMobileStatus from '../../utils/isMobile';
+import BackButton from '../BackButton';
 
 const TitleBar = ({
   backButton,
@@ -57,7 +57,7 @@ const TitleBar = ({
           aria-hidden={ariaHidden}
           className={`TitleText ${classes.title} ${backButton ? classes.titleLarge : ''}`}
           component={titleComponent}
-          tabIndex="-1"
+          tabIndex={-1}
         >
           {title}
         </Typography>

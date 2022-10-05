@@ -1,12 +1,12 @@
 
-import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
 import { withStyles } from '@material-ui/core';
-import UnitItem from './UnitItem';
+import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { changeSelectedUnit } from '../../../redux/actions/selectedUnit';
-import styles from './styles';
 import { calculateDistance, getCurrentlyUsedPosition } from '../../../redux/selectors/unit';
 import { formatDistanceObject } from '../../../utils';
+import styles from './styles';
+import UnitItem from './UnitItem';
 
 // Listen to redux state
 const mapStateToProps = (state, props) => {

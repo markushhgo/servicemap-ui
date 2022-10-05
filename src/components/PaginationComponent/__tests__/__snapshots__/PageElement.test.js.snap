@@ -15,7 +15,7 @@ exports[`<PageElement /> should work 1`] = `
         <span
           class="MuiTypography-root MuiTypography-srOnly"
         >
-          Open page 2
+          Avaa sivu 2
         </span>
         <span
           aria-hidden="true"

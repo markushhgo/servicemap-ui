@@ -18,7 +18,7 @@ exports[`<ResultList /> should work 1`] = `
           class="MuiTypography-root MuiTypography-caption"
           id="testID-result-title-info"
         >
-          Search result text
+          5 osumaa
         </p>
       </div>
     </div>
@@ -59,7 +59,7 @@ exports[`<ResultList /> should work 1`] = `
               class="MuiTypography-root ResultItem-title-8 ResultItem-srOnly MuiTypography-srOnly"
             >
               
-    Lippulaivan kirjasto 
+    Pääkirjasto 
     Kunnallinen palvelu 
      
      
@@ -71,7 +71,7 @@ exports[`<ResultList /> should work 1`] = `
               class="MuiTypography-root ResultItem-title-8  Connect(UnitItem)-title-1 ResultItem-title MuiTypography-body2"
               role="textbox"
             >
-              Lippulaivan kirjasto
+              Pääkirjasto
             </p>
           </div>
           <div>

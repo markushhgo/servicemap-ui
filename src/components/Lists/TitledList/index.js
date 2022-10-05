@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core';
-import TitledList from './TitledList';
 import styles from './styles';
+import TitledList from './TitledList';
 
 export default withStyles(styles)(TitledList);

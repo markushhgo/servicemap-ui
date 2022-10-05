@@ -1,23 +1,23 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { Checkbox, FormControlLabel, Typography } from '@material-ui/core';
-import URI from 'urijs';
+import PropTypes from 'prop-types';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
-import * as smurl from './utils/url';
-import isClient, { uppercaseFirst } from '../../utils';
-import { getEmbedURL, getLanguage } from './utils/utils';
-import EmbedController from './components/EmbedController';
-import IFramePreview from './components/IFramePreview';
+import URI from 'urijs';
+import paths from '../../../config/paths';
 import CloseButton from '../../components/CloseButton';
 import SMButton from '../../components/ServiceMapButton';
-import paths from '../../../config/paths';
-import embedderConfig from './embedderConfig';
+import isClient, { uppercaseFirst } from '../../utils';
 import SettingsUtility from '../../utils/settings';
 import useLocaleText from '../../utils/useLocaleText';
 import { useUserLocale } from '../../utils/user';
+import EmbedController from './components/EmbedController';
 import EmbedHTML from './components/EmbedHTML';
+import IFramePreview from './components/IFramePreview';
+import embedderConfig from './embedderConfig';
+import * as smurl from './utils/url';
+import { getEmbedURL, getLanguage } from './utils/utils';
 
 const hideCitiesIn = [paths.unit.regex, paths.address.regex];
 

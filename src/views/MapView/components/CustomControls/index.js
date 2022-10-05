@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core';
-import CustomControls from './CustomControls';
 import styles from '../../styles';
+import CustomControls from './CustomControls';
 
 export default withStyles(styles)(CustomControls);

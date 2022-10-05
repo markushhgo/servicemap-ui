@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import {
+    Build, Code, GetApp, Print
+} from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import URI from 'urijs';
-import {
-  Build, Code, GetApp, Print,
-} from '@material-ui/icons';
-import { useSelector } from 'react-redux';
-import DropDownMenuButton from '../DropDownMenuButton';
-import SMIcon from '../SMIcon/SMIcon';
-import SMButton from '../ServiceMapButton';
 import PrintContext from '../../context/PrintContext';
 import DownloadDialog from '../Dialog/DownloadDialog';
+import DropDownMenuButton from '../DropDownMenuButton';
+import SMButton from '../ServiceMapButton';
+import SMIcon from '../SMIcon/SMIcon';
 
 const ToolMenuButtonID = 'ToolMenuButton';
 

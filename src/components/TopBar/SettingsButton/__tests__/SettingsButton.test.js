@@ -1,12 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MuiThemeProvider } from '@material-ui/core';
-import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
 import SettingsButton from '../SettingsButton';
-import initialState from '../../../../redux/rootReducer';
-import themes from '../../../../themes';
+import { getRenderWithProviders } from '../../../../../jestUtils';
 
 const mockProps = {
   'aria-haspopup': 'dialog',
@@ -16,41 +10,16 @@ const mockProps = {
   onClick: () => {},
 };
 
-// Mock props for intl provider
-const intlMock = {
-  locale: 'en',
-  messages: {
-    'settings.city.all': 'Cities all',
-    'settings.citySettings': 'City settings',
+const renderWithProviders = getRenderWithProviders({
+  settings: {
+    visuallyImpaired: false,
+    colorblind: false,
+    hearingAid: false,
+    mapType: 'servicemap',
+    mobility: 'none',
+    cities: 'turku',
   },
-};
-
-const mockStore = configureStore([]);
-
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  const store = mockStore({
-    settings: {
-      visuallyImpaired: false,
-      colorblind: false,
-      hearingAid: false,
-      mapType: 'servicemap',
-      mobility: 'none',
-      cities: 'helsinki',
-    },
-  });
-  return (
-    <Provider store={store}>
-      <IntlProvider {...intlMock}>
-        <MuiThemeProvider theme={themes.SMTheme}>
-          {children}
-        </MuiThemeProvider>
-      </IntlProvider>
-    </Provider>
-  );
-};
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+});
 
 describe('<SettingsButton />', () => {
   it('should work', () => {

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import Accessible from '@material-ui/icons/Accessible';
-import { FormattedMessage } from 'react-intl';
-import { Typography, ButtonBase } from '@material-ui/core';
+import { ButtonBase, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { fetchStopData } from '../../../utils/transitFetch';
+import Accessible from '@material-ui/icons/Accessible';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { getIcon } from '../../../../../components/SMIcon';
 import useLocaleText from '../../../../../utils/useLocaleText';
+import { fetchStopData } from '../../../utils/transitFetch';
 
 const TransitStopInfo = ({ stop, onCloseClick, classes }) => {
   const getLocaleText = useLocaleText();

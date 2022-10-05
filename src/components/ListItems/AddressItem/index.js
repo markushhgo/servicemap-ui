@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
+import { connect } from 'react-redux';
 import AddressItem from './AddressItem';
 import styles from './styles';
 

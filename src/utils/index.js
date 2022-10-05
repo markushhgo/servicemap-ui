@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import URI from 'urijs';
 import config from '../../config';
 
@@ -13,6 +15,8 @@ export const isRetina = () => {
 };
 
 export const uppercaseFirst = val => val.charAt(0).toUpperCase() + val.slice(1);
+
+export const validateEmail = email => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
 
 // Function for parsing react router search params
 export const parseSearchParams = (searchParams) => {
@@ -53,6 +57,19 @@ export const stringifySearchParams = (searchParams) => {
   const string = searchParamsObject.toString().replace(/[+]/g, ' ');
 
   return string;
+};
+
+// Custom hook for getting url query parameters as object
+export const useQuery = () => {
+  const { search } = useLocation();
+  return useMemo(() => {
+    const queryParams = new URLSearchParams(search);
+    const queryObject = {};
+    queryParams.forEach((value, key) => {
+      queryObject[key] = value;
+    });
+    return queryObject;
+  }, [search]);
 };
 
 // Keyboard handler
@@ -199,8 +216,21 @@ export const addSearchParametersToObject = (obj, params) => {
 // Forms string string by combining address data values
 export const formAddressString = (address, getLocaleText) => {
   if (address) {
-    if (address.name && address.municipality?.name) return `${getLocaleText(address.name)}, ${getLocaleText(address.municipality.name)}`;
-    return `${getLocaleText(address.street.name)} ${address.number}${address.number_end ? address.number_end : ''}${address.letter ? address.letter : ''}, ${uppercaseFirst(address.street.municipality)}`;
+    const name = address.name
+      ? getLocaleText(address.name)
+      : getLocaleText(address.street.name);
+    const municipality = address.municipality?.name
+      ? getLocaleText(address.municipality.name)
+      : uppercaseFirst(address.municipality);
+
+    const number = `${address.number}${address.number_end ? address.number_end : ''}`;
+    const letter = address.letter || '';
+
+    if (address.name) {
+      return `${name}, ${municipality}`;
+    }
+
+    return `${name} ${number}${letter}, ${municipality}`;
   }
   return '';
 };

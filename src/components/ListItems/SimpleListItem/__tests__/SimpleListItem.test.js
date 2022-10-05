@@ -1,8 +1,7 @@
 // Link.react.test.js
+import { fireEvent } from '@testing-library/react';
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { fireEvent, render } from '@testing-library/react';
-import themes from '../../../../themes';
+import { getRenderWithProviders } from '../../../../../jestUtils';
 import SimpleListItem from '../index';
 
 // Generic required props for SimpleListItem
@@ -10,14 +9,7 @@ const mockProps = {
   text: 'Title text',
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <MuiThemeProvider theme={themes.SMTheme}>
-    {children}
-  </MuiThemeProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<SimpleListItem />', () => {
   it('should work', () => {
@@ -55,6 +47,7 @@ describe('<SimpleListItem />', () => {
       charCode: 32,
     });
 
+    // One of the events in fired twice for some reason
     expect(mockCallBack.mock.calls.length).toEqual(3);
   });
 
@@ -89,7 +82,9 @@ describe('<SimpleListItem />', () => {
   });
 
   it('does use default accessibility attributes correctly', () => {
-    const { container, getByText, getByRole } = renderWithProviders(<SimpleListItem {...mockProps} />);
+    const { container, getByText, getByRole } = renderWithProviders(
+      <SimpleListItem {...mockProps} />,
+    );
 
     const srText = container.querySelector('span');
     const text = getByText(mockProps.text, { selector: 'p' });

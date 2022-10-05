@@ -1,28 +1,23 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Button,
-  Typography,
-  AppBar,
-  Toolbar,
-  ButtonBase,
-  NoSsr,
+  AppBar, Button, ButtonBase, Toolbar, Typography
 } from '@material-ui/core';
 import { Map } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import HomeLogo from '../Logos/HomeLogo';
-import DrawerMenu from './DrawerMenu';
+import paths from '../../../config/paths';
+import { focusToViewTitle } from '../../utils/accessibility';
+import { useNavigationParams } from '../../utils/address';
+import LocaleUtility from '../../utils/locale';
 import DesktopComponent from '../DesktopComponent';
 import MobileComponent from '../MobileComponent';
 import ToolMenu from '../ToolMenu';
-import { focusToViewTitle } from '../../utils/accessibility';
-import LocaleUtility from '../../utils/locale';
-import { useNavigationParams } from '../../utils/address';
-import SettingsButton from './SettingsButton';
+import DrawerMenu from './DrawerMenu';
 import MenuButton from './MenuButton';
-import paths from '../../../config/paths';
+import SettingsButton from './SettingsButton';
+import SMLogo from './SMLogo';
 
 const TopBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -232,43 +227,45 @@ const TopBar = (props) => {
         <AppBar className={classes.appBar}>
           {/* Toolbar black area */}
           <Toolbar className={toolbarBlackClass}>
-            <div className={classes.toolbarBlackContainer}>
-              <ButtonBase
-                role="link"
-                aria-current={isHomePage ? 'page' : false}
-                onClick={() => handleNavigation('home')}
-                focusVisibleClassName={classes.topButtonFocused}
-              >
-                <Typography
-                  className={fontClass}
-                  color="inherit"
-                  variant="body2"
+            <nav aria-label={intl.formatMessage({ id: 'app.navigation.language' })}>
+              <div className={classes.toolbarBlackContainer}>
+                <ButtonBase
+                  role="link"
+                  aria-current={isHomePage ? 'page' : false}
+                  onClick={() => handleNavigation('home')}
+                  focusVisibleClassName={classes.topButtonFocused}
                 >
-                  <FormattedMessage id="general.frontPage" />
+                  <Typography
+                    className={fontClass}
+                    color="inherit"
+                    variant="body2"
+                  >
+                    <FormattedMessage id="general.frontPage" />
+                  </Typography>
+                </ButtonBase>
+                <Typography aria-hidden color="inherit">
+                  |
                 </Typography>
-              </ButtonBase>
-              <Typography aria-hidden color="inherit">
-                |
-              </Typography>
-              {renderLanguages(pageType)}
-              <Typography aria-hidden color="inherit">
-                |
-              </Typography>
-              <ButtonBase
-                role="button"
-                onClick={() => handleContrastChange()}
-                focusVisibleClassName={classes.topButtonFocused}
-                aria-label={contrastAriaLabel}
-              >
-                <Typography
-                  className={fontClass}
-                  color="inherit"
-                  variant="body2"
+                {renderLanguages(pageType)}
+                <Typography aria-hidden color="inherit">
+                  |
+                </Typography>
+                <ButtonBase
+                  role="button"
+                  onClick={() => handleContrastChange()}
+                  focusVisibleClassName={classes.topButtonFocused}
+                  aria-label={contrastAriaLabel}
                 >
-                  <FormattedMessage id="general.contrast" />
-                </Typography>
-              </ButtonBase>
-            </div>
+                  <Typography
+                    className={fontClass}
+                    color="inherit"
+                    variant="body2"
+                  >
+                    <FormattedMessage id="general.contrast" />
+                  </Typography>
+                </ButtonBase>
+              </div>
+            </nav>
           </Toolbar>
 
           {/* Toolbar white area */}
@@ -280,19 +277,7 @@ const TopBar = (props) => {
                 : classes.toolbarWhite
             }
           >
-            <ButtonBase
-              aria-label={intl.formatMessage({ id: 'general.back.goToHome' })}
-              role="link"
-              onClick={() => handleNavigation('home')}
-            >
-              <NoSsr>
-                <HomeLogo
-                  aria-hidden
-                  contrast={theme === 'dark'}
-                  className={classes.logo}
-                />
-              </NoSsr>
-            </ButtonBase>
+            <SMLogo onClick={() => handleNavigation('home')} />
             <MobileComponent>
               <div className={classes.mobileButtonContainer}>
                 {renderMapButton()}
@@ -301,23 +286,25 @@ const TopBar = (props) => {
               {renderDrawerMenu(pageType)}
             </MobileComponent>
             <DesktopComponent>
-              {!smallScreen ? (
-                <>
-                  <div className={classes.settingsButtonsContainer}>
-                    <Typography component="h2" variant="srOnly">
-                      <FormattedMessage id="settings" />
-                    </Typography>
-                    {renderSettingsButtons()}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className={classes.mobileButtonContainer}>
-                    {renderMenuButton()}
-                  </div>
-                  {renderDrawerMenu(pageType)}
-                </>
-              )}
+              <nav aria-label={intl.formatMessage({ id: 'app.navigation.settings' })} className={classes.settingsButtonsContainer}>
+                {!smallScreen ? (
+                  <>
+                    <div className={classes.settingsButtonsContainer}>
+                      <Typography component="h2" variant="srOnly">
+                        <FormattedMessage id="settings" />
+                      </Typography>
+                      {renderSettingsButtons()}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className={classes.mobileButtonContainer}>
+                      {renderMenuButton()}
+                    </div>
+                    {renderDrawerMenu(pageType)}
+                  </>
+                )}
+              </nav>
               {!smallScreen && <ToolMenu />}
             </DesktopComponent>
           </Toolbar>

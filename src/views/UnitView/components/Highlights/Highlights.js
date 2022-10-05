@@ -1,10 +1,10 @@
-import React from 'react';
+import { Link, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import config from '../../../../../config';
-import unitSectionFilter from '../../utils/unitSectionFilter';
 import useLocaleText from '../../../../utils/useLocaleText';
+import unitSectionFilter from '../../utils/unitSectionFilter';
 
 const Highlights = ({ unit, classes, intl }) => {
   const getLocaleText = useLocaleText();

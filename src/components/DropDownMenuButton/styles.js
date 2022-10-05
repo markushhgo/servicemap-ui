@@ -9,6 +9,7 @@ export default theme => ({
     flex: '0 1 auto',
   },
   button: {
+    color: 'black',
     height: '100%',
     width: '100%',
     paddingLeft: theme.spacing(1),
@@ -37,7 +38,7 @@ export default theme => ({
   },
   iconRight: {
     marginLeft: 'auto',
-    fontSize: 24,
+    fontSize: '1.5rem',
   },
   menuItem: {
     padding: theme.spacing(1),

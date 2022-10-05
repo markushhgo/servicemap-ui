@@ -29,7 +29,7 @@ export default theme => ({
     flexDirection: 'row',
     '& p': {
       margin: 0,
-    }
+    },
   },
   formControlLabel: {
     color: 'rgba(0, 0, 0, 0.87)',

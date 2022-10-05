@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { Button } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const CloseButton = ({
   classes,
@@ -16,7 +16,6 @@ const CloseButton = ({
   <Button
     aria-label={intl.formatMessage({ id: 'general.close' })}
     className={`${classes.flexBase} ${classes.button} ${className || ''}`}
-    classes={{ label: classes.buttonLabel }}
     onClick={() => {
       onClick();
     }}

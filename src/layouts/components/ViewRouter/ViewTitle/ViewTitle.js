@@ -1,7 +1,7 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Typography, RootRef } from '@material-ui/core';
 import { viewTitleID } from '../../../../utils/accessibility';
 
 class ViewTitle extends React.Component {
@@ -58,11 +58,9 @@ class ViewTitle extends React.Component {
     }
 
     return (
-      <RootRef rootRef={this.titleRef}>
-        <Typography id={viewTitleID} variant="srOnly" component="h2" tabIndex="-1">
-          <FormattedMessage id={message + type} />
-        </Typography>
-      </RootRef>
+      <Typography id={viewTitleID} variant="srOnly" component="h2" tabIndex={-1}>
+        <FormattedMessage id={message + type} />
+      </Typography>
     );
   }
 }

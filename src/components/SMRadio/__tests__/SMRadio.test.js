@@ -1,9 +1,7 @@
 // // Link.react.test.js
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MuiThemeProvider } from '@material-ui/core';
-import themes from '../../../themes';
 import SMRadio from '../index';
+import { getRenderWithProviders } from '../../../../jestUtils';
 
 // Generic required props for SimpleListItem
 const mockProps = {
@@ -17,13 +15,7 @@ const mockProps = {
   onChange: () => {},
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <MuiThemeProvider theme={themes.SMTheme}>
-    {children}
-  </MuiThemeProvider>
-);
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<SMRadio />', () => {
   it('should work', () => {

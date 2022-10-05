@@ -20,12 +20,7 @@ exports[`<RentalCarsContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        <strong>
-          Palveluntarjoaja
-          :
-        </strong>
-         
-        24Rent
+        Palveluntarjoaja: 24Rent
       </p>
     </div>
     <div
@@ -49,10 +44,8 @@ exports[`<RentalCarsContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        <strong>
-          Auton tiedot
-          :
-        </strong>
+        Auton tiedot
+        :
          
         Testimerkki
          
@@ -74,12 +67,7 @@ exports[`<RentalCarsContent /> should work 1`] = `
       <p
         class="MuiTypography-root MuiTypography-body2"
       >
-        <strong>
-          Sijainti
-          :
-        </strong>
-         
-        Testiosoite
+        Sijainti: Testiosoite
       </p>
     </div>
     <div>

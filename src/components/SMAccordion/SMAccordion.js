@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { ButtonBase, Collapse } from '@material-ui/core';
 import { ArrowDropDown } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
 const SMAccordion = ({
   isOpen,

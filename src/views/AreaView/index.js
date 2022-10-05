@@ -1,18 +1,13 @@
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import {
+    fetchAllDistricts, fetchDistrictUnitList, setDistrictAddressData, setMapState, setSelectedDistrictServices, setSelectedDistrictType,
+    setSelectedSubdistricts
+} from '../../redux/actions/district';
+import { getAddressDistrict, getDistrictsByType } from '../../redux/selectors/district';
 import AreaView from './AreaView';
 import styles from './styles';
-import {
-  setSelectedDistrictType,
-  setSelectedSubdistricts,
-  setSelectedDistrictServices,
-  setDistrictAddressData,
-  fetchDistrictUnitList,
-  fetchAllDistricts,
-  setMapState,
-} from '../../redux/actions/district';
-import { getDistrictsByType, getAddressDistrict } from '../../redux/selectors/district';
 
 const mapStateToProps = (state) => {
   const { navigator } = state;

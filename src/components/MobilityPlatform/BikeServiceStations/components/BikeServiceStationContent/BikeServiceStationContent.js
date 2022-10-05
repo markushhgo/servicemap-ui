@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const BikeServiceStationContent = ({ classes, intl, station }) => {
   const locale = useSelector(state => state.user.locale);

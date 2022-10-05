@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
 import { Link, Paper, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import useLocaleText from '../../../../utils/useLocaleText';
 import { getIcon } from '../../../SMIcon';
 import styles from './styles';
-import useLocaleText from '../../../../utils/useLocaleText';
 
 const NewsItem = ({ classes, item }) => {
   const getLocaleText = useLocaleText();

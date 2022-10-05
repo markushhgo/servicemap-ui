@@ -1,24 +1,19 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState, useRef } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { useIntl } from 'react-intl';
 import {
-  TableContainer,
   Paper,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Typography,
+  Table, TableBody, TableCell, TableContainer, TableHead,
+  TableRow, Typography
 } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import { NumberCircleMaker } from '../MapView/utils/drawIcon';
-import CreateMap from '../MapView/utils/createMap';
-import SMButton from '../../components/ServiceMapButton';
+import React, { useEffect, useRef, useState } from 'react';
+import { useIntl } from 'react-intl';
+import { useLocation } from 'react-router-dom';
 import paths from '../../../config/paths';
+import SMButton from '../../components/ServiceMapButton';
 import useLocaleText from '../../utils/useLocaleText';
+import CreateMap from '../MapView/utils/createMap';
+import { NumberCircleMaker } from '../MapView/utils/drawIcon';
 
 const StyledTableRow = withStyles(theme => ({
   root: {
@@ -260,7 +255,7 @@ const PrintView = ({
   return (
     <div ref={dialogRef} role="dialog" className={classes.wrapper}>
       {/* Empty element that makes keyboard focus loop in dialog */}
-      <Typography variant="srOnly" aria-hidden tabIndex="0" onFocus={focusToLastElement} />
+      <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={focusToLastElement} />
       <div className={classes.container}>
         <div className={classes.buttonContainer}>
           <SMButton
@@ -284,7 +279,7 @@ const PrintView = ({
           aria-label={intl.formatMessage({ id: 'map.ariaLabel' })}
           id="print-map"
           className={classes.map}
-          tabIndex="-1"
+          tabIndex={-1}
         />
         <div>
           <TableContainer component={Paper} className={classes.table}>
@@ -365,7 +360,7 @@ const PrintView = ({
         </div>
       </div>
       {/* Empty element that makes keyboard focus loop in dialog */}
-      <Typography variant="srOnly" aria-hidden tabIndex="0" onFocus={focusToFirstElement} />
+      <Typography variant="srOnly" aria-hidden tabIndex={0} onFocus={focusToFirstElement} />
     </div>
   );
 };

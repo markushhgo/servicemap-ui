@@ -1,12 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Button,
-  ClickAwayListener,
-  Typography,
-  ButtonBase,
+    Button, ButtonBase, ClickAwayListener,
+    Typography
 } from '@material-ui/core';
-import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
+import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { keyboardHandler } from '../../utils';
 
 class DropDownMenuButton extends React.Component {
@@ -52,7 +50,7 @@ class DropDownMenuButton extends React.Component {
                 onClick={e => this.handleItemClick(e, v)}
                 onKeyPress={e => keyboardHandler(this.handleItemClick(e, v), ['space', 'enter'])}
                 component="span"
-                tabIndex="0"
+                tabIndex={0}
                 aria-hidden={v.ariaHidden}
               >
                 <span>{v.icon}</span>

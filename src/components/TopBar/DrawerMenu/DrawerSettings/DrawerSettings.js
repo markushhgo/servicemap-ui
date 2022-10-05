@@ -1,6 +1,6 @@
 import { ButtonBase, Typography } from '@material-ui/core';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import SettingsText from '../../../SettingsText';
 import { getIcon } from '../../../SMIcon';

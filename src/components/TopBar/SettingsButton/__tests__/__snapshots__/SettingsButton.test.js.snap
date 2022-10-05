@@ -20,12 +20,12 @@ exports[`<SettingsButton /> should work 1`] = `
       <p
         class="MuiTypography-root SettingsText-title-1 MuiTypography-subtitle1"
       >
-        City settings
+        Kaupunki
       </p>
       <p
         class="MuiTypography-root SettingsText-text-3 MuiTypography-body2"
       >
-        Cities all
+        Näytä kaikki
       </p>
     </span>
   </button>

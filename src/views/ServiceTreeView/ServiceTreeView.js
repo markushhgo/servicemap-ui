@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { ButtonBase, Checkbox, Collapse, Divider, List, ListItem, NoSsr, Typography } from '@material-ui/core';
+import { ArrowDropDown, ArrowDropUp, Cancel, Search } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import {
-  List, ListItem, Collapse, Checkbox, Typography, ButtonBase, NoSsr, Divider,
-} from '@material-ui/core';
-import {
-  ArrowDropUp, ArrowDropDown, Search, Cancel,
-} from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import config from '../../../config';
 import SMButton from '../../components/ServiceMapButton';
 import SMAccordion from '../../components/SMAccordion';
-import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
+import useLocaleText from '../../utils/useLocaleText';
 
 const ServiceTreeView = (props) => {
   const {

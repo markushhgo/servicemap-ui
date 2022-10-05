@@ -1,10 +1,10 @@
 import {
-  Checkbox, List, ListItem, Typography,
+    Checkbox, List, ListItem, Typography
 } from '@material-ui/core';
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
 import PropTypes from 'prop-types';
+import React, {
+    useCallback, useEffect, useMemo, useState
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UnitItem from '../../../../components/ListItems/UnitItem';
 import SMAccordion from '../../../../components/SMAccordion';

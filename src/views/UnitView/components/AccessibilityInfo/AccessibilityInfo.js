@@ -1,17 +1,15 @@
-import React from 'react';
+import { ButtonBase, Divider, List, ListItem, ListItemIcon, ListItemText, NoSsr, Typography } from '@material-ui/core';
+import { Accessibility, VerifiedUser, Warning } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import {
-  Typography, List, ListItem, ListItemIcon, ListItemText, Divider, NoSsr, ButtonBase,
-} from '@material-ui/core';
-import { Warning, VerifiedUser, Accessibility } from '@material-ui/icons';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import Container from '../../../../components/Container';
-import SettingsUtility from '../../../../utils/settings';
 import Loading from '../../../../components/Loading';
-import useLocaleText from '../../../../utils/useLocaleText';
 import SettingsText from '../../../../components/SettingsText';
 import { toggleSettings } from '../../../../redux/actions/settings';
+import SettingsUtility from '../../../../utils/settings';
+import useLocaleText from '../../../../utils/useLocaleText';
 
 const AccessibilityInfo = (props) => {
   const {

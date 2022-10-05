@@ -1,7 +1,8 @@
 export default ({
   button: {
     textTransform: 'none',
-    fontSize: 12,
+    fontSize: '0.75rem',
+    color: 'black',
   },
   buttonLabel: {
     display: 'flex',

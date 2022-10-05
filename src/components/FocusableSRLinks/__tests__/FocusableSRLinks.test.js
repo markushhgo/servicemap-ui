@@ -1,10 +1,9 @@
 // Link.react.test.js
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import themes from '../../../themes';
+import { FormattedMessage } from 'react-intl';
 import FocusableSRLinks from '../index';
+import { getRenderWithProviders } from '../../../../jestUtils';
+import finnishTranslations from '../../../i18n/fi';
 
 // Generic required props for SimpleListItem
 const mockProps = {
@@ -16,22 +15,7 @@ const mockProps = {
   ],
 };
 
-// Mock props for intl provider
-const intlMock = {
-  locale: 'en',
-  messages: {
-    'fm.test': 'FM test text',
-  },
-};
-
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<FocusableSRLinks />', () => {
   it('should work', () => {
@@ -47,14 +31,14 @@ describe('<FocusableSRLinks />', () => {
           items={[
             {
               href: '#test-href',
-              text: <FormattedMessage id="fm.test" />,
+              text: <FormattedMessage id="app.title" />,
             },
           ]}
         />
       </>,
     );
     expect(getByText(mockProps.items[0].text, { selector: 'a' }).text).toEqual(mockProps.items[0].text);
-    expect(getByText(intlMock.messages['fm.test'], { selector: 'a' }).text).toEqual(intlMock.messages['fm.test']);
+    expect(getByText(finnishTranslations['app.title'], { selector: 'a' }).text).toEqual(finnishTranslations['app.title']);
   });
 
   it('does set href correctly', () => {

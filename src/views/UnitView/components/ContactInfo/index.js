@@ -1,6 +1,6 @@
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import ContactInfo from './ContactInfo';
 import styles from '../../styles/styles';
+import ContactInfo from './ContactInfo';
 
 export default injectIntl(withStyles(styles)(ContactInfo));

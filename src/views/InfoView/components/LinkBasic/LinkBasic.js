@@ -1,6 +1,6 @@
-import React from 'react';
+import { Link, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import React from 'react';
 
 const LinkBasic = ({
   classes, intl, linkUrl, translationId,

@@ -1,17 +1,9 @@
+/* eslint-disable max-len */
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import themes from '../../../../../../themes';
-import RentalCarsContent from '../index';
+import { getRenderWithProviders } from '../../../../../../../jestUtils';
 import finnishTranslations from '../../../../../../i18n/fi';
-
-// Mock props for intl provider
-const intlMock = {
-  locale: 'fi',
-  messages: finnishTranslations,
-};
+import RentalCarsContent from '../index';
 
 const mockProps = {
   car: {
@@ -29,14 +21,7 @@ const mockProps = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => (
-  <IntlProvider {...intlMock}>
-    <MuiThemeProvider theme={themes.SMTheme}>{children}</MuiThemeProvider>
-  </IntlProvider>
-);
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({});
 
 describe('<RentalCarsContent />', () => {
   it('should work', () => {
@@ -50,9 +35,9 @@ describe('<RentalCarsContent />', () => {
     const p = container.querySelectorAll('p');
     expect(p[0]).toBeInTheDocument();
     expect(p[1].textContent).toEqual(mockProps.car.link);
-    expect(p[2].textContent).toEqual(`Auton tiedot: ${mockProps.car.vehicleModelData.manufacturer} ${mockProps.car.vehicleModelData.name}`);
-    expect(p[3].textContent).toEqual('Vapaa auto');
-    expect(p[4].textContent).toEqual(`Sijainti: ${mockProps.car.homeLocationData.fullAddress}`);
+    expect(p[2].textContent).toContain('Auton tiedot: Testimerkki Testiauto');
+    expect(p[3].textContent).toContain(finnishTranslations['mobilityPlatform.content.rentalCars.available']);
+    expect(p[4].textContent).toContain('Sijainti: Testiosoite');
   });
 
   it('does show link correctly', () => {

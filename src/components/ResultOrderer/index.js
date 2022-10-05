@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
-import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { setDirection, setOrder } from '../../redux/actions/sort';
 import ResultOrderer from './ResultOrderer';
 import styles from './styles';

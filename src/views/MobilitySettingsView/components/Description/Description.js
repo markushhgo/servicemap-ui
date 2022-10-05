@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Description = ({ classes, route, currentLocale }) => {
   // Hide references to sizes of audio files.

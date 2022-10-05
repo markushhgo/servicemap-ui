@@ -2,13 +2,8 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.background.main,
   },
-  buttonWhite: {
-    width: '100%',
-    justifyContent: 'left',
-    textTransform: 'none',
-    padding: theme.spacing(1.5),
-  },
   button: {
+    color: 'black',
     width: '100%',
     height: '3.125rem',
     background: 'rgba(245, 245, 245, 255)',
@@ -34,13 +29,13 @@ const styles = theme => ({
     },
   },
   buttonSmall: {
-    width: '35%',
+    width: '27%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
   },
   buttonSmallActive: {
-    width: '35%',
+    width: '27%',
     margin: theme.spacing(1),
     border: '1px solid #000000',
     textTransform: 'none',
@@ -94,7 +89,9 @@ const styles = theme => ({
   },
   buttonList: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'left',
   },
   checkBoxContainer: {
     width: '100%',

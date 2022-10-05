@@ -1,19 +1,16 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
-import { setDistrictAddressData } from '../../redux/actions/district';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
-  setAddressData,
-  setAddressUnits,
-  setAddressLocation,
-  setAdminDistricts,
-  setToRender,
+    setAddressData, setAddressLocation, setAddressUnits, setAdminDistricts,
+    setToRender
 } from '../../redux/actions/address';
-import styles from './styles';
-import AddressView from './AddressView';
-import { formatDistanceObject } from '../../utils';
+import { setDistrictAddressData } from '../../redux/actions/district';
 import { calculateDistance, getCurrentlyUsedPosition } from '../../redux/selectors/unit';
+import { formatDistanceObject } from '../../utils';
+import AddressView from './AddressView';
+import styles from './styles';
 
 const mapStateToProps = (state, props) => {
   const { intl } = props;

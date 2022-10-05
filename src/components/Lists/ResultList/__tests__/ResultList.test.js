@@ -1,13 +1,8 @@
 // Link.react.test.js
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { IntlProvider } from 'react-intl';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { render } from '@testing-library/react';
-import themes from '../../../../themes';
-import ResultList from '../ResultList';
+import { getRenderWithProviders } from '../../../../../jestUtils';
 import { initialState } from '../../../../redux/reducers/user';
+import ResultList from '../ResultList';
 
 const mockData = [
   {
@@ -17,11 +12,11 @@ const mockData = [
       id: 'municipal_service',
       description: { fi: 'kunnallinen palvelu', sv: 'kommunal tjänst', en: 'municipal service' },
     },
-    id: 63115,
-    municipality: 'espoo',
-    name: { fi: 'Lippulaivan kirjasto', sv: 'Lippulaivabiblioteket', en: 'Lippulaiva library' },
+    id: 148,
+    municipality: 'Turku',
+    name: { fi: 'Pääkirjasto', sv: 'Huvudbiblioteket', en: 'The Main Library' },
     object_type: 'unit',
-    street_address: { fi: 'Merikarhunkuja 11', sv: 'Sjöbjörnsgränden 11', en: 'Merikarhunkuja 11' },
+    street_address: { fi: 'Linnankatu 2', sv: 'Slottsgatan 2', en: 'Linnankatu 2' },
   },
   {
     accessibility_properties: [],
@@ -53,36 +48,10 @@ const mockProps = {
   titleComponent: 'h3',
 };
 
-// Mock props for intl provider
-const intlMock = {
-  locale: 'en',
-  messages: {
-    'search.resultList': 'Search result text',
-    'general.pagination.pageCount': 'Page {current} of {max}',
-  },
-};
-
-const mockStore = configureStore([]);
-
-// eslint-disable-next-line react/prop-types
-const Providers = ({ children }) => {
-  const store = mockStore({
-    user: initialState,
-    settings: {},
-  });
-
-  return (
-    <Provider store={store}>
-      <IntlProvider {...intlMock}>
-        <MuiThemeProvider theme={themes.SMTheme}>
-          {children}
-        </MuiThemeProvider>
-      </IntlProvider>
-    </Provider>
-  );
-};
-
-const renderWithProviders = component => render(component, { wrapper: Providers });
+const renderWithProviders = getRenderWithProviders({
+  user: initialState,
+  settings: {},
+});
 
 describe('<ResultList />', () => {
   it('should work', () => {
@@ -101,4 +70,20 @@ describe('<ResultList />', () => {
     const text = getByText('Test before list').textContent;
     expect(text).toEqual('Test before list');
   });
+});
+
+it('does render accessibility attributes correctly', () => {
+  const { getAllByRole } = renderWithProviders(<ResultList {...mockProps} />);
+  const items = getAllByRole('link', { selector: 'li' });
+  const firstItem = items[0];
+  const firstItemSRText = firstItem.querySelectorAll('p')[0];
+  const firstItemResultTitle = firstItem.querySelectorAll('p')[1];
+
+  // List item's image should be aria-hidden
+  expect(firstItem.querySelector('img').getAttribute('aria-hidden')).toBeTruthy();
+  expect(firstItem.getAttribute('role')).toEqual('link');
+  expect(firstItem.getAttribute('tabIndex')).toEqual('0');
+  expect(firstItemSRText.className.indexOf('ResultItem-title') > 0).toBeTruthy();
+  expect(firstItemResultTitle.className.indexOf('ResultItem-title') > 0).toBeTruthy();
+  expect(firstItemResultTitle.getAttribute('aria-hidden')).toBeTruthy();
 });
