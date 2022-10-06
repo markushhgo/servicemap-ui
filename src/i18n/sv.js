@@ -623,6 +623,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar',
   'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
   'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
+  'mobilityPlatform.menu.loadingPlaces.show': 'Loading places', // TODO translate
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',

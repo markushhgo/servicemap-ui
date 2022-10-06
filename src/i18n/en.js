@@ -622,6 +622,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters',
   'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
   'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
+  'mobilityPlatform.menu.loadingPlaces.show': 'Loading places', // TODO verify
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',

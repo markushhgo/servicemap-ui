@@ -1,9 +1,9 @@
 import {
-  Checkbox, FormControl, FormControlLabel, FormGroup, Typography
+  Checkbox, FormControl, FormControlLabel, FormGroup, Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, {
-  useContext, useEffect, useMemo, useRef, useState
+  useContext, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
@@ -13,7 +13,7 @@ import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
-  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData
+  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -97,6 +97,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScootersRyde,
     showDisabledParking,
     setShowDisabledParking,
+    showLoadingPlaces,
+    setShowLoadingPlaces,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -199,7 +201,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
     checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones]);
+    checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones, showLoadingPlaces]);
 
   useEffect(() => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
@@ -359,6 +362,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const parkingAreasToggle = () => {
     setShowScooterParkingAreas(current => !current);
+  };
+
+  const loadingPlacesToggle = () => {
+    setShowLoadingPlaces(current => !current);
   };
 
   const scooterSpeedLimitAreasToggle = () => {
@@ -595,6 +602,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.speedLimitZones.show',
       checkedValue: openSpeedLimitList,
       onChangeValue: speedLimitZonesToggle,
+    },
+    {
+      type: 'loadingPlaces',
+      msgId: 'mobilityPlatform.menu.loadingPlaces.show',
+      checkedValue: showLoadingPlaces,
+      onChangeValue: loadingPlacesToggle,
     },
   ];
 

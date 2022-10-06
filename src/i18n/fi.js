@@ -625,6 +625,7 @@ const translations = {
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat',
   'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
   'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti',
+  'mobilityPlatform.menu.loadingPlaces.show': 'Kuormauspaikat',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
