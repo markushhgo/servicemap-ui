@@ -1,11 +1,9 @@
 import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import useLocaleText from '../../../../../utils/useLocaleText';
 
 const LoadingPlacesContent = ({ classes, intl, item }) => {
-  const locale = useSelector(state => state.user.locale);
   const getLocaleText = useLocaleText();
 
   const singleValTypo = (messageId, value, props = {}) => (
@@ -23,53 +21,45 @@ const LoadingPlacesContent = ({ classes, intl, item }) => {
     </div>
   );
 
-  const renderLocaleText = (nameFi, nameEn, nameSv) => {
-    switch (locale) {
-      case 'en':
-        return nameEn;
-      case 'sv':
-        return nameSv;
-      default:
-        return nameFi;
-    }
+  const loadingPlaceName = {
+    fi: item.name_fi,
+    en: item.name_en,
+    sv: item.name_sv,
   };
 
-  const renderAddress = () => {
-    switch (locale) {
-      case 'en':
-        return singleValTypo('mobilityPlatform.content.address', item.address_en, { className: classes.margin });
-      case 'sv':
-        return singleValTypo('mobilityPlatform.content.address', item.address_sv, { className: classes.margin });
-      default:
-        return singleValTypo('mobilityPlatform.content.address', item.address_fi, { className: classes.margin });
-    }
+  const loadingPlaceAddress = {
+    fi: item.address_fi,
+    en: item.address_en,
+    sv: item.address_sv,
   };
 
-  const bikeServiceStationInfo = (
+  const renderAddress = () => singleValTypo('mobilityPlatform.content.address', getLocaleText(loadingPlaceAddress), { className: classes.margin });
+
+  const loadingPlaceInfo = (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
         <Typography variant="subtitle1">
-          {renderLocaleText(item.name, item.name_en, item.name_sv)}
+          {getLocaleText(loadingPlaceName)}
         </Typography>
       </div>
       <div className={classes.textContainer}>
         {item.address ? renderAddress() : null}
-        <div>
+        <div className={classes.marginTop}>
           <Typography component="p" variant="body2">
             {getLocaleText(item.extra.Lastaus)}
           </Typography>
         </div>
-        <div>
+        <div className={classes.marginTop}>
           <Typography component="p" variant="body2">
             {getLocaleText(item.extra.Lisatieto)}
           </Typography>
         </div>
-        <div>
+        <div className={classes.marginTop}>
           <Typography component="p" variant="body2">
             {getLocaleText(item.extra.Muutanimi)}
           </Typography>
         </div>
-        <div>
+        <div className={classes.marginTop}>
           <Typography component="p" variant="body2">
             {getLocaleText(item.extra.Saavutetta)}
           </Typography>
@@ -80,7 +70,7 @@ const LoadingPlacesContent = ({ classes, intl, item }) => {
 
   return (
     <div className={classes.container}>
-      {bikeServiceStationInfo}
+      {loadingPlaceInfo}
     </div>
   );
 };
