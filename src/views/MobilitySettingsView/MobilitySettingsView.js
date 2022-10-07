@@ -96,6 +96,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterSpeedLimitAreas,
     showScootersRyde,
     setShowScootersRyde,
+    showDisabledParking,
+    setShowDisabledParking,
     showStreetMaintenance,
     setShowStreetMaintenance,
     streetMaintenancePeriod,
@@ -384,6 +386,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScootersRyde(current => !current);
   };
 
+  const disabledParkingToggle = () => {
+    setShowDisabledParking(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -644,6 +650,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       onChangeValue: parkingSpacesToggle,
     },
     {
+      type: 'disabledParking',
+      msgId: 'mobilityPlatform.menu.show.disabledParking',
+      checkedValue: showDisabledParking,
+      onChangeValue: disabledParkingToggle,
+    },
+    {
       type: 'parkingChargeZones',
       msgId: 'mobilityPlatform.menu.showParkingChargeZones',
       checkedValue: openParkingChargeZoneList,
@@ -810,7 +822,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderSpeedLimits = () => (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography variant="subtitle2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
+        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
           {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
         </Typography>
       </div>
@@ -829,15 +841,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
               label={(
                 <Typography
                   variant="body2"
-                  aria-label={`${item} ${intl.formatMessage({
+                  aria-label={intl.formatMessage({
                     id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  })}`}
+                  }, { item })}
                 >
-                  {item}
-                  {' '}
                   {intl.formatMessage({
                     id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  })}
+                  }, { item })}
                 </Typography>
             )}
             />
@@ -865,13 +875,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
               label={(
                 <Typography
                   variant="body2"
-                  aria-label={`${intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })} ${
-                    item.extra.maksuvyohyke
-                  }`}
+                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
                 >
-                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' })}
-                  {' '}
-                  {item.extra.maksuvyohyke}
+                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
                 </Typography>
               )}
             />
@@ -882,6 +888,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const renderScooterProviderList = () => (
     <>
+      <div className={`${classes.paragraph} ${classes.border}`}>
+        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}>
+          {intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}
+        </Typography>
+      </div>
       {scooterProviders
         && scooterProviders.length > 0
         && scooterProviders.map(item => (
@@ -1042,6 +1053,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
       {showGasFillingStations ? <InfoTextBox infoText="mobilityPlatform.info.gasFillingStations" /> : null}
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
+      {showDisabledParking ? <InfoTextBox infoText="mobilityPlatform.info.disabledParking" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
       {showMarinas ? (
         <InfoTextBox

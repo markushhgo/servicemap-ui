@@ -122,6 +122,7 @@ const DefaultLayout = (props) => {
   const [showScooterParkingAreas, setShowScooterParkingAreas] = useState(false);
   const [showScooterSpeedLimitAreas, setShowScooterSpeedLimitAreas] = useState(false);
   const [showScootersRyde, setShowScootersRyde] = useState(false);
+  const [showDisabledParking, setShowDisabledParking] = useState(false);
   const [showStreetMaintenance, setShowStreetMaintenance] = useState(false);
   const [streetMaintenancePeriod, setStreetMaintenancePeriod] = useState(null);
 
@@ -257,6 +258,8 @@ const DefaultLayout = (props) => {
                       setShowScooterSpeedLimitAreas,
                       showScootersRyde,
                       setShowScootersRyde,
+                      showDisabledParking,
+                      setShowDisabledParking,
                       showStreetMaintenance,
                       setShowStreetMaintenance,
                       streetMaintenancePeriod,
@@ -301,6 +304,7 @@ const DefaultLayout = (props) => {
                     showScooterParkingAreas,
                     showScooterSpeedLimitAreas,
                     showScootersRyde,
+                    showDisabledParking,
                     showStreetMaintenance,
                     streetMaintenancePeriod,
                   }}
