@@ -6,7 +6,7 @@ import useLocaleText from '../../../../../utils/useLocaleText';
 const LoadingPlacesContent = ({ classes, intl, item }) => {
   const getLocaleText = useLocaleText();
 
-  const singleValTypo = (messageId, value, props = {}) => (
+  const singleValText = (messageId, value, props = {}) => (
     <div {...props}>
       <Typography component="p" variant="body2">
         <strong>
@@ -33,7 +33,15 @@ const LoadingPlacesContent = ({ classes, intl, item }) => {
     sv: item.address_sv,
   };
 
-  const renderAddress = () => singleValTypo('mobilityPlatform.content.address', getLocaleText(loadingPlaceAddress), { className: classes.margin });
+  const renderText = textObj => (
+    <div className={classes.marginTop}>
+      <Typography component="p" variant="body2">
+        {getLocaleText(textObj)}
+      </Typography>
+    </div>
+  );
+
+  const renderAddress = () => singleValText('mobilityPlatform.content.address', getLocaleText(loadingPlaceAddress), { className: classes.margin });
 
   const loadingPlaceInfo = (
     <div className={classes.container}>
@@ -43,27 +51,11 @@ const LoadingPlacesContent = ({ classes, intl, item }) => {
         </Typography>
       </div>
       <div className={classes.textContainer}>
-        {item.address ? renderAddress() : null}
-        <div className={classes.marginTop}>
-          <Typography component="p" variant="body2">
-            {getLocaleText(item.extra.Lastaus)}
-          </Typography>
-        </div>
-        <div className={classes.marginTop}>
-          <Typography component="p" variant="body2">
-            {getLocaleText(item.extra.Lisatieto)}
-          </Typography>
-        </div>
-        <div className={classes.marginTop}>
-          <Typography component="p" variant="body2">
-            {getLocaleText(item.extra.Muutanimi)}
-          </Typography>
-        </div>
-        <div className={classes.marginTop}>
-          <Typography component="p" variant="body2">
-            {getLocaleText(item.extra.Saavutetta)}
-          </Typography>
-        </div>
+        {renderAddress()}
+        {renderText(item.extra.Lastaus)}
+        {renderText(item.extra.Lisatieto)}
+        {renderText(item.extra.Muutanimi)}
+        {renderText(item.extra.Saavutetta)}
       </div>
     </div>
   );
