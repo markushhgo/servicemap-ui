@@ -39,6 +39,8 @@ const SnowPlows = () => {
     teal: [0, 128, 128, 255],
   };
 
+  const whiteOption = { color: '#ffffff', dashArray: '1, 8' };
+
   const getOption = (input) => {
     switch (input) {
       case 'Puhtaanapito':
@@ -59,7 +61,7 @@ const SnowPlows = () => {
     return {
       color: `rgba(${option})`,
       fillOpacity: 0.3,
-      weight: 4,
+      weight: 8,
     };
   };
 
@@ -170,11 +172,17 @@ const SnowPlows = () => {
     const isValid = validateData(inputData);
     if (isValid) {
       return inputData.map(item => (
-        <Polyline
-          key={`${item.geometry.event}${item.geometry.coordinates[0]}`}
-          pathOptions={getPathOptions(item.geometry.event)}
-          positions={swapCoords(item.geometry.coordinates)}
-        />
+        <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
+          <Polyline
+            pathOptions={getPathOptions(item.geometry.event)}
+            positions={swapCoords(item.geometry.coordinates)}
+          />
+          <Polyline
+            weight={4}
+            pathOptions={whiteOption}
+            positions={swapCoords(item.geometry.coordinates)}
+          />
+        </React.Fragment>
       ));
     }
     return null;
