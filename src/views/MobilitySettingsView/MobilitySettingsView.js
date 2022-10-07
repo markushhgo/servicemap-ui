@@ -1,9 +1,9 @@
 import {
-  Checkbox, FormControl, FormControlLabel, FormGroup, Typography
+  Checkbox, FormControl, FormControlLabel, FormGroup, Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, {
-  useContext, useEffect, useMemo, useRef, useState
+  useContext, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
@@ -13,7 +13,7 @@ import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
-  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData
+  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
@@ -929,7 +929,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
           {streetMaintenanceInfo(classes.purple, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
           {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
           {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
-          {streetMaintenanceInfo(classes.black, 'mobilityPlatform.menu.streetMaintenance.info.other')}
         </div>
       </div>
       {streetMaintenanceSelections

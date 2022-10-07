@@ -626,11 +626,10 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.1day': '1 day',
   'mobilityPlatform.menu.streetMaintenance.3days': '3 days',
   'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.', // TODO translate
-  'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Snowplows', // TODO verify
-  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'De-icing', // TODO verify
+  'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Snow plowing', // TODO verify
+  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Anti-skid', // TODO verify
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal', // TODO verify
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Sanitation work', // TODO verify
-  'mobilityPlatform.menu.streetMaintenance.info.other': 'Other works', // TODO verify
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
