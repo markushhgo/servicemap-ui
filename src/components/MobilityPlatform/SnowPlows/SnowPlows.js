@@ -39,7 +39,7 @@ const SnowPlows = () => {
     teal: [0, 128, 128, 255],
   };
 
-  const whiteOption = { color: '#ffffff', dashArray: '1, 8' };
+  const whiteOption = { color: '#ffffff', dashArray: '1, 8', weight: 4 };
 
   const getOption = (input) => {
     switch (input) {
@@ -170,15 +170,16 @@ const SnowPlows = () => {
 
   const renderData = (inputData) => {
     const isValid = validateData(inputData);
+    // Get geometries that are LineString.
+    const filteredData = inputData.filter(item => item.geometry.name === 'LineString');
     if (isValid) {
-      return inputData.map(item => (
+      return filteredData.map(item => (
         <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
           <Polyline
             pathOptions={getPathOptions(item.geometry.event)}
             positions={swapCoords(item.geometry.coordinates)}
           />
           <Polyline
-            weight={4}
             pathOptions={whiteOption}
             positions={swapCoords(item.geometry.coordinates)}
           />

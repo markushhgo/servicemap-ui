@@ -108,30 +108,33 @@ const styles = theme => ({
     flexDirection: 'row',
     marginTop: theme.spacing(1),
   },
-  black: {
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '1.5rem',
     height: '1.5rem',
+  },
+  black: {
     backgroundColor: 'rgba(0, 0, 0,255)',
   },
   green: {
-    width: '1.5rem',
-    height: '1.5rem',
     backgroundColor: 'rgba(15, 115, 6, 255)',
   },
   blue: {
-    width: '1.5rem',
-    height: '1.5rem',
     backgroundColor: 'rgba(7, 44, 115, 255)',
   },
   purple: {
-    width: '1.5rem',
-    height: '1.5rem',
     backgroundColor: 'rgba(202, 15, 212, 255)',
   },
   burgundy: {
-    width: '1.5rem',
-    height: '1.5rem',
     backgroundColor: 'rgba(128, 0, 32, 255)',
+  },
+  white: {
+    width: '50%',
+    height: '50%',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255, 255, 255, 255)',
   },
 });
 

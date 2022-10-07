@@ -920,9 +920,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const streetMaintenanceInfo = (colorClass, translationId) => (
+  const streetMaintenanceInfo = (colorClass, colorWhite, translationId) => (
     <div className={classes.flexBox}>
-      <div className={colorClass} />
+      <div className={`${classes.box} ${colorClass}`}>
+        <div className={colorWhite} />
+      </div>
       <div className={classes.marginSm}>
         <Typography variant="body2">{intl.formatMessage({ id: translationId })}</Typography>
       </div>
@@ -936,10 +938,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
           {intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
         </Typography>
         <div className={classes.infoText}>
-          {streetMaintenanceInfo(classes.blue, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
-          {streetMaintenanceInfo(classes.purple, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
-          {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
-          {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
+          {streetMaintenanceInfo(classes.blue, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
+          {streetMaintenanceInfo(classes.purple, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
+          {streetMaintenanceInfo(classes.burgundy, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
+          {streetMaintenanceInfo(classes.green, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
         </div>
       </div>
       {streetMaintenanceSelections
