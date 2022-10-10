@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
-import { useSelector } from 'react-redux';
 import disabledParkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_disabled_parking.svg';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 import DisabledParkingContent from './components/DisabledParkingContent';
 
 /**
- * Displays disabled parking areas on the map in polygon and marker format.
+ * Displays disabled parking areas on the map in marker format.
  */
 
 const DisabledParking = () => {
@@ -15,9 +14,7 @@ const DisabledParking = () => {
 
   const { openMobilityPlatform, showDisabledParking } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-
-  const { Marker, Polygon, Popup } = global.rL;
+  const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
   const customIcon = icon({
@@ -30,11 +27,6 @@ const DisabledParking = () => {
       fetchMobilityMapPolygonData('DSP', 1000, setDisabledParkingData);
     }
   }, [openMobilityPlatform, setDisabledParkingData]);
-
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
-
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 5 };
-  const pathOptions = mapType === 'accessible_map' ? greenOptions : blueOptions;
 
   const map = useMap();
 
@@ -57,7 +49,6 @@ const DisabledParking = () => {
         && disabledParkingData.length > 0
         && disabledParkingData.map(item => (
           <div key={item.id}>
-            <Polygon pathOptions={pathOptions} positions={item.geometry_coords} />
             <Marker icon={customIcon} position={getSingleCoordinates(item.geometry_coords)}>
               <Popup className="disabled-parking-popup">
                 <DisabledParkingContent item={item} />
