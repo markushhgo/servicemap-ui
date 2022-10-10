@@ -507,6 +507,7 @@ const translations = {
   'services.search.sr.selected': 'Perform search with services: {services}',
   'services.category.select': 'All',
   'services.category.open': 'Open category',
+  'services.info': 'Before you can perform a search you must choose at least one service from services list below.',
   'services.tree.level': 'Level',
   'services.description.extra.cgsTitle': 'Charging stations',
   'services.description.extra.gfsTitle': 'Gas filling station',

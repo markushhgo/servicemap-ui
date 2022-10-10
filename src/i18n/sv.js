@@ -507,6 +507,7 @@ const translations = {
   'services.search.sr.selected': 'Sök med tjänsterna: {services}',
   'services.category.select': 'Alla',
   'services.category.open': 'Öppna kategori',
+  'services.info': 'Välj minst en tjänst från listan över tjänster nedan som du kan utföra sökningen.',
   'services.tree.level': 'Nivå',
   'services.description.extra.cgsTitle': 'Laddplats',
   'services.description.extra.gfsTitle': 'Gas station',
