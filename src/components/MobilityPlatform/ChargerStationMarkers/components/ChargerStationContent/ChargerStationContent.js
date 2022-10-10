@@ -20,12 +20,7 @@ const ChargerStationContent = ({ classes, intl, station }) => {
   const singleValTypo = (messageId, value, props = {}) => (
     <div {...props}>
       <Typography variant="body2">
-        {intl.formatMessage({
-          id: messageId,
-        })}
-        :
-        {' '}
-        {value}
+        {intl.formatMessage({ id: messageId }, { value })}
       </Typography>
     </div>
   );

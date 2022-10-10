@@ -9,14 +9,7 @@ const BikeServiceStationContent = ({ classes, intl, station }) => {
   const singleValTypo = (messageId, value, props = {}) => (
     <div {...props}>
       <Typography component="p" variant="body2">
-        <strong>
-          {intl.formatMessage({
-            id: messageId,
-          })}
-          :
-        </strong>
-        {' '}
-        {value}
+        {intl.formatMessage({ id: messageId }, { value })}
       </Typography>
     </div>
   );

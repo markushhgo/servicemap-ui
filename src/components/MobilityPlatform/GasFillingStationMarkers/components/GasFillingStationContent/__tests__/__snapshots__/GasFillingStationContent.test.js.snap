@@ -23,12 +23,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body2"
         >
-          <strong>
-            Osoite
-            :
-          </strong>
-           
-          Osoite
+          Osoite: Osoite
         </p>
       </div>
       <div
@@ -37,12 +32,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body2"
         >
-          <strong>
-            Kaasuaseman tyyppi
-            :
-          </strong>
-           
-          LNG
+          Kaasuaseman tyyppi: LNG
         </p>
       </div>
       <div
@@ -51,12 +41,7 @@ exports[`<GasFillingStationContent /> should work 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body2"
         >
-          <strong>
-            Operaattori
-            :
-          </strong>
-           
-          Operaattori
+          Operaattori: Operaattori
         </p>
       </div>
     </div>
