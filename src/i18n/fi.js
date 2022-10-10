@@ -637,7 +637,7 @@ const translations = {
   'mobilityPlatform.content.chargersTitle': 'Latausasemat',
   'mobilityPlatform.content.operator': 'Operaattori',
   'mobilityPlatform.content.count': 'Määrä',
-  'mobilityPlatform.content.power': 'Teho',
+  'mobilityPlatform.content.power': 'Teho: {value} kW',
   'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä',
   'mobilityPlatform.chargerStations.content.charge': 'Maksullinen',
   'mobilityPlatform.chargerStations.content.free': 'Ilmainen asiakkaille',

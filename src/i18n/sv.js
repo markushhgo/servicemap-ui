@@ -635,7 +635,7 @@ const translations = {
   'mobilityPlatform.content.chargersTitle': 'Elladdningsstationer',
   'mobilityPlatform.content.operator': 'Operatör',
   'mobilityPlatform.content.count': 'Antal',
-  'mobilityPlatform.content.power': 'Effekt',
+  'mobilityPlatform.content.power': 'Effekt: {value} kW',
   'mobilityPlatform.chargerStations.content.admin': 'Administratör',
   'mobilityPlatform.chargerStations.content.charge': 'För en avgift',
   'mobilityPlatform.chargerStations.content.free': 'Kostnadsfritt för kunderna',

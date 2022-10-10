@@ -634,7 +634,7 @@ const translations = {
   'mobilityPlatform.content.chargersTitle': 'E-charging points',
   'mobilityPlatform.content.operator': 'Operator',
   'mobilityPlatform.content.count': 'Amount',
-  'mobilityPlatform.content.power': 'Power',
+  'mobilityPlatform.content.power': 'Power: {value} kW',
   'mobilityPlatform.chargerStations.content.admin': 'Administrator',
   'mobilityPlatform.chargerStations.content.charge': 'For a fee',
   'mobilityPlatform.chargerStations.content.free': 'Free for customers',
