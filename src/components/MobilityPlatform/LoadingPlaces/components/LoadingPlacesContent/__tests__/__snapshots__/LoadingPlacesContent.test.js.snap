@@ -26,12 +26,7 @@ exports[`<LoadingPlacesContent /> should match snapshot 1`] = `
           <p
             class="MuiTypography-root MuiTypography-body2"
           >
-            <strong>
-              Osoite
-              :
-            </strong>
-             
-            Testikatu
+            Osoite: Testikatu
           </p>
         </div>
         <div

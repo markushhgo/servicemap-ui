@@ -2,7 +2,6 @@
 import React from 'react';
 import LoadingPlacesContent from '../index';
 import { initialState } from '../../../../../../redux/reducers/user';
-import finnishTranslations from '../../../../../../i18n/fi';
 import { getRenderWithProviders } from '../../../../../../../jestUtils';
 
 const mockProps = {
@@ -54,7 +53,7 @@ describe('<LoadingPlacesContent />', () => {
     const h6 = container.querySelectorAll('h6');
     const p = container.querySelectorAll('p');
     expect(h6[0].textContent).toContain(mockProps.item.name_fi);
-    expect(p[0].textContent).toContain(`${finnishTranslations['mobilityPlatform.content.address']}: ${mockProps.item.address_fi}`);
+    expect(p[0].textContent).toContain(`Osoite: ${mockProps.item.address_fi}`);
     expect(p[1].textContent).toContain(mockProps.item.extra.Lastaus.fi);
     expect(p[2].textContent).toContain(mockProps.item.extra.Lisatieto.fi);
     expect(p[3].textContent).toContain(mockProps.item.extra.Muutanimi.fi);
