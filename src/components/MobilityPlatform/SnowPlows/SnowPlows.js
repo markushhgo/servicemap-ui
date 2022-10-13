@@ -22,6 +22,12 @@ const SnowPlows = () => {
   const [streetMaintenanceSnowplow3Hours, setStreetMaintenanceSnowplow3Hours] = useState([]);
   const [streetMaintenanceSnowplow6Hours, setStreetMaintenanceSnowplow6Hours] = useState([]);
   const [streetMaintenanceSnowplow12Hours, setStreetMaintenanceSnowplow12Hours] = useState([]);
+  const [streetMaintenanceDeIcing1Day, setStreetMaintenanceDeIcing1Day] = useState([]);
+  const [streetMaintenanceDeIcing3Days, setStreetMaintenanceDeIcing3Days] = useState([]);
+  const [streetMaintenanceDeIcing1Hour, setStreetMaintenanceDeIcing1Hour] = useState([]);
+  const [streetMaintenanceDeIcing3Hours, setStreetMaintenanceDeIcing3Hours] = useState([]);
+  const [streetMaintenanceDeIcing6Hours, setStreetMaintenanceDeIcing6Hours] = useState([]);
+  const [streetMaintenanceDeIcing12Hours, setStreetMaintenanceDeIcing12Hours] = useState([]);
 
   const { openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance } = useContext(MobilityPlatformContext);
 
@@ -47,9 +53,9 @@ const SnowPlows = () => {
         return options.green;
       case 'Auraus':
         return options.blue;
-      case 'Suolaus':
+      case 'Hiekanpoisto':
         return options.purple;
-      case 'Hiekoitus':
+      case 'Liukkaudentorjunta':
         return options.burgundy;
       default:
         return options.black;
@@ -68,8 +74,7 @@ const SnowPlows = () => {
   const maintenanceEvents = {
     sanitation: 'Puhtaanapito',
     snowplow: 'Auraus',
-    deicing: 'Suolaus',
-    sanding: 'Hiekoitus',
+    deIcing: 'Liukkaudentorjunta',
     sandRemoval: 'Hiekanpoisto',
   };
 
@@ -79,10 +84,8 @@ const SnowPlows = () => {
         return maintenanceEvents.sanitation;
       case 'snowplow':
         return maintenanceEvents.snowplow;
-      case 'deicing':
-        return maintenanceEvents.deicing;
-      case 'sanding':
-        return maintenanceEvents.sanding;
+      case 'deIcing':
+        return maintenanceEvents.deIcing;
       case 'sandRemoval':
         return maintenanceEvents.sandRemoval;
       default:
@@ -118,6 +121,12 @@ const SnowPlows = () => {
 
   useEffect(() => {
     if (openMobilityPlatform) {
+      fetchStreetMaintenanceData(createQuery('deIcing', yesterDay), setStreetMaintenanceDeIcing1Day);
+      fetchStreetMaintenanceData(createQuery('deIcing', threeDays), setStreetMaintenanceDeIcing3Days);
+      fetchStreetMaintenanceData(createQuery('deIcing', oneHour), setStreetMaintenanceDeIcing1Hour);
+      fetchStreetMaintenanceData(createQuery('deIcing', threeHours), setStreetMaintenanceDeIcing3Hours);
+      fetchStreetMaintenanceData(createQuery('deIcing', sixHours), setStreetMaintenanceDeIcing6Hours);
+      fetchStreetMaintenanceData(createQuery('deIcing', twelveHours), setStreetMaintenanceDeIcing12Hours);
       fetchStreetMaintenanceData(createQuery('sandRemoval', yesterDay), setStreetMaintenanceSandRemoval1Day);
       fetchStreetMaintenanceData(createQuery('sandRemoval', threeDays), setStreetMaintenanceSandRemoval3Days);
       fetchStreetMaintenanceData(createQuery('sandRemoval', oneHour), setStreetMaintenanceSandRemoval1Hour);
@@ -131,31 +140,37 @@ const SnowPlows = () => {
     ...streetMaintenanceSanitation1Day,
     ...streetMaintenanceSandRemoval1Day,
     ...streetMaintenanceSnowplow1Day,
+    ...streetMaintenanceDeIcing1Day,
   ];
   const streetMaintenance3Days = [
     ...streetMaintenanceSanitation3Days,
     ...streetMaintenanceSandRemoval3Days,
     ...streetMaintenanceSnowplow3Days,
+    ...streetMaintenanceDeIcing3Days,
   ];
   const streetMaintenance1Hour = [
     ...streetMaintenanceSanitation1Hour,
     ...streetMaintenanceSandRemoval1Hour,
     ...streetMaintenanceSnowplow1Hour,
+    ...streetMaintenanceDeIcing1Hour,
   ];
   const streetMaintenance3Hours = [
     ...streetMaintenanceSanitation3Hours,
     ...streetMaintenanceSandRemoval3Hours,
     ...streetMaintenanceSnowplow3Hours,
+    ...streetMaintenanceDeIcing3Hours,
   ];
   const streetMaintenance6Hours = [
     ...streetMaintenanceSanitation6Hours,
     ...streetMaintenanceSandRemoval6Hours,
     ...streetMaintenanceSnowplow6Hours,
+    ...streetMaintenanceDeIcing6Hours,
   ];
   const streetMaintenance12Hours = [
     ...streetMaintenanceSanitation12Hours,
     ...streetMaintenanceSandRemoval12Hours,
     ...streetMaintenanceSnowplow12Hours,
+    ...streetMaintenanceDeIcing12Hours,
   ];
 
   const swapCoords = (coordsData) => {
