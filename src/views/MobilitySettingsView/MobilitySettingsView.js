@@ -13,7 +13,9 @@ import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
-  fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData,
+  fetchBicycleRouteNames,
+  fetchCultureRouteNames,
+  fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
@@ -102,6 +104,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowStreetMaintenance,
     streetMaintenancePeriod,
     setStreetMaintenancePeriod,
+    noActiveStreetMaintenance,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -743,9 +746,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   /**
-     * @param {Array} inputData
-     * @returns {JSX Element}
-     */
+   * @param {Array} inputData
+   * @returns {JSX Element}
+   */
   const renderBicycleRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
@@ -758,21 +761,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
               className={classes.margin}
               onChange={() => setBicycleRouteState(item.name_fi)}
             />
-        )}
+          )}
           label={(
             <Typography variant="body2" aria-label={getRouteName(item.name_fi, item.name_en, item.name_sv)}>
               {getRouteName(item.name_fi, item.name_en, item.name_sv)}
             </Typography>
-         )}
+          )}
         />
-        {item.name_fi === bicycleRouteName ? (<RouteLength key={item.id} route={item} />) : null}
+        {item.name_fi === bicycleRouteName ? <RouteLength key={item.id} route={item} /> : null}
       </div>
     ));
 
   /**
-     * @param {Array} inputData
-     * @returns {JSX Element}
-     */
+   * @param {Array} inputData
+   * @returns {JSX Element}
+   */
   const renderCultureRoutes = inputData => inputData
     && inputData.length > 0
     && inputData.map(item => (
@@ -785,28 +788,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
               className={classes.margin}
               onChange={() => setCultureRouteState(item.id)}
             />
-      )}
+          )}
           label={(
             <Typography variant="body2" aria-label={getRouteName(item.name, item.name_en, item.name_sv)}>
               {getRouteName(item.name, item.name_en, item.name_sv)}
             </Typography>
-      )}
+          )}
         />
-        {item.id === cultureRouteId ? (
-          <Description
-            key={item.name}
-            route={item}
-            currentLocale={locale}
-          />
-        ) : null}
+        {item.id === cultureRouteId ? <Description key={item.name} route={item} currentLocale={locale} /> : null}
       </div>
     ));
 
   /**
-     * @param {boolean} settingVisibility
-     * @param {Array} typeVal
-     * @returns {JSX Element}
-     */
+   * @param {boolean} settingVisibility
+   * @param {Array} typeVal
+   * @returns {JSX Element}
+   */
   const renderSettings = (settingVisibility, typeVal) => {
     if (settingVisibility) {
       return typeVal.map(item => (
@@ -822,8 +819,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
   };
 
   // Create array of speed limit values from data and remove duplicates
-  const speedLimitList = useMemo(() => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
-    [speedLimitZones]);
+  const speedLimitList = useMemo(
+    () => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
+    [speedLimitZones],
+  );
 
   // Sort in ascending order, because entries can be in random order
   // This list will be displayed for users
@@ -832,37 +831,48 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderSpeedLimits = () => (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}>
+        <Typography
+          variant="body2"
+          aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
+        >
           {intl.formatMessage({ id: 'mobilityPlatform.menu.speedLimitZones.select' })}
         </Typography>
       </div>
       <div className={classes.buttonList}>
-        {openSpeedLimitList && speedLimitListAsc.length > 0 && speedLimitListAsc.map(item => (
-          <div key={item} className={classes.checkBoxContainer}>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  checked={speedLimitSelections.includes(item)}
-                  aria-checked={speedLimitSelections.includes(item)}
-                  className={classes.margin}
-                  onChange={() => setSpeedLimitState(item)}
-                />
-            )}
-              label={(
-                <Typography
-                  variant="body2"
-                  aria-label={intl.formatMessage({
-                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  }, { item })}
-                >
-                  {intl.formatMessage({
-                    id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                  }, { item })}
-                </Typography>
-            )}
-            />
-          </div>
-        ))}
+        {openSpeedLimitList
+          && speedLimitListAsc.length > 0
+          && speedLimitListAsc.map(item => (
+            <div key={item} className={classes.checkBoxContainer}>
+              <FormControlLabel
+                control={(
+                  <Checkbox
+                    checked={speedLimitSelections.includes(item)}
+                    aria-checked={speedLimitSelections.includes(item)}
+                    className={classes.margin}
+                    onChange={() => setSpeedLimitState(item)}
+                  />
+                )}
+                label={(
+                  <Typography
+                    variant="body2"
+                    aria-label={intl.formatMessage(
+                      {
+                        id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                      },
+                      { item },
+                    )}
+                  >
+                    {intl.formatMessage(
+                      {
+                        id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                      },
+                      { item },
+                    )}
+                  </Typography>
+                )}
+              />
+            </div>
+          ))}
       </div>
     </>
   );
@@ -885,9 +895,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
               label={(
                 <Typography
                   variant="body2"
-                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
+                  aria-label={intl.formatMessage(
+                    { id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' },
+                    { value: item.extra.maksuvyohyke },
+                  )}
                 >
-                  {intl.formatMessage({ id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' }, { value: item.extra.maksuvyohyke })}
+                  {intl.formatMessage(
+                    { id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' },
+                    { value: item.extra.maksuvyohyke },
+                  )}
                 </Typography>
               )}
             />
@@ -930,11 +946,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const streetMaintenanceInfo = (colorClass, colorWhite, translationId) => (
+  const streetMaintenanceInfo = (colorClass, translationId) => (
     <div className={classes.flexBox}>
-      <div className={`${classes.box} ${colorClass}`}>
-        <div className={colorWhite} />
-      </div>
+      <div className={`${classes.box} ${colorClass}`} />
       <div className={classes.marginSm}>
         <Typography variant="body2">{intl.formatMessage({ id: translationId })}</Typography>
       </div>
@@ -944,14 +958,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderMaintenanceSelectionList = () => (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}>
+        <Typography
+          variant="body2"
+          aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
+        >
           {intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
         </Typography>
         <div className={classes.infoText}>
-          {streetMaintenanceInfo(classes.blue, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
-          {streetMaintenanceInfo(classes.purple, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
-          {streetMaintenanceInfo(classes.burgundy, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
-          {streetMaintenanceInfo(classes.green, classes.white, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
+          {streetMaintenanceInfo(classes.blue, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
+          {streetMaintenanceInfo(classes.purple, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
+          {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
+          {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
         </div>
       </div>
       {streetMaintenanceSelections
@@ -968,10 +985,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               )}
               label={(
-                <Typography
-                  variant="body2"
-                  aria-label={intl.formatMessage({ id: item.msgId })}
-                >
+                <Typography variant="body2" aria-label={intl.formatMessage({ id: item.msgId })}>
                   {intl.formatMessage({ id: item.msgId })}
                 </Typography>
               )}
@@ -1034,6 +1048,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
               {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
+              {noActiveStreetMaintenance && showStreetMaintenance ? (
+                <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" />
+              ) : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={scooterSettingsToggle}

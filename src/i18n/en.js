@@ -629,11 +629,11 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.12hours': '12 hours',
   'mobilityPlatform.menu.streetMaintenance.1day': '1 day',
   'mobilityPlatform.menu.streetMaintenance.3days': '3 days',
-  'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.', // TODO translate
-  'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Snow plowing', // TODO verify
-  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Anti-skid', // TODO verify
-  'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal', // TODO verify
-  'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Sanitation work', // TODO verify
+  'mobilityPlatform.menu.streetMaintenance.info': 'You can view ongoing street maintenance work for the selected time period.',
+  'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Snow plowing',
+  'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Prevention of slippery roads',
+  'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal',
+  'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Street cleaning',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -753,6 +753,7 @@ const translations = {
   'mobilityPlatform.info.scooters.speedLimitAreas': 'Maximum speed allowed on the areas shown on the map is 15 km/h.',
   'mobilityPlatform.info.scooters.general': 'The service map shows available electric scooters provided by operators. Electric scooters provided by other operators will be visible on the mobility view later.',
   'mobilityPlatform.info.disabledParking': 'Parking spaces intended for people with reduced mobility are shown on the map. To park on them, you need a disabled parking permit. There is accessible access to the parking places, excluding those parking places that can only be accessed through a gate.',
+  'mobilityPlatform.info.streetMaintenance.noActivity': 'Seurattavia kunnossapitotöitä ei ole nyt käynnissä.', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
