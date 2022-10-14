@@ -15,7 +15,7 @@ import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
   fetchBicycleRouteNames, fetchCultureRouteNames, fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
-import { selectRouteName } from '../../components/MobilityPlatform/utils/utils';
+import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import ButtonMain from './components/ButtonMain';
@@ -100,6 +100,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
+  const getLocaleText = useLocaleText();
 
   const bikeInfo = {
     paragraph1: 'mobilityPlatform.info.cityBikes.paragraph.1',
@@ -655,6 +656,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     },
   ];
 
+  const getRouteName = (name, nameEn, nameSv) => {
+    const routeName = {
+      fi: name,
+      en: nameEn,
+      sv: nameSv,
+    };
+    return getLocaleText(routeName);
+  };
+
   /**
      * @param {Array} inputData
      * @returns {JSX Element}
@@ -673,8 +683,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
             />
         )}
           label={(
-            <Typography variant="body2" aria-label={selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}>
-              {selectRouteName(locale, item.name_fi, item.name_en, item.name_sv)}
+            <Typography variant="body2" aria-label={getRouteName(item.name_fi, item.name_en, item.name_sv)}>
+              {getRouteName(item.name_fi, item.name_en, item.name_sv)}
             </Typography>
          )}
         />
@@ -700,8 +710,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
             />
       )}
           label={(
-            <Typography variant="body2" aria-label={selectRouteName(locale, item.name, item.name_en, item.name_sv)}>
-              {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
+            <Typography variant="body2" aria-label={getRouteName(item.name, item.name_en, item.name_sv)}>
+              {getRouteName(item.name, item.name_en, item.name_sv)}
             </Typography>
       )}
         />
