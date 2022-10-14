@@ -843,21 +843,21 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const renderWalkingContentInfoTexts = () => (
+  const renderWalkingInfoTexts = () => (
     <>
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {showPublicToilets ? <InfoTextBox infoText="mobilityPlatform.info.publicToilets" /> : null}
     </>
   );
 
-  const renderBicycleContentInfoTexts = () => (
+  const renderBicycleInfoTexts = () => (
     <>
       {showBicycleStands ? <InfoTextBox infoText="mobilityPlatform.info.bicycleStands" /> : null}
       {showCityBikes ? <CityBikeInfo bikeInfo={bikeInfo} /> : null}
     </>
   );
 
-  const renderDrivingContentInfoTexts = () => (
+  const renderDrivingInfoTexts = () => (
     <>
       {showRentalCars ? <InfoTextBox infoText="mobilityPlatform.info.rentalCars" /> : null}
       {showChargingStations ? <InfoTextBox infoText="mobilityPlatform.info.chargingStations" /> : null}
@@ -877,7 +877,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
-  const renderBoatingContentInfoTexts = () => (
+  const renderBoatingInfoTexts = () => (
     <>
       {showMarinas ? (
         <InfoTextBox
@@ -925,7 +925,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
               {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
-              {renderWalkingContentInfoTexts()}
+              {renderWalkingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={bicycleSettingsToggle}
@@ -939,7 +939,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={bicycleRouteList} /> : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
-              {renderBicycleContentInfoTexts()}
+              {renderBicycleInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={carSettingsToggle}
@@ -951,7 +951,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
-              {renderDrivingContentInfoTexts()}
+              {renderDrivingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={scooterSettingsToggle}
@@ -972,7 +972,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               </div>
               {renderSettings(openBoatingSettings, boatingControlTypes)}
-              {renderBoatingContentInfoTexts()}
+              {renderBoatingInfoTexts()}
             </>
           </FormGroup>
         </FormControl>
