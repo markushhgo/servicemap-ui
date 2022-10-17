@@ -595,7 +595,7 @@ const translations = {
   'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.title.boating': 'Veneily',
   'mobilityPlatform.menu.title.scooter': 'Sähköpotkulaudat',
-  'mobilityPlatform.menu.showChargingStations': 'Autojen sähkölatauspisteet',
+  'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
   'mobilityPlatform.menu.showBicycleStands': 'Polkupyöräpysäköinti',
