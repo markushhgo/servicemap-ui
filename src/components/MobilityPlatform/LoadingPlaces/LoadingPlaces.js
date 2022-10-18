@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import loadingPlaceIcon from 'servicemap-ui-turku/assets/icons/icons-icon_loading_place.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
@@ -26,10 +26,10 @@ const LoadingPlaces = () => {
     }
   }, [openMobilityPlatform, setLoadingPlaces]);
 
-  const dataIsValid = showLoadingPlaces && loadingPlaces && loadingPlaces.length > 0;
+  const renderData = showLoadingPlaces && loadingPlaces && loadingPlaces.length > 0;
 
   useEffect(() => {
-    if (dataIsValid) {
+    if (renderData) {
       const bounds = [];
       loadingPlaces.forEach((item) => {
         bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
@@ -40,7 +40,7 @@ const LoadingPlaces = () => {
 
   return (
     <>
-      {dataIsValid
+      {renderData
       && loadingPlaces.map(item => (
         <Marker
           key={item.id}
