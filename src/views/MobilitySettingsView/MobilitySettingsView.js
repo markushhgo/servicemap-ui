@@ -202,8 +202,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
     checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
+    checkVisibilityValues(showDisabledParking, setOpenCarSettings);
     checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones, showLoadingPlaces]);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones, showDisabledParking, showLoadingPlaces]);
 
   useEffect(() => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
@@ -404,7 +405,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       setBicycleRouteName(null);
     }
     if (showBicycleRoutes) {
-      setShowCultureRoutes(false);
+      setShowBicycleRoutes(false);
     }
   };
 
