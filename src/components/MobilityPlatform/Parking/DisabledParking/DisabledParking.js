@@ -3,6 +3,7 @@ import { useMap } from 'react-leaflet';
 import disabledParkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_disabled_parking.svg';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
+import { createIcon } from '../../utils/utils';
 import DisabledParkingContent from './components/DisabledParkingContent';
 
 /**
@@ -17,10 +18,7 @@ const DisabledParking = () => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const customIcon = icon({
-    iconUrl: disabledParkingIcon,
-    iconSize: [45, 45],
-  });
+  const customIcon = icon(createIcon(disabledParkingIcon));
 
   useEffect(() => {
     if (openMobilityPlatform) {

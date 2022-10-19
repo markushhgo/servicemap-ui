@@ -6,4 +6,12 @@ const setLocalizedLink = (locale, setLink, linkUrlSv, linkUrlEn, linkUrlFi) => {
   } else setLink(linkUrlFi);
 };
 
-export default setLocalizedLink;
+const createIcon = icon => ({
+  iconUrl: icon,
+  iconSize: [45, 45],
+});
+
+export {
+  setLocalizedLink,
+  createIcon,
+};
