@@ -10,7 +10,6 @@ import ChargerStationMarkers from '../../components/MobilityPlatform/ChargerStat
 import CityBikes from '../../components/MobilityPlatform/CityBikes';
 import CultureRoutes from '../../components/MobilityPlatform/CultureRoutes';
 import GasFillingStationMarkers from '../../components/MobilityPlatform/GasFillingStationMarkers';
-import DisabledParking from '../../components/MobilityPlatform/Parking/DisabledParking';
 import ParkingChargeZones from '../../components/MobilityPlatform/ParkingChargeZones';
 import ParkingSpaces from '../../components/MobilityPlatform/ParkingSpaces';
 import PublicToilets from '../../components/MobilityPlatform/PublicToilets';
@@ -21,6 +20,8 @@ import ScooterMarkers from '../../components/MobilityPlatform/Scooters/component
 import SpeedLimitAreas from '../../components/MobilityPlatform/Scooters/components/SpeedLimitAreas';
 import SnowPlows from '../../components/MobilityPlatform/SnowPlows';
 import SpeedLimitZones from '../../components/MobilityPlatform/SpeedLimitZones';
+import DisabledParking from '../../components/MobilityPlatform/Parking/DisabledParking';
+import LoadingPlaces from '../../components/MobilityPlatform/LoadingPlaces';
 
 const MobilityPlatformMapView = () => (
   <>
@@ -45,6 +46,7 @@ const MobilityPlatformMapView = () => (
     <SpeedLimitAreas />
     <ScooterMarkers />
     <DisabledParking />
+    <LoadingPlaces />
     <SnowPlows />
   </>
 );
