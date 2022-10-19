@@ -97,6 +97,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScootersRyde,
     showDisabledParking,
     setShowDisabledParking,
+    showLoadingPlaces,
+    setShowLoadingPlaces,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -200,7 +202,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showParkingSpaces, setOpenCarSettings);
     checkVisibilityValues(showChargingStations, setOpenCarSettings);
     checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones]);
+    checkVisibilityValues(showDisabledParking, setOpenCarSettings);
+    checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
+  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones, showDisabledParking, showLoadingPlaces]);
 
   useEffect(() => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
@@ -362,6 +366,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowScooterParkingAreas(current => !current);
   };
 
+  const loadingPlacesToggle = () => {
+    setShowLoadingPlaces(current => !current);
+  };
+
   const scooterSpeedLimitAreasToggle = () => {
     setShowScooterSpeedLimitAreas(current => !current);
   };
@@ -397,7 +405,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       setBicycleRouteName(null);
     }
     if (showBicycleRoutes) {
-      setShowCultureRoutes(false);
+      setShowBicycleRoutes(false);
     }
   };
 
@@ -596,6 +604,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.speedLimitZones.show',
       checkedValue: openSpeedLimitList,
       onChangeValue: speedLimitZonesToggle,
+    },
+    {
+      type: 'loadingPlaces',
+      msgId: 'mobilityPlatform.menu.loadingPlaces.show',
+      checkedValue: showLoadingPlaces,
+      onChangeValue: loadingPlacesToggle,
     },
   ];
 
@@ -875,6 +889,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       {showParkingSpaces ? <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" /> : null}
       {showDisabledParking ? <InfoTextBox infoText="mobilityPlatform.info.disabledParking" /> : null}
       {openParkingChargeZoneList ? <ExtendedInfo translations={chargeZoneTranslations} /> : null}
+      {showLoadingPlaces ? <InfoTextBox infoText="mobilityPlatform.info.loadingPlaces" /> : null}
     </>
   );
 

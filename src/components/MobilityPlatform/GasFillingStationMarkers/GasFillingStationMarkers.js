@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import gasFillingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import GasFillingStationContent from './components/GasFillingStationContent';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { createIcon } from '../utils/utils';
+import GasFillingStationContent from './components/GasFillingStationContent';
 
 const GasFillingStationMarkers = ({ classes }) => {
   const [gasFillingStations, setGasFillingStations] = useState([]);
@@ -14,10 +15,7 @@ const GasFillingStationMarkers = ({ classes }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const gasStationIcon = icon({
-    iconUrl: gasFillingIcon,
-    iconSize: [45, 45],
-  });
+  const gasStationIcon = icon(createIcon(gasFillingIcon));
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -49,7 +47,7 @@ const GasFillingStationMarkers = ({ classes }) => {
                 position={[item.geometry_coords.lat, item.geometry_coords.lon]}
               >
                 <div className={classes.popupWrapper}>
-                  <Popup className="charger-stations-popup">
+                  <Popup className="popup-w350">
                     <div className={classes.popupInner}>
                       <GasFillingStationContent
                         station={item}

@@ -44,7 +44,7 @@ const ScooterMarkers = () => {
     return [45, 45];
   };
 
-  const chargerStationIcon = icon({
+  const customIcon = icon({
     iconUrl: setIcon(zoomLevel),
     iconSize: setIconSize(zoomLevel),
   });
@@ -65,7 +65,7 @@ const ScooterMarkers = () => {
             && filteredScooters.map(item => (
               <Marker
                 key={item.bike_id}
-                icon={chargerStationIcon}
+                icon={customIcon}
                 position={[item.lat, item.lon]}
               >
                 <Popup>
