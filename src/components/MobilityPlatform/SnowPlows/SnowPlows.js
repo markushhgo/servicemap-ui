@@ -187,10 +187,8 @@ const SnowPlows = () => {
 
   const renderData = (inputData) => {
     const isValid = validateData(inputData);
-    // Get geometries that are LineString.
-    const filteredData = inputData.filter(item => item.geometry.name === 'LineString');
     if (isValid) {
-      return filteredData.map(item => (
+      return inputData.filter(item => item.geometry.name === 'LineString').map(item => (
         <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
           <Polyline
             pathOptions={getPathOptions(item.geometry.event)}
