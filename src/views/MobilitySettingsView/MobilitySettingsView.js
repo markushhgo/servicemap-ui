@@ -11,6 +11,7 @@ import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconSnowplow from 'servicemap-ui-turku/assets/icons/icons-icon_street_maintenance.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
   fetchBicycleRouteNames,
@@ -34,6 +35,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCarSettings, setOpenCarSettings] = useState(false);
   const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
   const [openScooterSettings, setOpenScooterSettings] = useState(false);
+  const [openStreetMaintenanceSettings, setOpenStreetMaintenanceSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -219,11 +221,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
   }, [showParkingChargeZones]);
 
   useEffect(() => {
-    checkVisibilityValues(showStreetMaintenance, setOpenCarSettings);
-    checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSelectionList);
-  }, [showStreetMaintenance]);
-
-  useEffect(() => {
     checkVisibilityValues(showMarinas, setOpenBoatingSettings);
     checkVisibilityValues(showBoatParking, setOpenBoatingSettings);
     checkVisibilityValues(showGuestHarbour, setOpenBoatingSettings);
@@ -315,6 +312,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const scooterSettingsToggle = () => {
     setOpenScooterSettings(current => !current);
+  };
+
+  const streetMaintenanceSettingsToggle = () => {
+    setOpenStreetMaintenanceSettings(current => !current);
   };
 
   /**
@@ -684,12 +685,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
       checkedValue: showLoadingPlaces,
       onChangeValue: loadingPlacesToggle,
     },
-    {
-      type: 'streetMaintenance',
-      msgId: 'mobilityPlatform.menu.show.streetMaintenance',
-      checkedValue: openStreetMaintenanceSelectionList,
-      onChangeValue: streetMaintenanceListToggle,
-    },
   ];
 
   const boatingControlTypes = [
@@ -746,6 +741,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.show.scootersRyde',
       checkedValue: showScootersRyde,
       onChangeValue: scootersRydeToggle,
+    },
+  ];
+
+  const streetMaintenanceControlTypes = [
+    {
+      type: 'winterMaintenance',
+      msgId: 'mobilityPlatform.menu.show.winterMaintenance',
+      checkedValue: openStreetMaintenanceSelectionList,
+      onChangeValue: streetMaintenanceListToggle,
     },
   ];
 
@@ -1117,8 +1121,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderSettings(openCarSettings, carControlTypes)}
               {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
               {openSpeedLimitList ? renderSpeedLimits() : null}
-              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
               {renderDrivingInfoTexts()}
+              <div className={classes.buttonContainer}>
+                <ButtonMain
+                  onClickFunc={streetMaintenanceSettingsToggle}
+                  settingState={openStreetMaintenanceSettings}
+                  iconName={iconSnowplow}
+                  translationId="mobilityPlatform.menu.title.streetMaintenance"
+                />
+              </div>
+              {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
+              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
               <div className={classes.buttonContainer}>
                 <ButtonMain
                   onClickFunc={scooterSettingsToggle}

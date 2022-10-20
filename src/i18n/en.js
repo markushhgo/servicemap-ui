@@ -592,6 +592,7 @@ const translations = {
   'mobilityPlatform.menu.title.car': 'By car',
   'mobilityPlatform.menu.title.boating': 'Boating',
   'mobilityPlatform.menu.title.scooter': 'Electric scooters',
+  'mobilityPlatform.menu.title.streetMaintenance': 'Street maintenance',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -623,7 +624,7 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
   'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
   'mobilityPlatform.menu.loadingPlaces.show': 'Loading places',
-  'mobilityPlatform.menu.show.streetMaintenance': 'Street maintenance',
+  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO translate
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 hour',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 hours',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 hours',

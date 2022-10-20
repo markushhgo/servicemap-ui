@@ -595,6 +595,7 @@ const translations = {
   'mobilityPlatform.menu.title.car': 'Autoilu',
   'mobilityPlatform.menu.title.boating': 'Veneily',
   'mobilityPlatform.menu.title.scooter': 'Sähköpotkulaudat',
+  'mobilityPlatform.menu.title.streetMaintenance': 'Katujen kunnossapito',
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
   'mobilityPlatform.menu.showEcoCounter': 'Laskentapisteet',
@@ -626,7 +627,7 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
   'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti',
   'mobilityPlatform.menu.loadingPlaces.show': 'Kuormauspaikat',
-  'mobilityPlatform.menu.show.streetMaintenance': 'Katujen kunnossapito',
+  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO verify
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 tunti',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 tuntia',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 tuntia',

@@ -593,6 +593,7 @@ const translations = {
   'mobilityPlatform.menu.title.car': 'Bilåkning',
   'mobilityPlatform.menu.title.boating': 'Båtliv',
   'mobilityPlatform.menu.title.scooter': 'Elsparkcyklar',
+  'mobilityPlatform.menu.title.streetMaintenance': 'Gatuunderhåll',
   'mobilityPlatform.menu.showChargingStations': 'Elladdningsstationer för bilar',
   'mobilityPlatform.menu.showGasFillingStations': 'Tankstationer med gas',
   'mobilityPlatform.menu.showEcoCounter': 'Beräkningspunkter',
@@ -624,7 +625,7 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
   'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
   'mobilityPlatform.menu.loadingPlaces.show': 'Lastningsplatser',
-  'mobilityPlatform.menu.show.streetMaintenance': 'Gatuunderhåll',
+  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO translate
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 timme',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 timmar',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 timmar',
