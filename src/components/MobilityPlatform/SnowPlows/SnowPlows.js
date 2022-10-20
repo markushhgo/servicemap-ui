@@ -29,9 +29,7 @@ const SnowPlows = () => {
   const [streetMaintenanceDeIcing6Hours, setStreetMaintenanceDeIcing6Hours] = useState([]);
   const [streetMaintenanceDeIcing12Hours, setStreetMaintenanceDeIcing12Hours] = useState([]);
 
-  const {
-    openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance,
-  } = useContext(MobilityPlatformContext);
+  const { openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance } = useContext(MobilityPlatformContext);
 
   const { Polyline } = global.rL;
 
@@ -133,42 +131,49 @@ const SnowPlows = () => {
     }
   }, [openMobilityPlatform]);
 
-  const streetMaintenance1Day = [
-    ...streetMaintenanceSanitation1Day,
-    ...streetMaintenanceSandRemoval1Day,
-    ...streetMaintenanceSnowplow1Day,
-    ...streetMaintenanceDeIcing1Day,
-  ];
-  const streetMaintenance3Days = [
-    ...streetMaintenanceSanitation3Days,
-    ...streetMaintenanceSandRemoval3Days,
-    ...streetMaintenanceSnowplow3Days,
-    ...streetMaintenanceDeIcing3Days,
-  ];
-  const streetMaintenance1Hour = [
-    ...streetMaintenanceSanitation1Hour,
-    ...streetMaintenanceSandRemoval1Hour,
-    ...streetMaintenanceSnowplow1Hour,
-    ...streetMaintenanceDeIcing1Hour,
-  ];
-  const streetMaintenance3Hours = [
-    ...streetMaintenanceSanitation3Hours,
-    ...streetMaintenanceSandRemoval3Hours,
-    ...streetMaintenanceSnowplow3Hours,
-    ...streetMaintenanceDeIcing3Hours,
-  ];
-  const streetMaintenance6Hours = [
-    ...streetMaintenanceSanitation6Hours,
-    ...streetMaintenanceSandRemoval6Hours,
-    ...streetMaintenanceSnowplow6Hours,
-    ...streetMaintenanceDeIcing6Hours,
-  ];
-  const streetMaintenance12Hours = [
-    ...streetMaintenanceSanitation12Hours,
-    ...streetMaintenanceSandRemoval12Hours,
-    ...streetMaintenanceSnowplow12Hours,
-    ...streetMaintenanceDeIcing12Hours,
-  ];
+  const combineData = (arr1, arr2, arr3, arr4) => [...arr1, ...arr2, ...arr3, ...arr4];
+
+  const streetMaintenance1Day = combineData(
+    streetMaintenanceSanitation1Day,
+    streetMaintenanceSandRemoval1Day,
+    streetMaintenanceSnowplow1Day,
+    streetMaintenanceDeIcing1Day,
+  );
+
+  const streetMaintenance3Days = combineData(
+    streetMaintenanceSanitation3Days,
+    streetMaintenanceSandRemoval3Days,
+    streetMaintenanceSnowplow3Days,
+    streetMaintenanceDeIcing3Days,
+  );
+
+  const streetMaintenance1Hour = combineData(
+    streetMaintenanceSanitation1Hour,
+    streetMaintenanceSandRemoval1Hour,
+    streetMaintenanceSnowplow1Hour,
+    streetMaintenanceDeIcing1Hour,
+  );
+
+  const streetMaintenance3Hours = combineData(
+    streetMaintenanceSanitation3Hours,
+    streetMaintenanceSandRemoval3Hours,
+    streetMaintenanceSnowplow3Hours,
+    streetMaintenanceDeIcing3Hours,
+  );
+
+  const streetMaintenance6Hours = combineData(
+    streetMaintenanceSanitation6Hours,
+    streetMaintenanceSandRemoval6Hours,
+    streetMaintenanceSnowplow6Hours,
+    streetMaintenanceDeIcing6Hours,
+  );
+
+  const streetMaintenance12Hours = combineData(
+    streetMaintenanceSanitation12Hours,
+    streetMaintenanceSandRemoval12Hours,
+    streetMaintenanceSnowplow12Hours,
+    streetMaintenanceDeIcing12Hours,
+  );
 
   const swapCoords = (coordsData) => {
     if (coordsData && coordsData.length > 0) {
@@ -183,18 +188,17 @@ const SnowPlows = () => {
   const renderData = (inputData) => {
     const isValid = validateData(inputData);
     if (isValid) {
-      return inputData.filter(item => item.geometry.name === 'LineString').map(item => (
-        <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
-          <Polyline
-            pathOptions={getPathOptions(item.geometry.event)}
-            positions={swapCoords(item.geometry.coordinates)}
-          />
-          <Polyline
-            pathOptions={whiteOption}
-            positions={swapCoords(item.geometry.coordinates)}
-          />
-        </React.Fragment>
-      ));
+      return inputData
+        .filter(item => item.geometry.name === 'LineString')
+        .map(item => (
+          <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
+            <Polyline
+              pathOptions={getPathOptions(item.geometry.event)}
+              positions={swapCoords(item.geometry.coordinates)}
+            />
+            <Polyline pathOptions={whiteOption} positions={swapCoords(item.geometry.coordinates)} />
+          </React.Fragment>
+        ));
     }
     return null;
   };
