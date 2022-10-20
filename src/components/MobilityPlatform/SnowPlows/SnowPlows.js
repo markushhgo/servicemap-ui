@@ -118,11 +118,6 @@ const SnowPlows = () => {
       fetchStreetMaintenanceData(createQuery('snowplow', threeHours), setStreetMaintenanceSnowplow3Hours);
       fetchStreetMaintenanceData(createQuery('snowplow', sixHours), setStreetMaintenanceSnowplow6Hours);
       fetchStreetMaintenanceData(createQuery('snowplow', twelveHours), setStreetMaintenanceSnowplow12Hours);
-    }
-  }, [openMobilityPlatform]);
-
-  useEffect(() => {
-    if (openMobilityPlatform) {
       fetchStreetMaintenanceData(createQuery('deIcing', yesterDay), setStreetMaintenanceDeIcing1Day);
       fetchStreetMaintenanceData(createQuery('deIcing', threeDays), setStreetMaintenanceDeIcing3Days);
       fetchStreetMaintenanceData(createQuery('deIcing', oneHour), setStreetMaintenanceDeIcing1Hour);
