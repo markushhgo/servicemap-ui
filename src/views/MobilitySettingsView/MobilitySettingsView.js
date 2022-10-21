@@ -246,6 +246,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showScootersRyde, setOpenScooterProviderList);
   }, [showScootersRyde]);
 
+  useEffect(() => {
+    checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSettings);
+    checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSelectionList);
+  }, [showStreetMaintenance]);
+
   const nameKeys = {
     fi: 'name',
     en: 'name_en',
@@ -1135,16 +1140,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
               {renderDrivingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
-                  onClickFunc={streetMaintenanceSettingsToggle}
-                  settingState={openStreetMaintenanceSettings}
-                  iconName={iconSnowplow}
-                  translationId="mobilityPlatform.menu.title.streetMaintenance"
-                />
-              </div>
-              {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
-              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
-              <div className={classes.buttonContainer}>
-                <ButtonMain
                   onClickFunc={scooterSettingsToggle}
                   settingState={openScooterSettings}
                   iconName={iconScooter}
@@ -1164,6 +1159,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openBoatingSettings, boatingControlTypes)}
               {renderBoatingInfoTexts()}
+              <div className={classes.buttonContainer}>
+                <ButtonMain
+                  onClickFunc={streetMaintenanceSettingsToggle}
+                  settingState={openStreetMaintenanceSettings}
+                  iconName={iconSnowplow}
+                  translationId="mobilityPlatform.menu.title.streetMaintenance"
+                />
+              </div>
+              {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
+              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
             </>
           </FormGroup>
         </FormControl>
