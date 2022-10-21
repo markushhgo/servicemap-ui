@@ -29,7 +29,9 @@ const SnowPlows = () => {
   const [streetMaintenanceDeIcing6Hours, setStreetMaintenanceDeIcing6Hours] = useState([]);
   const [streetMaintenanceDeIcing12Hours, setStreetMaintenanceDeIcing12Hours] = useState([]);
 
-  const { openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance } = useContext(MobilityPlatformContext);
+  const {
+    openMobilityPlatform, streetMaintenancePeriod, showStreetMaintenance, setIsActiveStreetMaintenance,
+  } = useContext(MobilityPlatformContext);
 
   const { Polyline } = global.rL;
 
@@ -185,9 +187,17 @@ const SnowPlows = () => {
 
   const validateData = inputData => inputData && inputData.length > 0;
 
+  let isDataValid = false;
+
+  useEffect(() => {
+    if (!isDataValid) {
+      setIsActiveStreetMaintenance(false);
+    } else setIsActiveStreetMaintenance(true);
+  }, [isDataValid, streetMaintenancePeriod, setIsActiveStreetMaintenance]);
+
   const renderData = (inputData) => {
-    const isValid = validateData(inputData);
-    if (isValid) {
+    isDataValid = validateData(inputData);
+    if (isDataValid) {
       return inputData
         .filter(item => item.geometry.name === 'LineString')
         .map(item => (

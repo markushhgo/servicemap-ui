@@ -108,6 +108,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowStreetMaintenance,
     streetMaintenancePeriod,
     setStreetMaintenancePeriod,
+    isActiveStreetMaintenance,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -213,7 +214,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
     checkVisibilityValues(showDisabledParking, setOpenCarSettings);
     checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
-  }, [showRentalCars, showGasFillingStations, showParkingSpaces, showChargingStations, showSpeedLimitZones, showDisabledParking, showLoadingPlaces]);
+  }, [
+    showRentalCars,
+    showGasFillingStations,
+    showParkingSpaces,
+    showChargingStations,
+    showSpeedLimitZones,
+    showDisabledParking,
+    showLoadingPlaces,
+  ]);
 
   useEffect(() => {
     checkVisibilityValues(showParkingChargeZones, setOpenCarSettings);
@@ -1009,6 +1018,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
             />
           </div>
         ))}
+      {!isActiveStreetMaintenance && streetMaintenancePeriod
+        ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" /> : null}
     </>
   );
 
