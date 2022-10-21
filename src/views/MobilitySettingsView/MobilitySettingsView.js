@@ -1001,6 +1001,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
           {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
           {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
         </div>
+        {!isActiveStreetMaintenance && streetMaintenancePeriod
+          ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" reducePadding /> : null}
       </div>
       {streetMaintenanceSelections
         && streetMaintenanceSelections.length > 0
@@ -1023,8 +1025,6 @@ const MobilitySettingsView = ({ classes, intl }) => {
             />
           </div>
         ))}
-      {!isActiveStreetMaintenance && streetMaintenancePeriod
-        ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" /> : null}
     </>
   );
 
