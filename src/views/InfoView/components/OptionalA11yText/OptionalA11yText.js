@@ -28,15 +28,15 @@ const OptionalA11yText = ({ classes, intl }) => {
   };
 
   const serviceDirectoryLinks = {
-    sv: 'https://www.turku.fi/sv/service-directory',
-    en: 'https://www.turku.fi/en/service-directory',
     fi: 'https://www.turku.fi/palveluhakemisto',
+    en: 'https://www.turku.fi/en/service-directory',
+    sv: 'https://www.turku.fi/sv/service-directory',
   };
 
   const feedbackLinks = {
-    sv: 'https://opaskartta.turku.fi/eFeedback/sv/Feedback/87/1048',
-    en: 'https://opaskartta.turku.fi/eFeedback/en/Feedback/87/1048',
     fi: 'https://opaskartta.turku.fi/eFeedback/fi/Feedback/87/1048',
+    en: 'https://opaskartta.turku.fi/eFeedback/en/Feedback/87/1048',
+    sv: 'https://opaskartta.turku.fi/eFeedback/sv/Feedback/87/1048',
   };
 
   return (

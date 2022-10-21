@@ -44,14 +44,14 @@ const OptionalText = ({ classes, intl }) => {
   ];
 
   const serviceDirectoryLinks = {
-    en: 'https://www.turku.fi/en/service-directory',
     fi: 'https://www.turku.fi/palveluhakemisto',
+    en: 'https://www.turku.fi/en/service-directory',
     sv: 'https://www.turku.fi/sv/service-directory',
   };
 
   const feedbackLinks = {
-    en: 'https://www.turku.fi/feedback',
     fi: 'https://www.turku.fi/palaute',
+    en: 'https://www.turku.fi/feedback',
     sv: 'https://www.turku.fi/feedbacktjansten',
   };
 
