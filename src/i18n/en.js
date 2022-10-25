@@ -636,6 +636,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Prevention of slippery roads',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Street cleaning',
+  'mobilityPlatform.menu.show.brushSandedRoute': 'Harjahiekoitettavat pyörätiet', // TODO translate
+  'mobilityPlatform.menu.show.brushSaltedRoute': 'Harjasuolattavat pyörätiet', // TODO translate
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',

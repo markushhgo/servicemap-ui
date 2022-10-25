@@ -109,6 +109,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     streetMaintenancePeriod,
     setStreetMaintenancePeriod,
     isActiveStreetMaintenance,
+    showBrushSandedRoute,
+    setShowBrushSandedRoute,
+    showBrushSaltedRoute,
+    setShowBrushSaltedRoute,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -250,6 +254,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSettings);
     checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSelectionList);
   }, [showStreetMaintenance]);
+
+  useEffect(() => {
+    checkVisibilityValues(showBrushSaltedRoute, setOpenStreetMaintenanceSettings);
+    checkVisibilityValues(showBrushSandedRoute, setOpenStreetMaintenanceSettings);
+  }, [showBrushSaltedRoute, showBrushSandedRoute]);
 
   const nameKeys = {
     fi: 'name',
@@ -444,6 +453,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (showStreetMaintenance) {
       setShowStreetMaintenance(false);
     }
+  };
+
+  const brushSandedRouteToggle = () => {
+    setShowBrushSandedRoute(current => !current);
+  };
+
+  const brushSaltedRouteToggle = () => {
+    setShowBrushSaltedRoute(current => !current);
   };
 
   /**
@@ -759,11 +776,23 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   const streetMaintenanceControlTypes = [
-    {
+    /* {
       type: 'winterMaintenance',
       msgId: 'mobilityPlatform.menu.show.winterMaintenance',
       checkedValue: openStreetMaintenanceSelectionList,
       onChangeValue: streetMaintenanceListToggle,
+    }, */
+    {
+      type: 'brushSandedRoute',
+      msgId: 'mobilityPlatform.menu.show.brushSandedRoute',
+      checkedValue: showBrushSandedRoute,
+      onChangeValue: brushSandedRouteToggle,
+    },
+    {
+      type: 'brushSaltedRoute',
+      msgId: 'mobilityPlatform.menu.show.brushSaltedRoute',
+      checkedValue: showBrushSaltedRoute,
+      onChangeValue: brushSaltedRouteToggle,
     },
   ];
 
