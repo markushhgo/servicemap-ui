@@ -133,7 +133,12 @@ const SnowPlows = () => {
     }
   }, [openMobilityPlatform]);
 
-  const combineData = (arr1, arr2, arr3, arr4) => [...arr1, ...arr2, ...arr3, ...arr4];
+  const combineData = (arr1, arr2, arr3, arr4) => {
+    const isValid = arr1.length > 0 || arr2.length > 0 || arr3.length > 0 || arr4.length > 0;
+    if (isValid) {
+      return [...arr1, ...arr2, ...arr3, ...arr4];
+    } return [];
+  };
 
   const streetMaintenance1Day = combineData(
     streetMaintenanceSanitation1Day,

@@ -776,12 +776,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
   ];
 
   const streetMaintenanceControlTypes = [
-    /* {
+    {
       type: 'winterMaintenance',
       msgId: 'mobilityPlatform.menu.show.winterMaintenance',
       checkedValue: openStreetMaintenanceSelectionList,
       onChangeValue: streetMaintenanceListToggle,
-    }, */
+    },
     {
       type: 'brushSandedRoute',
       msgId: 'mobilityPlatform.menu.show.brushSandedRoute',
@@ -1112,6 +1112,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </>
   );
 
+  const renderStreetMaintenanceInfoTexts = () => (
+    <>
+      {showBrushSaltedRoute || showBrushSandedRoute ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.brushedRoads" /> : null}
+    </>
+  );
+
   return (
     <div className={classes.content}>
       <TitleBar
@@ -1198,6 +1204,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
               {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
+              {renderStreetMaintenanceInfoTexts()}
             </>
           </FormGroup>
         </FormControl>
