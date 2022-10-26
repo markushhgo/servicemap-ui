@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
+import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchStreetMaintenanceData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
@@ -177,17 +178,30 @@ const SnowPlows = () => {
     streetMaintenanceDeIcing12Hours,
   );
 
+  const map = useMap();
+
+  const validateData = inputData => inputData && inputData.length > 0;
+
+  let isDataValid = false;
+
   const swapCoords = (coordsData) => {
-    if (coordsData && coordsData.length > 0) {
+    const isValid = validateData(coordsData);
+    if (isValid) {
       const swapped = coordsData.map(item => [item[1], item[0]]);
       return swapped;
     }
     return coordsData;
   };
 
-  const validateData = inputData => inputData && inputData.length > 0;
-
-  let isDataValid = false;
+  const fitBounds = (data, isValid) => {
+    if (isValid) {
+      const bounds = [];
+      data.forEach((item) => {
+        bounds.push(swapCoords(item.geometry.coordinates));
+      });
+      map.fitBounds(bounds);
+    }
+  };
 
   useEffect(() => {
     if (!isDataValid) {
@@ -197,6 +211,7 @@ const SnowPlows = () => {
 
   const renderData = (inputData) => {
     isDataValid = validateData(inputData);
+    fitBounds(inputData, isDataValid);
     if (isDataValid) {
       return inputData
         .filter(item => item.geometry.name === 'LineString')
@@ -232,7 +247,7 @@ const SnowPlows = () => {
     }
   };
 
-  return <>{showStreetMaintenance ? <>{rendernMaintenanceWorks()}</> : null}</>;
+  return <>{showStreetMaintenance ? rendernMaintenanceWorks() : null}</>;
 };
 
 export default SnowPlows;
