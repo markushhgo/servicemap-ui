@@ -760,8 +760,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   const streetMaintenanceControlTypes = [
     {
-      type: 'winterMaintenance',
-      msgId: 'mobilityPlatform.menu.show.winterMaintenance',
+      type: 'streetMaintenanceWorks',
+      msgId: 'mobilityPlatform.menu.show.streetMaintenanceWorks',
       checkedValue: openStreetMaintenanceSelectionList,
       onChangeValue: streetMaintenanceListToggle,
     },
