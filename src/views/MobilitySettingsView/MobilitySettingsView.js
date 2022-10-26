@@ -1001,8 +1001,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
           {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
           {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
         </div>
-        {!isActiveStreetMaintenance && streetMaintenancePeriod
-          ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" reducePadding /> : null}
+        {!isActiveStreetMaintenance && streetMaintenancePeriod ? (
+          <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" reducePadding />
+        ) : null}
       </div>
       {streetMaintenanceSelections
         && streetMaintenanceSelections.length > 0
@@ -1078,6 +1079,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
           infoText="mobilityPlatform.info.guestHarbour"
           linkUrl="https://www.turunvierasvenesatama.fi"
           linkText="mobilityPlatform.info.guestHarbour.link"
+        />
+      ) : null}
+    </>
+  );
+
+  const renderStreetMaintenanceInfoTexts = () => (
+    <>
+      {showStreetMaintenance ? (
+        <InfoTextBox
+          infoText="mobilityPlatform.info.streetMaintenance.general"
+          linkUrl="https://www.turku.fi/uutinen/2021-01-12_pelisaannot-selkeita-katujen-talvikunnossapidossa"
+          linkText="mobilityPlatform.info.streetMaintenance.link"
         />
       ) : null}
     </>
@@ -1169,6 +1182,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               </div>
               {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
               {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
+              {renderStreetMaintenanceInfoTexts()}
             </>
           </FormGroup>
         </FormControl>

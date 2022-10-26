@@ -757,6 +757,8 @@ const translations = {
   'mobilityPlatform.info.disabledParking': 'Parking spaces intended for people with reduced mobility are shown on the map. To park on them, you need a disabled parking permit. There is accessible access to the parking places, excluding those parking places that can only be accessed through a gate.',
   'mobilityPlatform.info.loadingPlaces': 'The map shows the places for loading and unloading goods.',
   'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.general': 'Katujen kunnossapitoon kuuluu ajoratojen, pyöräteiden ja rakenteellisesti toisistaan erottamattomien jalankulku- ja pyöräteiden auraus sekä hiekoitus talvella ja hiekoitushiekan poisto keväällä.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.link': 'Talvikunnossapidon pelisäännöt', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

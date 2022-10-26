@@ -758,6 +758,8 @@ const translations = {
   'mobilityPlatform.info.disabledParking': 'Parkeringsplatser avsedda för personer med nedsatt rörlighet visas på kartan. För att parkera på dem behöver du ett parkeringstillstånd för rörelsehindrade. Plattserna ärr tillgängliga, förutom de som nås via en port.',
   'mobilityPlatform.info.loadingPlaces': 'Kartan visar platserna som är avsedda för lastning och lossning av gods.',
   'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.general': 'Katujen kunnossapitoon kuuluu ajoratojen, pyöräteiden ja rakenteellisesti toisistaan erottamattomien jalankulku- ja pyöräteiden auraus sekä hiekoitus talvella ja hiekoitushiekan poisto keväällä.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.link': 'Talvikunnossapidon pelisäännöt', // TODO translate
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
