@@ -14,10 +14,13 @@ const BrushedBicycleRoads = () => {
 
   const { Polyline } = global.rL;
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 8 };
+  const blueOptions = { color: 'rgba(227, 97, 32, 255)', weight: 8 };
   const brownOptions = { color: 'rgba(117, 44, 23, 255)', weight: 8 };
   const whiteOptions = {
     color: 'rgba(255, 255, 255, 255)', dashArray: '5, 15', lineCap: 'square', weight: 4,
+  };
+  const lightOptions = {
+    color: 'rgba(250, 250, 250, 255)', dashArray: '4, 8', lineCap: 'round', weight: 4,
   };
 
   useEffect(() => {
@@ -56,7 +59,7 @@ const BrushedBicycleRoads = () => {
           <Polyline key={item.geometry} pathOptions={isBrushSanded ? blueOptions : brownOptions} positions={item.geometry_coords} />
           <Polyline
             key={item.geometry_coords}
-            pathOptions={whiteOptions}
+            pathOptions={isBrushSanded ? whiteOptions : lightOptions}
             positions={item.geometry_coords}
           />
         </div>
