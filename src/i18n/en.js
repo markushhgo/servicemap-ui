@@ -624,7 +624,7 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
   'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
   'mobilityPlatform.menu.loadingPlaces.show': 'Loading places',
-  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO translate
+  'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Maintenance works',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 hour',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 hours',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 hours',
@@ -758,7 +758,9 @@ const translations = {
   'mobilityPlatform.info.scooters.general': 'The service map shows available electric scooters provided by operators. Electric scooters provided by other operators will be visible on the mobility view later.',
   'mobilityPlatform.info.disabledParking': 'Parking spaces intended for people with reduced mobility are shown on the map. To park on them, you need a disabled parking permit. There is accessible access to the parking places, excluding those parking places that can only be accessed through a gate.',
   'mobilityPlatform.info.loadingPlaces': 'The map shows the places for loading and unloading goods.',
-  'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.noActivity': 'There is no street maintenance work in progress during the selected time period.',
+  'mobilityPlatform.info.streetMaintenance.general': 'Street maintenance includes ploughing and sanding of streets, cycle paths and structurally indistinguishable footpaths and cycle paths in winter and removing the sand in spring.',
+  'mobilityPlatform.info.streetMaintenance.link': 'Winter maintenance rules.',
   'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Bicycle roads that are shown on the map are part of the intensified winter maintenance. Snow will be removed by brushing and salt solution or sand will be used to prevent slippery conditions.', // TODO verify
 
   // Bicycle routes

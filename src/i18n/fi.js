@@ -627,14 +627,14 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
   'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti',
   'mobilityPlatform.menu.loadingPlaces.show': 'Kuormauspaikat',
-  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO verify
+  'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Kunnossapitotyöt',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 tunti',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 tuntia',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 tuntia',
   'mobilityPlatform.menu.streetMaintenance.12hours': '12 tuntia',
   'mobilityPlatform.menu.streetMaintenance.1day': '1 päivä',
   'mobilityPlatform.menu.streetMaintenance.3days': '3 päivää',
-  'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.', // TODO verify
+  'mobilityPlatform.menu.streetMaintenance.info': 'Voit näyttää meneillään olevia katujen kunnossapitotöitä valitulta ajanjaksolta.',
   'mobilityPlatform.menu.streetMaintenance.info.snowplow': 'Auraus',
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Liukkauden torjunta',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Hiekanpoisto',
@@ -751,7 +751,9 @@ const translations = {
   'mobilityPlatform.info.scooters.general': 'Palvelukartalla näkyvät operaattorien vapaana olevat sähköpotkulaudat. Liikkumisnäkymään tullaan lisäämään tietoja muidenkin operaattorien sähköpotkulaudoista.',
   'mobilityPlatform.info.disabledParking': 'Kartalla näkyvät liikkumisesteisille tarkoitetut pysäköintipaikat. Niihin pysäköintiä varten tarvitsee liikkumisesteisen pysäköintitunnuksen. Paikkoihin on esteetön pääsy, poislukien ne pysäköintipaikat, joihin pääsee portin kautta.',
   'mobilityPlatform.info.loadingPlaces': 'Kartalla näkyvät tavaroiden lastaukseen ja purkamiseen tarkoitetut paikat.',
-  'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.', // TODO verify
+  'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.',
+  'mobilityPlatform.info.streetMaintenance.general': 'Katujen kunnossapitoon kuuluu ajoratojen, pyöräteiden ja rakenteellisesti toisistaan erottamattomien jalankulku- ja pyöräteiden auraus sekä hiekoitus talvella ja hiekoitushiekan poisto keväällä.',
+  'mobilityPlatform.info.streetMaintenance.link': 'Talvikunnossapidon pelisäännöt.',
   'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Kartalla näkyvät pyörätiet kuuluvat tehostetun talvikunnossapidon piiriin. Lumi poistetaan reitiltä harjaamalla ja liukkautta torjutaan liuossuolalla tai hiekoittamalla.', // TODO verify
 
   // Bicycle routes

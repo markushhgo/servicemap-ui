@@ -625,7 +625,7 @@ const translations = {
   'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
   'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
   'mobilityPlatform.menu.loadingPlaces.show': 'Lastningsplatser',
-  'mobilityPlatform.menu.show.winterMaintenance': 'Talvikunnossapito', // TODO translate
+  'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Underhållsarbeten',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 timme',
   'mobilityPlatform.menu.streetMaintenance.3hours': '3 timmar',
   'mobilityPlatform.menu.streetMaintenance.6hours': '6 timmar',
@@ -759,7 +759,9 @@ const translations = {
   'mobilityPlatform.info.scooters.general': 'Servicekartan visar företagets lediga hyreselsparkcyklar. Andra leverantörers elsparkcyklar kommer att läggas till mobilitetsvyn senare.',
   'mobilityPlatform.info.disabledParking': 'Parkeringsplatser avsedda för personer med nedsatt rörlighet visas på kartan. För att parkera på dem behöver du ett parkeringstillstånd för rörelsehindrade. Plattserna ärr tillgängliga, förutom de som nås via en port.',
   'mobilityPlatform.info.loadingPlaces': 'Kartan visar platserna som är avsedda för lastning och lossning av gods.',
-  'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.noActivity': 'Det pågår inget underhållsarbete under den valda tidsperioden.',
+  'mobilityPlatform.info.streetMaintenance.general': 'Gatuunderhållet omfattar plogning och sandning av körbanor, cykelvägar och strukturellt oskiljaktiga gång- och cykelvägar på vintern och borttagning av sandingssand på våren.',
+  'mobilityPlatform.info.streetMaintenance.link': 'Spelregler för vinterunderhåll.',
   'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Kartalla näkyvät pyörätiet kuuluvat tehostetun talvikunnossapidon piiriin. Lumi poistetaan reitiltä harjaamalla ja liukkautta torjutaan liuossuolalla tai hiekoittamalla.', // TODO translate
 
   // Bicycle routes
