@@ -96,12 +96,12 @@ const SnowPlows = () => {
     }
   };
 
-  const yesterDay = moment().clone().add(-1, 'days').format('YYYY-MM-DD HH:mm');
-  const threeDays = moment().clone().add(-3, 'days').format('YYYY-MM-DD HH:mm');
-  const oneHour = moment().clone().add(-1, 'hours').format('YYYY-MM-DD HH:mm');
-  const threeHours = moment().clone().add(-3, 'hours').format('YYYY-MM-DD HH:mm');
-  const sixHours = moment().clone().add(-6, 'hours').format('YYYY-MM-DD HH:mm');
-  const twelveHours = moment().clone().add(-12, 'hours').format('YYYY-MM-DD HH:mm');
+  const yesterDay = moment().clone().add(-1, 'days').format('YYYY-MM-DD HH:mm:00');
+  const threeDays = moment().clone().add(-3, 'days').format('YYYY-MM-DD HH:mm:00');
+  const oneHour = moment().clone().add(-1, 'hours').format('YYYY-MM-DD HH:mm:00');
+  const threeHours = moment().clone().add(-3, 'hours').format('YYYY-MM-DD HH:mm:00');
+  const sixHours = moment().clone().add(-6, 'hours').format('YYYY-MM-DD HH:mm:00');
+  const twelveHours = moment().clone().add(-12, 'hours').format('YYYY-MM-DD HH:mm:00');
 
   const createQuery = (type, dateItem) => `get_geometry_history/?event=${getEvent(type)}&start_date_time=${dateItem}`;
 
@@ -134,45 +134,37 @@ const SnowPlows = () => {
     }
   }, [openMobilityPlatform]);
 
-  const combineData = (arr1, arr2, arr3, arr4) => [...arr1, ...arr2, ...arr3, ...arr4];
-
-  const streetMaintenance1Day = combineData(
-    streetMaintenanceSanitation1Day,
+  const streetMaintenance1Day = streetMaintenanceSanitation1Day.concat(
     streetMaintenanceSandRemoval1Day,
     streetMaintenanceSnowplow1Day,
     streetMaintenanceDeIcing1Day,
   );
 
-  const streetMaintenance3Days = combineData(
-    streetMaintenanceSanitation3Days,
+  const streetMaintenance3Days = streetMaintenanceSanitation3Days.concat(
     streetMaintenanceSandRemoval3Days,
     streetMaintenanceSnowplow3Days,
     streetMaintenanceDeIcing3Days,
   );
 
-  const streetMaintenance1Hour = combineData(
-    streetMaintenanceSanitation1Hour,
+  const streetMaintenance1Hour = streetMaintenanceSanitation1Hour.concat(
     streetMaintenanceSandRemoval1Hour,
     streetMaintenanceSnowplow1Hour,
     streetMaintenanceDeIcing1Hour,
   );
 
-  const streetMaintenance3Hours = combineData(
-    streetMaintenanceSanitation3Hours,
+  const streetMaintenance3Hours = streetMaintenanceSanitation3Hours.concat(
     streetMaintenanceSandRemoval3Hours,
     streetMaintenanceSnowplow3Hours,
     streetMaintenanceDeIcing3Hours,
   );
 
-  const streetMaintenance6Hours = combineData(
-    streetMaintenanceSanitation6Hours,
+  const streetMaintenance6Hours = streetMaintenanceSanitation6Hours.concat(
     streetMaintenanceSandRemoval6Hours,
     streetMaintenanceSnowplow6Hours,
     streetMaintenanceDeIcing6Hours,
   );
 
-  const streetMaintenance12Hours = combineData(
-    streetMaintenanceSanitation12Hours,
+  const streetMaintenance12Hours = streetMaintenanceSanitation12Hours.concat(
     streetMaintenanceSandRemoval12Hours,
     streetMaintenanceSnowplow12Hours,
     streetMaintenanceDeIcing12Hours,
@@ -210,44 +202,44 @@ const SnowPlows = () => {
   }, [isDataValid, streetMaintenancePeriod, setIsActiveStreetMaintenance]);
 
   const renderData = (inputData) => {
-    isDataValid = validateData(inputData);
-    fitBounds(inputData, isDataValid);
+    const filtered = inputData.reduce((acc, curr) => {
+      if (curr.geometry.name === 'LineString') {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+
+    isDataValid = validateData(filtered);
+    fitBounds(filtered, isDataValid);
     if (isDataValid) {
-      return inputData
-        .filter(item => item.geometry.name === 'LineString')
-        .map(item => (
-          <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
-            <Polyline
-              pathOptions={getPathOptions(item.geometry.event)}
-              positions={swapCoords(item.geometry.coordinates)}
-            />
-            <Polyline pathOptions={whiteOption} positions={swapCoords(item.geometry.coordinates)} />
-          </React.Fragment>
-        ));
+      return filtered.map(item => (
+        <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
+          <Polyline
+            pathOptions={getPathOptions(item.geometry.event)}
+            positions={swapCoords(item.geometry.coordinates)}
+          />
+          <Polyline pathOptions={whiteOption} positions={swapCoords(item.geometry.coordinates)} />
+        </React.Fragment>
+      ));
     }
     return null;
   };
 
-  const rendernMaintenanceWorks = () => {
-    switch (streetMaintenancePeriod) {
-      case '1day':
-        return renderData(streetMaintenance1Day);
-      case '3days':
-        return renderData(streetMaintenance3Days);
-      case '1hour':
-        return renderData(streetMaintenance1Hour);
-      case '3hours':
-        return renderData(streetMaintenance3Hours);
-      case '6hours':
-        return renderData(streetMaintenance6Hours);
-      case '12hours':
-        return renderData(streetMaintenance12Hours);
-      default:
-        return null;
+  const renderMaintenanceWorks = () => {
+    const works = new Map();
+    works.set('1day', streetMaintenance1Day);
+    works.set('3days', streetMaintenance3Days);
+    works.set('1hour', streetMaintenance1Hour);
+    works.set('3hours', streetMaintenance3Hours);
+    works.set('6hours', streetMaintenance6Hours);
+    works.set('12hours', streetMaintenance12Hours);
+    if (works.has(streetMaintenancePeriod)) {
+      return renderData(works.get(streetMaintenancePeriod));
     }
+    return null;
   };
 
-  return <>{showStreetMaintenance ? rendernMaintenanceWorks() : null}</>;
+  return <>{showStreetMaintenance ? renderMaintenanceWorks() : null}</>;
 };
 
 export default SnowPlows;
