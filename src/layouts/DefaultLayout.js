@@ -124,6 +124,9 @@ const DefaultLayout = (props) => {
   const [showScootersRyde, setShowScootersRyde] = useState(false);
   const [showDisabledParking, setShowDisabledParking] = useState(false);
   const [showLoadingPlaces, setShowLoadingPlaces] = useState(false);
+  const [showStreetMaintenance, setShowStreetMaintenance] = useState(false);
+  const [streetMaintenancePeriod, setStreetMaintenancePeriod] = useState(null);
+  const [isActiveStreetMaintenance, setIsActiveStreetMaintenance] = useState(true);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -261,6 +264,11 @@ const DefaultLayout = (props) => {
                       setShowDisabledParking,
                       showLoadingPlaces,
                       setShowLoadingPlaces,
+                      showStreetMaintenance,
+                      setShowStreetMaintenance,
+                      streetMaintenancePeriod,
+                      setStreetMaintenancePeriod,
+                      isActiveStreetMaintenance,
                     }}
                   >
                     <ViewRouter />
@@ -303,6 +311,9 @@ const DefaultLayout = (props) => {
                     showScootersRyde,
                     showDisabledParking,
                     showLoadingPlaces,
+                    showStreetMaintenance,
+                    streetMaintenancePeriod,
+                    setIsActiveStreetMaintenance,
                   }}
                 >
                   <MapView
