@@ -637,8 +637,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Halkbekämpning',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sandavlägsnande',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Rengöring',
-  'mobilityPlatform.menu.show.brushSandedRoute': 'Harjahiekoitettavat pyörätiet', // TODO translate
-  'mobilityPlatform.menu.show.brushSaltedRoute': 'Harjasuolattavat pyörätiet', // TODO translate
+  'mobilityPlatform.menu.show.brushSandedRoute': 'Sopsandade cykelvägar',
+  'mobilityPlatform.menu.show.brushSaltedRoute': 'Sopsaltade cykelvägar',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -762,7 +762,7 @@ const translations = {
   'mobilityPlatform.info.streetMaintenance.noActivity': 'Det pågår inget underhållsarbete under den valda tidsperioden.',
   'mobilityPlatform.info.streetMaintenance.general': 'Gatuunderhållet omfattar plogning och sandning av körbanor, cykelvägar och strukturellt oskiljaktiga gång- och cykelvägar på vintern och borttagning av sandingssand på våren.',
   'mobilityPlatform.info.streetMaintenance.link': 'Spelregler för vinterunderhåll.',
-  'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Kartalla näkyvät pyörätiet kuuluvat tehostetun talvikunnossapidon piiriin. Lumi poistetaan reitiltä harjaamalla ja liukkautta torjutaan liuossuolalla tai hiekoittamalla.', // TODO translate
+  'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Cykelvägarna som visas på kartan har utökat vinterunderhåll. Snö avlägsnas från sträckan genom sopning och halka motarbetas med saltlösning eller sandning.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

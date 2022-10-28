@@ -636,8 +636,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Prevention of slippery roads',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Street cleaning',
-  'mobilityPlatform.menu.show.brushSandedRoute': 'Brushed and sanded bicycle roads', // TODO verify
-  'mobilityPlatform.menu.show.brushSaltedRoute': 'Brushed and salted bicycle roads', // TODO verify
+  'mobilityPlatform.menu.show.brushSandedRoute': 'Brush sanded bicycle roads',
+  'mobilityPlatform.menu.show.brushSaltedRoute': 'Brush salted bicycle roads',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
