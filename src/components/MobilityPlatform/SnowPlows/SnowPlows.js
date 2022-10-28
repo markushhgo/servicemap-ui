@@ -134,45 +134,37 @@ const SnowPlows = () => {
     }
   }, [openMobilityPlatform]);
 
-  const combineData = (arr1, arr2, arr3, arr4) => [...arr1, ...arr2, ...arr3, ...arr4];
-
-  const streetMaintenance1Day = combineData(
-    streetMaintenanceSanitation1Day,
+  const streetMaintenance1Day = streetMaintenanceSanitation1Day.concat(
     streetMaintenanceSandRemoval1Day,
     streetMaintenanceSnowplow1Day,
     streetMaintenanceDeIcing1Day,
   );
 
-  const streetMaintenance3Days = combineData(
-    streetMaintenanceSanitation3Days,
+  const streetMaintenance3Days = streetMaintenanceSanitation3Days.concat(
     streetMaintenanceSandRemoval3Days,
     streetMaintenanceSnowplow3Days,
     streetMaintenanceDeIcing3Days,
   );
 
-  const streetMaintenance1Hour = combineData(
-    streetMaintenanceSanitation1Hour,
+  const streetMaintenance1Hour = streetMaintenanceSanitation1Hour.concat(
     streetMaintenanceSandRemoval1Hour,
     streetMaintenanceSnowplow1Hour,
     streetMaintenanceDeIcing1Hour,
   );
 
-  const streetMaintenance3Hours = combineData(
-    streetMaintenanceSanitation3Hours,
+  const streetMaintenance3Hours = streetMaintenanceSanitation3Hours.concat(
     streetMaintenanceSandRemoval3Hours,
     streetMaintenanceSnowplow3Hours,
     streetMaintenanceDeIcing3Hours,
   );
 
-  const streetMaintenance6Hours = combineData(
-    streetMaintenanceSanitation6Hours,
+  const streetMaintenance6Hours = streetMaintenanceSanitation6Hours.concat(
     streetMaintenanceSandRemoval6Hours,
     streetMaintenanceSnowplow6Hours,
     streetMaintenanceDeIcing6Hours,
   );
 
-  const streetMaintenance12Hours = combineData(
-    streetMaintenanceSanitation12Hours,
+  const streetMaintenance12Hours = streetMaintenanceSanitation12Hours.concat(
     streetMaintenanceSandRemoval12Hours,
     streetMaintenanceSnowplow12Hours,
     streetMaintenanceDeIcing12Hours,
@@ -228,7 +220,7 @@ const SnowPlows = () => {
     return null;
   };
 
-  const rendernMaintenanceWorks = () => {
+  const renderMaintenanceWorks = () => {
     switch (streetMaintenancePeriod) {
       case '1day':
         return renderData(streetMaintenance1Day);
@@ -247,7 +239,7 @@ const SnowPlows = () => {
     }
   };
 
-  return <>{showStreetMaintenance ? rendernMaintenanceWorks() : null}</>;
+  return <>{showStreetMaintenance ? renderMaintenanceWorks() : null}</>;
 };
 
 export default SnowPlows;
