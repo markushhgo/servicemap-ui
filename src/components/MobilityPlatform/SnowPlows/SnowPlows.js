@@ -202,20 +202,25 @@ const SnowPlows = () => {
   }, [isDataValid, streetMaintenancePeriod, setIsActiveStreetMaintenance]);
 
   const renderData = (inputData) => {
-    isDataValid = validateData(inputData);
-    fitBounds(inputData, isDataValid);
+    const filtered = inputData.reduce((acc, curr) => {
+      if (curr.geometry.name === 'LineString') {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+
+    isDataValid = validateData(filtered);
+    fitBounds(filtered, isDataValid);
     if (isDataValid) {
-      return inputData
-        .filter(item => item.geometry.name === 'LineString')
-        .map(item => (
-          <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
-            <Polyline
-              pathOptions={getPathOptions(item.geometry.event)}
-              positions={swapCoords(item.geometry.coordinates)}
-            />
-            <Polyline pathOptions={whiteOption} positions={swapCoords(item.geometry.coordinates)} />
-          </React.Fragment>
-        ));
+      return filtered.map(item => (
+        <React.Fragment key={`${item.geometry.event}${item.geometry.coordinates[0]}`}>
+          <Polyline
+            pathOptions={getPathOptions(item.geometry.event)}
+            positions={swapCoords(item.geometry.coordinates)}
+          />
+          <Polyline pathOptions={whiteOption} positions={swapCoords(item.geometry.coordinates)} />
+        </React.Fragment>
+      ));
     }
     return null;
   };
