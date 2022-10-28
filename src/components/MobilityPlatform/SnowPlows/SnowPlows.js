@@ -221,22 +221,17 @@ const SnowPlows = () => {
   };
 
   const renderMaintenanceWorks = () => {
-    switch (streetMaintenancePeriod) {
-      case '1day':
-        return renderData(streetMaintenance1Day);
-      case '3days':
-        return renderData(streetMaintenance3Days);
-      case '1hour':
-        return renderData(streetMaintenance1Hour);
-      case '3hours':
-        return renderData(streetMaintenance3Hours);
-      case '6hours':
-        return renderData(streetMaintenance6Hours);
-      case '12hours':
-        return renderData(streetMaintenance12Hours);
-      default:
-        return null;
+    const works = new Map();
+    works.set('1day', streetMaintenance1Day);
+    works.set('3days', streetMaintenance3Days);
+    works.set('1hour', streetMaintenance1Hour);
+    works.set('3hours', streetMaintenance3Hours);
+    works.set('6hours', streetMaintenance6Hours);
+    works.set('12hours', streetMaintenance12Hours);
+    if (works.has(streetMaintenancePeriod)) {
+      return renderData(works.get(streetMaintenancePeriod));
     }
+    return null;
   };
 
   return <>{showStreetMaintenance ? renderMaintenanceWorks() : null}</>;
