@@ -639,6 +639,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Liukkauden torjunta',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Hiekanpoisto',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Puhtaanapito',
+  'mobilityPlatform.menu.show.brushSandedRoute': 'Harjahiekoitettavat pyörätiet',
+  'mobilityPlatform.menu.show.brushSaltedRoute': 'Harjasuolattavat pyörätiet',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -752,6 +754,7 @@ const translations = {
   'mobilityPlatform.info.streetMaintenance.noActivity': 'Kunnossapitotöitä ei ole meneillään valitulla ajanjaksolla.',
   'mobilityPlatform.info.streetMaintenance.general': 'Katujen kunnossapitoon kuuluu ajoratojen, pyöräteiden ja rakenteellisesti toisistaan erottamattomien jalankulku- ja pyöräteiden auraus sekä hiekoitus talvella ja hiekoitushiekan poisto keväällä.',
   'mobilityPlatform.info.streetMaintenance.link': 'Talvikunnossapidon pelisäännöt.',
+  'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Kartalla näkyvät pyörätiet kuuluvat tehostetun talvikunnossapidon piiriin. Lumi poistetaan reitiltä harjaamalla ja liukkautta torjutaan liuossuolalla tai hiekoittamalla.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',

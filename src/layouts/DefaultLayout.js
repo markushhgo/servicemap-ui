@@ -127,6 +127,8 @@ const DefaultLayout = (props) => {
   const [showStreetMaintenance, setShowStreetMaintenance] = useState(false);
   const [streetMaintenancePeriod, setStreetMaintenancePeriod] = useState(null);
   const [isActiveStreetMaintenance, setIsActiveStreetMaintenance] = useState(true);
+  const [showBrushSandedRoute, setShowBrushSandedRoute] = useState(false);
+  const [showBrushSaltedRoute, setShowBrushSaltedRoute] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -269,6 +271,10 @@ const DefaultLayout = (props) => {
                       streetMaintenancePeriod,
                       setStreetMaintenancePeriod,
                       isActiveStreetMaintenance,
+                      showBrushSandedRoute,
+                      setShowBrushSandedRoute,
+                      showBrushSaltedRoute,
+                      setShowBrushSaltedRoute,
                     }}
                   >
                     <ViewRouter />
@@ -314,6 +320,8 @@ const DefaultLayout = (props) => {
                     showStreetMaintenance,
                     streetMaintenancePeriod,
                     setIsActiveStreetMaintenance,
+                    showBrushSandedRoute,
+                    showBrushSaltedRoute,
                   }}
                 >
                   <MapView

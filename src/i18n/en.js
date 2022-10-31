@@ -636,6 +636,8 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.deicing': 'Prevention of slippery roads',
   'mobilityPlatform.menu.streetMaintenance.info.sandRemoval': 'Sand removal',
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Street cleaning',
+  'mobilityPlatform.menu.show.brushSandedRoute': 'Brush sanded bicycle roads',
+  'mobilityPlatform.menu.show.brushSaltedRoute': 'Brush salted bicycle roads',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -759,6 +761,7 @@ const translations = {
   'mobilityPlatform.info.streetMaintenance.noActivity': 'There is no street maintenance work in progress during the selected time period.',
   'mobilityPlatform.info.streetMaintenance.general': 'Street maintenance includes ploughing and sanding of streets, cycle paths and structurally indistinguishable footpaths and cycle paths in winter and removing the sand in spring.',
   'mobilityPlatform.info.streetMaintenance.link': 'Winter maintenance rules.',
+  'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Bicycle roads that are shown on the map are part of the intensified winter maintenance. Snow will be removed by brushing and salt solution or sand will be used to prevent slippery conditions.', // TODO verify
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
