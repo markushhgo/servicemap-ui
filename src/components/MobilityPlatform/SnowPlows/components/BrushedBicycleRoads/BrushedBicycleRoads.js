@@ -14,13 +14,16 @@ const BrushedBicycleRoads = () => {
 
   const { Polyline } = global.rL;
 
-  const blueOptions = { color: 'rgba(227, 97, 32, 255)', weight: 8 };
-  const brownOptions = { color: 'rgba(117, 44, 23, 255)', weight: 8 };
-  const whiteOptions = {
+  // Orange color
+  const brushSandedOptions = { color: 'rgba(227, 97, 32, 255)', weight: 8 };
+  // Green color
+  const brushSaltedOptions = { color: 'rgba(43, 183, 0, 255)', weight: 8 };
+  // White and dashed
+  const brushSandedDashed = {
     color: 'rgba(255, 255, 255, 255)', dashArray: '5, 15', lineCap: 'square', weight: 4,
   };
-  const lightOptions = {
-    color: 'rgba(250, 250, 250, 255)', dashArray: '4, 8', lineCap: 'round', weight: 4,
+  const brushSaltedDashed = {
+    color: 'rgba(255, 255, 255, 255)', dashArray: '4, 8', lineCap: 'round', weight: 4,
   };
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const BrushedBicycleRoads = () => {
 
   useEffect(() => {
     fitDataToBounds(renderBrushSandedData, brushSandedRoutes);
-  }, [showBrushSandedRoute, brushSandedRoutes]);
+  }, [showBrushSandedRoute, brushSandedRoutes, map]);
 
   useEffect(() => {
     fitDataToBounds(renderBrushSaltedData, brushSaltedRoutes);
@@ -56,10 +59,10 @@ const BrushedBicycleRoads = () => {
   const renderRoutes = (renderData, data, isBrushSanded) => renderData
       && data.map(item => (
         <div key={item.id}>
-          <Polyline key={item.geometry} pathOptions={isBrushSanded ? blueOptions : brownOptions} positions={item.geometry_coords} />
+          <Polyline key={item.geometry} pathOptions={isBrushSanded ? brushSandedOptions : brushSaltedOptions} positions={item.geometry_coords} />
           <Polyline
             key={item.geometry_coords}
-            pathOptions={isBrushSanded ? whiteOptions : lightOptions}
+            pathOptions={isBrushSanded ? brushSandedDashed : brushSaltedDashed}
             positions={item.geometry_coords}
           />
         </div>
