@@ -123,6 +123,12 @@ const DefaultLayout = (props) => {
   const [showScooterSpeedLimitAreas, setShowScooterSpeedLimitAreas] = useState(false);
   const [showScootersRyde, setShowScootersRyde] = useState(false);
   const [showDisabledParking, setShowDisabledParking] = useState(false);
+  const [showLoadingPlaces, setShowLoadingPlaces] = useState(false);
+  const [showStreetMaintenance, setShowStreetMaintenance] = useState(false);
+  const [streetMaintenancePeriod, setStreetMaintenancePeriod] = useState(null);
+  const [isActiveStreetMaintenance, setIsActiveStreetMaintenance] = useState(true);
+  const [showBrushSandedRoute, setShowBrushSandedRoute] = useState(false);
+  const [showBrushSaltedRoute, setShowBrushSaltedRoute] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -258,6 +264,17 @@ const DefaultLayout = (props) => {
                       setShowScootersRyde,
                       showDisabledParking,
                       setShowDisabledParking,
+                      showLoadingPlaces,
+                      setShowLoadingPlaces,
+                      showStreetMaintenance,
+                      setShowStreetMaintenance,
+                      streetMaintenancePeriod,
+                      setStreetMaintenancePeriod,
+                      isActiveStreetMaintenance,
+                      showBrushSandedRoute,
+                      setShowBrushSandedRoute,
+                      showBrushSaltedRoute,
+                      setShowBrushSaltedRoute,
                     }}
                   >
                     <ViewRouter />
@@ -299,6 +316,12 @@ const DefaultLayout = (props) => {
                     showScooterSpeedLimitAreas,
                     showScootersRyde,
                     showDisabledParking,
+                    showLoadingPlaces,
+                    showStreetMaintenance,
+                    streetMaintenancePeriod,
+                    setIsActiveStreetMaintenance,
+                    showBrushSandedRoute,
+                    showBrushSaltedRoute,
                   }}
                 >
                   <MapView

@@ -2,31 +2,8 @@ const styles = theme => ({
   topBarColor: {
     background: theme.palette.background.main,
   },
-  button: {
-    color: 'black',
-    width: '100%',
-    height: '3.125rem',
-    background: 'rgba(245, 245, 245, 255)',
-    textTransform: 'capitalize',
-    justifyContent: 'flex-start',
-    borderRadius: '0',
-    borderTop: 'none',
-    borderBottom: '1px solid #000000',
-    '&:hover': {
-      background: 'rgba(230, 230, 230, 255)',
-    },
-  },
-  active: {
-    borderBottom: '1px solid #6f7276',
-    borderTop: '1px solid #6f7276',
-    background: 'rgba(70, 72, 75, 255)',
-    color: '#fff',
-    '&:hover': {
-      color: '#fff',
-      background: '#3e3f42',
-      borderBottom: '1px solid #6f7276',
-      borderTop: '1px solid #6f7276',
-    },
+  container: {
+    borderBottom: '1px solid rgba(0, 0, 0, 255)',
   },
   buttonSmall: {
     width: '27%',
@@ -87,6 +64,9 @@ const styles = theme => ({
   margin: {
     marginLeft: theme.spacing(4),
   },
+  marginSm: {
+    marginLeft: theme.spacing(0.7),
+  },
   buttonList: {
     display: 'flex',
     flexDirection: 'row',
@@ -99,6 +79,39 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
+  },
+  flexBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: theme.spacing(1),
+  },
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+  black: {
+    backgroundColor: 'rgba(0, 0, 0,255)',
+  },
+  green: {
+    backgroundColor: 'rgba(15, 115, 6, 255)',
+  },
+  blue: {
+    backgroundColor: 'rgba(7, 44, 115, 255)',
+  },
+  purple: {
+    backgroundColor: 'rgba(202, 15, 212, 255)',
+  },
+  burgundy: {
+    backgroundColor: 'rgba(128, 0, 32, 255)',
+  },
+  white: {
+    width: '50%',
+    height: '50%',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255, 255, 255, 255)',
   },
 });
 

@@ -7,7 +7,7 @@ import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
-import { selectRouteName } from '../../../utils/utils';
+import useLocaleText from '../../../../../utils/useLocaleText';
 
 const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
   const { cultureRouteId } = useContext(MobilityPlatformContext);
@@ -15,6 +15,7 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
   const intl = useIntl();
 
   const locale = useSelector(state => state.user.locale);
+  const getLocaleText = useLocaleText();
   const map = useMap();
 
   const { Marker, Popup } = global.rL;
@@ -67,6 +68,15 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
     );
   };
 
+  const getRouteUnitName = (name, nameEn, nameSv) => {
+    const routeUnitName = {
+      fi: name,
+      en: nameEn,
+      sv: nameSv,
+    };
+    return getLocaleText(routeUnitName);
+  };
+
   /**
    * Default close button is set to false, because it would overlap with the scrollbar
    * It is easier to make a custom close button than to edit the default close button
@@ -83,7 +93,7 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
                 <div className={classes.popupInner}>
                   <div className={classes.header}>
                     <Typography variant="subtitle1">
-                      {selectRouteName(locale, item.name, item.name_en, item.name_sv)}
+                      {getRouteUnitName(item.name, item.name_en, item.name_sv)}
                     </Typography>
                     <ButtonBase onClick={() => closePopup()} className={classes.popupCloseButton}>
                       <Close className={classes.closeIcon} />

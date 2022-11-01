@@ -3,6 +3,7 @@ import { useMap } from 'react-leaflet';
 import bikeServiceIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bike_service_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import BikeServiceStationContent from './components/BikeServiceStationContent';
+import { createIcon } from '../utils/utils';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 
 const BikeServiceStations = () => {
@@ -15,10 +16,7 @@ const BikeServiceStations = () => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const chargerStationIcon = icon({
-    iconUrl: bikeServiceIcon,
-    iconSize: [45, 45],
-  });
+  const customIcon = icon(createIcon(bikeServiceIcon));
 
   useEffect(() => {
     if (openMobilityPlatform) {
@@ -44,11 +42,11 @@ const BikeServiceStations = () => {
             && bikeServiceStations.map(item => (
               <Marker
                 key={item.id}
-                icon={chargerStationIcon}
+                icon={customIcon}
                 position={[item.geometry_coords.lat, item.geometry_coords.lon]}
               >
                 <div>
-                  <Popup className="charger-stations-popup">
+                  <Popup className="popup-w350">
                     <BikeServiceStationContent
                       station={item}
                     />
