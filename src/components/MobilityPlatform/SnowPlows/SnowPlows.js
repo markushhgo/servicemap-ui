@@ -57,9 +57,9 @@ const SnowPlows = () => {
       case 'auraus':
         return options.blue;
       case 'hiekanpoisto':
-        return options.purple;
-      case 'liukkaudentorjunta':
         return options.burgundy;
+      case 'liukkaudentorjunta':
+        return options.purple;
       default:
         return options.black;
     }
