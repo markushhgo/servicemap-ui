@@ -52,13 +52,13 @@ const SnowPlows = () => {
 
   const getOption = (input) => {
     switch (input) {
-      case 'Puhtaanapito':
+      case 'puhtaanapito':
         return options.green;
-      case 'Auraus':
+      case 'auraus':
         return options.blue;
-      case 'Hiekanpoisto':
+      case 'hiekanpoisto':
         return options.purple;
-      case 'Liukkaudentorjunta':
+      case 'liukkaudentorjunta':
         return options.burgundy;
       default:
         return options.black;
@@ -75,10 +75,10 @@ const SnowPlows = () => {
   };
 
   const maintenanceEvents = {
-    sanitation: 'Puhtaanapito',
-    snowplow: 'Auraus',
-    deIcing: 'Liukkaudentorjunta',
-    sandRemoval: 'Hiekanpoisto',
+    sanitation: 'puhtaanapito',
+    snowplow: 'auraus',
+    deIcing: 'liukkaudentorjunta',
+    sandRemoval: 'hiekanpoisto',
   };
 
   const getEvent = (input) => {
