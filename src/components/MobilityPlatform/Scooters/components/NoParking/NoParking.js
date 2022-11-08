@@ -3,6 +3,7 @@ import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import { isDataValid } from '../../../utils/utils';
 import TextContent from '../../../TextContent';
 
 /**
@@ -28,7 +29,10 @@ const NoParking = () => {
 
   const redOptions = { color: 'rgba(251, 5, 21, 255)', weight: 5 };
   const whiteOptions = {
-    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '11 2 11',
+    color: 'rgba(255, 255, 255, 255)',
+    fillOpacity: 0.3,
+    weight: 5,
+    dashArray: '11 2 11',
   };
   const pathOptions = useContrast ? whiteOptions : redOptions;
 
@@ -39,10 +43,12 @@ const NoParking = () => {
     return inputData;
   };
 
+  const renderData = isDataValid(showScooterNoParking, noParkingData);
+
   const map = useMap();
 
   useEffect(() => {
-    if (showScooterNoParking && noParkingData && noParkingData.length > 0) {
+    if (renderData) {
       const bounds = [];
       noParkingData.forEach((item) => {
         bounds.push(swapCoords(item.geometry_coords));
@@ -53,10 +59,8 @@ const NoParking = () => {
 
   return (
     <>
-      {showScooterNoParking
-        && noParkingData
-        && noParkingData.length > 0
-        && noParkingData.map(item => (
+      {renderData
+        ? noParkingData.map(item => (
           <Polygon
             key={item.id}
             pathOptions={pathOptions}
@@ -77,7 +81,8 @@ const NoParking = () => {
               />
             </Popup>
           </Polygon>
-        ))}
+        ))
+        : null}
     </>
   );
 };
