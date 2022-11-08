@@ -23,10 +23,14 @@ const BoatParking = () => {
     }
   }, [openMobilityPlatform, setBoatParkingData]);
 
+  const useContrast = mapType === 'accessible_map';
+
   const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
 
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 5 };
-  const pathOptions = mapType === 'accessible_map' ? greenOptions : blueOptions;
+  const whiteOptions = {
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '10',
+  };
+  const pathOptions = useContrast ? whiteOptions : blueOptions;
 
   const map = useMap();
 
@@ -45,7 +49,21 @@ const BoatParking = () => {
       {showBoatParking
         && boatParkingData
         && boatParkingData.length > 0
-        && boatParkingData.map(item => <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />)}
+        && boatParkingData.map(item => (
+          <Polygon
+            key={item.id}
+            pathOptions={pathOptions}
+            positions={item.geometry_coords}
+            eventHandlers={{
+              mouseover: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
+              },
+              mouseout: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
+              },
+            }}
+          />
+        ))}
     </>
   );
 };

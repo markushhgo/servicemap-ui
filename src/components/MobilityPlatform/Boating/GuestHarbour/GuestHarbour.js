@@ -23,10 +23,13 @@ const GuestHarbour = () => {
     }
   }, [openMobilityPlatform, setGuestHarbourData]);
 
-  const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
+  const useContrast = mapType === 'accessible_map';
 
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 5 };
-  const pathOptions = mapType === 'accessible_map' ? greenOptions : blueOptions;
+  const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
+  const whiteOptions = {
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '8',
+  };
+  const pathOptions = useContrast ? whiteOptions : blueOptions;
 
   const map = useMap();
 
@@ -45,7 +48,21 @@ const GuestHarbour = () => {
       {showGuestHarbour
         && guestHarbourData
         && guestHarbourData.length > 0
-        && guestHarbourData.map(item => <Polygon key={item.id} pathOptions={pathOptions} positions={item.geometry_coords} />)}
+        && guestHarbourData.map(item => (
+          <Polygon
+            key={item.id}
+            pathOptions={pathOptions}
+            positions={item.geometry_coords}
+            eventHandlers={{
+              mouseover: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
+              },
+              mouseout: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
+              },
+            }}
+          />
+        ))}
     </>
   );
 };
