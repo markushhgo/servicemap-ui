@@ -29,7 +29,7 @@ const SpeedLimitAreas = () => {
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
   const whiteOptions = {
-    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, dashArray: '10',
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, dashArray: '10 2 10',
   };
   const pathOptions = useContrast ? whiteOptions : blueOptions;
 
@@ -53,6 +53,7 @@ const SpeedLimitAreas = () => {
         ? speedLimitAreas.map(item => (
           <Polygon
             key={item.id}
+            weight={5}
             pathOptions={pathOptions}
             positions={item.geometry_coords}
             eventHandlers={{
