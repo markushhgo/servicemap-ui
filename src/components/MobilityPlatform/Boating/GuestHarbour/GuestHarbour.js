@@ -27,7 +27,7 @@ const GuestHarbour = () => {
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
   const whiteOptions = {
-    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '8',
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '8 2 8',
   };
   const pathOptions = useContrast ? whiteOptions : blueOptions;
 

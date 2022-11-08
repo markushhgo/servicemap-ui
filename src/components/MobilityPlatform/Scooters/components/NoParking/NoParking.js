@@ -24,10 +24,13 @@ const NoParking = () => {
     }
   }, [openMobilityPlatform, setNoParkingData]);
 
-  const redOptions = { color: 'rgba(251, 5, 21, 255)', weight: 5 };
+  const useContrast = mapType === 'accessible_map';
 
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 5 };
-  const pathOptions = mapType === 'accessible_map' ? greenOptions : redOptions;
+  const redOptions = { color: 'rgba(251, 5, 21, 255)', weight: 5 };
+  const whiteOptions = {
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '11 2 11',
+  };
+  const pathOptions = useContrast ? whiteOptions : redOptions;
 
   const swapCoords = (inputData) => {
     if (inputData.length > 0) {
@@ -54,7 +57,19 @@ const NoParking = () => {
         && noParkingData
         && noParkingData.length > 0
         && noParkingData.map(item => (
-          <Polygon key={item.id} pathOptions={pathOptions} positions={swapCoords(item.geometry_coords)}>
+          <Polygon
+            key={item.id}
+            pathOptions={pathOptions}
+            positions={swapCoords(item.geometry_coords)}
+            eventHandlers={{
+              mouseover: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
+              },
+              mouseout: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
+              },
+            }}
+          >
             <Popup>
               <TextContent
                 titleId="mobilityPlatform.content.scooters.noParkingAreas.title"

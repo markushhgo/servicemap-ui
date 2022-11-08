@@ -17,15 +17,18 @@ const ParkingChargeZones = () => {
 
   const { Polygon, Popup } = global.rL;
 
+  const useContrast = mapType === 'accessible_map';
+
   const blackOptions = {
-    fillColor: 'rgba(0, 0, 0, 255)',
     color: 'rgba(0, 0, 0, 255)',
-    fillOpacity: 0.3,
+    fillOpacity: 0.2,
     weight: 5,
   };
 
-  const greenOptions = { color: 'rgba(145, 232, 58, 255)', fillOpacity: 0.3, weight: 6 };
-  const pathOptions = mapType === 'accessible_map' ? greenOptions : blackOptions;
+  const whiteOptions = {
+    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '2 10 10 10',
+  };
+  const pathOptions = useContrast ? whiteOptions : blackOptions;
 
   const map = useMap();
 
@@ -40,7 +43,18 @@ const ParkingChargeZones = () => {
     <>
       {renderOneParkingChargeZone ? (
         <div>
-          <Polygon pathOptions={pathOptions} positions={parkingChargeZone.geometry_coords}>
+          <Polygon
+            pathOptions={pathOptions}
+            positions={parkingChargeZone.geometry_coords}
+            eventHandlers={{
+              mouseover: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
+              },
+              mouseout: (e) => {
+                e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
+              },
+            }}
+          >
             <Popup>
               <ParkingChargeZoneContent parkingChargeZone={parkingChargeZone} />
             </Popup>
