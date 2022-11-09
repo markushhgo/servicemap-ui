@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useMapEvents, useMap } from 'react-leaflet';
 import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
+import bicycleStandIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_bicycle_stand-bw.svg';
 import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon_circle_border.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import BicycleStandContent from './components/BicycleStandContent';
@@ -13,13 +15,18 @@ const BicycleStands = ({ classes }) => {
 
   const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
+  const mapType = useSelector(state => state.settings.mapType);
+  const useContrast = mapType === 'accessible_map';
+
   const map = useMap();
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
+  const selectIcon = useContrast ? bicycleStandIconBw : bicycleStandIcon;
+
   const customIcon = icon({
-    iconUrl: zoomLevel < 14 ? circleIcon : bicycleStandIcon,
+    iconUrl: zoomLevel < 14 ? circleIcon : selectIcon,
     iconSize: zoomLevel < 14 ? [20, 20] : [45, 45],
   });
 
