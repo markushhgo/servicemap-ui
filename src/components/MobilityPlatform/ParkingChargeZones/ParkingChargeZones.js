@@ -42,24 +42,22 @@ const ParkingChargeZones = () => {
   return (
     <>
       {renderOneParkingChargeZone ? (
-        <div>
-          <Polygon
-            pathOptions={pathOptions}
-            positions={parkingChargeZone.geometry_coords}
-            eventHandlers={{
-              mouseover: (e) => {
-                e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
-              },
-              mouseout: (e) => {
-                e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
-              },
-            }}
-          >
-            <Popup>
-              <ParkingChargeZoneContent parkingChargeZone={parkingChargeZone} />
-            </Popup>
-          </Polygon>
-        </div>
+        <Polygon
+          pathOptions={pathOptions}
+          positions={parkingChargeZone.geometry_coords}
+          eventHandlers={{
+            mouseover: (e) => {
+              e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
+            },
+            mouseout: (e) => {
+              e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
+            },
+          }}
+        >
+          <Popup>
+            <ParkingChargeZoneContent parkingChargeZone={parkingChargeZone} />
+          </Popup>
+        </Polygon>
       ) : null}
     </>
   );
