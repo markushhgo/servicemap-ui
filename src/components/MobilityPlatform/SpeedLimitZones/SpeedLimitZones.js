@@ -100,7 +100,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
     };
   };
 
-  const renderData = isDataValid(showSpeedLimitZones, speedLimitZones);
+  const renderData = isDataValid(showSpeedLimitZones, filteredSpeedLimitZones);
 
   return (
     <>
