@@ -45,8 +45,16 @@ const BicycleRoutes = () => {
       {renderData
         ? activeBicycleRoute.map(item => (
           <React.Fragment key={item.id}>
-            <Polyline weight={useContrast ? 10 : 8} pathOptions={useContrast ? whiteOptions : blueOptions} positions={item.geometry_coords} />
-            <Polyline weight={useContrast ? 6 : 4} pathOptions={useContrast ? blackOptions : whiteOptions} positions={item.geometry_coords} />
+            <Polyline
+              weight={useContrast ? 10 : 8}
+              pathOptions={useContrast ? whiteOptions : blueOptions}
+              positions={item.geometry_coords}
+            />
+            <Polyline
+              weight={useContrast ? 6 : 4}
+              pathOptions={useContrast ? blackOptions : whiteOptions}
+              positions={item.geometry_coords}
+            />
           </React.Fragment>
         ))
         : null}
