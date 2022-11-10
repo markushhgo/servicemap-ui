@@ -4,6 +4,7 @@ import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
 import MarinasContent from './components/MarinasContent';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
+import { isDataValid } from '../../utils/utils';
 
 /**
  * Displays marinas on the map in polygon format.
@@ -15,6 +16,7 @@ const Marinas = () => {
   const { openMobilityPlatform, showMarinas } = useContext(MobilityPlatformContext);
 
   const mapType = useSelector(state => state.settings.mapType);
+  const useContrast = mapType === 'accessible_map';
 
   const { Polygon, Popup } = global.rL;
 
@@ -24,32 +26,33 @@ const Marinas = () => {
     }
   }, [openMobilityPlatform, setMarinasData]);
 
-  const useContrast = mapType === 'accessible_map';
-
   const blueOptions = { color: 'rgba(7, 44, 115, 255)', weight: 5 };
   const whiteOptions = {
-    color: 'rgba(255, 255, 255, 255)', fillOpacity: 0.3, weight: 5, dashArray: '12',
+    color: 'rgba(255, 255, 255, 255)',
+    fillOpacity: 0.3,
+    weight: 5,
+    dashArray: '12',
   };
   const pathOptions = useContrast ? whiteOptions : blueOptions;
 
   const map = useMap();
 
+  const renderData = isDataValid(showMarinas, marinasData);
+
   useEffect(() => {
-    if (showMarinas && marinasData && marinasData.length > 0) {
+    if (renderData) {
       const bounds = [];
       marinasData.forEach((item) => {
         bounds.push(item.geometry_coords);
       });
       map.fitBounds(bounds);
     }
-  }, [showMarinas, marinasData, map]);
+  }, [showMarinas, marinasData]);
 
   return (
     <>
-      {showMarinas
-        && marinasData
-        && marinasData.length > 0
-        && marinasData.map(item => (
+      {renderData
+        ? marinasData.map(item => (
           <Polygon
             key={item.id}
             pathOptions={pathOptions}
@@ -67,7 +70,8 @@ const Marinas = () => {
               <MarinasContent name={item.name} berths={item.extra.berths} />
             </Popup>
           </Polygon>
-        ))}
+        ))
+        : null}
     </>
   );
 };
