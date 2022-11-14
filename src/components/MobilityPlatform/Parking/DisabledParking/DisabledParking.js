@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import disabledParkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_disabled_parking.svg';
 import disabledParkingIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_disabled_parking-bw.svg';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../redux/selectors/settings';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon, isDataValid } from '../../utils/utils';
 import DisabledParkingContent from './components/DisabledParkingContent';
@@ -20,8 +21,7 @@ const DisabledParking = () => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const customIcon = icon(createIcon(useContrast ? disabledParkingIconBw : disabledParkingIcon));
 

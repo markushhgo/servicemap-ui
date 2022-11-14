@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
 import React, { useContext } from 'react';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { isDataValid } from '../utils/utils';
 
 const SpeedLimitZones = ({ classes, intl }) => {
@@ -10,8 +11,7 @@ const SpeedLimitZones = ({ classes, intl }) => {
 
   const { Polygon, Popup } = global.rL;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const filteredSpeedLimitZones = speedLimitZones.filter(item => speedLimitSelections.includes(item.extra.speed_limit));
 

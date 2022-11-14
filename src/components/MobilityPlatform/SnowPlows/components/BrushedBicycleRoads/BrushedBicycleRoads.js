@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../../utils/utils';
 
@@ -15,8 +16,7 @@ const BrushedBicycleRoads = () => {
 
   const { Polyline } = global.rL;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const white = 'rgba(255, 255, 255, 255)';
   const black = 'rgba(0, 0, 0, 255)';
@@ -71,7 +71,7 @@ const BrushedBicycleRoads = () => {
 
   useEffect(() => {
     fitDataToBounds(renderBrushSandedData, brushSandedRoutes);
-  }, [showBrushSandedRoute, brushSandedRoutes, map]);
+  }, [showBrushSandedRoute, brushSandedRoutes]);
 
   useEffect(() => {
     fitDataToBounds(renderBrushSaltedData, brushSaltedRoutes);

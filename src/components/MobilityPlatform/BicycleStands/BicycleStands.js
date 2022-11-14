@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
+import { useMap, useMapEvents } from 'react-leaflet';
 import { useSelector } from 'react-redux';
-import { useMapEvents, useMap } from 'react-leaflet';
-import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
 import bicycleStandIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_bicycle_stand-bw.svg';
-import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon_circle_border.svg';
 import circleIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_circle_border-bw.svg';
+import bicycleStandIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle-stand.svg';
+import circleIcon from 'servicemap-ui-turku/assets/icons/icons-icon_circle_border.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import BicycleStandContent from './components/BicycleStandContent';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import BicycleStandContent from './components/BicycleStandContent';
 
 const BicycleStands = ({ classes }) => {
   const [bicycleStands, setBicycleStands] = useState([]);
@@ -16,8 +17,7 @@ const BicycleStands = ({ classes }) => {
 
   const { openMobilityPlatform, showBicycleStands } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const map = useMap();
 

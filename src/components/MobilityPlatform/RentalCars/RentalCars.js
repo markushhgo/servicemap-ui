@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
+import { useMap, useMapEvents } from 'react-leaflet';
 import { useSelector } from 'react-redux';
-import { useMapEvents, useMap } from 'react-leaflet';
-import rentalCarIcon from 'servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
 import rentalCarIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_rental_car-bw.svg';
 import providerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_24rent.svg';
-import RentalCarsContent from './components/RentalCarsContent';
-import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import rentalCarIcon from 'servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
+import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../utils/utils';
+import RentalCarsContent from './components/RentalCarsContent';
 
 const RentalCars = ({ classes }) => {
   const [rentalCarsData, setRentalCarsData] = useState([]);
@@ -16,8 +17,7 @@ const RentalCars = ({ classes }) => {
 
   const { openMobilityPlatform, showRentalCars } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;

@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
-import MarinasContent from './components/MarinasContent';
+import { useAccessibleMap } from '../../../../redux/selectors/settings';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../utils/utils';
+import MarinasContent from './components/MarinasContent';
 
 /**
  * Displays marinas on the map in polygon format.
@@ -15,8 +16,7 @@ const Marinas = () => {
 
   const { openMobilityPlatform, showMarinas } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Polygon, Popup } = global.rL;
 

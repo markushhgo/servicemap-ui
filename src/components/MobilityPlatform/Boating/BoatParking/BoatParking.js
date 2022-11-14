@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../redux/selectors/settings';
 import { isDataValid } from '../../utils/utils';
 import { fetchMobilityMapPolygonData } from '../../mobilityPlatformRequests/mobilityPlatformRequests';
 
@@ -14,8 +15,7 @@ const BoatParking = () => {
 
   const { openMobilityPlatform, showBoatParking } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Polygon } = global.rL;
 

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchCultureRoutesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../utils/utils';
 import CultureRouteUnits from './components/CultureRouteUnits';
@@ -14,8 +15,7 @@ const CultureRoutes = () => {
 
   const { Polyline } = global.rL;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
   const whiteOptions = { color: 'rgba(255, 255, 255, 255)', dashArray: !useContrast ? '1, 8' : null };

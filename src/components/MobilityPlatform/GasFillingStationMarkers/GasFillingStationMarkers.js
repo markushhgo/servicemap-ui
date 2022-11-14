@@ -5,6 +5,7 @@ import { useMap } from 'react-leaflet';
 import gasFillingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_gas_station.svg';
 import gasFillingIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_gas_station-bw.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon, isDataValid } from '../utils/utils';
 import GasFillingStationContent from './components/GasFillingStationContent';
@@ -17,8 +18,7 @@ const GasFillingStationMarkers = ({ classes }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const gasStationIcon = icon(createIcon(useContrast ? gasFillingIconBw : gasFillingIcon));
 

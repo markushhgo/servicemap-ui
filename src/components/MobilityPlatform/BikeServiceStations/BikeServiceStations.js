@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
-import bikeServiceIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bike_service_station.svg';
 import bikeServiceIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_bike_service_station-bw.svg';
+import bikeServiceIcon from 'servicemap-ui-turku/assets/icons/icons-icon_bike_service_station.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import BikeServiceStationContent from './components/BikeServiceStationContent';
-import { createIcon, isDataValid } from '../utils/utils';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { createIcon, isDataValid } from '../utils/utils';
+import BikeServiceStationContent from './components/BikeServiceStationContent';
 
 const BikeServiceStations = () => {
   const [bikeServiceStations, setBikeServiceStations] = useState([]);
@@ -15,8 +16,7 @@ const BikeServiceStations = () => {
 
   const map = useMap();
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;

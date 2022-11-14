@@ -8,6 +8,7 @@ import rydeIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_ryd
 import scooterIcon from 'servicemap-ui-turku/assets/icons/icons-icon_scooters_marker.svg';
 import scooterIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_scooters_marker-bw.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import { fetchIotData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import ScooterInfo from './components/ScooterInfo';
 import { isDataValid } from '../../../utils/utils';
@@ -18,8 +19,7 @@ const ScooterMarkers = () => {
 
   const { openMobilityPlatform, showScootersRyde } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;

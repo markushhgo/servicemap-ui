@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
 import { fetchMobilityMapData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../../utils/utils';
+import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import TextContent from '../../../TextContent';
 
 /**
@@ -15,8 +16,6 @@ const NoParking = () => {
 
   const { openMobilityPlatform, showScooterNoParking } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-
   const { Polygon, Popup } = global.rL;
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const NoParking = () => {
     }
   }, [openMobilityPlatform, setNoParkingData]);
 
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const redOptions = { color: 'rgba(251, 5, 21, 255)', weight: 5 };
   const whiteOptions = {

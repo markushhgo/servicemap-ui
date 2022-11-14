@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ecoCounterIcon from 'servicemap-ui-turku/assets/icons/icons-icon_ecocounter.svg';
 import ecoCounterIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_ecocounter-bw.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { createIcon, isDataValid } from '../../MobilityPlatform/utils/utils';
 import { fetchEcoCounterStations } from '../EcoCounterRequests/ecoCounterRequests';
 import EcoCounterContent from '../EcoCounterContent';
@@ -14,8 +15,7 @@ const EcoCounterMarkers = ({ classes }) => {
 
   const { openMobilityPlatform, showEcoCounter } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;

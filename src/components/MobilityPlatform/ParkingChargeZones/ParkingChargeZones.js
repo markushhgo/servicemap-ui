@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ParkingChargeZoneContent from './components/ParkingChargeZoneContent';
 
@@ -9,15 +10,13 @@ const ParkingChargeZones = () => {
     showParkingChargeZones, parkingChargeZones, parkingChargeZoneId,
   } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-
   const parkingChargeZone = parkingChargeZones.find(item => item.id === parkingChargeZoneId);
 
   const renderOneParkingChargeZone = !!(showParkingChargeZones && parkingChargeZone && Object.entries(parkingChargeZone).length > 0);
 
   const { Polygon, Popup } = global.rL;
 
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const blackOptions = {
     color: 'rgba(0, 0, 0, 255)',

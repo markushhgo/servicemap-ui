@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import { fetchMobilityMapPolygonData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../../utils/utils';
 import TextContent from '../../../TextContent';
@@ -15,8 +16,6 @@ const SpeedLimitAreas = () => {
 
   const { openMobilityPlatform, showScooterSpeedLimitAreas } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-
   const { Polygon, Popup } = global.rL;
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const SpeedLimitAreas = () => {
     }
   }, [openMobilityPlatform, setSpeedLimitAreas]);
 
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const blueOptions = { color: 'rgba(7, 44, 115, 255)' };
   const whiteOptions = {

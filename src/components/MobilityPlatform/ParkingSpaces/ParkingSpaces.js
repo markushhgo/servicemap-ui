@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
 import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import ParkingSpacesContent from './components/ParkingSpacesContent';
 
@@ -11,8 +12,7 @@ const ParkingSpaces = () => {
 
   const { openMobilityPlatform, showParkingSpaces } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const { Polygon, Popup } = global.rL;
 
@@ -59,7 +59,7 @@ const ParkingSpaces = () => {
       });
       map.fitBounds(bounds);
     }
-  }, [showParkingSpaces]);
+  }, [showParkingSpaces, parkingSpaces]);
 
   const renderColor = (itemId, capacity) => {
     const stats = parkingStatistics.results.find(item => item.id === itemId);

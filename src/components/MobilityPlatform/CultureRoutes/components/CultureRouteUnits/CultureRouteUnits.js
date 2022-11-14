@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import routeUnitIcon from 'servicemap-ui-turku/assets/icons/icons-icon_culture_route.svg';
 import routeUnitIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_culture_route-bw.svg';
 import MobilityPlatformContext from '../../../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import { createIcon } from '../../../utils/utils';
 import useLocaleText from '../../../../../utils/useLocaleText';
 
@@ -23,8 +24,7 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const customIcon = icon(createIcon(useContrast ? routeUnitIconBw : routeUnitIcon));
 

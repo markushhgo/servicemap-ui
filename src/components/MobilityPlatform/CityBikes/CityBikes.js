@@ -6,6 +6,7 @@ import cityBikeIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon
 import follariIcon from 'servicemap-ui-turku/assets/icons/icons-icon_follari.svg';
 import follariIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_follari-bw.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchCityBikesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../utils/utils';
 import CityBikesContent from './components/CityBikesContent';
@@ -17,8 +18,7 @@ const CityBikes = () => {
 
   const { openMobilityPlatform, showCityBikes } = useContext(MobilityPlatformContext);
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const map = useMap();
 

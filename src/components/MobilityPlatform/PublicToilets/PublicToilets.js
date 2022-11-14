@@ -6,6 +6,7 @@ import publicToiletIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon, isDataValid } from '../utils/utils';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import PublicToiletsContent from './components/PublicToiletsContent';
 
 const PublicToilets = () => {
@@ -16,8 +17,7 @@ const PublicToilets = () => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const customIcon = icon(createIcon(useContrast ? publicToiletIconBw : publicToiletIcon));
 

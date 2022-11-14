@@ -5,6 +5,7 @@ import { useMap } from 'react-leaflet';
 import chargerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_charging_station.svg';
 import chargerIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_charging_station-bw.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon, isDataValid } from '../utils/utils';
 import ChargerStationContent from './components/ChargerStationContent';
@@ -19,8 +20,7 @@ const ChargerStationMarkers = ({ classes }) => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const mapType = useSelector(state => state.settings.mapType);
-  const useContrast = mapType === 'accessible_map';
+  const useContrast = useSelector(useAccessibleMap);
 
   const chargerStationIcon = icon(createIcon(useContrast ? chargerIconBw : chargerIcon));
 
