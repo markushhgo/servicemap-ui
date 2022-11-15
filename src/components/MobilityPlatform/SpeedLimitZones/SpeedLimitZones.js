@@ -16,27 +16,36 @@ const SpeedLimitZones = ({ classes, intl }) => {
   const filteredSpeedLimitZones = speedLimitZones.filter(item => speedLimitSelections.includes(item.extra.speed_limit));
 
   const options = {
-    black: [0, 0, 0, 255],
-    blue: [7, 44, 115, 255],
-    brown: [117, 44, 23, 255],
-    burgundy: [128, 0, 32, 255],
-    green: [15, 115, 6, 255],
-    orange: [227, 97, 32, 255],
-    purple: [202, 15, 212, 255],
-    red: [251, 5, 21, 255],
-    teal: [0, 128, 128, 255],
-  };
-
-  const patterns = {
-    pattern1: '10 2 10',
-    pattern2: '8 3 8',
-    pattern3: '7',
-    pattern4: '2 10 10 10',
-    pattern5: '10 5',
-    pattern6: '14 4 14',
-    pattern7: '11 3 11',
-    pattern8: '12 4',
-    pattern9: '2 8 8 8',
+    black: {
+      rgba: [0, 0, 0, 255], pattern: '2 8 8 8',
+    },
+    blue: {
+      rgba: [7, 44, 115, 255], pattern: '2 10 10 10',
+    },
+    brown: {
+      rgba: [117, 44, 23, 255], pattern: '10 2 10',
+    },
+    burgundy: {
+      rgba: [128, 0, 32, 255], pattern: '11 3 11',
+    },
+    green: {
+      rgba: [15, 115, 6, 255], pattern: '8 3 8',
+    },
+    orange: {
+      rgba: [227, 97, 32, 255], pattern: '12 4',
+    },
+    purple: {
+      rgba: [202, 15, 212, 255], pattern: '14 4 14',
+    },
+    red: {
+      rgba: [251, 5, 21, 255], pattern: '10 5',
+    },
+    teal: {
+      rgba: [0, 128, 128, 255], pattern: '7',
+    },
+    default: {
+      rgba: [7, 44, 115, 255], pattern: '10 2 10',
+    },
   };
 
   const getOption = (input) => {
@@ -64,39 +73,13 @@ const SpeedLimitZones = ({ classes, intl }) => {
     }
   };
 
-  const getPattern = (input) => {
-    switch (input) {
-      case 20:
-        return patterns.pattern1;
-      case 30:
-        return patterns.pattern2;
-      case 40:
-        return patterns.pattern3;
-      case 50:
-        return patterns.pattern4;
-      case 60:
-        return patterns.pattern5;
-      case 70:
-        return patterns.pattern6;
-      case 80:
-        return patterns.pattern7;
-      case 100:
-        return patterns.pattern8;
-      case 120:
-        return patterns.pattern9;
-      default:
-        return patterns.pattern1;
-    }
-  };
-
   const getPathOptions = (input) => {
-    const option = getOption(input);
-    const dashPattern = getPattern(input);
+    const { rgba, pattern } = getOption(input);
     return {
-      color: useContrast ? 'rgba(255, 255, 255, 255)' : `rgba(${option})`,
+      color: useContrast ? 'rgba(255, 255, 255, 255)' : `rgba(${rgba})`,
       fillOpacity: 0.3,
       weight: 5,
-      dashArray: useContrast ? dashPattern : null,
+      dashArray: useContrast ? pattern : null,
     };
   };
 
