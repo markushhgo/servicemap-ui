@@ -601,7 +601,7 @@ const translations = {
   'mobilityPlatform.menu.showCultureRoutes': 'Kulturvägar',
   'mobilityPlatform.menu.showBicycleRoutes': 'Cykelvägar',
   'mobilityPlatform.menu.routes.info': 'Du kan välja rutten från nedanstående listan.',
-  'mobilityPlatform.menu.routes.emptyList': 'Inga rutter hittades.',
+  'mobilityPlatform.menu.routes.emptyList': 'Rutter håller på att laddas.',
   'mobilityPlatform.menu.bicycleRoutes.title': 'Information om rutten.',
   'mobilityPlatform.menu.bicycleRoutes.length': 'Ruttlängd:',
   'mobilityPlatform.menu.routes.name': 'Rutt',
@@ -639,6 +639,10 @@ const translations = {
   'mobilityPlatform.menu.streetMaintenance.info.sanitation': 'Rengöring',
   'mobilityPlatform.menu.show.brushSandedRoute': 'Sopsandade cykelvägar',
   'mobilityPlatform.menu.show.brushSaltedRoute': 'Sopsaltade cykelvägar',
+  'mobilityPlatform.menu.show.paavoTrails': 'Paavos stigar',
+  'mobilityPlatform.menu.markedTrails.length': 'Stiglängd: {value} km',
+  'mobilityPlatform.menu.list.showMore': 'Visa fler rutter', // TODO verify
+  'mobilityPlatform.menu.list.showLess': 'Visa färre rutter', // TODO verify
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -763,6 +767,7 @@ const translations = {
   'mobilityPlatform.info.streetMaintenance.general': 'Gatuunderhållet omfattar plogning och sandning av körbanor, cykelvägar och strukturellt oskiljaktiga gång- och cykelvägar på vintern och borttagning av sandingssand på våren.',
   'mobilityPlatform.info.streetMaintenance.link': 'Spelregler för vinterunderhåll.',
   'mobilityPlatform.info.streetMaintenance.brushedRoads': 'Cykelvägarna som visas på kartan har utökat vinterunderhåll. Snö avlägsnas från sträckan genom sopning och halka motarbetas med saltlösning eller sandning.',
+  'mobilityPlatform.info.markedTrails': 'Paavos stigar är rutter som märkts ut i terrängen. Längs rutterna får vandrare bekanta sig med den lokala naturen och närmiljön på olika håll i Åbo. På flera ställen möter stigarna andra friluftsleder och kopplar dem ihop med varandra. Gångrutterna längs stigar har märkts ut i terrängen med blåmålade löpare och runda märken på träd och stenar. Längs skogsavsnitten är det tillåtet att åka terrängcykel enligt allemansrätten.', // TODO verify
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',

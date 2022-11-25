@@ -10,17 +10,17 @@ import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
-import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconSnowplow from 'servicemap-ui-turku/assets/icons/icons-icon_street_maintenance.svg';
+import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
   fetchBicycleRouteNames,
   fetchCultureRouteNames,
   fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
-import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
+import useLocaleText from '../../utils/useLocaleText';
 import ButtonMain from './components/ButtonMain';
 import CityBikeInfo from './components/CityBikeInfo';
 import Description from './components/Description';
@@ -28,6 +28,8 @@ import EmptyRouteList from './components/EmptyRouteList';
 import ExtendedInfo from './components/ExtendedInfo';
 import FormLabel from './components/FormLabel';
 import RouteLength from './components/RouteLength';
+import SliceList from './components/SliceListButton';
+import TrailList from './components/TrailList';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -39,12 +41,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
+  const [cultureRoutesToShow, setCultureRoutesToShow] = useState(4);
   const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
+  const [bicycleRoutesToShow, setBicycleRoutesToShow] = useState(4);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
   const [openScooterProviderList, setOpenScooterProviderList] = useState(false);
   const [openStreetMaintenanceSelectionList, setOpenStreetMaintenanceSelectionList] = useState(false);
+  const [openMarkedTrailsList, setOpenMarkedTrailsList] = useState(false);
+  const [markedTrailsList, setMarkedTrailsList] = useState([]);
+  const [markedTrailsToShow, setMarkedTrailsToShow] = useState(4);
 
   const {
     setOpenMobilityPlatform,
@@ -113,6 +120,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowBrushSandedRoute,
     showBrushSaltedRoute,
     setShowBrushSaltedRoute,
+    showMarkedTrails,
+    setShowMarkedTrails,
+    markedTrailsObj,
+    setMarkedTrailsObj,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -167,6 +178,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     fetchMobilityMapPolygonData('PAZ', 10, setParkingChargeZones);
   }, [setParkingChargeZones]);
 
+  useEffect(() => {
+    fetchMobilityMapPolygonData('PPU', 50, setMarkedTrailsList);
+  }, [setMarkedTrailsList]);
+
   /**
    * Check is visibility boolean values are true
    * This would be so if user has not hid them, but left mobility map before returning
@@ -198,6 +213,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showCultureRoutes, setOpenWalkSettings);
     checkVisibilityValues(showCultureRoutes, setOpenCultureRouteList);
   }, [showCultureRoutes]);
+
+  useEffect(() => {
+    checkVisibilityValues(showMarkedTrails, setOpenWalkSettings);
+    checkVisibilityValues(showMarkedTrails, setOpenMarkedTrailsList);
+  }, [showMarkedTrails]);
 
   useEffect(() => {
     checkVisibilityValues(showSpeedLimitZones, setOpenSpeedLimitList);
@@ -291,6 +311,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
       localizedCultureRoutes.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
     }
   }, [cultureRouteList, localizedCultureRoutes, locale]);
+
+  const sortMarkedTrails = (data) => {
+    if (data && data.length > 0) {
+      return data.sort((a, b) => a[nameKeys[locale]].split(': ').slice(-1)[0].localeCompare(b[nameKeys[locale]].split(': ').slice(-1)[0]));
+    }
+    return [];
+  };
+
+  const markedTrailsSorted = sortMarkedTrails(markedTrailsList);
 
   /**
    * Sort routes in alphapethical order.
@@ -433,6 +462,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (showCultureRoutes) {
       setShowCultureRoutes(false);
     }
+    if (cultureRoutesToShow === (cultureRouteList.length || localizedCultureRoutes.length)) {
+      setCultureRoutesToShow(4);
+    }
   };
 
   const bicycleRouteListToggle = () => {
@@ -442,6 +474,22 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
     if (showBicycleRoutes) {
       setShowBicycleRoutes(false);
+    }
+    if (bicycleRoutesToShow === bicycleRouteList.length) {
+      setBicycleRoutesToShow(4);
+    }
+  };
+
+  const markedTrailListToggle = () => {
+    setOpenMarkedTrailsList(current => !current);
+    if (markedTrailsObj) {
+      setMarkedTrailsObj({});
+    }
+    if (showMarkedTrails) {
+      setShowMarkedTrails(false);
+    }
+    if (markedTrailsToShow === markedTrailsSorted.length) {
+      setMarkedTrailsToShow(4);
     }
   };
 
@@ -508,6 +556,31 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (routeName === prevBicycleRouteNameRef.current) {
       setBicycleRouteName(null);
       setShowBicycleRoutes(false);
+    }
+  };
+
+  /**
+   * Stores previous value
+   */
+  const prevMarkedTrailObjRef = useRef();
+
+  /**
+   * If user clicks same trail again, then reset name and set visiblity to false
+   * Otherwise new values are set
+   */
+  useEffect(() => {
+    prevMarkedTrailObjRef.current = markedTrailsObj;
+  }, [markedTrailsObj]);
+
+  /**
+   * @param {obj}
+   */
+  const setMarkedTrailState = (obj) => {
+    setMarkedTrailsObj(obj);
+    setShowMarkedTrails(true);
+    if (obj === prevMarkedTrailObjRef.current) {
+      setMarkedTrailsObj({});
+      setShowMarkedTrails(false);
     }
   };
 
@@ -625,6 +698,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
       onChangeValue: cultureRouteListToggle,
+    },
+    {
+      type: 'markedTrails',
+      msgId: 'mobilityPlatform.menu.show.paavoTrails',
+      checkedValue: openMarkedTrailsList,
+      onChangeValue: markedTrailListToggle,
     },
     {
       type: 'publicToilets',
@@ -811,7 +890,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   const renderBicycleRoutes = inputData => inputData
     && inputData.length > 0
-    && inputData.map(item => (
+    && inputData.slice(0, bicycleRoutesToShow).map(item => (
       <div key={item.id} className={classes.checkBoxContainer}>
         <FormControlLabel
           control={(
@@ -838,7 +917,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   const renderCultureRoutes = inputData => inputData
     && inputData.length > 0
-    && inputData.map(item => (
+    && inputData.slice(0, cultureRoutesToShow).map(item => (
       <div key={item.id} className={classes.checkBoxContainer}>
         <FormControlLabel
           control={(
@@ -858,6 +937,15 @@ const MobilitySettingsView = ({ classes, intl }) => {
         {item.id === cultureRouteId ? <Description key={item.name} route={item} currentLocale={locale} /> : null}
       </div>
     ));
+
+  const renderSelectTrailText = (visibilityValue, obj, routeList) => {
+    const isObjValid = Object.keys(obj).length > 0;
+    return (
+      <div className={visibilityValue ? classes.border : null}>
+        {visibilityValue && !isObjValid ? <EmptyRouteList route={routeList} /> : null}
+      </div>
+    );
+  };
 
   /**
    * @param {boolean} settingVisibility
@@ -1061,6 +1149,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const renderWalkingInfoTexts = () => (
     <>
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
+      {openMarkedTrailsList ? <InfoTextBox infoText="mobilityPlatform.info.markedTrails" /> : null}
       {showPublicToilets ? <InfoTextBox infoText="mobilityPlatform.info.publicToilets" /> : null}
     </>
   );
@@ -1122,7 +1211,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
           linkText="mobilityPlatform.info.streetMaintenance.link"
         />
       ) : null}
-      {showBrushSaltedRoute || showBrushSandedRoute ? <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.brushedRoads" /> : null}
+      {showBrushSaltedRoute || showBrushSandedRoute ? (
+        <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.brushedRoads" />
+      ) : null}
     </>
   );
 
@@ -1154,6 +1245,26 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 ? renderCultureRoutes(localizedCultureRoutes)
                 : null}
               {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
+              <SliceList
+                openList={openCultureRouteList}
+                itemsToShow={cultureRoutesToShow}
+                routes={locale === 'fi' ? cultureRouteList : localizedCultureRoutes}
+                setItemsToShow={setCultureRoutesToShow}
+              />
+              {renderSelectTrailText(openMarkedTrailsList, markedTrailsObj, markedTrailsList)}
+              <TrailList
+                openList={openMarkedTrailsList}
+                inputData={markedTrailsSorted}
+                itemsToShow={markedTrailsToShow}
+                trailsObj={markedTrailsObj}
+                setTrailState={setMarkedTrailState}
+              />
+              <SliceList
+                openList={openMarkedTrailsList}
+                itemsToShow={markedTrailsToShow}
+                routes={markedTrailsSorted}
+                setItemsToShow={setMarkedTrailsToShow}
+              />
               {renderWalkingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
@@ -1168,6 +1279,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={bicycleRouteList} /> : null}
               </div>
               {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
+              <SliceList
+                openList={openBicycleRouteList}
+                itemsToShow={bicycleRoutesToShow}
+                routes={bicycleRouteList}
+                setItemsToShow={setBicycleRoutesToShow}
+              />
               {renderBicycleInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
