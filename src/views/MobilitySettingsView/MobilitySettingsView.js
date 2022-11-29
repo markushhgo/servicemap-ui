@@ -18,6 +18,7 @@ import {
   fetchCultureRouteNames,
   fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
+import { isDataValid } from '../../components/MobilityPlatform/utils/utils';
 import TitleBar from '../../components/TitleBar';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import useLocaleText from '../../utils/useLocaleText';
@@ -30,6 +31,8 @@ import FormLabel from './components/FormLabel';
 import RouteLength from './components/RouteLength';
 import SliceList from './components/SliceListButton';
 import TrailList from './components/TrailList';
+import ParkingChargeZoneList from './components/ParkingChargeZoneList';
+import ScooterProviderList from './components/ScooterProviderList';
 
 const MobilitySettingsView = ({ classes, intl }) => {
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
@@ -52,6 +55,9 @@ const MobilitySettingsView = ({ classes, intl }) => {
   const [openMarkedTrailsList, setOpenMarkedTrailsList] = useState(false);
   const [markedTrailsList, setMarkedTrailsList] = useState([]);
   const [markedTrailsToShow, setMarkedTrailsToShow] = useState(4);
+  const [openNatureTrailsList, setOpenNatureTrailsList] = useState(false);
+  const [natureTrailsList, setNatureTrailsList] = useState([]);
+  const [natureTrailsToShow, setNatureTrailsToShow] = useState(4);
 
   const {
     setOpenMobilityPlatform,
@@ -124,6 +130,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     setShowMarkedTrails,
     markedTrailsObj,
     setMarkedTrailsObj,
+    showNatureTrails,
+    setShowNatureTrails,
+    natureTrailsObj,
+    setNatureTrailsObj,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -182,6 +192,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
     fetchMobilityMapPolygonData('PPU', 50, setMarkedTrailsList);
   }, [setMarkedTrailsList]);
 
+  useEffect(() => {
+    fetchMobilityMapPolygonData('NTL', 200, setNatureTrailsList);
+  }, [setNatureTrailsList]);
+
   /**
    * Check is visibility boolean values are true
    * This would be so if user has not hid them, but left mobility map before returning
@@ -218,6 +232,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
     checkVisibilityValues(showMarkedTrails, setOpenWalkSettings);
     checkVisibilityValues(showMarkedTrails, setOpenMarkedTrailsList);
   }, [showMarkedTrails]);
+
+  useEffect(() => {
+    checkVisibilityValues(showNatureTrails, setOpenWalkSettings);
+    checkVisibilityValues(showNatureTrails, setOpenNatureTrailsList);
+  }, [showNatureTrails]);
 
   useEffect(() => {
     checkVisibilityValues(showSpeedLimitZones, setOpenSpeedLimitList);
@@ -327,12 +346,14 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @function sort
    * @returns {Array}
    */
+
   useEffect(() => {
     const objKeys = {
       fi: 'name_fi',
       en: 'name_en',
       sv: 'name_sv',
     };
+
     if (bicycleRouteList) {
       bicycleRouteList.sort((a, b) => a[objKeys[locale]].localeCompare(b[objKeys[locale]], undefined, {
         numeric: true,
@@ -340,6 +361,16 @@ const MobilitySettingsView = ({ classes, intl }) => {
       }));
     }
   }, [bicycleRouteList, locale]);
+
+  const sortTrails = (data) => {
+    if (data && data.length > 0) {
+      return data.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return [];
+  };
+
+  const natureTrailsTku = natureTrailsList.filter(item => item.municipality === 'turku');
+  const natureTrailsTkuSorted = sortTrails(natureTrailsTku);
 
   /**
    * Toggle functions for main user types
@@ -467,6 +498,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
   };
 
+  const resetItemsToShow = (itemsToShow, data, setItems) => {
+    if (itemsToShow === data.length) {
+      setItems(4);
+    }
+  };
+
   const bicycleRouteListToggle = () => {
     setOpenBicycleRouteList(current => !current);
     if (bicycleRouteName) {
@@ -475,9 +512,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (showBicycleRoutes) {
       setShowBicycleRoutes(false);
     }
-    if (bicycleRoutesToShow === bicycleRouteList.length) {
-      setBicycleRoutesToShow(4);
-    }
+    resetItemsToShow(bicycleRoutesToShow, bicycleRouteList, setBicycleRoutesToShow);
   };
 
   const markedTrailListToggle = () => {
@@ -491,6 +526,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (markedTrailsToShow === markedTrailsSorted.length) {
       setMarkedTrailsToShow(4);
     }
+  };
+
+  const natureTrailListToggle = () => {
+    setOpenNatureTrailsList(current => !current);
+    if (natureTrailsObj) {
+      setNatureTrailsObj({});
+    }
+    if (showNatureTrails) {
+      setShowNatureTrails(false);
+    }
+    resetItemsToShow(natureTrailsToShow, natureTrailsTkuSorted, setNatureTrailsToShow);
   };
 
   const streetMaintenanceListToggle = () => {
@@ -581,6 +627,28 @@ const MobilitySettingsView = ({ classes, intl }) => {
     if (obj === prevMarkedTrailObjRef.current) {
       setMarkedTrailsObj({});
       setShowMarkedTrails(false);
+    }
+  };
+
+  const prevNatureTrailObjRef = useRef();
+
+  /**
+   * If user clicks same trail again, then reset name and set visiblity to false
+   * Otherwise new values are set
+   */
+  useEffect(() => {
+    prevNatureTrailObjRef.current = natureTrailsObj;
+  }, [natureTrailsObj]);
+
+  /**
+   * @param {obj}
+   */
+  const setNatureTrailState = (obj) => {
+    setNatureTrailsObj(obj);
+    setShowNatureTrails(true);
+    if (obj === prevNatureTrailObjRef.current) {
+      setNatureTrailsObj({});
+      setShowNatureTrails(false);
     }
   };
 
@@ -704,6 +772,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
       msgId: 'mobilityPlatform.menu.show.paavoTrails',
       checkedValue: openMarkedTrailsList,
       onChangeValue: markedTrailListToggle,
+    },
+    {
+      type: 'natureTrails',
+      msgId: 'mobilityPlatform.menu.show.natureTrails',
+      checkedValue: openNatureTrailsList,
+      onChangeValue: natureTrailListToggle,
     },
     {
       type: 'publicToilets',
@@ -888,28 +962,31 @@ const MobilitySettingsView = ({ classes, intl }) => {
    * @param {Array} inputData
    * @returns {JSX Element}
    */
-  const renderBicycleRoutes = inputData => inputData
-    && inputData.length > 0
-    && inputData.slice(0, bicycleRoutesToShow).map(item => (
-      <div key={item.id} className={classes.checkBoxContainer}>
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={item.name_fi === bicycleRouteName}
-              aria-checked={item.name_fi === bicycleRouteName}
-              className={classes.margin}
-              onChange={() => setBicycleRouteState(item.name_fi)}
-            />
-          )}
-          label={(
-            <Typography variant="body2" aria-label={getRouteName(item.name_fi, item.name_en, item.name_sv)}>
-              {getRouteName(item.name_fi, item.name_en, item.name_sv)}
-            </Typography>
-          )}
-        />
-        {item.name_fi === bicycleRouteName ? <RouteLength key={item.id} route={item} /> : null}
-      </div>
-    ));
+  const renderBicycleRoutes = (inputData) => {
+    const renderData = isDataValid(openBicycleRouteList, inputData);
+    return renderData
+      ? inputData.slice(0, bicycleRoutesToShow).map(item => (
+        <div key={item.id} className={classes.checkBoxContainer}>
+          <FormControlLabel
+            control={(
+              <Checkbox
+                checked={item.name_fi === bicycleRouteName}
+                aria-checked={item.name_fi === bicycleRouteName}
+                className={classes.margin}
+                onChange={() => setBicycleRouteState(item.name_fi)}
+              />
+              )}
+            label={(
+              <Typography variant="body2" aria-label={getRouteName(item.name_fi, item.name_en, item.name_sv)}>
+                {getRouteName(item.name_fi, item.name_en, item.name_sv)}
+              </Typography>
+              )}
+          />
+          {item.name_fi === bicycleRouteName ? <RouteLength key={item.id} route={item} /> : null}
+        </div>
+      ))
+      : null;
+  };
 
   /**
    * @param {Array} inputData
@@ -976,7 +1053,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
   // This list will be displayed for users
   const speedLimitListAsc = speedLimitList.sort((a, b) => a - b);
 
-  const renderSpeedLimits = () => (
+  const renderSpeedLimits = () => (openSpeedLimitList ? (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
         <Typography
@@ -988,111 +1065,42 @@ const MobilitySettingsView = ({ classes, intl }) => {
       </div>
       <div className={classes.buttonList}>
         {openSpeedLimitList
-          && speedLimitListAsc.length > 0
-          && speedLimitListAsc.map(item => (
-            <div key={item} className={classes.checkBoxContainer}>
-              <FormControlLabel
-                control={(
-                  <Checkbox
-                    checked={speedLimitSelections.includes(item)}
-                    aria-checked={speedLimitSelections.includes(item)}
-                    className={classes.margin}
-                    onChange={() => setSpeedLimitState(item)}
-                  />
-                )}
-                label={(
-                  <Typography
-                    variant="body2"
-                    aria-label={intl.formatMessage(
-                      {
-                        id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                      },
-                      { item },
-                    )}
-                  >
-                    {intl.formatMessage(
-                      {
-                        id: 'mobilityPlatform.content.speedLimitZones.suffix',
-                      },
-                      { item },
-                    )}
-                  </Typography>
-                )}
-              />
-            </div>
-          ))}
+            && speedLimitListAsc.length > 0
+            && speedLimitListAsc.map(item => (
+              <div key={item} className={classes.checkBoxContainer}>
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={speedLimitSelections.includes(item)}
+                      aria-checked={speedLimitSelections.includes(item)}
+                      className={classes.margin}
+                      onChange={() => setSpeedLimitState(item)}
+                    />
+                  )}
+                  label={(
+                    <Typography
+                      variant="body2"
+                      aria-label={intl.formatMessage(
+                        {
+                          id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                        },
+                        { item },
+                      )}
+                    >
+                      {intl.formatMessage(
+                        {
+                          id: 'mobilityPlatform.content.speedLimitZones.suffix',
+                        },
+                        { item },
+                      )}
+                    </Typography>
+                  )}
+                />
+              </div>
+            ))}
       </div>
     </>
-  );
-
-  const renderParkingChargeZoneList = () => (
-    <>
-      {parkingChargeZones
-        && parkingChargeZones.length > 0
-        && parkingChargeZones.map(item => (
-          <div key={item.id} className={classes.checkBoxContainer}>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  checked={item.id === parkingChargeZoneId}
-                  aria-checked={item.id === parkingChargeZoneId}
-                  className={classes.margin}
-                  onChange={() => selectParkingChargeZone(item.id)}
-                />
-              )}
-              label={(
-                <Typography
-                  variant="body2"
-                  aria-label={intl.formatMessage(
-                    { id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' },
-                    { value: item.extra.maksuvyohyke },
-                  )}
-                >
-                  {intl.formatMessage(
-                    { id: 'mobilityPlatform.menu.parkingChargeZones.subtitle' },
-                    { value: item.extra.maksuvyohyke },
-                  )}
-                </Typography>
-              )}
-            />
-          </div>
-        ))}
-    </>
-  );
-
-  const renderScooterProviderList = () => (
-    <>
-      <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography variant="body2" aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}>
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.scooters.list.info' })}
-        </Typography>
-      </div>
-      {scooterProviders
-        && scooterProviders.length > 0
-        && scooterProviders.map(item => (
-          <div key={item.type} className={classes.checkBoxContainer}>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  checked={item.checkedValue}
-                  aria-checked={item.checkedValue}
-                  className={classes.margin}
-                  onChange={() => item.onChangeValue()}
-                />
-              )}
-              label={(
-                <Typography
-                  variant="body2"
-                  aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
-                >
-                  {intl.formatMessage({ id: 'mobilityPlatform.menu.show.scootersRyde' })}
-                </Typography>
-              )}
-            />
-          </div>
-        ))}
-    </>
-  );
+  ) : null);
 
   const streetMaintenanceInfo = (colorClass, translationId) => (
     <div className={classes.flexBox}>
@@ -1103,7 +1111,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
     </div>
   );
 
-  const renderMaintenanceSelectionList = () => (
+  const renderMaintenanceSelectionList = () => (openStreetMaintenanceSelectionList ? (
     <>
       <div className={`${classes.paragraph} ${classes.border}`}>
         <Typography
@@ -1123,33 +1131,34 @@ const MobilitySettingsView = ({ classes, intl }) => {
         ) : null}
       </div>
       {streetMaintenanceSelections
-        && streetMaintenanceSelections.length > 0
-        && streetMaintenanceSelections.map(item => (
-          <div key={item.type} className={classes.checkBoxContainer}>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  checked={item.type === streetMaintenancePeriod}
-                  aria-checked={item.type === streetMaintenancePeriod}
-                  className={classes.margin}
-                  onChange={() => item.onChangeValue(item.type)}
-                />
-              )}
-              label={(
-                <Typography variant="body2" aria-label={intl.formatMessage({ id: item.msgId })}>
-                  {intl.formatMessage({ id: item.msgId })}
-                </Typography>
-              )}
-            />
-          </div>
-        ))}
+          && streetMaintenanceSelections.length > 0
+          && streetMaintenanceSelections.map(item => (
+            <div key={item.type} className={classes.checkBoxContainer}>
+              <FormControlLabel
+                control={(
+                  <Checkbox
+                    checked={item.type === streetMaintenancePeriod}
+                    aria-checked={item.type === streetMaintenancePeriod}
+                    className={classes.margin}
+                    onChange={() => item.onChangeValue(item.type)}
+                  />
+                )}
+                label={(
+                  <Typography variant="body2" aria-label={intl.formatMessage({ id: item.msgId })}>
+                    {intl.formatMessage({ id: item.msgId })}
+                  </Typography>
+                )}
+              />
+            </div>
+          ))}
     </>
-  );
+  ) : null);
 
   const renderWalkingInfoTexts = () => (
     <>
       {showEcoCounter ? <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" /> : null}
       {openMarkedTrailsList ? <InfoTextBox infoText="mobilityPlatform.info.markedTrails" /> : null}
+      {openNatureTrailsList ? <InfoTextBox infoText="mobilityPlatform.info.natureTrails" /> : null}
       {showPublicToilets ? <InfoTextBox infoText="mobilityPlatform.info.publicToilets" /> : null}
     </>
   );
@@ -1265,6 +1274,20 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 routes={markedTrailsSorted}
                 setItemsToShow={setMarkedTrailsToShow}
               />
+              {renderSelectTrailText(openNatureTrailsList, natureTrailsObj, natureTrailsTkuSorted)}
+              <TrailList
+                openList={openNatureTrailsList}
+                inputData={natureTrailsTkuSorted}
+                itemsToShow={natureTrailsToShow}
+                trailsObj={natureTrailsObj}
+                setTrailState={setNatureTrailState}
+              />
+              <SliceList
+                openList={openNatureTrailsList}
+                itemsToShow={natureTrailsToShow}
+                routes={natureTrailsTkuSorted}
+                setItemsToShow={setNatureTrailsToShow}
+              />
               {renderWalkingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
@@ -1278,7 +1301,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
               <div className={openBicycleRouteList ? classes.border : null}>
                 {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={bicycleRouteList} /> : null}
               </div>
-              {openBicycleRouteList ? renderBicycleRoutes(bicycleRouteList) : null}
+              {renderBicycleRoutes(bicycleRouteList)}
               <SliceList
                 openList={openBicycleRouteList}
                 itemsToShow={bicycleRoutesToShow}
@@ -1295,8 +1318,13 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               </div>
               {renderSettings(openCarSettings, carControlTypes)}
-              {openParkingChargeZoneList ? renderParkingChargeZoneList() : null}
-              {openSpeedLimitList ? renderSpeedLimits() : null}
+              <ParkingChargeZoneList
+                openZoneList={openParkingChargeZoneList}
+                parkingChargeZones={parkingChargeZones}
+                zoneId={parkingChargeZoneId}
+                selectZone={selectParkingChargeZone}
+              />
+              {renderSpeedLimits()}
               {renderDrivingInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
@@ -1307,7 +1335,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               </div>
               {renderSettings(openScooterSettings, scooterControlTypes)}
-              {openScooterProviderList ? renderScooterProviderList() : null}
+              <ScooterProviderList openList={openScooterProviderList} scooterProviders={scooterProviders} />
               {renderScooterInfoTexts()}
               <div className={classes.buttonContainer}>
                 <ButtonMain
@@ -1328,7 +1356,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
                 />
               </div>
               {renderSettings(openStreetMaintenanceSettings, streetMaintenanceControlTypes)}
-              {openStreetMaintenanceSelectionList ? renderMaintenanceSelectionList() : null}
+              {renderMaintenanceSelectionList()}
               {renderStreetMaintenanceInfoTexts()}
             </>
           </FormGroup>
