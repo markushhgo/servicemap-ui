@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useMap } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 import loadingPlaceIcon from 'servicemap-ui-turku/assets/icons/icons-icon_loading_place.svg';
+import loadingPlaceIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_loading_place-bw.svg';
 import MobilityPlatformContext from '../../../context/MobilityPlatformContext';
-import { fetchMobilityMapData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import { useAccessibleMap } from '../../../redux/selectors/settings';
+import { fetchMobilityMapPolygonData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon } from '../utils/utils';
 import LoadingPlacesContent from './components/LoadingPlacesContent';
 
@@ -13,14 +16,16 @@ const LoadingPlaces = () => {
 
   const map = useMap();
 
+  const useContrast = useSelector(useAccessibleMap);
+
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const customIcon = icon(createIcon(loadingPlaceIcon));
+  const customIcon = icon(createIcon(useContrast ? loadingPlaceIconBw : loadingPlaceIcon));
 
   useEffect(() => {
     if (openMobilityPlatform) {
-      fetchMobilityMapData('LUP', 100, setLoadingPlaces);
+      fetchMobilityMapPolygonData('LoadingUnloadingPlace', 300, setLoadingPlaces);
     }
   }, [openMobilityPlatform, setLoadingPlaces]);
 
@@ -30,28 +35,31 @@ const LoadingPlaces = () => {
     if (renderData) {
       const bounds = [];
       loadingPlaces.forEach((item) => {
-        bounds.push([item.geometry_coords.lat, item.geometry_coords.lon]);
+        bounds.push(item.geometry_coords);
       });
       map.fitBounds(bounds);
     }
   }, [showLoadingPlaces, loadingPlaces]);
 
+  const getSingleCoordinates = data => data[0][0];
+
   return (
     <>
-      {renderData
-      && loadingPlaces.map(item => (
-        <Marker
-          key={item.id}
-          icon={customIcon}
-          position={[item.geometry_coords.lat, item.geometry_coords.lon]}
-        >
-          <>
-            <Popup>
-              <LoadingPlacesContent item={item} />
-            </Popup>
-          </>
-        </Marker>
-      ))}
+      {renderData ? (
+        loadingPlaces.map(item => (
+          <Marker
+            key={item.id}
+            icon={customIcon}
+            position={getSingleCoordinates(item.geometry_coords)}
+          >
+            <>
+              <Popup>
+                <LoadingPlacesContent item={item} />
+              </Popup>
+            </>
+          </Marker>
+        ))
+      ) : null}
     </>
   );
 };
