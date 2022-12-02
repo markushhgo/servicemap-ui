@@ -1,15 +1,14 @@
 const styles = {
-  formControl: {
-    width: '100%',
-  },
-  formGroup: {
-    marginTop: '0',
-  },
   formLabel: {
-    padding: '0.4rem 3rem',
     backgroundColor: 'rgba(70,72,75,255)',
     margin: '0',
     color: '#fff',
+  },
+  paddingMd: {
+    padding: '0.5rem 3rem',
+  },
+  paddingSm: {
+    padding: '0.5rem 0.8rem',
   },
 };
 
