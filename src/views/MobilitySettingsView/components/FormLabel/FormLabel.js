@@ -1,5 +1,4 @@
 import { FormControlLabel, Switch, Typography } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -16,46 +15,40 @@ import React from 'react';
 
 const FormLabel = ({
   classes, intl, msgId, checkedValue, onChangeValue,
-}) => {
-  const useMobileStatus = () => useMediaQuery('(max-width:360px)');
-
-  const isNarrow = useMobileStatus();
-
-  return (
-    <FormControlLabel
-      label={(
-        <Typography
-          variant="body2"
-          aria-label={intl.formatMessage({
-            id: msgId,
-          })}
-        >
-          {intl.formatMessage({
-            id: msgId,
-          })}
-        </Typography>
+}) => (
+  <FormControlLabel
+    label={(
+      <Typography
+        variant="body2"
+        aria-label={intl.formatMessage({
+          id: msgId,
+        })}
+      >
+        {intl.formatMessage({
+          id: msgId,
+        })}
+      </Typography>
       )}
-      control={(
-        <Switch
-          checked={checkedValue}
-          role="switch"
-          inputProps={{
-            'aria-label': intl.formatMessage({
-              id: msgId,
-            }),
-          }}
-          onChange={onChangeValue}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              onChangeValue();
-            }
-          }}
-        />
+    control={(
+      <Switch
+        checked={checkedValue}
+        role="switch"
+        inputProps={{
+          'aria-label': intl.formatMessage({
+            id: msgId,
+          }),
+        }}
+        onChange={onChangeValue}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            onChangeValue();
+          }
+        }}
+      />
       )}
-      className={`${classes.formLabel} ${isNarrow ? classes.paddingSm : classes.paddingMd}`}
-    />
-  );
-};
+    className={classes.formLabel}
+  />
+);
 
 FormLabel.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
