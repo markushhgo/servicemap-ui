@@ -3,14 +3,14 @@
 exports[`<FormLabel /> should work 1`] = `
 <div>
   <label
-    class="MuiFormControlLabel-root injectIntl(FormLabel)-formLabel-1"
+    class="MuiFormControlLabel-root injectIntl(FormLabel)-formLabel-1 injectIntl(FormLabel)-paddingMd-2"
   >
     <span
       class="MuiSwitch-root"
     >
       <span
         aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-2 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         role="switch"
       >
         <span
@@ -18,7 +18,7 @@ exports[`<FormLabel /> should work 1`] = `
         >
           <input
             aria-label="Polkupyöräpysäköinti"
-            class="PrivateSwitchBase-input-5 MuiSwitch-input"
+            class="PrivateSwitchBase-input-7 MuiSwitch-input"
             type="checkbox"
             value=""
           />
