@@ -21,6 +21,7 @@ import {
   fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../components/MobilityPlatform/utils/utils';
+import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import CityBikeInfo from './components/CityBikeInfo';
@@ -148,6 +149,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const locale = useSelector(state => state.user.locale);
   const location = useLocation();
+  const getLocaleText = useLocaleText();
 
   const bikeInfo = {
     paragraph1: 'mobilityPlatform.info.cityBikes.paragraph.1',
@@ -171,6 +173,18 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       'mobilityPlatform.info.parkingChargeZones.zone.2',
       'mobilityPlatform.info.parkingChargeZones.zone.3',
     ],
+  };
+
+  const boatingReservationLinks = {
+    fi: 'https://opaskartta.turku.fi/ePermit/fi/Reservation/',
+    en: 'https://opaskartta.turku.fi/ePermit/fi/Reservation/',
+    sv: 'https://opaskartta.turku.fi/ePermit/sv/Reservation',
+  };
+
+  const guestHarbourLinks = {
+    fi: 'https://www.turunvierasvenesatama.fi',
+    en: 'https://www.turunvierasvenesatama.fi/en',
+    sv: 'https://www.turunvierasvenesatama.fi/sv',
   };
 
   useEffect(() => {
@@ -1296,7 +1310,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       component: (
         <InfoTextBox
           infoText="mobilityPlatform.info.marinas"
-          linkUrl="https://opaskartta.turku.fi/ePermit/fi/Reservation/"
+          linkUrl={getLocaleText(boatingReservationLinks)}
           linkText="mobilityPlatform.info.marinas.link"
         />
       ),
@@ -1312,7 +1326,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       component: (
         <InfoTextBox
           infoText="mobilityPlatform.info.guestHarbour"
-          linkUrl="https://www.turunvierasvenesatama.fi"
+          linkUrl={getLocaleText(guestHarbourLinks)}
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ),
