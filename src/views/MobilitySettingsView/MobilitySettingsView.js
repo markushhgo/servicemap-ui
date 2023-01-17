@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import React, {
   useContext, useEffect, useMemo, useRef, useState,
 } from 'react';
+import { Helmet } from 'react-helmet';
 import { ReactSVG } from 'react-svg';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -20,6 +22,7 @@ import {
   fetchMobilityMapPolygonData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../components/MobilityPlatform/utils/utils';
+import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
 import MobilityPlatformContext from '../../context/MobilityPlatformContext';
 import CityBikeInfo from './components/CityBikeInfo';
@@ -36,7 +39,8 @@ import SMAccordion from '../../components/SMAccordion';
 import SpeedLimitZonesList from './components/SpeedLimitZonesList';
 import RouteListItem from './components/RouteListItem';
 
-const MobilitySettingsView = ({ classes, intl }) => {
+const MobilitySettingsView = ({ classes, intl, navigator }) => {
+  const [pageTitle, setPageTitle] = useState(null);
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
   const [openCarSettings, setOpenCarSettings] = useState(false);
@@ -146,6 +150,8 @@ const MobilitySettingsView = ({ classes, intl }) => {
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
+  const location = useLocation();
+  const getLocaleText = useLocaleText();
 
   const bikeInfo = {
     paragraph1: 'mobilityPlatform.info.cityBikes.paragraph.1',
@@ -169,6 +175,18 @@ const MobilitySettingsView = ({ classes, intl }) => {
       'mobilityPlatform.info.parkingChargeZones.zone.2',
       'mobilityPlatform.info.parkingChargeZones.zone.3',
     ],
+  };
+
+  const boatingReservationLinks = {
+    fi: 'https://opaskartta.turku.fi/ePermit/fi/Reservation/',
+    en: 'https://opaskartta.turku.fi/ePermit/fi/Reservation/',
+    sv: 'https://opaskartta.turku.fi/ePermit/sv/Reservation',
+  };
+
+  const guestHarbourLinks = {
+    fi: 'https://www.turunvierasvenesatama.fi',
+    en: 'https://www.turunvierasvenesatama.fi/en',
+    sv: 'https://www.turunvierasvenesatama.fi/sv',
   };
 
   useEffect(() => {
@@ -207,6 +225,26 @@ const MobilitySettingsView = ({ classes, intl }) => {
   useEffect(() => {
     fetchMobilityMapPolygonData('FitnessTrail', 200, setFitnessTrailsList);
   }, [setFitnessTrailsList]);
+
+  /** If direct link is used to navigate, open correct content view
+   * @param {string} pathname
+   * @return {('react').SetStateAction}
+   */
+  useEffect(() => {
+    if (location.pathname.includes('walking')) {
+      setOpenWalkSettings(true);
+    } else if (location.pathname.includes('cycling')) {
+      setOpenBicycleSettings(true);
+    } else if (location.pathname.includes('driving')) {
+      setOpenCarSettings(true);
+    } else if (location.pathname.includes('scooters')) {
+      setOpenScooterSettings(true);
+    } else if (location.pathname.includes('boating')) {
+      setOpenBoatingSettings(true);
+    } else if (location.pathname.includes('snowplows')) {
+      setOpenStreetMaintenanceSettings(true);
+    }
+  }, [location]);
 
   /**
    * Check is visibility boolean values are true
@@ -409,27 +447,74 @@ const MobilitySettingsView = ({ classes, intl }) => {
    */
   const walkSettingsToggle = () => {
     setOpenWalkSettings(current => !current);
+    if (!openWalkSettings) {
+      navigator.push('mobilityPlatform', 'walking');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.walk' }));
+    }
   };
 
   const bicycleSettingsToggle = () => {
     setOpenBicycleSettings(current => !current);
+    if (!openBicycleSettings) {
+      navigator.push('mobilityPlatform', 'cycling');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.bicycle' }));
+    }
   };
 
   const carSettingsToggle = () => {
     setOpenCarSettings(current => !current);
+    if (!openCarSettings) {
+      navigator.push('mobilityPlatform', 'driving');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.car' }));
+    }
   };
 
   const boatingSettingsToggle = () => {
     setOpenBoatingSettings(current => !current);
+    if (!openBoatingSettings) {
+      navigator.push('mobilityPlatform', 'boating');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.boating' }));
+    }
   };
 
   const scooterSettingsToggle = () => {
     setOpenScooterSettings(current => !current);
+    if (!openScooterSettings) {
+      navigator.push('mobilityPlatform', 'scooters');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.scooter' }));
+    }
   };
 
   const streetMaintenanceSettingsToggle = () => {
     setOpenStreetMaintenanceSettings(current => !current);
+    if (!openStreetMaintenanceSettings) {
+      navigator.push('mobilityPlatform', 'snowplows');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.streetMaintenance' }));
+    }
   };
+
+  /** Reset page title if opened sections have been closed and page title is not initial value */
+  useEffect(() => {
+    if (
+      !openWalkSettings
+      && !openBicycleSettings
+      && !openCarSettings
+      && !openBoatingSettings
+      && !openScooterSettings
+      && !openStreetMaintenanceSettings
+      && pageTitle
+    ) {
+      setPageTitle(null);
+    }
+  }, [
+    openWalkSettings,
+    openBicycleSettings,
+    openCarSettings,
+    openBoatingSettings,
+    openScooterSettings,
+    openStreetMaintenanceSettings,
+    pageTitle,
+  ]);
 
   /**
    * Toggle functions for content types
@@ -1030,9 +1115,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
           type="BicycleRoute"
           setRouteState={setBicycleRouteState}
         >
-          {item.name_fi === bicycleRouteName ? (
-            <RouteLength key={item.id} route={item} />
-          ) : null}
+          {item.name_fi === bicycleRouteName ? <RouteLength key={item.id} route={item} /> : null}
         </RouteListItem>
       ))
       : null;
@@ -1053,11 +1136,10 @@ const MobilitySettingsView = ({ classes, intl }) => {
           type="CultureRoute"
           setRouteState={setCultureRouteState}
         >
-          {item.id === cultureRouteId ? (
-            <Description key={item.name} route={item} currentLocale={locale} />
-          ) : null}
+          {item.id === cultureRouteId ? <Description key={item.name} route={item} currentLocale={locale} /> : null}
         </RouteListItem>
-      )) : null;
+      ))
+      : null;
   };
 
   const renderSelectTrailText = (visibilityValue, obj, routeList) => {
@@ -1256,7 +1338,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       component: (
         <InfoTextBox
           infoText="mobilityPlatform.info.marinas"
-          linkUrl="https://opaskartta.turku.fi/ePermit/fi/Reservation/"
+          linkUrl={getLocaleText(boatingReservationLinks)}
           linkText="mobilityPlatform.info.marinas.link"
         />
       ),
@@ -1272,7 +1354,7 @@ const MobilitySettingsView = ({ classes, intl }) => {
       component: (
         <InfoTextBox
           infoText="mobilityPlatform.info.guestHarbour"
-          linkUrl="https://www.turunvierasvenesatama.fi"
+          linkUrl={getLocaleText(guestHarbourLinks)}
           linkText="mobilityPlatform.info.guestHarbour.link"
         />
       ),
@@ -1303,6 +1385,17 @@ const MobilitySettingsView = ({ classes, intl }) => {
     }
     return acc;
   }, []);
+
+  /** Render header */
+  const renderHead = () => {
+    const title = intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' });
+    const appTitle = intl.formatMessage({ id: 'app.title' });
+    return (
+      <Helmet>
+        <title>{pageTitle ? `${title} - ${pageTitle} | ${appTitle}` : `${title} | ${appTitle}`}</title>
+      </Helmet>
+    );
+  };
 
   /** render section contents */
   const renderWalkSettings = () => (
@@ -1473,10 +1566,12 @@ const MobilitySettingsView = ({ classes, intl }) => {
 
   return (
     <div className={classes.content}>
+      {renderHead()}
       <TitleBar
         title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
         titleComponent="h3"
         backButton
+        backButtonOnClick={() => navigator.push('home')}
         className={classes.topBarColor}
       />
       <div className={classes.container}>
@@ -1511,6 +1606,11 @@ const MobilitySettingsView = ({ classes, intl }) => {
 MobilitySettingsView.propTypes = {
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  navigator: PropTypes.objectOf(PropTypes.any),
+};
+
+MobilitySettingsView.defaultProps = {
+  navigator: null,
 };
 
 export default MobilitySettingsView;
