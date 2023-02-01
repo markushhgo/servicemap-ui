@@ -147,6 +147,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowFitnessTrails,
     fitnessTrailsObj,
     setFitnessTrailsObj,
+    showLamCounter,
+    setShowLamCounter,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -318,6 +320,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showSpeedLimitZones, setOpenCarSettings);
     checkVisibilityValues(showDisabledParking, setOpenCarSettings);
     checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
+    checkVisibilityValues(showLamCounter, setOpenCarSettings);
   }, [
     showRentalCars,
     showGasFillingStations,
@@ -326,6 +329,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     showSpeedLimitZones,
     showDisabledParking,
     showLoadingPlaces,
+    showLamCounter,
   ]);
 
   useEffect(() => {
@@ -549,6 +553,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
    */
   const bicycleStandsToggle = () => {
     setShowBicycleStands(current => !current);
+  };
+
+  const lamCounterStationsToggle = () => {
+    setShowLamCounter(current => !current);
   };
 
   const parkingSpacesToggle = () => {
@@ -1013,6 +1021,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const carControlTypes = [
     {
+      type: 'lamCounters',
+      msgId: 'mobilityPlatform.menu.showEcoCounter',
+      checkedValue: showLamCounter,
+      onChangeValue: lamCounterStationsToggle,
+    },
+    {
       type: 'rentalCars',
       msgId: 'mobilityPlatform.menu.showRentalCars',
       checkedValue: showRentalCars,
@@ -1304,6 +1318,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   ];
 
   const infoTextsDriving = [
+    {
+      visible: showLamCounter,
+      type: 'lamCountersInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.lamCounters" />,
+    },
     {
       visible: showRentalCars,
       type: 'rentalCarsInfo',
