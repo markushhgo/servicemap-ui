@@ -149,6 +149,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setFitnessTrailsObj,
     showLamCounter,
     setShowLamCounter,
+    showParkingMachines,
+    setShowParkingMachines,
   } = useContext(MobilityPlatformContext);
 
   const locale = useSelector(state => state.user.locale);
@@ -321,6 +323,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showDisabledParking, setOpenCarSettings);
     checkVisibilityValues(showLoadingPlaces, setOpenCarSettings);
     checkVisibilityValues(showLamCounter, setOpenCarSettings);
+    checkVisibilityValues(showParkingMachines, setOpenCarSettings);
   }, [
     showRentalCars,
     showGasFillingStations,
@@ -330,6 +333,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     showDisabledParking,
     showLoadingPlaces,
     showLamCounter,
+    showParkingMachines,
   ]);
 
   useEffect(() => {
@@ -605,6 +609,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const parkingAreasToggle = () => {
     setShowScooterParkingAreas(current => !current);
+  };
+
+  const parkingMachinesToggle = () => {
+    setShowParkingMachines(current => !current);
   };
 
   const loadingPlacesToggle = () => {
@@ -1051,6 +1059,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       onChangeValue: parkingSpacesToggle,
     },
     {
+      type: 'parkingMachines',
+      msgId: 'mobilityPlatform.menu.show.parkingMachines',
+      checkedValue: showParkingMachines,
+      onChangeValue: parkingMachinesToggle,
+    },
+    {
       type: 'disabledParking',
       msgId: 'mobilityPlatform.menu.show.disabledParking',
       checkedValue: showDisabledParking,
@@ -1342,6 +1356,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showParkingSpaces,
       type: 'parkingSpacesInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.parkingSpaces" />,
+    },
+    {
+      visible: showParkingMachines,
+      type: 'parkingMachinesInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.parkingMachines" />,
     },
     {
       visible: showDisabledParking,

@@ -647,6 +647,7 @@ const translations = {
   'mobilityPlatform.menu.show.fitnessTrails': 'Kuntopolut',
   'mobilityPlatform.menu.list.showMore': 'Näytä lisää reittejä',
   'mobilityPlatform.menu.list.showLess': 'Näytä vähemmän reittejä',
+  'mobilityPlatform.menu.show.parkingMachines': 'Pysäköintiautomaatit',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -725,6 +726,11 @@ const translations = {
   'mobilityPlatform.content.disabledParking.amount': 'Parkkipaikkojen määrä: {value}',
   'mobilityPlatform.content.publicParking.access': 'Esteetön pääsy',
   'mobilityPlatform.content.publicParking.access.gate': 'Pääsy portin kautta',
+  'mobilityPlatform.content.parkingMachine.title': 'Pysäköintiautomaatti',
+  'mobilityPlatform.content.parkingMachine.location': 'Sijainti: {value}',
+  'mobilityPlatform.content.parkingMachine.payment': 'Maksu: {value} €/t',
+  'mobilityPlatform.content.parkingMachine.paymentTypes': 'Maksutavat: {value}',
+  'mobilityPlatform.content.parkingMachine.otherInfo': 'Lisätietoja: {value}',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -765,6 +771,7 @@ const translations = {
   'mobilityPlatform.info.natureTrails': 'Luontopolut kulkevat vaihtelevissa maisemissa ja niitä seuraamalla saa edustavan läpileikkauksen Turun monimuotoisesta luonnonympäristöstä. Polut on viitoitettu ja niiden varsilla on paikallisesta luonnosta kertovia opastauluja. Kulkemisen helpottamiseksi polkupohjia on kunnostettu soralla ja rakentamalla pitkospuita kosteikkoihin. Vaikeakulkuisilla rinteillä on portaita ja siltoja.',
   'mobilityPlatform.info.fitnessTrails': 'Turun kaupunki ylläpitää yli 20 kuntoreittiä eri puolilla Turkua ja ne tarjoavat mahdollisuuden monipuoliseen liikuntaan. Reitit on valaistu kello 6 - 22 välillä.',
   'mobilityPlatform.info.lamCounters': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla autoilijoiden määriä valituissa kohteissa. Tiedot on avoimena datana toimittanut Digitraffic -palvelu.',
+  'mobilityPlatform.info.parkingMachines': 'Kartalla näkyvät Turun kaupungin omistamat pysäköintiautomaatit. Kaikissa automaateissa maksutapoina toimivat pankkikortti ja lähimaksu. Lisätietoja automaatista näkee painamalla kuvaketta kartalla.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
