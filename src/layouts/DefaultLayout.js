@@ -103,6 +103,7 @@ const DefaultLayout = (props) => {
   const [openMobilityPlatform, setOpenMobilityPlatform] = useState(false);
   const [showEcoCounter, setShowEcoCounter] = useState(ecoCounterStationsInitial);
   const [showBicycleStands, setShowBicycleStands] = useState(false);
+  const [showHullLockableStands, setShowHullLockableStands] = useState(false);
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
   const [cultureRouteId, setCultureRouteId] = useState();
   const [showBicycleRoutes, setShowBicycleRoutes] = useState(false);
@@ -140,6 +141,10 @@ const DefaultLayout = (props) => {
   const [natureTrailsObj, setNatureTrailsObj] = useState({});
   const [showFitnessTrails, setShowFitnessTrails] = useState(false);
   const [fitnessTrailsObj, setFitnessTrailsObj] = useState({});
+  const [showLamCounter, setShowLamCounter] = useState(false);
+  const [showParkingMachines, setShowParkingMachines] = useState(false);
+  const [showPublicParking, setShowPublicParking] = useState(false);
+  const [showOutdoorGymDevices, setShowOutdoorGymDevices] = useState(false);
 
   const {
     currentPage, fetchErrors, fetchNews, intl, location, settingsToggled,
@@ -225,6 +230,8 @@ const DefaultLayout = (props) => {
                       setShowEcoCounter,
                       showBicycleStands,
                       setShowBicycleStands,
+                      showHullLockableStands,
+                      setShowHullLockableStands,
                       showCultureRoutes,
                       setShowCultureRoutes,
                       cultureRouteId,
@@ -298,6 +305,14 @@ const DefaultLayout = (props) => {
                       setShowFitnessTrails,
                       fitnessTrailsObj,
                       setFitnessTrailsObj,
+                      showLamCounter,
+                      setShowLamCounter,
+                      showParkingMachines,
+                      setShowParkingMachines,
+                      showPublicParking,
+                      setShowPublicParking,
+                      showOutdoorGymDevices,
+                      setShowOutdoorGymDevices,
                     }}
                   >
                     <ViewRouter />
@@ -313,6 +328,7 @@ const DefaultLayout = (props) => {
                     openMobilityPlatform,
                     showEcoCounter,
                     showBicycleStands,
+                    showHullLockableStands,
                     showCultureRoutes,
                     cultureRouteId,
                     showBicycleRoutes,
@@ -351,6 +367,10 @@ const DefaultLayout = (props) => {
                     natureTrailsObj,
                     showFitnessTrails,
                     fitnessTrailsObj,
+                    showLamCounter,
+                    showParkingMachines,
+                    showPublicParking,
+                    showOutdoorGymDevices,
                   }}
                 >
                   <MapView
