@@ -24,6 +24,7 @@ import embedderConfig from './embedderConfig';
 import * as smurl from './utils/url';
 import { getEmbedURL, getLanguage } from './utils/utils';
 import config from '../../../config';
+import TopBar from '../../components/TopBar';
 
 const hideCitiesIn = [paths.unit.regex, paths.address.regex];
 
@@ -97,6 +98,12 @@ const EmbedderView = ({
   const [showUnits, setShowUnits] = useState(true);
   const [restrictBounds, setRestrictBounds] = useState(true);
   const [showUnitList, setShowUnitList] = useState('none');
+  const [chargingStation, setChargingStation] = useState(false);
+  const [cityBikes, setCityBikes] = useState(false);
+  const [rentalCars, setRentalCars] = useState(false);
+  const [outdoorGym, setOutdoorGym] = useState(false);
+  const [bicycleStands, setBicycleStands] = useState(false);
+  const [frameLockable, setFrameLockable] = useState(false);
 
   const boundsRef = useRef([]);
   const dialogRef = useRef();
@@ -114,6 +121,12 @@ const EmbedderView = ({
     transit,
     showUnits,
     showUnitList,
+    chargingStation,
+    cityBikes,
+    rentalCars,
+    outdoorGym,
+    bicycleStands,
+    frameLockable,
     bbox: selectedBbox,
   });
 
@@ -492,6 +505,68 @@ const EmbedderView = ({
   };
 
   /**
+   * Render controls for mobility data that can be included in embeds.
+   * @returns {JSX}
+   */
+  const renderMobilityDataControls = () => {
+    const description = intl.formatMessage({ id: 'embedder.options.mobility.description' });
+    const controls = [
+      {
+        key: 'bicycleStands',
+        value: bicycleStands,
+        onChange: v => setBicycleStands(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.showBicycleStands',
+      },
+      {
+        key: 'frameLockable',
+        value: frameLockable,
+        onChange: v => setFrameLockable(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.show.hullLockableStands',
+      },
+      {
+        key: 'cityBikes',
+        value: cityBikes,
+        onChange: v => setCityBikes(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.showCityBikes',
+      },
+      {
+        key: 'chargingStation',
+        value: chargingStation,
+        onChange: v => setChargingStation(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.showChargingStations',
+      },
+      {
+        key: 'rentalCars',
+        value: rentalCars,
+        onChange: v => setRentalCars(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.showRentalCars',
+      },
+      {
+        key: 'outdoorGym',
+        value: outdoorGym,
+        onChange: v => setOutdoorGym(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.show.outdoorGymDevices',
+      },
+    ];
+
+    return (
+      <EmbedController
+        titleID="embedder.options.mobility.title"
+        titleComponent="h2"
+        description={description}
+        checkboxControls={controls}
+        checkboxLabelledBy="embedder.options.mobility.title"
+      />
+    );
+  };
+
+  /**
  * Render unit list controls
  */
   const renderListOptionsControl = () => {
@@ -530,6 +605,7 @@ const EmbedderView = ({
 
   return (
     <>
+      <TopBar smallScreen={false} hideButtons />
       <div ref={dialogRef}>
         {
           renderHeadInfo()
@@ -581,6 +657,9 @@ const EmbedderView = ({
               }
                 {
                 renderMarkerOptionsControl()
+              }
+                {
+                isExternalTheme ? renderMobilityDataControls() : null
               }
                 {
                 renderListOptionsControl()
