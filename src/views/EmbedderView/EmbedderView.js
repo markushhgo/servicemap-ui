@@ -104,6 +104,7 @@ const EmbedderView = ({
   const [outdoorGym, setOutdoorGym] = useState(false);
   const [bicycleStands, setBicycleStands] = useState(false);
   const [frameLockable, setFrameLockable] = useState(false);
+  const [crossWalks, setCrossWalks] = useState(false);
 
   const boundsRef = useRef([]);
   const dialogRef = useRef();
@@ -127,6 +128,7 @@ const EmbedderView = ({
     outdoorGym,
     bicycleStands,
     frameLockable,
+    crossWalks,
     bbox: selectedBbox,
   });
 
@@ -531,6 +533,13 @@ const EmbedderView = ({
         onChange: v => setCityBikes(v),
         icon: null,
         labelId: 'mobilityPlatform.menu.showCityBikes',
+      },
+      {
+        key: 'crossWalks',
+        value: crossWalks,
+        onChange: v => setCrossWalks(v),
+        icon: null,
+        labelId: 'mobilityPlatform.embedded.label.crossWalks',
       },
       {
         key: 'chargingStation',
