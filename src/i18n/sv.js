@@ -310,7 +310,6 @@ const translations = {
   'general.time.short': 'kl.',
   'general.tools': 'Verktyg',
   'general.pageTitles.mobilityPlatform': 'Mobilitet',
-  'general.pageTitles.mobilityPlatform.title': 'Mobilitet',
   // Readspeaker
   'general.readspeaker.buttonText': 'Lyssna', // TODO: verify
   'general.readspeaker.title': 'Lyssna med ReadSpeaker webReader', // TODO: verify
@@ -617,7 +616,6 @@ const translations = {
   'mobilityPlatform.info.statement': 'Mobilitetsdataplattformen från servicekartan har utvecklats som en del av SCALE-UP-projekt, finansierat av Europeiska unionens Horizon 2020-program (bidragsavtal nr 955332).',
 
   // Menu
-  'mobilityPlatform.menu.title': 'Mobilitet',
   'mobilityPlatform.menu.subtitle': 'Anpassa',
   'mobilityPlatform.menu.title.walk': 'Promenad',
   'mobilityPlatform.menu.title.bicycle': 'Cykling',

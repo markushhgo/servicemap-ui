@@ -290,8 +290,7 @@ const translations = {
   'general.pageTitles.info': 'Tietoa palvelusta',
   'general.pageTitles.feedback': 'Palautesivu',
   'general.pageTitles.area': 'Aluesivu',
-  'general.pageTitles.mobilityPlatform': 'Liikkuminen',
-  'general.pageTitles.mobilityPlatform.title': 'Liikkuminen',
+  'general.pageTitles.mobilityPlatform': 'Liikenne ja liikkuminen',
   // Readspeaker
   'general.readspeaker.buttonText': 'Kuuntele',
   'general.readspeaker.title': 'Kuuntele ReadSpeaker webReaderilla',
@@ -326,7 +325,7 @@ const translations = {
   'home.message': 'Terveisiä palvelukartan kehittäjiltä',
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
-  'home.buttons.mobilityPlatformSettings': 'Liikkuminen',
+  'home.buttons.mobilityPlatformSettings': 'Liikenne ja liikkuminen',
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -620,7 +619,6 @@ const translations = {
   'mobilityPlatform.info.statement': 'Palvelukartan liikkumisnäkymää on kehitetty osana Euroopan unionin Horizon 2020 -ohjelman rahoittamaa SCALE-UP -hanketta (avustussopimus nro 955332).',
 
   // Menu
-  'mobilityPlatform.menu.title': 'Liikkuminen',
   'mobilityPlatform.menu.subtitle': 'Asetukset',
   'mobilityPlatform.menu.title.walk': 'Kävely',
   'mobilityPlatform.menu.title.bicycle': 'Pyöräily',

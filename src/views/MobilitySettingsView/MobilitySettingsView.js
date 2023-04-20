@@ -528,7 +528,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const publicTransportSettingsToggle = () => {
     setOpenPublicTransportSettings(current => !current);
     if (!openPublicTransportSettings) {
-      navigator.push('mobilityPlatform', 'publicTransport');
+      navigator.push('mobilityPlatform', 'transport');
       setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.public.transport' }));
     }
   };
@@ -566,6 +566,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       && !openBoatingSettings
       && !openScooterSettings
       && !openStreetMaintenanceSettings
+      && !openPublicTransportSettings
       && pageTitle
     ) {
       setPageTitle(null);
@@ -577,6 +578,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     openBoatingSettings,
     openScooterSettings,
     openStreetMaintenanceSettings,
+    openPublicTransportSettings,
     pageTitle,
   ]);
 
@@ -1592,7 +1594,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   /** Render header */
   const renderHead = () => {
-    const title = intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' });
+    const title = intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform' });
     const appTitle = intl.formatMessage({ id: 'app.title' });
     return (
       <Helmet>
@@ -1786,7 +1788,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     <div className={classes.content}>
       {renderHead()}
       <TitleBar
-        title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
+        title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform' })}
         titleComponent="h3"
         backButton
         backButtonOnClick={() => navigator.push('home')}

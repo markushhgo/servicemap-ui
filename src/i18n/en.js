@@ -289,7 +289,6 @@ const translations = {
   'general.pageTitles.area': 'Area page',
   'general.tools': 'Tools',
   'general.pageTitles.mobilityPlatform': 'Mobility map',
-  'general.pageTitles.mobilityPlatform.title': 'Mobility map',
   // Readspeaker
   'general.readspeaker.buttonText': 'Listen',
   'general.readspeaker.title': 'Listen with ReadSpeaker webReader',
@@ -614,7 +613,6 @@ const translations = {
   'mobilityPlatform.info.statement': 'The mobility data platform of the service map has been developed as part of European Union Horizon 2020 programme funded SCALE-UP project (grant agreement no. 955332).',
 
   // Menu
-  'mobilityPlatform.menu.title': 'Mobility map',
   'mobilityPlatform.menu.subtitle': 'Settings',
   'mobilityPlatform.menu.title.walk': 'Walking',
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
