@@ -101,6 +101,7 @@ const translations = {
   'area.list.upper_comprehensive_school_district_fi': 'Finnish secondary school area',
   'area.list.upper_comprehensive_school_district_sv': 'Swedish secondary school area',
   'area.list.school_district_fi': 'Finnish comprehensive school area',
+  'area.list.school_district_sv': 'Swedish comprehensive school area',
   'area.list.preschool_education_fi': 'Finnish preschool education area',
   'area.list.preschool_education_sv': 'Swedish preschool education area',
   'area.list.nature_reserve': 'Nature conservation areas',
@@ -118,6 +119,7 @@ const translations = {
   'area.list.upper_comprehensive_school_district_fi.plural': 'Finnish secondary school areas',
   'area.list.upper_comprehensive_school_district_sv.plural': 'Swedish secondary school areas',
   'area.list.school_district_fi.plural': 'Finnish comprehensive school areas',
+  'area.list.school_district_sv.plural': 'Swedish comprehensive school areas',
   'area.list.preschool_education_fi.plural': 'Finnish preschool education areas',
   'area.list.preschool_education_sv.plural': 'Swedish preschool education areas',
   'area.list.nature_reserve.plural': 'Nature conservation areas',
@@ -171,7 +173,11 @@ const translations = {
   'embedder.preview.title': 'Map preview',
   'embedder.options.title': 'Show on the map',
   'embedder.options.label.units': 'Show service points',
-  'embedder.options.label.transit': 'Show public transport stops (Zoom in the map to see the stops)',
+  'embedder.options.list.title': 'List of service points',
+  'embedder.options.label.list.none': 'Hide list of service points',
+  'embedder.options.label.list.side': 'Show service points as a list (next to the map)',
+  'embedder.options.label.list.bottom': 'Show service points as a list (under the map)',
+  'embedder.options.label.transit': 'Public transport stops (zoom in the map to see the stops)',
   'embedder.options.label.bbox': 'Limit the embedded map to the area in the preview window',
   'embedder.service.title': 'Services',
   'embedder.service.aria.label': 'Choose services to be shown',
@@ -179,7 +185,9 @@ const translations = {
   'embedder.service.common': 'The city resident\'s most common everyday service points are shown on the map: schools, daycares and health stations.',
   'embedder.service.all': 'All service points are shown on the map. Too extensive area borders slow down the embedding and decreases its clarity.',
   'embedder.title': 'Embedding tool',
-  'embedder.title.info': 'If you want to make an embedding from a search result, start by making the search.',
+  'embedder.title.info': 'With the embedding tool, you can embed individual views of the Servicemap into any webpage.',
+  'embedder.info.title': 'Instructions on how to use embedding tool',
+  'embedder.info.description': 'Select functionalities that you want for the map view from the selections below. Copy the link or the html code for your use.',
   'embedder.url.title': 'Copy the address',
   'embedder.width.title': 'Width of the embedding',
   'embedder.width.aria.label': 'Choose width of the embedding',
@@ -187,6 +195,8 @@ const translations = {
   'embedder.width.custom.label': 'Width has been set. The width of the embedding has been set in pixels.',
   'embedder.width.input.aria.auto': 'Width of the embedding, per cent',
   'embedder.width.input.aria.custom': 'Width of the embedding, pixels',
+  'embedder.options.mobility.title': 'Mobility',
+  'embedder.options.mobility.description': 'You can also embed selected views of the mobility map. Copy link or html code for your use.',
 
   // Feedback
   'feedback.back': 'Go back',
@@ -281,7 +291,6 @@ const translations = {
   'general.pageTitles.area': 'Area page',
   'general.tools': 'Tools',
   'general.pageTitles.mobilityPlatform': 'Mobility map',
-  'general.pageTitles.mobilityPlatform.title': 'Mobility map',
   // Readspeaker
   'general.readspeaker.buttonText': 'Listen',
   'general.readspeaker.title': 'Listen with ReadSpeaker webReader',
@@ -328,6 +337,15 @@ const translations = {
   'search.loading.units': 'Searching service points {count} / {max}',
   'search.loading.units.srInfo': 'Searching {count} service point(s)',
   'search.loading.units.simple': 'Searching service points',
+
+  'link.settings.dialog.title': 'Share the link to the location',
+  'link.settings.dialog.tooltip': 'Copied to the clipboard',
+  'link.settings.dialog.radio.label': 'Link contents',
+  'link.settings.dialog.tooltip.aria': 'Copy the site link to the clipboard',
+  'link.settings.dialog.tooltip.aria.a11y': 'Copy the site link with accessibility settings to the clipboard',
+  'link.settings.dialog.subtitle': 'Share the link with accessibility settings',
+  'link.settings.dialog.description': 'The accessibility settings affect the accessibility data of the location shown and the appearance of the map.',
+  'link.settings.dialog.buttons.action': 'Copy to clipboard',
 
   // Map
   'map': 'Map',
@@ -597,7 +615,6 @@ const translations = {
   'mobilityPlatform.info.statement': 'The mobility data platform of the service map has been developed as part of European Union Horizon 2020 programme funded SCALE-UP project (grant agreement no. 955332).',
 
   // Menu
-  'mobilityPlatform.menu.title': 'Mobility map',
   'mobilityPlatform.menu.subtitle': 'Settings',
   'mobilityPlatform.menu.title.walk': 'Walking',
   'mobilityPlatform.menu.title.bicycle': 'Cycling',
@@ -605,6 +622,7 @@ const translations = {
   'mobilityPlatform.menu.title.boating': 'Boating',
   'mobilityPlatform.menu.title.scooter': 'Electric scooters',
   'mobilityPlatform.menu.title.streetMaintenance': 'Street maintenance',
+  'mobilityPlatform.menu.title.public.transport': 'Public transport',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -660,6 +678,9 @@ const translations = {
   'mobilityPlatform.menu.show.parkingMachines': 'Parking machines',
   'mobilityPlatform.menu.show.publicParking': 'Public parking spaces',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Outdoor gym devices',
+  'mobilityPlatform.menu.show.crossWalks': 'Crosswalks (zoom in on the map)',
+  'mobilityPlatform.embedded.label.crossWalks': 'Crosswalks (zoom in on the map to see crosswalks)',
+  'mobilityPlatform.menu.show.busStops': 'Bus stops (zoom in on the map)',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -758,6 +779,7 @@ const translations = {
   'mobilityPlatform.content.parkingMachine.payment': 'Charge: {value} €/h',
   'mobilityPlatform.content.parkingMachine.paymentTypes': 'Payment methods: {value}',
   'mobilityPlatform.content.parkingMachine.otherInfo': 'Additional info: {value}',
+  'mobilityPlatform.content.crosswalks.title': 'Crosswalk',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -801,6 +823,9 @@ const translations = {
   'mobilityPlatform.info.parkingMachines': 'The map shows parking machines that are owned by City of Turku. All machines accept either card or contacless payment method. More information can be read by pressing an icon on the map.',
   'mobilityPlatform.info.publicParkingSpaces': 'The map shows public parking spaces that are available for general public. Information about occupancy is not available however. Additional information can be read by selecting an area from the map.',
   'mobilityPlatform.info.outdoorGymDevices': 'City of Turku maintains outdoor gym devices. They offer a fun way to train muscles outdoors anytime for free while enjoying the fresh air. With outdoor gym devices, such as lat pull down, pull up, leg press and benches, one can exercise the whole body. The combination of devices varies between places.',
+  'mobilityPlatform.info.crosswalks': 'The map shows locations of crosswalks inside the city of Turku. Zoom in on the map to see crosswalks.',
+  'mobilityPlatform.info.short.crosswalks': 'The maps show crosswalks in Turku.',
+  'mobilityPlatform.info.busStops': 'The map shows bus stops by Turku region traffic provider Föli. By clicking the icon on the map, you can see next few departure times from the selected bus stop. Zoom in the map to see the stops. The Map data comes from the interface provided by Digitransit.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

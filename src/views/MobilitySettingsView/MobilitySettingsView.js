@@ -3,7 +3,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, {
-  useContext, useEffect, useMemo, useRef, useState,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 import { Helmet } from 'react-helmet';
 import { ReactSVG } from 'react-svg';
@@ -15,16 +15,17 @@ import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconScooter from 'servicemap-ui-turku/assets/icons/icons-icon_scooter.svg';
 import iconSnowplow from 'servicemap-ui-turku/assets/icons/icons-icon_street_maintenance.svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
+import iconPublicTransport from 'servicemap-ui-turku/assets/icons/icons-icon_public_transport.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
 import {
   fetchBicycleRouteNames,
   fetchCultureRouteNames,
-  fetchMobilityMapPolygonData,
+  fetchMobilityMapData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import { isDataValid } from '../../components/MobilityPlatform/utils/utils';
 import useLocaleText from '../../utils/useLocaleText';
 import TitleBar from '../../components/TitleBar';
-import MobilityPlatformContext from '../../context/MobilityPlatformContext';
+import { useMobilityPlatformContext } from '../../context/MobilityPlatformContext';
 import CityBikeInfo from './components/CityBikeInfo';
 import Description from './components/Description';
 import EmptyRouteList from './components/EmptyRouteList';
@@ -47,6 +48,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [openBoatingSettings, setOpenBoatingSettings] = useState(false);
   const [openScooterSettings, setOpenScooterSettings] = useState(false);
   const [openStreetMaintenanceSettings, setOpenStreetMaintenanceSettings] = useState(false);
+  const [openPublicTransportSettings, setOpenPublicTransportSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -157,7 +159,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowPublicParking,
     showOutdoorGymDevices,
     setShowOutdoorGymDevices,
-  } = useContext(MobilityPlatformContext);
+    showCrossWalks,
+    setShowCrossWalks,
+    showBusStops,
+    setShowBusStops,
+  } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
   const location = useLocation();
@@ -217,23 +223,47 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   }, [setBicycleRouteList]);
 
   useEffect(() => {
-    fetchMobilityMapPolygonData('SpeedLimitZone', 1000, setSpeedLimitZones);
+    const options = {
+      type_name: 'SpeedLimitZone',
+      page_size: 1000,
+      latlon: true,
+    };
+    fetchMobilityMapData(options, setSpeedLimitZones);
   }, [setSpeedLimitZones]);
 
   useEffect(() => {
-    fetchMobilityMapPolygonData('PaymentZone', 10, setParkingChargeZones);
+    const options = {
+      type_name: 'PaymentZone',
+      page_size: 10,
+      latlon: true,
+    };
+    fetchMobilityMapData(options, setParkingChargeZones);
   }, [setParkingChargeZones]);
 
   useEffect(() => {
-    fetchMobilityMapPolygonData('PaavonPolku', 50, setMarkedTrailsList);
+    const options = {
+      type_name: 'PaavonPolku',
+      latlon: true,
+    };
+    fetchMobilityMapData(options, setMarkedTrailsList);
   }, [setMarkedTrailsList]);
 
   useEffect(() => {
-    fetchMobilityMapPolygonData('NatureTrail', 200, setNatureTrailsList);
+    const options = {
+      type_name: 'NatureTrail',
+      page_size: 200,
+      latlon: true,
+    };
+    fetchMobilityMapData(options, setNatureTrailsList);
   }, [setNatureTrailsList]);
 
   useEffect(() => {
-    fetchMobilityMapPolygonData('FitnessTrail', 200, setFitnessTrailsList);
+    const options = {
+      type_name: 'FitnessTrail',
+      page_size: 200,
+      latlon: true,
+    };
+    fetchMobilityMapData(options, setFitnessTrailsList);
   }, [setFitnessTrailsList]);
 
   /** If direct link is used to navigate, open correct content view
@@ -271,7 +301,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   useEffect(() => {
     checkVisibilityValues(showPublicToilets, setOpenWalkSettings);
     checkVisibilityValues(showOutdoorGymDevices, setOpenWalkSettings);
-  }, [showPublicToilets, showOutdoorGymDevices]);
+    checkVisibilityValues(showCrossWalks, setOpenWalkSettings);
+  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks]);
 
   useEffect(() => {
     checkVisibilityValues(showEcoCounter.walking, setOpenWalkSettings);
@@ -372,6 +403,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSettings);
     checkVisibilityValues(showStreetMaintenance, setOpenStreetMaintenanceSelectionList);
   }, [showStreetMaintenance]);
+
+  useEffect(() => {
+    checkVisibilityValues(showBusStops, setOpenPublicTransportSettings);
+  }, [showBusStops]);
 
   const nameKeys = {
     fi: 'name',
@@ -491,6 +526,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     }
   };
 
+  const publicTransportSettingsToggle = () => {
+    setOpenPublicTransportSettings(current => !current);
+    if (!openPublicTransportSettings) {
+      navigator.push('mobilityPlatform', 'transport');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.public.transport' }));
+    }
+  };
+
   const boatingSettingsToggle = () => {
     setOpenBoatingSettings(current => !current);
     if (!openBoatingSettings) {
@@ -524,6 +567,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       && !openBoatingSettings
       && !openScooterSettings
       && !openStreetMaintenanceSettings
+      && !openPublicTransportSettings
       && pageTitle
     ) {
       setPageTitle(null);
@@ -535,6 +579,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     openBoatingSettings,
     openScooterSettings,
     openStreetMaintenanceSettings,
+    openPublicTransportSettings,
     pageTitle,
   ]);
 
@@ -637,6 +682,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowOutdoorGymDevices(current => !current);
   };
 
+  const crossWalksToggle = () => {
+    setShowCrossWalks(current => !current);
+  };
+
   const scooterSpeedLimitAreasToggle = () => {
     setShowScooterSpeedLimitAreas(current => !current);
   };
@@ -658,6 +707,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const publicParkingToggle = () => {
     setShowPublicParking(current => !current);
+  };
+
+  const busStopsToggle = () => {
+    setShowBusStops(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -979,6 +1032,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       onChangeValue: outdoorGymDevicesToggle,
     },
     {
+      type: 'crossWalks',
+      msgId: 'mobilityPlatform.menu.show.crossWalks',
+      checkedValue: showCrossWalks,
+      onChangeValue: crossWalksToggle,
+    },
+    {
       type: 'publicToilets',
       msgId: 'mobilityPlatform.menu.show.publicToilets',
       checkedValue: showPublicToilets,
@@ -1127,6 +1186,15 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       msgId: 'mobilityPlatform.menu.speedLimitZones.show',
       checkedValue: openSpeedLimitList,
       onChangeValue: speedLimitZonesToggle,
+    },
+  ];
+
+  const publicTransportControlTypes = [
+    {
+      type: 'busStops',
+      msgId: 'mobilityPlatform.menu.show.busStops',
+      checkedValue: showBusStops,
+      onChangeValue: busStopsToggle,
     },
   ];
 
@@ -1337,6 +1405,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       component: <InfoTextBox infoText="mobilityPlatform.info.outdoorGymDevices" />,
     },
     {
+      visible: showCrossWalks,
+      type: 'crosswalksInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.crosswalks" />,
+    },
+    {
       visible: showPublicToilets,
       type: 'publicRestroomsInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.publicToilets" />,
@@ -1501,6 +1574,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     },
   ];
 
+  const infoTextsPublicTransport = [
+    {
+      visible: showBusStops,
+      type: 'busStopsInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.busStops" />,
+    },
+  ];
+
   /** Render infotext(s) if visible value is true
    * @param {Array} textData
    * @return {Element}
@@ -1514,7 +1595,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   /** Render header */
   const renderHead = () => {
-    const title = intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' });
+    const title = intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform' });
     const appTitle = intl.formatMessage({ id: 'app.title' });
     return (
       <Helmet>
@@ -1645,6 +1726,13 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     </React.Fragment>
   );
 
+  const renderPublicTransportSettings = () => (
+    <React.Fragment>
+      {renderSettings(openPublicTransportSettings, publicTransportControlTypes)}
+      {renderInfoTexts(infoTextsPublicTransport)}
+    </React.Fragment>
+  );
+
   const categories = [
     {
       component: renderWalkSettings(),
@@ -1666,6 +1754,13 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       icon: <ReactSVG src={iconCar} className={classes.icon} />,
       onClick: carSettingsToggle,
       setState: openCarSettings,
+    },
+    {
+      component: renderPublicTransportSettings(),
+      title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.public.transport' }),
+      icon: <ReactSVG src={iconPublicTransport} className={classes.icon} />,
+      onClick: publicTransportSettingsToggle,
+      setState: openPublicTransportSettings,
     },
     {
       component: renderScooterSettings(),
@@ -1694,7 +1789,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     <div className={classes.content}>
       {renderHead()}
       <TitleBar
-        title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform.title' })}
+        title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform' })}
         titleComponent="h3"
         backButton
         backButtonOnClick={() => navigator.push('home')}
