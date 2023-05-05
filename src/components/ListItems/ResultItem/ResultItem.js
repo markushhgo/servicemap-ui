@@ -4,6 +4,7 @@ import {
   Divider, ListItem, ListItemIcon, Typography,
 } from '@mui/material';
 import { useTheme } from '@mui/styles';
+import { visuallyHidden } from '@mui/utils';
 import PropTypes from 'prop-types';
 import { keyboardHandler } from '../../../utils';
 import locationIcon from '../../../assets/icons/LocationDefault.svg';
@@ -114,7 +115,7 @@ const ResultItem = ({
             <Typography
               className={`${classes.title || ''} ResultItem-srOnly`}
               component="p"
-              variant="srOnly"
+              style={visuallyHidden}
             >
               {srText}
             </Typography>

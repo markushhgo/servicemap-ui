@@ -61,11 +61,12 @@ exports[`<PaginationComponent /> should work 1`] = `
             <p
               class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
-              <span
-                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
               >
                 Avaa sivu 1
-              </span>
+              </p>
               <span
                 aria-hidden="true"
               >
@@ -85,11 +86,12 @@ exports[`<PaginationComponent /> should work 1`] = `
             <p
               class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElementActive-32 css-dlbwt1-MuiTypography-root"
             >
-              <span
-                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
               >
                 Sivu 2, avattu
-              </span>
+              </p>
               <span
                 aria-hidden="true"
               >
@@ -108,11 +110,12 @@ exports[`<PaginationComponent /> should work 1`] = `
             <p
               class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
-              <span
-                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
               >
                 Avaa sivu 3
-              </span>
+              </p>
               <span
                 aria-hidden="true"
               >
@@ -131,11 +134,12 @@ exports[`<PaginationComponent /> should work 1`] = `
             <p
               class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
-              <span
-                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
               >
                 Avaa sivu 4
-              </span>
+              </p>
               <span
                 aria-hidden="true"
               >
@@ -154,11 +158,12 @@ exports[`<PaginationComponent /> should work 1`] = `
             <p
               class="MuiTypography-root MuiTypography-subtitle1  PageElement-pageItem-33 PageElement-pageElement-31 css-dlbwt1-MuiTypography-root"
             >
-              <span
-                class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
               >
                 Avaa sivu 5
-              </span>
+              </p>
               <span
                 aria-hidden="true"
               >

@@ -24,7 +24,8 @@ exports[`<UnitItem /> should work 1`] = `
         class="ResultItem-topRow-12"
       >
         <p
-          class="MuiTypography-root MuiTypography-srOnly ResultItem-title-8 ResultItem-srOnly css-37jdci-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 ResultItem-title-8 ResultItem-srOnly css-1ak20dk-MuiTypography-root"
+          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
         >
           
     Pääkirjasto 

@@ -2,6 +2,7 @@ import { Divider, Typography } from '@mui/material';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { visuallyHidden } from '@mui/utils';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { keyboardHandler } from '../../../utils';
@@ -57,7 +58,7 @@ const SimpleListItem = (props) => {
             variant="body2"
             classes={{ root: `${link ? classes.link : null} ${dark ? classes.whiteText : ''}` }}
           >
-            <Typography variant="srOnly">{srText}</Typography>
+            <Typography style={visuallyHidden}>{srText}</Typography>
             {text}
           </Typography>
         </ListItemText>

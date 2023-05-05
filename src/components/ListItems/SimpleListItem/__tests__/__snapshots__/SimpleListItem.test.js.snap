@@ -12,8 +12,9 @@ exports[`<SimpleListItem /> should work 1`] = `
       <p
         class="null  MuiTypography-root MuiTypography-body2 css-q91igz-MuiTypography-root"
       >
-        <span
-          class="MuiTypography-root MuiTypography-srOnly css-37jdci-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
+          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
         />
         Title text
       </p>

@@ -4,6 +4,7 @@ import {
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { visuallyHidden } from '@mui/utils';
 import { getAddressFromUnit } from '../../../utils/address';
 import useLocaleText from '../../../utils/useLocaleText';
 import SMLink from '../../Link';
@@ -89,7 +90,7 @@ const DivisionItem = ({
           }
           <Typography
             component="p"
-            variant="srOnly"
+            style={visuallyHidden}
           >
             {srText}
           </Typography>
