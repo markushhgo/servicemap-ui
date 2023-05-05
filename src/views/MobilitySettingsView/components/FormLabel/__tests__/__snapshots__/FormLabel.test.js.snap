@@ -6,10 +6,10 @@ exports[`<FormLabel /> should work 1`] = `
     class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd injectIntl(FormLabel)-formLabel-1 injectIntl(FormLabel)-paddingMd-2 css-j204z7-MuiFormControlLabel-root"
   >
     <span
-      class="MuiSwitch-root MuiSwitch-sizeMedium css-tnsvld-MuiSwitch-root"
+      class="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
     >
       <span
-        class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-136bnak-MuiButtonBase-root-MuiSwitch-switchBase"
+        class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-18jccp8-MuiButtonBase-root-MuiSwitch-switchBase"
         role="switch"
       >
         <input
@@ -22,7 +22,7 @@ exports[`<FormLabel /> should work 1`] = `
         />
       </span>
       <span
-        class="MuiSwitch-track css-15iq8ze-MuiSwitch-track"
+        class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
       />
     </span>
     <p
