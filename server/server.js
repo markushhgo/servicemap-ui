@@ -1,4 +1,4 @@
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@mui/styles';
 import express from 'express';
 import IntlPolyfill from 'intl';
 import StyleContext from 'isomorphic-style-loader/StyleContext';

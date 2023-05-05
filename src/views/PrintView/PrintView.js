@@ -3,8 +3,8 @@ import {
   Paper,
   Table, TableBody, TableCell, TableContainer, TableHead,
   TableRow, Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+} from '@mui/material';
+import { withStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';

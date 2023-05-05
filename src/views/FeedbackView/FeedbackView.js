@@ -1,5 +1,5 @@
-import { ButtonBase, Checkbox, Dialog, DialogContent, DialogTitle, FormControl, InputBase, Typography } from '@material-ui/core';
-import { Warning } from '@material-ui/icons';
+import { ButtonBase, Checkbox, Dialog, DialogContent, DialogTitle, FormControl, InputBase, Typography } from '@mui/material';
+import { Warning } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';

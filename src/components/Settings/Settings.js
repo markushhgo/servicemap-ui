@@ -1,7 +1,7 @@
 import {
   Checkbox, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, List,
   ListItem, Radio, RadioGroup, Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';

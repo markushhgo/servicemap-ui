@@ -1,7 +1,7 @@
 import {
   AppBar, Button, ButtonBase, Toolbar, Typography,
-} from '@material-ui/core';
-import { Map } from '@material-ui/icons';
+} from '@mui/material';
+import { Map } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';

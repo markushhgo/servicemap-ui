@@ -1,5 +1,5 @@
-import { List, ListItem, Typography } from '@material-ui/core';
-import { FormatListBulleted, LocationOn } from '@material-ui/icons';
+import { List, ListItem, Typography } from '@mui/material';
+import { FormatListBulleted, LocationOn } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';

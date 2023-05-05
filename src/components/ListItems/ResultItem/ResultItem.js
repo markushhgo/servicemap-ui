@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 import {
   Divider, ListItem, ListItemIcon, Typography,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
+} from '@mui/material';
+import { useTheme } from '@mui/styles';
 import PropTypes from 'prop-types';
 import { keyboardHandler } from '../../../utils';
 import locationIcon from '../../../assets/icons/LocationDefault.svg';

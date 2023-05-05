@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import { Tab, Tabs, Typography } from '@material-ui/core';
+import { Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';

@@ -2,7 +2,7 @@
 import React, {
   useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom';

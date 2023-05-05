@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogTitle,
   Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import { useIntl } from 'react-intl';

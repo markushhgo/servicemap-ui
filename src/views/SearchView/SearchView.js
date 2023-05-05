@@ -2,7 +2,7 @@
 
 import {
   Container, Divider, Link, NoSsr, Paper, Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';

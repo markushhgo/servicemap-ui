@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Typography, List, ListItem } from '@material-ui/core';
-import { Map, BusinessCenter, LocationCity } from '@material-ui/icons';
+import { Typography, List, ListItem } from '@mui/material';
+import { Map, BusinessCenter, LocationCity } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
