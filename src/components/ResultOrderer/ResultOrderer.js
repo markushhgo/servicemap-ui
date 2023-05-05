@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import {
-    FormControl, Select, Typography
+  FormControl, Select, Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
