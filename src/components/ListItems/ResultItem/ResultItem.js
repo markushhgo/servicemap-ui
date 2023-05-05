@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import {
   Divider, ListItem, ListItemIcon, Typography,
 } from '@mui/material';
-import { useTheme } from '@mui/styles';
 import { visuallyHidden } from '@mui/utils';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { keyboardHandler } from '../../../utils';
 import locationIcon from '../../../assets/icons/LocationDefault.svg';
 import locationIconContrast from '../../../assets/icons/LocationDefaultContrast.svg';
@@ -31,7 +31,7 @@ const ResultItem = ({
   simpleItem,
   ...rest
 }) => {
-  const theme = useTheme();
+  const theme = useSelector(state => state.user.theme);
 
   const resetMarkerHighlight = () => {
     // Handle marker highlight removal
