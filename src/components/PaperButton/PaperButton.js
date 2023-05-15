@@ -9,7 +9,7 @@ const PaperButton = ({
 }) => {
   const clonedIcon = icon ? React.cloneElement(icon, { className: classes.icon }) : null;
   const bRole = role || link ? 'link' : 'button';
-  const containerClass = `${classes.container} ${disabled ? classes.buttonDisabled : ''} ${noBorder ? classes.noBorder : ''}${` ${className || ''}`}`;
+  const containerClass = `SM-PaperButton ${classes.container} ${disabled ? classes.buttonDisabled : ''} ${noBorder ? classes.noBorder : ''}${` ${className || ''}`}`;
   return (
     <Container paper className={containerClass}>
       <Button
