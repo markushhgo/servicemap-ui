@@ -27,16 +27,16 @@ const PageElement = ({
           className={newClassName}
           {...rest}
         >
-          <Typography style={visuallyHidden}>
-            {
+          <span aria-hidden="true">
+            {number}
+          </span>
+        </Typography>
+        <Typography style={visuallyHidden}>
+          {
             isActive
               ? intl.formatMessage({ id: 'general.pagination.currentlyOpenedPage' }, { count: number })
               : intl.formatMessage({ id: 'general.pagination.openPage' }, { count: number })
           }
-          </Typography>
-          <span aria-hidden="true">
-            {number}
-          </span>
         </Typography>
       </ButtonBase>
     </li>
