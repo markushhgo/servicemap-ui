@@ -4,7 +4,7 @@ exports[`<SliceList /> should match snapshot 1`] = `
 <div>
   <div>
     <button
-      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root injectIntl(SliceListButton)-button-1 css-1p2nkht-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium injectIntl(SliceListButton)-button-1 css-1gxfrj0-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >

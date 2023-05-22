@@ -28,6 +28,7 @@ const AddressItem = (props) => {
     text = getAddressText(address, getLocaleText, showPostalCode);
   }
 
+
   return (
     <SimpleListItem
       className={className}

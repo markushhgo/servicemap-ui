@@ -1,17 +1,12 @@
-import {
-  ButtonBase, Checkbox, Collapse, Divider, List, ListItem, NoSsr, Typography,
-} from '@mui/material';
-import {
-  ArrowDropDown, ArrowDropUp, Cancel, Search,
-} from '@mui/icons-material';
+import { Checkbox, List, Typography } from '@mui/material';
+import { Search } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import styled from '@emotion/styled';
 import config from '../../../config';
-import SMButton from '../../components/ServiceMapButton';
-import SMAccordion from '../../components/SMAccordion';
-import TitleBar from '../../components/TitleBar';
 import useLocaleText from '../../utils/useLocaleText';
+import { SMAccordion, SMButton, TitleBar } from '../../components';
+import useMobileStatus from '../../utils/isMobile';
 
 const ServiceTreeView = (props) => {
   const {
@@ -25,13 +20,12 @@ const ServiceTreeView = (props) => {
     settings,
   } = props;
   const getLocaleText = useLocaleText();
+  const isMobile = useMobileStatus();
 
   // State
   const [services, setServices] = useState(prevServices);
   const [opened, setOpened] = useState(prevOpened);
   const [selected, setSelected] = useState(prevSelected);
-  const [selectedOpen, setSelectedOpen] = useState(false);
-
 
   let citySettings = [];
   config.cities.forEach((city) => {
@@ -60,7 +54,7 @@ const ServiceTreeView = (props) => {
 
   const fetchRootNodes = () => (
     // Fetch all top level 0 nodes (root nodes)
-    fetch(`${config.serviceMapAPI.root}/service_node/?level=0&page=1&page_size=100`)
+    fetch(`${config.serviceMapAPI.root}${config.serviceMapAPI.version}/service_node/?level=0&page=1&page_size=100`)
       .then(response => response.json())
       .then(data => data.results)
   );
@@ -73,7 +67,7 @@ const ServiceTreeView = (props) => {
 
   const fetchChildServices = async (service) => {
     // Fetch and set to state the child nodes of the opened node
-    fetch(`${config.serviceMapAPI.root}/service_node/?parent=${service}&page=1&page_size=1000`)
+    fetch(`${config.serviceMapAPI.root}${config.serviceMapAPI.version}/service_node/?parent=${service}&page=1&page_size=1000`)
       .then(response => response.json())
       .then((data) => {
         setServices([...services, ...data.results]);
@@ -157,33 +151,6 @@ const ServiceTreeView = (props) => {
       setSelected([...selected, ...newState]);
       e.stopPropagation();
     }
-  };
-
-  const focusTitle = () => {
-    const title = document.getElementsByClassName('TitleText')[0];
-    title.focus();
-  };
-
-  // Remove selection and refocus
-  const handleRemoveSelection = (e, item, focus = false) => {
-    handleCheckboxClick(e, item);
-    // If focus set to true
-    // Attempt to focus to either previous or next sibling in list
-    if (focus) {
-      const sibling = e.currentTarget.parentNode?.previousSibling?.childNodes[1]
-        || e.currentTarget.parentNode?.nextSibling?.childNodes[1];
-      if (sibling) {
-        sibling.focus();
-      } else {
-        focusTitle();
-      }
-    }
-  };
-
-  // Clear selections and focus to title
-  const handleRemoveAllSelections = () => {
-    setSelected([]);
-    focusTitle();
   };
 
   const drawCheckboxLines = (isOpen, level, id) => {
@@ -320,114 +287,6 @@ const ServiceTreeView = (props) => {
     </List>
   );
 
-  const renderSelectedCities = () => {
-    const cityString = citySettings.join(', ');
-    return (
-      <NoSsr>
-        <div className={classes.infoContainer}>
-          {citySettings.length ? (
-            <>
-              <Typography className={`${classes.infoText} ${classes.bold}`}>
-                <FormattedMessage id="settings.city.info" values={{ count: citySettings.length }} />
-                : &nbsp;
-              </Typography>
-              <Typography className={classes.infoText}>
-                {cityString}
-              </Typography>
-            </>
-          ) : null}
-        </div>
-      </NoSsr>
-    );
-  };
-
-  const renderSelectionList = selectedList => (
-    <>
-      <div className={classes.infoContainer}>
-        <ButtonBase
-          aria-expanded={selectedOpen}
-          disabled={!selectedList.length}
-          onClick={() => setSelectedOpen(!selectedOpen)}
-          className={classes.selectionsButton}
-          focusVisibleClassName={classes.selectionFocus}
-        >
-          <Typography className={`${classes.selectionText} ${classes.bold}`}>
-            <FormattedMessage id="services.selections" values={{ count: selectedList.length }} />
-          </Typography>
-          {selectedOpen
-            ? <ArrowDropUp className={classes.white} />
-            : <ArrowDropDown className={classes.white} />}
-        </ButtonBase>
-
-        {selectedList.length ? (
-          <ButtonBase
-            className={classes.right}
-            disabled={!selectedList.length}
-            onClick={() => handleRemoveAllSelections()}
-            focusVisibleClassName={classes.selectionFocus}
-          >
-            <Typography className={classes.deleteText}>
-              <FormattedMessage id="services.selections.delete.all" />
-            </Typography>
-            <Cancel className={classes.deleteIcon} />
-          </ButtonBase>
-        ) : null}
-      </div>
-      <Divider aria-hidden className={classes.whiteDivider} />
-
-      <Collapse aria-hidden={!selectedOpen} in={selectedOpen}>
-        {selectedOpen && (
-        <List className={classes.seleectionList} disablePadding>
-          {selectedList.map(item => (
-            item.name && (
-              <ListItem dense key={item.id} disableGutters>
-                <Typography className={classes.selectionText} aria-hidden variant="body2">
-                  {getLocaleText(item.name)}
-                </Typography>
-                <ButtonBase
-                  className={classes.right}
-                  aria-label={intl.formatMessage({ id: 'services.selections.delete.sr' }, { service: getLocaleText(item.name) })}
-                  onClick={e => handleRemoveSelection(e, item, true)}
-                  focusVisibleClassName={classes.selectionFocus}
-                >
-                  <Typography className={classes.deleteText} variant="body2">
-                    <FormattedMessage id="services.selections.delete" />
-                  </Typography>
-                  <Cancel className={classes.deleteIcon} />
-                </ButtonBase>
-              </ListItem>
-            )
-          ))}
-        </List>
-        )}
-        {selectedList.length ? <Divider aria-hidden className={classes.whiteDivider} /> : null}
-      </Collapse>
-    </>
-  );
-
-  const renderSearchButton = (selectedList) => {
-    const ids = selectedList.map(i => i.id);
-    const selectedString = selectedList.map(i => getLocaleText(i.name)).join(', ');
-    return (
-      <SMButton
-        aria-label={selectedList.length
-          ? intl.formatMessage({ id: 'services.search.sr.selected' }, { services: selectedString })
-          : intl.formatMessage({ id: 'services.search.sr' })}
-        margin
-        className={classes.searchButton}
-        disabled={!selectedList.length}
-        icon={<Search />}
-        messageID="services.search"
-        onClick={() => {
-          setTreeState({ services, selected, opened });
-          navigator.push('search', { service_node: ids });
-        }}
-        role="link"
-      />
-    );
-  };
-
-
   // If node's parent is also checked, add only parent to list of selected nodes for search
   const selectedList = [];
   selected.forEach((e) => {
@@ -436,26 +295,55 @@ const ServiceTreeView = (props) => {
     }
   });
 
+  const ids = selectedList.map(i => i.id);
+
   return (
-    <>
+    <StyledFlexContainer>
       <TitleBar
         title={intl.formatMessage({ id: 'general.pageTitles.serviceTree.title' })}
         titleComponent="h3"
-        backButton
+        backButton={!isMobile}
         className={classes.topBarColor}
       />
-      <div className={classes.topArea}>
-        {renderSelectedCities()}
-        {renderSelectionList(selectedList)}
-      </div>
+      <Typography className={classes.guidanceInfoText} variant="body2">{intl.formatMessage({ id: 'services.info' })}</Typography>
       <div className={classes.mainContent}>
-        <Typography className={classes.guidanceInfoText} variant="body2">{intl.formatMessage({ id: 'services.info' })}</Typography>
-        {renderSearchButton(selectedList)}
         {renderServiceNodeList()}
       </div>
-    </>
+      <StyledFloatingDiv>
+        <SMButton
+          id="ServiceTreeSearchButton"
+          className={classes.searchButton}
+          color="primary"
+          disabled={!ids.length}
+          icon={<Search />}
+          messageID="services.search"
+          onClick={() => {
+            setTreeState({ services, selected, opened });
+            navigator.push('search', { service_node: ids });
+          }}
+        />
+      </StyledFloatingDiv>
+    </StyledFlexContainer>
   );
 };
+
+const StyledFlexContainer = styled.div(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+}));
+
+const StyledFloatingDiv = styled.div(({ theme }) => ({
+  display: 'flex',
+  width: '100%',
+  padding: theme.spacing(2),
+  position: 'sticky',
+  bottom: 0,
+  backgroundColor: '#fff',
+  marginTop: 'auto',
+  boxSizing: 'border-box',
+  boxShadow: '0px -4px 4px rgba(0, 0, 0, 0.36)',
+}));
 
 ServiceTreeView.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,

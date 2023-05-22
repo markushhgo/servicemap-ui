@@ -15,13 +15,16 @@ createTestCafe('localhost')
         'browserTests/views/areaTest.js',
         'browserTests/generic/browserTest.js',
         // 'browserTests/views/divisionTest.js',
-	      'browserTests/views/mobilityPlatformTest.js',
+	'browserTests/views/mobilityPlatformTest.js',
+        'browserTests/views/embedTest.js',
+        'browserTests/generic/generalTest.js',
         'browserTests/views/searchTest.js',
         'browserTests/views/serviceTest.js',
         'browserTests/views/settingsTest.js',
         // 'browserTests/titleBarTest.js',
         'browserTests/views/unitPageTest.js',
         // 'browserTests/views/unitListPageTest.js',
+        'browserTests/views/unitPageExtendedDataTest.js',
       ])
       .browsers(['chrome:headless'])
       // .reporter('list')

@@ -45,16 +45,16 @@ export const CloseSuggestionButton = ({
         {...rest}
       >
         <Typography variant="body2"><FormattedMessage id="search.suggestions.hideButton" /></Typography>
-        {!!icon ? icon: null}
+        {icon || null}
       </div>
     );
   } catch (e) {
     console.error(e);
   }
   return null;
-}
+};
 
-CloseSuggestionButton.propTypes = {
+CloseSuggestionButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func,
   onKeyDown: PropTypes.func,

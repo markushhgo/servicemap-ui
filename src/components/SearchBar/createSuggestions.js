@@ -18,7 +18,6 @@ const createSuggestions = (
 
   const additionalOptions = {
     page_size: pageSize,
-    limit: 2000,
     unit_limit: unitLimit,
     service_limit: serviceLimit,
     address_limit: addressLimit,

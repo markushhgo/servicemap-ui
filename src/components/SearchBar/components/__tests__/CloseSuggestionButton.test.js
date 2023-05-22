@@ -36,7 +36,7 @@ describe('<CloseSuggestionButton />', () => {
     const { getAllByRole } = renderWithProviders(
       <>
         <CloseSuggestionButton {...mockProps} onKeyDown={mockCallBack} />
-        <CloseSuggestionButton {...mockProps} onKeyPress={mockCallBack} />
+        <CloseSuggestionButton {...mockProps} onKeyPress={mockCallBack} srOnly />
       </>,
     );
 

@@ -1,6 +1,6 @@
-import { Divider, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Typography, Divider } from '@mui/material';
 import isClient from '../../utils';
 
 const DescriptionText = ({
@@ -50,6 +50,5 @@ DescriptionText.defaultProps = {
   html: false,
   extraField: null,
 };
-
 
 export default DescriptionText;

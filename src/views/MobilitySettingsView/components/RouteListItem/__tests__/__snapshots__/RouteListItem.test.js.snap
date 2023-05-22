@@ -10,7 +10,7 @@ exports[`<RouteListItem /> should match snapshot 1`] = `
     >
       <span
         aria-checked="true"
-        class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root Mui-checked css-fy5xgy-MuiButtonBase-root-MuiCheckbox-root"
+        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary Mui-checked MuiCheckbox-root MuiCheckbox-colorPrimary css-crkgfp-MuiButtonBase-root-MuiCheckbox-root"
       >
         <input
           checked=""
