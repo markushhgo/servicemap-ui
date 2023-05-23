@@ -37,9 +37,10 @@ const styles = {
     flexDirection: 'row',
     marginTop: '0.35rem',
     marginBottom: '0.75rem',
-    alignItems: 'flex-end',
     borderBottom: '2px solid gray',
     width: '95%',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
   },
   headerSubtitle: {
     marginBlockStart: '1rem',
@@ -53,11 +54,8 @@ const styles = {
     alignItems: 'center',
   },
   lamCounterDatePicker: {
-    position: 'absolute',
-    top: '10%',
-    left: '20%',
-    backgroundColor: '#fff',
-    zIndex: 1000,
+    width: '75%',
+    marginRight: 'auto',
   },
   lamCounterUserTypes: {
     display: 'flex',
