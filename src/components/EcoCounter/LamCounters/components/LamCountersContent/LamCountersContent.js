@@ -18,7 +18,9 @@ import {
   subDays,
   subMonths,
 } from 'date-fns';
-import { fi, en, sv } from 'date-fns/locale';
+import enGB from 'date-fns/locale/en-GB';
+import fi from 'date-fns/locale/fi';
+import sv from 'date-fns/locale/sv';
 import { ReactSVG } from 'react-svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import {
@@ -91,7 +93,7 @@ const LamCountersContent = ({
   // Set datepicker language
   useEffect(() => {
     if (locale === 'en') {
-      registerLocale('en', en);
+      registerLocale('en', enGB);
     } else if (locale === 'sv') {
       registerLocale('sv', sv);
     } else registerLocale('fi', fi);
@@ -108,10 +110,8 @@ const LamCountersContent = ({
     return start;
   };
 
-  // momentjs
   // Initial values that are used to fetch data
   const currentDate = new Date();
-  // const lastMonth = endOfMonth(subMonths(currentDate, 1));
   const yesterDay = subDays(currentDate, 1);
   const yesterDayFormat = format(yesterDay, 'yyyy-MM-dd');
   const initialDateStart = format(startOfWeek(yesterDay, 1), 'yyyy-MM-dd');
@@ -139,7 +139,6 @@ const LamCountersContent = ({
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    // setSelectedDate(moment().clone().subtract(1, 'months').endOf('month'));
     setSelectedDate(endOfMonth(subMonths(currentDate, 1)));
   }, [stationId]);
 
