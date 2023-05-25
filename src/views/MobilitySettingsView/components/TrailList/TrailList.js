@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, FormControlLabel, Typography } from '@material-ui/core';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import { isDataValid } from '../../../../components/MobilityPlatform/utils/utils';
 import useLocaleText from '../../../../utils/useLocaleText';
 import TrailInfo from '../TrailInfo';

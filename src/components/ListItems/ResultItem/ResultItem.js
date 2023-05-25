@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import {
   Divider, ListItem, ListItemIcon, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { keyboardHandler } from '../../../utils';
@@ -114,7 +115,7 @@ const ResultItem = ({
             <Typography
               className={`${classes.title || ''} ResultItem-srOnly`}
               component="p"
-              variant="srOnly"
+              style={visuallyHidden}
             >
               {srText}
             </Typography>
