@@ -3,15 +3,31 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ButtonBase, Typography } from '@mui/material';
-import DateRangeIcon from '@mui/icons-material/DateRange';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { DayPickerSingleDateController } from 'react-dates';
-import 'react-dates/initialize';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import {
+  endOfMonth,
+  startOfMonth,
+  format,
+  getMonth,
+  getWeek,
+  getYear,
+  startOfWeek,
+  endOfWeek,
+  subDays,
+  subMonths,
+} from 'date-fns';
+import enGB from 'date-fns/locale/en-GB';
+import fi from 'date-fns/locale/fi';
+import sv from 'date-fns/locale/sv';
 import { ReactSVG } from 'react-svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import {
-  fetchInitialDayDatas, fetchInitialHourData, fetchInitialMonthDatas, fetchInitialWeekDatas,
+  fetchInitialDayDatas,
+  fetchInitialHourData,
+  fetchInitialMonthDatas,
+  fetchInitialWeekDatas,
 } from '../../../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../../../LineChart';
 
@@ -28,8 +44,7 @@ const LamCountersContent = ({
   const [lamCounterLabels, setLamCounterLabels] = useState([]);
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(moment().clone().add(-1, 'days'));
+  const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector(state => state.user.locale);
 
@@ -78,55 +93,53 @@ const LamCountersContent = ({
   // Set datepicker language
   useEffect(() => {
     if (locale === 'en') {
-      moment.locale('en');
+      registerLocale('en', enGB);
     } else if (locale === 'sv') {
-      moment.locale('sv');
-    } else moment.locale('fi');
+      registerLocale('sv', sv);
+    } else registerLocale('fi', fi);
   }, [locale]);
 
   // API returns empty data if start_week_number parameter is higher number than end_week_number.
   // This will set it to 1 so that weekly graph in January won't be empty in case week number of 1.1 is 52 or 53.
   const checkWeekNumber = (dateValue) => {
-    const start = dateValue.clone().startOf('month').week();
-    const end = dateValue.clone().endOf('month').week();
+    const start = getWeek(startOfMonth(dateValue));
+    const end = getWeek(endOfMonth(dateValue));
     if (start > end) {
       return 1;
     }
     return start;
   };
 
-  // momentjs
   // Initial values that are used to fetch data
-  const currentDate = moment();
-  const lastMonth = currentDate.clone().subtract(1, 'months').endOf('month');
-  const yesterDay = lastMonth.clone().add(-1, 'days');
-  const yesterDayFormat = yesterDay.clone().format('YYYY-MM-DD');
-  const initialDateStart = yesterDay.clone().startOf('week').format('YYYY-MM-DD');
-  const initialDateEnd = yesterDay.clone().endOf('week').format('YYYY-MM-DD');
+  const currentDate = new Date();
+  const yesterDay = subDays(currentDate, 1);
+  const yesterDayFormat = format(yesterDay, 'yyyy-MM-dd');
+  const initialDateStart = format(startOfWeek(yesterDay, 1), 'yyyy-MM-dd');
+  const initialDateEnd = format(endOfWeek(yesterDay, 1), 'yyyy-MM-dd');
   const initialWeekStart = checkWeekNumber(yesterDay);
-  const initialWeekEnd = yesterDay.clone().endOf('month').week();
-  const initialMonth = yesterDay.clone().month() + 1;
-  const initialYear = yesterDay.clone().year();
+  const initialWeekEnd = getWeek(endOfMonth(yesterDay));
+  const initialMonth = getMonth(yesterDay);
+  const initialYear = getYear(yesterDay);
 
   // Values that change based on the datepicker value
-  const selectedDateFormat = selectedDate.clone().format('YYYY-MM-DD');
-  const selectedDateStart = selectedDate.clone().startOf('week').format('YYYY-MM-DD');
-  const selectedDateEnd = selectedDate.clone().endOf('week').format('YYYY-MM-DD');
+  const selectedDateFormat = format(selectedDate, 'yyyy-MM-dd');
+  const selectedDateStart = format(startOfWeek(selectedDate, 1), 'yyyy-MM-dd');
+  const selectedDateEnd = format(endOfWeek(selectedDate, 1), 'yyyy-MM-dd');
   const selectedWeekStart = checkWeekNumber(selectedDate);
-  const selectedWeekEnd = selectedDate.clone().endOf('month').week();
-  let selectedMonth = currentDate.clone().month() + 1;
-  const selectedYear = selectedDate.clone().year();
+  const selectedWeekEnd = getWeek(endOfMonth(selectedDate));
+  let selectedMonth = getMonth(currentDate);
+  const selectedYear = getYear(selectedDate);
 
   // This will show full year if available
   const checkYear = () => {
-    if (selectedDate.clone().year() < moment().year()) {
+    if (getYear(selectedDate) < getYear(currentDate)) {
       selectedMonth = 12;
     }
   };
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(moment().clone().subtract(1, 'months').endOf('month'));
+    setSelectedDate(endOfMonth(subMonths(currentDate, 1)));
   }, [stationId]);
 
   useEffect(() => {
@@ -340,36 +353,15 @@ const LamCountersContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {stationName}
         </Typography>
-        <div className={classes.headerDate}>
-          <div className={classes.iconContainer}>
-            <DateRangeIcon />
-          </div>
-          {!isDatePickerOpen ? (
-            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(true)}>
-              <Typography component="h5" className={classes.headerSubtitle}>
-                {selectedDate.clone().format('DD.MM.YYYY')}
-              </Typography>
-            </ButtonBase>
-          ) : (
-            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(false)}>
-              <Typography component="h5" className={classes.headerSubtitle}>
-                {selectedDate.clone().format('DD.MM.YYYY')}
-              </Typography>
-            </ButtonBase>
-          )}
+        <div>
+          <DatePicker
+            showIcon
+            selected={selectedDate}
+            onChange={newDate => changeDate(newDate)}
+            locale={locale}
+            dateFormat="P"
+          />
         </div>
-        {isDatePickerOpen ? (
-          <div className={classes.lamCounterDatePicker}>
-            <DayPickerSingleDateController
-              date={selectedDate}
-              onDateChange={(newDate) => {
-                changeDate(newDate);
-                setIsDatePickerOpen(false);
-              }}
-              numberOfMonths={1}
-            />
-          </div>
-        ) : null}
       </div>
       <div className={classes.lamCounterContent}>
         <div className={classes.lamCounterUserTypes}>
@@ -377,10 +369,7 @@ const LamCountersContent = ({
             && userTypes.map(userType => (
               <div key={userType.type.user} className={classes.container}>
                 <div className={classes.iconWrapper}>
-                  <ReactSVG
-                    className={classes.iconActive}
-                    src={userType.type.icon}
-                  />
+                  <ReactSVG className={classes.iconActive} src={userType.type.icon} />
                 </div>
                 <div className={classes.textContainer}>
                   <Typography variant="body2" className={classes.userTypeText}>
