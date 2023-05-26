@@ -30,7 +30,7 @@ import {
 import StatisticalDistrictList from './components/StatisticalDistrictList';
 import useMobileStatus from '../../utils/isMobile';
 import MapUtility from '../../utils/mapUtility';
-
+import config from '../../../config';
 
 const AreaView = ({
   setSelectedDistrictType,
@@ -309,25 +309,39 @@ const AreaView = ({
     }
   };
 
+  // If external theme (by Turku) is true, then can be used to select which content to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+
+  const filterCategories = data => data.reduce((acc, curr) => {
+    if (curr.type !== 'statistic') {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
 
   const render = () => {
-    const categories = [
+    const categoriesData = [
       {
         component: renderServiceTab(),
         title: intl.formatMessage({ id: 'area.tab.publicServices' }),
         icon: <BusinessCenter className={classes.icon} />,
+        type: 'services',
       },
       {
         component: renderGeographicalTab(),
         title: intl.formatMessage({ id: 'area.tab.geographical' }),
         icon: <LocationCity className={classes.icon} />,
+        type: 'geographic',
       },
       {
         component: <StatisticalDistrictList />,
         title: intl.formatMessage({ id: 'area.tab.statisticalDistricts' }),
         icon: <EscalatorWarning className={classes.icon} />,
+        type: 'statistic'
       },
     ];
+    const categories = isExternalTheme ? filterCategories(categoriesData) : categoriesData;
     if (!embed) {
       return (
         <div>
