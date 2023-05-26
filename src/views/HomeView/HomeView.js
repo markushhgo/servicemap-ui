@@ -7,7 +7,7 @@ import CardSmall from '../../components/CardSmall/CardSmall';
 import areaServices from '../../assets/images/area-services.jpg';
 import serviceTree from '../../assets/images/service-tree.jpg';
 
-const HomeView = (props) => {
+const HomeView = props => {
   const { navigator } = props;
 
   const renderNavigationOptions = () => {
@@ -18,8 +18,21 @@ const HomeView = (props) => {
         <CardSmall
           image={areaServices}
           headerMessageID="area.services.local"
-          messageID="home.buttons.area"
+          messageID="home.buttons.area.tku"
           onClick={() => navigator.push('area')}
+        />
+      );
+    }
+
+    let mobilityMap = null;
+
+    if (config.themePKG) {
+      mobilityMap = (
+        <CardSmall
+          image={serviceTree}
+          headerMessageID="home.buttons.mobilityPlatformSettings.title"
+          messageID="home.buttons.mobilityPlatformSettings"
+          onClick={() => navigator.push('mobilityPlatform')}
         />
       );
     }
@@ -27,6 +40,7 @@ const HomeView = (props) => {
     return (
       <StyledContainer>
         {areaSelection}
+        {mobilityMap}
         <CardSmall
           image={serviceTree}
           headerMessageID="general.pageTitles.serviceTree.title"

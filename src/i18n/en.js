@@ -394,7 +394,8 @@ const translations = {
   'home.message': 'Message from the developers',
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
-  'home.buttons.mobilityPlatformSettings': 'Mobility map',
+  'home.buttons.mobilityPlatformSettings.title': 'Mobility map',
+  'home.buttons.mobilityPlatformSettings': 'Turun kaupungin liikkumisnäkymä', // TODO verify
 
   // Location
   'location.notFound': 'Location not found',

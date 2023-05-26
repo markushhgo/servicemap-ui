@@ -399,7 +399,8 @@ const translations = {
   'home.message': 'Hälsningar av servicekartans utvecklare',
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
-  'home.buttons.mobilityPlatformSettings': 'Mobilitet',
+  'home.buttons.mobilityPlatformSettings.title': 'Mobilitet',
+  'home.buttons.mobilityPlatformSettings': 'Turun kaupungin liikkumisnäkymä', // TODO verify
 
   // Location
   'location.notFound': 'Positionen hittades inte',
