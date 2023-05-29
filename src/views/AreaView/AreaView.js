@@ -59,10 +59,10 @@ const AreaView = ({
   const history = useHistory();
   const isMobile = useMobileStatus();
   const addressDistrict = useSelector(getAddressDistrict);
-  const selectedDistrictType = useSelector(state => state.districts.selectedDistrictType);
-  const districtsFetching = useSelector(state => state.districts.districtsFetching);
+  const selectedDistrictType = useSelector((state) => state.districts.selectedDistrictType);
+  const districtsFetching = useSelector((state) => state.districts.districtsFetching);
   const getLocaleText = useLocaleText();
-  const openItems = useSelector(state => state.districts.openItems);
+  const openItems = useSelector((state) => state.districts.openItems);
   const selectedDistrictGeometry = selectedDistrictData[0]?.boundary;
 
   const searchParams = parseSearchParams(location.search);
@@ -76,8 +76,8 @@ const AreaView = ({
   const getInitialOpenItems = () => {
     if (selectedAreaType) {
       const category = dataStructure.find(
-        data => data.id === selectedAreaType
-        || data.districts.some(obj => obj.id === selectedAreaType),
+        (data) => data.id === selectedAreaType
+        || data.districts.some((obj) => obj.id === selectedAreaType),
       );
       return [category?.id];
     } return openItems;
@@ -101,7 +101,7 @@ const AreaView = ({
       lon: `${selectedAddress.location.coordinates[0]}`,
       page: 1,
       page_size: 200,
-      type: `${dataStructure.map(item => item.districts.map(obj => obj.id)).join(',')}`,
+      type: `${dataStructure.map((item) => item.districts.map((obj) => obj.id)).join(',')}`,
       geometry: true,
       unit_include: 'name,location',
     };
@@ -113,7 +113,6 @@ const AreaView = ({
         });
       });
   };
-
 
   const getViewState = () => ({
     center: map.getCenter(),
@@ -133,14 +132,12 @@ const AreaView = ({
     }
   }, [map]);
 
-
   useEffect(() => {
     // Focus map to local district when new address is selected
     if (selectedAddress && addressDistrict) {
       focusMapToDistrict(addressDistrict);
     }
   }, [addressDistrict, map]);
-
 
   useEffect(() => {
     if (selectedAddress) {
@@ -154,17 +151,15 @@ const AreaView = ({
     }
   }, [selectedAddress]);
 
-
   useEffect(() => {
     selectedSubdistricts.forEach((district) => {
       // Fetch geographical districts unless currently fetching or already fetched
       if (!unitsFetching.includes(district)
-        && !subdistrictUnits.some(unit => unit.division_id === district)) {
+        && !subdistrictUnits.some((unit) => unit.division_id === district)) {
         fetchDistrictUnitList(district);
       }
     });
   }, [selectedSubdistricts]);
-
 
   useEffect(() => {
     // If pending district focus, focus to districts when distitct data is loaded
@@ -177,7 +172,7 @@ const AreaView = ({
       } else if (focusTo === 'subdistricts') {
         if (selectedDistrictGeometry) {
           const filtetedDistricts = selectedDistrictData.filter(
-            i => selectedSubdistricts.includes(i.ocd_id),
+            (i) => selectedSubdistricts.includes(i.ocd_id),
           );
           setFocusTo(null);
           focusDistricts(map, filtetedDistricts);
@@ -214,11 +209,11 @@ const AreaView = ({
       }
 
       // Fetch and select area from url parameters
-      if (selectedArea && !dataStructure.some(obj => obj.id === selectedArea)) {
+      if (selectedArea && !dataStructure.some((obj) => obj.id === selectedArea)) {
         fetchDistricts(selectedAreaType);
         if (!embed) {
           const category = dataStructure.find(
-            data => data.districts.some(obj => obj.id === selectedAreaType),
+            (data) => data.districts.some((obj) => obj.id === selectedAreaType),
           );
           dispatch(handleOpenItems(category.id));
         } else {
@@ -250,14 +245,14 @@ const AreaView = ({
       // Set selected geographical services from url parameters
       if (searchParams.services) {
         const services = searchParams.services.split(',');
-        const convertedServices = services.map(service => parseInt(service, 10));
+        const convertedServices = services.map((service) => parseInt(service, 10));
         setSelectedDistrictServices(convertedServices);
       }
 
       // Set address from url paramters
       if (searchParams.lat && searchParams.lng) {
         fetchAddress({ lat: searchParams.lat, lng: searchParams.lng })
-          .then(data => setSelectedAddress(data));
+          .then((data) => setSelectedAddress(data));
       }
     } else if (!districtData.length) { // Arriving to page first time, without url parameters
       fetchDistricts();
@@ -313,7 +308,7 @@ const AreaView = ({
   const externalTheme = config.themePKG;
   const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
-  const filterCategories = data => data.reduce((acc, curr) => {
+  const filterCategories = (data) => data.reduce((acc, curr) => {
     if (curr.type !== 'statistic') {
       acc.push(curr);
     }
@@ -338,7 +333,7 @@ const AreaView = ({
         component: <StatisticalDistrictList />,
         title: intl.formatMessage({ id: 'area.tab.statisticalDistricts' }),
         icon: <EscalatorWarning className={classes.icon} />,
-        type: 'statistic'
+        type: 'statistic',
       },
     ];
     const categories = isExternalTheme ? filterCategories(categoriesData) : categoriesData;
@@ -351,7 +346,7 @@ const AreaView = ({
             backButton={!isMobile}
           />
           <Typography className={classes.infoText}>
-            <FormattedMessage id="home.buttons.area" />
+            <FormattedMessage id={isExternalTheme ? 'home.buttons.area.tku' : 'home.buttons.area'} />
           </Typography>
           <AddressSearchBar
             handleAddressChange={setSelectedAddress}
@@ -407,8 +402,7 @@ const AreaView = ({
             <Typography style={visuallyHidden} aria-live="assertive">
               {districtsFetching.length
                 ? <FormattedMessage id="general.loading" />
-                : <FormattedMessage id="general.loading.done" />
-               }
+                : <FormattedMessage id="general.loading.done" />}
             </Typography>
           </div>
         </div>
@@ -421,6 +415,8 @@ const AreaView = ({
 };
 
 AreaView.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
   setSelectedDistrictType: PropTypes.func.isRequired,
 };
 

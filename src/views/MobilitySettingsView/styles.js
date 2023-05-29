@@ -85,6 +85,13 @@ const styles = theme => ({
     width: '1.5rem',
     height: '1.5rem',
   },
+  guidanceInfoText: {
+    backgroundColor: theme.palette.primary.main,
+    padding: `${theme.spacing(3)} ${theme.spacing(2)}`,
+    paddingTop: theme.spacing(1),
+    color: '#fff',
+    textAlign: 'left',
+  },
   black: {
     backgroundColor: 'rgba(0, 0, 0,255)',
   },
