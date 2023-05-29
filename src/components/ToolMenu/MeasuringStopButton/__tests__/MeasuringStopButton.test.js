@@ -3,8 +3,7 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import MeasuringStopButton from '../index';
 import { getRenderWithProviders } from '../../../../../jestUtils';
-import englishTranslations from '../../../../i18n/en';
-
+import finnishTranslations from '../../../../i18n/fi';
 
 const renderWithProviders = getRenderWithProviders({});
 
@@ -33,7 +32,7 @@ describe('<MeasuringStopButton />', () => {
     );
     const buttonBase = getByRole('button');
     const p = buttonBase.querySelector('p');
-    const contentText = englishTranslations['tool.measuring.stop'];
+    const contentText = finnishTranslations['tool.measuring.stop'];
     // Expect aria-label to be same as text content
     expect(buttonBase).toHaveAttribute('aria-label', contentText);
     // Expect aria-hidden to be false Eficode report 05-2022 page 47

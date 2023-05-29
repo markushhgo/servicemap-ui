@@ -9,13 +9,13 @@ exports[`<UnitDataList /> should work 1`] = `
       <h4
         class="MuiTypography-root MuiTypography-subtitle1 TitledList-left-1 TitledList-marginVertical-3 css-dlbwt1-MuiTypography-root"
       >
-        Events
+        Toimipisteen tapahtumat
       </h4>
     </div>
     <p
       class="MuiTypography-root MuiTypography-body2 MuiTypography-alignLeft TitledList-description-5 css-10dderv-MuiTypography-root"
     >
-      Here you can find information about events provided by the unit
+      Tästä löydät tietoa toimipisteen tarjoamista eri tapahtumista
     </p>
     <ul
       class="MuiList-root css-1mk9mw3-MuiList-root"
@@ -183,7 +183,7 @@ exports[`<UnitDataList /> should work 1`] = `
       </li>
     </ul>
     <button
-      aria-label="Show more events (2)"
+      aria-label="Näytä lisää tapahtumia (2)"
       class="MuiButtonBase-root SMButton SMButton-button-10 SMButton-smallButton-11 SMButton-margin-12  SMButton-default-16 css-l9l1yv-MuiButtonBase-root"
       id="UniteventsButton"
       role="link"
@@ -206,7 +206,7 @@ exports[`<UnitDataList /> should work 1`] = `
         aria-hidden="true"
         class="MuiTypography-root MuiTypography-button SMButton-typography-17 css-kkeniz-MuiTypography-root"
       >
-        Show more events (2)
+        Näytä lisää tapahtumia (2)
       </p>
     </button>
   </div>

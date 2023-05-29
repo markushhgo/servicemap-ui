@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  ButtonBase,
-  Divider,
-  Drawer,
-  Typography,
+  ButtonBase, Divider, Drawer, Typography,
 } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 import { FormattedMessage } from 'react-intl';
@@ -14,14 +11,11 @@ import { getTheme, getPage } from '../../../redux/selectors/user';
 import { changeTheme } from '../../../redux/actions/user';
 import openA11yLink from '../util';
 import { getLocale } from '../../../redux/selectors/locale';
+import config from '../../../../config';
 
 const DrawerMenu = (props) => {
   const {
-    classes,
-    pageType,
-    isOpen,
-    toggleDrawerMenu,
-    handleNavigation,
+    classes, pageType, isOpen, toggleDrawerMenu, handleNavigation,
   } = props;
   const dispatch = useDispatch();
   const currentPage = useSelector(getPage);
@@ -38,7 +32,9 @@ const DrawerMenu = (props) => {
       }}
     >
       <StyledTextContainer>
-        <StyledTitle><FormattedMessage id={headerId} /></StyledTitle>
+        <StyledTitle>
+          <FormattedMessage id={headerId} />
+        </StyledTitle>
         <Typography sx={{ color: '#666', fontSize: '0.913rem', lineHeight: '1.5rem' }}>
           <FormattedMessage id={textId} />
         </Typography>
@@ -53,16 +49,25 @@ const DrawerMenu = (props) => {
       sx={{ backgroundColor: 'rgba(167, 200, 232, 0.15)' }}
       aria-current={pageId && currentPage === pageId}
       role={isLink ? 'link' : 'button'}
-      onClick={handleClick || (() => {
-        toggleDrawerMenu();
-        handleNavigation(pageId);
-      })}
+      onClick={
+        handleClick
+        || (() => {
+          toggleDrawerMenu();
+          handleNavigation(pageId);
+        })
+      }
     >
       <StyledTextContainer>
-        <StyledTitle><FormattedMessage id={headerId} /></StyledTitle>
+        <StyledTitle>
+          <FormattedMessage id={headerId} />
+        </StyledTitle>
       </StyledTextContainer>
     </StyledButtonBase>
   );
+
+  // If external theme (by Turku) is true, then can be used to select which text to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   return (
     <Drawer
@@ -73,25 +78,41 @@ const DrawerMenu = (props) => {
     >
       <div className={classes.scrollContainer}>
         {/* Main links */}
-        {menuMainButton('general.frontPage', 'app.description', 'home')}
+        {menuMainButton('general.frontPage', isExternalTheme ? 'app.description.tku' : 'app.description', 'home')}
         <Divider />
-        {menuMainButton('general.pageLink.area', 'home.buttons.area', 'area')}
+        {menuMainButton(
+          'general.pageLink.area',
+          isExternalTheme ? 'home.buttons.area.tku' : 'home.buttons.area',
+          'area',
+        )}
+        <Divider />
+        {menuMainButton(
+          'general.pageTitles.mobilityPlatform',
+          'home.buttons.mobilityPlatformSettings',
+          'mobilityPlatform',
+        )}
         <Divider />
         {menuMainButton('services', 'home.buttons.services', 'services')}
         <Divider />
 
         {/* Smaller buttons  */}
         {menuSecondaryButton(
-          theme === 'default'
-            ? 'general.contrast.ariaLabel.on'
-            : 'general.contrast.ariaLabel.off',
+          theme === 'default' ? 'general.contrast.ariaLabel.on' : 'general.contrast.ariaLabel.off',
           null,
           () => dispatch(changeTheme(theme === 'default' ? 'dark' : 'default')),
           false,
           'ContrastButton',
         )}
-        <Divider />
-        {menuSecondaryButton('info.statement', 'accessibilityStatement', () => openA11yLink(locale), true, 'AccessibilityStatementButton')}
+        {!isExternalTheme ? <Divider /> : null}
+        {!isExternalTheme
+          ? menuSecondaryButton(
+            'info.statement',
+            'accessibilityStatement',
+            () => openA11yLink(locale),
+            true,
+            'AccessibilityStatementButton',
+          )
+          : null}
         <Divider />
         {menuSecondaryButton('home.send.feedback', 'feedback', null, true, 'FeedbackButton')}
         <Divider />

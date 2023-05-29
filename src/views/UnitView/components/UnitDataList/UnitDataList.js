@@ -14,7 +14,7 @@ const UnitDataList = ({
   data, listLength, type, period, disableTitle, navigator,
 }) => {
   const location = useLocation();
-  const unit = useSelector(state => state.selectedUnit.unit.data);
+  const unit = useSelector((state) => state.selectedUnit.unit.data);
 
   const dataItems = data.data;
   let fullDataLength;

@@ -1,8 +1,8 @@
-import { Typography } from '@mui/material';
-import PropTypes from 'prop-types';
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import { Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import { FormattedMessage } from 'react-intl';
 
 // Close suggestions button for suggestions dropdowns
 export const CloseSuggestionButton = ({
@@ -45,21 +45,19 @@ export const CloseSuggestionButton = ({
         {...rest}
       >
         <Typography variant="body2"><FormattedMessage id="search.suggestions.hideButton" /></Typography>
-        {icon || null}
+        {!!icon ? icon: null}
       </div>
     );
   } catch (e) {
     console.error(e);
   }
   return null;
-};
+}
 
-CloseSuggestionButton.propTypes = {
+CloseSuggestionButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func,
   onKeyDown: PropTypes.func,
   icon: PropTypes.node,
   srOnly: PropTypes.bool,
 };
-
-export default CloseSuggestionButton;
