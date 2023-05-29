@@ -65,9 +65,13 @@ const DrawerMenu = (props) => {
     </StyledButtonBase>
   );
 
-  // If external theme (by Turku) is true, then can be used to select which text to render
+  // If external theme (by Turku) is true, then can be used to select which content to render
   const externalTheme = config.themePKG;
   const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+
+  // If accessibility statement link is true, then can be used to select which content to render
+  const a11yUrl = config.accessibilityStatementURL.fi;
+  const isA11yUrl = !a11yUrl || a11yUrl === 'undefined' ? null : a11yUrl;
 
   return (
     <Drawer
@@ -103,8 +107,8 @@ const DrawerMenu = (props) => {
           false,
           'ContrastButton',
         )}
-        {!isExternalTheme ? <Divider /> : null}
-        {!isExternalTheme
+        {isA11yUrl ? <Divider /> : null}
+        {isA11yUrl
           ? menuSecondaryButton(
             'info.statement',
             'accessibilityStatement',

@@ -22,6 +22,7 @@ import { getLocale } from '../../redux/selectors/locale';
 import MobileNavButton from './MobileNavButton/MobileNavButton';
 import LanguageMenuComponent from './LanguageMenu/LanguageMenuComponent';
 import openA11yLink from './util';
+import config from '../../../config';
 
 const TopBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -30,6 +31,10 @@ const TopBar = (props) => {
   const locale = useSelector(getLocale);
   const getAddressNavigatorParams = useNavigationParams();
   const isOnHomePage = isHomePage(location?.pathname);
+
+  // If accessibility statement link is true, then can be used to select which content to render
+  const a11yUrl = config.accessibilityStatementURL.fi;
+  const isA11yUrl = !a11yUrl || a11yUrl === 'undefined' ? null : a11yUrl;
 
   const {
     hideButtons,
@@ -75,7 +80,7 @@ const TopBar = (props) => {
     }, 1);
   };
 
-  const renderMenuButton = pageType => (
+  const renderMenuButton = (pageType) => (
     <MenuButton
       pageType={pageType}
       drawerOpen={drawerOpen}
@@ -144,7 +149,7 @@ const TopBar = (props) => {
 
   const large = useMediaQuery('(min-width:360px)');
 
-  const renderDrawerMenu = pageType => (
+  const renderDrawerMenu = (pageType) => (
     <DrawerMenu
       isOpen={drawerOpen}
       pageType={pageType}
@@ -190,13 +195,12 @@ const TopBar = (props) => {
                   {!smallScreen
                     ? (
                       <>
-                        {topBarLink('info.statement', () => openA11yLink(locale), false, undefined, 'AccessibilityStatementLink')}
+                        {isA11yUrl ? topBarLink('info.statement', () => openA11yLink(locale), false, undefined, 'AccessibilityStatementLink') : null}
                         {topBarLink('general.pageTitles.info', () => handleNavigation('info'), currentPage === 'info', undefined, 'PageInfoLink')}
                         {topBarLink('home.send.feedback', () => handleNavigation('feedback'), currentPage === 'feedback', undefined, 'FeedbackLink')}
                       </>
                     )
-                    : null
-                  }
+                    : null}
                 </Container>
               </Toolbar>
             </nav>
