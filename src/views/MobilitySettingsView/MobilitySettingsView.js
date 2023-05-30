@@ -30,7 +30,6 @@ import CityBikeInfo from './components/CityBikeInfo';
 import Description from './components/Description';
 import EmptyRouteList from './components/EmptyRouteList';
 import ExtendedInfo from './components/ExtendedInfo';
-import FormLabel from './components/FormLabel';
 import RouteLength from './components/RouteLength';
 import SliceList from './components/SliceListButton';
 import TrailList from './components/TrailList';
@@ -39,6 +38,7 @@ import ScooterProviderList from './components/ScooterProviderList';
 import SMAccordion from '../../components/SMAccordion';
 import SpeedLimitZonesList from './components/SpeedLimitZonesList';
 import RouteListItem from './components/RouteListItem';
+import MobilityToggleButton from './components/MobilityToggleButton';
 
 const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [pageTitle, setPageTitle] = useState(null);
@@ -1320,11 +1320,16 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
    * @param {Array} typeVal
    * @returns {JSX Element}
    */
-  const renderSettings = (settingVisibility, typeVal) => {
+  const renderSettings = (settingVisibility, settingsData) => {
     if (settingVisibility) {
-      return typeVal.map((item) => (
+      return settingsData.map((item) => (
         <div key={item.type} className={classes.checkBoxContainer}>
-          <FormLabel msgId={item.msgId} checkedValue={item.checkedValue} onChangeValue={item.onChangeValue} />
+          <MobilityToggleButton
+            msgId={item.msgId}
+            checkedValue={item.checkedValue}
+            onChangeValue={item.onChangeValue}
+            selectionSize={settingsData.length}
+          />
         </div>
       ));
     }

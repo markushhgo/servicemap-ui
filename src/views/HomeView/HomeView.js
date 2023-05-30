@@ -7,7 +7,7 @@ import CardSmall from '../../components/CardSmall/CardSmall';
 import areaServices from '../../assets/images/area-services.jpg';
 import serviceTree from '../../assets/images/service-tree.jpg';
 
-const HomeView = props => {
+const HomeView = (props) => {
   const { navigator } = props;
 
   const renderNavigationOptions = () => {

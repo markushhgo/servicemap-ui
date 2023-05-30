@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   topBarColor: {
     background: theme.palette.background.main,
   },
@@ -72,6 +72,8 @@ const styles = theme => ({
   checkBoxContainer: {
     width: '100%',
     backgroundColor: 'rgb(250, 250, 250)',
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(1.5),
   },
   flexBox: {
     display: 'flex',
