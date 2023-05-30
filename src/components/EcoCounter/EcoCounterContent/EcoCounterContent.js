@@ -47,7 +47,7 @@ const EcoCounterContent = ({
   const [userTypesList, setUserTypesList] = useState(null);
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
-  const locale = useSelector(state => state.user.locale);
+  const locale = useSelector((state) => state.user.locale);
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -224,7 +224,7 @@ const EcoCounterContent = ({
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = weekValue => moment().day('Monday').year(selectedYear).week(weekValue)
+  const formatWeeks = (weekValue) => moment().day('Monday').year(selectedYear).week(weekValue)
     .format('DD.MM');
 
   const formatMonths = (monthValue) => {
@@ -268,9 +268,9 @@ const EcoCounterContent = ({
 
   // Channel data is set inside this function to avoid duplicate code
   const setAllChannelCounts = (newValue1, newValue2, newValue3) => {
-    setChannel1Counts(channel1Counts => [...channel1Counts, newValue1]);
-    setChannel2Counts(channel2Counts => [...channel2Counts, newValue2]);
-    setChannelTotals(channelTotals => [...channelTotals, newValue3]);
+    setChannel1Counts((channel1Counts) => [...channel1Counts, newValue1]);
+    setChannel2Counts((channel2Counts) => [...channel2Counts, newValue2]);
+    setChannelTotals((channelTotals) => [...channelTotals, newValue3]);
   };
 
   // Sets channel data into React state, so it can be displayed on the chart
@@ -302,10 +302,10 @@ const EcoCounterContent = ({
         } else if (el.station === stationId && currentType === 'driving') {
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.day_info.date);
         }
-        setChannel1Counts(channel1Counts => [...channel1Counts, countsArr[0]]);
-        setChannel2Counts(channel2Counts => [...channel2Counts, countsArr[1]]);
-        setChannelTotals(channelTotals => [...channelTotals, countsArr[2]]);
-        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatDates(countsArr[3])]);
+        setChannel1Counts((channel1Counts) => [...channel1Counts, countsArr[0]]);
+        setChannel2Counts((channel2Counts) => [...channel2Counts, countsArr[1]]);
+        setChannelTotals((channelTotals) => [...channelTotals, countsArr[2]]);
+        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
       ecoCounterWeek.forEach((el) => {
@@ -318,7 +318,7 @@ const EcoCounterContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.week_info.week_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
+        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
       ecoCounterMonth.forEach((el) => {
@@ -331,7 +331,7 @@ const EcoCounterContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.month_info.month_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatMonths(countsArr[3])]);
+        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatMonths(countsArr[3])]);
       });
     }
   };
@@ -454,7 +454,7 @@ const EcoCounterContent = ({
           <DatePicker
             showIcon
             selected={selectedDate}
-            onChange={newDate => changeDate(newDate)}
+            onChange={(newDate) => changeDate(newDate)}
             locale={locale}
             dateFormat="P"
           />
@@ -462,27 +462,26 @@ const EcoCounterContent = ({
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
-          {userTypesList
-            && userTypesList.map((userType, i) => (
-              <div key={userType.type.user} className={classes.buttonAndTextContainer}>
-                <ButtonBase
-                  className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-                  onClick={() => setUserTypes(userType.type.user, i)}
-                >
-                  <div>
-                    <ReactSVG
-                      className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
-                      src={userType.type.icon}
-                    />
-                  </div>
-                </ButtonBase>
-                <div className={classes.textContainer}>
-                  <Typography variant="body2" className={classes.userTypeText}>
-                    {userType.type.text}
-                  </Typography>
+          {userTypesList && userTypesList.map((userType, i) => (
+            <div key={userType.type.user} className={classes.buttonAndTextContainer}>
+              <ButtonBase
+                className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+                onClick={() => setUserTypes(userType.type.user, i)}
+              >
+                <div>
+                  <ReactSVG
+                    className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
+                    src={userType.type.icon}
+                  />
                 </div>
+              </ButtonBase>
+              <div className={classes.textContainer}>
+                <Typography variant="body2" className={classes.userTypeText}>
+                  {userType.type.text}
+                </Typography>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
         <div className={classes.ecocounterChart}>
           <LineChart
@@ -502,20 +501,18 @@ const EcoCounterContent = ({
           />
         </div>
         <div className={classes.ecocounterSteps}>
-          <>
-            {buttonSteps.map((timing, i) => (
-              <ButtonBase
-                key={timing.step.type}
-                type="button"
-                className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-                onClick={() => handleClick(timing.step.type, i)}
-              >
-                <Typography variant="body2" className={classes.buttonText}>
-                  {timing.step.text}
-                </Typography>
-              </ButtonBase>
-            ))}
-          </>
+          {buttonSteps.map((timing, i) => (
+            <ButtonBase
+              key={timing.step.type}
+              type="button"
+              className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+              onClick={() => handleClick(timing.step.type, i)}
+            >
+              <Typography variant="body2" className={classes.buttonText}>
+                {timing.step.text}
+              </Typography>
+            </ButtonBase>
+          ))}
         </div>
       </div>
     </>
