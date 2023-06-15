@@ -1,5 +1,5 @@
-import { ButtonBase, Typography } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { ButtonBase, Typography } from '@mui/material';
+import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useIntl } from 'react-intl';
@@ -100,7 +100,7 @@ const CultureRouteUnits = ({ classes, cultureRouteUnits }) => {
               <Popup closeButton={false} maxHeight={400} className="culture-route-unit-popup">
                 <div className={classes.popupInner}>
                   <div className={classes.header}>
-                    <Typography variant="subtitle1">
+                    <Typography variant="subtitle1" component="h3">
                       {getRouteUnitName(item.name, item.name_en, item.name_sv)}
                     </Typography>
                     <ButtonBase onClick={() => closePopup()} className={classes.popupCloseButton}>

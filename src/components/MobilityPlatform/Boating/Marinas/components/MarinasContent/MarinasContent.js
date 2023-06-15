@@ -1,4 +1,4 @@
-import { Link, Typography } from '@material-ui/core';
+import { Link, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -64,7 +64,7 @@ const MarinasContent = ({
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle1" component="h3">
           {berthItem.name}
         </Typography>
       </div>

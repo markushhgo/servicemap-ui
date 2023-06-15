@@ -8,60 +8,45 @@ exports[`<BicycleStandContent /> should work 1`] = `
     <div
       class="injectIntl(BicycleStandContent)-title-1"
     >
-      <h6
-        class="MuiTypography-root injectIntl(BicycleStandContent)-titleText-2 MuiTypography-subtitle1"
+      <h3
+        class="MuiTypography-root MuiTypography-subtitle1 injectIntl(BicycleStandContent)-titleText-2 css-dlbwt1-MuiTypography-root"
       >
         Testinimi
-      </h6>
+      </h3>
     </div>
     <div>
       <div
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
-          <strong>
-            Malli
-            :
-          </strong>
-           
-          Testimalli
+          Malli: Testimalli
         </p>
       </div>
       <div
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
-          <strong>
-            Pyöräpaikkojen määrä
-            :
-          </strong>
-           
-          10
+          Pyöräpaikkojen määrä: 10
         </p>
       </div>
       <div
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
         >
-          <strong>
-            Pyörätelineiden määrä
-            :
-          </strong>
-           
-          5
+          Pyörätelineiden määrä: 5
         </p>
       </div>
       <div
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+          class="MuiTypography-root MuiTypography-body2 css-1rexknm-MuiTypography-root"
         >
           Pyöräparkki on katettu
         </p>
@@ -70,7 +55,7 @@ exports[`<BicycleStandContent /> should work 1`] = `
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+          class="MuiTypography-root MuiTypography-body2 css-1rexknm-MuiTypography-root"
         >
           Pyörän voi runkolukita
         </p>
@@ -79,7 +64,7 @@ exports[`<BicycleStandContent /> should work 1`] = `
         class="injectIntl(BicycleStandContent)-paragraph-3"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 MuiTypography-displayBlock"
+          class="MuiTypography-root MuiTypography-body2 css-1rexknm-MuiTypography-root"
         >
           Turun kaupungin ylläpitämä.
         </p>

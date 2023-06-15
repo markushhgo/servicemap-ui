@@ -681,6 +681,8 @@ const translations = {
   'mobilityPlatform.menu.show.crossWalks': 'Crosswalks (zoom in on the map)',
   'mobilityPlatform.embedded.label.crossWalks': 'Crosswalks (zoom in on the map to see crosswalks)',
   'mobilityPlatform.menu.show.busStops': 'Bus stops (zoom in on the map)',
+  'mobilityPlatform.menu.show.underPasses': 'Underpasses',
+  'mobilityPlatform.menu.show.overPasses': 'Overpasses',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -697,13 +699,13 @@ const translations = {
   'mobilityPlatform.chargerStations.content.admin': 'Administrator: {value}',
   'mobilityPlatform.chargerStations.content.charge': 'For a fee',
   'mobilityPlatform.chargerStations.content.free': 'Free for customers',
-  'mobilityPlatform.content.bicycleStands.model': 'Model',
+  'mobilityPlatform.content.bicycleStands.model': 'Model: {value}',
   'mobilityPlatform.content.bicycleStands.covered': 'Bicycle stand is covered',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Bicycle stand is not covered',
   'mobilityPlatform.content.bicycleStands.hullLockable': 'Bicycle frame can be locked',
   'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Bicycle frame can not be locked',
-  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places',
-  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Number of places: {value}',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Number of stands: {value}',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Maintained by city of Turku.',
   'mobilityPlatform.content.streetMaintenance': 'Active maintenance',
   'mobilityPlatform.content.streetMaintenance.title': 'Maintenance work',
@@ -783,7 +785,7 @@ const translations = {
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
-  'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license.',
+  'mobilityPlatform.info.ecoCounter': 'Measurement points collect traffic information by measuring the number of users in different modes at selected destinations. The information has been provided by the City of Turku under the CC BY 4.0 license. Two measurement points collect traffic information provided by Telraam.',
   'mobilityPlatform.info.bicycleStands': 'The bicycle stands maintained by the City of Turku comprise three types of bicycle stands: covered and frame-locked bicycle stands, frame-lockable bicycle stands and tire racks, non-frame-lockable bicycle stands.',
   'mobilityPlatform.info.gasFillingStations': 'Public gas filling stations in the Turku area. The information on the gas stations is based on information from the traffic situation website maintained by Fintraffic, https://liikennetilanne.fintraffic.fi',
   'mobilityPlatform.info.rentalCars': 'The car share vehicles are rental cars. The available cars are visible on the map. Information about the cars is provided by 24Rent.',
@@ -819,13 +821,14 @@ const translations = {
   'mobilityPlatform.info.markedTrails': 'Paavo trails are routes that have been marked on the terrain and introduce walkers to the local nature and urban environments in various places in Turku. In many places the trails merge with other outdoor recreation paths and link them together. Trails have been marked on the terrain with blue runner marks and round markings on trees and rocks. Cross-country biking is allowed in the forest parts of Paavo trails, as per the public right of access.',
   'mobilityPlatform.info.natureTrails': 'The nature trails run through varied landscapes and by following them you get a good look at diverse natural environment of Turku. The paths have signs to improve navigation and guide boards telling about the local nature. Some footpaths have been covered with gravel and duckboards have been built in the wetlands to make walking easier. Stairs and bridges have been built to ease movement on steep slopes.',
   'mobilityPlatform.info.fitnessTrails': 'City of Turku maintains over 20 fitness trails, located all over the city and these trails allow diverse exercise. Trails are lit between 6:00 and 22:00.',
-  'mobilityPlatform.info.lamCounters': 'Measurement points collect traffic information by measuring the number of cars at selected destinations. The information is open data and has been provided by the Digitraffic -service.',
+  'mobilityPlatform.info.lamCounters': 'Measurement points collect traffic information by measuring the number of cars at selected destinations. The information is open data and has been provided by the Digitraffic -service. Some measurement points are maintained by the city of Turku.',
   'mobilityPlatform.info.parkingMachines': 'The map shows parking machines that are owned by City of Turku. All machines accept either card or contacless payment method. More information can be read by pressing an icon on the map.',
   'mobilityPlatform.info.publicParkingSpaces': 'The map shows public parking spaces that are available for general public. Information about occupancy is not available however. Additional information can be read by selecting an area from the map.',
   'mobilityPlatform.info.outdoorGymDevices': 'City of Turku maintains outdoor gym devices. They offer a fun way to train muscles outdoors anytime for free while enjoying the fresh air. With outdoor gym devices, such as lat pull down, pull up, leg press and benches, one can exercise the whole body. The combination of devices varies between places.',
   'mobilityPlatform.info.crosswalks': 'The map shows locations of crosswalks inside the city of Turku. Zoom in on the map to see crosswalks.',
   'mobilityPlatform.info.short.crosswalks': 'The maps show crosswalks in Turku.',
   'mobilityPlatform.info.busStops': 'The map shows bus stops by Turku region traffic provider Föli. By clicking the icon on the map, you can see next few departure times from the selected bus stop. Zoom in the map to see the stops. The Map data comes from the interface provided by Digitransit.',
+  'mobilityPlatform.info.underAndOverpasses': 'The map shows underpasses and overpasses located within the city of Turku.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
@@ -867,6 +870,7 @@ const translations = {
   'ecocounter.oct': 'October',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
+  'trafficCounter.year.warning.text': 'Numbers from the year {value} are not available.',
 };
 
 let overridingExternalTranslations;

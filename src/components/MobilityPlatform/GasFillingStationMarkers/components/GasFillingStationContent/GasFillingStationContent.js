@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -22,7 +22,7 @@ const GasFillingStationContent = ({ classes, intl, station }) => {
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle1" component="h3">
           {station.name}
         </Typography>
       </div>

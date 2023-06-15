@@ -1,6 +1,6 @@
 import {
   Checkbox, FormControlLabel, Typography, List, ListItem,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import React, {
   useEffect, useMemo, useRef, useState,
@@ -72,8 +72,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const {
     setOpenMobilityPlatform,
-    showEcoCounter,
-    setShowEcoCounter,
+    showTrafficCounter,
+    setShowTrafficCounter,
     showBicycleStands,
     setShowBicycleStands,
     showHullLockableStands,
@@ -163,6 +163,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowCrossWalks,
     showBusStops,
     setShowBusStops,
+    showUnderpasses,
+    setShowUnderpasses,
+    showOverpasses,
+    setShowOverpasses,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
@@ -302,15 +306,17 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showPublicToilets, setOpenWalkSettings);
     checkVisibilityValues(showOutdoorGymDevices, setOpenWalkSettings);
     checkVisibilityValues(showCrossWalks, setOpenWalkSettings);
-  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks]);
+    checkVisibilityValues(showUnderpasses, setOpenWalkSettings);
+    checkVisibilityValues(showOverpasses, setOpenWalkSettings);
+  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks, showUnderpasses, showOverpasses]);
 
   useEffect(() => {
-    checkVisibilityValues(showEcoCounter.walking, setOpenWalkSettings);
-  }, [showEcoCounter]);
+    checkVisibilityValues(showTrafficCounter.walking, setOpenWalkSettings);
+  }, [showTrafficCounter]);
 
   useEffect(() => {
-    checkVisibilityValues(showEcoCounter.cycling, setOpenBicycleSettings);
-  }, [showEcoCounter]);
+    checkVisibilityValues(showTrafficCounter.cycling, setOpenBicycleSettings);
+  }, [showTrafficCounter]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleStands, setOpenBicycleSettings);
@@ -584,25 +590,25 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   ]);
 
   /**
-   * Toggle function for EcoCounter stations that contain data about pedestrians
-   * @var {Object} showEcoCounter
-   * @returns {Object} showEcoCounter
+   * Toggle function for traffic counter stations that contain data about pedestrians
+   * @var {Object} showTrafficCounter
+   * @returns {Object} showTrafficCounter
    */
-  const ecoCounterStationsToggle = () => {
-    if (!showEcoCounter.walking) {
-      setShowEcoCounter(showEcoCounter => ({ ...showEcoCounter, walking: true }));
-    } else setShowEcoCounter(showEcoCounter => ({ ...showEcoCounter, walking: false }));
+  const trafficCounterStationsToggle = () => {
+    if (!showTrafficCounter.walking) {
+      setShowTrafficCounter(showTrafficCounter => ({ ...showTrafficCounter, walking: true }));
+    } else setShowTrafficCounter(showTrafficCounter => ({ ...showTrafficCounter, walking: false }));
   };
 
   /**
-   * Toggle function for EcoCounter stations that contain data about cyclists
-   * @var {Object} showEcoCounter
-   * @returns {Object} showEcoCounter
+   * Toggle function for traffic counter stations that contain data about cyclists
+   * @var {Object} showTrafficCounter
+   * @returns {Object} showTrafficCounter
    */
-  const ecoCounterStationsToggleCycling = () => {
-    if (!showEcoCounter.cycling) {
-      setShowEcoCounter(showEcoCounter => ({ ...showEcoCounter, cycling: true }));
-    } else setShowEcoCounter(showEcoCounter => ({ ...showEcoCounter, cycling: false }));
+  const trafficCounterStationsToggleCycling = () => {
+    if (!showTrafficCounter.cycling) {
+      setShowTrafficCounter(showTrafficCounter => ({ ...showTrafficCounter, cycling: true }));
+    } else setShowTrafficCounter(showTrafficCounter => ({ ...showTrafficCounter, cycling: false }));
   };
 
   /**
@@ -684,6 +690,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const crossWalksToggle = () => {
     setShowCrossWalks(current => !current);
+  };
+
+  const overPassesToggle = () => {
+    setShowOverpasses(current => !current);
+  };
+
+  const underPassesToggle = () => {
+    setShowUnderpasses(current => !current);
   };
 
   const scooterSpeedLimitAreasToggle = () => {
@@ -1022,8 +1036,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
-      checkedValue: showEcoCounter.walking,
-      onChangeValue: ecoCounterStationsToggle,
+      checkedValue: showTrafficCounter.walking,
+      onChangeValue: trafficCounterStationsToggle,
     },
     {
       type: 'outdoorGymDevices',
@@ -1036,6 +1050,18 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       msgId: 'mobilityPlatform.menu.show.crossWalks',
       checkedValue: showCrossWalks,
       onChangeValue: crossWalksToggle,
+    },
+    {
+      type: 'underPasses',
+      msgId: 'mobilityPlatform.menu.show.underPasses',
+      checkedValue: showUnderpasses,
+      onChangeValue: underPassesToggle,
+    },
+    {
+      type: 'overPasses',
+      msgId: 'mobilityPlatform.menu.show.overPasses',
+      checkedValue: showOverpasses,
+      onChangeValue: overPassesToggle,
     },
     {
       type: 'publicToilets',
@@ -1073,8 +1099,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     {
       type: 'ecoCounterStations',
       msgId: 'mobilityPlatform.menu.showEcoCounter',
-      checkedValue: showEcoCounter.cycling,
-      onChangeValue: ecoCounterStationsToggleCycling,
+      checkedValue: showTrafficCounter.cycling,
+      onChangeValue: trafficCounterStationsToggleCycling,
     },
     {
       type: 'bicycleStands',
@@ -1395,7 +1421,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const infoTextsWalking = [
     {
-      visible: showEcoCounter.walking,
+      visible: showTrafficCounter.walking,
       type: 'ecoCounterInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" />,
     },
@@ -1408,6 +1434,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showCrossWalks,
       type: 'crosswalksInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.crosswalks" />,
+    },
+    {
+      visible: showUnderpasses || showOverpasses,
+      type: 'underAndOverpassInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.underAndOverpasses" />,
     },
     {
       visible: showPublicToilets,
@@ -1433,7 +1464,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const infoTextsCycling = [
     {
-      visible: showEcoCounter.cycling,
+      visible: showTrafficCounter.cycling,
       type: 'ecoCounterInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.ecoCounter" />,
     },

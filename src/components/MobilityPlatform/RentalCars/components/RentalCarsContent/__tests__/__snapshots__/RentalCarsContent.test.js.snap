@@ -8,17 +8,17 @@ exports[`<RentalCarsContent /> should work 1`] = `
     <div
       class="injectIntl(RentalCarsContent)-title-2"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1"
+      <h3
+        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
       >
         Yhteiskäyttöauto
-      </h6>
+      </h3>
     </div>
     <div
       class="injectIntl(RentalCarsContent)-text-3"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2"
+        class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
       >
         Palveluntarjoaja: 24Rent
       </p>
@@ -27,12 +27,13 @@ exports[`<RentalCarsContent /> should work 1`] = `
       class="injectIntl(RentalCarsContent)-linkContainer-4"
     >
       <a
-        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-fixjtq-MuiTypography-root-MuiLink-root"
         href="https://www.24rent.fi/#/?city=Testiosoite"
+        role="link"
         target="_blank"
       >
         <p
-          class="MuiTypography-root injectIntl(RentalCarsContent)-link-5 MuiTypography-body2"
+          class="MuiTypography-root MuiTypography-body2 injectIntl(RentalCarsContent)-link-5 css-1ak20dk-MuiTypography-root"
         >
           https://www.24rent.fi
         </p>
@@ -42,7 +43,7 @@ exports[`<RentalCarsContent /> should work 1`] = `
       class="injectIntl(RentalCarsContent)-text-3"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2"
+        class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
       >
         Auton tiedot
         :
@@ -56,7 +57,7 @@ exports[`<RentalCarsContent /> should work 1`] = `
       class="injectIntl(RentalCarsContent)-text-3"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2"
+        class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
       >
         Vapaa auto
       </p>
@@ -65,7 +66,7 @@ exports[`<RentalCarsContent /> should work 1`] = `
       class="injectIntl(RentalCarsContent)-text-3"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2"
+        class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
       >
         Sijainti: Testiosoite
       </p>

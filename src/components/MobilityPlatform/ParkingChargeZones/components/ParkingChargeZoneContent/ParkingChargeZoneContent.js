@@ -1,11 +1,11 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const ParkingChargeZoneContent = ({ classes, intl, parkingChargeZone }) => {
   const renderText = (msgId, objValue, isTitle) => (
     <div className={isTitle ? classes.subtitle : classes.text}>
-      <Typography variant={isTitle ? 'subtitle1' : 'body2'}>
+      <Typography variant={isTitle ? 'subtitle1' : 'body2'} component={isTitle ? 'h3' : 'p'}>
         {intl.formatMessage({
           id: msgId,
         })}

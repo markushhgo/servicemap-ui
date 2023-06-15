@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextComponent from '../../../TextComponent';
@@ -24,7 +24,7 @@ const ParkingMachinesContent = ({ classes, intl, item }) => {
   const parkingMachineInfo = (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle1" component="h3">
           {intl.formatMessage({ id: 'mobilityPlatform.content.parkingMachine.title' })}
         </Typography>
       </div>

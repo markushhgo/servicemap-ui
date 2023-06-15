@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextComponent from '../../../TextComponent';
@@ -6,7 +6,7 @@ import TextComponent from '../../../TextComponent';
 const ChargerStationContent = ({ classes, intl, station }) => {
   const titleTypo = (messageId, props = {}) => (
     <div {...props}>
-      <Typography variant="subtitle2">
+      <Typography variant="subtitle2" component="h3">
         {intl.formatMessage({
           id: messageId,
         })}
