@@ -48,7 +48,7 @@ const LamCountersContent = ({
   const [activeStep, setActiveStep] = useState(0);
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
-  const locale = useSelector(state => state.user.locale);
+  const locale = useSelector((state) => state.user.locale);
 
   const stationId = station.id;
   const stationName = station.name;
@@ -186,7 +186,7 @@ const LamCountersContent = ({
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = weekValue => moment().day('Monday').year(selectedYear).week(weekValue)
+  const formatWeeks = (weekValue) => moment().day('Monday').year(selectedYear).week(weekValue)
     .format('DD.MM');
 
   const formatMonths = (monthValue) => {
@@ -230,9 +230,9 @@ const LamCountersContent = ({
 
   // Channel data is set inside this function to avoid duplicate code
   const setAllChannelCounts = (newValue1, newValue2, newValue3) => {
-    setChannel1Counts(channel1Counts => [...channel1Counts, newValue1]);
-    setChannel2Counts(channel2Counts => [...channel2Counts, newValue2]);
-    setChannelTotals(channelTotals => [...channelTotals, newValue3]);
+    setChannel1Counts((channel1Counts) => [...channel1Counts, newValue1]);
+    setChannel2Counts((channel2Counts) => [...channel2Counts, newValue2]);
+    setChannelTotals((channelTotals) => [...channelTotals, newValue3]);
   };
 
   // Sets channel data into React state, so it can be displayed on the chart
@@ -254,10 +254,10 @@ const LamCountersContent = ({
         if (el.station === stationId) {
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.day_info.date);
         }
-        setChannel1Counts(channel1Counts => [...channel1Counts, countsArr[0]]);
-        setChannel2Counts(channel2Counts => [...channel2Counts, countsArr[1]]);
-        setChannelTotals(channelTotals => [...channelTotals, countsArr[2]]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatDates(countsArr[3])]);
+        setChannel1Counts((channel1Counts) => [...channel1Counts, countsArr[0]]);
+        setChannel2Counts((channel2Counts) => [...channel2Counts, countsArr[1]]);
+        setChannelTotals((channelTotals) => [...channelTotals, countsArr[2]]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
       lamCounterWeek.forEach((el) => {
@@ -266,7 +266,7 @@ const LamCountersContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.week_info.week_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatWeeks(countsArr[3])]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
       lamCounterMonth.forEach((el) => {
@@ -275,7 +275,7 @@ const LamCountersContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.month_info.month_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatMonths(countsArr[3])]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatMonths(countsArr[3])]);
       });
     }
   };
@@ -366,7 +366,7 @@ const LamCountersContent = ({
    * @param {string} name for example vt1_Kupittaa
    * @returns {string} for example Kupittaa
    */
-  const formatCounterName = name => name?.split('_').splice(1).join(' ');
+  const formatCounterName = (name) => name?.split('_').splice(1).join(' ');
 
   return (
     <>
@@ -378,7 +378,7 @@ const LamCountersContent = ({
           <DatePicker
             showIcon
             selected={selectedDate}
-            onChange={newDate => changeDate(newDate)}
+            onChange={(newDate) => changeDate(newDate)}
             locale={locale}
             dateFormat="P"
           />
@@ -386,7 +386,7 @@ const LamCountersContent = ({
       </div>
       <div className={classes.lamCounterContent}>
         <div className={classes.lamCounterUserTypes}>
-          {userTypes?.map(userType => (
+          {userTypes?.map((userType) => (
             <div key={userType.type.user} className={classes.container}>
               <div className={classes.iconWrapper}>
                 <ReactSVG className={classes.iconActive} src={userType.type.icon} />
@@ -399,15 +399,13 @@ const LamCountersContent = ({
             </div>
           ))}
         </div>
-        <>
-          {lamCounterYear?.value_at === 0 ? (
-            <div className={classes.yearText}>
-              <Typography component="p" variant="body2">
-                {intl.formatMessage({ id: 'trafficCounter.year.warning.text' }, { value: selectedYear })}
-              </Typography>
-            </div>
-          ) : null}
-        </>
+        {lamCounterYear?.value_at === 0 ? (
+          <div className={classes.yearText}>
+            <Typography component="p" variant="body2">
+              {intl.formatMessage({ id: 'trafficCounter.year.warning.text' }, { value: selectedYear })}
+            </Typography>
+          </div>
+        ) : null}
         <div className={classes.lamCounterChart}>
           <LineChart
             labels={lamCounterLabels}
@@ -426,20 +424,18 @@ const LamCountersContent = ({
           />
         </div>
         <div className={classes.lamCounterSteps}>
-          <>
-            {buttonSteps.map((timing, i) => (
-              <ButtonBase
-                key={timing.step.type}
-                type="button"
-                className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-                onClick={() => handleClick(timing.step.type, i)}
-              >
-                <Typography variant="body2" className={classes.buttonText}>
-                  {timing.step.text}
-                </Typography>
-              </ButtonBase>
-            ))}
-          </>
+          {buttonSteps.map((timing, i) => (
+            <ButtonBase
+              key={timing.step.type}
+              type="button"
+              className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+              onClick={() => handleClick(timing.step.type, i)}
+            >
+              <Typography variant="body2" className={classes.buttonText}>
+                {timing.step.text}
+              </Typography>
+            </ButtonBase>
+          ))}
         </div>
       </div>
     </>
