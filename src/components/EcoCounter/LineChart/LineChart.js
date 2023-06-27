@@ -17,7 +17,7 @@ const LineChart = ({
   const datasets = [];
 
   const addChannelData = () => {
-    if (channel1Data) {
+    if (channel1Data.length > 0) {
       datasets.push({
         fill: false,
         label: labelChannel1,
@@ -32,7 +32,7 @@ const LineChart = ({
         hidden: true,
       });
     }
-    if (channel2Data) {
+    if (channel2Data.length > 0) {
       datasets.push({
         fill: false,
         label: labelChannel2,
@@ -47,7 +47,7 @@ const LineChart = ({
         hidden: true,
       });
     }
-    if (channelTotalsData) {
+    if (channelTotalsData.length > 0) {
       datasets.push({
         fill: false,
         label: labelChannelTotal,
@@ -94,7 +94,9 @@ const LineChart = ({
 
   return (
     <div className="chart-container">
-      <Line ref={chartRef} data={data} width={496} height={248} options={options} />
+      {data.datasets ? (
+        <Line ref={chartRef} data={data} width={496} height={248} options={options} />
+      ) : null}
     </div>
   );
 };
