@@ -443,7 +443,7 @@ const LamCountersContent = ({
 };
 
 LamCountersContent.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   station: PropTypes.shape({
     id: PropTypes.number,

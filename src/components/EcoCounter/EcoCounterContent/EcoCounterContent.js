@@ -33,7 +33,7 @@ import {
 import LineChart from '../LineChart';
 
 const EcoCounterContent = ({
-  classes, intl, stationId, stationName, isTelraam,
+  classes, intl, station,
 }) => {
   const [ecoCounterHour, setEcoCounterHour] = useState(null);
   const [ecoCounterDay, setEcoCounterDay] = useState(null);
@@ -51,6 +51,13 @@ const EcoCounterContent = ({
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector((state) => state.user.locale);
+
+  const stationId = station.id;
+  const stationName = station.name;
+  const stationSource = station.csv_data_source;
+
+  const checkStationSource = () => stationSource === 'TR';
+  const isTelraam = checkStationSource();
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -524,17 +531,21 @@ const EcoCounterContent = ({
 };
 
 EcoCounterContent.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  stationId: PropTypes.number,
-  stationName: PropTypes.string,
-  isTelraam: PropTypes.bool,
+  station: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    csv_data_source: PropTypes.string,
+  }),
 };
 
 EcoCounterContent.defaultProps = {
-  stationId: 0,
-  stationName: '',
-  isTelraam: false,
+  station: {
+    id: 0,
+    name: '',
+    csv_data_source: '',
+  },
 };
 
 export default EcoCounterContent;
