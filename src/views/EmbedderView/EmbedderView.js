@@ -555,13 +555,6 @@ const EmbedderView = ({
         icon: null,
         labelId: 'mobilityPlatform.menu.showRentalCars',
       },
-      {
-        key: 'transit',
-        value: transit,
-        onChange: v => setTransit(v),
-        icon: null,
-        labelId: 'embedder.options.label.transit',
-      },
     ];
 
     return (

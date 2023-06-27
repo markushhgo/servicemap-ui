@@ -6,9 +6,16 @@ import config from '../../../config';
 import CardSmall from '../../components/CardSmall/CardSmall';
 import areaServices from '../../assets/images/area-services.jpg';
 import serviceTree from '../../assets/images/service-tree.jpg';
+import serviceTreeTku from 'servicemap-ui-turku/assets/images/service-tree-tku.webp';
+import areaServicesTku from 'servicemap-ui-turku/assets/images/area-page-tku.webp';
+import mobilityMapTku from 'servicemap-ui-turku/assets/images/mobility-map-tku.webp';
 
 const HomeView = (props) => {
   const { navigator } = props;
+
+  // If external theme (by Turku) is true, then can be used to select which content to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
 
   const renderNavigationOptions = () => {
     let areaSelection = null;
@@ -16,9 +23,9 @@ const HomeView = (props) => {
     if (config.showAreaSelection) {
       areaSelection = (
         <CardSmall
-          image={areaServices}
+          image={isExternalTheme ? areaServicesTku : areaServices}
           headerMessageID="area.services.local"
-          messageID="home.buttons.area.tku"
+          messageID={isExternalTheme ? "home.buttons.area.tku" : "home.buttons.area"}
           onClick={() => navigator.push('area')}
         />
       );
@@ -26,10 +33,10 @@ const HomeView = (props) => {
 
     let mobilityMap = null;
 
-    if (config.themePKG) {
+    if (isExternalTheme) {
       mobilityMap = (
         <CardSmall
-          image={serviceTree}
+          image={mobilityMapTku}
           headerMessageID="home.buttons.mobilityPlatformSettings.title"
           messageID="home.buttons.mobilityPlatformSettings"
           onClick={() => navigator.push('mobilityPlatform')}
@@ -42,7 +49,7 @@ const HomeView = (props) => {
         {areaSelection}
         {mobilityMap}
         <CardSmall
-          image={serviceTree}
+          image={isExternalTheme ? serviceTreeTku : serviceTree}
           headerMessageID="general.pageTitles.serviceTree.title"
           messageID="home.buttons.services"
           onClick={() => navigator.push('serviceTree')}
