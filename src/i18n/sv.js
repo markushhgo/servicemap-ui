@@ -794,6 +794,8 @@ const translations = {
   'mobilityPlatform.menu.show.crossWalks': 'Övergångställen (zooma in på kartan)',
   'mobilityPlatform.embedded.label.crossWalks': 'Övergångställen (zooma in på kartan för att se övergångställen)',
   'mobilityPlatform.menu.show.busStops': 'Busshållplatser (zooma in på kartan)',
+  'mobilityPlatform.menu.show.underPasses': 'Gångtunnlar',
+  'mobilityPlatform.menu.show.overPasses': 'Vägbroar',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -810,13 +812,13 @@ const translations = {
   'mobilityPlatform.chargerStations.content.admin': 'Administratör: {value}',
   'mobilityPlatform.chargerStations.content.charge': 'För en avgift',
   'mobilityPlatform.chargerStations.content.free': 'Kostnadsfritt för kunderna',
-  'mobilityPlatform.content.bicycleStands.model': 'Model',
+  'mobilityPlatform.content.bicycleStands.model': 'Model: {value}',
   'mobilityPlatform.content.bicycleStands.covered': 'Cykelställ är täckt',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Cykelställ är inte täckt',
   'mobilityPlatform.content.bicycleStands.hullLockable': 'Ramlåsbara',
   'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Icke ramlåsbara',
-  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Antal platser',
-  'mobilityPlatform.content.bicycleStands.numOfStands': 'Antal cykelställ',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Antal platser: {value}',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Antal cykelställ: {value}',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Underhållen av Åbo stad.',
   'mobilityPlatform.content.streetMaintenance': 'Aktivt underhåll',
   'mobilityPlatform.content.streetMaintenance.title': 'Underhållsarbete',
@@ -833,7 +835,7 @@ const translations = {
   'mobilityPlatform.settings.streetMaintenance.info': 'Visa information från.',
   'mobilityPlatform.content.rentalCars.title': 'Bil för delad användning',
   'mobilityPlatform.content.rentalCars.address': 'Plats: {value}',
-  'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgiter',
+  'mobilityPlatform.content.rentalCars.carInfo': 'Bilens uppgifter',
   'mobilityPlatform.content.rentalCars.available': 'Ledig bil',
   'mobilityPlatform.content.rentalCars.reserved': 'Reseverad',
   'mobilityPlatform.content.rentalCars.link': 'https://www.24rent.fi',
@@ -896,7 +898,7 @@ const translations = {
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
-  'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0.',
+  'mobilityPlatform.info.ecoCounter': 'Beräkningspunkter samlar in trafikdata genom att mäta antalet användare i olika lägen på utvalda destinationer. Informationen har tillhandahållits av Åbo stad under licensen CC BY 4.0. Två beräkningspunkter samlar in trafikdata från Telraam.',
   'mobilityPlatform.info.bicycleStands': 'De cykelparkeringar som Åbo stad underhåller består av tre typer av cykelställ: täckta och ramlåsbara cykelställ, ramlåsbara cykelställ och däckställ, icke-ramlåsbara cykelställ.',
   'mobilityPlatform.info.gasFillingStations': 'Offentliga gastankstationer i Åboområdet. Informationen om gastankstationerna baseras på information som hämtas från webbplatsen om trafikläget https://liikennetilanne.fintraffic.fi,  som underhålls av Fintraffic.',
   'mobilityPlatform.info.rentalCars': 'Bilpool bilarna är hyrbilar. Kartan visar lediga bilar. Informationen om bilarna kommer från 24Rent.',
@@ -932,13 +934,14 @@ const translations = {
   'mobilityPlatform.info.markedTrails': 'Paavos stigar är rutter som märkts ut i terrängen. Längs rutterna får vandrare bekanta sig med den lokala naturen och närmiljön på olika håll i Åbo. På flera ställen möter stigarna andra friluftsleder och kopplar dem ihop med varandra. Gångrutterna längs stigar har märkts ut i terrängen med blåmålade löpare och runda märken på träd och stenar. Längs skogsavsnitten är det tillåtet att åka terrängcykel enligt allemansrätten.',
   'mobilityPlatform.info.natureTrails': 'Naturstigar korsar varierande landskap, så genom att följa dem får man en bra överblick över Åbos mångfaldiga naturomgivning. Stigarna är skyltade och längs med dem finns informationsplakat om det aktuella området. För att underlätta framkomligheten har vissa stigar belagts med grus eller byggts träspång över våtmarker. De brantaste platserna är försedda med trappor och broar.',
   'mobilityPlatform.info.fitnessTrails': 'Åbo stad har över 20 motionsbanor, som ligger över hela staden och dessa leder tillåter mångsidig träning. Leder är upplysta mellan 6 och 22.',
-  'mobilityPlatform.info.lamCounters': 'Beräkningspunkterna samlar information om mängden bilister på utvalda ställen. Informationen är öppen data som levererats av Digitraffic tjänsten.',
+  'mobilityPlatform.info.lamCounters': 'Beräkningspunkterna samlar information om mängden bilister på utvalda ställen. Informationen är öppen data som levererats av Digitraffic tjänsten. En del av beräkningspunkterna upprätthålls av Åbo stad.',
   'mobilityPlatform.info.parkingMachines': 'Kartan visar de parkeringsautomater som ägs av Åbo stad. Bankkort och kontaktlös betalning används som betalningsmetoder i alla automater. Du kan se mer information om maskinen genom att trycka på ikonen på kartan.',
   'mobilityPlatform.info.publicParkingSpaces': 'Allmänna parkeringsplatser visas på kartan. Det finns dock ingen information om deras utnyttjandegrad. Mer detaljerad information om det valda parkeringsområdet kan läsas genom att trycka på området på kartan.',
   'mobilityPlatform.info.outdoorGymDevices': 'Åbo stad upprätthåller utomhusgym. De erbjuder ett roligt sätt att träna medan du njuter av den friska luften. På de utomhusgym som finns runt om i staden kan du träna hela kroppen. Overhead-remskivor, benpressar, armhävningar, surf- och promenadutrustning passar alla. Fler utmaningar erbjuds av armhävningsräcket, dip, magplanka och ryggbänk.',
   'mobilityPlatform.info.crosswalks': 'Kartan visar placeringen av övergångsställen inne i Åbo stad. Zooma in på kartan för att se övergångsställen.',
   'mobilityPlatform.info.short.crosswalks': 'Kartan visar övergångsställen inne i Åbo.',
   'mobilityPlatform.info.busStops': 'Kartan visar Åboregionens kollektivtrafiks, Fölis, busshållplatser. Om du kilckar på ikonen kan du se nästa buss som går från hållplatsen. Zooma in på kartan för att se hållplatserna. Datan kommer från gränssnittet som underhålls av Digitransit.',
+  'mobilityPlatform.info.underAndOverpasses': 'Kartan visar gångtunnlar och gångbroar som ligger i Åbo stadsområdet.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
@@ -980,6 +983,7 @@ const translations = {
   'ecocounter.oct': 'Oktober',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
+  'trafficCounter.year.warning.text': 'Siffror från år {value} är inte tillgängliga.',
 };
 
 let overridingExternalTranslations;

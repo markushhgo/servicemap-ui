@@ -25,13 +25,14 @@ import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import {
-  fetchInitialDayDatas, fetchInitialHourData, fetchInitialMonthDatas, fetchInitialWeekDatas,
+  fetchInitialDayDatas,
+  fetchInitialHourData,
+  fetchInitialMonthDatas,
+  fetchInitialWeekDatas,
 } from '../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../LineChart';
 
-const EcoCounterContent = ({
-  classes, intl, stationId, stationName,
-}) => {
+const EcoCounterContent = ({ classes, intl, stationId, stationName, isTelraam }) => {
   const [ecoCounterHour, setEcoCounterHour] = useState(null);
   const [ecoCounterDay, setEcoCounterDay] = useState(null);
   const [ecoCounterWeek, setEcoCounterWeek] = useState(null);
@@ -47,7 +48,7 @@ const EcoCounterContent = ({
   const [userTypesList, setUserTypesList] = useState(null);
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
-  const locale = useSelector((state) => state.user.locale);
+  const locale = useSelector(state => state.user.locale);
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -130,7 +131,7 @@ const EcoCounterContent = ({
     },
   ];
 
-  const changeDate = (newDate) => {
+  const changeDate = newDate => {
     setSelectedDate(newDate);
   };
 
@@ -145,7 +146,7 @@ const EcoCounterContent = ({
 
   // API returns empty data if start_week_number parameter is higher number than end_week_number.
   // This will set it to 1 so that weekly graph in January won't be empty in case week number of 1.1 is 52 or 53.
-  const checkWeekNumber = (dateValue) => {
+  const checkWeekNumber = dateValue => {
     const start = getWeek(startOfMonth(dateValue));
     const end = getWeek(endOfMonth(dateValue));
     if (start > end) {
@@ -218,16 +219,15 @@ const EcoCounterContent = ({
   ];
 
   // Format dates for the chart
-  const formatDates = (dateValue) => {
+  const formatDates = dateValue => {
     const fields = dateValue.split('-');
     return `${fields[2]}.${fields[1]}`;
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = (weekValue) => moment().day('Monday').year(selectedYear).week(weekValue)
-    .format('DD.MM');
+  const formatWeeks = weekValue => moment().day('Monday').year(selectedYear).week(weekValue).format('DD.MM');
 
-  const formatMonths = (monthValue) => {
+  const formatMonths = monthValue => {
     switch (monthValue) {
       case 1:
         return intl.formatMessage({ id: 'ecocounter.jan' });
@@ -268,9 +268,9 @@ const EcoCounterContent = ({
 
   // Channel data is set inside this function to avoid duplicate code
   const setAllChannelCounts = (newValue1, newValue2, newValue3) => {
-    setChannel1Counts((channel1Counts) => [...channel1Counts, newValue1]);
-    setChannel2Counts((channel2Counts) => [...channel2Counts, newValue2]);
-    setChannelTotals((channelTotals) => [...channelTotals, newValue3]);
+    setChannel1Counts(channel1Counts => [...channel1Counts, newValue1]);
+    setChannel2Counts(channel2Counts => [...channel2Counts, newValue2]);
+    setChannelTotals(channelTotals => [...channelTotals, newValue3]);
   };
 
   // Sets channel data into React state, so it can be displayed on the chart
@@ -293,7 +293,7 @@ const EcoCounterContent = ({
         setChannelTotals(countsArr[2]);
       }
     } else if (currentTime === 'day') {
-      ecoCounterDay.forEach((el) => {
+      ecoCounterDay?.forEach(el => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.day_info.date);
@@ -302,13 +302,13 @@ const EcoCounterContent = ({
         } else if (el.station === stationId && currentType === 'driving') {
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.day_info.date);
         }
-        setChannel1Counts((channel1Counts) => [...channel1Counts, countsArr[0]]);
-        setChannel2Counts((channel2Counts) => [...channel2Counts, countsArr[1]]);
-        setChannelTotals((channelTotals) => [...channelTotals, countsArr[2]]);
-        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatDates(countsArr[3])]);
+        setChannel1Counts(channel1Counts => [...channel1Counts, countsArr[0]]);
+        setChannel2Counts(channel2Counts => [...channel2Counts, countsArr[1]]);
+        setChannelTotals(channelTotals => [...channelTotals, countsArr[2]]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
-      ecoCounterWeek.forEach((el) => {
+      ecoCounterWeek?.forEach(el => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.week_info.week_number);
@@ -318,10 +318,10 @@ const EcoCounterContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.week_info.week_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
-      ecoCounterMonth.forEach((el) => {
+      ecoCounterMonth?.forEach(el => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.month_info.month_number);
@@ -331,7 +331,7 @@ const EcoCounterContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.month_info.month_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatMonths(countsArr[3])]);
+        setEcoCounterLabels(ecoCounterLabels => [...ecoCounterLabels, formatMonths(countsArr[3])]);
       });
     }
   };
@@ -431,30 +431,49 @@ const EcoCounterContent = ({
   // Sets user types based on station name.
   // Initially used id, but it can change, so it's not always reliable.
   useEffect(() => {
-    if (stationName === 'Auransilta') {
+    if (stationName === 'Auransilta' || isTelraam) {
       setUserTypesList(allUsers);
     } else if (stationName === 'Kirjastosilta' || stationName === 'Teatteri ranta' || stationName === 'Teatterisilta') {
       setUserTypesList(pedestrianAndBicycle);
     } else setUserTypesList(bicycleOnly);
   }, [stationId]);
 
-  const renderStationName = (input) => {
+  const renderStationName = input => {
     if (input === 'Teatteri ranta') {
       return 'Teatteriranta';
-    } return input;
+    }
+    return input;
   };
 
   return (
     <>
       <div className={classes.ecoCounterHeader}>
         <Typography component="h4" className={classes.headerSubtitle}>
-          {renderStationName(stationName)}
+          {isTelraam ? 'Telraam' : renderStationName(stationName)}
         </Typography>
-        <div>
+        <div className={classes.headerDate}>
+          <div className={classes.iconContainer}>
+            <DateRangeIcon />
+          </div>
+          {!isDatePickerOpen ? (
+            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(true)}>
+              <Typography component="h5" className={classes.headerSubtitle}>
+                {selectedDate.clone().format('DD.MM.YYYY')}
+              </Typography>
+            </ButtonBase>
+          ) : (
+            <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(false)}>
+              <Typography component="h5" className={classes.headerSubtitle}>
+                {selectedDate.clone().format('DD.MM.YYYY')}
+              </Typography>
+            </ButtonBase>
+          )}
+        </div>
+        <div className={classes.ecocounterDatePicker}>
           <DatePicker
             showIcon
             selected={selectedDate}
-            onChange={(newDate) => changeDate(newDate)}
+            onChange={newDate => changeDate(newDate)}
             locale={locale}
             dateFormat="P"
           />
@@ -462,7 +481,7 @@ const EcoCounterContent = ({
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
-          {userTypesList && userTypesList.map((userType, i) => (
+          {userTypesList?.map((userType, i) => (
             <div key={userType.type.user} className={classes.buttonAndTextContainer}>
               <ButtonBase
                 className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
@@ -501,18 +520,20 @@ const EcoCounterContent = ({
           />
         </div>
         <div className={classes.ecocounterSteps}>
-          {buttonSteps.map((timing, i) => (
-            <ButtonBase
-              key={timing.step.type}
-              type="button"
-              className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-              onClick={() => handleClick(timing.step.type, i)}
-            >
-              <Typography variant="body2" className={classes.buttonText}>
-                {timing.step.text}
-              </Typography>
-            </ButtonBase>
-          ))}
+          <>
+            {buttonSteps.map((timing, i) => (
+              <ButtonBase
+                key={timing.step.type}
+                type="button"
+                className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+                onClick={() => handleClick(timing.step.type, i)}
+              >
+                <Typography variant="body2" className={classes.buttonText}>
+                  {timing.step.text}
+                </Typography>
+              </ButtonBase>
+            ))}
+          </>
         </div>
       </div>
     </>
@@ -524,11 +545,13 @@ EcoCounterContent.propTypes = {
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   stationId: PropTypes.number,
   stationName: PropTypes.string,
+  isTelraam: PropTypes.bool,
 };
 
 EcoCounterContent.defaultProps = {
   stationId: 0,
   stationName: '',
+  isTelraam: false,
 };
 
 export default EcoCounterContent;

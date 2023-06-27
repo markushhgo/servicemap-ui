@@ -105,6 +105,8 @@ const EmbedderView = ({
   const [bicycleStands, setBicycleStands] = useState(false);
   const [frameLockable, setFrameLockable] = useState(false);
   const [crossWalks, setCrossWalks] = useState(false);
+  const [underPass, setUnderpass] = useState(false);
+  const [overPass, setOverPass] = useState(false);
 
   const boundsRef = useRef([]);
   const dialogRef = useRef();
@@ -128,6 +130,8 @@ const EmbedderView = ({
     bicycleStands,
     frameLockable,
     crossWalks,
+    underPass,
+    overPass,
     bbox: selectedBbox,
   });
 
@@ -540,6 +544,20 @@ const EmbedderView = ({
         onChange: v => setCrossWalks(v),
         icon: null,
         labelId: 'mobilityPlatform.embedded.label.crossWalks',
+      },
+      {
+        key: 'underPass',
+        value: underPass,
+        onChange: v => setUnderpass(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.show.underPasses',
+      },
+      {
+        key: 'overPass',
+        value: overPass,
+        onChange: v => setOverPass(v),
+        icon: null,
+        labelId: 'mobilityPlatform.menu.show.overPasses',
       },
       {
         key: 'chargingStation',

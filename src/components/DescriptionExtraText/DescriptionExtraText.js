@@ -17,6 +17,12 @@ const DescriptionExtraText = ({
     }
   }, [extra]);
 
+  useEffect(() => {
+    if (extra.chargers) {
+      setChargers(extra.chargers);
+    }
+  }, [extra]);
+
   const chargerStationInfo = (
     <>
       <Typography variant="subtitle2" component="h5" className={classes.paragraph}>
@@ -69,35 +75,20 @@ const DescriptionExtraText = ({
       <div className={classes.paragraph}>
         {extra.model ? (
           <Typography variant="body2" className={classes.textItem}>
-            <strong>
               {intl.formatMessage({
                 id: 'mobilityPlatform.content.bicycleStands.model',
-              })}
-              :
-            </strong>
-            {' '}
-            {extra.model}
+              }, { value: extra.model })}
           </Typography>
         ) : null}
         <Typography variant="body2" className={classes.textItem}>
-          <strong>
             {intl.formatMessage({
               id: 'mobilityPlatform.content.bicycleStands.numOfPlaces',
-            })}
-            :
-          </strong>
-          {' '}
-          {extra.number_of_places}
+            }, { value: extra.number_of_places})}
         </Typography>
         <Typography variant="body2" className={classes.textItem}>
-          <strong>
             {intl.formatMessage({
               id: 'mobilityPlatform.content.bicycleStands.numOfStands',
-            })}
-            :
-          </strong>
-          {' '}
-          {extra.number_of_stands}
+            }, { value: extra.number_of_stands })}
         </Typography>
         {extra.hull_lockable ? (
           <Typography variant="body2" className={classes.textItem}>
@@ -136,7 +127,7 @@ const DescriptionExtraText = ({
     </>
   );
 
-  if (extra && isClient()) {
+  if (extra && isClient() && serviceName !== 'Pyöränkorjauspiste') {
     return (
       <div className={classes.left}>
         <Typography
@@ -165,15 +156,15 @@ DescriptionExtraText.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
   extra: PropTypes.objectOf(PropTypes.any).isRequired,
-  title: PropTypes.node.isRequired,
   serviceName: PropTypes.string,
+  title: PropTypes.node.isRequired,
   html: PropTypes.bool,
   titleComponent: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']).isRequired,
 };
 
 DescriptionExtraText.defaultProps = {
-  html: false,
   serviceName: null,
+  html: false,
 };
 
 export default DescriptionExtraText;

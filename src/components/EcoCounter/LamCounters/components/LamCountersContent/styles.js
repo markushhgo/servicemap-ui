@@ -1,4 +1,4 @@
-const styles = {
+const styles = theme => ({
   buttonTransparent: {
     backgroundColor: '#fff',
     border: 'none',
@@ -13,15 +13,15 @@ const styles = {
     borderRadius: '5px',
     color: '#fff',
     cursor: 'pointer',
-    padding: '0.3rem',
+    padding: theme.spacing(0.5),
   },
   buttonWhite: {
     backgroundColor: '#fff',
     border: '1px solid gray',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginRight: '0.75rem',
-    padding: '0.3rem',
+    marginRight: theme.spacing(1.5),
+    padding: theme.spacing(0.5),
   },
   buttonActive: {
     backgroundColor: 'rgba(7, 44, 115, 255)',
@@ -29,22 +29,22 @@ const styles = {
     border: '1px solid gray',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginRight: '0.75rem',
-    padding: '0.3rem',
+    marginRight: theme.spacing(1.5),
+    padding: theme.spacing(0.5),
   },
   lamCounterHeader: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: '0.35rem',
-    marginBottom: '0.75rem',
+    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(1.5),
+    alignItems: 'flex-end',
     borderBottom: '2px solid gray',
     width: '95%',
-    alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
   headerSubtitle: {
-    marginBlockStart: '1rem',
-    marginBlockEnd: '0.1rem',
+    marginBlockStart: theme.spacing(2),
+    marginBlockEnd: theme.spacing(0.2),
     fontWeight: 'bold',
   },
   headerDate: {
@@ -60,30 +60,30 @@ const styles = {
   lamCounterUserTypes: {
     display: 'flex',
     justifyContent: 'flex-end',
-    marginBottom: '0.3rem',
+    marginBottom: theme.spacing(0.5),
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
-    marginRight: '0.7rem',
+    marginRight: theme.spacing(1.5),
     alignItems: 'center',
   },
   textContainer: {
     width: '40px',
-    marginRight: '0.75rem',
+    marginRight: theme.spacing(1.5),
   },
   iconWrapper: {
     backgroundColor: 'rgba(7, 44, 115, 255)',
     color: '#fff',
     border: '1px solid gray',
     borderRadius: '5px',
-    marginRight: '0.75rem',
-    padding: '0.3rem',
+    marginRight: theme.spacing(1.5),
+    padding: theme.spacing(0.5),
   },
   userTypeText: {
     fontWeight: 'bold',
-    paddingTop: '0.3rem',
-    paddingRight: '0.6rem',
+    paddingTop: theme.spacing(0.5),
+    paddingRight: theme.spacing(1),
     fontSize: '0.8rem',
   },
   buttonText: {
@@ -110,9 +110,13 @@ const styles = {
     margin: 0,
   },
   iconContainer: {
-    marginRight: '0.3rem',
-    paddingTop: '0.6rem',
+    marginRight: theme.spacing(0.5),
+    paddingTop: theme.spacing(1),
   },
-};
+  yearText: {
+    textAlign: 'center',
+    margin: `${theme.spacing(1)} 0`,
+  },
+});
 
 export default styles;

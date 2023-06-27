@@ -795,6 +795,8 @@ const translations = {
   'mobilityPlatform.menu.show.crossWalks': 'Suojatiet (tarkenna karttaa)',
   'mobilityPlatform.embedded.label.crossWalks': 'Suojatiet (tarkenna karttaa lähietäisyydelle, jotta suojatiet näkyvät)',
   'mobilityPlatform.menu.show.busStops': 'Linja-autopysäkit (tarkenna karttaa)',
+  'mobilityPlatform.menu.show.underPasses': 'Alikulkuväylät',
+  'mobilityPlatform.menu.show.overPasses': 'Ylikulkusillat',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -811,13 +813,13 @@ const translations = {
   'mobilityPlatform.chargerStations.content.admin': 'Ylläpitäjä: {value}',
   'mobilityPlatform.chargerStations.content.charge': 'Maksullinen',
   'mobilityPlatform.chargerStations.content.free': 'Ilmainen asiakkaille',
-  'mobilityPlatform.content.bicycleStands.model': 'Malli',
+  'mobilityPlatform.content.bicycleStands.model': 'Malli: {value}',
   'mobilityPlatform.content.bicycleStands.covered': 'Pyöräparkki on katettu',
   'mobilityPlatform.content.bicycleStands.notCovered': 'Pyöräparkkia ei ole katettu',
   'mobilityPlatform.content.bicycleStands.hullLockable': 'Pyörän voi runkolukita',
   'mobilityPlatform.content.bicycleStands.hullNotLockable': 'Pyörää ei voi runkolukita',
-  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä',
-  'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä',
+  'mobilityPlatform.content.bicycleStands.numOfPlaces': 'Pyöräpaikkojen määrä: {value}',
+  'mobilityPlatform.content.bicycleStands.numOfStands': 'Pyörätelineiden määrä: {value}',
   'mobilityPlatform.content.bicycleStands.maintainedByTku': 'Turun kaupungin ylläpitämä.',
   'mobilityPlatform.settings.buttons.1hour': '1 tunti',
   'mobilityPlatform.settings.buttons.12hours': '12 tuntia',
@@ -887,7 +889,7 @@ const translations = {
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
-  'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla.',
+  'mobilityPlatform.info.ecoCounter': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla eri liikennemuotojen käyttäjien määriä valituissa kohteissa. Tiedot on toimittanut Turun kaupunki käyttöluvan CC BY 4.0 nojalla. Kahden laskentapisteen tiedot on kerätty Telraam -laskimilla.',
   'mobilityPlatform.info.bicycleStands': 'Turun kaupungin ylläpitämät polkupyöräpysäköintipaikat käsittävät kolmentyyppisiä pyörätelineitä: katetut ja runkolukittavat pyörätelineet, runkolukittavat pyörätelineet ja rengastelineelliset, ei runkolukittavat pyörätelineet.',
   'mobilityPlatform.info.gasFillingStations': 'Turun alueen julkiset kaasutankkausasemat. Tankkausasemien tiedot perustuvat Fintrafficin ylläpitämän liikennetilanne (https://liikennetilanne.fintraffic.fi) -sivuston tietoihin.',
   'mobilityPlatform.info.rentalCars': 'Yhteiskäyttöautot ovat vapaasti vuokrattavia autoja. Kartalla näytetään tällä hetkellä vapaana olevat autot. Tiedot niistä tulevat 24Rent:lta.',
@@ -923,13 +925,14 @@ const translations = {
   'mobilityPlatform.info.markedTrails': 'Paavonpolut ovat maastoon merkittyjä reittejä, jotka tutustuttavat kulkijoita lähiluontoon ja kaupunkiympäristöön eri puolilla Turkua. Monin paikoin polut yhtyvät muihin ulkoilureitteihin ja kytkevät niitä toisiinsa. Kulkureitit on osoitettu maastossa puihin ja kiviin maalatuilla sinisillä juoksija-merkinnöillä ja pyöreillä merkeillä. Maastopyöräily on sallittu Paavonpolkujen metsäosuuksilla jokamiehenoikeuksien mukaisesti.',
   'mobilityPlatform.info.natureTrails': 'Luontopolut kulkevat vaihtelevissa maisemissa ja niitä seuraamalla saa edustavan läpileikkauksen Turun monimuotoisesta luonnonympäristöstä. Polut on viitoitettu ja niiden varsilla on paikallisesta luonnosta kertovia opastauluja. Kulkemisen helpottamiseksi polkupohjia on kunnostettu soralla ja rakentamalla pitkospuita kosteikkoihin. Vaikeakulkuisilla rinteillä on portaita ja siltoja.',
   'mobilityPlatform.info.fitnessTrails': 'Turun kaupunki ylläpitää yli 20 kuntoreittiä eri puolilla Turkua ja ne tarjoavat mahdollisuuden monipuoliseen liikuntaan. Reitit on valaistu kello 6 - 22 välillä.',
-  'mobilityPlatform.info.lamCounters': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla autoilijoiden määriä valituissa kohteissa. Tiedot on avoimena datana toimittanut Digitraffic -palvelu.',
+  'mobilityPlatform.info.lamCounters': 'Laskentapisteet keräävät tietoa liikenteestä mittaamalla autoilijoiden määriä valituissa kohteissa. Tiedot on avoimena datana toimittanut Digitraffic -palvelu. Osa laskentapisteistä on Turun kaupungin ylläpitämiä.',
   'mobilityPlatform.info.parkingMachines': 'Kartalla näkyvät Turun kaupungin omistamat pysäköintiautomaatit. Kaikissa automaateissa maksutapoina toimivat pankkikortti ja lähimaksu. Lisätietoja automaatista näkee painamalla kuvaketta kartalla.',
   'mobilityPlatform.info.publicParkingSpaces': 'Kartalla näkyvät yleisessä käytössä olevat pysäköintialueet. Niiden käyttöasteesta ei ole kuitenkaan saatavilla tietoja. Tarkempia tietoja valitusta pysäköintialueesta voi lukea painamalla aluetta kartalla.',
   'mobilityPlatform.info.outdoorGymDevices': 'Turun kaupunki ylläpitää ulkoliikuntapaikkoja. Ulkokuntosalilaitteet tarjoavat hauskan tavan harjoittaa lihaskuntoa ulkoilmasta nauttien. Ympäri kaupunkia sijaitsevilla ulkokuntoilulaitteilla pystyt harjoittamaan koko kehoa. Ylätaljat, jalkaprässit, punnerrus-, surffaus- ja kävelylaitteet sopivat kaikille. Enemmän haastetta tarjoavat leuanvetoteline, dippi, vatsalauta ja selkäpenkki.',
   'mobilityPlatform.info.crosswalks': 'Kartalla näkyvät Turun alueen suojatieden sijainnit. Tarkenna karttaa lähietäisyydelle, jotta suojatiet näkyvät.',
   'mobilityPlatform.info.short.crosswalks': 'Kartalla näkyvät Turun suojatiet.',
   'mobilityPlatform.info.busStops': 'Kartalla näkyvät Turun seudun joukkoliikenteen Fölin linja-autopysäkit. Kuvaketta painamalle voi nähdä seuraavat pysäkiltä lähtevät vuorot. Tarkenna karttaa lähietäisyydelle, jotta linja-autopysäkit näkyvät. Tiedot tulevat Digitransitin ylläpitämästä rajapinnasta.',
+  'mobilityPlatform.info.underAndOverpasses': 'Kartalla näkyvät Turun alueella sijaitsevat alikulkutunnelit ja ylikulkukuväylät.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
@@ -971,6 +974,7 @@ const translations = {
   'ecocounter.oct': 'Loka',
   'ecocounter.nov': 'Marras',
   'ecocounter.dec': 'Joulu',
+  'trafficCounter.year.warning.text': 'Vuoden {value} lukuja ei ole saatavilla.',
 };
 
 let overridingExternalTranslations;

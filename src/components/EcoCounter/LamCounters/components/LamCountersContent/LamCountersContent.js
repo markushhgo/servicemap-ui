@@ -28,16 +28,18 @@ import {
   fetchInitialHourData,
   fetchInitialMonthDatas,
   fetchInitialWeekDatas,
+  fetchInitialYearData,
 } from '../../../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../../../LineChart';
 
 const LamCountersContent = ({
-  classes, intl, stationId, stationName,
+  classes, intl, station,
 }) => {
   const [lamCounterHour, setLamCounterHour] = useState([]);
   const [lamCounterDay, setLamCounterDay] = useState([]);
   const [lamCounterWeek, setLamCounterWeek] = useState([]);
   const [lamCounterMonth, setLamCounterMonth] = useState([]);
+  const [lamCounterYear, setLamCounterYear] = useState(null);
   const [channel1Counts, setChannel1Counts] = useState([]);
   const [channel2Counts, setChannel2Counts] = useState([]);
   const [channelTotals, setChannelTotals] = useState([]);
@@ -47,6 +49,10 @@ const LamCountersContent = ({
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector(state => state.user.locale);
+
+  const stationId = station.id;
+  const stationName = station.name;
+  const stationType = station.csv_data_source;
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -130,17 +136,17 @@ const LamCountersContent = ({
   let selectedMonth = getMonth(currentDate);
   const selectedYear = getYear(selectedDate);
 
+  // Reset selectedDate value when the new popup is opened.
+  useEffect(() => {
+    setSelectedDate(endOfMonth(subMonths(currentDate, 1)));
+  }, [stationId]);
+
   // This will show full year if available
   const checkYear = () => {
     if (getYear(selectedDate) < getYear(currentDate)) {
       selectedMonth = 12;
     }
   };
-
-  // Reset selectedDate value when the new popup is opened.
-  useEffect(() => {
-    setSelectedDate(endOfMonth(subMonths(currentDate, 1)));
-  }, [stationId]);
 
   useEffect(() => {
     checkYear();
@@ -297,19 +303,23 @@ const LamCountersContent = ({
   useEffect(() => {
     setLamCounterLabels(labelsHour);
     fetchInitialHourData(yesterDayFormat, stationId, setLamCounterHour);
-  }, [stationId, setLamCounterHour]);
+  }, [stationId]);
 
   useEffect(() => {
     fetchInitialDayDatas(initialDateStart, initialDateEnd, stationId, setLamCounterDay);
-  }, [stationId, setLamCounterDay]);
+  }, [stationId]);
 
   useEffect(() => {
     fetchInitialWeekDatas(initialYear, initialWeekStart, initialWeekEnd, stationId, setLamCounterWeek);
-  }, [stationId, setLamCounterWeek]);
+  }, [stationId]);
 
   useEffect(() => {
     fetchInitialMonthDatas(initialYear, '1', initialMonth, stationId, setLamCounterMonth);
-  }, [stationId, setLamCounterMonth]);
+  }, [stationId]);
+
+  useEffect(() => {
+    fetchInitialYearData(initialYear, stationId, setLamCounterYear);
+  }, [stationId]);
 
   // Fetch updated data when selected date is changed in datepicker.
   useEffect(() => {
@@ -329,7 +339,11 @@ const LamCountersContent = ({
 
   useEffect(() => {
     fetchInitialMonthDatas(selectedYear, '1', selectedMonth, stationId, setLamCounterMonth);
-  }, [selectedDate, stationId]);
+  }, [selectedYear, selectedMonth, stationId]);
+
+  useEffect(() => {
+    fetchInitialYearData(selectedYear, stationId, setLamCounterYear);
+  }, [selectedYear, stationId]);
 
   // useEffect is used to fill the chart with default data (default step is 'hourly')
   useEffect(() => {
@@ -347,11 +361,18 @@ const LamCountersContent = ({
     setChannelData();
   }, [currentTime]);
 
+  /**
+   * Split name into array of words and remove special characters (_) and first index (for example 'vt1').
+   * @param {string} name for example vt1_Kupittaa
+   * @returns {string} for example Kupittaa
+   */
+  const formatCounterName = name => name?.split('_').splice(1).join(' ');
+
   return (
     <>
       <div className={classes.lamCounterHeader}>
         <Typography component="h4" className={classes.headerSubtitle}>
-          {stationName}
+          {stationType === 'LC' ? formatCounterName(stationName) : stationName}
         </Typography>
         <div>
           <DatePicker
@@ -365,20 +386,28 @@ const LamCountersContent = ({
       </div>
       <div className={classes.lamCounterContent}>
         <div className={classes.lamCounterUserTypes}>
-          {userTypes
-            && userTypes.map(userType => (
-              <div key={userType.type.user} className={classes.container}>
-                <div className={classes.iconWrapper}>
-                  <ReactSVG className={classes.iconActive} src={userType.type.icon} />
-                </div>
-                <div className={classes.textContainer}>
-                  <Typography variant="body2" className={classes.userTypeText}>
-                    {userType.type.text}
-                  </Typography>
-                </div>
+          {userTypes?.map(userType => (
+            <div key={userType.type.user} className={classes.container}>
+              <div className={classes.iconWrapper}>
+                <ReactSVG className={classes.iconActive} src={userType.type.icon} />
               </div>
-            ))}
+              <div className={classes.textContainer}>
+                <Typography variant="body2" className={classes.userTypeText}>
+                  {userType.type.text}
+                </Typography>
+              </div>
+            </div>
+          ))}
         </div>
+        <>
+          {lamCounterYear?.value_at === 0 ? (
+            <div className={classes.yearText}>
+              <Typography component="p" variant="body2">
+                {intl.formatMessage({ id: 'trafficCounter.year.warning.text' }, { value: selectedYear })}
+              </Typography>
+            </div>
+          ) : null}
+        </>
         <div className={classes.lamCounterChart}>
           <LineChart
             labels={lamCounterLabels}
@@ -420,13 +449,19 @@ const LamCountersContent = ({
 LamCountersContent.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
   intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  stationId: PropTypes.number,
-  stationName: PropTypes.string,
+  station: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    csv_data_source: PropTypes.string,
+  }),
 };
 
 LamCountersContent.defaultProps = {
-  stationId: 0,
-  stationName: '',
+  station: {
+    id: 0,
+    name: '',
+    csv_data_source: '',
+  },
 };
 
 export default LamCountersContent;
