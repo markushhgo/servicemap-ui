@@ -145,7 +145,7 @@ const LamCountersContent = ({
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(endOfMonth(subMonths(currentDate, 1)));
+    setSelectedDate(startOfMonth(subMonths(currentDate, 1)));
   }, [stationId]);
 
   // This will show full year if available
