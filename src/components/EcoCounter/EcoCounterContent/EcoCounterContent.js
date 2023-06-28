@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import { ButtonBase, Typography } from '@mui/material';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useState, useRef, forwardRef,
+} from 'react';
 import { useSelector } from 'react-redux';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import {
@@ -31,6 +34,9 @@ import {
   fetchInitialWeekDatas,
 } from '../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../LineChart';
+import InputDate from '../InputDate';
+
+const CustomInput = forwardRef((props, ref) => <InputDate {...props} ref={ref} />);
 
 const EcoCounterContent = ({
   classes, intl, station,
@@ -51,6 +57,7 @@ const EcoCounterContent = ({
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector((state) => state.user.locale);
+  const inputRef = useRef(null);
 
   const stationId = station.id;
   const stationName = station.name;
@@ -461,13 +468,15 @@ const EcoCounterContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {isTelraam ? 'Telraam' : renderStationName(stationName)}
         </Typography>
-        <DatePicker
-          showIcon
-          selected={selectedDate}
-          onChange={(newDate) => changeDate(newDate)}
-          locale={locale}
-          dateFormat="P"
-        />
+        <div>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(newDate) => changeDate(newDate)}
+            locale={locale}
+            dateFormat="P"
+            customInput={<CustomInput inputRef={inputRef} />}
+          />
+        </div>
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
