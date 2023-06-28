@@ -461,15 +461,13 @@ const EcoCounterContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {isTelraam ? 'Telraam' : renderStationName(stationName)}
         </Typography>
-        <div className={classes.ecocounterDatePicker}>
-          <DatePicker
-            showIcon
-            selected={selectedDate}
-            onChange={(newDate) => changeDate(newDate)}
-            locale={locale}
-            dateFormat="P"
-          />
-        </div>
+        <DatePicker
+          showIcon
+          selected={selectedDate}
+          onChange={(newDate) => changeDate(newDate)}
+          locale={locale}
+          dateFormat="P"
+        />
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>

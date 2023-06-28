@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   buttonTransparent: {
     backgroundColor: '#fff',
     border: 'none',
@@ -52,10 +52,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  lamCounterDatePicker: {
-    width: '75%',
-    marginRight: 'auto',
   },
   lamCounterUserTypes: {
     display: 'flex',
