@@ -1,6 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useState, forwardRef, useRef,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { ButtonBase, Typography } from '@mui/material';
 import moment from 'moment';
@@ -31,6 +34,9 @@ import {
   fetchInitialYearData,
 } from '../../../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../../../LineChart';
+import InputDate from '../../../InputDate';
+
+const CustomInput = forwardRef((props, ref) => <InputDate {...props} ref={ref} />);
 
 const LamCountersContent = ({
   classes, intl, station,
@@ -49,6 +55,7 @@ const LamCountersContent = ({
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector((state) => state.user.locale);
+  const inputRef = useRef(null);
 
   const stationId = station.id;
   const stationName = station.name;
@@ -376,11 +383,11 @@ const LamCountersContent = ({
         </Typography>
         <div>
           <DatePicker
-            showIcon
             selected={selectedDate}
             onChange={(newDate) => changeDate(newDate)}
             locale={locale}
             dateFormat="P"
+            customInput={<CustomInput inputRef={inputRef} />}
           />
         </div>
       </div>
