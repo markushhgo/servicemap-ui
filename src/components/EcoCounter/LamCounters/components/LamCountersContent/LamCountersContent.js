@@ -125,14 +125,14 @@ const LamCountersContent = ({
 
   // Initial values that are used to fetch data
   const currentDate = new Date();
-  const yesterDay = subDays(currentDate, 1);
-  const yesterDayFormat = format(yesterDay, 'yyyy-MM-dd');
-  const initialDateStart = format(startOfWeek(yesterDay, 1), 'yyyy-MM-dd');
-  const initialDateEnd = format(endOfWeek(yesterDay, 1), 'yyyy-MM-dd');
-  const initialWeekStart = checkWeekNumber(yesterDay);
-  const initialWeekEnd = getWeek(endOfMonth(yesterDay));
-  const initialMonth = getMonth(yesterDay);
-  const initialYear = getYear(yesterDay);
+  const lastMonth = subMonths(currentDate, 1);
+  const lastMonthFormat = format(lastMonth, 'yyyy-MM-dd');
+  const initialDateStart = format(startOfWeek(lastMonth), 'yyyy-MM-dd');
+  const initialDateEnd = format(endOfWeek(lastMonth), 'yyyy-MM-dd');
+  const initialWeekStart = checkWeekNumber(lastMonth);
+  const initialWeekEnd = getWeek(endOfMonth(lastMonth));
+  const initialMonth = getMonth(lastMonth);
+  const initialYear = getYear(lastMonth);
 
   // Values that change based on the datepicker value
   const selectedDateFormat = format(selectedDate, 'yyyy-MM-dd');
@@ -309,7 +309,7 @@ const LamCountersContent = ({
   // Fetch initial data based on the default date
   useEffect(() => {
     setLamCounterLabels(labelsHour);
-    fetchInitialHourData(yesterDayFormat, stationId, setLamCounterHour);
+    fetchInitialHourData(lastMonthFormat, stationId, setLamCounterHour);
   }, [stationId]);
 
   useEffect(() => {
