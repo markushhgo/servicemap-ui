@@ -52,8 +52,6 @@ const EcoCounterContent = ({
   const [currentType, setCurrentType] = useState('bicycle');
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [activeType, setActiveType] = useState(0);
-  const [userTypesList, setUserTypesList] = useState(null);
   const [selectedDate, setSelectedDate] = useState(subDays(new Date(), 1));
 
   const locale = useSelector((state) => state.user.locale);
@@ -62,9 +60,16 @@ const EcoCounterContent = ({
   const stationId = station.id;
   const stationName = station.name;
   const stationSource = station.csv_data_source;
+  const userTypes = station.sensor_types;
 
-  const checkStationSource = () => stationSource === 'TR';
-  const isTelraam = checkStationSource();
+  const setUserTypeValue = () => {
+    if (userTypes.includes('at')) {
+      return 1;
+    }
+    return 0;
+  };
+
+  const [activeType, setActiveType] = useState(setUserTypeValue());
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -94,58 +99,84 @@ const EcoCounterContent = ({
     },
   ];
 
-  // User types that include cars
-  const allUsers = [
-    {
-      type: {
-        user: 'bicycle',
-        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
-        icon: iconBicycle,
-      },
-    },
-    {
-      type: {
-        user: 'walking',
-        text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk,
-      },
-    },
-    {
-      type: {
-        user: 'driving',
-        text: intl.formatMessage({ id: 'ecocounter.car' }),
-        icon: iconCar,
-      },
-    },
-  ];
+  // Sets current user type and active button index
+  const setUserTypeState = (index, typeValue) => {
+    setActiveType(index);
+    setCurrentType(typeValue);
+  };
 
-  // User types that doesn't include cars, because most stations do not include counts for cars
-  const pedestrianAndBicycle = [
-    {
-      type: {
-        user: 'bicycle',
-        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
-        icon: iconBicycle,
-      },
-    },
-    {
-      type: {
-        user: 'walking',
-        text: intl.formatMessage({ id: 'ecocounter.walk' }),
-        icon: iconWalk,
-      },
-    },
-  ];
+  const setUserTypes = (type, index) => {
+    if (type === 'jt') setUserTypeState(index, 'walking');
+    else if (type === 'pt') setUserTypeState(index, 'bicycle');
+    else if (type === 'at') setUserTypeState(index, 'driving');
+  };
 
-  const bicycleOnly = [
-    {
-      type: {
-        user: 'bicycle',
-        text: intl.formatMessage({ id: 'ecocounter.bicycle' }),
-        icon: iconBicycle,
-      },
-    },
-  ];
+  /**
+   * Text component
+   * @param {string} translationId
+   * @returns JSX element
+   */
+  const userTypeText = translationId => (
+    <div className={classes.textContainer}>
+      <Typography variant="body2" className={classes.userTypeText}>
+        {intl.formatMessage({ id: translationId })}
+      </Typography>
+    </div>
+  );
+
+  /**
+   * Renders texts based on user type value
+   * @param {string} userType
+   * @returns JSX element
+   */
+  const renderUserTypeText = (userType) => {
+    if (userType === 'at') {
+      return userTypeText('ecocounter.car');
+    }
+    if (userType === 'pt') {
+      return userTypeText('ecocounter.bicycle');
+    }
+    if (userType === 'jt') {
+      return userTypeText('ecocounter.walk');
+    }
+    return null;
+  };
+
+  /**
+   * Returns button with icon which is based on user type value
+   * @param {string} userType
+   * @param {node} iconValue
+   * @param {number} i
+   * @returns JSX Element
+   */
+  const userTypeButton = (userType, iconValue, i) => (
+    <ButtonBase
+      className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+      onClick={() => setUserTypes(userType, i)}
+    >
+      <div>
+        <ReactSVG className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`} src={iconValue} />
+      </div>
+    </ButtonBase>
+  );
+
+  /**
+   * Renders buttons and icons based on user types
+   * @param {string} userType
+   * @param {node} iconValue
+   */
+  const renderUserTypeIcon = (userType, i) => {
+    if (userType === 'at') {
+      return userTypeButton(userType, iconCar, i);
+    }
+    if (userType === 'pt') {
+      return userTypeButton(userType, iconBicycle, i);
+    }
+    if (userType === 'jt') {
+      return userTypeButton(userType, iconWalk, i);
+    }
+    return null;
+  };
 
   const changeDate = (newDate) => {
     setSelectedDate(newDate);
@@ -310,7 +341,7 @@ const EcoCounterContent = ({
         setChannelTotals(countsArr[2]);
       }
     } else if (currentTime === 'day') {
-      ecoCounterDay?.forEach((el) => {
+      return ecoCounterDay?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.day_info.date);
@@ -325,7 +356,7 @@ const EcoCounterContent = ({
         setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
-      ecoCounterWeek?.forEach((el) => {
+      return ecoCounterWeek?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.week_info.week_number);
@@ -338,7 +369,7 @@ const EcoCounterContent = ({
         setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
-      ecoCounterMonth?.forEach((el) => {
+      return ecoCounterMonth?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.month_info.month_number);
@@ -351,18 +382,6 @@ const EcoCounterContent = ({
         setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatMonths(countsArr[3])]);
       });
     }
-  };
-
-  // Sets current user type and active button index
-  const setUserTypeState = (index, typeValue) => {
-    setActiveType(index);
-    setCurrentType(typeValue);
-  };
-
-  const setUserTypes = (type, index) => {
-    if (type === 'walking') setUserTypeState(index, 'walking');
-    else if (type === 'bicycle') setUserTypeState(index, 'bicycle');
-    else if (type === 'driving') setUserTypeState(index, 'driving');
   };
 
   // Sets current step and active button index
@@ -444,17 +463,6 @@ const EcoCounterContent = ({
     setChannelData();
   }, [currentType, currentTime]);
 
-  // Only one station includes data about all user types (inluding cars) and some include only data about cycling.
-  // Sets user types based on station name.
-  // Initially used id, but it can change, so it's not always reliable.
-  useEffect(() => {
-    if (stationName === 'Auransilta' || isTelraam) {
-      setUserTypesList(allUsers);
-    } else if (stationName === 'Kirjastosilta' || stationName === 'Teatteri ranta' || stationName === 'Teatterisilta') {
-      setUserTypesList(pedestrianAndBicycle);
-    } else setUserTypesList(bicycleOnly);
-  }, [stationId]);
-
   const renderStationName = (input) => {
     if (input === 'Teatteri ranta') {
       return 'Teatteriranta';
@@ -466,7 +474,7 @@ const EcoCounterContent = ({
     <>
       <div className={classes.ecoCounterHeader}>
         <Typography component="h4" className={classes.headerSubtitle}>
-          {isTelraam ? 'Telraam' : renderStationName(stationName)}
+          {stationSource === 'TR' ? 'Telraam' : renderStationName(stationName)}
         </Typography>
         <div>
           <DatePicker
@@ -480,24 +488,10 @@ const EcoCounterContent = ({
       </div>
       <div className={classes.ecocounterContent}>
         <div className={classes.ecocounterUserTypes}>
-          {userTypesList?.map((userType, i) => (
-            <div key={userType.type.user} className={classes.buttonAndTextContainer}>
-              <ButtonBase
-                className={i === activeType ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-                onClick={() => setUserTypes(userType.type.user, i)}
-              >
-                <div>
-                  <ReactSVG
-                    className={i === activeType ? `${classes.iconActive}` : `${classes.icon}`}
-                    src={userType.type.icon}
-                  />
-                </div>
-              </ButtonBase>
-              <div className={classes.textContainer}>
-                <Typography variant="body2" className={classes.userTypeText}>
-                  {userType.type.text}
-                </Typography>
-              </div>
+          {userTypes?.map((userType, i) => (
+            <div key={userType} className={classes.buttonAndTextContainer}>
+              {renderUserTypeIcon(userType, i)}
+              {renderUserTypeText(userType)}
             </div>
           ))}
         </div>
@@ -546,6 +540,7 @@ EcoCounterContent.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     csv_data_source: PropTypes.string,
+    sensor_types: PropTypes.arrayOf(PropTypes.string),
   }),
 };
 
@@ -554,6 +549,7 @@ EcoCounterContent.defaultProps = {
     id: 0,
     name: '',
     csv_data_source: '',
+    sensor_types: [],
   },
 };
 
