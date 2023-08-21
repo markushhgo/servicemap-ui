@@ -1,6 +1,6 @@
 import { Selector } from "testcafe";
 
-export default () => {
+const resultOrdererTest = () => {
   test('Result sorter does change result order', async (t) => {
     const select = Selector('#result-sorter')
     const listItems = Selector('div[class*="ResultList-root"] li[role="link"]');
@@ -38,3 +38,5 @@ export default () => {
     ;
   });
 };
+
+export default resultOrdererTest;
