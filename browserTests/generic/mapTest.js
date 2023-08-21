@@ -32,7 +32,7 @@ test('Transit marker visible after zoom', async (t) => {
 });
 
 fixture`Search unit geometry test`
-  .page`http://${server.address}:${server.port}/fi/search?q=latu`
+  .page`http://${server.address}:${server.port}/fi/search?q=museo`
   .beforeEach(async () => {
     await waitForReact();
   });
@@ -46,7 +46,7 @@ test('Unit geometry is drawn on map', async (t) => {
 });
 
 fixture`Unit page geometry test`
-  .page`http://${server.address}:${server.port}/fi/unit/56544`
+  .page`http://${server.address}:${server.port}/fi/unit/176`
   .beforeEach(async () => {
     await waitForReact();
   });

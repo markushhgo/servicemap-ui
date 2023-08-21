@@ -37,7 +37,7 @@ fixture`TestCafe Axe test: search page`
 
 
 fixture`TestCafe Axe test: unit page`
-  .page`http://${server.address}:${server.port}/fi/unit/8215`;
+  .page`http://${server.address}:${server.port}/fi/unit/148`;
 
   test('Automated accessibility testing', async (t) => {
     await axeCheckHandler(t);
@@ -49,7 +49,7 @@ fixture`TestCafe Axe test: unit page`
 
 
 fixture`TestCafe Axe test: service page`
-  .page`http://${server.address}:${server.port}/fi/service/813`;
+  .page`http://${server.address}:${server.port}/fi/service/828322617`;
 
   test('Automated accessibility testing', async (t) => {
     await axeCheckHandler(t);
@@ -61,7 +61,7 @@ fixture`TestCafe Axe test: service page`
 
 
 fixture`TestCafe Axe test: address page`
-  .page`http://${server.address}:${config.server.port}/fi/address/helsinki/Fleminginkatu 1`;
+  .page`http://${server.address}:${config.server.port}/fi/address/turku/Aurakatu 5`;
 
   test('Automated accessibility testing', async (t) => {
     await axeCheckHandler(t);
@@ -97,7 +97,7 @@ fixture`TestCafe Axe test: service tree page`
 
 
 // This page expires when the event is done
-fixture`TestCafe Axe test: event page`
+/* fixture`TestCafe Axe test: event page`
   .page`http://${server.address}:${server.port}/fi/event/helmet:190724`;
 
   test('Automated accessibility testing', async (t) => {
@@ -106,5 +106,5 @@ fixture`TestCafe Axe test: event page`
 
   focusIndicatorTest()
   componentContrastTest('.SMButton');
-  componentContrastTest('.SMBackButton');
+  componentContrastTest('.SMBackButton'); */
 

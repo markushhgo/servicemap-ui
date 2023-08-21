@@ -7,12 +7,12 @@ const { server } = config;
 
 
 const pages = [
-  `http://${server.address}:${server.port}/fi/unit/51342/events`,
-  `http://${server.address}:${server.port}/fi/unit/51342/services`,
-  `http://${server.address}:${server.port}/fi/unit/51342/reservations`
+  `http://${server.address}:${server.port}/fi/unit/148/events`,
+  `http://${server.address}:${server.port}/fi/unit/148/services`,
+  `http://${server.address}:${server.port}/fi/unit/148/reservations`
 ];
 
-const unitName = 'Keskustakirjasto Oodi';
+const unitName = 'Pääkirjasto';
 
 // Common tests for all list pages
 fixture`Unit view extended data title and map tests`

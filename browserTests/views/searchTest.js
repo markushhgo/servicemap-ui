@@ -15,7 +15,7 @@ fixture`Search view test`
     await waitForReact();
   });
 
-const searchUnits = async (t, search = 'uimastadion') => {
+const searchUnits = async (t, search = 'museo') => {
   const input = Selector('#SearchBar input');
 
   // Make new search

@@ -15,13 +15,13 @@ fixture`Embed view test`
   const unitMarkers = Selector('.unitMarker');
 
   // Unit view
-  test.page`http://${server.address}:${server.port}/fi/embed/unit/51342`
+  test.page`http://${server.address}:${server.port}/fi/embed/unit/148`
   ('Embedded unit view shows unit marker', async (t) => {
     await t
       .expect(unitMarkers.count).eql(1, 'Only unit marker should be rendered to map') 
   })
 
-  test.page`http://${server.address}:${server.port}/fi/embed/unit/68398?services=961,239&distance=100`
+  test.page`http://${server.address}:${server.port}/fi/embed/unit/174?services=961,239&distance=100`
   ('Embedded unit view shows nearby services', async (t) => {
     await t
       .expect(unitMarkers.count).gt(1, 'Unit marker and services should be rendered to map') 
@@ -43,13 +43,13 @@ fixture`Embed view test`
       .expect(unitDialogTitle).eql(await unitListItemTitle, 'Dialog should open and show unit info');
   });
 
-  test.page`http://${server.address}:${server.port}/fi/embed/search?units=64196,45980,8264,32359`
+  test.page`http://${server.address}:${server.port}/fi/embed/search?units=172,187,176`
   ('Embedded search view shows specified units', async (t) => {
     await t
       .expect(unitMarkers.count).eql(4, 'Only specified unit markers should be rendered to map') 
   });
 
-  test.page`http://${server.address}:${server.port}/fi/embed/search?service_node=1065,1066,1062`
+  test.page`http://${server.address}:${server.port}/fi/embed/search?service_node=828322864,828322617`
   ('Embedded search view shows service node units', async (t) => {
     await t
       .expect(unitMarkers.count).gt(0, 'Service node unit markers should be rendered to map') 
@@ -65,7 +65,7 @@ fixture`Embed view test`
 
 
   // Service view
-  test.page`http://${server.address}:${server.port}/fi/embed/service/813`
+  test.page`http://${server.address}:${server.port}/fi/embed/service/828322864`
   ('Embedded service view shows service units', async (t) => {
     await t
       .expect(unitMarkers.count).gt(1, 'Service unit markers should be rendered to map') 
@@ -73,11 +73,11 @@ fixture`Embed view test`
 
 
   // Address view
-  test.page`http://${server.address}:${server.port}/fi/embed/address/helsinki/Eläintarhantie 3/`
+  test.page`http://${server.address}:${server.port}/fi/embed/address/turku/Aurakatu 3/`
   ('Embedded address view shows nearby service units correctly', async (t) => {
     await t
       .expect(unitMarkers.count).gt(1, 'Service unit markers should be rendered to map')
-      .navigateTo(`http://${server.address}:${server.port}/fi/embed/address/helsinki/Eläintarhantie 3/?units=none`)
+      .navigateTo(`http://${server.address}:${server.port}/fi/embed/address/helsinki/Aurakatu 3/?units=none`)
       .expect(unitMarkers.count).eql(0, 'Service unit markers should be removed from map') 
   });
 
@@ -89,7 +89,7 @@ fixture`Embed view test`
       .expect(unitMarkers.count).gt(0, 'Area service unit markers should be rendered to map')
   });
 
-  test.page`http://${server.address}:${server.port}/fi/embed/area?selected=neighborhood&districts=ocd-division/country:fi/kunta:helsinki/kaupunginosa:011,ocd-division/country:fi/kunta:helsinki/kaupunginosa:014&services=239,813`
+  test.page`http://${server.address}:${server.port}/fi/embed/area?selected=neighborhood&districts=ocd-division/country:fi/kunta:turku/kaupunginosa:001,ocd-division/country:fi/kunta:turku/kaupunginosa:004&services=828322864,828322617`
   ('Embedded area view shows geographical area service units correctly', async (t) => {
     await t
       .expect(unitMarkers.count).gt(1, 'Area geographical service unit markers should be rendered to map')
@@ -97,7 +97,7 @@ fixture`Embed view test`
 
 
   // Division url
-  test.page`http://${server.address}:${server.port}/fi/embed/division/kunta:helsinki/kaupunginosa:029?level=all`
+  test.page`http://${server.address}:${server.port}/fi/embed/division/kunta:turku/kaupunginosa:002?level=all`
   ('Division url shows units and area correctly', async (t) => {
     const district = Selector('.leaflet-pane .leaflet-overlay-pane').find('canvas').exists;
     
