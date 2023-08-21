@@ -1,14 +1,14 @@
-const styles = {
+const styles = (theme) => ({
   input: {
     border: 'none',
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    textAlign: 'right',
+    textAlign: 'end',
+    paddingRight: theme.spacing(0.7),
+    ...theme.typography.body2,
     '&:hover': {
       cursor: 'pointer',
       border: 'none',
     },
   },
-};
+});
 
 export default styles;

@@ -8,6 +8,7 @@ import React, {
   useEffect, useState, useRef, forwardRef,
 } from 'react';
 import { useSelector } from 'react-redux';
+import { CalendarMonth } from '@mui/icons-material';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import {
   endOfMonth,
@@ -116,7 +117,7 @@ const EcoCounterContent = ({
    * @param {string} translationId
    * @returns JSX element
    */
-  const userTypeText = translationId => (
+  const userTypeText = (translationId) => (
     <div className={classes.textContainer}>
       <Typography variant="body2" className={classes.userTypeText}>
         {intl.formatMessage({ id: translationId })}
@@ -476,7 +477,7 @@ const EcoCounterContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {stationSource === 'TR' ? 'Telraam' : renderStationName(stationName)}
         </Typography>
-        <div>
+        <div className={classes.dateContainer}>
           <DatePicker
             selected={selectedDate}
             onChange={(newDate) => changeDate(newDate)}
@@ -484,6 +485,7 @@ const EcoCounterContent = ({
             dateFormat="P"
             customInput={<CustomInput inputRef={inputRef} />}
           />
+          <CalendarMonth />
         </div>
       </div>
       <div className={classes.ecocounterContent}>

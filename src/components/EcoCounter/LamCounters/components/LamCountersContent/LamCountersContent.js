@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { ButtonBase, Typography } from '@mui/material';
+import { CalendarMonth } from '@mui/icons-material';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -395,7 +396,7 @@ const LamCountersContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {stationSource === 'LC' ? formatCounterName(stationName) : stationName}
         </Typography>
-        <div>
+        <div className={classes.dateContainer}>
           <DatePicker
             selected={selectedDate}
             onChange={(newDate) => changeDate(newDate)}
@@ -403,11 +404,12 @@ const LamCountersContent = ({
             dateFormat="P"
             customInput={<CustomInput inputRef={inputRef} />}
           />
+          <CalendarMonth />
         </div>
       </div>
       <div className={classes.lamCounterContent}>
         <div className={classes.lamCounterUserTypes}>
-          {userTypes?.map(userType => (
+          {userTypes?.map((userType) => (
             <div key={userType} className={classes.container}>
               {renderUserTypeIcon(userType)}
               {renderUserTypeText(userType)}

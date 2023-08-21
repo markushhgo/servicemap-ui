@@ -45,10 +45,8 @@ const styles = (theme) => ({
   headerSubtitle: {
     marginBlockStart: theme.spacing(2),
     marginBlockEnd: theme.spacing(0.2),
-    fontWeight: 'bold',
   },
-  headerDate: {
-    marginLeft: 'auto',
+  dateContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
