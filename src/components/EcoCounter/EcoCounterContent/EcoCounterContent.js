@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import { ButtonBase, Typography } from '@mui/material';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, {
   useEffect, useState, useRef, forwardRef,
@@ -20,6 +19,7 @@ import {
   startOfWeek,
   endOfWeek,
   subDays,
+  addWeeks,
 } from 'date-fns';
 import enGB from 'date-fns/locale/en-GB';
 import fi from 'date-fns/locale/fi';
@@ -273,8 +273,11 @@ const EcoCounterContent = ({
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = (weekValue) => moment().day('Monday').year(selectedYear).week(weekValue)
-    .format('DD.MM');
+  const formatWeeks = (weekValue) => {
+    const startOfSelectedWeek = startOfWeek(new Date(selectedYear, 0, 1), { weekStartsOn: 1 });
+    const targetWeekStartDate = addWeeks(startOfSelectedWeek, weekValue - 1);
+    return format(targetWeekStartDate, 'dd.MM', { weekStartsOn: 1 });
+  };
 
   const formatMonths = (monthValue) => {
     switch (monthValue) {
@@ -342,7 +345,7 @@ const EcoCounterContent = ({
         setChannelTotals(countsArr[2]);
       }
     } else if (currentTime === 'day') {
-      return ecoCounterDay?.forEach((el) => {
+      ecoCounterDay?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.day_info.date);
@@ -357,7 +360,7 @@ const EcoCounterContent = ({
         setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
-      return ecoCounterWeek?.forEach((el) => {
+      ecoCounterWeek?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.week_info.week_number);
@@ -370,7 +373,7 @@ const EcoCounterContent = ({
         setEcoCounterLabels((ecoCounterLabels) => [...ecoCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
-      return ecoCounterMonth?.forEach((el) => {
+      ecoCounterMonth?.forEach((el) => {
         const countsArr = [];
         if (el.station === stationId && currentType === 'walking') {
           countsArr.push(el.value_jk, el.value_jp, el.value_jt, el.month_info.month_number);

@@ -399,7 +399,7 @@ const translations = {
   'home.send.feedback': 'Anna palautetta',
   'home.old.link': 'Linkki vanhaan Palvelukarttaan',
   'home.buttons.mobilityPlatformSettings.title': 'Liikenne ja liikkuminen',
-  'home.buttons.mobilityPlatformSettings': 'Katso täältä liikenteeseen ja liikkumiseen liittyvää tietoa.', // TODO verify
+  'home.buttons.mobilityPlatformSettings': 'Katso täältä Turun liikenteeseen ja liikkumiseen liittyvää tietoa.', // TODO verify
 
   // Location
   'location.notFound': 'Sijaintia ei löytynyt',
@@ -439,7 +439,6 @@ const translations = {
   'map.button.sidebar.show': 'Laajenna sivupaneeli',
   'map.button.expand': 'Laajenna',
   'map.button.expand.aria': 'Avaa kartta',
-
 
   // Print
   'print.alert': 'Käytä tulostamiseen työkaluvalikon tulostusta',

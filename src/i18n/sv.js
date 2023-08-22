@@ -361,7 +361,6 @@ const translations = {
   'general.pageTitles.area': 'Områdessida',
   'general.pageLink.area': 'Tjänster i ditt område',
 
-
   // General - Pagination
   'general.pagination.previous': 'Föregående sida',
   'general.pagination.next': 'Följande sida',
@@ -401,7 +400,7 @@ const translations = {
   'home.send.feedback': 'Skicka respons',
   'home.old.link': 'Gamla Servicekartan',
   'home.buttons.mobilityPlatformSettings.title': 'Mobilitet',
-  'home.buttons.mobilityPlatformSettings': 'Turun kaupungin liikkumisnäkymä', // TODO verify
+  'home.buttons.mobilityPlatformSettings': 'Läs information om trafiken och mobilitet i Åbo.', // TODO verify
 
   // Location
   'location.notFound': 'Positionen hittades inte',

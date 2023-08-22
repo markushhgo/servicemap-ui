@@ -7,7 +7,6 @@ import React, {
 import { useSelector } from 'react-redux';
 import { ButtonBase, Typography } from '@mui/material';
 import { CalendarMonth } from '@mui/icons-material';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import {
@@ -20,6 +19,7 @@ import {
   startOfWeek,
   endOfWeek,
   subMonths,
+  addWeeks,
 } from 'date-fns';
 import enGB from 'date-fns/locale/en-GB';
 import fi from 'date-fns/locale/fi';
@@ -208,8 +208,11 @@ const LamCountersContent = ({
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = (weekValue) => moment().day('Monday').year(selectedYear).week(weekValue)
-    .format('DD.MM');
+  const formatWeeks = (weekValue) => {
+    const startOfSelectedWeek = startOfWeek(new Date(selectedYear, 0, 1), { weekStartsOn: 1 });
+    const targetWeekStartDate = addWeeks(startOfSelectedWeek, weekValue - 1);
+    return format(targetWeekStartDate, 'dd.MM', { weekStartsOn: 1 });
+  };
 
   const formatMonths = (monthValue) => {
     switch (monthValue) {
