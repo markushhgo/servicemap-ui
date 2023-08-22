@@ -16,13 +16,15 @@ jobs:
     env:
       PORT: 2048
       SSR_FETCH_TIMEOUT: 2500
-      SERVICEMAP_API: https://testipalvelukartta.turku.fi/api/v2
+      SERVICEMAP_API: https://testipalvelukartta.turku.fi/api
+      SERVICEMAP_API_VERSION: /v2
       FEEDBACK_URL: https://testipalvelukartta.turku.fi/api/open311/
       SERVICE_MAP_URL: https://maptiles.turku.fi/styles/hel-osm-bright/{z}/{x}/{y}
       ACCESSIBLE_MAP_URL: https://maptiles.turku.fi/styles/high-contrast-map-layer/{z}/{x}/{y}
+      DIGITRANSIT_API: https://api.digitransit.fi/routing/v2/routers/waltti/index/graphql
       PRODUCTION_PREFIX: SM
       INITIAL_MAP_POSITION: 60.451799,22.266414
-      CITIES: turku,aura,kaarina,kemiönsaari,koski_tl,kustavi,laitila,lieto,loimaa,marttila,masku,mynämäki,naantali,nousiainen,oripää,paimio,parainen,pyhäranta,pöytyä,raisio,rusko,salo,sauvo,somero,taivassalo,uusikaupunki,vehmaa
+      CITIES: turku,kaarina,naantali,raisio
       OLD_MAP_LINK_EN: https://servicemap.turku.fi/
       OLD_MAP_LINK_SV: https://servicekarta.turku.fi/
       OLD_MAP_LINK_FI: https://palvelukartta.turku.fi/
@@ -37,6 +39,8 @@ jobs:
       THEME_PKG: true
       ECOCOUNTER_API: https://testipalvelukartta.turku.fi/eco-counter
       MOBILITY_PLATFORM_API: https://testipalvelukartta.turku.fi/mobility_data
+      PARKING_SPACES_URL: https://parkkiopas.turku.fi/public/v1/parking_area/
+      PARKING_STATISTICS_URL: https://parkkiopas.turku.fi/public/v1/parking_area_statistics/
 
     strategy:
       matrix:

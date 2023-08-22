@@ -396,7 +396,7 @@ const translations = {
   'home.send.feedback': 'Give feedback',
   'home.old.link': 'Old version of Servicemap',
   'home.buttons.mobilityPlatformSettings.title': 'Mobility map',
-  'home.buttons.mobilityPlatformSettings': 'Read information about the traffic and mobility in Turku.', // TODO verify
+  'home.buttons.mobilityPlatformSettings': 'Read information about the traffic and mobility in Turku.',
 
   // Location
   'location.notFound': 'Location not found',
