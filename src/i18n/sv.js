@@ -688,6 +688,7 @@ const translations = {
   'mobilityPlatform.menu.show.busStops': 'Busshållplatser (zooma in på kartan)',
   'mobilityPlatform.menu.show.underPasses': 'Gångtunnlar',
   'mobilityPlatform.menu.show.overPasses': 'Vägbroar',
+  'mobilityPlatform.menu.show.rentalCarParking': 'Bilpool bilars parkeringsplatser',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -840,6 +841,7 @@ const translations = {
   'mobilityPlatform.info.short.crosswalks': 'Kartan visar övergångsställen inne i Åbo.',
   'mobilityPlatform.info.busStops': 'Kartan visar Åboregionens kollektivtrafiks, Fölis, busshållplatser. Om du kilckar på ikonen kan du se nästa buss som går från hållplatsen. Zooma in på kartan för att se hållplatserna. Datan kommer från gränssnittet som underhålls av Digitransit.',
   'mobilityPlatform.info.underAndOverpasses': 'Kartan visar gångtunnlar och gångbroar som ligger i Åbo stadsområdet.',
+  'mobilityPlatform.info.rentalCarParking': 'Det finns totalt fem parkeringsplatser i Åbo som endast är avsedda för bilpool bilar.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
