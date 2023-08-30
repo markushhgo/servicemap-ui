@@ -95,6 +95,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowBikeServiceStations,
     showCityBikes,
     setShowCityBikes,
+    showCargoBikes,
+    setShowCargoBikes,
     showMarinas,
     setShowMarinas,
     showBoatParking,
@@ -158,6 +160,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowUnderpasses,
     showOverpasses,
     setShowOverpasses,
+    showRentalCarParking,
+    setShowRentalCarParking,
   } = useMobilityPlatformContext();
 
   const locale = useSelector((state) => state.user.locale);
@@ -174,6 +178,19 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       fi: 'https://www.foli.fi/fi/aikataulut-ja-reitit/f%C3%B6lifillarit',
       en: 'https://www.foli.fi/en/f%C3%B6li-bikes',
       sv: 'https://www.foli.fi/sv/fölicyklar',
+    },
+  };
+
+  const cargoBikeInfo = {
+    paragraph1: 'mobilityPlatform.info.cargoBikes.paragraph.1',
+    paragraph2: 'mobilityPlatform.info.cargoBikes.paragraph.2',
+    subtitle: 'mobilityPlatform.info.cargoBikes.subtitle',
+    link: 'mobilityPlatform.info.cargoBikes.link',
+    apiInfo: 'mobilityPlatform.info.cityBikes.apiInfo',
+    url: {
+      fi: 'https://www.turku.fi/tavarapyorat',
+      en: 'https://www.turku.fi/en/cargobikes',
+      sv: 'https://www.turku.fi/sv/lastcyklar',
     },
   };
 
@@ -328,7 +345,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showHullLockableStands, setOpenBicycleSettings);
     checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
     checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
-  }, [showBicycleStands, showHullLockableStands, showBikeServiceStations, showCityBikes]);
+    checkVisibilityValues(showCargoBikes, setOpenBicycleSettings);
+  }, [showBicycleStands, showHullLockableStands, showBikeServiceStations, showCityBikes, showCargoBikes]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -375,6 +393,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showLamCounter, setOpenCarSettings);
     checkVisibilityValues(showParkingMachines, setOpenCarSettings);
     checkVisibilityValues(showPublicParking, setOpenCarSettings);
+    checkVisibilityValues(showRentalCarParking, setOpenCarSettings);
   }, [
     showRentalCars,
     showGasFillingStations,
@@ -386,6 +405,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     showLamCounter,
     showParkingMachines,
     showPublicParking,
+    showRentalCarParking,
   ]);
 
   useEffect(() => {
@@ -657,6 +677,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowCityBikes((current) => !current);
   };
 
+  const cargoBikesToggle = () => {
+    setShowCargoBikes(current => !current);
+  };
+
   const marinasToggle = () => {
     setShowMarinas((current) => !current);
   };
@@ -726,6 +750,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const publicParkingToggle = () => {
     setShowPublicParking((current) => !current);
+  };
+
+  const rentalCarParkingToggle = () => {
+    setShowRentalCarParking(current => !current);
   };
 
   const busStopsToggle = () => {
@@ -1111,6 +1139,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       onChangeValue: cityBikesToggle,
     },
     {
+      type: 'cargoBikes',
+      msgId: 'mobilityPlatform.menu.show.cargoBikes',
+      checkedValue: showCargoBikes,
+      onChangeValue: cargoBikesToggle,
+    },
+    {
       type: 'bikeServiceStations',
       msgId: 'mobilityPlatform.menu.showBikeServiceStations',
       checkedValue: showBikeServiceStations,
@@ -1178,6 +1212,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       msgId: 'mobilityPlatform.menu.show.disabledParking',
       checkedValue: showDisabledParking,
       onChangeValue: disabledParkingToggle,
+    },
+    {
+      type: 'rentalCarParking',
+      msgId: 'mobilityPlatform.menu.show.rentalCarParking',
+      checkedValue: showRentalCarParking,
+      onChangeValue: rentalCarParkingToggle,
     },
     {
       type: 'parkingMachines',
@@ -1464,6 +1504,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       component: <CityBikeInfo bikeInfo={bikeInfo} />,
     },
     {
+      visible: showCargoBikes,
+      type: 'cargoBikesInfo',
+      component: <CityBikeInfo bikeInfo={cargoBikeInfo} />,
+    },
+    {
       visible: showBrushSaltedRoute || showBrushSandedRoute,
       type: 'brushedRoutes',
       component: <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.brushedRoads" />,
@@ -1505,6 +1550,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showDisabledParking,
       type: 'disabledParking',
       component: <InfoTextBox infoText="mobilityPlatform.info.disabledParking" />,
+    },
+    {
+      visible: showRentalCarParking,
+      type: 'rentalCarParkingInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.rentalCarParking" />,
     },
     {
       visible: showParkingMachines,

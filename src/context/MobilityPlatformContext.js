@@ -37,6 +37,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [bicycleRouteName, setBicycleRouteName] = useState(null);
   const [showBikeServiceStations, setShowBikeServiceStations] = useState(false);
   const [showCityBikes, setShowCityBikes] = useState(false);
+  const [showCargoBikes, setShowCargoBikes] = useState(false);
 
   // culture routes
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
@@ -53,6 +54,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showDisabledParking, setShowDisabledParking] = useState(false);
   const [showParkingMachines, setShowParkingMachines] = useState(false);
   const [showPublicParking, setShowPublicParking] = useState(false);
+  const [showRentalCarParking, setShowRentalCarParking] = useState(false);
 
   // boating
   const [showMarinas, setShowMarinas] = useState(false);
@@ -106,6 +108,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showHullLockableStands,
     showBikeServiceStations,
     showCityBikes,
+    showCargoBikes,
     // culture routes
     showCultureRoutes,
     cultureRouteId,
@@ -120,6 +123,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     parkingChargeZones,
     parkingChargeZoneId,
     showDisabledParking,
+    showRentalCarParking,
     // boating
     showMarinas,
     showBoatParking,
@@ -168,6 +172,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowHullLockableStands,
     setShowBikeServiceStations,
     setShowCityBikes,
+    setShowCargoBikes,
     // culture routes
     setShowCultureRoutes,
     setCultureRouteId,
@@ -182,6 +187,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setParkingChargeZones,
     setParkingChargeZoneId,
     setShowDisabledParking,
+    setShowRentalCarParking,
     // boating
     setShowMarinas,
     setShowBoatParking,
