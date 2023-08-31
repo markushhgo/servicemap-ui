@@ -27,13 +27,12 @@ const EcoCounterMarkers = () => {
    * @param {array} data -EcoCounter stations
    * @returns {array} -Filtered data with only items that matched criteria
    */
-  const filterStations = data => data.reduce((acc, curr) => {
+  const filterStations = (data) => data.reduce((acc, curr) => {
     if (curr.sensor_types.includes('jt')) {
       acc.push(curr);
     }
     return acc;
   }, []);
-
 
   const allCounterStations = [].concat(ecoCounterStations, telraamCounterStations);
   const stationsWithPedestrians = filterStations(allCounterStations);
@@ -73,7 +72,7 @@ const EcoCounterMarkers = () => {
    * @returns {JSX element}
    */
   const renderStations = (isValid, data) => (isValid
-    ? data.map(item => (
+    ? data.map((item) => (
       <CounterMarkers key={item.id} counterStation={item}>
         <EcoCounterContent station={item} />
       </CounterMarkers>

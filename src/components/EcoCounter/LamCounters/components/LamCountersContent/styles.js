@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   buttonTransparent: {
     backgroundColor: '#fff',
     border: 'none',
@@ -40,24 +40,16 @@ const styles = theme => ({
     alignItems: 'flex-end',
     borderBottom: '2px solid gray',
     width: '95%',
+    justifyContent: 'space-between',
   },
   headerSubtitle: {
     marginBlockStart: theme.spacing(2),
     marginBlockEnd: theme.spacing(0.2),
-    fontWeight: 'bold',
   },
-  headerDate: {
-    marginLeft: 'auto',
+  dateContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  lamCounterDatePicker: {
-    position: 'absolute',
-    top: '10%',
-    left: '20%',
-    backgroundColor: '#fff',
-    zIndex: 1000,
   },
   lamCounterUserTypes: {
     display: 'flex',

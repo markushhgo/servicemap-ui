@@ -1,13 +1,29 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useState, forwardRef, useRef,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { ButtonBase, Typography } from '@mui/material';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import moment from 'moment';
+import { CalendarMonth } from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import { DayPickerSingleDateController } from 'react-dates';
-import 'react-dates/initialize';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import {
+  endOfMonth,
+  startOfMonth,
+  format,
+  getMonth,
+  getWeek,
+  getYear,
+  startOfWeek,
+  endOfWeek,
+  subMonths,
+  addWeeks,
+} from 'date-fns';
+import enGB from 'date-fns/locale/en-GB';
+import fi from 'date-fns/locale/fi';
+import sv from 'date-fns/locale/sv';
 import { ReactSVG } from 'react-svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
 import {
@@ -18,6 +34,9 @@ import {
   fetchInitialYearData,
 } from '../../../EcoCounterRequests/ecoCounterRequests';
 import LineChart from '../../../LineChart';
+import InputDate from '../../../InputDate';
+
+const CustomInput = forwardRef((props, ref) => <InputDate {...props} ref={ref} />);
 
 const LamCountersContent = ({
   classes, intl, station,
@@ -33,10 +52,10 @@ const LamCountersContent = ({
   const [lamCounterLabels, setLamCounterLabels] = useState([]);
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(moment().clone().subtract(1, 'months').startOf('month'));
+  const [selectedDate, setSelectedDate] = useState(startOfMonth(subMonths(new Date(), 1)));
 
-  const locale = useSelector(state => state.user.locale);
+  const locale = useSelector((state) => state.user.locale);
+  const inputRef = useRef(null);
 
   const stationId = station.id;
   const stationName = station.name;
@@ -102,55 +121,54 @@ const LamCountersContent = ({
   // Set datepicker language
   useEffect(() => {
     if (locale === 'en') {
-      moment.locale('en');
+      registerLocale('en', enGB);
     } else if (locale === 'sv') {
-      moment.locale('sv');
-    } else moment.locale('fi');
+      registerLocale('sv', sv);
+    } else registerLocale('fi', fi);
   }, [locale]);
 
   // API returns empty data if start_week_number parameter is higher number than end_week_number.
   // This will set it to 1 so that weekly graph in January won't be empty in case week number of 1.1 is 52 or 53.
   const checkWeekNumber = (dateValue) => {
-    const start = dateValue.clone().startOf('month').week();
-    const end = dateValue.clone().endOf('month').week();
+    const start = getWeek(startOfMonth(dateValue));
+    const end = getWeek(endOfMonth(dateValue));
     if (start > end) {
       return 1;
     }
     return start;
   };
 
-  // momentjs
   // Initial values that are used to fetch data
-  const currentDate = moment();
-  const lastMonth = currentDate.clone().subtract(1, 'months').endOf('month');
-  const lastMonthFormat = lastMonth.clone().format('YYYY-MM-DD');
-  const initialDateStart = lastMonth.clone().startOf('week').format('YYYY-MM-DD');
-  const initialDateEnd = lastMonth.clone().endOf('week').format('YYYY-MM-DD');
+  const currentDate = new Date();
+  const lastMonth = subMonths(currentDate, 1);
+  const lastMonthFormat = format(lastMonth, 'yyyy-MM-dd');
+  const initialDateStart = format(startOfWeek(lastMonth), 'yyyy-MM-dd');
+  const initialDateEnd = format(endOfWeek(lastMonth), 'yyyy-MM-dd');
   const initialWeekStart = checkWeekNumber(lastMonth);
-  const initialWeekEnd = lastMonth.clone().endOf('month').week();
-  const initialMonth = lastMonth.clone().month() + 1;
-  const initialYear = lastMonth.clone().year();
+  const initialWeekEnd = getWeek(endOfMonth(lastMonth));
+  const initialMonth = getMonth(lastMonth);
+  const initialYear = getYear(lastMonth);
 
   // Values that change based on the datepicker value
-  const selectedDateFormat = selectedDate.clone().format('YYYY-MM-DD');
-  const selectedDateStart = selectedDate.clone().startOf('week').format('YYYY-MM-DD');
-  const selectedDateEnd = selectedDate.clone().endOf('week').format('YYYY-MM-DD');
+  const selectedDateFormat = format(selectedDate, 'yyyy-MM-dd');
+  const selectedDateStart = format(startOfWeek(selectedDate, 1), 'yyyy-MM-dd');
+  const selectedDateEnd = format(endOfWeek(selectedDate, 1), 'yyyy-MM-dd');
   const selectedWeekStart = checkWeekNumber(selectedDate);
-  const selectedWeekEnd = selectedDate.clone().endOf('month').week();
-  let selectedMonth = currentDate.clone().month() + 1;
-  const selectedYear = selectedDate.clone().year();
-
-  // This will show full year if available
-  const checkYear = () => {
-    if (selectedDate.clone().year() < moment().year()) {
-      selectedMonth = 12;
-    }
-  };
+  const selectedWeekEnd = getWeek(endOfMonth(selectedDate));
+  let selectedMonth = getMonth(currentDate);
+  const selectedYear = getYear(selectedDate);
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(moment().clone().subtract(1, 'months').startOf('month'));
+    setSelectedDate(startOfMonth(subMonths(currentDate, 1)));
   }, [stationId]);
+
+  // This will show full year if available
+  const checkYear = () => {
+    if (getYear(selectedDate) < getYear(currentDate)) {
+      selectedMonth = 12;
+    }
+  };
 
   useEffect(() => {
     checkYear();
@@ -190,8 +208,11 @@ const LamCountersContent = ({
   };
 
   // Format weeks and display first day of each week in data
-  const formatWeeks = weekValue => moment().day('Monday').year(selectedYear).week(weekValue)
-    .format('DD.MM');
+  const formatWeeks = (weekValue) => {
+    const startOfSelectedWeek = startOfWeek(new Date(selectedYear, 0, 1), { weekStartsOn: 1 });
+    const targetWeekStartDate = addWeeks(startOfSelectedWeek, weekValue - 1);
+    return format(targetWeekStartDate, 'dd.MM', { weekStartsOn: 1 });
+  };
 
   const formatMonths = (monthValue) => {
     switch (monthValue) {
@@ -234,9 +255,9 @@ const LamCountersContent = ({
 
   // Channel data is set inside this function to avoid duplicate code
   const setAllChannelCounts = (newValue1, newValue2, newValue3) => {
-    setChannel1Counts(channel1Counts => [...channel1Counts, newValue1]);
-    setChannel2Counts(channel2Counts => [...channel2Counts, newValue2]);
-    setChannelTotals(channelTotals => [...channelTotals, newValue3]);
+    setChannel1Counts((channel1Counts) => [...channel1Counts, newValue1]);
+    setChannel2Counts((channel2Counts) => [...channel2Counts, newValue2]);
+    setChannelTotals((channelTotals) => [...channelTotals, newValue3]);
   };
 
   // Sets channel data into React state, so it can be displayed on the chart
@@ -258,10 +279,10 @@ const LamCountersContent = ({
         if (el.station === stationId) {
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.day_info.date);
         }
-        setChannel1Counts(channel1Counts => [...channel1Counts, countsArr[0]]);
-        setChannel2Counts(channel2Counts => [...channel2Counts, countsArr[1]]);
-        setChannelTotals(channelTotals => [...channelTotals, countsArr[2]]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatDates(countsArr[3])]);
+        setChannel1Counts((channel1Counts) => [...channel1Counts, countsArr[0]]);
+        setChannel2Counts((channel2Counts) => [...channel2Counts, countsArr[1]]);
+        setChannelTotals((channelTotals) => [...channelTotals, countsArr[2]]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatDates(countsArr[3])]);
       });
     } else if (currentTime === 'week') {
       lamCounterWeek.forEach((el) => {
@@ -270,7 +291,7 @@ const LamCountersContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.week_info.week_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatWeeks(countsArr[3])]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatWeeks(countsArr[3])]);
       });
     } else if (currentTime === 'month') {
       lamCounterMonth.forEach((el) => {
@@ -279,7 +300,7 @@ const LamCountersContent = ({
           countsArr.push(el.value_ak, el.value_ap, el.value_at, el.month_info.month_number);
         }
         setAllChannelCounts(countsArr[0], countsArr[1], countsArr[2]);
-        setLamCounterLabels(lamCounterLabels => [...lamCounterLabels, formatMonths(countsArr[3])]);
+        setLamCounterLabels((lamCounterLabels) => [...lamCounterLabels, formatMonths(countsArr[3])]);
       });
     }
   };
@@ -370,7 +391,7 @@ const LamCountersContent = ({
    * @param {string} name for example vt1_Kupittaa
    * @returns {string} for example Kupittaa
    */
-  const formatCounterName = name => name?.split('_').splice(1).join(' ');
+  const formatCounterName = (name) => name?.split('_').splice(1).join(' ');
 
   return (
     <>
@@ -378,47 +399,33 @@ const LamCountersContent = ({
         <Typography component="h4" className={classes.headerSubtitle}>
           {stationSource === 'LC' ? formatCounterName(stationName) : stationName}
         </Typography>
-        <div className={classes.headerDate}>
-          <div className={classes.iconContainer}>
-            <DateRangeIcon />
-          </div>
-          <ButtonBase className={classes.buttonTransparent} onClick={() => setIsDatePickerOpen(current => !current)}>
-            <Typography component="h5" className={classes.headerSubtitle}>
-              {selectedDate.clone().format('DD.MM.YYYY')}
-            </Typography>
-          </ButtonBase>
+        <div className={classes.dateContainer}>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(newDate) => changeDate(newDate)}
+            locale={locale}
+            dateFormat="P"
+            customInput={<CustomInput inputRef={inputRef} />}
+          />
+          <CalendarMonth />
         </div>
-        {isDatePickerOpen ? (
-          <div className={classes.lamCounterDatePicker}>
-            <DayPickerSingleDateController
-              date={selectedDate}
-              onDateChange={(newDate) => {
-                changeDate(newDate);
-                setIsDatePickerOpen(false);
-              }}
-              numberOfMonths={1}
-            />
-          </div>
-        ) : null}
       </div>
       <div className={classes.lamCounterContent}>
         <div className={classes.lamCounterUserTypes}>
-          {userTypes?.map(userType => (
+          {userTypes?.map((userType) => (
             <div key={userType} className={classes.container}>
               {renderUserTypeIcon(userType)}
               {renderUserTypeText(userType)}
             </div>
           ))}
         </div>
-        <>
-          {lamCounterYear?.value_at === 0 ? (
-            <div className={classes.yearText}>
-              <Typography component="p" variant="body2">
-                {intl.formatMessage({ id: 'trafficCounter.year.warning.text' }, { value: selectedYear })}
-              </Typography>
-            </div>
-          ) : null}
-        </>
+        {lamCounterYear?.value_at === 0 ? (
+          <div className={classes.yearText}>
+            <Typography component="p" variant="body2">
+              {intl.formatMessage({ id: 'trafficCounter.year.warning.text' }, { value: selectedYear })}
+            </Typography>
+          </div>
+        ) : null}
         <div className={classes.lamCounterChart}>
           <LineChart
             labels={lamCounterLabels}
@@ -437,20 +444,18 @@ const LamCountersContent = ({
           />
         </div>
         <div className={classes.lamCounterSteps}>
-          <>
-            {buttonSteps.map((timing, i) => (
-              <ButtonBase
-                key={timing.step.type}
-                type="button"
-                className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
-                onClick={() => handleClick(timing.step.type, i)}
-              >
-                <Typography variant="body2" className={classes.buttonText}>
-                  {timing.step.text}
-                </Typography>
-              </ButtonBase>
-            ))}
-          </>
+          {buttonSteps.map((timing, i) => (
+            <ButtonBase
+              key={timing.step.type}
+              type="button"
+              className={i === activeStep ? `${classes.buttonActive}` : `${classes.buttonWhite}`}
+              onClick={() => handleClick(timing.step.type, i)}
+            >
+              <Typography variant="body2" className={classes.buttonText}>
+                {timing.step.text}
+              </Typography>
+            </ButtonBase>
+          ))}
         </div>
       </div>
     </>
@@ -458,8 +463,10 @@ const LamCountersContent = ({
 };
 
 LamCountersContent.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func,
+  }).isRequired,
   station: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
