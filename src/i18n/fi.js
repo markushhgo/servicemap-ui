@@ -961,10 +961,11 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku keskusta - Hirvensalo - Kakskerta',
 
   // Ecocounter
-  'ecocounter.hour': 'Tunneittain',
-  'ecocounter.day': 'Päivittäin',
-  'ecocounter.week': 'Viikoittain',
-  'ecocounter.month': 'Kuukausittain',
+  'ecocounter.hour': 'Tunnit',
+  'ecocounter.day': 'Päivät',
+  'ecocounter.week': 'Viikot',
+  'ecocounter.month': 'Kuukaudet',
+  'ecocounter.year': 'Vuodet',
   'ecocounter.walk': 'Kävely',
   'ecocounter.bicycle': 'Pyöräily',
   'ecocounter.car': 'Autoilu',
