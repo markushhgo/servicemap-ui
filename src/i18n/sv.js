@@ -790,7 +790,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Visa fler rutter',
   'mobilityPlatform.menu.list.showLess': 'Visa färre rutter',
   'mobilityPlatform.menu.show.parkingMachines': 'Parkeringsautomater',
-  'mobilityPlatform.menu.show.publicParking': 'Allmänna parkeringsplatser',
+  'mobilityPlatform.menu.show.publicParking': 'Andra parkeringsplatser',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Träningsredskap utomhus',
   'mobilityPlatform.menu.show.crossWalks': 'Övergångställen (zooma in på kartan)',
   'mobilityPlatform.embedded.label.crossWalks': 'Övergångställen (zooma in på kartan för att se övergångställen)',
