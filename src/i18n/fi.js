@@ -791,7 +791,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Näytä lisää reittejä',
   'mobilityPlatform.menu.list.showLess': 'Näytä vähemmän reittejä',
   'mobilityPlatform.menu.show.parkingMachines': 'Pysäköintiautomaatit',
-  'mobilityPlatform.menu.show.publicParking': 'Yleiset pysäköintialueet',
+  'mobilityPlatform.menu.show.publicParking': 'Muut pysäköintialueet',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Ulkokuntoilulaitteet',
   'mobilityPlatform.menu.show.crossWalks': 'Suojatiet (tarkenna karttaa)',
   'mobilityPlatform.embedded.label.crossWalks': 'Suojatiet (tarkenna karttaa lähietäisyydelle, jotta suojatiet näkyvät)',

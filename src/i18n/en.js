@@ -786,7 +786,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Show more routes',
   'mobilityPlatform.menu.list.showLess': 'Show less routes',
   'mobilityPlatform.menu.show.parkingMachines': 'Parking machines',
-  'mobilityPlatform.menu.show.publicParking': 'Public parking spaces',
+  'mobilityPlatform.menu.show.publicParking': 'Other parking spaces',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Outdoor gym devices',
   'mobilityPlatform.menu.show.crossWalks': 'Crosswalks (zoom in on the map)',
   'mobilityPlatform.embedded.label.crossWalks': 'Crosswalks (zoom in on the map to see crosswalks)',
