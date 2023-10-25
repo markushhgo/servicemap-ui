@@ -52,6 +52,19 @@ const FeedbackView = ({
   const email = formFields.email.value;
   const feedback = formFields.feedback.value;
 
+  // If external theme (by Turku) is true, then can be used to select which content to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+
+  const renderFeedbackLink = () => {
+    const links = {
+      fi: config.feedbackAdditionalInfoLink,
+      sv: config.feedbackAdditionalInfoLinkSv,
+      en: config.feedbackAdditionalInfoLinkEn,
+    };
+    return getLocaleText(links);
+  };
+
   const isUnitFeedback = feedbackType === 'unit';
 
   const feedbackTitle = isUnitFeedback && selectedUnit
@@ -296,7 +309,7 @@ const FeedbackView = ({
               type="email"
               className={classes.inputField}
               classes={{ input: `${classes.input} ${formFields.email.error ? classes.errorField : ''}` }}
-              onChange={e => handleChange('email', e)}
+              onChange={(e) => handleChange('email', e)}
               onBlur={() => validateEmailField()}
               inputProps={{
                 maxLength: feedbackMaxLength,
@@ -338,7 +351,7 @@ const FeedbackView = ({
               multiline
               rows="5"
               classes={{ input: `${classes.input} ${formFields.feedback.error ? classes.errorField : ''}` }}
-              onChange={e => handleChange('feedback', e)}
+              onChange={(e) => handleChange('feedback', e)}
               onBlur={() => validateFeedbackField()}
               inputProps={{
                 maxLength: feedbackMaxLength,
@@ -380,8 +393,7 @@ const FeedbackView = ({
             id="FeedbackInfoLink"
             className={classes.link}
             role="link"
-            href={config.feedbackAdditionalInfoLink}
-            onClick={() => window.open(config.feedbackAdditionalInfoLink)}
+            onClick={() => window.open(isExternalTheme ? renderFeedbackLink() : config.feedbackAdditionalInfoLink)}
           >
             <Typography>
               <FormattedMessage id="feedback.additionalInfo.link" />
