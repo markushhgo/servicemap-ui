@@ -134,7 +134,7 @@ const FeedbackView = ({
   };
 
   const handleChange = (type, event) => {
-    if (Object.prototype.hasOwnProperty.call(formFields, type)) {
+    if (Object.hasOwn(formFields, type)) {
       const newFormFields = {
         ...formFields,
       };
@@ -413,9 +413,11 @@ const FeedbackView = ({
 };
 
 FeedbackView.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  classes: PropTypes.shape(PropTypes.string).isRequired,
   navigator: PropTypes.objectOf(PropTypes.any),
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func,
+  }).isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
   selectedUnit: PropTypes.objectOf(PropTypes.any),
 };
