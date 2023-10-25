@@ -23,7 +23,7 @@ import useMobileStatus from '../../utils/isMobile';
 
 const formFieldInitialState = {
   email: {
-    value: null,
+    value: '',
     error: false,
     errorMessageId: null,
   },
