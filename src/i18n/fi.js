@@ -52,7 +52,7 @@ const translations = {
   // Area
   // TODO: clean unused translations
   'area.city.selection.empty': 'Kaupunkivalinnoilla ei löytynyt alueita',
-  'area.searchbar.infoText.address': 'Kirjoita kotiosoitteesi',
+  'area.searchbar.infoText.address': 'Kirjoita osoite',
   'area.searchbar.infoText.optional': '(valinnainen)',
   'area.tab.publicServices': 'Julkisten palveluiden alueet',
   'area.tab.geographical': 'Kaupunginosat ja postinumeroalueet',
@@ -755,7 +755,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Vyöhyke {value}',
   'mobilityPlatform.menu.showBikeServiceStations': 'Pyöränkorjauspisteet',
   'mobilityPlatform.menu.showCityBikes': 'Kaupunkipyöräasemat',
-  'mobilityPlatform.menu.show.cargoBikes': 'Tavarapyörät',
+  'mobilityPlatform.menu.show.cargoBikes': 'Tavarapyöräasemat',
   'mobilityPlatform.menu.show.marinas': 'Venesatamat',
   'mobilityPlatform.menu.show.boatParking': 'Veneparkit',
   'mobilityPlatform.menu.show.guestHarbour': 'Vierasvenesatama',
@@ -768,7 +768,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterProviders': 'Sähköpotkulautaoperaattorit',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde -sähköpotkulaudat (tarkenna karttaa)',
   'mobilityPlatform.menu.scooters.list.info': 'Voit listan avulla näyttää valitun operaattorin vapaat sähköpotkulaudat kartalla.',
-  'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti',
+  'mobilityPlatform.menu.show.disabledParking': 'Liikkumisesteisen pysäköinti julkisissa kiinteistöissä',
   'mobilityPlatform.menu.loadingPlaces.show': 'Kuormauspaikat',
   'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Kunnossapitotyöt',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 tunti',
@@ -791,7 +791,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Näytä lisää reittejä',
   'mobilityPlatform.menu.list.showLess': 'Näytä vähemmän reittejä',
   'mobilityPlatform.menu.show.parkingMachines': 'Pysäköintiautomaatit',
-  'mobilityPlatform.menu.show.publicParking': 'Yleiset pysäköintialueet',
+  'mobilityPlatform.menu.show.publicParking': 'Muut pysäköintialueet',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Ulkokuntoilulaitteet',
   'mobilityPlatform.menu.show.crossWalks': 'Suojatiet (tarkenna karttaa)',
   'mobilityPlatform.embedded.label.crossWalks': 'Suojatiet (tarkenna karttaa lähietäisyydelle, jotta suojatiet näkyvät)',
@@ -799,6 +799,8 @@ const translations = {
   'mobilityPlatform.menu.show.underPasses': 'Alikulkuväylät',
   'mobilityPlatform.menu.show.overPasses': 'Ylikulkusillat',
   'mobilityPlatform.menu.show.rentalCarParking': 'Yhteiskäyttöautojen pysäköintipaikat',
+  'mobilityPlatform.menu.show.publicBenches': 'Yleiset penkit (tarkenna karttaa)',
+  'mobilityPlatform.embedded.label.publicBenches': 'Yleiset penkit (tarkenna karttaa lähietäisyydelle, jotta penkit näkyvät)',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -942,6 +944,7 @@ const translations = {
   'mobilityPlatform.info.busStops': 'Kartalla näkyvät Turun seudun joukkoliikenteen Fölin linja-autopysäkit. Kuvaketta painamalle voi nähdä seuraavat pysäkiltä lähtevät vuorot. Tarkenna karttaa lähietäisyydelle, jotta linja-autopysäkit näkyvät. Tiedot tulevat Digitransitin ylläpitämästä rajapinnasta.',
   'mobilityPlatform.info.underAndOverpasses': 'Kartalla näkyvät Turun alueella sijaitsevat alikulkutunnelit ja ylikulkukuväylät.',
   'mobilityPlatform.info.rentalCarParking': 'Turussa on yhteensä viisi vain yhteiskäyttöautoille tarkoitettua pysäköintipaikkaa.',
+  'mobilityPlatform.info.publicBenches': 'Kartalla näkyvät Turussa sijaitsevat yleiset penkit.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
@@ -961,10 +964,11 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku keskusta - Hirvensalo - Kakskerta',
 
   // Ecocounter
-  'ecocounter.hour': 'Tunneittain',
-  'ecocounter.day': 'Päivittäin',
-  'ecocounter.week': 'Viikoittain',
-  'ecocounter.month': 'Kuukausittain',
+  'ecocounter.hour': 'Tunnit',
+  'ecocounter.day': 'Päivät',
+  'ecocounter.week': 'Viikot',
+  'ecocounter.month': 'Kuukaudet',
+  'ecocounter.year': 'Vuodet',
   'ecocounter.walk': 'Kävely',
   'ecocounter.bicycle': 'Pyöräily',
   'ecocounter.car': 'Autoilu',
@@ -983,6 +987,7 @@ const translations = {
   'ecocounter.oct': 'Loka',
   'ecocounter.nov': 'Marras',
   'ecocounter.dec': 'Joulu',
+  'ecocounter.station.active.period': 'Laskentapiste oli käytössä {value1} - {value2}.',
   'trafficCounter.year.warning.text': 'Vuoden {value} lukuja ei ole saatavilla.',
 };
 

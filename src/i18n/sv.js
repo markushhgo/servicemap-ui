@@ -52,7 +52,7 @@ const translations = {
   // Area
   // TODO: clean unused translations
   'area.city.selection.empty': 'Inga områden hittades i stadsvalet',
-  'area.searchbar.infoText.address': 'Skriv din hemadress',
+  'area.searchbar.infoText.address': 'Skriv en adress',
   'area.searchbar.infoText.optional': '(valfri)',
   'area.tab.publicServices': 'Områden för offentliga tjänster',
   'area.tab.geographical': 'Stadsdelar och postnummerområden',
@@ -754,7 +754,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zon {value}',
   'mobilityPlatform.menu.showBikeServiceStations': 'Cykelservicestationer',
   'mobilityPlatform.menu.showCityBikes': 'Stadscykelstationer',
-  'mobilityPlatform.menu.show.cargoBikes': 'Lastcyklarna',
+  'mobilityPlatform.menu.show.cargoBikes': 'Lastcykelstationer',
   'mobilityPlatform.menu.show.marinas': 'Båtplatser',
   'mobilityPlatform.menu.show.boatParking': 'Båtparkering',
   'mobilityPlatform.menu.show.guestHarbour': 'Gästhamn',
@@ -767,7 +767,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterProviders': 'Elsparkcyklarföretagen',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde elsparkcyklar (zooma in på kartan)',
   'mobilityPlatform.menu.scooters.list.info': 'Du kan visa tillgängliga elsparkcyklar på kartan genom att välja en företag från listan.',
-  'mobilityPlatform.menu.show.disabledParking': 'Parkering för rörelsehindrade',
+  'mobilityPlatform.menu.show.disabledParking': 'Handikapparkering i offentliga byggnader',
   'mobilityPlatform.menu.loadingPlaces.show': 'Lastningsplatser',
   'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Underhållsarbeten',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 timme',
@@ -790,7 +790,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Visa fler rutter',
   'mobilityPlatform.menu.list.showLess': 'Visa färre rutter',
   'mobilityPlatform.menu.show.parkingMachines': 'Parkeringsautomater',
-  'mobilityPlatform.menu.show.publicParking': 'Allmänna parkeringsplatser',
+  'mobilityPlatform.menu.show.publicParking': 'Andra parkeringsplatser',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Träningsredskap utomhus',
   'mobilityPlatform.menu.show.crossWalks': 'Övergångställen (zooma in på kartan)',
   'mobilityPlatform.embedded.label.crossWalks': 'Övergångställen (zooma in på kartan för att se övergångställen)',
@@ -798,6 +798,8 @@ const translations = {
   'mobilityPlatform.menu.show.underPasses': 'Gångtunnlar',
   'mobilityPlatform.menu.show.overPasses': 'Vägbroar',
   'mobilityPlatform.menu.show.rentalCarParking': 'Bilpool bilars parkeringsplatser',
+  'mobilityPlatform.menu.show.publicBenches': 'Allmänna bänkar (zooma in på kartan)',
+  'mobilityPlatform.embedded.label.publicBenches': 'Allmänna bänkar (zooma in på kartan för att se bänkar)',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -951,6 +953,7 @@ const translations = {
   'mobilityPlatform.info.busStops': 'Kartan visar Åboregionens kollektivtrafiks, Fölis, busshållplatser. Om du kilckar på ikonen kan du se nästa buss som går från hållplatsen. Zooma in på kartan för att se hållplatserna. Datan kommer från gränssnittet som underhålls av Digitransit.',
   'mobilityPlatform.info.underAndOverpasses': 'Kartan visar gångtunnlar och gångbroar som ligger i Åbo stadsområdet.',
   'mobilityPlatform.info.rentalCarParking': 'Det finns totalt fem parkeringsplatser i Åbo som endast är avsedda för bilpool bilar.',
+  'mobilityPlatform.info.publicBenches': 'Kartan visar allmänna bänkar i Åbo.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
@@ -970,10 +973,11 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Åbo centrum - Hirvensalo - Kakskerta',
 
   // Ecocounter
-  'ecocounter.hour': 'Varje timme',
-  'ecocounter.day': 'Dagligen',
-  'ecocounter.week': 'Varje vecka',
-  'ecocounter.month': 'Månatligen',
+  'ecocounter.hour': 'Timmar',
+  'ecocounter.day': 'Dagar',
+  'ecocounter.week': 'Veckor',
+  'ecocounter.month': 'Månader',
+  'ecocounter.year': 'År',
   'ecocounter.walk': 'Promenad',
   'ecocounter.bicycle': 'Cykling',
   'ecocounter.car': 'Bilåkning',
@@ -992,6 +996,7 @@ const translations = {
   'ecocounter.oct': 'Oktober',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
+  'ecocounter.station.active.period': 'Beräkningspunkt var i bruk {value1} - {value2}.',
   'trafficCounter.year.warning.text': 'Siffror från år {value} är inte tillgängliga.',
 };
 

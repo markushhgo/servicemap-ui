@@ -52,7 +52,7 @@ const translations = {
   // Area
   // TODO: clean unused translations
   'area.city.selection.empty': 'No areas were found with city selections',
-  'area.searchbar.infoText.address': 'Write your home address',
+  'area.searchbar.infoText.address': 'Write an address',
   'area.searchbar.infoText.optional': '(optional)',
   'area.tab.publicServices': 'Public service areas',
   'area.tab.geographical': 'Neighbourhoods and postal code areas',
@@ -750,7 +750,7 @@ const translations = {
   'mobilityPlatform.menu.parkingChargeZones.subtitle': 'Zone {value}',
   'mobilityPlatform.menu.showBikeServiceStations': 'Bicycle service stations',
   'mobilityPlatform.menu.showCityBikes': 'City bike stations',
-  'mobilityPlatform.menu.show.cargoBikes': 'Cargo bikes',
+  'mobilityPlatform.menu.show.cargoBikes': 'Cargo bike stations',
   'mobilityPlatform.menu.show.marinas': 'Marina berths',
   'mobilityPlatform.menu.show.boatParking': 'Boat parking',
   'mobilityPlatform.menu.show.guestHarbour': 'Guest harbour',
@@ -763,7 +763,7 @@ const translations = {
   'mobilityPlatform.menu.show.scooterProviders': 'Electric scooter operators',
   'mobilityPlatform.menu.show.scootersRyde': 'Ryde scooters (zoom in on the map)',
   'mobilityPlatform.menu.scooters.list.info': 'You can view available electric scooters on the map by selecting an operator from the list.',
-  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled',
+  'mobilityPlatform.menu.show.disabledParking': 'Parking for disabled in public properties',
   'mobilityPlatform.menu.loadingPlaces.show': 'Loading places',
   'mobilityPlatform.menu.show.streetMaintenanceWorks': 'Maintenance works',
   'mobilityPlatform.menu.streetMaintenance.1hour': '1 hour',
@@ -786,7 +786,7 @@ const translations = {
   'mobilityPlatform.menu.list.showMore': 'Show more routes',
   'mobilityPlatform.menu.list.showLess': 'Show less routes',
   'mobilityPlatform.menu.show.parkingMachines': 'Parking machines',
-  'mobilityPlatform.menu.show.publicParking': 'Public parking spaces',
+  'mobilityPlatform.menu.show.publicParking': 'Other parking spaces',
   'mobilityPlatform.menu.show.outdoorGymDevices': 'Outdoor gym devices',
   'mobilityPlatform.menu.show.crossWalks': 'Crosswalks (zoom in on the map)',
   'mobilityPlatform.embedded.label.crossWalks': 'Crosswalks (zoom in on the map to see crosswalks)',
@@ -794,6 +794,8 @@ const translations = {
   'mobilityPlatform.menu.show.underPasses': 'Underpasses',
   'mobilityPlatform.menu.show.overPasses': 'Overpasses',
   'mobilityPlatform.menu.show.rentalCarParking': 'Parking places for shared use cars',
+  'mobilityPlatform.menu.show.publicBenches': 'Public benches (zoom in on the map)',
+  'mobilityPlatform.embedded.label.publicBenches': 'Public benches (zoom in on the map to see benches)',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -947,6 +949,7 @@ const translations = {
   'mobilityPlatform.info.busStops': 'The map shows bus stops by Turku region traffic provider Föli. By clicking the icon on the map, you can see next few departure times from the selected bus stop. Zoom in the map to see the stops. The Map data comes from the interface provided by Digitransit.',
   'mobilityPlatform.info.underAndOverpasses': 'The map shows underpasses and overpasses located within the city of Turku.',
   'mobilityPlatform.info.rentalCarParking': 'There are total of five parking places in Turku intended only for shared use cars.',
+  'mobilityPlatform.info.publicBenches': 'The map shows public benches that are located in the city of Turku.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
@@ -966,10 +969,11 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku City Center - Hirvensalo - Kakskerta',
 
   // Ecocounter
-  'ecocounter.hour': 'Hourly',
-  'ecocounter.day': 'Daily',
-  'ecocounter.week': 'Weekly',
-  'ecocounter.month': 'Monthly',
+  'ecocounter.hour': 'Hours',
+  'ecocounter.day': 'Days',
+  'ecocounter.week': 'Weeks',
+  'ecocounter.month': 'Months',
+  'ecocounter.year': 'Years',
   'ecocounter.walk': 'Walking',
   'ecocounter.bicycle': 'Cycling',
   'ecocounter.car': 'Driving',
@@ -988,6 +992,7 @@ const translations = {
   'ecocounter.oct': 'October',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
+  'ecocounter.station.active.period': 'Measurement point was in use {value1} - {value2}.',
   'trafficCounter.year.warning.text': 'Numbers from the year {value} are not available.',
 };
 

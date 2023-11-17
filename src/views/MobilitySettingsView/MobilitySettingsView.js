@@ -160,6 +160,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowOverpasses,
     showRentalCarParking,
     setShowRentalCarParking,
+    showPublicBenches,
+    setShowPublicBenches,
   } = useMobilityPlatformContext();
 
   const locale = useSelector((state) => state.user.locale);
@@ -328,7 +330,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showCrossWalks, setOpenWalkSettings);
     checkVisibilityValues(showUnderpasses, setOpenWalkSettings);
     checkVisibilityValues(showOverpasses, setOpenWalkSettings);
-  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks, showUnderpasses, showOverpasses]);
+    checkVisibilityValues(showPublicBenches, setOpenWalkSettings);
+  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks, showUnderpasses, showOverpasses, showPublicBenches]);
 
   useEffect(() => {
     checkVisibilityValues(showTrafficCounter.walking, setOpenWalkSettings);
@@ -615,14 +618,25 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   ]);
 
   /**
+   * General function to update object values into state
+   * @param {*string} key
+   * @param {*Object} state
+   * @param {*function} setState
+   */
+  const toggleObjectValue = (key, state, setState) => {
+    setState((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+  };
+
+  /**
    * Toggle function for traffic counter stations that contain data about pedestrians
    * @var {Object} showTrafficCounter
    * @returns {Object} showTrafficCounter
    */
   const trafficCounterStationsToggle = () => {
-    if (!showTrafficCounter.walking) {
-      setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, walking: true }));
-    } else setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, walking: false }));
+    toggleObjectValue('walking', showTrafficCounter, setShowTrafficCounter);
   };
 
   /**
@@ -631,9 +645,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
    * @returns {Object} showTrafficCounter
    */
   const trafficCounterStationsToggleCycling = () => {
-    if (!showTrafficCounter.cycling) {
-      setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, cycling: true }));
-    } else setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, cycling: false }));
+    toggleObjectValue('cycling', showTrafficCounter, setShowTrafficCounter);
   };
 
   /**
@@ -642,9 +654,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
    * @returns {Object} showTrafficCounter
    */
   const trafficCounterStationsToggleDriving = () => {
-    if (!showTrafficCounter.driving) {
-      setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, driving: true }));
-    } else setShowTrafficCounter((showTrafficCounter) => ({ ...showTrafficCounter, driving: false }));
+    toggleObjectValue('driving', showTrafficCounter, setShowTrafficCounter);
   };
 
   /**
@@ -702,6 +712,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const publicToiletsToggle = () => {
     setShowPublicToilets((current) => !current);
+  };
+
+  const publicBenchesToggle = () => {
+    setShowPublicBenches((current) => !current);
   };
 
   const noParkingToggle = () => {
@@ -1095,6 +1109,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       onChangeValue: publicToiletsToggle,
     },
     {
+      type: 'publicBenches',
+      msgId: 'mobilityPlatform.menu.show.publicBenches',
+      checkedValue: showPublicBenches,
+      onChangeValue: publicBenchesToggle,
+    },
+    {
       type: 'cultureRoutes',
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
@@ -1476,6 +1496,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showPublicToilets,
       type: 'publicRestroomsInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.publicToilets" />,
+    },
+    {
+      visible: showPublicBenches,
+      type: 'publicBenchesInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.publicBenches" />,
     },
     {
       visible: openMarkedTrailsList,
