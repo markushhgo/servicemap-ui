@@ -732,6 +732,7 @@ const translations = {
   'mobilityPlatform.menu.title.scooter': 'Electric scooters',
   'mobilityPlatform.menu.title.streetMaintenance': 'Street maintenance',
   'mobilityPlatform.menu.title.public.transport': 'Public transport',
+  'mobilityPlatform.menu.title.roadworksMain': 'Exceptional situations',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
   'mobilityPlatform.menu.showEcoCounter': 'Measurement point',
@@ -796,6 +797,7 @@ const translations = {
   'mobilityPlatform.menu.show.rentalCarParking': 'Parking places for shared use cars',
   'mobilityPlatform.menu.show.publicBenches': 'Public benches (zoom in on the map)',
   'mobilityPlatform.embedded.label.publicBenches': 'Public benches (zoom in on the map to see benches)',
+  'mobilityPlatform.menu.show.roadworks': 'Roadworks',
   'mobilityPlatform.menu.show.railwayStations': 'Railway stations',
 
   // Content
@@ -955,6 +957,7 @@ const translations = {
   'mobilityPlatform.info.underAndOverpasses': 'The map shows underpasses and overpasses located within the city of Turku.',
   'mobilityPlatform.info.rentalCarParking': 'There are total of five parking places in Turku intended only for shared use cars.',
   'mobilityPlatform.info.publicBenches': 'The map shows public benches that are located in the city of Turku.',
+  'mobilityPlatform.info.roadworks': 'The map shows road construction sites in the Turku area, which cause exceptional situations for traffic and mobility. Reduced speed limits apply in marked areas and, if necessary, traffic can be diverted. The data comes from the interface provided by Digitraffic.',
   'mobilityPlatform.info.railwayStations': 'The map shows Turku railway stations and train timetables for the next 3 hours. Train traffic is divided into trains departing from and arriving at the station. If the train is delayed, the estimated time of arrival and the old scheduled time of arrival are also shown in parentheses. The data comes from the interface provided by Digitraffic.',
 
   // Bicycle routes

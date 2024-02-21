@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import { ReactSVG } from 'react-svg';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { WarningAmber } from '@mui/icons-material';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -45,6 +46,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [openScooterSettings, setOpenScooterSettings] = useState(false);
   const [openStreetMaintenanceSettings, setOpenStreetMaintenanceSettings] = useState(false);
   const [openPublicTransportSettings, setOpenPublicTransportSettings] = useState(false);
+  const [openRoadworkSettings, setOpenRoadworkSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
   const [cultureRouteList, setCultureRouteList] = useState([]);
   const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
@@ -162,6 +164,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowRentalCarParking,
     showPublicBenches,
     setShowPublicBenches,
+    showRoadworks,
+    setShowRoadworks,
     showRailwayStations,
     setShowRailwayStations,
   } = useMobilityPlatformContext();
@@ -311,6 +315,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       setOpenBoatingSettings(true);
     } else if (location.pathname.includes('snowplows')) {
       setOpenStreetMaintenanceSettings(true);
+    } else if (location.pathname.includes('roadworks')) {
+      setOpenRoadworkSettings(true);
     }
   }, [location]);
 
@@ -595,6 +601,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     }
   };
 
+  const roadworkSettingsToggle = () => {
+    setOpenRoadworkSettings(current => !current);
+    if (!openRoadworkSettings) {
+      navigator.push('mobilityPlatform', 'roadworks');
+      setPageTitle(intl.formatMessage({ id: 'mobilityPlatform.menu.title.roadworksMain' }));
+    }
+  };
+
   /** Reset page title if opened sections have been closed and page title is not initial value */
   useEffect(() => {
     if (
@@ -605,6 +619,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       && !openScooterSettings
       && !openStreetMaintenanceSettings
       && !openPublicTransportSettings
+      && !openRoadworkSettings
       && pageTitle
     ) {
       setPageTitle(null);
@@ -617,6 +632,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     openScooterSettings,
     openStreetMaintenanceSettings,
     openPublicTransportSettings,
+    openRoadworkSettings,
     pageTitle,
   ]);
 
@@ -786,6 +802,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const railwayStationsToggle = () => {
     setShowRailwayStations(current => !current);
+  };
+
+  const roadWorksToggle = () => {
+    setShowRoadworks(current => !current);
   };
 
   const cultureRouteListToggle = () => {
@@ -1360,6 +1380,15 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     },
   ];
 
+  const roadworksControlTypes = [
+    {
+      type: 'roadworks',
+      msgId: 'mobilityPlatform.menu.show.roadworks',
+      checkedValue: showRoadworks,
+      onChangeValue: roadWorksToggle,
+    },
+  ];
+
   /**
    * @param {Array} inputData
    * @return {JSX Element}
@@ -1699,6 +1728,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     },
   ];
 
+  const infoTextsRoadworks = [
+    {
+      visible: showRoadworks,
+      type: 'roadworksInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.roadworks" />,
+    },
+  ];
+
   /** Render infotext(s) if visible value is true
    * @param {Array} textData
    * @return {Element}
@@ -1820,6 +1857,13 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     </>
   );
 
+  const renderRoadworkSettings = () => (
+    <>
+      {renderSettings(openRoadworkSettings, roadworksControlTypes)}
+      {renderInfoTexts(infoTextsRoadworks)}
+    </>
+  );
+
   const categories = [
     {
       component: renderWalkSettings(),
@@ -1869,6 +1913,13 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       icon: <ReactSVG src={iconSnowplow} className={classes.icon} />,
       onClick: streetMaintenanceSettingsToggle,
       setState: openStreetMaintenanceSettings,
+    },
+    {
+      component: renderRoadworkSettings(),
+      title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.roadworksMain' }),
+      icon: <WarningAmber fontSize="large" sx={{ padding: '0.6rem' }} />,
+      onClick: roadworkSettingsToggle,
+      setState: openRoadworkSettings,
     },
   ];
 

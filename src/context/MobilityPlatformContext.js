@@ -98,6 +98,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showOverpasses, setShowOverpasses] = useState(false);
   const [showUnderpasses, setShowUnderpasses] = useState(false);
   const [showPublicBenches, setShowPublicBenches] = useState(false);
+  const [showRoadworks, setShowRoadworks] = useState(false);
 
   const getters = {
     openMobilityPlatform,
@@ -163,6 +164,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showOverpasses,
     showUnderpasses,
     showPublicBenches,
+    showRoadworks,
   };
 
   const setters = {
@@ -229,6 +231,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowUnderpasses,
     setShowOverpasses,
     setShowPublicBenches,
+    setShowRoadworks,
   };
 
   const contextValues = { ...getters, ...setters };

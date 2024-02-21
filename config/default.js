@@ -282,5 +282,6 @@ export default {
   "mobilityPlatformAPI": settings.MOBILITY_PLATFORM_API,
   "parkingSpacesURL": settings.PARKING_SPACES_URL,
   "parkingStatisticsURL": settings.PARKING_STATISTICS_URL,
+  "roadworksAPI": settings.ROADWORKS_API,
   "railwaysAPI": settings.RAILWAYS_API,
 }
