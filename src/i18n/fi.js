@@ -737,6 +737,7 @@ const translations = {
   'mobilityPlatform.menu.title.scooter': 'Sähköpotkulaudat',
   'mobilityPlatform.menu.title.streetMaintenance': 'Katujen kunnossapito',
   'mobilityPlatform.menu.title.public.transport': 'Joukkoliikenne',
+  'mobilityPlatform.menu.title.airMonitoring': 'Sää ja ilmanlaatu',
   'mobilityPlatform.menu.title.roadworksMain': 'Poikkeustilanteet',
   'mobilityPlatform.menu.showChargingStations': 'Sähkölatauspisteet',
   'mobilityPlatform.menu.showGasFillingStations': 'Kaasutankkausasemat',
@@ -804,6 +805,7 @@ const translations = {
   'mobilityPlatform.embedded.label.publicBenches': 'Yleiset penkit (tarkenna karttaa lähietäisyydelle, jotta penkit näkyvät)',
   'mobilityPlatform.menu.show.roadworks': 'Tietyömaat',
   'mobilityPlatform.menu.show.railwayStations': 'Rautatieasemat',
+  'mobilityPlatform.menu.show.airMonitoring': 'Ilmanlaadun mittauspisteet',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -954,6 +956,10 @@ const translations = {
   'mobilityPlatform.info.publicBenches': 'Kartalla näkyvät Turussa sijaitsevat yleiset penkit.',
   'mobilityPlatform.info.roadworks': 'Kartalla näkyvät Turun alueen tietyömaat, joista aiheutuu liikenteelle ja liikkumiselle poikkeustilanteita. Merkityillä alueilla on voimassa alennetut nopeusrajoitukset ja tarvittaessa liikennettä voidaan ohjata. Tiedot tulevat Digitrafficin rajapinnasta.',
   'mobilityPlatform.info.railwayStations': 'Kartalla näkyvät Turun rautatieasemat ja juna-aikataulut seuraavan 3 tunnin ajalta. Junavuorot on jaettu asemalta lähteviin ja sinne saapuviin juniin. Jos juna on myöhässä, näytetään myös arvioitu saapumisaika ja vanha suunniteltu saapumisaika näkyy suluissa. Tiedot tulevat Digitrafficin rajapinnasta.',
+  'mobilityPlatform.info.airMonitoring.paragraph.1': 'Ilmansaastetiedot näytetään kullekin mittausasemalle tunnin välein laskettavana indeksinä, ja se kattaa kaikki ks. mittausasemalla mitatut saasteet. Ilmanlaatu luokitellaan viiteen luokkaan: vihreä=hyvä, keltainen=tyydyttävä, oranssi=välttävä, punainen=huono, violetti=erittäin huono.',
+  'mobilityPlatform.info.airMonitoring.paragraph.2': 'Laskennassa otetaan huomioon rikkidioksidi (SO2), typpidioksidi (NO2), hengitettävät hiukkaset (PM10), pienhiukkaset (PM2,5) sekä otsoni (O3). Kun ilmanlaatu on huono tai erittäin huono, terveysvaikutukset ovat mahdollisia herkillä ihmisillä. Ilmanlaatua heikentävät katupöly, liikenteen päästöt, puun pienpoltto, energiantuotanto sekä ajoittaiset kaukokulkeumat.',
+  'mobilityPlatform.info.airMonitoring.paragraph.3': 'Palvelukartan ilmanlaatutiedot saadaan Turun seudun ilmansuojelun yhteistyöryhmältä.',
+  'mobilityPlatform.info.airMonitoring.link': 'Lisätietoja',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
@@ -971,6 +977,30 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail10': 'Turku keskusta - Varissuo - Piikkiö',
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail11': 'Turku keskusta - Kaarina keskusta - Piikkiö - Paimio',
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku keskusta - Hirvensalo - Kakskerta',
+
+  // Air monitoring
+  'mobilityPlatform.airMonitoring.airIndex': 'Ilmanlaatu',
+  'mobilityPlatform.airMonitoring.chart.week': 'Viikko',
+  'mobilityPlatform.airMonitoring.quality.subTitle': 'Pitoisuudet:',
+  'mobilityPlatform.airMonitoring.AQINDEX_PT1H_avg': 'Ilmanlaatuindeksi',
+  'mobilityPlatform.airMonitoring.SO2_PT1H_avg': 'Rikkidioksidi',
+  'mobilityPlatform.airMonitoring.NO2_PT1H_avg': 'Typpidioksi',
+  'mobilityPlatform.airMonitoring.PM10_PT1H_avg': 'Hengitettävät hiukkaset',
+  'mobilityPlatform.airMonitoring.PM25_PT1H_avg': 'Pienhiukkaset',
+  'mobilityPlatform.airMonitoring.O3_PT1H_avg': 'Otsoni',
+  'mobilityPlatform.airMonitoring.quality.good': 'Ilmanlaatu on hyvä.',
+  'mobilityPlatform.airMonitoring.quality.satisfactory': 'Ilmanlaatu on tyydyttävä.',
+  'mobilityPlatform.airMonitoring.quality.fair': 'Ilmanlaatu on välttävä.',
+  'mobilityPlatform.airMonitoring.quality.poor': 'Ilmanlaatu on huono.',
+  'mobilityPlatform.airMonitoring.quality.hazardous': 'Ilmanlaatu on erittäin huono.',
+  'mobilityPlatform.airMonitoring.text.date': 'Päivämäärä: {value}',
+  'mobilityPlatform.airMonitoring.text.week': 'Viikko: {value}',
+  'mobilityPlatform.airMonitoring.text.month': 'Kuukausi: {value}',
+  'mobilityPlatform.airMonitoring.text.year': 'Vuosi: {value}',
+  'mobilityPlatform.airMonitoring.button.day': 'Päivä',
+  'mobilityPlatform.airMonitoring.button.week': 'Viikko',
+  'mobilityPlatform.airMonitoring.button.month': 'Kuukausi',
+  'mobilityPlatform.airMonitoring.button.year': 'Vuosi',
 
   // Ecocounter
   'ecocounter.hour': 'Tunnit',

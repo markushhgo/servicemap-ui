@@ -36,6 +36,7 @@ import RentalCarParking from '../../components/MobilityPlatform/Parking/RentalCa
 import PublicBenches from '../../components/MobilityPlatform/PublicBenches';
 import Roadworks from '../../components/MobilityPlatform/Roadworks';
 import RailwayStations from '../../components/MobilityPlatform/RailwayStations';
+import AirMonitoring from '../../components/MobilityPlatform/EnvironmentObservations/AirMonitoring';
 
 const MobilityPlatformMapView = ({ mapObject }) => (
   <>
@@ -75,6 +76,7 @@ const MobilityPlatformMapView = ({ mapObject }) => (
     <PublicBenches mapObject={mapObject} />
     <Roadworks />
     <RailwayStations />
+    <AirMonitoring />
   </>
 );
 

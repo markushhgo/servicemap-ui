@@ -732,6 +732,7 @@ const translations = {
   'mobilityPlatform.menu.title.scooter': 'Electric scooters',
   'mobilityPlatform.menu.title.streetMaintenance': 'Street maintenance',
   'mobilityPlatform.menu.title.public.transport': 'Public transport',
+  'mobilityPlatform.menu.title.airMonitoring': 'Weather and air quality',
   'mobilityPlatform.menu.title.roadworksMain': 'Exceptional situations',
   'mobilityPlatform.menu.showChargingStations': 'Car e-charging points',
   'mobilityPlatform.menu.showGasFillingStations': 'Gas filling stations',
@@ -799,6 +800,7 @@ const translations = {
   'mobilityPlatform.embedded.label.publicBenches': 'Public benches (zoom in on the map to see benches)',
   'mobilityPlatform.menu.show.roadworks': 'Roadworks',
   'mobilityPlatform.menu.show.railwayStations': 'Railway stations',
+  'mobilityPlatform.menu.show.airMonitoring': 'Air quality stations',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -959,6 +961,10 @@ const translations = {
   'mobilityPlatform.info.publicBenches': 'The map shows public benches that are located in the city of Turku.',
   'mobilityPlatform.info.roadworks': 'The map shows road construction sites in the Turku area, which cause exceptional situations for traffic and mobility. Reduced speed limits apply in marked areas and, if necessary, traffic can be diverted. The data comes from the interface provided by Digitraffic.',
   'mobilityPlatform.info.railwayStations': 'The map shows Turku railway stations and train timetables for the next 3 hours. Train traffic is divided into trains departing from and arriving at the station. If the train is delayed, the estimated time of arrival and the old scheduled time of arrival are also shown in parentheses. The data comes from the interface provided by Digitraffic.',
+  'mobilityPlatform.info.airMonitoring.paragraph.1': 'The air quality data is displayed for each measurement station as an hourly calculated index, covering all pollutants measured at the respective station. Air quality is classified into five categories: green = good, yellow = satisfactory, orange = moderate, red = poor, violet = very poor.',
+  'mobilityPlatform.info.airMonitoring.paragraph.2': 'The calculation takes into account sulfur dioxide (SO2), nitrogen dioxide (NO2), inhalable particles (PM10), fine particles (PM2.5), and ozone (O3). When air quality is poor or very poor, health effects are possible, especially for sensitive individuals. Factors contributing to poor air quality include street dust, traffic emissions, wood burning, energy production, and occasional long-range transport.',
+  'mobilityPlatform.info.airMonitoring.paragraph.3': 'The air quality information on the Service map is obtained from the air protection collaboration group of Turku.',
+  'mobilityPlatform.info.airMonitoring.link': 'Additional information',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
@@ -976,6 +982,30 @@ const translations = {
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail10': 'Turku City Center - Varissuo - Piikkiö',
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail11': 'Turku City Center - Kaarina City Center - Piikkiö - Paimio',
   'mobilityPlatform.menu.bicycleRoutes.regionalTrail12': 'Turku City Center - Hirvensalo - Kakskerta',
+
+  // Air monitoring
+  'mobilityPlatform.airMonitoring.airIndex': 'Air quality',
+  'mobilityPlatform.airMonitoring.chart.week': 'Week',
+  'mobilityPlatform.airMonitoring.quality.subTitle': 'Concentrations:',
+  'mobilityPlatform.airMonitoring.AQINDEX_PT1H_avg': 'Air quality index',
+  'mobilityPlatform.airMonitoring.SO2_PT1H_avg': 'Sulphur dioxide',
+  'mobilityPlatform.airMonitoring.NO2_PT1H_avg': 'Nitrogen dioxide',
+  'mobilityPlatform.airMonitoring.PM10_PT1H_avg': 'Thoraric particles',
+  'mobilityPlatform.airMonitoring.PM25_PT1H_avg': 'Fine particles',
+  'mobilityPlatform.airMonitoring.O3_PT1H_avg': 'Ozone',
+  'mobilityPlatform.airMonitoring.quality.good': 'Air quality is good.',
+  'mobilityPlatform.airMonitoring.quality.satisfactory': 'Air quality is satisfactory.',
+  'mobilityPlatform.airMonitoring.quality.fair': 'Air quality is fair.',
+  'mobilityPlatform.airMonitoring.quality.poor': 'Air quality is poor.',
+  'mobilityPlatform.airMonitoring.quality.hazardous': 'Air quality is very poor.',
+  'mobilityPlatform.airMonitoring.text.date': 'Date: {value}',
+  'mobilityPlatform.airMonitoring.text.week': 'Week: {value}',
+  'mobilityPlatform.airMonitoring.text.month': 'Month: {value}',
+  'mobilityPlatform.airMonitoring.text.year': 'Year: {value}',
+  'mobilityPlatform.airMonitoring.button.day': 'Day',
+  'mobilityPlatform.airMonitoring.button.week': 'Week',
+  'mobilityPlatform.airMonitoring.button.month': 'Month',
+  'mobilityPlatform.airMonitoring.button.year': 'Year',
 
   // Ecocounter
   'ecocounter.hour': 'Hours',
