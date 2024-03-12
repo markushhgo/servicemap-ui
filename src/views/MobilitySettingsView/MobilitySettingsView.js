@@ -473,6 +473,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
   }, [showAirMonitoringStations]);
 
+  useEffect(() => {
+    checkVisibilityValues(showRoadworks, setOpenRoadworkSettings);
+  }, [showRoadworks]);
+
   const nameKeys = {
     fi: 'name',
     en: 'name_en',
