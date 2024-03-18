@@ -18,6 +18,7 @@ import {
   endOfWeek,
   subMonths,
   addWeeks,
+  subDays,
 } from 'date-fns';
 import { enGB, fi, sv } from 'date-fns/locale';
 import { ReactSVG } from 'react-svg';
@@ -63,7 +64,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
   const dataFrom = station?.data_from_date;
   const dataUntil = station?.data_until_date;
 
-  const [selectedDate, setSelectedDate] = useState(new Date(dataUntil));
+  const [selectedDate, setSelectedDate] = useState(subDays(new Date(dataUntil), 1));
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -173,7 +174,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(new Date(dataUntil));
+    setSelectedDate(subDays(new Date(dataUntil), 1));
   }, [stationId]);
 
   // This will show full year if available
