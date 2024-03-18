@@ -49,7 +49,6 @@ const LamCounterContent = ({ classes, intl, station }) => {
   const [lamCounterLabels, setLamCounterLabels] = useState([]);
   const [currentTime, setCurrentTime] = useState('hour');
   const [activeStep, setActiveStep] = useState(0);
-  const [selectedDate, setSelectedDate] = useState(startOfMonth(subMonths(new Date(), 1)));
 
   const locale = useSelector(state => state.user.locale);
   const inputRef = useRef(null);
@@ -63,6 +62,8 @@ const LamCounterContent = ({ classes, intl, station }) => {
   const userTypes = station?.sensor_types;
   const dataFrom = station?.data_from_date;
   const dataUntil = station?.data_until_date;
+
+  const [selectedDate, setSelectedDate] = useState(new Date(dataUntil));
 
   // steps that determine which data is shown on the chart
   const buttonSteps = [
@@ -172,7 +173,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
 
   // Reset selectedDate value when the new popup is opened.
   useEffect(() => {
-    setSelectedDate(startOfMonth(subMonths(currentDate, 1)));
+    setSelectedDate(new Date(dataUntil));
   }, [stationId]);
 
   // This will show full year if available
