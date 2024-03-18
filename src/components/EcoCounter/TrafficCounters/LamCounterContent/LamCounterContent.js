@@ -16,7 +16,6 @@ import {
   getYear,
   startOfWeek,
   endOfWeek,
-  subMonths,
   addWeeks,
   subDays,
 } from 'date-fns';
@@ -153,15 +152,14 @@ const LamCounterContent = ({ classes, intl, station }) => {
   };
 
   // Initial values that are used to fetch data
-  const currentDate = new Date();
-  const lastMonth = subMonths(currentDate, 1);
-  const lastMonthFormat = format(lastMonth, 'yyyy-MM-dd');
-  const initialDateStart = format(startOfWeek(lastMonth), 'yyyy-MM-dd');
-  const initialDateEnd = format(endOfWeek(lastMonth), 'yyyy-MM-dd');
-  const initialWeekStart = checkWeekNumber(lastMonth);
-  const initialWeekEnd = getWeek(endOfMonth(lastMonth));
-  const initialMonth = getMonth(lastMonth);
-  const initialYear = getYear(lastMonth);
+  const initialDate = new Date(dataUntil);
+  const initialDateFormat = format(initialDate, 'yyyy-MM-dd');
+  const initialDateStart = format(startOfWeek(initialDate), 'yyyy-MM-dd');
+  const initialDateEnd = format(endOfWeek(initialDate), 'yyyy-MM-dd');
+  const initialWeekStart = checkWeekNumber(initialDate);
+  const initialWeekEnd = getWeek(endOfMonth(initialDate));
+  const initialMonth = getMonth(initialDate);
+  const initialYear = getYear(initialDate);
 
   // Values that change based on the datepicker value
   const selectedDateFormat = format(selectedDate, 'yyyy-MM-dd');
@@ -169,7 +167,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
   const selectedDateEnd = format(endOfWeek(selectedDate, 1), 'yyyy-MM-dd');
   const selectedWeekStart = checkWeekNumber(selectedDate);
   const selectedWeekEnd = getWeek(endOfMonth(selectedDate));
-  let selectedMonth = getMonth(currentDate);
+  let selectedMonth = getMonth(initialDate);
   const selectedYear = getYear(selectedDate);
 
   // Reset selectedDate value when the new popup is opened.
@@ -179,7 +177,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
 
   // This will show full year if available
   const checkYear = () => {
-    if (getYear(selectedDate) < getYear(currentDate)) {
+    if (getYear(selectedDate) < getYear(initialDate)) {
       selectedMonth = 12;
     }
   };
@@ -318,7 +316,7 @@ const LamCounterContent = ({ classes, intl, station }) => {
   // Fetch initial data based on the default date
   useEffect(() => {
     setLamCounterLabels(labelsHour);
-    fetchInitialHourData(lastMonthFormat, stationId, setLamCounterHour);
+    fetchInitialHourData(initialDateFormat, stationId, setLamCounterHour);
   }, [stationId]);
 
   useEffect(() => {
