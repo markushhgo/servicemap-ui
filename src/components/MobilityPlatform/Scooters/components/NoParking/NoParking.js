@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { useMobilityPlatformContext } from '../../../../../context/MobilityPlatformContext';
-import { fetchMobilityMapData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import useMobilityDataFetch from '../../../utils/useMobilityDataFetch';
 import { isDataValid, whiteOptionsBase, redOptionsBase } from '../../../utils/utils';
 import { useAccessibleMap } from '../../../../../redux/selectors/settings';
 import PolygonComponent from '../../../PolygonComponent';
@@ -12,22 +12,13 @@ import TextContent from '../../../TextContent';
 /**
  * Displays no parking zones of scooters on the map in polygon format.
  */
-
 const NoParking = () => {
-  const [noParkingData, setNoParkingData] = useState([]);
+  const options = {
+    type_name: 'ScooterNoParkingArea',
+    latlon: true,
+  };
 
   const { showScooterNoParking } = useMobilityPlatformContext();
-
-  useEffect(() => {
-    const options = {
-      type_name: 'ScooterNoParkingArea',
-      latlon: true,
-    };
-    if (showScooterNoParking) {
-      fetchMobilityMapData(options, setNoParkingData);
-    }
-  }, [showScooterNoParking]);
-
   const useContrast = useSelector(useAccessibleMap);
 
   const redOptions = redOptionsBase({ weight: 5 });
@@ -37,20 +28,21 @@ const NoParking = () => {
     dashArray: '11 2 11',
   });
   const pathOptions = useContrast ? whiteOptions : redOptions;
-
-  const renderData = isDataValid(showScooterNoParking, noParkingData);
-
   const map = useMap();
+
+  const { data } = useMobilityDataFetch(options, showScooterNoParking);
 
   /**
    * Filter point data from polygons. Polygons are an array and points are an object.
    */
-  const noParkingFiltered = noParkingData.reduce((acc, curr) => {
+  const noParkingFiltered = data.reduce((acc, curr) => {
     if (Array.isArray(curr.geometry_coords)) {
       acc.push(curr);
     }
     return acc;
   }, []);
+
+  const renderData = isDataValid(showScooterNoParking, noParkingFiltered);
 
   useEffect(() => {
     if (renderData) {
@@ -60,7 +52,7 @@ const NoParking = () => {
       });
       map.fitBounds(bounds);
     }
-  }, [showScooterNoParking, noParkingData, map]);
+  }, [showScooterNoParking, noParkingFiltered, map]);
 
   return (
     renderData
