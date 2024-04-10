@@ -39,15 +39,27 @@ const AccessibilityAreas = () => {
   const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
 
   const filteredAreas = data.filter(item => item.name === unitName);
-  const renderData = isDataValid(showAccessibilityAreas, filteredAreas);
+  const filteredAreasWalking = data.filter(item => item.name === unitName && item.extra.Kulkumuoto.includes('kävely'));
+  const filteredAreasCycling = data.filter(item => item.name === unitName && item.extra.Kulkumuoto.includes('pyöräily'));
+  const renderAll = isDataValid(showAccessibilityAreas.all, filteredAreas);
+  const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
+  const renderCycling = isDataValid(showAccessibilityAreas.cycling, filteredAreasCycling);
 
   useEffect(() => {
-    fitPolygonsToBounds(renderData, filteredAreas, map);
-  }, [showAccessibilityAreas, filteredAreas]);
+    fitPolygonsToBounds(renderAll, filteredAreas, map);
+  }, [showAccessibilityAreas.all, filteredAreas]);
 
-  return (
-    renderData
-      ? filteredAreas.map(item => (
+  useEffect(() => {
+    fitPolygonsToBounds(renderWalking, filteredAreasWalking, map);
+  }, [showAccessibilityAreas.walking, filteredAreasWalking]);
+
+  useEffect(() => {
+    fitPolygonsToBounds(renderCycling, filteredAreasCycling, map);
+  }, [showAccessibilityAreas.cycling, filteredAreasCycling]);
+
+  const renderPolygons = (showData, data) => (
+    showData
+      ? data.map(item => (
         <PolygonComponent
           key={item.id}
           item={item}
@@ -60,6 +72,14 @@ const AccessibilityAreas = () => {
         </PolygonComponent>
       ))
       : null
+  );
+
+  return (
+    <>
+      {renderPolygons(renderAll, filteredAreas)}
+      {renderPolygons(renderWalking, filteredAreasWalking)}
+      {renderPolygons(renderCycling, filteredAreasCycling)}
+    </>
   );
 };
 

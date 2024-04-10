@@ -22,6 +22,12 @@ const trafficCountersInitial = {
   driving: false,
 };
 
+const accessibilityAreasInitial = {
+  all: false,
+  walking: false,
+  cycling: false,
+};
+
 const MobilityPlatformContextProvider = ({ children }) => {
   // Check if mobility platform is open or not
   const [openMobilityPlatform, setOpenMobilityPlatform] = useState(false);
@@ -103,7 +109,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showUnderpasses, setShowUnderpasses] = useState(false);
   const [showPublicBenches, setShowPublicBenches] = useState(false);
   const [showRoadworks, setShowRoadworks] = useState(false);
-  const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(false);
+  const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(accessibilityAreasInitial);
 
   const getters = {
     openMobilityPlatform,

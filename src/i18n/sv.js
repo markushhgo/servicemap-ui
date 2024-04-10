@@ -531,6 +531,8 @@ const translations = {
   'unit.seo.description': 'Se läget på kartan',
   'unit.seo.description.accessibility': 'Se tillgänglighetsuppgifterna och läget på kartan',
   'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområden',
+  'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområden (promenad)',
+  'unit.accessibilityAreas.cycling.label': 'Tillgänglighetsområden (cykling)',
 
   // Search
   'search': 'Sök',

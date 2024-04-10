@@ -531,6 +531,8 @@ const translations = {
   'unit.seo.description': 'Katso sijainti kartalla',
   'unit.seo.description.accessibility': 'Katso esteettömyystiedot ja sijainti kartalla',
   'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
+  'unit.accessibilityAreas.walking.label': 'Lähestymisalueet (kävely)',
+  'unit.accessibilityAreas.cycling.label': 'Lähestymisalueet (pyöräily)',
 
   // Search
   'search': 'Hae',

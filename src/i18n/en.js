@@ -527,6 +527,8 @@ const translations = {
   'unit.seo.description': 'View service point on the map',
   'unit.seo.description.accessibility': 'View accessibility info and service point on the map',
   'unit.accessibilityAreas.all.label': 'All accessibility areas',
+  'unit.accessibilityAreas.walking.label': 'Accessibility areas (walking)',
+  'unit.accessibilityAreas.cycling.label': 'Accessibility areas (cycling)',
 
   // Search
   'search': 'Search',

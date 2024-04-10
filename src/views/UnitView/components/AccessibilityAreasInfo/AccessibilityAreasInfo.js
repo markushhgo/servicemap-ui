@@ -3,21 +3,42 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { useMobilityPlatformContext } from '../../../../context/MobilityPlatformContext';
 import AccessibilityAreasToggle from './components/AccessibilityAreasToggle';
+import toggleObjectValue from '../../../MapView/utils/updateObject';
 import { Container } from '../../../../components';
 
 const AccessibilityAreasInfo = () => {
   const { showAccessibilityAreas, setShowAccessibilityAreas } = useMobilityPlatformContext();
 
   const accessibilityAreasToggle = () => {
-    setShowAccessibilityAreas(current => !current);
+    toggleObjectValue('all', showAccessibilityAreas, setShowAccessibilityAreas);
+  };
+
+  const accessibilityAreasWalkingToggle = () => {
+    toggleObjectValue('walking', showAccessibilityAreas, setShowAccessibilityAreas);
+  };
+
+  const accessibilityAreasCyclingToggle = () => {
+    toggleObjectValue('cycling', showAccessibilityAreas, setShowAccessibilityAreas);
   };
 
   const settingsData = [
     {
       type: 'allAccessibilityAreas',
       msgId: 'unit.accessibilityAreas.all.label',
-      checkedValue: showAccessibilityAreas,
+      checkedValue: showAccessibilityAreas.all,
       onChangeValue: accessibilityAreasToggle,
+    },
+    {
+      type: 'accessibilityAreasWalking',
+      msgId: 'unit.accessibilityAreas.walking.label',
+      checkedValue: showAccessibilityAreas.walking,
+      onChangeValue: accessibilityAreasWalkingToggle,
+    },
+    {
+      type: 'accessibilityAreasCycling',
+      msgId: 'unit.accessibilityAreas.cycling.label',
+      checkedValue: showAccessibilityAreas.cycling,
+      onChangeValue: accessibilityAreasCyclingToggle,
     },
   ];
 
