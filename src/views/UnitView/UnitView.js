@@ -356,6 +356,16 @@ const UnitView = props => {
     );
   };
 
+  const renderAccessibilityAreasTab = () => {
+    if (!unit || !unit.complete) {
+      return null;
+    }
+
+    return (
+      <AccessibilityAreasInfo />
+    );
+  };
+
   const renderHead = () => {
     if (!unit || !unit.complete) {
       return null;
@@ -489,7 +499,7 @@ const UnitView = props => {
         {
           id: 'accessibilityAreas',
           ariaLabel: intl.formatMessage({ id: 'unit.accessibilityAreas' }),
-          component: <AccessibilityAreasInfo />,
+          component: renderAccessibilityAreasTab(),
           data: null,
           itemsPerPage: null,
           title: intl.formatMessage({ id: 'unit.accessibilityAreas' }),

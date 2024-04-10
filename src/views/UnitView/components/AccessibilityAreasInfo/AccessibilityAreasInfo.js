@@ -59,7 +59,6 @@ const StyledContent = styled.div(({ theme }) => ({
 
 const StyledCheckBoxContainer = styled.div(({ theme }) => ({
   width: '100%',
-  backgroundColor: 'rgb(250, 250, 250)',
   paddingTop: theme.spacing(1.5),
   paddingBottom: theme.spacing(1.5),
 }));
