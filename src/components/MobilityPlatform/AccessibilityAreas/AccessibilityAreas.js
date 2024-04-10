@@ -6,7 +6,8 @@ import { useMobilityPlatformContext } from '../../../context/MobilityPlatformCon
 import { useAccessibleMap } from '../../../redux/selectors/settings';
 import useMobilityDataFetch from '../utils/useMobilityDataFetch';
 import {
-  isDataValid, fitPolygonsToBounds, blueOptionsBase, whiteOptionsBase,
+  isDataValid, fitPolygonsToBounds, blueOptionsBase, whiteOptionsBase, greenOptionsBase,
+  blackOptionsBase,
 } from '../utils/utils';
 import PolygonComponent from '../PolygonComponent';
 
@@ -29,12 +30,28 @@ const AccessibilityAreas = () => {
   const map = useMap();
 
   const blueOptions = blueOptionsBase({ weight: 5 });
+  const greenOptions = greenOptionsBase({ weight: 5 });
+  const blackOptions = blackOptionsBase({ weight: 5 });
   const whiteOptions = whiteOptionsBase({
     fillOpacity: 0.3,
     weight: 5,
     dashArray: '12',
   });
-  const pathOptions = useContrast ? whiteOptions : blueOptions;
+
+  const getPathOptions = transportType => {
+    if (transportType.includes('kävely')) {
+      return blueOptions;
+    }
+    if (transportType.includes('pyöräily')) {
+      return greenOptions;
+    }
+    if (useContrast) {
+      return whiteOptions;
+    }
+    return blackOptions;
+  };
+
+  // const pathOptions = useContrast ? whiteOptions : blueOptions;
 
   const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
 
@@ -64,7 +81,7 @@ const AccessibilityAreas = () => {
           key={item.id}
           item={item}
           useContrast={useContrast}
-          pathOptions={pathOptions}
+          pathOptions={getPathOptions(item.extra.Kulkumuoto)}
         >
           <p>{item.name}</p>
           <p>{item.extra.Kulkumuoto}</p>
