@@ -464,7 +464,7 @@ const translations = {
   'unit.details.notFound': 'Toimipisteen tietoja ei saatavilla.',
   'unit.plural': 'Toimipisteet',
   'unit.distance': 'Etäisyys: ',
-
+  'unit.accessibilityAreas': 'Lähestymisalueet',
   'unit.contact.info': 'Yhteystiedot',
   'unit.links': 'Verkossa',
   'unit.eServices': 'Sähköinen asiointi',
@@ -530,6 +530,7 @@ const translations = {
   'unit.outdoorLink': 'Katso liikuntapaikan kunto ulkoliikunta.fi palvelusta',
   'unit.seo.description': 'Katso sijainti kartalla',
   'unit.seo.description.accessibility': 'Katso esteettömyystiedot ja sijainti kartalla',
+  'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
 
   // Search
   'search': 'Hae',

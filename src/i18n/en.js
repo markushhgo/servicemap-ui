@@ -461,7 +461,7 @@ const translations = {
   'unit.details.notFound': 'Service point info not available.',
   'unit.plural': 'Service points',
   'unit.distance': 'Distance',
-
+  'unit.accessibilityAreas': 'Accessibility areas',
   'unit.contact.info': 'Contact information',
   'unit.links': 'Web sites',
   'unit.eServices': 'Electronic services',
@@ -526,6 +526,7 @@ const translations = {
   'unit.outdoorLink': 'Check the condition of an exercise location in the ulkoliikunta.fi service',
   'unit.seo.description': 'View service point on the map',
   'unit.seo.description.accessibility': 'View accessibility info and service point on the map',
+  'unit.accessibilityAreas.all.label': 'All accessibility areas',
 
   // Search
   'search': 'Search',

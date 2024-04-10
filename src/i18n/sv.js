@@ -465,7 +465,7 @@ const translations = {
   'unit.details.notFound': 'Verksamhetsställets uppgifter finns inte att tillgå.',
   'unit.plural': 'Verksamhetsställen',
   'unit.distance': 'Avstånd',
-
+  'unit.accessibilityAreas': 'Tillgänglighetsområden',
   'unit.contact.info': 'Kontaktuppgifter',
   'unit.links': 'På webben',
   'unit.eServices': 'E-tjänster',
@@ -530,6 +530,7 @@ const translations = {
   'unit.outdoorLink': 'Kolla skicket på en motionsplats i tjänsten ulkoliikunta.fi',
   'unit.seo.description': 'Se läget på kartan',
   'unit.seo.description.accessibility': 'Se tillgänglighetsuppgifterna och läget på kartan',
+  'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområden',
 
   // Search
   'search': 'Sök',

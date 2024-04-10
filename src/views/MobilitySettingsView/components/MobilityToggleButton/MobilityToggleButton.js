@@ -29,7 +29,6 @@ const MobilityToggleButton = ({
         role: 'button',
         'aria-setsize': selectionSize ? selectionSize.toString() : null,
         'aria-pressed': checkedValue,
-        'aria-labelledby': msgId,
       }}
       onChange={(e) => onChangeValue(e)}
       checked={checkedValue}

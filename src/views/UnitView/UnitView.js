@@ -43,8 +43,9 @@ import { parseSearchParams } from '../../utils';
 import { fetchServiceUnits } from '../../redux/actions/services';
 import MapView from '../MapView';
 import Util from '../../utils/mapUtility';
+import AccessibilityAreasInfo from './components/AccessibilityAreasInfo';
 
-const UnitView = (props) => {
+const UnitView = props => {
   const {
     distance,
     stateUnit,
@@ -98,7 +99,7 @@ const UnitView = (props) => {
 
   const initializePTVAccessibilitySentences = () => {
     if (unit) {
-      unit.identifiers.forEach((element) => {
+      unit.identifiers.forEach(element => {
         if (element.namespace === 'ptv') {
           const ptvId = element.value;
           fetchAccessibilitySentences(ptvId);
@@ -112,7 +113,7 @@ const UnitView = (props) => {
     const unitId = params.unit;
     // If no selected unit data, or selected unit data is old, fetch new data
     if (!stateUnit || !checkCorrectUnit(stateUnit) || !stateUnit.complete) {
-      fetchSelectedUnit(unitId, (unit) => {
+      fetchSelectedUnit(unitId, unit => {
         setUnit(unit);
         if (unit?.keywords?.fi?.includes('kuuluvuuskartta')) {
           fetchHearingMaps(unitId);
@@ -392,7 +393,7 @@ const UnitView = (props) => {
         className={classes.mapButton}
         aria-label={intl.formatMessage({ id: 'map.button.expand.aria' })}
         icon={<StyledMapIcon />}
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault();
           if (navigator) {
             navigator.openMap();
@@ -408,7 +409,6 @@ const UnitView = (props) => {
       </div>
     </div>
   );
-
 
   const render = () => {
     const title = unit && unit.name ? getLocaleText(unit.name) : '';
@@ -485,6 +485,14 @@ const UnitView = (props) => {
           data: null,
           itemsPerPage: null,
           title: intl.formatMessage({ id: 'service.tab' }),
+        },
+        {
+          id: 'accessibilityAreas',
+          ariaLabel: intl.formatMessage({ id: 'unit.accessibilityAreas' }),
+          component: <AccessibilityAreasInfo />,
+          data: null,
+          itemsPerPage: null,
+          title: intl.formatMessage({ id: 'unit.accessibilityAreas' }),
         },
       ];
       return (
