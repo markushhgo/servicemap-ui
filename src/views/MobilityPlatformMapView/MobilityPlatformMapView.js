@@ -38,6 +38,7 @@ import Roadworks from '../../components/MobilityPlatform/Roadworks';
 import RailwayStations from '../../components/MobilityPlatform/RailwayStations';
 import AirMonitoring from '../../components/MobilityPlatform/EnvironmentObservations/AirMonitoring';
 import ParkAndRideBikes from '../../components/MobilityPlatform/ParkAndRideStops/ParkAndRideBikes';
+import BarbecuePlaces from '../../components/MobilityPlatform/BarbecuePlaces';
 
 const MobilityPlatformMapView = ({ mapObject }) => (
   <>
@@ -79,6 +80,7 @@ const MobilityPlatformMapView = ({ mapObject }) => (
     <RailwayStations />
     <AirMonitoring />
     <ParkAndRideBikes />
+    <BarbecuePlaces />
   </>
 );
 
