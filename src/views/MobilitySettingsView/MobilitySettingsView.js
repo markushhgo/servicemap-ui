@@ -172,6 +172,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowAirMonitoringStations,
     showParkAndRideBikes,
     setShowParkAndRideBikes,
+    showBarbecuePlaces,
+    setShowBarbecuePlaces,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
@@ -346,7 +348,16 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showUnderpasses, setOpenWalkSettings);
     checkVisibilityValues(showOverpasses, setOpenWalkSettings);
     checkVisibilityValues(showPublicBenches, setOpenWalkSettings);
-  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks, showUnderpasses, showOverpasses, showPublicBenches]);
+    checkVisibilityValues(showBarbecuePlaces, setOpenWalkSettings);
+  }, [
+    showPublicToilets,
+    showOutdoorGymDevices,
+    showCrossWalks,
+    showUnderpasses,
+    showOverpasses,
+    showPublicBenches,
+    showBarbecuePlaces,
+  ]);
 
   useEffect(() => {
     checkVisibilityValues(showTrafficCounter.walking, setOpenWalkSettings);
@@ -842,6 +853,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowParkAndRideBikes(current => !current);
   };
 
+  const barbecuePlacesToggle = () => {
+    setShowBarbecuePlaces(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -1174,6 +1189,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       msgId: 'mobilityPlatform.menu.show.publicBenches',
       checkedValue: showPublicBenches,
       onChangeValue: publicBenchesToggle,
+    },
+    {
+      type: 'barbecuePlaces',
+      msgId: 'mobilityPlatform.menu.show.barbecuePlaces',
+      checkedValue: showBarbecuePlaces,
+      onChangeValue: barbecuePlacesToggle,
     },
     {
       type: 'cultureRoutes',
@@ -1593,6 +1614,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showPublicBenches,
       type: 'publicBenchesInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.publicBenches" />,
+    },
+    {
+      visible: showBarbecuePlaces,
+      type: 'barbecuePlacesInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.barbecuePlaces" />,
     },
     {
       visible: openMarkedTrailsList,

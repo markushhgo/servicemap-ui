@@ -109,6 +109,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showUnderpasses, setShowUnderpasses] = useState(false);
   const [showPublicBenches, setShowPublicBenches] = useState(false);
   const [showRoadworks, setShowRoadworks] = useState(false);
+  const [showBarbecuePlaces, setShowBarbecuePlaces] = useState(false);
   const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(accessibilityAreasInitial);
 
   const getters = {
@@ -179,6 +180,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showUnderpasses,
     showPublicBenches,
     showRoadworks,
+    showBarbecuePlaces,
     showAccessibilityAreas,
   };
 
@@ -250,6 +252,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowOverpasses,
     setShowPublicBenches,
     setShowRoadworks,
+    setShowBarbecuePlaces,
     setShowAccessibilityAreas,
   };
 
