@@ -533,6 +533,9 @@ const translations = {
   'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområden',
   'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområden (promenad)',
   'unit.accessibilityAreas.cycling.label': 'Tillgänglighetsområden (cykling)',
+  'unit.accessibilityAreas.content.subtitle': 'Tillgänglighetsområd:',
+  'unit.accessibilityAreas.content.transport': 'Transportsätt: {value}', // TODO verify
+  'unit.accessibilityAreas.content.duration': 'beräknad varaktighet: {value} minuter', // TODO verify
 
   // Search
   'search': 'Sök',

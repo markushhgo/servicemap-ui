@@ -56,7 +56,7 @@ const AccessibilityAreasInfo = () => {
   return (
     <StyledContent>
       <Container>
-        <Typography variant="title">
+        <Typography variant="subtitle1" component="h4">
           Lähestymisalueet
         </Typography>
       </Container>

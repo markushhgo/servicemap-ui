@@ -10,6 +10,7 @@ import {
   blackOptionsBase,
 } from '../utils/utils';
 import PolygonComponent from '../PolygonComponent';
+import AccessibilityAreasContent from './components/AccessibilityAreasContent';
 
 /**
  * Displays school accessibility areas on the map in polygon format.
@@ -83,9 +84,7 @@ const AccessibilityAreas = () => {
           useContrast={useContrast}
           pathOptions={getPathOptions(item.extra.Kulkumuoto)}
         >
-          <p>{item.name}</p>
-          <p>{item.extra.Kulkumuoto}</p>
-          <p>{item.extra.Minuutit}</p>
+          <AccessibilityAreasContent item={item} />
         </PolygonComponent>
       ))
       : null

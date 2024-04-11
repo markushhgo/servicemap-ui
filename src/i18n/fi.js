@@ -533,6 +533,9 @@ const translations = {
   'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
   'unit.accessibilityAreas.walking.label': 'Lähestymisalueet (kävely)',
   'unit.accessibilityAreas.cycling.label': 'Lähestymisalueet (pyöräily)',
+  'unit.accessibilityAreas.content.subtitle': 'Lähestymisalue:',
+  'unit.accessibilityAreas.content.transport': 'Kulkumuto: {value}', // TODO verify
+  'unit.accessibilityAreas.content.duration': 'Arvioitu aika: {value} minuuttia', // TODO verify
 
   // Search
   'search': 'Hae',

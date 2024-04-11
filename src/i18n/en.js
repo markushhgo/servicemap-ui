@@ -529,6 +529,9 @@ const translations = {
   'unit.accessibilityAreas.all.label': 'All accessibility areas',
   'unit.accessibilityAreas.walking.label': 'Accessibility areas (walking)',
   'unit.accessibilityAreas.cycling.label': 'Accessibility areas (cycling)',
+  'unit.accessibilityAreas.content.subtitle': 'Accessibility area:',
+  'unit.accessibilityAreas.content.transport': 'Mode of transport: {value}', // TODO verify
+  'unit.accessibilityAreas.content.duration': 'Estimated duration: {value} minutes', // TODO verify
 
   // Search
   'search': 'Search',
