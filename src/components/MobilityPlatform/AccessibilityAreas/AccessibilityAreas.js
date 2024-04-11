@@ -29,8 +29,8 @@ const AccessibilityAreas = () => {
 
   const map = useMap();
 
-  const blueOptions = blueOptionsBase({ weight: 5 });
-  const greenOptions = greenOptionsBase({ weight: 5 });
+  const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3' });
+  const greenOptions = greenOptionsBase({ weight: 5, dashArray: '4 6 8' });
   const blackOptions = blackOptionsBase({ weight: 5 });
   const whiteOptions = whiteOptionsBase({
     fillOpacity: 0.3,
