@@ -40,6 +40,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showBikeServiceStations, setShowBikeServiceStations] = useState(false);
   const [showCityBikes, setShowCityBikes] = useState(false);
   const [showCargoBikes, setShowCargoBikes] = useState(false);
+  const [showParkAndRideBikes, setShowParkAndRideBikes] = useState(false);
 
   // culture routes
   const [showCultureRoutes, setShowCultureRoutes] = useState(false);
@@ -102,6 +103,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showUnderpasses, setShowUnderpasses] = useState(false);
   const [showPublicBenches, setShowPublicBenches] = useState(false);
   const [showRoadworks, setShowRoadworks] = useState(false);
+  const [showBarbecuePlaces, setShowBarbecuePlaces] = useState(false);
 
   const getters = {
     openMobilityPlatform,
@@ -117,6 +119,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showBikeServiceStations,
     showCityBikes,
     showCargoBikes,
+    showParkAndRideBikes,
     // culture routes
     showCultureRoutes,
     cultureRouteId,
@@ -170,6 +173,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showUnderpasses,
     showPublicBenches,
     showRoadworks,
+    showBarbecuePlaces,
   };
 
   const setters = {
@@ -186,6 +190,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowBikeServiceStations,
     setShowCityBikes,
     setShowCargoBikes,
+    setShowParkAndRideBikes,
     // culture routes
     setShowCultureRoutes,
     setCultureRouteId,
@@ -239,6 +244,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowOverpasses,
     setShowPublicBenches,
     setShowRoadworks,
+    setShowBarbecuePlaces,
   };
 
   const contextValues = { ...getters, ...setters };

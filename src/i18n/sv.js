@@ -802,9 +802,11 @@ const translations = {
   'mobilityPlatform.menu.show.rentalCarParking': 'Bilpool bilars parkeringsplatser',
   'mobilityPlatform.menu.show.publicBenches': 'Allmänna bänkar (zooma in på kartan)',
   'mobilityPlatform.embedded.label.publicBenches': 'Allmänna bänkar (zooma in på kartan för att se bänkar)',
-  'mobilityPlatform.menu.show.airMonitoring': 'Stationer för luftkvalitet', // TODO verify
+  'mobilityPlatform.menu.show.airMonitoring': 'Stationer för luftkvalitet',
   'mobilityPlatform.menu.show.roadworks': 'Vägarbeten',
   'mobilityPlatform.menu.show.railwayStations': 'Järnvägsstationer',
+  'mobilityPlatform.menu.show.parkAndRideBikes': 'Infartsparkering för cyklar',
+  'mobilityPlatform.menu.show.barbecuePlaces': 'Grill- och eldningsplatser',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',
@@ -910,6 +912,8 @@ const translations = {
   'mobilityPlatform.content.arrivingTrains.title': 'Inkommande tåg',
   'mobilityPlatform.content.departingTrains.empty': 'Inga avgående tåg',
   'mobilityPlatform.content.arrivingTrains.empty': 'Inga inkommande tåg',
+  'mobilityPlatform.parkAndRide.content.subtitle': 'Infartspark for cyklarna',
+  'mobilityPlatform.content.barbecuePlace.title': 'Grill- och eldningplats',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',
@@ -957,7 +961,7 @@ const translations = {
   'mobilityPlatform.info.parkingMachines': 'Kartan visar de parkeringsautomater som ägs av Åbo stad. Bankkort och kontaktlös betalning används som betalningsmetoder i alla automater. Du kan se mer information om maskinen genom att trycka på ikonen på kartan.',
   'mobilityPlatform.info.publicParkingSpaces': 'Allmänna parkeringsplatser visas på kartan. Det finns dock ingen information om deras utnyttjandegrad. Mer detaljerad information om det valda parkeringsområdet kan läsas genom att trycka på området på kartan.',
   'mobilityPlatform.info.outdoorGymDevices': 'Åbo stad upprätthåller utomhusgym. De erbjuder ett roligt sätt att träna medan du njuter av den friska luften. På de utomhusgym som finns runt om i staden kan du träna hela kroppen. Overhead-remskivor, benpressar, armhävningar, surf- och promenadutrustning passar alla. Fler utmaningar erbjuds av armhävningsräcket, dip, magplanka och ryggbänk.',
-  'mobilityPlatform.info.crosswalks': 'Kartan visar placeringen av övergångsställen inne i Åbo stad. Zooma in på kartan för att se övergångsställen.',
+  'mobilityPlatform.info.crosswalks': 'Kartan visar placeringarna av övergångsställen inne i Åbo stad. Zooma in på kartan för att se övergångsställen.',
   'mobilityPlatform.info.short.crosswalks': 'Kartan visar övergångsställen inne i Åbo.',
   'mobilityPlatform.info.busStops': 'Kartan visar Åboregionens kollektivtrafiks, Fölis, busshållplatser. Om du kilckar på ikonen kan du se nästa buss som går från hållplatsen. Zooma in på kartan för att se hållplatserna. Datan kommer från gränssnittet som underhålls av Digitransit.',
   'mobilityPlatform.info.underAndOverpasses': 'Kartan visar gångtunnlar och gångbroar som ligger i Åbo stadsområdet.',
@@ -965,10 +969,12 @@ const translations = {
   'mobilityPlatform.info.publicBenches': 'Kartan visar allmänna bänkar i Åbo.',
   'mobilityPlatform.info.roadworks': 'Kartan visar vägbyggen i Åboområdet som orsakar exceptionella situationer för trafiken och mobiliteten. Sänkta hastighetsbegränsningar gäller på markerade områden och vid behov kan trafiken ledas om. Uppgifterna kommer från Digitraffics gränssnitt.',
   'mobilityPlatform.info.railwayStations': 'Kartan visar Åbo järnvägsstationer och tågtidtabeller för de kommande 3 timmarna. Tågtrafiken är uppdelad i tåg som avgår från och ankommer till stationen. Om tåget är försenat visas även den beräknade ankomsttiden och den gamla planerade ankomsttiden inom parentes. Uppgifterna kommer från Digitraffics gränssnitt.',
-  'mobilityPlatform.info.airMonitoring.paragraph.1': 'Luftkvalitetsdata visas för varje mätstation som en timme beräknad index och omfattar alla föroreningar som mäts vid respektive station. Luftkvaliteten klassificeras i fem kategorier: grön = bra, gul = tillfredsställande, orange = måttlig, röd = dålig, violett = mycket dålig.',
-  'mobilityPlatform.info.airMonitoring.paragraph.2': 'Beräkningen tar hänsyn till svaveldioxid (SO2), kvävedioxid (NO2), inandningsbara partiklar (PM10), fina partiklar (PM2,5) och ozon (O3). När luftkvaliteten är dålig eller mycket dålig kan hälsopåverkan vara möjlig, särskilt för känsliga personer. Faktorer som försämrar luftkvaliteten inkluderar gatudamm, trafikutsläpp, vedeldning, energiproduktion och sporadiska fjärrtransporter.',
-  'mobilityPlatform.info.airMonitoring.paragraph.3': 'Luftkvalitetsinformationen på Tjänstekartan erhålls från samarbetsgruppen för luftskydd i Åbo-regionen.',
-  'mobilityPlatform.info.airMonitoring.link': 'Ytterligare info',
+  'mobilityPlatform.info.airMonitoring.paragraph.1': 'Luftföroreningsdata visas för varje mätningsstation som ett index beräknat för varje timme och omfattar alla föroreningar som mäts vid resp. mätningsstation. Luftkvaliteten klassificeras i fem kategorier: grön=bra, gul=tillfredsställande, orange=nöjaktig, röd=dålig, lila=mycket dålig.',
+  'mobilityPlatform.info.airMonitoring.paragraph.2': 'Vid beräkningen beaktas svaveldioxid (SO2), kvävedioxid (NO2), inandningsbara partiklar (PM10), småpartiklar (PM2,5) samt ozon (O3). När luftkvaliteten är dålig eller mycket dålig kan hälsopåverkan förekomma hos känsliga personer. Luftkvaliteten försämras av gatudamm, trafikutsläpp, småskalig vedeldning, energiproduktion samt av sporadiskt förekommande långväga transport.',
+  'mobilityPlatform.info.airMonitoring.paragraph.3': 'Luftkvalitetsdata för Servicekartan erhålls från Åboregionens samarbetsgrupp för luftskydd.',
+  'mobilityPlatform.info.airMonitoring.link': 'För mer information besök: https://sv.ilmatieteenlaitos.fi/luftkvalitet',
+  'mobilityPlatform.info.parkAndRideBicycles': 'Infartsparkeringen erbjuder möjlighet att lämna din egen cykel på parkeringsplatsen och fortsätta resan med buss. Inom Föli-området finns flera infartsparkeringsplatser för cyklar. Infartsparkeringen är gratis och endast avsedd för dem som fortsätter sin resa med kollektivtrafik.',
+  'mobilityPlatform.info.barbecuePlaces': 'Kartan visar eldnings- och grillplatser i Åbo. Det är tillåtet att göra upp öppen eld endast vid särskilt avsedda eldningsplatser. Att göra upp eld på andra platser är förbjudet.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 är en europeisk cykelrutt som följer den finländska kusten. Sträckan mellan Helsingfors och Åbo är skyltad.',
@@ -1034,7 +1040,7 @@ const translations = {
   'ecocounter.oct': 'Oktober',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
-  'ecocounter.station.active.period': 'Beräkningspunkt var i bruk {value1} - {value2}.',
+  'ecocounter.station.counts.period': 'Beräkningsdata är mellan {value1} och {value2}',
   'trafficCounter.year.warning.text': 'Siffror från år {value} är inte tillgängliga.',
 };
 

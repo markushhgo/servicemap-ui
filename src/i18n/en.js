@@ -801,6 +801,8 @@ const translations = {
   'mobilityPlatform.menu.show.roadworks': 'Roadworks',
   'mobilityPlatform.menu.show.railwayStations': 'Railway stations',
   'mobilityPlatform.menu.show.airMonitoring': 'Air quality stations',
+  'mobilityPlatform.menu.show.parkAndRideBikes': 'Park and ride stops for bicycles',
+  'mobilityPlatform.menu.show.barbecuePlaces': 'Sites for barbequing & making fire',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -906,6 +908,8 @@ const translations = {
   'mobilityPlatform.content.arrivingTrains.title': 'Incoming trains',
   'mobilityPlatform.content.departingTrains.empty': 'No departing trains',
   'mobilityPlatform.content.arrivingTrains.empty': 'No incoming trains',
+  'mobilityPlatform.parkAndRide.content.subtitle': 'Park and ride stop for bicycles',
+  'mobilityPlatform.content.barbecuePlace.title': 'Site for barbequing or making fire',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -961,10 +965,12 @@ const translations = {
   'mobilityPlatform.info.publicBenches': 'The map shows public benches that are located in the city of Turku.',
   'mobilityPlatform.info.roadworks': 'The map shows road construction sites in the Turku area, which cause exceptional situations for traffic and mobility. Reduced speed limits apply in marked areas and, if necessary, traffic can be diverted. The data comes from the interface provided by Digitraffic.',
   'mobilityPlatform.info.railwayStations': 'The map shows Turku railway stations and train timetables for the next 3 hours. Train traffic is divided into trains departing from and arriving at the station. If the train is delayed, the estimated time of arrival and the old scheduled time of arrival are also shown in parentheses. The data comes from the interface provided by Digitraffic.',
-  'mobilityPlatform.info.airMonitoring.paragraph.1': 'The air quality data is displayed for each measurement station as an hourly calculated index, covering all pollutants measured at the respective station. Air quality is classified into five categories: green = good, yellow = satisfactory, orange = moderate, red = poor, violet = very poor.',
-  'mobilityPlatform.info.airMonitoring.paragraph.2': 'The calculation takes into account sulfur dioxide (SO2), nitrogen dioxide (NO2), inhalable particles (PM10), fine particles (PM2.5), and ozone (O3). When air quality is poor or very poor, health effects are possible, especially for sensitive individuals. Factors contributing to poor air quality include street dust, traffic emissions, wood burning, energy production, and occasional long-range transport.',
-  'mobilityPlatform.info.airMonitoring.paragraph.3': 'The air quality information on the Service map is obtained from the air protection collaboration group of Turku.',
-  'mobilityPlatform.info.airMonitoring.link': 'Additional information',
+  'mobilityPlatform.info.airMonitoring.paragraph.1': 'Air pollution data is displayed for each measuring station as an index calculated for each hour and covers all pollutants measured at the respective measuring station. The air quality is classified into five categories: green=good, yellow=satisfactory, orange=fair, red=poor, purple=very poor.',
+  'mobilityPlatform.info.airMonitoring.paragraph.2': 'The calculation takes into account sulfur dioxide (SO2), nitrogen dioxide (NO2), respirable particles (PM10), fine particles (PM2.5), and ozone (O3). When the air quality is poor or very poor, health effects may occur in sensitive individuals. Air quality is worsened by street dust, traffic emissions, small-scale wood combustion, energy production, and occasionally by long range transport.',
+  'mobilityPlatform.info.airMonitoring.paragraph.3': 'Air quality data for the service map is obtained from the Turku region air protection co-operative group.',
+  'mobilityPlatform.info.airMonitoring.link': 'For more information visit https://en.ilmatieteenlaitos.fi/air-quality',
+  'mobilityPlatform.info.parkAndRideBicycles': 'Park-and-ride arrangements provide the opportunity to leave your bicycle parked safely and hop on a bus to continue your journey. The Föli area boasts many park-and-ride sites for bicycles.  Park-and-ride parking is free and intended for those using public transport for connections.',
+  'mobilityPlatform.info.barbecuePlaces': 'The map shows official sites for barbequing or making fire. Making a fire on the land administered by Turku City is allowed only on places designated for making an open flame. Making a fire on any other place than the official campfire and barbeque sites is always forbidden.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',
@@ -1031,7 +1037,7 @@ const translations = {
   'ecocounter.oct': 'October',
   'ecocounter.nov': 'November',
   'ecocounter.dec': 'December',
-  'ecocounter.station.active.period': 'Measurement point was in use {value1} - {value2}.',
+  'ecocounter.station.counts.period': 'Calculation data ranges from {value1} to {value2}',
   'trafficCounter.year.warning.text': 'Numbers from the year {value} are not available.',
 };
 

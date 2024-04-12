@@ -23,9 +23,10 @@ import {
   fetchCultureRouteNames,
   fetchMobilityMapData,
 } from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
+import useMobilityDataFetch from '../../components/MobilityPlatform/utils/useMobilityDataFetch';
 import useLocaleText from '../../utils/useLocaleText';
-import TitleBar from '../../components/TitleBar';
 import { useMobilityPlatformContext } from '../../context/MobilityPlatformContext';
+import TitleBar from '../../components/TitleBar';
 import CityBikeInfo from './components/CityBikeInfo';
 import EmptyRouteList from './components/EmptyRouteList';
 import ExtendedInfo from './components/ExtendedInfo';
@@ -59,11 +60,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [openScooterProviderList, setOpenScooterProviderList] = useState(false);
   const [openStreetMaintenanceSelectionList, setOpenStreetMaintenanceSelectionList] = useState(false);
   const [openMarkedTrailsList, setOpenMarkedTrailsList] = useState(false);
-  const [markedTrailsList, setMarkedTrailsList] = useState([]);
   const [openNatureTrailsList, setOpenNatureTrailsList] = useState(false);
-  const [natureTrailsList, setNatureTrailsList] = useState([]);
   const [openFitnessTrailsList, setOpenFitnessTrailsList] = useState(false);
-  const [fitnessTrailsList, setFitnessTrailsList] = useState([]);
 
   const {
     setOpenMobilityPlatform,
@@ -172,6 +170,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowRailwayStations,
     showAirMonitoringStations,
     setShowAirMonitoringStations,
+    showParkAndRideBikes,
+    setShowParkAndRideBikes,
+    showBarbecuePlaces,
+    setShowBarbecuePlaces,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
@@ -282,37 +284,26 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     }
   }, [openCarSettings, setParkingChargeZones]);
 
-  useEffect(() => {
-    const options = {
-      type_name: 'PaavonPolku',
-      latlon: true,
-    };
-    if (openWalkSettings) {
-      fetchMobilityMapData(options, setMarkedTrailsList);
-    }
-  }, [openWalkSettings]);
+  const optionsPaavoTrails = {
+    type_name: 'PaavonPolku',
+    latlon: true,
+  };
 
-  useEffect(() => {
-    const options = {
-      type_name: 'NatureTrail',
-      page_size: 200,
-      latlon: true,
-    };
-    if (openWalkSettings) {
-      fetchMobilityMapData(options, setNatureTrailsList);
-    }
-  }, [openWalkSettings]);
+  const optionsNaturetTrails = {
+    type_name: 'NatureTrail',
+    page_size: 200,
+    latlon: true,
+  };
 
-  useEffect(() => {
-    const options = {
-      type_name: 'FitnessTrail',
-      page_size: 200,
-      latlon: true,
-    };
-    if (openWalkSettings) {
-      fetchMobilityMapData(options, setFitnessTrailsList);
-    }
-  }, [openWalkSettings]);
+  const optionsFitnessTrails = {
+    type_name: 'FitnessTrail',
+    page_size: 200,
+    latlon: true,
+  };
+
+  const { data: markedTrailsList } = useMobilityDataFetch(optionsPaavoTrails, openWalkSettings);
+  const { data: natureTrailsList } = useMobilityDataFetch(optionsNaturetTrails, openWalkSettings);
+  const { data: fitnessTrailsList } = useMobilityDataFetch(optionsFitnessTrails, openWalkSettings);
 
   /** If direct link is used to navigate, open correct content view
    * @param {string} pathname
@@ -357,7 +348,16 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showUnderpasses, setOpenWalkSettings);
     checkVisibilityValues(showOverpasses, setOpenWalkSettings);
     checkVisibilityValues(showPublicBenches, setOpenWalkSettings);
-  }, [showPublicToilets, showOutdoorGymDevices, showCrossWalks, showUnderpasses, showOverpasses, showPublicBenches]);
+    checkVisibilityValues(showBarbecuePlaces, setOpenWalkSettings);
+  }, [
+    showPublicToilets,
+    showOutdoorGymDevices,
+    showCrossWalks,
+    showUnderpasses,
+    showOverpasses,
+    showPublicBenches,
+    showBarbecuePlaces,
+  ]);
 
   useEffect(() => {
     checkVisibilityValues(showTrafficCounter.walking, setOpenWalkSettings);
@@ -377,7 +377,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showBikeServiceStations, setOpenBicycleSettings);
     checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
     checkVisibilityValues(showCargoBikes, setOpenBicycleSettings);
-  }, [showBicycleStands, showHullLockableStands, showBikeServiceStations, showCityBikes, showCargoBikes]);
+    checkVisibilityValues(showParkAndRideBikes, setOpenBicycleSettings);
+  }, [showBicycleStands, showHullLockableStands, showBikeServiceStations, showCityBikes, showCargoBikes, showParkAndRideBikes]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -472,6 +473,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   useEffect(() => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
   }, [showAirMonitoringStations]);
+
+  useEffect(() => {
+    checkVisibilityValues(showRoadworks, setOpenRoadworkSettings);
+  }, [showRoadworks]);
 
   const nameKeys = {
     fi: 'name',
@@ -844,6 +849,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowRoadworks(current => !current);
   };
 
+  const parkAndRideBikesToggle = () => {
+    setShowParkAndRideBikes(current => !current);
+  };
+
+  const barbecuePlacesToggle = () => {
+    setShowBarbecuePlaces(current => !current);
+  };
+
   const cultureRouteListToggle = () => {
     setOpenCultureRouteList(current => !current);
     if (cultureRouteId) {
@@ -1178,6 +1191,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       onChangeValue: publicBenchesToggle,
     },
     {
+      type: 'barbecuePlaces',
+      msgId: 'mobilityPlatform.menu.show.barbecuePlaces',
+      checkedValue: showBarbecuePlaces,
+      onChangeValue: barbecuePlacesToggle,
+    },
+    {
       type: 'cultureRoutes',
       msgId: 'mobilityPlatform.menu.showCultureRoutes',
       checkedValue: openCultureRouteList,
@@ -1239,6 +1258,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       msgId: 'mobilityPlatform.menu.showBikeServiceStations',
       checkedValue: showBikeServiceStations,
       onChangeValue: bikeServiceStationsToggle,
+    },
+    {
+      type: 'parkAndRideBikeStops',
+      msgId: 'mobilityPlatform.menu.show.parkAndRideBikes',
+      checkedValue: showParkAndRideBikes,
+      onChangeValue: parkAndRideBikesToggle,
     },
     {
       type: 'brushSandedRoute',
@@ -1591,6 +1616,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       component: <InfoTextBox infoText="mobilityPlatform.info.publicBenches" />,
     },
     {
+      visible: showBarbecuePlaces,
+      type: 'barbecuePlacesInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.barbecuePlaces" />,
+    },
+    {
       visible: openMarkedTrailsList,
       type: 'markedTrailsListInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.markedTrails" />,
@@ -1627,6 +1657,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       visible: showCargoBikes,
       type: 'cargoBikesInfo',
       component: <CityBikeInfo bikeInfo={cargoBikeInfo} />,
+    },
+    {
+      visible: showParkAndRideBikes,
+      type: 'parkAndRideBicyclesInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.parkAndRideBicycles" />,
     },
     {
       visible: showBrushSaltedRoute || showBrushSandedRoute,

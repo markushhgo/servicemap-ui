@@ -806,6 +806,8 @@ const translations = {
   'mobilityPlatform.menu.show.roadworks': 'Tietyömaat',
   'mobilityPlatform.menu.show.railwayStations': 'Rautatieasemat',
   'mobilityPlatform.menu.show.airMonitoring': 'Ilmanlaadun mittauspisteet',
+  'mobilityPlatform.menu.show.parkAndRideBikes': 'Liityntäpysäkit pyörille',
+  'mobilityPlatform.menu.show.barbecuePlaces': 'Grillaus- ja tulentekopaikat',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -901,6 +903,8 @@ const translations = {
   'mobilityPlatform.content.arrivingTrains.title': 'Saapuvat junat',
   'mobilityPlatform.content.departingTrains.empty': 'Ei lähteviä junia',
   'mobilityPlatform.content.arrivingTrains.empty': 'Ei saapuvia junia',
+  'mobilityPlatform.parkAndRide.content.subtitle': 'Liityntäpysäkki pyörille',
+  'mobilityPlatform.content.barbecuePlace.title': 'Grillaus- ja tulentekopaikka',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -959,7 +963,9 @@ const translations = {
   'mobilityPlatform.info.airMonitoring.paragraph.1': 'Ilmansaastetiedot näytetään kullekin mittausasemalle tunnin välein laskettavana indeksinä, ja se kattaa kaikki ks. mittausasemalla mitatut saasteet. Ilmanlaatu luokitellaan viiteen luokkaan: vihreä=hyvä, keltainen=tyydyttävä, oranssi=välttävä, punainen=huono, violetti=erittäin huono.',
   'mobilityPlatform.info.airMonitoring.paragraph.2': 'Laskennassa otetaan huomioon rikkidioksidi (SO2), typpidioksidi (NO2), hengitettävät hiukkaset (PM10), pienhiukkaset (PM2,5) sekä otsoni (O3). Kun ilmanlaatu on huono tai erittäin huono, terveysvaikutukset ovat mahdollisia herkillä ihmisillä. Ilmanlaatua heikentävät katupöly, liikenteen päästöt, puun pienpoltto, energiantuotanto sekä ajoittaiset kaukokulkeumat.',
   'mobilityPlatform.info.airMonitoring.paragraph.3': 'Palvelukartan ilmanlaatutiedot saadaan Turun seudun ilmansuojelun yhteistyöryhmältä.',
-  'mobilityPlatform.info.airMonitoring.link': 'Lisätietoja',
+  'mobilityPlatform.info.airMonitoring.link': 'Lisätietoja saa osoitteesta https://www.ilmatieteenlaitos.fi/ilmanlaatu',
+  'mobilityPlatform.info.parkAndRideBicycles': 'Liityntäpysäköinti tarjoaa mahdollisuuden jättää oma pyörä parkkiin ja jatkaa matkaa bussilla. Föli-alueella on useita liityntäpysäköintipaikkoja pyörille. Liityntäpysäköinti on maksutonta ja tarkoitettu vain joukkoliikennettä vaihtoyhteytenä käyttäville.',
+  'mobilityPlatform.info.barbecuePlaces': 'Kartalla näkyvät Turun viralliset tulenteko- ja grillauspaikat. Turun kaupungin hallinnoimilla mailla tulenteko on sallittu ainoastaan avotulen tekoon tarkoitetuilla paikoilla. Muilla kuin virallisilla nuotio- ja grillauspaikoilla avotulen teko on aina kielletty.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
@@ -1026,7 +1032,7 @@ const translations = {
   'ecocounter.oct': 'Loka',
   'ecocounter.nov': 'Marras',
   'ecocounter.dec': 'Joulu',
-  'ecocounter.station.active.period': 'Laskentapiste oli käytössä {value1} - {value2}.',
+  'ecocounter.station.counts.period': 'Laskentatiedot ovat väliltä {value1} - {value2}',
   'trafficCounter.year.warning.text': 'Vuoden {value} lukuja ei ole saatavilla.',
 };
 
