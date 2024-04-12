@@ -2,11 +2,20 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useMap } from 'react-leaflet';
+import walkingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_walking_area.svg';
+import walkingIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_walking_area-bw.svg';
+import cyclingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_cycling_area.svg';
+import cyclingIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_cycling_area-bw.svg';
 import { useMobilityPlatformContext } from '../../../context/MobilityPlatformContext';
 import { useAccessibleMap } from '../../../redux/selectors/settings';
 import useMobilityDataFetch from '../utils/useMobilityDataFetch';
 import {
-  isDataValid, fitPolygonsToBounds, blueOptionsBase, whiteOptionsBase, greenOptionsBase,
+  isDataValid,
+  createIcon,
+  fitPolygonsToBounds,
+  blueOptionsBase,
+  whiteOptionsBase,
+  greenOptionsBase,
   blackOptionsBase,
 } from '../utils/utils';
 import PolygonComponent from '../PolygonComponent';
@@ -29,6 +38,8 @@ const AccessibilityAreas = () => {
   const useContrast = useSelector(useAccessibleMap);
 
   const map = useMap();
+  const { Marker, Popup } = global.rL;
+  const { icon } = global.L;
 
   const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3' });
   const greenOptions = greenOptionsBase({ weight: 5 });
@@ -52,13 +63,23 @@ const AccessibilityAreas = () => {
     return blackOptions;
   };
 
-  // const pathOptions = useContrast ? whiteOptions : blueOptions;
+  const walkingAreaIcon = icon(createIcon(useContrast ? walkingIconBw : walkingIcon));
+  const cyclingAreaIcon = icon(createIcon(useContrast ? cyclingIconBw : cyclingIcon));
+
+  const getCorrectIcon = transportType => {
+    if (transportType.includes('kävely')) {
+      return walkingAreaIcon;
+    }
+    return cyclingAreaIcon;
+  };
 
   const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
 
   const filteredAreas = data.filter(item => item.name === unitName);
   const filteredAreasWalking = data.filter(item => item.name === unitName && item.extra.Kulkumuoto.includes('kävely'));
-  const filteredAreasCycling = data.filter(item => item.name === unitName && item.extra.Kulkumuoto.includes('pyöräily'));
+  const filteredAreasCycling = data.filter(
+    item => item.name === unitName && item.extra.Kulkumuoto.includes('pyöräily'),
+  );
   const renderAll = isDataValid(showAccessibilityAreas.all, filteredAreas);
   const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
   const renderCycling = isDataValid(showAccessibilityAreas.cycling, filteredAreasCycling);
@@ -75,23 +96,36 @@ const AccessibilityAreas = () => {
     fitPolygonsToBounds(renderCycling, filteredAreasCycling, map);
   }, [showAccessibilityAreas.cycling, filteredAreasCycling]);
 
-  const renderPolygons = (showData, data) => (
-    showData
-      ? data.map(item => (
-        <PolygonComponent
-          key={item.id}
-          item={item}
-          useContrast={useContrast}
-          pathOptions={getPathOptions(item.extra.Kulkumuoto)}
-        >
-          <AccessibilityAreasContent item={item} />
-        </PolygonComponent>
-      ))
-      : null
-  );
+  const getSingleCoordinates = data => data[0][0];
+
+  const renderMarkers = (showData, data) => (showData
+    ? data.map(item => (
+      <div key={item.id}>
+        <Marker icon={getCorrectIcon(item.extra.Kulkumuoto)} position={getSingleCoordinates(item.geometry_coords)}>
+          <Popup>
+            <AccessibilityAreasContent item={item} />
+          </Popup>
+        </Marker>
+      </div>
+    ))
+    : null);
+
+  const renderPolygons = (showData, data) => (showData
+    ? data.map(item => (
+      <PolygonComponent
+        key={item.id}
+        item={item}
+        useContrast={useContrast}
+        pathOptions={getPathOptions(item.extra.Kulkumuoto)}
+      >
+        <AccessibilityAreasContent item={item} />
+      </PolygonComponent>
+    ))
+    : null);
 
   return (
     <>
+      {renderMarkers(renderAll, filteredAreas)}
       {renderPolygons(renderAll, filteredAreas)}
       {renderPolygons(renderWalking, filteredAreasWalking)}
       {renderPolygons(renderCycling, filteredAreasCycling)}
