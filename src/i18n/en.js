@@ -526,6 +526,8 @@ const translations = {
   'unit.outdoorLink': 'Check the condition of an exercise location in the ulkoliikunta.fi service',
   'unit.seo.description': 'View service point on the map',
   'unit.seo.description.accessibility': 'View accessibility info and service point on the map',
+  'unit.accessibilityAreas.title': 'Accessibility areas',
+  'unit.accessibilityAreas.description': 'Lähestymisalueet ovat...', // TODO replace placeholder text
   'unit.accessibilityAreas.all.label': 'All accessibility areas',
   'unit.accessibilityAreas.walking.label': 'Accessibility areas (walking)',
   'unit.accessibilityAreas.cycling.label': 'Accessibility areas (cycling)',

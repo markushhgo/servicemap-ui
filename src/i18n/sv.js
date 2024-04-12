@@ -530,6 +530,8 @@ const translations = {
   'unit.outdoorLink': 'Kolla skicket på en motionsplats i tjänsten ulkoliikunta.fi',
   'unit.seo.description': 'Se läget på kartan',
   'unit.seo.description.accessibility': 'Se tillgänglighetsuppgifterna och läget på kartan',
+  'unit.accessibilityAreas.title': 'Tillgänglighetsområden',
+  'unit.accessibilityAreas.description': 'Lähestymisalueet ovat...', // TODO replace placeholder text
   'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområden',
   'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområden (promenad)',
   'unit.accessibilityAreas.cycling.label': 'Tillgänglighetsområden (cykling)',

@@ -58,10 +58,10 @@ const AccessibilityAreasToggle = ({
 };
 
 const StyledContainer = styled.div(({ theme }) => ({
-  paddingLeft: theme.spacing(2),
+  paddingLeft: theme.spacing(1),
   display: 'inline-flex',
   alignItems: 'center',
-  marginLeft: theme.spacing(2),
+  marginLeft: theme.spacing(1),
   verticalAlign: 'middle',
 }));
 

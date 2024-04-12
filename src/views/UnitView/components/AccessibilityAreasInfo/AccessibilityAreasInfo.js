@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import { useIntl } from 'react-intl';
 import { useMobilityPlatformContext } from '../../../../context/MobilityPlatformContext';
 import AccessibilityAreasToggle from './components/AccessibilityAreasToggle';
 import toggleObjectValue from '../../../MapView/utils/updateObject';
@@ -8,6 +9,8 @@ import { Container } from '../../../../components';
 
 const AccessibilityAreasInfo = () => {
   const { showAccessibilityAreas, setShowAccessibilityAreas } = useMobilityPlatformContext();
+
+  const intl = useIntl();
 
   const accessibilityAreasToggle = () => {
     toggleObjectValue('all', showAccessibilityAreas, setShowAccessibilityAreas);
@@ -57,17 +60,15 @@ const AccessibilityAreasInfo = () => {
     <StyledContent>
       <Container>
         <Typography variant="subtitle1" component="h4">
-          Lähestymisalueet
+          {intl.formatMessage({ id: 'unit.accessibilityAreas.title' })}
         </Typography>
       </Container>
-      <Container>
+      <StyledContainer>
         <Typography variant="body2" component="p">
-          Lähestymisalueet ovat...
+          {intl.formatMessage({ id: 'unit.accessibilityAreas.description' })}
         </Typography>
-      </Container>
-      <Container>
-        {renderSettings()}
-      </Container>
+      </StyledContainer>
+      <Container>{renderSettings()}</Container>
     </StyledContent>
   );
 };
@@ -78,10 +79,15 @@ const StyledContent = styled.div(({ theme }) => ({
   paddingBottom: theme.spacing(2),
 }));
 
+const StyledContainer = styled(Container)(() => ({
+  alignItems: 'flex-start',
+}));
+
 const StyledCheckBoxContainer = styled.div(({ theme }) => ({
   width: '100%',
   paddingTop: theme.spacing(1.5),
   paddingBottom: theme.spacing(1.5),
+  textAlign: 'left',
 }));
 
 export default AccessibilityAreasInfo;

@@ -530,6 +530,8 @@ const translations = {
   'unit.outdoorLink': 'Katso liikuntapaikan kunto ulkoliikunta.fi palvelusta',
   'unit.seo.description': 'Katso sijainti kartalla',
   'unit.seo.description.accessibility': 'Katso esteettömyystiedot ja sijainti kartalla',
+  'unit.accessibilityAreas.title': 'Lähestymisalueet',
+  'unit.accessibilityAreas.description': 'Lähestymisalueet ovat...', // TODO replace placeholder text
   'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
   'unit.accessibilityAreas.walking.label': 'Lähestymisalueet (kävely)',
   'unit.accessibilityAreas.cycling.label': 'Lähestymisalueet (pyöräily)',
