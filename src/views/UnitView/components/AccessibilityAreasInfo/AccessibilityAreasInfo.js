@@ -58,11 +58,11 @@ const AccessibilityAreasInfo = () => {
 
   return (
     <StyledContent>
-      <Container>
+      <StyledContainer>
         <Typography variant="subtitle1" component="h4">
           {intl.formatMessage({ id: 'unit.accessibilityAreas.title' })}
         </Typography>
-      </Container>
+      </StyledContainer>
       <StyledContainer>
         <Typography variant="body2" component="p">
           {intl.formatMessage({ id: 'unit.accessibilityAreas.description' })}
