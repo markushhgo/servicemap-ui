@@ -78,6 +78,10 @@ const UnitView = props => {
   const getLocaleText = useLocaleText();
   const dispatch = useDispatch();
 
+  // If external theme (by Turku) is true, then can be used to select which content to render
+  const externalTheme = config.themePKG;
+  const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+
   const map = useSelector(state => state.mapRef);
 
   const getImageAlt = () => `${intl.formatMessage({ id: 'unit.picture' })}${getLocaleText(unit.name)}`;
@@ -420,6 +424,18 @@ const UnitView = props => {
     </div>
   );
 
+  /**
+   * Filter out the accessibility areas object from tabs if isExternalTheme is false.
+   * @param {*} tabsData
+   * @returns array
+   */
+  const getTabsData = tabsData => {
+    if (isExternalTheme) {
+      return tabsData;
+    }
+    return tabsData.filter(item => item.id !== 'accessibilityAreas');
+  };
+
   const render = () => {
     const title = unit && unit.name ? getLocaleText(unit.name) : '';
     const onLinkOpenClick = () => {
@@ -524,7 +540,7 @@ const UnitView = props => {
             renderHead()
           }
           <TabLists
-            data={tabs}
+            data={getTabsData(tabs)}
             headerComponents={(
               <>
                 {TopArea}
