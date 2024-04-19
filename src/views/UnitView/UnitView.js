@@ -430,7 +430,7 @@ const UnitView = props => {
    * @returns array
    */
   const getTabsData = tabsData => {
-    if (isExternalTheme) {
+    if (isExternalTheme && unit.service_names_fi.includes('Perusopetus')) {
       return tabsData;
     }
     return tabsData.filter(item => item.id !== 'accessibilityAreas');
