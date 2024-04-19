@@ -51,10 +51,10 @@ const AccessibilityAreas = () => {
   });
 
   const getPathOptions = transportType => {
-    if (transportType.includes('kävely')) {
+    if (transportType?.includes('kävely')) {
       return blueOptions;
     }
-    if (transportType.includes('pyöräily')) {
+    if (transportType?.includes('pyöräily')) {
       return greenOptions;
     }
     if (useContrast) {
@@ -63,11 +63,11 @@ const AccessibilityAreas = () => {
     return blackOptions;
   };
 
-  const walkingAreaIcon = icon(createIcon(useContrast ? walkingIconBw : walkingIcon));
-  const cyclingAreaIcon = icon(createIcon(useContrast ? cyclingIconBw : cyclingIcon));
+  const walkingAreaIcon = icon(createIcon(useContrast ? walkingIconBw : walkingIcon, true));
+  const cyclingAreaIcon = icon(createIcon(useContrast ? cyclingIconBw : cyclingIcon, true));
 
   const getCorrectIcon = transportType => {
-    if (transportType.includes('kävely')) {
+    if (transportType?.includes('kävely')) {
       return walkingAreaIcon;
     }
     return cyclingAreaIcon;
@@ -76,9 +76,9 @@ const AccessibilityAreas = () => {
   const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
 
   const filteredAreas = data.filter(item => item.name === unitName);
-  const filteredAreasWalking = data.filter(item => item.name === unitName && item.extra.Kulkumuoto.includes('kävely'));
+  const filteredAreasWalking = data.filter(item => item.name === unitName && item?.extra?.kulkumuoto?.includes('kävely'));
   const filteredAreasCycling = data.filter(
-    item => item.name === unitName && item.extra.Kulkumuoto.includes('pyöräily'),
+    item => item.name === unitName && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
   const renderAll = isDataValid(showAccessibilityAreas.all, filteredAreas);
   const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
@@ -101,7 +101,7 @@ const AccessibilityAreas = () => {
   const renderMarkers = (showData, data) => (showData
     ? data.map(item => (
       <div key={item.id}>
-        <Marker icon={getCorrectIcon(item.extra.Kulkumuoto)} position={getSingleCoordinates(item.geometry_coords)}>
+        <Marker icon={getCorrectIcon(item.extra.kulkumuoto)} position={getSingleCoordinates(item.geometry_coords)}>
           <Popup>
             <AccessibilityAreasContent item={item} />
           </Popup>
@@ -116,7 +116,7 @@ const AccessibilityAreas = () => {
         key={item.id}
         item={item}
         useContrast={useContrast}
-        pathOptions={getPathOptions(item.extra.Kulkumuoto)}
+        pathOptions={getPathOptions(item.extra.kulkumuoto)}
       >
         <AccessibilityAreasContent item={item} />
       </PolygonComponent>

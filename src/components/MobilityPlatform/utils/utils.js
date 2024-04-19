@@ -14,9 +14,9 @@ const isDataValid = (visibilityValue, data) => visibilityValue && data && data.l
  */
 const isObjValid = (visibilityValue, obj) => visibilityValue && obj && Object.entries(obj).length > 0;
 
-const createIcon = icon => ({
+const createIcon = (icon, isSmall) => ({
   iconUrl: icon,
-  iconSize: [45, 45],
+  iconSize: isSmall ? [35, 35] : [45, 45],
 });
 
 const whiteOptionsBase = (attrs = {}) => ({ color: 'rgba(255, 255, 255, 255)', ...attrs });

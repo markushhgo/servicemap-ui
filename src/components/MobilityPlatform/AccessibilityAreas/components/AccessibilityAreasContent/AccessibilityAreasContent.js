@@ -22,10 +22,10 @@ const AccessibilityAreasContent = ({ item }) => {
         </StyledMargin>
         <StyledMargin>
           <Typography variant="body2" component="p">
-            {intl.formatMessage({ id: 'unit.accessibilityAreas.content.transport' }, { value: item.extra.Kulkumuoto })}
+            {intl.formatMessage({ id: 'unit.accessibilityAreas.content.transport' }, { value: item?.extra?.kulkumuoto })}
           </Typography>
           <Typography variant="body2" component="p">
-            {intl.formatMessage({ id: 'unit.accessibilityAreas.content.duration' }, { value: item.extra.Minuutit })}
+            {intl.formatMessage({ id: 'unit.accessibilityAreas.content.duration' }, { value: item?.extra?.minuutit })}
           </Typography>
         </StyledMargin>
       </StyledTextContainer>
@@ -57,8 +57,8 @@ AccessibilityAreasContent.propTypes = {
   item: PropTypes.shape({
     name_fi: PropTypes.string,
     extra: PropTypes.shape({
-      Kulkumuoto: PropTypes.string,
-      Minuutit: PropTypes.number,
+      kulkumuoto: PropTypes.string,
+      minuutit: PropTypes.number,
     }),
   }),
 };
