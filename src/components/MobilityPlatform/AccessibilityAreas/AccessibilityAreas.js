@@ -34,7 +34,7 @@ const AccessibilityAreas = () => {
   const { showAccessibilityAreas } = useMobilityPlatformContext();
 
   const selectedUnit = useSelector(state => state.selectedUnit?.unit?.data);
-  const unitName = selectedUnit?.name?.fi;
+  const unitId = selectedUnit?.id;
   const useContrast = useSelector(useAccessibleMap);
 
   const map = useMap();
@@ -75,10 +75,10 @@ const AccessibilityAreas = () => {
 
   const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
 
-  const filteredAreas = data.filter(item => item.name === unitName);
-  const filteredAreasWalking = data.filter(item => item.name === unitName && item?.extra?.kulkumuoto?.includes('kävely'));
+  const filteredAreas = data.filter(item => item.extra?.kohde_ID === unitId);
+  const filteredAreasWalking = data.filter(item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'));
   const filteredAreasCycling = data.filter(
-    item => item.name === unitName && item?.extra?.kulkumuoto?.includes('pyöräily'),
+    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
   const renderAll = isDataValid(showAccessibilityAreas.all, filteredAreas);
   const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
