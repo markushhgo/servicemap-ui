@@ -100,6 +100,10 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showBusStops, setShowBusStops] = useState(false);
   const [showRailwayStations, setShowRailwayStations] = useState(false);
 
+  // units
+  const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(accessibilityAreasInitial);
+  const [accessibilityAreasData, setAccessibilityAreasData] = useState([]);
+
   // other
   const [showOutdoorGymDevices, setShowOutdoorGymDevices] = useState(false);
   const [showLoadingPlaces, setShowLoadingPlaces] = useState(false);
@@ -110,7 +114,6 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showPublicBenches, setShowPublicBenches] = useState(false);
   const [showRoadworks, setShowRoadworks] = useState(false);
   const [showBarbecuePlaces, setShowBarbecuePlaces] = useState(false);
-  const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(accessibilityAreasInitial);
 
   const getters = {
     openMobilityPlatform,
@@ -171,6 +174,9 @@ const MobilityPlatformContextProvider = ({ children }) => {
     // public transport
     showBusStops,
     showRailwayStations,
+    // units
+    showAccessibilityAreas,
+    accessibilityAreasData,
     // other
     showOutdoorGymDevices,
     showPublicToilets,
@@ -181,7 +187,6 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showPublicBenches,
     showRoadworks,
     showBarbecuePlaces,
-    showAccessibilityAreas,
   };
 
   const setters = {
@@ -243,6 +248,9 @@ const MobilityPlatformContextProvider = ({ children }) => {
     // public transport
     setShowBusStops,
     setShowRailwayStations,
+    // units
+    setShowAccessibilityAreas,
+    setAccessibilityAreasData,
     // other
     setShowOutdoorGymDevices,
     setShowPublicToilets,
@@ -253,7 +261,6 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowPublicBenches,
     setShowRoadworks,
     setShowBarbecuePlaces,
-    setShowAccessibilityAreas,
   };
 
   const contextValues = { ...getters, ...setters };

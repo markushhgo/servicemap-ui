@@ -8,7 +8,6 @@ import cyclingIcon from 'servicemap-ui-turku/assets/icons/icons-icon_cycling_are
 import cyclingIconBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_cycling_area-bw.svg';
 import { useMobilityPlatformContext } from '../../../context/MobilityPlatformContext';
 import { useAccessibleMap } from '../../../redux/selectors/settings';
-import useMobilityDataFetch from '../utils/useMobilityDataFetch';
 import {
   isDataValid,
   createIcon,
@@ -24,14 +23,8 @@ import AccessibilityAreasContent from './components/AccessibilityAreasContent';
 /**
  * Displays school accessibility areas on the map in polygon format.
  */
-
 const AccessibilityAreas = () => {
-  const options = {
-    type_name: 'SchoolAndKindergartenAccessibilityArea',
-    latlon: true,
-    page_size: 150,
-  };
-  const { showAccessibilityAreas } = useMobilityPlatformContext();
+  const { showAccessibilityAreas, accessibilityAreasData } = useMobilityPlatformContext();
 
   const selectedUnit = useSelector(state => state.selectedUnit?.unit?.data);
   const unitId = selectedUnit?.id;
@@ -73,20 +66,19 @@ const AccessibilityAreas = () => {
     return cyclingAreaIcon;
   };
 
-  const { data } = useMobilityDataFetch(options, showAccessibilityAreas);
-
-  const filteredAreas = data.filter(item => item.extra?.kohde_ID === unitId);
-  const filteredAreasWalking = data.filter(item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'));
-  const filteredAreasCycling = data.filter(
+  const filteredAreasWalking = accessibilityAreasData.filter(
+    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'),
+  );
+  const filteredAreasCycling = accessibilityAreasData.filter(
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
-  const renderAll = isDataValid(showAccessibilityAreas.all, filteredAreas);
+  const renderAll = isDataValid(showAccessibilityAreas.all, accessibilityAreasData);
   const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
   const renderCycling = isDataValid(showAccessibilityAreas.cycling, filteredAreasCycling);
 
   useEffect(() => {
-    fitPolygonsToBounds(renderAll, filteredAreas, map);
-  }, [showAccessibilityAreas.all, filteredAreas]);
+    fitPolygonsToBounds(renderAll, accessibilityAreasData, map);
+  }, [showAccessibilityAreas.all, accessibilityAreasData]);
 
   useEffect(() => {
     fitPolygonsToBounds(renderWalking, filteredAreasWalking, map);
@@ -125,8 +117,8 @@ const AccessibilityAreas = () => {
 
   return (
     <>
-      {renderMarkers(renderAll, filteredAreas)}
-      {renderPolygons(renderAll, filteredAreas)}
+      {renderMarkers(renderAll, accessibilityAreasData)}
+      {renderPolygons(renderAll, accessibilityAreasData)}
       {renderPolygons(renderWalking, filteredAreasWalking)}
       {renderPolygons(renderCycling, filteredAreasCycling)}
     </>

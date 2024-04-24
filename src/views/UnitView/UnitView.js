@@ -43,6 +43,8 @@ import { parseSearchParams } from '../../utils';
 import { fetchServiceUnits } from '../../redux/actions/services';
 import MapView from '../MapView';
 import Util from '../../utils/mapUtility';
+import useMobilityDataFetch from '../../components/MobilityPlatform/utils/useMobilityDataFetch';
+import { useMobilityPlatformContext } from '../../context/MobilityPlatformContext';
 import AccessibilityAreasInfo from './components/AccessibilityAreasInfo';
 
 const UnitView = props => {
@@ -81,6 +83,38 @@ const UnitView = props => {
   // If external theme (by Turku) is true, then can be used to select which content to render
   const externalTheme = config.themePKG;
   const isExternalTheme = !externalTheme || externalTheme === 'undefined' ? null : externalTheme;
+
+  const { setAccessibilityAreasData } = useMobilityPlatformContext();
+
+  const options = {
+    type_name: 'SchoolAndKindergartenAccessibilityArea',
+    latlon: true,
+    page_size: 150,
+  };
+
+  /**
+   * Fetch unit (school) accessibility areas data
+   */
+  const { data: accessibilityAreas } = useMobilityDataFetch(options, isExternalTheme);
+
+  /**
+   * Filter unit accessibility areas based on unit id.
+   */
+  const filteredAreas = accessibilityAreas.filter(item => item?.extra?.kohde_ID === unit.id);
+
+  /**
+   * Set unit accessibility areas data into state
+   */
+  useEffect(() => {
+    if (filteredAreas?.length) {
+      setAccessibilityAreasData(filteredAreas);
+    }
+  }, [filteredAreas.length]);
+
+  /**
+   * Check if unit id exists in accessibility areas data and return boolean value.
+   */
+  const hasAccessibilityAreas = accessibilityAreas.some(item => item?.extra?.kohde_ID === unit.id);
 
   const map = useSelector(state => state.mapRef);
 
@@ -430,7 +464,7 @@ const UnitView = props => {
    * @returns array
    */
   const getTabsData = tabsData => {
-    if (isExternalTheme && unit.service_names_fi.includes('Perusopetus')) {
+    if (isExternalTheme && hasAccessibilityAreas) {
       return tabsData;
     }
     return tabsData.filter(item => item.id !== 'accessibilityAreas');
