@@ -33,6 +33,10 @@ exports[`<AccessibilityAreasContent /> should work 1`] = `
           >
             Kulkumuto: Kävely
           </p>
+        </div>
+        <div
+          class="css-1fhgjcy"
+        >
           <p
             class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           >

@@ -24,6 +24,8 @@ const AccessibilityAreasContent = ({ item }) => {
           <Typography variant="body2" component="p">
             {intl.formatMessage({ id: 'unit.accessibilityAreas.content.transport' }, { value: item?.extra?.kulkumuoto })}
           </Typography>
+        </StyledTextContainer>
+        <StyledTextContainer>
           <Typography variant="body2" component="p">
             {intl.formatMessage({ id: 'unit.accessibilityAreas.content.duration' }, { value: item?.extra?.minuutit })}
           </Typography>
