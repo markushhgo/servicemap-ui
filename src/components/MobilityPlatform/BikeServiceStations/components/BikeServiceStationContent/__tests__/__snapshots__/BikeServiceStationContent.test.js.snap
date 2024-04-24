@@ -3,13 +3,13 @@
 exports[`<BikeServiceStationContent /> should match snapshot 1`] = `
 <div>
   <div
-    class="BikeServiceStationContent-container-1"
+    class="css-1ynyhby"
   >
     <div
-      class="BikeServiceStationContent-headerContainer-2"
+      class="css-1dznbe2"
     >
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
@@ -19,10 +19,10 @@ exports[`<BikeServiceStationContent /> should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="BikeServiceStationContent-textContainer-3"
+      class="css-1fhgjcy"
     >
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
@@ -31,7 +31,7 @@ exports[`<BikeServiceStationContent /> should match snapshot 1`] = `
         </p>
       </div>
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
