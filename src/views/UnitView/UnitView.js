@@ -49,7 +49,6 @@ import AccessibilityAreasInfo from './components/AccessibilityAreasInfo';
 
 const UnitView = props => {
   const {
-    distance,
     stateUnit,
     intl,
     classes,
@@ -92,15 +91,18 @@ const UnitView = props => {
     page_size: 150,
   };
 
+  const isUnitSchool = unit?.service_names_fi?.includes('Perusopetus');
+  const fetchAccessibiliyAreas = isExternalTheme && isUnitSchool;
+
   /**
    * Fetch unit (school) accessibility areas data
    */
-  const { data: accessibilityAreas } = useMobilityDataFetch(options, isExternalTheme);
+  const { data: accessibilityAreas } = useMobilityDataFetch(options, fetchAccessibiliyAreas);
 
   /**
    * Filter unit accessibility areas based on unit id.
    */
-  const filteredAreas = accessibilityAreas.filter(item => item?.extra?.kohde_ID === unit.id);
+  const filteredAreas = accessibilityAreas.filter(item => item?.extra?.kohde_ID === unit?.id);
 
   /**
    * Set unit accessibility areas data into state
@@ -114,7 +116,7 @@ const UnitView = props => {
   /**
    * Check if unit id exists in accessibility areas data and return boolean value.
    */
-  const hasAccessibilityAreas = accessibilityAreas.some(item => item?.extra?.kohde_ID === unit.id);
+  const hasAccessibilityAreas = accessibilityAreas.some(item => item?.extra?.kohde_ID === unit?.id);
 
   const map = useSelector(state => state.mapRef);
 
