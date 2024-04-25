@@ -917,6 +917,9 @@ const translations = {
   'mobilityPlatform.content.barbecuePlace.title': 'Grill- och eldningplats',
   'mobilityPlatform.content.barbecuePlace.manufacturer': 'Tillverkare: {value}',
   'mobilityPlatform.content.barbecuePlace.model': 'Modell: {value}',
+  'mobilityPlatform.content.airport.title': 'Åbo flygplats',
+  'mobilityPlatform.content.airport.arrivals': 'Ankommande flygningar:',
+  'mobilityPlatform.content.airport.departees': 'Avgående flygningar:',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

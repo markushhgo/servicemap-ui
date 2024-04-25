@@ -908,6 +908,9 @@ const translations = {
   'mobilityPlatform.content.barbecuePlace.title': 'Grillaus- ja tulentekopaikka',
   'mobilityPlatform.content.barbecuePlace.manufacturer': 'Valmistaja: {value}',
   'mobilityPlatform.content.barbecuePlace.model': 'Malli: {value}',
+  'mobilityPlatform.content.airport.title': 'Turun lentoasema',
+  'mobilityPlatform.content.airport.arrivals': 'Saapuvat lennot:',
+  'mobilityPlatform.content.airport.departees': 'Lähtevät lennot:',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',

@@ -913,6 +913,9 @@ const translations = {
   'mobilityPlatform.content.barbecuePlace.title': 'Site for barbequing or making fire',
   'mobilityPlatform.content.barbecuePlace.manufacturer': 'Manufacturer: {value}',
   'mobilityPlatform.content.barbecuePlace.model': 'Model: {value}',
+  'mobilityPlatform.content.airport.title': 'Turku airport',
+  'mobilityPlatform.content.airport.arrivals': 'Arriving flights:',
+  'mobilityPlatform.content.airport.departees': 'Departing flights:',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
