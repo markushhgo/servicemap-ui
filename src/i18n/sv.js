@@ -920,6 +920,11 @@ const translations = {
   'mobilityPlatform.content.airport.title': 'Åbo flygplats',
   'mobilityPlatform.content.airport.arrivals': 'Ankommande flygningar:',
   'mobilityPlatform.content.airport.departees': 'Avgående flygningar:',
+  'mobilityPlatform.content.airport.cities.turku': 'Åbo',
+  'mobilityPlatform.content.airport.cities.stockholm': 'Stockholm',
+  'mobilityPlatform.content.airport.cities.mariehamn': 'Mariehamn',
+  'mobilityPlatform.content.airport.cities.riga': 'Riga',
+  'mobilityPlatform.content.airport.cities.gdansk': 'Gdańsk',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Beskrivning av rutten',

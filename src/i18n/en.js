@@ -916,6 +916,11 @@ const translations = {
   'mobilityPlatform.content.airport.title': 'Turku airport',
   'mobilityPlatform.content.airport.arrivals': 'Arriving flights:',
   'mobilityPlatform.content.airport.departees': 'Departing flights:',
+  'mobilityPlatform.content.airport.cities.turku': 'Turku',
+  'mobilityPlatform.content.airport.cities.stockholm': 'Stockholm',
+  'mobilityPlatform.content.airport.cities.mariehamn': 'Mariehamn',
+  'mobilityPlatform.content.airport.cities.riga': 'Riga',
+  'mobilityPlatform.content.airport.cities.gdansk': 'Gdańsk',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',

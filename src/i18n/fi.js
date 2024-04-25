@@ -911,6 +911,11 @@ const translations = {
   'mobilityPlatform.content.airport.title': 'Turun lentoasema',
   'mobilityPlatform.content.airport.arrivals': 'Saapuvat lennot:',
   'mobilityPlatform.content.airport.departees': 'Lähtevät lennot:',
+  'mobilityPlatform.content.airport.cities.turku': 'Turkuun',
+  'mobilityPlatform.content.airport.cities.stockholm': 'Tukholmaan',
+  'mobilityPlatform.content.airport.cities.mariehamn': 'Maarianhaminaan',
+  'mobilityPlatform.content.airport.cities.riga': 'Riikaan',
+  'mobilityPlatform.content.airport.cities.gdansk': 'Gdańskiin',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
