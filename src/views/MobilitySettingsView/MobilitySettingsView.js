@@ -180,6 +180,8 @@ const MobilitySettingsView = ({ navigator }) => {
     setShowParkAndRideBikes,
     showBarbecuePlaces,
     setShowBarbecuePlaces,
+    showAirports,
+    setShowAirports,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
@@ -488,7 +490,8 @@ const MobilitySettingsView = ({ navigator }) => {
   useEffect(() => {
     checkVisibilityValues(showBusStops, setOpenPublicTransportSettings);
     checkVisibilityValues(showRailwayStations, setOpenPublicTransportSettings);
-  }, [showBusStops, showRailwayStations]);
+    checkVisibilityValues(showAirports, setOpenPublicTransportSettings);
+  }, [showBusStops, showRailwayStations, showAirports]);
 
   useEffect(() => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
@@ -863,6 +866,10 @@ const MobilitySettingsView = ({ navigator }) => {
 
   const railwayStationsToggle = () => {
     setShowRailwayStations(current => !current);
+  };
+
+  const airPortsToggle = () => {
+    setShowAirports(current => !current);
   };
 
   const roadWorksToggle = () => {
@@ -1392,6 +1399,12 @@ const MobilitySettingsView = ({ navigator }) => {
       msgId: 'mobilityPlatform.menu.show.railwayStations',
       checkedValue: showRailwayStations,
       onChangeValue: railwayStationsToggle,
+    },
+    {
+      type: 'airPorts',
+      msgId: 'mobilityPlatform.menu.show.airPorts',
+      checkedValue: showAirports,
+      onChangeValue: airPortsToggle,
     },
   ];
 

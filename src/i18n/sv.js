@@ -807,6 +807,7 @@ const translations = {
   'mobilityPlatform.menu.show.railwayStations': 'Järnvägsstationer',
   'mobilityPlatform.menu.show.parkAndRideBikes': 'Infartsparkering för cyklar',
   'mobilityPlatform.menu.show.barbecuePlaces': 'Grill- och eldningsplatser',
+  'mobilityPlatform.menu.show.airPorts': 'Flygplats',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Tjänsteleverantör: {value}',

@@ -808,6 +808,7 @@ const translations = {
   'mobilityPlatform.menu.show.airMonitoring': 'Ilmanlaadun mittauspisteet',
   'mobilityPlatform.menu.show.parkAndRideBikes': 'Liityntäpysäkit pyörille',
   'mobilityPlatform.menu.show.barbecuePlaces': 'Grillaus- ja tulentekopaikat',
+  'mobilityPlatform.menu.show.airPorts': 'Lentoasema',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
