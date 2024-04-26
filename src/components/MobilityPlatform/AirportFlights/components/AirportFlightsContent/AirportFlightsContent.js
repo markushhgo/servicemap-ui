@@ -35,10 +35,22 @@ const AirportFlightsContent = ({ arrivals, departees }) => {
         return intl.formatMessage({ id: 'mobilityPlatform.content.airport.cities.riga' });
       case 'Gdansk':
         return intl.formatMessage({ id: 'mobilityPlatform.content.airport.cities.gdansk' });
+      case 'Rome':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.airport.cities.rome' });
+      case 'Rhodes':
+        return intl.formatMessage({ id: 'mobilityPlatform.content.airport.cities.rhodes' });
       default:
         return cityStr;
     }
   };
+
+  const renderText = (translationId, isTitle) => (
+    <StyledTextContainer>
+      <Typography variant={isTitle ? 'subtitle1' : 'body2'} component="p">
+        {intl.formatMessage({ id: translationId })}
+      </Typography>
+    </StyledTextContainer>
+  );
 
   return (
     <StyledContainer>
@@ -48,12 +60,11 @@ const AirportFlightsContent = ({ arrivals, departees }) => {
         </Typography>
       </StyledHeaderContainer>
       <div>
-        <StyledTextContainer>
-          <Typography variant="subtitle1" component="p">
-            {intl.formatMessage({ id: 'mobilityPlatform.content.airport.departees' })}
-          </Typography>
-        </StyledTextContainer>
-        {filterDepartees.map(item => (
+        {renderText('mobilityPlatform.content.airport.departees', true)}
+        {!filterDepartees?.length ? (
+          renderText('mobilityPlatform.content.airport.departees.empty')
+        ) : null}
+        {filterDepartees?.map(item => (
           <StyledFlexContainer key={item.sdt}>
             <StyledTextContainer>
               <ReactSVG src={planeIcon} className={iconClass} />
@@ -77,12 +88,11 @@ const AirportFlightsContent = ({ arrivals, departees }) => {
         ))}
       </div>
       <div>
-        <StyledTextContainer>
-          <Typography variant="subtitle1" component="p">
-            {intl.formatMessage({ id: 'mobilityPlatform.content.airport.arrivals' })}
-          </Typography>
-        </StyledTextContainer>
-        {filterArrivals.map(item => (
+        {renderText('mobilityPlatform.content.airport.arrivals', true)}
+        {!filterArrivals?.length ? (
+          renderText('mobilityPlatform.content.airport.arrivals.empty')
+        ) : null}
+        {filterArrivals?.map(item => (
           <StyledFlexContainer key={item.sdt}>
             <StyledTextContainer>
               <ReactSVG src={planeIcon} className={iconClass} />
