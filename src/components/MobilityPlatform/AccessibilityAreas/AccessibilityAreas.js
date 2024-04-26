@@ -34,8 +34,8 @@ const AccessibilityAreas = () => {
   const { Marker, Popup } = global.rL;
   const { icon } = global.L;
 
-  const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3' });
-  const greenOptions = greenOptionsBase({ weight: 5 });
+  const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3', fillOpacity: '0' });
+  const greenOptions = greenOptionsBase({ weight: 5, fillOpacity: '0' });
   const blackOptions = blackOptionsBase({ weight: 5 });
   const whiteOptions = whiteOptionsBase({
     fillOpacity: 0.3,
@@ -109,6 +109,7 @@ const AccessibilityAreas = () => {
         item={item}
         useContrast={useContrast}
         pathOptions={getPathOptions(item.extra.kulkumuoto)}
+        isTransparent
       >
         <AccessibilityAreasContent item={item} />
       </PolygonComponent>
