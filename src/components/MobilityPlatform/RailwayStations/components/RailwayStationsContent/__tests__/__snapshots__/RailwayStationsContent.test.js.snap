@@ -9,7 +9,7 @@ exports[`<RailwayStationsContent /> should match snapshot 1`] = `
       class="css-1dznbe2"
     >
       <h4
-        class="MuiTypography-root MuiTypography-subtitle1 css-1im1a93-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
       >
         Kupittaa
       </h4>
@@ -20,12 +20,16 @@ exports[`<RailwayStationsContent /> should match snapshot 1`] = `
           class="css-1fhgjcy"
         >
           <h5
-            class="MuiTypography-root MuiTypography-subtitle1 css-1im1a93-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
           >
-            Lähtevät junat
+            Lähtevät junat:
           </h5>
+        </div>
+        <div
+          class="css-1fhgjcy"
+        >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-qabfq1-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           >
             Ei lähteviä junia
           </p>
@@ -36,12 +40,16 @@ exports[`<RailwayStationsContent /> should match snapshot 1`] = `
           class="css-1fhgjcy"
         >
           <h5
-            class="MuiTypography-root MuiTypography-subtitle1 css-1im1a93-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
           >
-            Saapuvat junat
+            Saapuvat junat:
           </h5>
+        </div>
+        <div
+          class="css-1fhgjcy"
+        >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-qabfq1-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           >
             Ei saapuvia junia
           </p>

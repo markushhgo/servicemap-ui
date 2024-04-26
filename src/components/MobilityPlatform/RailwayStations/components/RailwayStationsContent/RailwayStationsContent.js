@@ -56,43 +56,51 @@ const RailwayStationsContent = ({ item, stationsData }) => {
     const lastIdx = data.slice(-1)[0];
     const arrivalStation = findStation(stationsData, lastIdx.stationShortCode);
     return (
-      <StyledText variant="body2" component="p">
-        {arrivalStation.stationName}
-      </StyledText>
+      <StyledTextContainer>
+        <Typography variant="body2" component="p">
+          {arrivalStation.stationName}
+        </Typography>
+      </StyledTextContainer>
     );
   };
 
   const renderTrainInfo = train => (
-    <StyledText variant="body2" component="p">{`${train.trainType} ${train.trainNumber}`}</StyledText>
+    <StyledTextContainer>
+      <Typography variant="body2" component="p">{`${train.trainType} ${train.trainNumber}`}</Typography>
+    </StyledTextContainer>
   );
 
   const renderTimeValues = elem => (
-    <StyledText key={elem.scheduledTime} variant="body2" component="p">
-      {elem.liveEstimateTime && elem.differenceInMinutes > 1
-        ? `${formatDateTime(elem.liveEstimateTime)} (${formatDateTime(elem.scheduledTime)})`
-        : `${formatDateTime(elem.scheduledTime)}`}
-    </StyledText>
+    <StyledTextContainer>
+      <Typography key={elem.scheduledTime} variant="body2" component="p">
+        {elem.liveEstimateTime && elem.differenceInMinutes > 1
+          ? `${formatDateTime(elem.liveEstimateTime)} (${formatDateTime(elem.scheduledTime)})`
+          : `${formatDateTime(elem.scheduledTime)}`}
+      </Typography>
+    </StyledTextContainer>
   );
 
   return (
     <StyledContainer>
       <StyledHeaderContainer>
-        <StyledText variant="subtitle1" component="h4">
+        <Typography variant="subtitle1" component="h4">
           {item?.stationName}
-        </StyledText>
+        </Typography>
       </StyledHeaderContainer>
       <div>
         <div>
           <StyledTextContainer>
-            <StyledText variant="subtitle1" component="h5">
+            <Typography variant="subtitle1" component="h5">
               {intl.formatMessage({ id: 'mobilityPlatform.content.departingTrains.title' })}
-            </StyledText>
-            {!departingTrains?.length ? (
-              <StyledText variant="body2" component="p">
-                {intl.formatMessage({ id: 'mobilityPlatform.content.departingTrains.empty' })}
-              </StyledText>
-            ) : null}
+            </Typography>
           </StyledTextContainer>
+          {!departingTrains?.length ? (
+            <StyledTextContainer>
+              <Typography variant="body2" component="p">
+                {intl.formatMessage({ id: 'mobilityPlatform.content.departingTrains.empty' })}
+              </Typography>
+            </StyledTextContainer>
+          ) : null}
           {departingTrains?.map(train => (
             <StyledFlexContainer key={train.trainNumber}>
               <TrainIcon color="rgba(7, 44, 115, 255)" className="icon-icon-hsl-train" />
@@ -106,15 +114,17 @@ const RailwayStationsContent = ({ item, stationsData }) => {
         </div>
         <div>
           <StyledTextContainer>
-            <StyledText variant="subtitle1" component="h5">
+            <Typography variant="subtitle1" component="h5">
               {intl.formatMessage({ id: 'mobilityPlatform.content.arrivingTrains.title' })}
-            </StyledText>
-            {!arrivingTrains?.length ? (
-              <StyledText variant="body2" component="p">
-                {intl.formatMessage({ id: 'mobilityPlatform.content.arrivingTrains.empty' })}
-              </StyledText>
-            ) : null}
+            </Typography>
           </StyledTextContainer>
+          {!arrivingTrains?.length ? (
+            <StyledTextContainer>
+              <Typography variant="body2" component="p">
+                {intl.formatMessage({ id: 'mobilityPlatform.content.arrivingTrains.empty' })}
+              </Typography>
+            </StyledTextContainer>
+          ) : null}
           {arrivingTrains?.map(train => (
             <StyledFlexContainer key={train.trainNumber}>
               <TrainIcon color="rgba(7, 44, 115, 255)" className="icon-icon-hsl-train" />
@@ -133,16 +143,13 @@ const RailwayStationsContent = ({ item, stationsData }) => {
 
 const TrainIcon = styled.span(({ color }) => ({
   fontSize: 20,
-  width: 20,
-  height: 20,
+  width: '20px',
+  height: '20px',
   lineHeight: '21px',
-  marginLeft: 6,
-  marginRight: 4,
+  marginLeft: '6px',
+  marginRight: '4px',
+  marginTop: '8px',
   color,
-}));
-
-const StyledText = styled(Typography)(({ theme }) => ({
-  marginBottom: theme.spacing(0.5),
 }));
 
 RailwayStationsContent.propTypes = {
