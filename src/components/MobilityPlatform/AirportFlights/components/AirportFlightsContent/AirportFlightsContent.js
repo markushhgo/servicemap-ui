@@ -5,9 +5,10 @@ import { Typography } from '@mui/material';
 import { css } from '@emotion/css';
 import { format } from 'date-fns';
 import { ReactSVG } from 'react-svg';
-import styled from '@emotion/styled';
 import planeIcon from 'servicemap-ui-turku/assets/icons/icons-icon_airplane-square.svg';
-import { StyledContainer, StyledHeaderContainer, StyledTextContainer } from '../../../styled/styled';
+import {
+  StyledContainer, StyledHeaderContainer, StyledFlexContainer, StyledTextContainer,
+} from '../../../styled/styled';
 
 const AirportFlightsContent = ({ arrivals, departees }) => {
   const intl = useIntl();
@@ -55,7 +56,7 @@ const AirportFlightsContent = ({ arrivals, departees }) => {
   return (
     <StyledContainer>
       <StyledHeaderContainer>
-        <Typography variant="subtitle1" component="h3">
+        <Typography variant="subtitle1" component="h4">
           {intl.formatMessage({ id: 'mobilityPlatform.content.airport.title' })}
         </Typography>
       </StyledHeaderContainer>
@@ -118,16 +119,6 @@ const AirportFlightsContent = ({ arrivals, departees }) => {
     </StyledContainer>
   );
 };
-
-const StyledFlexContainer = styled.div(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginTop: theme.spacing(0.5),
-  marginBottom: theme.spacing(0.75),
-  width: '93%',
-}));
 
 AirportFlightsContent.propTypes = {
   arrivals: PropTypes.arrayOf(PropTypes.shape({

@@ -5,6 +5,9 @@ import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { fetchRailwaysData } from '../../../mobilityPlatformRequests/mobilityPlatformRequests';
+import {
+  StyledContainer, StyledHeaderContainer, StyledFlexContainer, StyledTextContainer,
+} from '../../../styled/styled';
 
 const RailwayStationsContent = ({ item, stationsData }) => {
   const [stationTrainsData, setStationTrainsData] = useState([]);
@@ -72,12 +75,12 @@ const RailwayStationsContent = ({ item, stationsData }) => {
   );
 
   return (
-    <StyledPopupInner>
-      <StyledHeader>
+    <StyledContainer>
+      <StyledHeaderContainer>
         <StyledText variant="subtitle1" component="h4">
           {item?.stationName}
         </StyledText>
-      </StyledHeader>
+      </StyledHeaderContainer>
       <div>
         <div>
           <StyledTextContainer>
@@ -124,7 +127,7 @@ const RailwayStationsContent = ({ item, stationsData }) => {
           ))}
         </div>
       </div>
-    </StyledPopupInner>
+    </StyledContainer>
   );
 };
 
@@ -140,37 +143,6 @@ const TrainIcon = styled.span(({ color }) => ({
 
 const StyledText = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(0.5),
-}));
-
-const StyledTextContainer = styled.div(({ theme }) => ({
-  marginBottom: theme.spacing(0.75),
-}));
-
-const StyledFlexContainer = styled.div(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginBottom: theme.spacing(0.75),
-  width: '90%',
-}));
-
-const StyledPopupInner = styled.div(({ theme }) => ({
-  borderRadius: '3px',
-  marginBottom: theme.spacing(1),
-  marginLeft: theme.spacing(1.2),
-  lineHeight: 1.2,
-  overflowX: 'hidden',
-}));
-
-const StyledHeader = styled.div(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  marginTop: theme.spacing(0.5),
-  marginBottom: theme.spacing(1),
-  alignItems: 'flex-end',
-  borderBottom: '2px solid gray',
-  justifyContent: 'space-between',
-  width: '80%',
 }));
 
 RailwayStationsContent.propTypes = {
