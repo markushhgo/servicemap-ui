@@ -1793,6 +1793,11 @@ const MobilitySettingsView = ({ navigator }) => {
       type: 'railwayStationsInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.railwayStations" />,
     },
+    {
+      visible: showAirports,
+      type: 'airportInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.airport" />,
+    },
   ];
 
   const infoTextsRoadworks = [
