@@ -24,6 +24,8 @@ const RailwayStationsContent = ({ item, stationsData }) => {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     const options = {
       minutes_before_departure: 180,
       minutes_after_departure: 15,
@@ -34,7 +36,8 @@ const RailwayStationsContent = ({ item, stationsData }) => {
     const endpoint = `live-trains/station/${item.stationShortCode}`;
     const params = optionsToParams(options);
     const query = `${endpoint}?${params}`;
-    fetchRailwaysData(query, setStationTrainsData);
+    fetchRailwaysData(query, setStationTrainsData, signal);
+    return () => controller.abort();
   }, [item.stationShortCode]);
 
   const filterArrivals = data => data.filter(train => {
