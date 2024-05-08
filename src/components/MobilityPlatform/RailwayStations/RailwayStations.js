@@ -9,6 +9,7 @@ import { useAccessibleMap } from '../../../redux/selectors/settings';
 import { fetchRailwaysData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
 import { createIcon, isDataValid } from '../utils/utils';
 import RailwayStationsContent from './components/RailwayStationsContent';
+import { StyledPopupWrapper, StyledPopupInner } from '../styled/styled';
 
 const RailwayStations = () => {
   const [railwayStations, setRailwayStations] = useState([]);
@@ -25,9 +26,12 @@ const RailwayStations = () => {
   const customIcon = icon(createIcon(useContrast ? railwayIconBw : railwayIcon));
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     if (showRailwayStations && !railwayStations.length) {
-      fetchRailwaysData('metadata/stations', setRailwayStations);
+      fetchRailwaysData('metadata/stations', setRailwayStations, signal);
     }
+    return () => controller.abort();
   }, [showRailwayStations]);
 
   /** Separate railway stations of Turku, eg. Turku station and Kupittaa */
@@ -49,9 +53,13 @@ const RailwayStations = () => {
   return renderData
     ? railwayStationsTku.map(item => (
       <Marker key={item.stationName} icon={customIcon} position={[item.latitude, item.longitude]}>
-        <Popup>
-          <RailwayStationsContent item={item} stationsData={railwayStations} />
-        </Popup>
+        <StyledPopupWrapper>
+          <Popup className="popup-w350">
+            <StyledPopupInner>
+              <RailwayStationsContent item={item} stationsData={railwayStations} />
+            </StyledPopupInner>
+          </Popup>
+        </StyledPopupWrapper>
       </Marker>
     ))
     : null;
