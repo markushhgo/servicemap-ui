@@ -238,6 +238,7 @@ const translations = {
   'embedder.map.aria.label': 'Valitse taustakartta',
   'embedder.options.title': 'Näytä kartalla',
   'embedder.options.label.units': 'Näytä toimipisteet',
+  'embedder.options.label.units.accessibilityAreas': 'Näytä lähestymisalueet',
   'embedder.options.list.title': 'Toimipistelista',
   'embedder.options.label.list.none': 'Piilota toimipistelista',
   'embedder.options.label.list.side': 'Näytä toimipisteet listana (kartan vieressä)',

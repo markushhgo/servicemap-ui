@@ -12,11 +12,13 @@ import {
   isDataValid,
   createIcon,
   fitPolygonsToBounds,
+  setRender,
   blueOptionsBase,
   whiteOptionsBase,
   greenOptionsBase,
   blackOptionsBase,
 } from '../utils/utils';
+import { isEmbed } from '../../../utils/path';
 import PolygonComponent from '../PolygonComponent';
 import AccessibilityAreasContent from './components/AccessibilityAreasContent';
 
@@ -29,6 +31,9 @@ const AccessibilityAreas = () => {
   const selectedUnit = useSelector(state => state.selectedUnit?.unit?.data);
   const unitId = selectedUnit?.id;
   const useContrast = useSelector(useAccessibleMap);
+
+  const url = new URL(window.location);
+  const embedded = isEmbed({ url: url.toString() });
 
   const map = useMap();
   const { Marker, Popup } = global.rL;
@@ -66,18 +71,21 @@ const AccessibilityAreas = () => {
     return cyclingAreaIcon;
   };
 
+  const paramValue = url.searchParams.get('accessibility_areas') === '1';
   const filteredAreasWalking = accessibilityAreasData.filter(
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'),
   );
   const filteredAreasCycling = accessibilityAreasData.filter(
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
-  const renderAll = isDataValid(showAccessibilityAreas.all, accessibilityAreasData);
+  const renderAll = setRender(paramValue, embedded, showAccessibilityAreas.all, accessibilityAreasData, isDataValid);
   const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
   const renderCycling = isDataValid(showAccessibilityAreas.cycling, filteredAreasCycling);
 
   useEffect(() => {
-    fitPolygonsToBounds(renderAll, accessibilityAreasData, map);
+    if (!embedded) {
+      fitPolygonsToBounds(renderAll, accessibilityAreasData, map);
+    }
   }, [showAccessibilityAreas.all, accessibilityAreasData]);
 
   useEffect(() => {

@@ -236,6 +236,7 @@ const translations = {
   'embedder.preview.title': 'Map preview',
   'embedder.options.title': 'Show on the map',
   'embedder.options.label.units': 'Show service points',
+  'embedder.options.label.units.accessibilityAreas': 'Show accessibility areas',
   'embedder.options.list.title': 'List of service points',
   'embedder.options.label.list.none': 'Hide the list of service points',
   'embedder.options.label.list.side': 'Show service points as a list (beside the map)',
