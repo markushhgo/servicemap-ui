@@ -91,8 +91,8 @@ const UnitView = props => {
     page_size: 150,
   };
 
-  const isUnitSchool = unit?.service_names_fi?.includes('Perusopetus');
-  const fetchAccessibiliyAreas = isExternalTheme && isUnitSchool;
+  const isBasicEducation = unit?.service_names_en?.includes('Basic education');
+  const fetchAccessibiliyAreas = isExternalTheme && isBasicEducation;
 
   /**
    * Fetch unit (school) accessibility areas data
@@ -466,7 +466,7 @@ const UnitView = props => {
    * @returns array
    */
   const getTabsData = tabsData => {
-    if (isExternalTheme && hasAccessibilityAreas) {
+    if (hasAccessibilityAreas) {
       return tabsData;
     }
     return tabsData.filter(item => item.id !== 'accessibilityAreas');
