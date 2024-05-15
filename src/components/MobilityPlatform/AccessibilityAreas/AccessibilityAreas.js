@@ -133,6 +133,8 @@ const AccessibilityAreas = () => {
   return (
     <>
       {renderMarkers(renderAll, accessibilityAreasData)}
+      {renderMarkers(renderWalking, filteredAreasWalking)}
+      {renderMarkers(renderCycling, filteredAreasCycling)}
       {renderPolygons(renderAll, accessibilityAreasData)}
       {renderPolygons(renderWalking, filteredAreasWalking)}
       {renderPolygons(renderCycling, filteredAreasCycling)}
