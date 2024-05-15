@@ -112,6 +112,8 @@ const EmbedderView = ({
   const [overPass, setOverPass] = useState(false);
   const [publicBenches, setPublicBenches] = useState(false);
   const [accessibilityAreas, setAccessibilityAreas] = useState(false);
+  const [accessibilityAreasWalk, setAccessibilityAreasWalk] = useState(false);
+  const [accessibilityAreasBicycle, setAccessibilityAreasBicycle] = useState(false);
 
   const boundsRef = useRef([]);
   const dialogRef = useRef();
@@ -140,6 +142,8 @@ const EmbedderView = ({
     overPass,
     publicBenches,
     accessibilityAreas,
+    accessibilityAreasWalk,
+    accessibilityAreasBicycle,
     bbox: selectedBbox,
   });
 
@@ -506,9 +510,23 @@ const EmbedderView = ({
         icon: null,
         labelId: 'embedder.options.label.units.accessibilityAreas',
       },
+      {
+        key: 'accessibilityAreasWalk',
+        value: accessibilityAreasWalk,
+        onChange: v => setAccessibilityAreasWalk(v),
+        icon: null,
+        labelId: 'embedder.options.label.units.accessibilityAreas.walk',
+      },
+      {
+        key: 'accessibilityAreasBicycle',
+        value: accessibilityAreasBicycle,
+        onChange: v => setAccessibilityAreasBicycle(v),
+        icon: null,
+        labelId: 'embedder.options.label.units.accessibilityAreas.bicycle',
+      },
     ];
 
-    const controlsBasic = controls.filter(item => item.key !== 'accessibilityAreas');
+    const controlsBasic = controls.filter(item => item.key === 'units');
 
     return (
       <EmbedController

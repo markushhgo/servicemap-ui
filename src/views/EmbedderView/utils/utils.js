@@ -73,6 +73,12 @@ export const getEmbedURL = (url, params = {}) => {
   if (params.accessibilityAreas) {
     data.accessibility_areas = params.accessibilityAreas ? 1 : 0;
   }
+  if (params.accessibilityAreasWalk) {
+    data.accessibility_areas_walk = params.accessibilityAreasWalk ? 1 : 0;
+  }
+  if (params.accessibilityAreasBicycle) {
+    data.accessibility_areas_bicycle = params.accessibilityAreasBicycle ? 1 : 0;
+  }
   if (params.bbox) {
     data.bbox = params.bbox;
   }

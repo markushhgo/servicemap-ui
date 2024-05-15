@@ -72,6 +72,8 @@ const AccessibilityAreas = () => {
   };
 
   const paramValue = url.searchParams.get('accessibility_areas') === '1';
+  const paramValueWalk = url.searchParams.get('accessibility_areas_walk') === '1';
+  const paramValueBicycle = url.searchParams.get('accessibility_areas_bicycle') === '1';
   const filteredAreasWalking = accessibilityAreasData.filter(
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'),
   );
@@ -79,8 +81,8 @@ const AccessibilityAreas = () => {
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
   const renderAll = setRender(paramValue, embedded, showAccessibilityAreas.all, accessibilityAreasData, isDataValid);
-  const renderWalking = isDataValid(showAccessibilityAreas.walking, filteredAreasWalking);
-  const renderCycling = isDataValid(showAccessibilityAreas.cycling, filteredAreasCycling);
+  const renderWalking = setRender(paramValueWalk, embedded, showAccessibilityAreas.walking, filteredAreasWalking, isDataValid);
+  const renderCycling = setRender(paramValueBicycle, embedded, showAccessibilityAreas.cycling, filteredAreasCycling, isDataValid);
 
   useEffect(() => {
     if (!embedded) {
@@ -89,11 +91,15 @@ const AccessibilityAreas = () => {
   }, [showAccessibilityAreas.all, accessibilityAreasData]);
 
   useEffect(() => {
-    fitPolygonsToBounds(renderWalking, filteredAreasWalking, map);
+    if (!embedded) {
+      fitPolygonsToBounds(renderWalking, filteredAreasWalking, map);
+    }
   }, [showAccessibilityAreas.walking, filteredAreasWalking]);
 
   useEffect(() => {
-    fitPolygonsToBounds(renderCycling, filteredAreasCycling, map);
+    if (!embedded) {
+      fitPolygonsToBounds(renderCycling, filteredAreasCycling, map);
+    }
   }, [showAccessibilityAreas.cycling, filteredAreasCycling]);
 
   const getSingleCoordinates = data => data[0][0];

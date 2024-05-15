@@ -240,6 +240,8 @@ const translations = {
   'embedder.options.title': 'Visa på kartan',
   'embedder.options.label.units': 'Visa verksamhetsställen',
   'embedder.options.label.units.accessibilityAreas': 'Visa tillgänglighetsområden',
+  'embedder.options.label.units.accessibilityAreas.walk': 'Visa tillgänglighetsområden (promenad)',
+  'embedder.options.label.units.accessibilityAreas.bicycle': 'Visa tillgänglighetsområden (cykling)',
   'embedder.options.list.title': 'List med verksamhetsställen',
   'embedder.options.label.list.none': 'Ta bort listan med verksamhetsställen',
   'embedder.options.label.list.side': 'Visa verksamhetsställen som en lista (intill kartan)',
