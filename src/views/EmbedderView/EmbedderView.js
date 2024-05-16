@@ -12,16 +12,17 @@ import { useSelector } from 'react-redux';
 import * as smurl from './utils/url';
 import isClient, { uppercaseFirst } from '../../utils';
 import { getEmbedURL, getLanguage } from './utils/utils';
-import EmbedController from './components/EmbedController';
-import IFramePreview from './components/IFramePreview';
 import paths from '../../../config/paths';
 import embedderConfig from './embedderConfig';
 import SettingsUtility from '../../utils/settings';
 import useLocaleText from '../../utils/useLocaleText';
 import { useUserLocale } from '../../utils/user';
+import { useMobilityPlatformContext } from '../../context/MobilityPlatformContext';
+import config from '../../../config';
+import EmbedController from './components/EmbedController';
+import IFramePreview from './components/IFramePreview';
 import EmbedHTML from './components/EmbedHTML';
 import TopBar from '../../components/TopBar';
-import config from '../../../config';
 import { CloseButton, SMButton } from '../../components';
 
 const hideCitiesIn = [
@@ -83,6 +84,7 @@ const EmbedderView = ({
   const getLocaleText = useLocaleText();
   const userLocale = useUserLocale();
 
+  const { showAccessibilityAreas } = useMobilityPlatformContext();
   const isBasicEducation = selectedUnit?.service_names_en?.includes('Basic education');
 
   // States
@@ -111,9 +113,9 @@ const EmbedderView = ({
   const [underPass, setUnderpass] = useState(false);
   const [overPass, setOverPass] = useState(false);
   const [publicBenches, setPublicBenches] = useState(false);
-  const [accessibilityAreas, setAccessibilityAreas] = useState(false);
-  const [accessibilityAreasWalk, setAccessibilityAreasWalk] = useState(false);
-  const [accessibilityAreasBicycle, setAccessibilityAreasBicycle] = useState(false);
+  const [accessibilityAreas, setAccessibilityAreas] = useState(showAccessibilityAreas.all);
+  const [accessibilityAreasWalk, setAccessibilityAreasWalk] = useState(showAccessibilityAreas.walking);
+  const [accessibilityAreasBicycle, setAccessibilityAreasBicycle] = useState(showAccessibilityAreas.cycling);
 
   const boundsRef = useRef([]);
   const dialogRef = useRef();
