@@ -2,9 +2,7 @@
 
 exports[`<AccessibilityAreasContent /> should work 1`] = `
 <div>
-  <div
-    class="css-1ynyhby"
-  >
+  <div>
     <div
       class="css-1ynyhby"
     >

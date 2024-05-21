@@ -3,11 +3,9 @@ import { PropTypes } from 'prop-types';
 import { StyledPopupWrapper, StyledPopupInner } from '../styled/styled';
 
 const PolygonComponent = ({
-  item, useContrast, pathOptions, isTransparent, children,
+  item, useContrast, pathOptions, children,
 }) => {
   const { Polygon, Popup } = global.rL;
-
-  const opacityValue = isTransparent ? '0' : '0.2';
 
   return (
     <Polygon
@@ -16,10 +14,10 @@ const PolygonComponent = ({
       positions={item.geometry_coords}
       eventHandlers={{
         mouseover: e => {
-          e.target.setStyle({ fillOpacity: useContrast ? '0.6' : opacityValue });
+          e.target.setStyle({ fillOpacity: useContrast ? '0.6' : '0.2' });
         },
         mouseout: e => {
-          e.target.setStyle({ fillOpacity: useContrast ? '0.3' : opacityValue });
+          e.target.setStyle({ fillOpacity: useContrast ? '0.3' : '0.2' });
         },
       }}
     >
@@ -42,13 +40,11 @@ PolygonComponent.propTypes = {
     color: PropTypes.string,
     weight: PropTypes.number,
   }).isRequired,
-  isTransparent: PropTypes.bool,
   children: PropTypes.node,
 };
 
 PolygonComponent.defaultProps = {
   useContrast: false,
-  isTransparent: false,
   children: null,
 };
 

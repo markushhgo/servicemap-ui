@@ -19,7 +19,7 @@ import {
   blackOptionsBase,
 } from '../utils/utils';
 import { isEmbed } from '../../../utils/path';
-import PolygonComponent from '../PolygonComponent';
+import { StyledPopupWrapper, StyledPopupInner } from '../styled/styled';
 import AccessibilityAreasContent from './components/AccessibilityAreasContent';
 
 /**
@@ -36,27 +36,34 @@ const AccessibilityAreas = () => {
   const embedded = isEmbed({ url: url.toString() });
 
   const map = useMap();
-  const { Marker, Popup } = global.rL;
+  const { Marker, Polygon, Popup } = global.rL;
   const { icon } = global.L;
 
   const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3', fillOpacity: '0' });
   const greenOptions = greenOptionsBase({ weight: 5, fillOpacity: '0' });
   const blackOptions = blackOptionsBase({ weight: 5 });
-  const whiteOptions = whiteOptionsBase({
-    fillOpacity: 0.3,
+  const whiteOptionsDashed = whiteOptionsBase({
+    fillOpacity: '0.1',
     weight: 5,
-    dashArray: '12',
+    dashArray: '12 6 3',
+  });
+  const whiteOptionsSolid = whiteOptionsBase({
+    fillOpacity: '0.1',
+    weight: 5,
   });
 
   const getPathOptions = transportType => {
-    if (transportType?.includes('kävely')) {
+    if (!useContrast && transportType?.includes('kävely')) {
       return blueOptions;
     }
-    if (transportType?.includes('pyöräily')) {
+    if (!useContrast && transportType?.includes('pyöräily')) {
       return greenOptions;
     }
-    if (useContrast) {
-      return whiteOptions;
+    if (useContrast && transportType?.includes('kävely')) {
+      return whiteOptionsDashed;
+    }
+    if (useContrast && transportType?.includes('pyöräily')) {
+      return whiteOptionsSolid;
     }
     return blackOptions;
   };
@@ -81,8 +88,20 @@ const AccessibilityAreas = () => {
     item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
   );
   const renderAll = setRender(paramValue, embedded, showAccessibilityAreas.all, accessibilityAreasData, isDataValid);
-  const renderWalking = setRender(paramValueWalk, embedded, showAccessibilityAreas.walking, filteredAreasWalking, isDataValid);
-  const renderCycling = setRender(paramValueBicycle, embedded, showAccessibilityAreas.cycling, filteredAreasCycling, isDataValid);
+  const renderWalking = setRender(
+    paramValueWalk,
+    embedded,
+    showAccessibilityAreas.walking,
+    filteredAreasWalking,
+    isDataValid,
+  );
+  const renderCycling = setRender(
+    paramValueBicycle,
+    embedded,
+    showAccessibilityAreas.cycling,
+    filteredAreasCycling,
+    isDataValid,
+  );
 
   useEffect(() => {
     if (!embedded) {
@@ -106,27 +125,33 @@ const AccessibilityAreas = () => {
 
   const renderMarkers = (showData, data) => (showData
     ? data.map(item => (
-      <div key={item.id}>
-        <Marker icon={getCorrectIcon(item.extra.kulkumuoto)} position={getSingleCoordinates(item.geometry_coords)}>
+      <Marker
+        key={item.id}
+        icon={getCorrectIcon(item.extra.kulkumuoto)}
+        position={getSingleCoordinates(item.geometry_coords)}
+      >
+        <StyledPopupWrapper>
           <Popup>
-            <AccessibilityAreasContent item={item} />
+            <StyledPopupInner>
+              <AccessibilityAreasContent item={item} />
+            </StyledPopupInner>
           </Popup>
-        </Marker>
-      </div>
+        </StyledPopupWrapper>
+      </Marker>
     ))
     : null);
 
   const renderPolygons = (showData, data) => (showData
     ? data.map(item => (
-      <PolygonComponent
-        key={item.id}
-        item={item}
-        useContrast={useContrast}
-        pathOptions={getPathOptions(item.extra.kulkumuoto)}
-        isTransparent
-      >
-        <AccessibilityAreasContent item={item} />
-      </PolygonComponent>
+      <Polygon key={item.id} pathOptions={getPathOptions(item.extra.kulkumuoto)} positions={item.geometry_coords}>
+        <StyledPopupWrapper>
+          <Popup>
+            <StyledPopupInner>
+              <AccessibilityAreasContent item={item} />
+            </StyledPopupInner>
+          </Popup>
+        </StyledPopupWrapper>
+      </Polygon>
     ))
     : null);
 

@@ -34,7 +34,7 @@ const AccessibilityAreasContent = ({ item }) => {
     </StyledContainer>
   );
 
-  return <StyledContainer>{contentInfo}</StyledContainer>;
+  return <div>{contentInfo}</div>;
 };
 
 AccessibilityAreasContent.propTypes = {
