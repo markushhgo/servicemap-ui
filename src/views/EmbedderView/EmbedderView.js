@@ -84,8 +84,8 @@ const EmbedderView = ({
   const getLocaleText = useLocaleText();
   const userLocale = useUserLocale();
 
-  const { showAccessibilityAreas } = useMobilityPlatformContext();
-  const isBasicEducation = selectedUnit?.service_names_en?.includes('Basic education');
+  const { showAccessibilityAreas, accessibilityAreasData } = useMobilityPlatformContext();
+  const hasAccessibilityAreas = accessibilityAreasData.some(item => item?.extra?.kohde_ID === selectedUnit?.id);
 
   // States
   const [language, setLanguage] = useState(defaultLanguage);
@@ -534,7 +534,7 @@ const EmbedderView = ({
       <EmbedController
         titleID="embedder.options.title"
         titleComponent="h2"
-        checkboxControls={isBasicEducation ? controls : controlsBasic}
+        checkboxControls={hasAccessibilityAreas ? controls : controlsBasic}
         checkboxLabelledBy="embedder.options.title"
       />
     );
