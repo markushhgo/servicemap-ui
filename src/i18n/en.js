@@ -535,7 +535,7 @@ const translations = {
   'unit.outdoorLink': 'Check the condition of an exercise location in the ulkoliikunta.fi service',
   'unit.seo.description': 'View service point on the map',
   'unit.seo.description.accessibility': 'View accessibility info and service point on the map',
-  'unit.accessibilityAreas.title': 'Accessibility zones',
+  'unit.accessibilityAreas.title': 'Accessibility zones of schools and daycares',
   'unit.accessibilityAreas.description': 'Accessibility zones indicate how long it takes to reach a destination by walking or cycling. The times are calculated based on average speeds of children (walking 4 km/h, cycling 10 km/h).',
   'unit.accessibilityAreas.all.label': 'All accessibility zones',
   'unit.accessibilityAreas.walking.label': 'Accessibility zones (walking)',

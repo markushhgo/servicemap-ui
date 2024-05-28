@@ -539,7 +539,7 @@ const translations = {
   'unit.outdoorLink': 'Kolla skicket på en motionsplats i tjänsten ulkoliikunta.fi',
   'unit.seo.description': 'Se läget på kartan',
   'unit.seo.description.accessibility': 'Se tillgänglighetsuppgifterna och läget på kartan',
-  'unit.accessibilityAreas.title': 'Tillgänglighetsområdena',
+  'unit.accessibilityAreas.title': 'Tillgänglighetsområdena av skolor och daghem',
   'unit.accessibilityAreas.description': 'Tillgänglighetsområdena berättar hur lång tid det tar att gå eller cykla till destinationen. Tiderna har beräknats med genomsnittliga barnhastigheter (gång 4 km/h, cykling 10 km/h).',
   'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområdena',
   'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområdena (promenad)',

@@ -539,7 +539,7 @@ const translations = {
   'unit.outdoorLink': 'Katso liikuntapaikan kunto ulkoliikunta.fi palvelusta',
   'unit.seo.description': 'Katso sijainti kartalla',
   'unit.seo.description.accessibility': 'Katso esteettömyystiedot ja sijainti kartalla',
-  'unit.accessibilityAreas.title': 'Lähestymisalueet',
+  'unit.accessibilityAreas.title': 'Koulujen ja päiväkotien lähestymisalueet',
   'unit.accessibilityAreas.description': 'Lähestymisalueet kertovat, kuinka pitkä ajallinen etäisyys kohteeseen on kävellen tai pyöräillen. Ajat on laskettu keskimääräisillä lasten nopeuksilla (kävely 4 km/h, pyöräily 10 km/h).',
   'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
   'unit.accessibilityAreas.walking.label': 'Lähestymisalueet (kävely)',
