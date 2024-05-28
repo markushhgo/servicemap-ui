@@ -540,13 +540,13 @@ const translations = {
   'unit.seo.description': 'Katso sijainti kartalla',
   'unit.seo.description.accessibility': 'Katso esteettömyystiedot ja sijainti kartalla',
   'unit.accessibilityAreas.title': 'Lähestymisalueet',
-  'unit.accessibilityAreas.description': 'Lähestymisalueet ovat...', // TODO replace placeholder text
+  'unit.accessibilityAreas.description': 'Lähestymisalueet kertovat, kuinka pitkä ajallinen etäisyys kohteeseen on kävellen tai pyöräillen. Ajat on laskettu keskimääräisillä lasten nopeuksilla (kävely 4 km/h, pyöräily 10 km/h).',
   'unit.accessibilityAreas.all.label': 'Kaikki lähestymisalueet',
   'unit.accessibilityAreas.walking.label': 'Lähestymisalueet (kävely)',
   'unit.accessibilityAreas.cycling.label': 'Lähestymisalueet (pyöräily)',
   'unit.accessibilityAreas.content.subtitle': 'Lähestymisalue:',
-  'unit.accessibilityAreas.content.transport': 'Kulkumuto: {value}', // TODO verify
-  'unit.accessibilityAreas.content.duration': 'Arvioitu aika: {value} minuuttia', // TODO verify
+  'unit.accessibilityAreas.content.transport': 'Kulkumuto: {value}',
+  'unit.accessibilityAreas.content.duration': 'Arvioitu aika: {value} minuuttia',
 
   // Search
   'search': 'Hae',

@@ -539,14 +539,14 @@ const translations = {
   'unit.outdoorLink': 'Kolla skicket på en motionsplats i tjänsten ulkoliikunta.fi',
   'unit.seo.description': 'Se läget på kartan',
   'unit.seo.description.accessibility': 'Se tillgänglighetsuppgifterna och läget på kartan',
-  'unit.accessibilityAreas.title': 'Tillgänglighetsområden',
-  'unit.accessibilityAreas.description': 'Lähestymisalueet ovat...', // TODO replace placeholder text
-  'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområden',
-  'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområden (promenad)',
-  'unit.accessibilityAreas.cycling.label': 'Tillgänglighetsområden (cykling)',
+  'unit.accessibilityAreas.title': 'Tillgänglighetsområdena',
+  'unit.accessibilityAreas.description': 'Tillgänglighetsområdena berättar hur lång tid det tar att gå eller cykla till destinationen. Tiderna har beräknats med genomsnittliga barnhastigheter (gång 4 km/h, cykling 10 km/h).',
+  'unit.accessibilityAreas.all.label': 'Alla tillgänglighetsområdena',
+  'unit.accessibilityAreas.walking.label': 'Tillgänglighetsområdena (promenad)',
+  'unit.accessibilityAreas.cycling.label': 'Tillgänglighetsområdena (cykling)',
   'unit.accessibilityAreas.content.subtitle': 'Tillgänglighetsområd:',
-  'unit.accessibilityAreas.content.transport': 'Transportsätt: {value}', // TODO verify
-  'unit.accessibilityAreas.content.duration': 'beräknad varaktighet: {value} minuter', // TODO verify
+  'unit.accessibilityAreas.content.transport': 'Transportsätt: {value}',
+  'unit.accessibilityAreas.content.duration': 'Beräknad varaktighet: {value} minuter',
 
   // Search
   'search': 'Sök',
