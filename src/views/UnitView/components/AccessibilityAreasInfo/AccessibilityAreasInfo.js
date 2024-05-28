@@ -75,18 +75,18 @@ const AccessibilityAreasInfo = () => {
 
 const StyledContent = styled.div(({ theme }) => ({
   paddingLeft: theme.spacing(2),
-  paddingRight: theme.spacing(2),
-  paddingBottom: theme.spacing(2),
+  paddingRight: theme.spacing(1),
 }));
 
 const StyledContainer = styled(Container)(() => ({
   alignItems: 'flex-start',
+  textAlign: 'left',
 }));
 
 const StyledCheckBoxContainer = styled.div(({ theme }) => ({
   width: '100%',
-  paddingTop: theme.spacing(1.5),
-  paddingBottom: theme.spacing(1.5),
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
   textAlign: 'left',
 }));
 
