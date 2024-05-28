@@ -461,7 +461,7 @@ const UnitView = props => {
   );
 
   /**
-   * Filter out the accessibility areas object from tabs if isExternalTheme is false.
+   * Filter out the accessibility areas object from tabs if unit doesn't have them.
    * @param {*} tabsData
    * @returns array
    */
