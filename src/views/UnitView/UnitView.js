@@ -469,7 +469,7 @@ const UnitView = props => {
     if (hasAccessibilityAreas) {
       return tabsData;
     }
-    return tabsData.filter(item => item.id !== 'accessibilityAreas');
+    return tabsData.filter(item => item.id !== 'accessibilityZones');
   };
 
   const render = () => {
@@ -549,7 +549,7 @@ const UnitView = props => {
           title: intl.formatMessage({ id: 'service.tab' }),
         },
         {
-          id: 'accessibilityAreas',
+          id: 'accessibilityZones',
           ariaLabel: intl.formatMessage({ id: 'unit.accessibilityAreas' }),
           component: renderAccessibilityAreasTab(),
           data: null,
