@@ -39,6 +39,9 @@ const AccessibilityAreas = () => {
   const { Marker, Polygon, Popup } = global.rL;
   const { icon } = global.L;
 
+  const walk = 'kävely';
+  const bicycle = 'pyöräily';
+
   const blueOptions = blueOptionsBase({ weight: 5, dashArray: '12 6 3', fillOpacity: '0' });
   const greenOptions = greenOptionsBase({ weight: 5, fillOpacity: '0' });
   const blackOptions = blackOptionsBase({ weight: 5 });
@@ -53,16 +56,18 @@ const AccessibilityAreas = () => {
   });
 
   const getPathOptions = transportType => {
-    if (!useContrast && transportType?.includes('kävely')) {
+    const isWalk = transportType.includes(walk);
+    const isBicycle = transportType.includes(bicycle);
+    if (!useContrast && isWalk) {
       return blueOptions;
     }
-    if (!useContrast && transportType?.includes('pyöräily')) {
+    if (!useContrast && isBicycle) {
       return greenOptions;
     }
-    if (useContrast && transportType?.includes('kävely')) {
+    if (useContrast && isWalk) {
       return whiteOptionsDashed;
     }
-    if (useContrast && transportType?.includes('pyöräily')) {
+    if (useContrast && isBicycle) {
       return whiteOptionsSolid;
     }
     return blackOptions;
@@ -72,7 +77,7 @@ const AccessibilityAreas = () => {
   const cyclingAreaIcon = icon(createIcon(useContrast ? cyclingIconBw : cyclingIcon, true));
 
   const getCorrectIcon = transportType => {
-    if (transportType?.includes('kävely')) {
+    if (transportType?.includes(walk)) {
       return walkingAreaIcon;
     }
     return cyclingAreaIcon;
@@ -82,10 +87,10 @@ const AccessibilityAreas = () => {
   const paramValueWalk = url.searchParams.get('accessibility_areas_walk') === '1';
   const paramValueBicycle = url.searchParams.get('accessibility_areas_bicycle') === '1';
   const filteredAreasWalking = accessibilityAreasData.filter(
-    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('kävely'),
+    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes(walk),
   );
   const filteredAreasCycling = accessibilityAreasData.filter(
-    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes('pyöräily'),
+    item => item.extra?.kohde_ID === unitId && item?.extra?.kulkumuoto?.includes(bicycle),
   );
   const renderAll = setRender(paramValue, embedded, showAccessibilityAreas.all, accessibilityAreasData, isDataValid);
   const renderWalking = setRender(
