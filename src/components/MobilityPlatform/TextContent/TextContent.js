@@ -1,35 +1,33 @@
 import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useIntl } from 'react-intl';
+import { StyledContainer, StyledHeaderContainer, StyledTextContainer } from '../styled/styled';
 
-const TextContent = ({
-  classes, intl, titleId, translationId,
-}) => {
+const TextContent = ({ titleId, translationId }) => {
+  const intl = useIntl();
+
   const singleValTypo = (messageId, isTitle) => (
-    <div>
-      <Typography variant={isTitle ? 'subtitle1' : 'body2'} component={isTitle ? 'h3' : 'p'}>
-        {intl.formatMessage({
-          id: messageId,
-        })}
-      </Typography>
-    </div>
+    <Typography variant={isTitle ? 'subtitle1' : 'body2'} component={isTitle ? 'h3' : 'p'}>
+      {intl.formatMessage({
+        id: messageId,
+      })}
+    </Typography>
   );
 
   return (
-    <div className={classes.container}>
-      <div className={classes.headerContainer}>
+    <StyledContainer>
+      <StyledHeaderContainer>
         {singleValTypo(titleId, true)}
-      </div>
-      <div className={classes.textContainer}>
+      </StyledHeaderContainer>
+      <StyledTextContainer>
         {singleValTypo(translationId, false)}
-      </div>
-    </div>
+      </StyledTextContainer>
+    </StyledContainer>
   );
 };
 
 TextContent.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
   titleId: PropTypes.string,
   translationId: PropTypes.string,
 };

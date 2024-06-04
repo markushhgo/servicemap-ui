@@ -1,15 +1,17 @@
-import {
-  Checkbox, FormControlLabel, Typography, List, ListItem,
-} from '@mui/material';
+import { Typography, List, ListItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, {
-  useEffect, useMemo, useRef, useState,
+  useEffect, useRef, useState,
 } from 'react';
 import { Helmet } from 'react-helmet';
 import { ReactSVG } from 'react-svg';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Air, WarningAmber } from '@mui/icons-material';
+import { useTheme } from '@mui/styles';
+import { useIntl } from 'react-intl';
+import { css } from '@emotion/css';
+import styled from '@emotion/styled';
 import iconBicycle from 'servicemap-ui-turku/assets/icons/icons-icon_bicycle.svg';
 import iconBoat from 'servicemap-ui-turku/assets/icons/icons-icon_boating.svg';
 import iconCar from 'servicemap-ui-turku/assets/icons/icons-icon_car.svg';
@@ -18,14 +20,13 @@ import iconSnowplow from 'servicemap-ui-turku/assets/icons/icons-icon_street_mai
 import iconWalk from 'servicemap-ui-turku/assets/icons/icons-icon_walk.svg';
 import iconPublicTransport from 'servicemap-ui-turku/assets/icons/icons-icon_public_transport.svg';
 import InfoTextBox from '../../components/MobilityPlatform/InfoTextBox';
-import {
-  fetchBicycleRouteNames,
-  fetchCultureRouteNames,
-  fetchMobilityMapData,
-} from '../../components/MobilityPlatform/mobilityPlatformRequests/mobilityPlatformRequests';
 import useMobilityDataFetch from '../../components/MobilityPlatform/utils/useMobilityDataFetch';
 import useLocaleText from '../../utils/useLocaleText';
 import { useMobilityPlatformContext } from '../../context/MobilityPlatformContext';
+import useCultureRouteFetch from './hooks/useCultureRouteFetch';
+import useBicycleRouteFetch from './hooks/useBicycleRouteFetch';
+import useSpeedLimitZoneFetch from './hooks/useSpeedLimitZoneFetch';
+import useParkingChargeZoneFetch from './hooks/useParkingChargeZoneFetch';
 import TitleBar from '../../components/TitleBar';
 import CityBikeInfo from './components/CityBikeInfo';
 import EmptyRouteList from './components/EmptyRouteList';
@@ -36,10 +37,11 @@ import ScooterProviderList from './components/ScooterProviderList';
 import SMAccordion from '../../components/SMAccordion';
 import SpeedLimitZonesList from './components/SpeedLimitZonesList';
 import RouteList from './components/RouteList';
+import StreetMaintenanceList from './components/StreetMaintenanceList';
 import MobilityToggleButton from './components/MobilityToggleButton';
 import AirMonitoringInfo from './components/AirMonitoringInfo';
 
-const MobilitySettingsView = ({ classes, intl, navigator }) => {
+const MobilitySettingsView = ({ navigator }) => {
   const [pageTitle, setPageTitle] = useState(null);
   const [openWalkSettings, setOpenWalkSettings] = useState(false);
   const [openBicycleSettings, setOpenBicycleSettings] = useState(false);
@@ -51,9 +53,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [openAirMonitoringSettings, setOpenAirMonitoringSettings] = useState(false);
   const [openRoadworkSettings, setOpenRoadworkSettings] = useState(false);
   const [openCultureRouteList, setOpenCultureRouteList] = useState(false);
-  const [cultureRouteList, setCultureRouteList] = useState([]);
-  const [localizedCultureRoutes, setLocalizedCultureRoutes] = useState([]);
-  const [bicycleRouteList, setBicycleRouteList] = useState([]);
   const [openBicycleRouteList, setOpenBicycleRouteList] = useState(false);
   const [openSpeedLimitList, setOpenSpeedLimitList] = useState(false);
   const [openParkingChargeZoneList, setOpenParkingChargeZoneList] = useState(false);
@@ -62,6 +61,9 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const [openMarkedTrailsList, setOpenMarkedTrailsList] = useState(false);
   const [openNatureTrailsList, setOpenNatureTrailsList] = useState(false);
   const [openFitnessTrailsList, setOpenFitnessTrailsList] = useState(false);
+
+  const intl = useIntl();
+  const theme = useTheme();
 
   const {
     setOpenMobilityPlatform,
@@ -87,8 +89,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowChargingStations,
     showParkingSpaces,
     setShowParkingSpaces,
-    parkingChargeZones,
-    setParkingChargeZones,
     parkingChargeZoneId,
     setParkingChargeZoneId,
     showParkingChargeZones,
@@ -109,8 +109,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowSpeedLimitZones,
     speedLimitSelections,
     setSpeedLimitSelections,
-    speedLimitZones,
-    setSpeedLimitZones,
     showPublicToilets,
     setShowPublicToilets,
     showScooterNoParking,
@@ -174,11 +172,20 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setShowParkAndRideBikes,
     showBarbecuePlaces,
     setShowBarbecuePlaces,
+    showAirports,
+    setShowAirports,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
   const location = useLocation();
   const getLocaleText = useLocaleText();
+
+  const iconClass = css({
+    fill: 'rgba(0, 0, 0, 255)',
+    width: '40px',
+    height: '40px',
+    marginRight: theme.spacing(1),
+  });
 
   const bikeInfo = {
     paragraph1: 'mobilityPlatform.info.cityBikes.paragraph.1',
@@ -245,44 +252,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     setOpenMobilityPlatform(true);
   }, [setOpenMobilityPlatform]);
 
-  /**
-   * Fetch list of routes
-   * @param {('react').SetStateAction}
-   * @returns {Array} and sets it into state
-   */
-  useEffect(() => {
-    if (openWalkSettings) {
-      fetchCultureRouteNames(setCultureRouteList);
-    }
-  }, [openWalkSettings]);
-
-  useEffect(() => {
-    if (openBicycleSettings) {
-      fetchBicycleRouteNames(setBicycleRouteList);
-    }
-  }, [openBicycleSettings]);
-
-  useEffect(() => {
-    const options = {
-      type_name: 'SpeedLimitZone',
-      page_size: 1000,
-      latlon: true,
-    };
-    if (openCarSettings) {
-      fetchMobilityMapData(options, setSpeedLimitZones);
-    }
-  }, [openCarSettings, setSpeedLimitZones]);
-
-  useEffect(() => {
-    const options = {
-      type_name: 'PaymentZone',
-      page_size: 10,
-      latlon: true,
-    };
-    if (openCarSettings) {
-      fetchMobilityMapData(options, setParkingChargeZones);
-    }
-  }, [openCarSettings, setParkingChargeZones]);
+  const { sortedCultureRoutes, sortedLocalizedCultureRoutes } = useCultureRouteFetch(openWalkSettings, locale);
+  const { sortedBicycleRoutes } = useBicycleRouteFetch(openBicycleSettings, locale);
+  const { speedLimitListAsc } = useSpeedLimitZoneFetch(openCarSettings);
+  const { parkingChargeZonesSorted } = useParkingChargeZoneFetch(openCarSettings);
 
   const optionsPaavoTrails = {
     type_name: 'PaavonPolku',
@@ -378,7 +351,14 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     checkVisibilityValues(showCityBikes, setOpenBicycleSettings);
     checkVisibilityValues(showCargoBikes, setOpenBicycleSettings);
     checkVisibilityValues(showParkAndRideBikes, setOpenBicycleSettings);
-  }, [showBicycleStands, showHullLockableStands, showBikeServiceStations, showCityBikes, showCargoBikes, showParkAndRideBikes]);
+  }, [
+    showBicycleStands,
+    showHullLockableStands,
+    showBikeServiceStations,
+    showCityBikes,
+    showCargoBikes,
+    showParkAndRideBikes,
+  ]);
 
   useEffect(() => {
     checkVisibilityValues(showBicycleRoutes, setOpenBicycleSettings);
@@ -468,7 +448,8 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   useEffect(() => {
     checkVisibilityValues(showBusStops, setOpenPublicTransportSettings);
     checkVisibilityValues(showRailwayStations, setOpenPublicTransportSettings);
-  }, [showBusStops, showRailwayStations]);
+    checkVisibilityValues(showAirports, setOpenPublicTransportSettings);
+  }, [showBusStops, showRailwayStations, showAirports]);
 
   useEffect(() => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
@@ -484,32 +465,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     sv: 'name_sv',
   };
 
-  /**
-   * @var {(Array|locale)}
-   * @function filter array
-   * @returns {(Array|('react').SetStateAction)}
-   */
-  useEffect(() => {
-    if (cultureRouteList && cultureRouteList.length > 0) {
-      setLocalizedCultureRoutes(cultureRouteList.filter(item => item[nameKeys[locale]]));
-    }
-  }, [cultureRouteList, locale]);
-
-  /**
-   * Sort routes in alphapethical order based on current locale.
-   * If locale is not finnish the filtered list is used.
-   * @param {Array && locale}
-   * @function sort
-   * @returns {Array}
-   */
-  useEffect(() => {
-    if (cultureRouteList && cultureRouteList.length > 0 && locale === 'fi') {
-      cultureRouteList.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
-    } else if (localizedCultureRoutes && localizedCultureRoutes.length > 0 && locale !== 'fi') {
-      localizedCultureRoutes.sort((a, b) => a[nameKeys[locale]].localeCompare(b[nameKeys[locale]]));
-    }
-  }, [cultureRouteList, localizedCultureRoutes, locale]);
-
   const sortMarkedTrails = data => {
     if (data && data.length > 0) {
       return data.sort((a, b) => a[nameKeys[locale]].split(': ').slice(-1)[0].localeCompare(b[nameKeys[locale]].split(': ').slice(-1)[0]));
@@ -518,28 +473,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   };
 
   const markedTrailsSorted = sortMarkedTrails(markedTrailsList);
-
-  /**
-   * Sort routes in alphapethical order.
-   * @param {Array && locale}
-   * @function sort
-   * @returns {Array}
-   */
-
-  useEffect(() => {
-    const objKeys = {
-      fi: 'name_fi',
-      en: 'name_en',
-      sv: 'name_sv',
-    };
-
-    if (bicycleRouteList) {
-      bicycleRouteList.sort((a, b) => a[objKeys[locale]].localeCompare(b[objKeys[locale]], undefined, {
-        numeric: true,
-        sensivity: 'base',
-      }));
-    }
-  }, [bicycleRouteList, locale]);
 
   const sortTrails = data => {
     if (data && data.length > 0) {
@@ -843,6 +776,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
 
   const railwayStationsToggle = () => {
     setShowRailwayStations(current => !current);
+  };
+
+  const airPortsToggle = () => {
+    setShowAirports(current => !current);
   };
 
   const roadWorksToggle = () => {
@@ -1373,6 +1310,12 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       checkedValue: showRailwayStations,
       onChangeValue: railwayStationsToggle,
     },
+    {
+      type: 'airPorts',
+      msgId: 'mobilityPlatform.menu.show.airPorts',
+      checkedValue: showAirports,
+      onChangeValue: airPortsToggle,
+    },
   ];
 
   const boatingControlTypes = [
@@ -1471,7 +1414,6 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       routeAttr={bicycleRouteName}
       type="BicycleRoute"
       setRouteState={setBicycleRouteState}
-      locale={locale}
     />
   );
 
@@ -1487,16 +1429,15 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       routeAttr={cultureRouteId}
       type="CultureRoute"
       setRouteState={setCultureRouteState}
-      locale={locale}
     />
   );
 
   const renderSelectTrailText = (visibilityValue, obj, routeList) => {
     const isObjValid = Object.keys(obj).length > 0;
     return (
-      <div className={visibilityValue ? classes.border : null}>
+      <StyledBorderBottom isVisible={visibilityValue}>
         {visibilityValue && !isObjValid ? <EmptyRouteList route={routeList} /> : null}
-      </div>
+      </StyledBorderBottom>
     );
   };
 
@@ -1508,81 +1449,27 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const renderSettings = (settingVisibility, settingsData) => {
     if (settingVisibility) {
       return settingsData.map(item => (
-        <div key={item.type} className={classes.checkBoxContainer}>
+        <StyledCheckBoxContainer key={item.type}>
           <MobilityToggleButton
             msgId={item.msgId}
             checkedValue={item.checkedValue}
             onChangeValue={item.onChangeValue}
             selectionSize={settingsData.length}
           />
-        </div>
+        </StyledCheckBoxContainer>
       ));
     }
     return null;
   };
 
-  // Create array of speed limit values from data and remove duplicates
-  const speedLimitList = useMemo(
-    () => [...new Set(speedLimitZones.map(item => item.extra.speed_limit))],
-    [speedLimitZones],
+  const renderMaintenanceSelectionList = () => (
+    <StreetMaintenanceList
+      openStreetMaintenanceList={openStreetMaintenanceSelectionList}
+      isActive={isActiveStreetMaintenance}
+      streetMaintenancePeriod={streetMaintenancePeriod}
+      streetMaintenanceSelections={streetMaintenanceSelections}
+    />
   );
-
-  // Sort in ascending order, because entries can be in random order
-  // This list will be displayed for users
-  const speedLimitListAsc = speedLimitList.sort((a, b) => a - b);
-
-  const streetMaintenanceInfo = (colorClass, translationId) => (
-    <div className={classes.flexBox}>
-      <div className={`${classes.box} ${colorClass}`} />
-      <div className={classes.marginSm}>
-        <Typography variant="body2">{intl.formatMessage({ id: translationId })}</Typography>
-      </div>
-    </div>
-  );
-
-  const renderMaintenanceSelectionList = () => (openStreetMaintenanceSelectionList ? (
-    <>
-      <div className={`${classes.paragraph} ${classes.border}`}>
-        <Typography
-          variant="body2"
-          aria-label={intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
-        >
-          {intl.formatMessage({ id: 'mobilityPlatform.menu.streetMaintenance.info' })}
-        </Typography>
-        {!isActiveStreetMaintenance && streetMaintenancePeriod ? (
-          <InfoTextBox infoText="mobilityPlatform.info.streetMaintenance.noActivity" reducePadding />
-        ) : null}
-      </div>
-      {streetMaintenanceSelections?.length > 0
-          && streetMaintenanceSelections.map(item => (
-            <div key={item.type} className={classes.checkBoxItem}>
-              <FormControlLabel
-                control={(
-                  <Checkbox
-                    checked={item.type === streetMaintenancePeriod}
-                    aria-checked={item.type === streetMaintenancePeriod}
-                    className={classes.margin}
-                    onChange={() => item.onChangeValue(item.type)}
-                  />
-                )}
-                label={(
-                  <Typography variant="body2" aria-label={intl.formatMessage({ id: item.msgId })}>
-                    {intl.formatMessage({ id: item.msgId })}
-                  </Typography>
-                )}
-              />
-            </div>
-          ))}
-      <div className={`${classes.paragraph} ${classes.border}`}>
-        <div className={classes.infoText}>
-          {streetMaintenanceInfo(classes.blue, 'mobilityPlatform.menu.streetMaintenance.info.snowplow')}
-          {streetMaintenanceInfo(classes.purple, 'mobilityPlatform.menu.streetMaintenance.info.deicing')}
-          {streetMaintenanceInfo(classes.burgundy, 'mobilityPlatform.menu.streetMaintenance.info.sandRemoval')}
-          {streetMaintenanceInfo(classes.green, 'mobilityPlatform.menu.streetMaintenance.info.sanitation')}
-        </div>
-      </div>
-    </>
-  ) : null);
 
   const infoTextsWalking = [
     {
@@ -1806,6 +1693,11 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       type: 'railwayStationsInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.railwayStations" />,
     },
+    {
+      visible: showAirports,
+      type: 'airportInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.airport" />,
+    },
   ];
 
   const infoTextsRoadworks = [
@@ -1850,13 +1742,13 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const renderWalkSettings = () => (
     <>
       {renderSettings(openWalkSettings, walkingControlTypes)}
-      <div className={openCultureRouteList ? classes.border : null}>
-        {openCultureRouteList && !cultureRouteId ? <EmptyRouteList route={cultureRouteList} /> : null}
-      </div>
+      <StyledBorderBottom isVisible={openCultureRouteList}>
+        {openCultureRouteList && !cultureRouteId ? <EmptyRouteList route={sortedCultureRoutes} /> : null}
+      </StyledBorderBottom>
       {openCultureRouteList && (locale === 'en' || locale === 'sv')
-        ? renderCultureRoutes(localizedCultureRoutes)
+        ? renderCultureRoutes(sortedLocalizedCultureRoutes)
         : null}
-      {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(cultureRouteList) : null}
+      {openCultureRouteList && locale === 'fi' ? renderCultureRoutes(sortedCultureRoutes) : null}
       {renderSelectTrailText(openMarkedTrailsList, markedTrailsObj, markedTrailsList)}
       <TrailList
         openList={openMarkedTrailsList}
@@ -1888,10 +1780,10 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   const renderBicycleSettings = () => (
     <>
       {renderSettings(openBicycleSettings, bicycleControlTypes)}
-      <div className={openBicycleRouteList ? classes.border : null}>
-        {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={bicycleRouteList} /> : null}
-      </div>
-      {renderBicycleRoutes(bicycleRouteList)}
+      <StyledBorderBottom isVisible={openBicycleRouteList}>
+        {openBicycleRouteList && !bicycleRouteName ? <EmptyRouteList route={sortedBicycleRoutes} /> : null}
+      </StyledBorderBottom>
+      {renderBicycleRoutes(sortedBicycleRoutes)}
       {renderInfoTexts(infoTextsCycling)}
     </>
   );
@@ -1901,7 +1793,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
       {renderSettings(openCarSettings, carControlTypes)}
       <ParkingChargeZoneList
         openZoneList={openParkingChargeZoneList}
-        parkingChargeZones={parkingChargeZones}
+        parkingChargeZones={parkingChargeZonesSorted}
         zoneId={parkingChargeZoneId}
         selectZone={selectParkingChargeZone}
       />
@@ -1957,11 +1849,7 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
    * @param {*} icon
    * @returns JSX Element
    */
-  const renderIcon = icon => (
-    <div className={classes.iconContainer}>
-      {icon}
-    </div>
-  );
+  const renderIcon = icon => <StyledIconContainer>{icon}</StyledIconContainer>;
 
   const renderRoadworkSettings = () => (
     <>
@@ -1974,49 +1862,49 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
     {
       component: renderWalkSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.walk' }),
-      icon: <ReactSVG src={iconWalk} className={classes.icon} />,
+      icon: <ReactSVG src={iconWalk} className={iconClass} />,
       onClick: walkSettingsToggle,
       setState: openWalkSettings,
     },
     {
       component: renderBicycleSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.bicycle' }),
-      icon: <ReactSVG src={iconBicycle} className={classes.icon} />,
+      icon: <ReactSVG src={iconBicycle} className={iconClass} />,
       onClick: bicycleSettingsToggle,
       setState: openBicycleSettings,
     },
     {
       component: renderCarSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.car' }),
-      icon: <ReactSVG src={iconCar} className={classes.icon} />,
+      icon: <ReactSVG src={iconCar} className={iconClass} />,
       onClick: carSettingsToggle,
       setState: openCarSettings,
     },
     {
       component: renderPublicTransportSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.public.transport' }),
-      icon: <ReactSVG src={iconPublicTransport} className={classes.icon} />,
+      icon: <ReactSVG src={iconPublicTransport} className={iconClass} />,
       onClick: publicTransportSettingsToggle,
       setState: openPublicTransportSettings,
     },
     {
       component: renderScooterSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.scooter' }),
-      icon: <ReactSVG src={iconScooter} className={classes.icon} />,
+      icon: <ReactSVG src={iconScooter} className={iconClass} />,
       onClick: scooterSettingsToggle,
       setState: openScooterSettings,
     },
     {
       component: renderBoatingSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.boating' }),
-      icon: <ReactSVG src={iconBoat} className={classes.icon} />,
+      icon: <ReactSVG src={iconBoat} className={iconClass} />,
       onClick: boatingSettingsToggle,
       setState: openBoatingSettings,
     },
     {
       component: renderStreetMaintenanceSettings(),
       title: intl.formatMessage({ id: 'mobilityPlatform.menu.title.streetMaintenance' }),
-      icon: <ReactSVG src={iconSnowplow} className={classes.icon} />,
+      icon: <ReactSVG src={iconSnowplow} className={iconClass} />,
       onClick: streetMaintenanceSettingsToggle,
       setState: openStreetMaintenanceSettings,
     },
@@ -2037,24 +1925,25 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
   ];
 
   return (
-    <div className={classes.content}>
+    <div>
       {renderHead()}
       <TitleBar
         title={intl.formatMessage({ id: 'general.pageTitles.mobilityPlatform' })}
         titleComponent="h3"
         backButton
         backButtonOnClick={() => navigator.push('home')}
-        className={classes.topBarColor}
       />
-      <Typography className={classes.guidanceInfoText} variant="body2">
-        {intl.formatMessage({ id: 'home.buttons.mobilityPlatformSettings' })}
-      </Typography>
-      <div className={classes.container}>
-        <div className={classes.formControl}>
-          <div className={classes.formGroup}>
+      <StyledTextContainer>
+        <Typography variant="body2">
+          {intl.formatMessage({ id: 'home.buttons.mobilityPlatformSettings' })}
+        </Typography>
+      </StyledTextContainer>
+      <div>
+        <StyledListContainer>
+          <StyledListMargin>
             <List>
               {categories.map(category => (
-                <ListItem key={category.title} divider disableGutters className={`${classes.listItem}`}>
+                <ListItem key={category.title} divider disableGutters style={{ padding: '0px' }}>
                   <SMAccordion
                     adornment={category.icon}
                     defaultOpen={category.setState}
@@ -2071,18 +1960,50 @@ const MobilitySettingsView = ({ classes, intl, navigator }) => {
                 </ListItem>
               ))}
             </List>
-          </div>
-        </div>
+          </StyledListMargin>
+        </StyledListContainer>
       </div>
     </div>
   );
 };
 
+const StyledCheckBoxContainer = styled.div(({ theme }) => ({
+  width: '100%',
+  backgroundColor: 'rgb(250, 250, 250)',
+  paddingTop: theme.spacing(1.5),
+  paddingBottom: theme.spacing(1.5),
+}));
+
+const StyledIconContainer = styled.div(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '40px',
+  height: '40px',
+  marginRight: theme.spacing(1),
+}));
+
+const StyledListContainer = styled.div(() => ({
+  width: '100%',
+}));
+
+const StyledListMargin = styled.div(() => ({
+  marginTop: '0',
+}));
+
+const StyledTextContainer = styled.div(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  padding: `${theme.spacing(3)} ${theme.spacing(2)}`,
+  paddingTop: theme.spacing(1),
+  color: '#fff',
+  textAlign: 'left',
+}));
+
+const StyledBorderBottom = styled.div(({ isVisible }) => ({
+  borderBottom: isVisible ? '1px solid rgba(193, 193, 193, 255)' : 'none',
+}));
+
 MobilitySettingsView.propTypes = {
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func,
-  }).isRequired,
-  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   navigator: PropTypes.objectOf(PropTypes.any),
 };
 

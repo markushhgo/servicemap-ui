@@ -3,13 +3,13 @@
 exports[`<ChargerStationContent /> should match snapshot 1`] = `
 <div>
   <div
-    class="injectIntl(ChargerStationContent)-container-1"
+    class="css-1ynyhby"
   >
     <div
-      class="injectIntl(ChargerStationContent)-headerContainer-2"
+      class="css-1dznbe2"
     >
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-subtitle1 css-dlbwt1-MuiTypography-root"
@@ -18,11 +18,9 @@ exports[`<ChargerStationContent /> should match snapshot 1`] = `
         </p>
       </div>
     </div>
-    <div
-      class="injectIntl(ChargerStationContent)-textContainer-3"
-    >
+    <div>
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
@@ -31,7 +29,7 @@ exports[`<ChargerStationContent /> should match snapshot 1`] = `
         </p>
       </div>
       <div
-        class="css-qpxa1n"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
@@ -40,7 +38,7 @@ exports[`<ChargerStationContent /> should match snapshot 1`] = `
         </p>
       </div>
       <div
-        class="injectIntl(ChargerStationContent)-margin-5"
+        class="css-1fhgjcy"
       >
         <p
           class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
@@ -49,7 +47,7 @@ exports[`<ChargerStationContent /> should match snapshot 1`] = `
         </p>
       </div>
       <div
-        class="injectIntl(ChargerStationContent)-margin-5"
+        class="css-1fhgjcy"
       >
         <h3
           class="MuiTypography-root MuiTypography-subtitle2 css-chrj9w-MuiTypography-root"
@@ -59,16 +57,20 @@ exports[`<ChargerStationContent /> should match snapshot 1`] = `
         </h3>
       </div>
       <div
-        class="injectIntl(ChargerStationContent)-contentInner-4"
+        class="css-1q1ltto"
       >
-        <div>
+        <div
+          class="css-1fhgjcy"
+        >
           <p
             class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           >
             Sähkölatausaseman tyyppi: CCS
           </p>
         </div>
-        <div>
+        <div
+          class="css-1fhgjcy"
+        >
           <p
             class="MuiTypography-root MuiTypography-body2 css-1ak20dk-MuiTypography-root"
           >

@@ -12,14 +12,13 @@ import cargoBikesIconProvider from 'servicemap-ui-turku/assets/icons/icons-icon_
 import cargoBikesIconProviderBw from 'servicemap-ui-turku/assets/icons/contrast/icons-icon_cargo_bikes_provider-bw.svg';
 import { useMobilityPlatformContext } from '../../../context/MobilityPlatformContext';
 import { useAccessibleMap } from '../../../redux/selectors/settings';
-import { fetchCityBikesData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import useIotDataFetch from '../utils/useIotDataFetch';
 import { isDataValid, setRender, checkMapType } from '../utils/utils';
 import { isEmbed } from '../../../utils/path';
+import { StyledPopupWrapper, StyledPopupInner } from '../styled/styled';
 import CityBikesContent from './components/CityBikesContent';
 
 const CityBikes = () => {
-  const [cityBikeStationsData, setCityBikeStationsData] = useState([]);
-  const [cityBikeStatistics, setCityBikeStatistics] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(13);
 
   const { showCityBikes, showCargoBikes } = useMobilityPlatformContext();
@@ -54,22 +53,15 @@ const CityBikes = () => {
     iconSize: zoomLevel < 14 ? [45, 45] : [35, 35],
   });
 
-  useEffect(() => {
-    if (showCityBikes || showCargoBikes || embedded) {
-      fetchCityBikesData('CBI', setCityBikeStationsData);
-    }
-  }, [showCityBikes, showCargoBikes, embedded]);
+  const fetchData = showCityBikes || showCargoBikes;
 
-  useEffect(() => {
-    if (showCityBikes || showCargoBikes || embedded) {
-      fetchCityBikesData('CBS', setCityBikeStatistics);
-    }
-  }, [showCityBikes, showCargoBikes, embedded]);
+  const { iotData: cityBikeStationsData } = useIotDataFetch('CBI', fetchData, embedded);
+  const { iotData: cityBikeStatistics } = useIotDataFetch('CBS', fetchData, embedded);
 
   const cityBikeStations = [];
 
   /** Separate cargo bike stations from city bike stations */
-  const cargoBikeStations = cityBikeStationsData.reduce((acc, curr) => {
+  const cargoBikeStations = cityBikeStationsData?.reduce((acc, curr) => {
     if (curr.name.includes('eCargo bikes')) {
       acc.push(curr);
     } else {
@@ -86,7 +78,7 @@ const CityBikes = () => {
   const fitBounds = (renderData, data) => {
     if (renderData) {
       const bounds = [];
-      data.forEach((item) => {
+      data.forEach(item => {
         bounds.push([item.lat, item.lon]);
       });
       map.fitBounds(bounds);
@@ -101,15 +93,19 @@ const CityBikes = () => {
   }, [showCityBikes, showCargoBikes]);
 
   const renderCityBikeMarkers = (isValid, data, icon) => (isValid ? (
-    data.map((item) => (
+    data.map(item => (
       <Marker
         key={item.station_id}
         icon={icon}
         position={[item.lat, item.lon]}
       >
-        <Popup>
-          <CityBikesContent bikeStation={item} cityBikeStatistics={cityBikeStatistics} />
-        </Popup>
+        <StyledPopupWrapper>
+          <Popup>
+            <StyledPopupInner>
+              <CityBikesContent bikeStation={item} cityBikeStatistics={cityBikeStatistics} />
+            </StyledPopupInner>
+          </Popup>
+        </StyledPopupWrapper>
       </Marker>
     ))
   ) : null);

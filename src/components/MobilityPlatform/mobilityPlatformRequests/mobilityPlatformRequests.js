@@ -8,6 +8,17 @@ const isApiUrl = !apiUrl || apiUrl === 'undefined' ? null : apiUrl;
 const railwaysApiUrl = config.railwaysAPI;
 const isRailwaysApiUrl = !railwaysApiUrl || railwaysApiUrl === 'undefined' ? null : railwaysApiUrl;
 
+const serviceMapApiUrlBase = config.serviceMapAPI.root;
+const serviceMapApiUrlVersion = config.serviceMapAPI.version;
+const serviceMapApiUrl = `${serviceMapApiUrlBase}${serviceMapApiUrlVersion}`;
+const isServiceMapApiUrl = !serviceMapApiUrlBase || serviceMapApiUrlBase === 'undefined' ? null : serviceMapApiUrl;
+
+const mobilityTestApiUrl = config.mobilityTestAPI;
+const isMobilityTestApiUrl = !mobilityTestApiUrl || mobilityTestApiUrl === 'undefined' ? null : mobilityTestApiUrl;
+
+const roadworksApiUrl = config.roadworksAPI;
+const isRoadworksApiUrl = !roadworksApiUrl || roadworksApiUrl === 'undefined' ? null : roadworksApiUrl;
+
 /**
  * Returns query options as a search params for URLs
  * @param {Object} options
@@ -27,10 +38,10 @@ const optionsToParams = options => {
   return params.toString();
 };
 
-const fetchMobilityMapData = async (options, setData) => {
+const fetchMobilityMapData = async (options, setData, signal) => {
   const params = optionsToParams(options);
   try {
-    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?${params}`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_units?${params}`, { signal });
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -38,9 +49,9 @@ const fetchMobilityMapData = async (options, setData) => {
   }
 };
 
-const fetchCultureRouteNames = async setData => {
+const fetchCultureRouteNames = async (setData, signal) => {
   try {
-    const response = await fetch(`${isApiUrl}/mobility_data/mobile_unit_groups/`);
+    const response = await fetch(`${isApiUrl}/mobility_data/mobile_unit_groups/`, { signal });
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -48,9 +59,9 @@ const fetchCultureRouteNames = async setData => {
   }
 };
 
-const fetchBicycleRouteNames = async setData => {
+const fetchBicycleRouteNames = async (setData, signal) => {
   try {
-    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networks/`);
+    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networks/`, { signal });
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -58,9 +69,11 @@ const fetchBicycleRouteNames = async setData => {
   }
 };
 
-const fetchBicycleRoutesGeometry = async setData => {
+const fetchBicycleRoutesGeometry = async (setData, signal) => {
   try {
-    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`);
+    const response = await fetch(`${isApiUrl}/bicycle_network/bicycle_networkparts/?page_size=1000&latlon=true`, {
+      signal,
+    });
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -68,21 +81,11 @@ const fetchBicycleRoutesGeometry = async setData => {
   }
 };
 
-const fetchIotData = async (sourceName, setData, isScooter) => {
+const fetchIotData = async (sourceName, setData, signal) => {
   try {
-    const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
+    const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`, { signal });
     const jsonData = await response.json();
-    setData(!isScooter ? jsonData.results[0].data : jsonData.results[0].data.data.bikes);
-  } catch (err) {
-    console.warn(err.message);
-  }
-};
-
-const fetchCityBikesData = async (sourceName, setData) => {
-  try {
-    const response = await fetch(`${isApiUrl}/iot?source_name=${sourceName}`);
-    const jsonData = await response.json();
-    setData(jsonData.results[0].data.data.stations);
+    setData(jsonData.results[0].data);
   } catch (err) {
     console.warn(err.message);
   }
@@ -98,9 +101,9 @@ const fetchStreetMaintenanceData = async (endpoint, setData) => {
   }
 };
 
-const fetchParkingAreaGeometries = async (endpoint, setData, setError) => {
+const fetchAreaGeometries = async (endpoint, setData, setError, signal) => {
   try {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { signal });
     const jsonData = await response.json();
     setData(jsonData.features);
   } catch (err) {
@@ -109,9 +112,9 @@ const fetchParkingAreaGeometries = async (endpoint, setData, setError) => {
   }
 };
 
-const fetchParkingAreaStats = async (endpoint, setData, setError) => {
+const fetchParkingAreaStats = async (endpoint, setData, setError, signal) => {
   try {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { signal });
     const jsonData = await response.json();
     setData(jsonData.results);
   } catch (err) {
@@ -120,11 +123,45 @@ const fetchParkingAreaStats = async (endpoint, setData, setError) => {
   }
 };
 
-const fetchRailwaysData = async (endpoint, setData) => {
+const fetchRailwaysData = async (endpoint, setData, signal) => {
   try {
-    const response = await fetch(`${isRailwaysApiUrl}/${endpoint}`);
+    const response = await fetch(`${isRailwaysApiUrl}/${endpoint}`, { signal });
     const jsonData = await response.json();
     setData(jsonData);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+const fetchRoadworksData = async (options, setData, signal) => {
+  const params = optionsToParams(options);
+  try {
+    const response = await fetch(`${isRoadworksApiUrl}/situation/?${params}`, { signal });
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+const fetchPostCodeAreas = async (setData, signal) => {
+  try {
+    const response = await fetch(
+      `${isServiceMapApiUrl}/administrative_division/?type=postcode_area&geometry=true&page_size=100`,
+      { signal },
+    );
+    const jsonData = await response.json();
+    setData(jsonData.results);
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+const fetchMobilityProfilesData = async (setData, signal) => {
+  try {
+    const response = await fetch(`${isMobilityTestApiUrl}/?page_size=300`, { signal });
+    const jsonData = await response.json();
+    setData(jsonData.results);
   } catch (err) {
     console.warn(err.message);
   }
@@ -136,9 +173,11 @@ export {
   fetchBicycleRouteNames,
   fetchBicycleRoutesGeometry,
   fetchIotData,
-  fetchCityBikesData,
   fetchStreetMaintenanceData,
-  fetchParkingAreaGeometries,
+  fetchAreaGeometries,
   fetchParkingAreaStats,
   fetchRailwaysData,
+  fetchRoadworksData,
+  fetchPostCodeAreas,
+  fetchMobilityProfilesData,
 };

@@ -1,42 +1,44 @@
 import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useIntl } from 'react-intl';
+import styled from '@emotion/styled';
 
 /**
    * Check if route list is empty and render correct text
-   * @property {any} classes
-   * @property {any} intl
    * @property {Array} route
    * @return {JSX Element}
    */
 
-const EmptyRouteList = ({ classes, intl, route }) => {
+const EmptyRouteList = ({ route }) => {
+  const intl = useIntl();
+
   if (route) {
     return (
-      <div className={classes.paragraph}>
+      <StyledParagraph>
         <Typography
           component="p"
           variant="subtitle2"
-          aria-label={
-                route.length > 0
-                  ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
-                  : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })
-              }
         >
           {route.length > 0
             ? intl.formatMessage({ id: 'mobilityPlatform.menu.routes.info' })
             : intl.formatMessage({ id: 'mobilityPlatform.menu.routes.emptyList' })}
         </Typography>
-      </div>
+      </StyledParagraph>
     );
   }
   return null;
 };
 
+const StyledParagraph = styled.div(({ theme }) => ({
+  textAlign: 'left',
+  padding: theme.spacing(1.5),
+}));
+
 EmptyRouteList.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
-  route: PropTypes.arrayOf(PropTypes.any),
+  route: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+  })),
 };
 
 EmptyRouteList.defaultProps = {

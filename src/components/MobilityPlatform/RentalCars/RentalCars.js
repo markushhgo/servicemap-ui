@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { PropTypes } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useMap, useMapEvents } from 'react-leaflet';
 import { useSelector } from 'react-redux';
@@ -8,13 +7,13 @@ import providerIcon from 'servicemap-ui-turku/assets/icons/icons-icon_24rent.svg
 import rentalCarIcon from 'servicemap-ui-turku/assets/icons/icons-icon_rental_car.svg';
 import { useMobilityPlatformContext } from '../../../context/MobilityPlatformContext';
 import { useAccessibleMap } from '../../../redux/selectors/settings';
-import { fetchIotData } from '../mobilityPlatformRequests/mobilityPlatformRequests';
+import useIotDataFetch from '../utils/useIotDataFetch';
 import { isDataValid, setRender, checkMapType } from '../utils/utils';
 import { isEmbed } from '../../../utils/path';
+import { StyledPopupWrapper, StyledPopupInner } from '../styled/styled';
 import RentalCarsContent from './components/RentalCarsContent';
 
-const RentalCars = ({ classes }) => {
-  const [rentalCarsData, setRentalCarsData] = useState([]);
+const RentalCars = () => {
   const [zoomLevel, setZoomLevel] = useState(13);
 
   const { showRentalCars } = useMobilityPlatformContext();
@@ -40,11 +39,7 @@ const RentalCars = ({ classes }) => {
     iconSize: zoomLevel < 14 ? [45, 45] : [50, 56],
   });
 
-  useEffect(() => {
-    if (showRentalCars || embedded) {
-      fetchIotData('R24', setRentalCarsData);
-    }
-  }, [showRentalCars, embedded]);
+  const { iotData: rentalCarsData } = useIotDataFetch('R24', showRentalCars, embedded);
 
   const map = useMap();
 
@@ -54,7 +49,7 @@ const RentalCars = ({ classes }) => {
   useEffect(() => {
     if (renderData && !embedded) {
       const bounds = [];
-      rentalCarsData.forEach((item) => {
+      rentalCarsData.forEach(item => {
         bounds.push([item.homeLocationData.coordinates.latitude, item.homeLocationData.coordinates.longitude]);
       });
       map.fitBounds(bounds);
@@ -62,32 +57,26 @@ const RentalCars = ({ classes }) => {
   }, [showRentalCars, rentalCarsData]);
 
   return (
-    <>
-      {renderData ? (
-        rentalCarsData.filter(item => item.availabilityData.available).map(item => (
-          <Marker
-            key={item.id}
-            icon={customIcon}
-            position={[item.homeLocationData.coordinates.latitude, item.homeLocationData.coordinates.longitude]}
-          >
-            <div className={classes.popupWrapper}>
-              <Popup className="rental-cars-popup">
-                <div className={classes.popupInner}>
-                  <RentalCarsContent
-                    car={item}
-                  />
-                </div>
-              </Popup>
-            </div>
-          </Marker>
-        ))
-      ) : null}
-    </>
+    renderData ? (
+      rentalCarsData.filter(item => item.availabilityData.available).map(item => (
+        <Marker
+          key={item.id}
+          icon={customIcon}
+          position={[item.homeLocationData.coordinates.latitude, item.homeLocationData.coordinates.longitude]}
+        >
+          <StyledPopupWrapper>
+            <Popup className="rental-cars-popup">
+              <StyledPopupInner>
+                <RentalCarsContent
+                  car={item}
+                />
+              </StyledPopupInner>
+            </Popup>
+          </StyledPopupWrapper>
+        </Marker>
+      ))
+    ) : null
   );
-};
-
-RentalCars.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default RentalCars;
