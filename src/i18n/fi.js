@@ -826,6 +826,7 @@ const translations = {
   'mobilityPlatform.menu.show.parkAndRideBikes': 'Liityntäpysäkit pyörille',
   'mobilityPlatform.menu.show.barbecuePlaces': 'Grillaus- ja tulentekopaikat',
   'mobilityPlatform.menu.show.airPorts': 'Lentoasema',
+  'mobilityPlatform.menu.show.parkingGarages': 'Pysäköintihallit',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -865,6 +866,9 @@ const translations = {
   'mobilityPlatform.content.parkingSpaces.type': 'Maksutyyppi',
   'mobilityPlatform.content.parkingSpaces.paid': 'Maksullinen',
   'mobilityPlatform.content.parkingSpaces.empty': 'Ei vapaita paikkoja jäljellä',
+  'mobilityPlatform.content.parking.capacity': 'Parkkipaikkojen määrä: {value}',
+  'mobilityPlatform.content.parking.disabled.capacity': 'Invapaikkojen määrä: {value}',
+  'mobilityPlatform.content.parking.chargers.capacity': 'Sähkölatauspaikat: {value}',
   'mobilityPlatform.content.parkingChargeZones.zone': 'Vyöhyke: {value}',
   'mobilityPlatform.content.parkingChargeZones.price': 'Hinta: {value}',
   'mobilityPlatform.content.parkingChargeZones.price.weekDays': 'Maksullisuus arkisin: {value}',
@@ -999,6 +1003,7 @@ const translations = {
   'mobilityPlatform.info.parkAndRideBicycles': 'Liityntäpysäköinti tarjoaa mahdollisuuden jättää oma pyörä parkkiin ja jatkaa matkaa bussilla. Föli-alueella on useita liityntäpysäköintipaikkoja pyörille. Liityntäpysäköinti on maksutonta ja tarkoitettu vain joukkoliikennettä vaihtoyhteytenä käyttäville.',
   'mobilityPlatform.info.barbecuePlaces': 'Kartalla näkyvät Turun viralliset tulenteko- ja grillauspaikat. Turun kaupungin hallinnoimilla mailla tulenteko on sallittu ainoastaan avotulen tekoon tarkoitetuilla paikoilla. Muilla kuin virallisilla nuotio- ja grillauspaikoilla avotulen teko on aina kielletty.',
   'mobilityPlatform.info.airport': 'Kartalla näkyvät Turun lentoasema ja lentojen tiedot kuluvan vuorokauden ajalta. Lennot on jaettu saapuviin ja lähteviin lentoihin. Tiedot ovat peräisin Finavian rajapinnasta.',
+  'mobilityPlatform.info.parkingGarages': 'Kartalla näkyvät yleisessä käytössä olevat pysäköintihallit. Niiden käyttöasteesta ei ole kuitenkaan saatavilla tietoja. Tarkempia tietoja valitusta pysäköintihallista voi lukea painamalla kuvaketta kartalla.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
