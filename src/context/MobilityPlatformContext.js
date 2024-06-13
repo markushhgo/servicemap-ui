@@ -101,6 +101,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
   const [showBusStops, setShowBusStops] = useState(false);
   const [showRailwayStations, setShowRailwayStations] = useState(false);
   const [showAirports, setShowAirports] = useState(false);
+  const [showPortInfo, setShowPortInfo] = useState(false);
 
   // units
   const [showAccessibilityAreas, setShowAccessibilityAreas] = useState(accessibilityAreasInitial);
@@ -179,6 +180,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     showBusStops,
     showRailwayStations,
     showAirports,
+    showPortInfo,
     // units
     showAccessibilityAreas,
     accessibilityAreasData,
@@ -256,6 +258,7 @@ const MobilityPlatformContextProvider = ({ children }) => {
     setShowBusStops,
     setShowRailwayStations,
     setShowAirports,
+    setShowPortInfo,
     // units
     setShowAccessibilityAreas,
     setAccessibilityAreasData,

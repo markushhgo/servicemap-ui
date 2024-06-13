@@ -822,6 +822,7 @@ const translations = {
   'mobilityPlatform.menu.show.barbecuePlaces': 'Sites for barbequing & making fire',
   'mobilityPlatform.menu.show.airPorts': 'Airport',
   'mobilityPlatform.menu.show.parkingGarages': 'Parking garages',
+  'mobilityPlatform.menu.show.portInfo': 'Passenger ships',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Service provider: {value}',
@@ -946,6 +947,8 @@ const translations = {
   'mobilityPlatform.content.airport.cities.gdansk': 'To Gdańsk',
   'mobilityPlatform.content.airport.cities.rome': 'To Rome',
   'mobilityPlatform.content.airport.cities.rhodes': 'To Rhodes',
+  'mobilityPlatform.content.portInfo.arrivals': 'Incoming ships:',
+  'mobilityPlatform.content.portInfo.departing': 'Departing ships:',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Route description',
@@ -1009,6 +1012,7 @@ const translations = {
   'mobilityPlatform.info.barbecuePlaces': 'The map shows official sites for barbequing or making fire. Making a fire on the land administered by Turku City is allowed only on places designated for making an open flame. Making a fire on any other place than the official campfire and barbeque sites is always forbidden.',
   'mobilityPlatform.info.airport': 'The map shows Turku airport and information about flights for the current day. Flight traffic has been divided into incoming and departing flights. The data comes from the interface provided by Finavia.',
   'mobilityPlatform.info.parkingGarages': 'The map shows parking garages that are available for general public. Information about occupancy is not available however. Additional information can be read by selecting an icon from the map.',
+  'mobilityPlatform.info.portInfo': 'The map shows the ports in Turku and Naantali and the timetables of passenger ships for two days. Passenger traffic is divided into ships departing from and ships arriving at the ports. The data comes from the interface provided by Digitraffic.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'The EuroVelo 10, is the European cycle route that stretches along the Finnish costal line. The distance between Helsinki and Turku has roadside directions for the route.',

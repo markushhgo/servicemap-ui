@@ -176,6 +176,8 @@ const MobilitySettingsView = ({ navigator }) => {
     setShowAirports,
     showParkingGarages,
     setShowParkingGarages,
+    showPortInfo,
+    setShowPortInfo,
   } = useMobilityPlatformContext();
 
   const locale = useSelector(state => state.user.locale);
@@ -453,7 +455,8 @@ const MobilitySettingsView = ({ navigator }) => {
     checkVisibilityValues(showBusStops, setOpenPublicTransportSettings);
     checkVisibilityValues(showRailwayStations, setOpenPublicTransportSettings);
     checkVisibilityValues(showAirports, setOpenPublicTransportSettings);
-  }, [showBusStops, showRailwayStations, showAirports]);
+    checkVisibilityValues(showPortInfo, setOpenPublicTransportSettings);
+  }, [showBusStops, showRailwayStations, showAirports, showPortInfo]);
 
   useEffect(() => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
@@ -784,6 +787,10 @@ const MobilitySettingsView = ({ navigator }) => {
 
   const airPortsToggle = () => {
     setShowAirports(current => !current);
+  };
+
+  const portInfoToggle = () => {
+    setShowPortInfo(current => !current);
   };
 
   const roadWorksToggle = () => {
@@ -1330,6 +1337,12 @@ const MobilitySettingsView = ({ navigator }) => {
       checkedValue: showAirports,
       onChangeValue: airPortsToggle,
     },
+    {
+      type: 'portInfo',
+      msgId: 'mobilityPlatform.menu.show.portInfo',
+      checkedValue: showPortInfo,
+      onChangeValue: portInfoToggle,
+    },
   ];
 
   const boatingControlTypes = [
@@ -1716,6 +1729,11 @@ const MobilitySettingsView = ({ navigator }) => {
       visible: showAirports,
       type: 'airportInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.airport" />,
+    },
+    {
+      visible: showPortInfo,
+      type: 'portInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.portInfo" />,
     },
   ];
 

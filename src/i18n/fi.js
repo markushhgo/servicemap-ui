@@ -827,6 +827,7 @@ const translations = {
   'mobilityPlatform.menu.show.barbecuePlaces': 'Grillaus- ja tulentekopaikat',
   'mobilityPlatform.menu.show.airPorts': 'Lentoasema',
   'mobilityPlatform.menu.show.parkingGarages': 'Pysäköintihallit',
+  'mobilityPlatform.menu.show.portInfo': 'Matkustajalaivat',
 
   // Content
   'mobilityPlatform.content.general.provider': 'Palveluntarjoaja: {value}',
@@ -941,6 +942,8 @@ const translations = {
   'mobilityPlatform.content.airport.cities.gdansk': 'Gdańskiin',
   'mobilityPlatform.content.airport.cities.rome': 'Roomaan',
   'mobilityPlatform.content.airport.cities.rhodes': 'Ródokselle',
+  'mobilityPlatform.content.portInfo.arrivals': 'Saapuvat laivat:',
+  'mobilityPlatform.content.portInfo.departing': 'Lähtevät laivat:',
 
   // Info text
   'mobilityPlatform.info.description.title': 'Tietoja reitistä',
@@ -1004,6 +1007,7 @@ const translations = {
   'mobilityPlatform.info.barbecuePlaces': 'Kartalla näkyvät Turun viralliset tulenteko- ja grillauspaikat. Turun kaupungin hallinnoimilla mailla tulenteko on sallittu ainoastaan avotulen tekoon tarkoitetuilla paikoilla. Muilla kuin virallisilla nuotio- ja grillauspaikoilla avotulen teko on aina kielletty.',
   'mobilityPlatform.info.airport': 'Kartalla näkyvät Turun lentoasema ja lentojen tiedot kuluvan vuorokauden ajalta. Lennot on jaettu saapuviin ja lähteviin lentoihin. Tiedot ovat peräisin Finavian rajapinnasta.',
   'mobilityPlatform.info.parkingGarages': 'Kartalla näkyvät yleisessä käytössä olevat pysäköintihallit. Niiden käyttöasteesta ei ole kuitenkaan saatavilla tietoja. Tarkempia tietoja valitusta pysäköintihallista voi lukea painamalla kuvaketta kartalla.',
+  'mobilityPlatform.info.portInfo': 'Kartalla näkyvät Turun ja Naantalin satamat sekä matkustajalaivojen aikataulut kahden vuorokauden ajalta. Matkustajaliikenne on jaettu satamista lähteviin ja sinne saapuviin aluksiin. Tiedot tulevat Digitrafficin rajapinnasta.',
 
   // Bicycle routes
   'mobilityPlatform.menu.bicycleRoutes.euroVelo': 'EuroVelo 10 on eurooppalainen Suomen rannikkoa seuraava polkupyöräreitti. Helsingin ja Turun välisellä matkalla reitti on merkitty opastein.',
