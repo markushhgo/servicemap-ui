@@ -86,6 +86,9 @@ app.set('trust proxy', true);
 if (Sentry) {
   app.use(Sentry.Handlers.requestHandler());
 }
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
 // Add static folder
 app.use(express.static(path.resolve(__dirname, 'src')));
 
