@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 COPY . .
-RUN git clone https://github.com/markushhgo/servicemap-ui-turku ./servicemap-ui-turku
+RUN git clone -b master https://github.com/markushhgo/servicemap-ui-turku ./servicemap-ui-turku
 RUN npm install ./servicemap-ui-turku
 RUN npm run build
 
