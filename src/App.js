@@ -34,7 +34,6 @@ import config from '../config';
 import ogImage from './assets/images/servicemap-meta-img.png';
 import ThemeWrapper from './themes/ThemeWrapper';
 import LocaleUtility from './utils/locale';
-import DevLoginGate from "./utils/devLogin";
 
 // General meta tags for app
 const MetaTags = () => {
@@ -79,13 +78,11 @@ class App extends React.Component {
             {/* <StylesProvider generateClassName={generateClassName}> */}
             <div className="App">
               <MobilityPlatformContextProvider>
-                <DevLoginGate>
-                  <Switch>
-                    <Route path="*/embedder" component={EmbedderView} />
-                    <Route path="*/embed" component={EmbedLayout} />
-                    <Route render={() => <DefaultLayout />} />
-                  </Switch>
-                </DevLoginGate>
+                <Switch>
+                  <Route path="*/embedder" component={EmbedderView} />
+                  <Route path="*/embed" component={EmbedLayout} />
+                  <Route render={() => <DefaultLayout />} />
+                </Switch>
               </MobilityPlatformContextProvider>
               <Navigator />
               <DataFetcher />
