@@ -741,12 +741,6 @@ const translations = {
 
   'alert.close': 'Sulje ilmoitus',
 
-  'dev.incorrect.password': 'Väärä salasana',
-  'dev.password.error': 'Salasanaa ei voitu vahvistaa',
-  'dev.enter.password': 'Syötä salasana',
-  'dev.login': 'Kirjaudu',
-  'dev.login.title': 'Palvelukartan testisivun kirjautuminen',
-
   // Mobility Platform of Turku
   'mobilityPlatform.info.title': 'Liikkumisnäkymä',
   'mobilityPlatform.info.statement': 'Palvelukartan liikkumisnäkymää on kehitetty osana Euroopan unionin Horizon 2020 -ohjelman rahoittamaa SCALE-UP -hanketta (avustussopimus nro 955332).',
