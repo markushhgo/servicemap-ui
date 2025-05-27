@@ -7,6 +7,10 @@ WORKDIR /servicemap-ui
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
+<<<<<<< HEAD
+=======
+RUN npm install
+>>>>>>> master-merge
 RUN npm ci --only=production
 
 COPY . .
