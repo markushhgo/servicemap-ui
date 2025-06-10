@@ -11,7 +11,7 @@ RUN npm install
 RUN npm ci --only=production
 
 COPY . .
-RUN git clone -b master https://github.com/markushhgo/servicemap-ui-turku ./servicemap-ui-turku
+RUN git clone -b master https://github.com/City-of-Turku/servicemap-ui-turku ./servicemap-ui-turku
 RUN npm install ./servicemap-ui-turku
 RUN npm run build
 
