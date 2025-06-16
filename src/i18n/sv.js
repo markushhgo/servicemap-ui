@@ -740,6 +740,12 @@ const translations = {
 
   'alert.close': 'Stäng meddelande',
 
+  'dev.incorrect.password': 'Felaktigt lösenord',
+  'dev.password.error': 'Fel vid verifiering av lösenord',
+  'dev.enter.password': 'Ange lösenord',
+  'dev.login': 'Logga in',
+  'dev.login.title': 'Servicemap testsite inloggning',
+
   // Mobility Platform of Turku
   'mobilityPlatform.info.title': 'Mobilitetsplatform',
   'mobilityPlatform.info.statement': 'Mobilitetsdataplattformen från servicekartan har utvecklats som en del av SCALE-UP-projekt, finansierat av Europeiska unionens Horizon 2020-program (bidragsavtal nr 955332).',
