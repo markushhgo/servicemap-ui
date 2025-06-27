@@ -162,6 +162,8 @@ const MobilitySettingsView = ({ navigator }) => {
     setShowRoadworks,
     showRailwayStations,
     setShowRailwayStations,
+    showTaxiStands,
+    setshowTaxiStands,
     showAirMonitoringStations,
     setShowAirMonitoringStations,
     showParkAndRideBikes,
@@ -462,7 +464,8 @@ const MobilitySettingsView = ({ navigator }) => {
     checkVisibilityValues(showRailwayStations, setOpenPublicTransportSettings);
     checkVisibilityValues(showAirports, setOpenPublicTransportSettings);
     checkVisibilityValues(showPortInfo, setOpenPublicTransportSettings);
-  }, [showBusStops, showRailwayStations, showAirports, showPortInfo]);
+    checkVisibilityValues(showTaxiStands, setOpenPublicTransportSettings);
+  }, [showBusStops, showRailwayStations, showAirports, showPortInfo, showTaxiStands]);
 
   useEffect(() => {
     checkVisibilityValues(showAirMonitoringStations, setOpenAirMonitoringSettings);
@@ -805,6 +808,10 @@ const MobilitySettingsView = ({ navigator }) => {
 
   const portInfoToggle = () => {
     setShowPortInfo(current => !current);
+  };
+
+  const taxiStationsToggle = () => {
+    setshowTaxiStands(current => !current);
   };
 
   const roadWorksToggle = () => {
@@ -1329,6 +1336,12 @@ const MobilitySettingsView = ({ navigator }) => {
       checkedValue: showPortInfo,
       onChangeValue: portInfoToggle,
     },
+    {
+      type: 'taxiStands',
+      msgId: 'mobilityPlatform.menu.show.taxiStands',
+      checkedValue: showTaxiStands,
+      onChangeValue: taxiStationsToggle,
+    },
   ];
 
   const boatingControlTypes = [
@@ -1736,6 +1749,11 @@ const MobilitySettingsView = ({ navigator }) => {
       visible: showPortInfo,
       type: 'portInfo',
       component: <InfoTextBox infoText="mobilityPlatform.info.portInfo" />,
+    },
+    {
+      visible: showTaxiStands,
+      type: 'taxiStationsInfo',
+      component: <InfoTextBox infoText="mobilityPlatform.info.taxiStands" />,
     },
   ];
 
